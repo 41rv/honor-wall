@@ -20,8 +20,19 @@ import {
 } from "./saveQueue";
 import { buildHierarchy, type Hierarchy } from "./hierarchy";
 import { CompletionButton } from "./CompletionButton";
-import { useCompletion, flushCompletions } from "./useCompletion";
+import {
+    useCompletion,
+    flushCompletions,
+    trackCompletionFocus,
+} from "./useCompletion";
 import { QuickIdeaCapture } from "./QuickIdeaCapture";
+import { buildExecution, resumeStep, type Execution } from "./execution";
+import { ExecutionSummary } from "./ExecutionSummary";
+import { ActionButton, type OpenActions } from "./ActionButton";
+import { useLongPress } from "./useLongPress";
+import { useTheme, type ThemeMode, type Identity } from "./useTheme";
+import { HomeExecution } from "./HomeExecution";
+import { startCompletionRecovery } from "./completionRecovery";
 import { registerSW } from "virtual:pwa-register";
 import {
     Home,
@@ -36,7 +47,6 @@ import {
     ChevronLeft,
     ArrowUp,
     ArrowDown,
-    MoreHorizontal,
     X,
     Moon,
     Sun,
@@ -54,6 +64,7 @@ import {
     WifiOff,
     PanelTop,
     NotebookPen,
+    Palette,
 } from "lucide-react";
 import {
     snapshot,
@@ -198,12 +209,19 @@ function Dialog({
     title,
     children,
     onClose,
+    className,
+    position,
+    suppressInitialClick = false,
 }: {
     title: string;
     children: ReactNode;
     onClose: () => void;
+    className?: string;
+    position?: { top: number; left: number };
+    suppressInitialClick?: boolean;
 }) {
     const ref = useRef<HTMLDialogElement>(null);
+    const ignoreReleaseClick = useRef(suppressInitialClick);
     useEffect(() => {
         const dialog = ref.current!;
         const opener = document.activeElement as HTMLElement | null;
@@ -217,6 +235,22 @@ function Dialog({
     return (
         <dialog
             ref={ref}
+            onPointerDownCapture={() => {
+                ignoreReleaseClick.current = false;
+            }}
+            onClickCapture={(event) => {
+                if (ignoreReleaseClick.current && event.detail > 0) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                ignoreReleaseClick.current = false;
+            }}
+            className={className}
+            style={
+                position
+                    ? { top: position.top, left: position.left }
+                    : undefined
+            }
             onCancel={(e) => {
                 e.preventDefault();
                 onClose();
@@ -229,7 +263,7 @@ function Dialog({
                 if (e.key !== "Tab") return;
                 const fields = [
                     ...e.currentTarget.querySelectorAll<HTMLElement>(
-                        'button:not([disabled]), input:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
+                        'button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
                     ),
                 ].filter((field) => field.getClientRects().length > 0);
                 const first = fields[0],
@@ -346,15 +380,29 @@ const ProjectCard = memo(function ProjectCard({
     hierarchy,
     onComplete,
     index = 0,
+    execution,
+    onStepComplete,
+    onActions,
 }: {
     project: Project;
     onComplete: (id: string, complete: boolean) => Promise<void>;
     hierarchy: Hierarchy;
     index?: number;
+    execution: Execution;
+    onStepComplete: (id: string, complete: boolean) => Promise<void>;
+    onActions: OpenActions;
 }) {
+    const gestures = useLongPress((rect) =>
+        onActions("project", project, rect, true),
+    );
     return (
-        <article className="project-card">
+        <article
+            className="project-card"
+            data-project-id={project.id}
+            {...gestures}
+        >
             <div className="project-card-top">
+                <ActionButton kind="project" item={project} open={onActions} />
                 <CompletionButton
                     entityKey={`project/${project.id}`}
                     checked={project.status === "closed"}
@@ -380,13 +428,18 @@ const ProjectCard = memo(function ProjectCard({
                 className="title-link"
                 onClick={() => go(`project/${project.id}`)}
             >
-                {project.title}
+                <span className="project-name">{project.title}</span>
                 <ArrowUpLeft size={19} />
             </button>
             <p className="project-note">
                 {project.notes || "مساحة لخطوتك التالية."}
             </p>
             <Progress hierarchy={hierarchy} projectId={project.id} compact />
+            <ExecutionSummary
+                execution={execution}
+                open={(stepId) => go(`step/${stepId}`)}
+                complete={onStepComplete}
+            />
             <div className="card-foot">
                 <span>آخر تعديل {date(project.updatedAt)}</span>
                 <button
@@ -409,6 +462,7 @@ const Tree = memo(function Tree({
     setForm,
     onComplete,
     run,
+    onActions,
 }: {
     projectId: string;
     onComplete: (id: string, complete: boolean) => Promise<void>;
@@ -419,6 +473,7 @@ const Tree = memo(function Tree({
     setFolded: Dispatch<SetStateAction<Set<string>>>;
     setForm: Dispatch<SetStateAction<CreateOptions | null>>;
     run: Run;
+    onActions: OpenActions;
 }) {
     const nums = hierarchy.numbers;
     return (
@@ -432,7 +487,7 @@ const Tree = memo(function Tree({
                         }
                         key={s.id}
                     >
-                        <div className="tree-row" data-step-id={s.id}>
+                        <TreeRow step={s} onActions={onActions}>
                             <CompletionButton
                                 entityKey={`step/${s.id}`}
                                 checked={
@@ -487,7 +542,25 @@ const Tree = memo(function Tree({
                                 </span>
                             </button>
                             <Badge status={hierarchy.nodes.get(s.id)!.status} />
+                            {s.kind === "stage" &&
+                                hierarchy.metric(projectId, s.id).total > 0 && (
+                                    <span
+                                        className="stage-progress"
+                                        aria-label={`تقدم المرحلة ${s.title}`}
+                                    >
+                                        {
+                                            hierarchy.metric(projectId, s.id)
+                                                .percent
+                                        }
+                                        %
+                                    </span>
+                                )}
                             <div className="tree-actions">
+                                <ActionButton
+                                    kind="step"
+                                    item={s}
+                                    open={onActions}
+                                />
                                 <button
                                     className="icon-btn"
                                     aria-label={`رفع ${s.title}`}
@@ -518,7 +591,7 @@ const Tree = memo(function Tree({
                                     <Plus size={17} />
                                 </button>
                             </div>
-                        </div>
+                        </TreeRow>
                         {has && !folded.has(s.id) && (
                             <Tree
                                 onComplete={onComplete}
@@ -530,6 +603,7 @@ const Tree = memo(function Tree({
                                 projectId={projectId}
                                 parentId={s.id}
                                 depth={depth + 1}
+                                onActions={onActions}
                             />
                         )}
                     </div>
@@ -538,12 +612,36 @@ const Tree = memo(function Tree({
         </div>
     );
 });
+function TreeRow({
+    step,
+    onActions,
+    children,
+}: {
+    step: Step;
+    onActions: OpenActions;
+    children: ReactNode;
+}) {
+    const gestures = useLongPress((rect) =>
+        onActions("step", step, rect, true),
+    );
+    return (
+        <div
+            className={`tree-row ${step.kind === "stage" ? "stage-row" : ""}`}
+            data-step-id={step.id}
+            {...gestures}
+        >
+            {children}
+        </div>
+    );
+}
 const TaskRow = memo(function TaskRow({
     task,
     onComplete,
+    onActions,
 }: {
     task: Task;
     onComplete: (task: Task, status: Status) => Promise<void>;
+    onActions: OpenActions;
 }) {
     const completion = useCompletion(
         `task/${task.id}`,
@@ -551,8 +649,11 @@ const TaskRow = memo(function TaskRow({
         (complete) => onComplete(task, complete ? "done" : "todo"),
     );
     const checked = completion.checked;
+    const gestures = useLongPress((rect) =>
+        onActions("task", task, rect, true),
+    );
     return (
-        <article className="task-row">
+        <article className="task-row" data-task-id={task.id} {...gestures}>
             <button
                 className={"task-check " + (checked ? "checked" : "")}
                 data-completion-key={`task/${task.id}`}
@@ -574,19 +675,30 @@ const TaskRow = memo(function TaskRow({
                 </span>
             </button>
             <Badge status={task.status} />
+            <ActionButton kind="task" item={task} open={onActions} />
             <button
                 className="icon-btn"
                 aria-label={`تفاصيل ${task.title}`}
                 onClick={() => go(`task/${task.id}`)}
             >
-                <MoreHorizontal size={20} />
+                <FileText size={20} />
             </button>
         </article>
     );
 });
-const IdeaCard = memo(function IdeaCard({ idea }: { idea: Idea }) {
+const IdeaCard = memo(function IdeaCard({
+    idea,
+    onActions,
+}: {
+    idea: Idea;
+    onActions: OpenActions;
+}) {
+    const gestures = useLongPress((rect) =>
+        onActions("idea", idea, rect, true),
+    );
     return (
-        <article className="idea-card">
+        <article className="idea-card" data-idea-id={idea.id} {...gestures}>
+            <ActionButton kind="idea" item={idea} open={onActions} />
             <Lightbulb size={23} />
             <button
                 className="title-link"
@@ -630,19 +742,96 @@ function App() {
     const confirmLock = useRef(false);
     const importLock = useRef(false);
     useEffect(() => {
-        void completeFinishedProjects().catch(() =>
-            setToast(
-                "تعذر حفظ الإتمام التلقائي للمشاريع. أعد فتح التطبيق للمحاولة مجددًا.",
-            ),
-        );
+        void startCompletionRecovery()
+            .then(completeFinishedProjects)
+            .catch(() =>
+                setToast(
+                    "تعذر استعادة حالة قيد الحفظ أو حفظ الإتمام التلقائي. أعد فتح التطبيق للمحاولة مجددًا.",
+                ),
+            );
     }, []);
     const [deleted, setDeleted] = useState<Deleted | null>(null);
-    const [theme, setTheme] = useState(
-        () =>
-            localStorage.getItem("masar-theme") ??
-            (matchMedia("(prefers-color-scheme: dark)").matches
-                ? "dark"
-                : "light"),
+    const { theme, mode, identity, setMode, setIdentity } = useTheme();
+    const [appearanceOpen, setAppearanceOpen] = useState(false);
+    const [context, setContext] = useState<{
+        kind: EntityKind;
+        item: Base;
+        position?: { top: number; left: number };
+        fromHold?: boolean;
+    } | null>(null);
+    const [editTarget, setEditTarget] = useState<string | null>(null);
+    const [lastVisited, setLastVisited] = useState<string | null>(() => {
+        try {
+            return localStorage.getItem("masar-last-step");
+        } catch {
+            return null;
+        }
+    });
+    const executions = useMemo(
+        () => buildExecution(data.projects, hierarchy),
+        [data.projects, hierarchy],
+    );
+    const resume = resumeStep(
+        data.projects,
+        hierarchy,
+        executions,
+        lastVisited,
+    );
+    const hierarchyRef = useRef(hierarchy);
+    hierarchyRef.current = hierarchy;
+    const rememberStep = useCallback((stepId: string) => {
+        const step = hierarchyRef.current.byId.get(stepId);
+        if (step?.kind !== "step") return;
+        setLastVisited(stepId);
+        try {
+            localStorage.setItem("masar-last-step", stepId);
+        } catch {
+            /* Resume falls back to current work. */
+        }
+    }, []);
+    useEffect(() => {
+        if (page === "step") rememberStep(id);
+    }, [page, id, hierarchy, rememberStep]);
+    useEffect(() => {
+        setContext(null);
+        setAppearanceOpen(false);
+    }, [route]);
+    useEffect(() => {
+        if (
+            !editTarget ||
+            id !== editTarget ||
+            !["project", "step", "task", "idea"].includes(page)
+        )
+            return;
+        const frame = requestAnimationFrame(() => {
+            document
+                .querySelector<HTMLInputElement>('[aria-label="تعديل الاسم"]')
+                ?.focus();
+            setEditTarget(null);
+        });
+        return () => cancelAnimationFrame(frame);
+    }, [page, id, editTarget, data]);
+    const openActions = useCallback<OpenActions>(
+        (kind, item, rect, fromHold = false) => {
+            setContext({
+                kind,
+                item,
+                fromHold,
+                position: rect
+                    ? {
+                          top: Math.max(
+                              80,
+                              Math.min(rect.bottom + 6, innerHeight - 380),
+                          ),
+                          left: Math.max(
+                              16,
+                              Math.min(rect.left, innerWidth - 336),
+                          ),
+                      }
+                    : undefined,
+            });
+        },
+        [],
     );
     const [backup, setBackup] = useState<Snapshot | null>(null);
     const [install, setInstall] = useState<
@@ -650,10 +839,6 @@ function App() {
     >(null);
     const [offline, setOffline] = useState(!navigator.onLine);
     const [refresh, setRefresh] = useState<(() => Promise<void>) | null>(null);
-    useEffect(() => {
-        document.documentElement.dataset.theme = theme;
-        localStorage.setItem("masar-theme", theme);
-    }, [theme]);
     useEffect(() => {
         const updateSW = registerSW({
             onNeedRefresh() {
@@ -717,6 +902,7 @@ function App() {
         async (id: string, complete: boolean) => {
             try {
                 await setBranchCompletion(id, complete);
+                rememberStep(id);
                 setToast(
                     complete
                         ? "تم إتمام الخطوة أو المرحلة."
@@ -727,7 +913,7 @@ function App() {
                 throw e;
             }
         },
-        [],
+        [rememberStep],
     );
     const completeProject = useCallback(
         async (id: string, complete: boolean) => {
@@ -770,10 +956,6 @@ function App() {
     )[0];
     const remaining = data.tasks.filter((t) => t.status !== "done");
     const recent = useMemo(() => achievements(data), [data.steps, data.tasks]);
-    const lastEvent = page === "home" ? data.events[0] : undefined;
-    const lastStep = lastEvent
-        ? hierarchy.byId.get(lastEvent.entityId)
-        : undefined;
     function askDelete(kind: EntityKind, item: Base) {
         setConfirm({
             text: `حذف «${item.title}»${kind === "project" ? " وكل مراحله وخطواته" : kind === "step" ? " وكل الخطوات داخله" : ""}؟ يمكنك التراجع بعد الحذف.`,
@@ -783,7 +965,11 @@ function App() {
                 const d = await remove(kind, item.id);
                 setDeleted(d);
                 setToast("تم الحذف. يمكنك التراجع.");
-                if (id === item.id)
+                const locationParts = location.hash.slice(1).split("/");
+                if (
+                    locationParts.shift() === kind &&
+                    routeId(locationParts.join("/")) === item.id
+                )
                     go(
                         kind === "step"
                             ? `project/${(item as Step).projectId}`
@@ -823,10 +1009,10 @@ function App() {
               : page === "idea"
                 ? "ideas"
                 : page;
-    const dashboardProjects = page === "home" ? active.slice(0, 2) : active;
-    const dashboardRecent = recent.slice(0, page === "home" ? 2 : 5);
+    const dashboardProjects = active;
+    const dashboardRecent = recent.slice(0, 5);
     const dashboard =
-        page === "home" || page === "progress" ? (
+        page === "progress" ? (
             <>
                 <div className="stats-grid">
                     {[
@@ -966,7 +1152,10 @@ function App() {
             </>
         ) : null;
     return (
-        <div className="app-shell">
+        <div
+            className="app-shell"
+            onFocusCapture={(event) => trackCompletionFocus(event.target)}
+        >
             <aside className="sidebar">
                 <a className="brand" href="#home">
                     <span className="brand-mark">
@@ -1041,7 +1230,7 @@ function App() {
                                     : "الوضع الفاتح"
                             }
                             onClick={() =>
-                                setTheme(theme === "light" ? "dark" : "light")
+                                setMode(theme === "light" ? "dark" : "light")
                             }
                         >
                             {theme === "light" ? (
@@ -1049,6 +1238,14 @@ function App() {
                             ) : (
                                 <Sun size={19} />
                             )}
+                        </button>
+                        <button
+                            className="icon-btn"
+                            aria-label="المظهر والألوان"
+                            aria-haspopup="dialog"
+                            onClick={() => setAppearanceOpen(true)}
+                        >
+                            <Palette size={19} />
                         </button>
                         <span className="avatar" aria-label="مساحتك الشخصية">
                             م
@@ -1148,30 +1345,41 @@ function App() {
                     {page === "home" && !query && (
                         <>
                             <QuickIdeaCapture save={saveQuickIdea} />
-                            <section
-                                className="home-dashboard"
-                                aria-label="لوحة التقدم في الرئيسية"
-                            >
-                                <div className="section-heading">
-                                    <h2>نظرة على تقدمك</h2>
-                                    <div className="inline-actions">
-                                        <button
-                                            className="text-btn"
-                                            onClick={() => go("projects")}
-                                        >
-                                            كل المشاريع{" "}
-                                            <ChevronLeft size={16} />
-                                        </button>
-                                        <button
-                                            className="text-btn"
-                                            onClick={() => go("progress")}
-                                        >
-                                            كل التقدم <ChevronLeft size={16} />
-                                        </button>
-                                    </div>
-                                </div>
-                                {dashboard}
-                            </section>
+                            <HomeExecution
+                                data={data}
+                                active={active}
+                                remaining={remaining}
+                                latestProject={latestProject}
+                                resume={resume}
+                                hierarchy={hierarchy}
+                                executions={executions}
+                                open={go}
+                                complete={completeBranch}
+                                onCreateProject={() =>
+                                    setForm({ kind: "project" })
+                                }
+                                lastVisited={lastVisited}
+                                renderProject={(p, i) => (
+                                    <ProjectCard
+                                        key={p.id}
+                                        project={p}
+                                        hierarchy={hierarchy}
+                                        execution={executions.get(p.id)!}
+                                        onComplete={completeProject}
+                                        onStepComplete={completeBranch}
+                                        onActions={openActions}
+                                        index={i}
+                                    />
+                                )}
+                                renderTask={(task) => (
+                                    <TaskRow
+                                        onActions={openActions}
+                                        key={task.id}
+                                        task={task}
+                                        onComplete={completeTask}
+                                    />
+                                )}
+                            />
                         </>
                     )}
                     <div className="search-box">
@@ -1228,105 +1436,6 @@ function App() {
                         </section>
                     ) : (
                         <>
-                            {page === "home" && (
-                                <>
-                                    <section className="resume-card">
-                                        <div className="resume-copy">
-                                            <span className="light-eyebrow">
-                                                <span className="pulse-dot" />{" "}
-                                                خطوتك التالية
-                                            </span>
-                                            <h2>
-                                                {lastStep
-                                                    ? lastStep.title
-                                                    : active.length
-                                                      ? "خطوة واحدة تكفي لتبدأ."
-                                                      : "البدايات الصغيرة تصنع المسار."}
-                                            </h2>
-                                            <p>
-                                                {lastStep
-                                                    ? pathFor(
-                                                          lastStep,
-                                                          data.steps,
-                                                          data.projects,
-                                                      )
-                                                    : active.length
-                                                      ? `عد إلى «${active[0].title}» وحدد خطوتك التالية.`
-                                                      : "مشروع في بالك؟ مهمة تنتظرك؟ ضعها هنا، وخذها خطوة بخطوة."}
-                                            </p>
-                                            <button
-                                                className="btn pale"
-                                                onClick={() =>
-                                                    lastStep
-                                                        ? open(
-                                                              "step",
-                                                              lastStep.id,
-                                                          )
-                                                        : active.length
-                                                          ? open(
-                                                                "project",
-                                                                active[0].id,
-                                                            )
-                                                          : setForm({
-                                                                kind: "project",
-                                                            })
-                                                }
-                                            >
-                                                {lastStep
-                                                    ? "استكمل من حيث توقفت"
-                                                    : active.length
-                                                      ? "عد إلى مشروعك"
-                                                      : "ابدأ مشروعك الأول"}
-                                                <ArrowUpLeft size={18} />
-                                            </button>
-                                        </div>
-                                        <div
-                                            className="hero-art"
-                                            aria-hidden="true"
-                                        >
-                                            <div className="art-path">
-                                                <span />
-                                                <span />
-                                                <span />
-                                                <Leaf size={35} />
-                                            </div>
-                                            <span className="art-caption">
-                                                على مهل، إلى الأمام
-                                            </span>
-                                        </div>
-                                    </section>
-                                    <div className="home-strip">
-                                        <div>
-                                            <CheckCheck size={20} />
-                                            <strong>{remaining.length}</strong>
-                                            <span>مهام تنتظر إنجازك</span>
-                                        </div>
-                                        <button
-                                            className="text-btn"
-                                            onClick={() => go("tasks")}
-                                        >
-                                            إلى المهام <ArrowUpLeft size={17} />
-                                        </button>
-                                    </div>
-                                    {latestProject && (
-                                        <p className="last-edited">
-                                            <NotebookPen size={16} /> آخر مشروع
-                                            عُدّل:{" "}
-                                            <button
-                                                className="text-btn"
-                                                onClick={() =>
-                                                    open(
-                                                        "project",
-                                                        latestProject.id,
-                                                    )
-                                                }
-                                            >
-                                                {latestProject.title}
-                                            </button>
-                                        </p>
-                                    )}
-                                </>
-                            )}
                             {page === "projects" && (
                                 <>
                                     <div
@@ -1385,6 +1494,13 @@ function App() {
                                                     project={p}
                                                     onComplete={completeProject}
                                                     hierarchy={hierarchy}
+                                                    execution={executions.get(
+                                                        p.id,
+                                                    )!}
+                                                    onStepComplete={
+                                                        completeBranch
+                                                    }
+                                                    onActions={openActions}
                                                     index={i}
                                                 />
                                             ))}
@@ -1438,6 +1554,7 @@ function App() {
                                                 )
                                                 .map((t) => (
                                                     <TaskRow
+                                                        onActions={openActions}
                                                         onComplete={
                                                             completeTask
                                                         }
@@ -1492,6 +1609,7 @@ function App() {
                                             )
                                             .map((t) => (
                                                 <TaskRow
+                                                    onActions={openActions}
                                                     onComplete={completeTask}
                                                     task={t}
                                                     key={t.id}
@@ -1529,6 +1647,7 @@ function App() {
                                                 <IdeaCard
                                                     key={idea.id}
                                                     idea={idea}
+                                                    onActions={openActions}
                                                 />
                                             ))}
                                     </div>
@@ -2057,6 +2176,7 @@ function App() {
                                                     </div>
                                                 </div>
                                                 <Tree
+                                                    onActions={openActions}
                                                     onComplete={completeBranch}
                                                     hierarchy={hierarchy}
                                                     folded={folded}
@@ -2391,8 +2511,12 @@ function App() {
                                         await importBackup(backup);
                                         for (const key of Object.keys(
                                             localStorage,
-                                        ).filter((k) =>
-                                            k.startsWith("masar-draft-"),
+                                        ).filter(
+                                            (k) =>
+                                                k.startsWith("masar-draft-") ||
+                                                k.startsWith(
+                                                    "masar-pending-completion/",
+                                                ),
                                         ))
                                             localStorage.removeItem(key);
                                         setBackup(null);
@@ -2405,6 +2529,146 @@ function App() {
                             }
                         >
                             تأكيد استبدال البيانات
+                        </button>
+                    </div>
+                </Dialog>
+            )}
+            {appearanceOpen && (
+                <Dialog
+                    title="المظهر والألوان"
+                    onClose={() => setAppearanceOpen(false)}
+                >
+                    <label className="field">
+                        الهوية
+                        <select
+                            data-dialog-autofocus
+                            aria-label="الهوية"
+                            value={identity}
+                            onChange={(event) =>
+                                setIdentity(event.target.value as Identity)
+                            }
+                        >
+                            <option value="green">أخضر</option>
+                            <option value="mono">أبيض وأسود</option>
+                        </select>
+                    </label>
+                    <label className="field">
+                        الوضع
+                        <select
+                            aria-label="الوضع"
+                            value={mode}
+                            onChange={(event) =>
+                                setMode(event.target.value as ThemeMode)
+                            }
+                        >
+                            <option value="light">فاتح</option>
+                            <option value="dark">داكن</option>
+                            <option value="system">اتباع النظام</option>
+                        </select>
+                    </label>
+                    <p className="muted small">يُحفظ اختيارك على هذا الجهاز.</p>
+                    <button
+                        className="btn primary"
+                        onClick={() => setAppearanceOpen(false)}
+                    >
+                        تم
+                    </button>
+                </Dialog>
+            )}
+            {context && (
+                <Dialog
+                    title={`إجراءات ${kindNames[context.kind]} «${context.item.title}»`}
+                    className="context-sheet"
+                    suppressInitialClick={context.fromHold}
+                    position={context.position}
+                    onClose={() => setContext(null)}
+                >
+                    <div className="context-actions">
+                        <button
+                            className="btn secondary"
+                            data-dialog-autofocus
+                            onClick={() => {
+                                setContext(null);
+                                setEditTarget(context.item.id);
+                                open(context.kind, context.item.id);
+                            }}
+                        >
+                            <NotebookPen size={17} />
+                            تعديل الاسم والملاحظات
+                        </button>
+                        {context.kind === "step" && (
+                            <button
+                                className="btn secondary"
+                                onClick={() => {
+                                    setContext(null);
+                                    setForm({
+                                        kind: "step",
+                                        projectId: (context.item as Step)
+                                            .projectId,
+                                        parentId: context.item.id,
+                                    });
+                                }}
+                            >
+                                <Plus size={17} />
+                                إضافة خطوة داخله
+                            </button>
+                        )}
+                        {(context.kind === "project" ||
+                            context.kind === "idea") && (
+                            <button
+                                className="btn secondary"
+                                onClick={() => {
+                                    setContext(null);
+                                    void run(async () => {
+                                        await flushAllSaves();
+                                        await flushCompletions();
+                                        if (context.kind === "project")
+                                            await projectState(
+                                                context.item.id,
+                                                "archive",
+                                            );
+                                        else await archiveIdea(context.item.id);
+                                    });
+                                }}
+                            >
+                                <Archive size={17} />
+                                {(context.item as Project | Idea).archived
+                                    ? "إلغاء الأرشفة"
+                                    : "أرشفة"}
+                            </button>
+                        )}
+                        {context.kind === "idea" &&
+                            (["project", "task"] as const).map((kind) => (
+                                <button
+                                    key={kind}
+                                    className="btn secondary"
+                                    onClick={() => {
+                                        setContext(null);
+                                        setConfirm({
+                                            text: `تحويل هذه الفكرة إلى ${kindNames[kind]}؟ سيُنسخ العنوان والوصف، وتبقى الفكرة في الأرشيف.`,
+                                            run: async () => {
+                                                await flushAllSaves();
+                                                const newId = await convertIdea(
+                                                    context.item.id,
+                                                    kind,
+                                                );
+                                                open(kind, newId);
+                                            },
+                                        });
+                                    }}
+                                >
+                                    تحويل إلى {kindNames[kind]}
+                                </button>
+                            ))}
+                        <button
+                            className="btn danger"
+                            onClick={() => {
+                                setContext(null);
+                                askDelete(context.kind, context.item);
+                            }}
+                        >
+                            <Trash2 size={17} />
+                            حذف
                         </button>
                     </div>
                 </Dialog>

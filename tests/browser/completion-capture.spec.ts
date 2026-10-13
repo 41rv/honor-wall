@@ -26,17 +26,17 @@ async function small(page: Page) {
     d.events = [];
     await importData(page, d);
 }
-test("الفكرة أول بطاقة وتحتها لوحة التقدم والحفظ مباشرة باللمس وبزر الإدخال", async ({
+test("الفكرة أول بطاقة وتحتها اختصار الاستكمال والحفظ مباشرة باللمس وبزر الإدخال", async ({
     page,
 }) => {
     const capture = page.getByRole("region", { name: "التقاط فكرة سريع" });
     const dashboard = page.getByRole("region", {
-        name: "لوحة التقدم في الرئيسية",
+        name: "اختصار الاستكمال",
     });
     await expect(capture).toBeVisible();
     expect(
         await capture.evaluate((el) => el.nextElementSibling?.className),
-    ).toBe("home-dashboard");
+    ).toBe("surface resume-shortcut");
     expect((await capture.boundingBox())!.y).toBeLessThan(
         (await dashboard.boundingBox())!.y,
     );

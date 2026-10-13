@@ -464,7 +464,7 @@ test("روابط الرئيسية والإنجازات تفتح المشروع �
     await page.getByRole("button", { name: "لم تبدأ", exact: true }).click();
     await page.getByRole("button", { name: "جارٍ العمل", exact: true }).click();
     await page.goto("/#home");
-    await page.getByRole("button", { name: "استكمل من حيث توقفت" }).click();
+    await page.getByRole("button", { name: "أكمل من حيث توقفت" }).click();
     await expect(page).toHaveURL(/#step\/step0-0-0/);
     await page.getByRole("button", { name: "مكتملة", exact: true }).click();
     await page.goto("/#home");

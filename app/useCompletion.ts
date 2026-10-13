@@ -5,10 +5,29 @@ import {
     useSyncExternalStore,
 } from "react";
 import { createCompletionQueue } from "./completionQueue";
+import {
+    rememberCompletion,
+    settleCompletion,
+    startCompletionRecovery,
+} from "./completionRecovery";
 
-const queue = createCompletionQueue();
-export const flushCompletions = () => queue.flush();
+const queue = createCompletionQueue({
+    intent: rememberCompletion,
+    settled: settleCompletion,
+});
+export const flushCompletions = async () => {
+    await startCompletionRecovery().catch(() => {});
+    await queue.flush();
+};
 let keyboardFocus: { key: string; route: string } | null = null;
+export function trackCompletionFocus(target: EventTarget | null) {
+    if (
+        keyboardFocus &&
+        (target as HTMLElement | null)?.dataset?.completionKey !==
+            keyboardFocus.key
+    )
+        keyboardFocus = null;
+}
 export function useCompletion(
     key: string,
     checked: boolean,
@@ -26,6 +45,10 @@ export function useCompletion(
             keyboardFocus = null;
             return;
         }
+        if (!document.hasFocus()) {
+            keyboardFocus = null;
+            return;
+        }
         const button = document.querySelector<HTMLButtonElement>(
             `[data-completion-key="${CSS.escape(key)}"]`,
         );
@@ -33,15 +56,10 @@ export function useCompletion(
         if (document.activeElement === document.body) {
             if (button.getClientRects().length) {
                 button.focus();
-                keyboardFocus = null;
             }
-        } else if (
-            document.activeElement !== button ||
-            (!state.saving &&
-                (state.desired === null || state.desired === checked))
-        ) {
-            // A completed write can precede the live-query render that moves
-            // the row. Keep the focus request until that render arrives.
+        } else if (document.activeElement !== button) {
+            // Keep the request through successive table renders and row moves.
+            // A real focus change or navigation ends it, without timed delays.
             keyboardFocus = null;
         }
     }, [key, checked, state]);
@@ -56,7 +74,10 @@ export function useCompletion(
                     .completionKey === key
             )
                 keyboardFocus = { key, route: location.hash };
-            queue.toggle(key, checked, persist);
+            queue.toggle(key, checked, async (value) => {
+                await startCompletionRecovery().catch(() => {});
+                await persist(value);
+            });
         },
     };
 }

@@ -14,6 +14,16 @@
     background: #f6f7f2;
     font-synthesis: none;
     --bg: #f6f7f2;
+    --danger-soft: #a8352412;
+    --badge-active-bg: #e9f1fa;
+    --badge-active-text: #376fa1;
+    --badge-done-bg: #e7f2e8;
+    --badge-done-text: #397953;
+    --idea-color: #927132;
+    --backdrop: #102e2559;
+    --warning-line: #c18a3c55;
+    --warning-bg: #c18a3c11;
+    --shadow-color: #12352b20;
     --surface: #fff;
     --text: #253e36;
     --muted: #55665b;
@@ -36,6 +46,11 @@
 }
 :root[data-theme="dark"] {
     --bg: #101b17;
+    --badge-active-bg: #253c4b;
+    --badge-active-text: #b9d8ec;
+    --badge-done-bg: #273e2b;
+    --badge-done-text: #aed9b4;
+    --idea-color: #dfbc79;
     --surface: #192722;
     --text: #e6ede5;
     --muted: #a6b5ac;
@@ -147,8 +162,8 @@ button {
         color 0.15s;
 }
 ::selection {
-    background: #c5dccb;
-    color: #173d31;
+    background: var(--soft);
+    color: var(--text);
 }
 .small {
     font-size: 13px;
@@ -374,11 +389,11 @@ main {
     border: 1px solid var(--line);
 }
 .danger:hover {
-    background: #a8352412;
+    background: var(--danger-soft);
 }
 .pale {
-    background: #eaf0ce;
-    color: #184d40;
+    background: var(--accent);
+    color: var(--primary);
 }
 .text-btn {
     display: inline-flex;
@@ -421,8 +436,8 @@ main {
     white-space: nowrap;
 }
 .resume-card {
-    background: #185c4b;
-    color: #fff;
+    background: var(--primary);
+    color: var(--surface);
     border-radius: 16px;
     padding: 30px 34px;
     display: flex;
@@ -437,7 +452,7 @@ main {
     z-index: 1;
 }
 .light-eyebrow {
-    color: #c5d6c9;
+    color: var(--muted);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -448,7 +463,7 @@ main {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #dbe8ad;
+    background: var(--accent);
 }
 .resume-copy h2 {
     font-size: 27px;
@@ -456,7 +471,7 @@ main {
 }
 .resume-copy p {
     font-size: 14px;
-    color: #c5d6c9;
+    color: var(--muted);
     margin: 10px 0 20px;
 }
 .hero-art {
@@ -473,8 +488,8 @@ main {
     position: relative;
     width: 132px;
     height: 108px;
-    border-bottom: 2px solid #a7caa8;
-    border-right: 2px solid #a7caa8;
+    border-bottom: 2px solid var(--line);
+    border-right: 2px solid var(--line);
     border-radius: 0 0 30px 0;
 }
 .art-path:before {
@@ -484,25 +499,25 @@ main {
     top: -24px;
     width: 85px;
     height: 80px;
-    border-top: 2px solid #a7caa8;
-    border-left: 2px solid #a7caa8;
+    border-top: 2px solid var(--line);
+    border-left: 2px solid var(--line);
     border-radius: 26px 0 0 0;
 }
 .art-path > svg {
     position: absolute;
     left: -17px;
     bottom: -16px;
-    background: #185c4b;
+    background: var(--primary);
     padding: 4px;
-    color: #e5edb6;
+    color: var(--accent);
 }
 .art-path span {
     position: absolute;
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: #185c4b;
-    border: 3px solid #e5edb6;
+    background: var(--primary);
+    border: 3px solid var(--accent);
 }
 .art-path span:nth-child(1) {
     right: -8px;
@@ -518,7 +533,7 @@ main {
 }
 .art-caption {
     font-size: 12px;
-    color: #d6e3c8;
+    color: var(--muted);
 }
 .home-strip {
     display: flex;
@@ -836,20 +851,20 @@ main {
     line-height: 1.4;
 }
 .badge.doing {
-    background: #e9f1fa;
-    color: #376fa1;
+    background: var(--badge-active-bg);
+    color: var(--badge-active-text);
 }
 .badge.done {
-    background: #e7f2e8;
-    color: #397953;
+    background: var(--badge-done-bg);
+    color: var(--badge-done-text);
 }
 :root[data-theme="dark"] .badge.doing {
-    background: #253c4b;
-    color: #b9d8ec;
+    background: var(--badge-active-bg);
+    color: var(--badge-active-text);
 }
 :root[data-theme="dark"] .badge.done {
-    background: #273e2b;
-    color: #aed9b4;
+    background: var(--badge-done-bg);
+    color: var(--badge-done-text);
 }
 .dot {
     width: 5px;
@@ -897,7 +912,7 @@ main {
     padding: 24px;
 }
 .idea-card > svg {
-    color: #a9863c;
+    color: var(--idea-color);
     margin-bottom: 24px;
 }
 .idea-card p {
@@ -1265,7 +1280,7 @@ main {
     opacity: 0;
 }
 .file-input:focus-within {
-    outline: 3px solid #6cab91;
+    outline: 3px solid var(--focus-ring);
     outline-offset: 2px;
 }
 hr {
@@ -1310,7 +1325,7 @@ dialog {
     overflow: auto;
 }
 dialog::backdrop {
-    background: #102e2559;
+    background: var(--backdrop);
 }
 .dialog-head {
     display: flex;
@@ -1335,8 +1350,8 @@ dialog::backdrop {
 }
 .warning {
     padding: 15px;
-    border: 1px solid #c18a3c55;
-    background: #c18a3c11;
+    border: 1px solid var(--warning-line);
+    background: var(--warning-bg);
     border-radius: 9px;
     color: var(--text);
     margin-top: 17px;
@@ -1759,7 +1774,7 @@ dialog::backdrop {
         color: var(--bg);
         border-radius: 16px;
         z-index: 15;
-        box-shadow: 0 4px 16px #12352b20;
+        box-shadow: 0 4px 16px var(--shadow-color);
     }
     .toast {
         bottom: calc(145px + env(safe-area-inset-bottom));
@@ -2072,5 +2087,335 @@ dialog::backdrop {
     }
     body:has(input:focus, textarea:focus) .mobile-fab {
         visibility: hidden;
+    }
+}
+
+:root[data-identity="mono"] {
+    --bg: #f5f5f5;
+    --surface: #fff;
+    --text: #181818;
+    --muted: #5d5d5d;
+    --line: #dedede;
+    --primary: #202020;
+    --soft: #ececec;
+    --input: #fafafa;
+    --accent: #e3e3e3;
+    --danger: #343434;
+    --danger-soft: #0000000a;
+    --focus-ring: #333;
+    --badge-active-bg: #e9e9e9;
+    --badge-active-text: #333;
+    --badge-done-bg: #dedede;
+    --badge-done-text: #222;
+    --idea-color: #555;
+    --progress-gray: #909090;
+    --progress-orange: #757575;
+    --progress-blue: #585858;
+    --progress-teal: #383838;
+    --progress-green: #181818;
+    --backdrop: #00000066;
+    --warning-line: #77777788;
+    --warning-bg: #77777711;
+    --shadow-color: #00000020;
+}
+:root[data-identity="mono"][data-theme="dark"] {
+    --bg: #121212;
+    --surface: #1e1e1e;
+    --text: #f1f1f1;
+    --muted: #b5b5b5;
+    --line: #414141;
+    --primary: #efefef;
+    --soft: #2c2c2c;
+    --input: #181818;
+    --accent: #383838;
+    --danger: #ddd;
+    --danger-soft: #ffffff0a;
+    --focus-ring: #eee;
+    --badge-active-bg: #303030;
+    --badge-active-text: #eee;
+    --badge-done-bg: #393939;
+    --badge-done-text: #fff;
+    --idea-color: #c5c5c5;
+    --progress-gray: #737373;
+    --progress-orange: #929292;
+    --progress-blue: #b1b1b1;
+    --progress-teal: #d1d1d1;
+    --progress-green: #f1f1f1;
+}
+:root {
+    color: var(--text);
+    background: var(--bg);
+}
+select {
+    font: inherit;
+}
+.field select {
+    display: block;
+    width: 100%;
+    min-height: var(--touch-target);
+    margin-top: 8px;
+    padding: 10px 12px;
+    color: var(--text);
+    border: 1px solid var(--line);
+    background: var(--input);
+    border-radius: var(--radius-control);
+}
+select:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+.title-link,
+.tree-title,
+.task-main {
+    -webkit-user-select: none;
+    user-select: none;
+}
+.execution-summary {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+}
+.execution-current,
+.execution-recent {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+.execution-current {
+    flex-direction: row-reverse;
+}
+.execution-copy,
+.execution-recent > div {
+    min-width: 0;
+    flex: 1;
+}
+.execution-stage {
+    display: block;
+    font-size: 15px;
+    margin: 5px 0;
+    overflow-wrap: anywhere;
+}
+.execution-title {
+    font-size: 16px;
+    font-weight: 500;
+}
+.execution-current .task-check,
+.execution-recent .task-check {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+}
+.execution-recent {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+}
+.execution-recent .title-link {
+    font-size: 14px;
+    font-weight: 500;
+}
+.execution-title,
+.execution-recent .title-link {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.execution-empty {
+    color: var(--muted);
+    font-size: 14px;
+}
+.resume-shortcut {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 26px;
+    border-inline-start: 3px solid var(--primary);
+}
+.resume-shortcut > div {
+    min-width: 0;
+}
+.resume-shortcut h2 {
+    font-size: 18px;
+    margin: 6px 0;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.resume-shortcut p {
+    overflow-wrap: anywhere;
+}
+.resume-shortcut .btn {
+    flex-shrink: 0;
+}
+.home-execution {
+    margin-bottom: 28px;
+}
+.home-execution .project-note {
+    display: none;
+}
+.home-execution .project-card > .title-link {
+    font-size: 20px;
+}
+.home-recent {
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+.home-recent summary {
+    cursor: pointer;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+.home-recent .execution-summary {
+    border: 0;
+    padding-top: 0;
+}
+.home-progress-link {
+    margin: 12px 0 24px;
+}
+.stage-row {
+    background: var(--soft);
+    border-radius: 10px;
+    padding: 14px 10px;
+    margin-top: 10px;
+}
+.stage-row .tree-name {
+    font-size: 17px;
+    font-weight: 700;
+}
+.stage-progress {
+    font-weight: 700;
+    font-size: 13px;
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+.idea-card {
+    position: relative;
+}
+.idea-card > .item-actions {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+.context-actions {
+    display: grid;
+    gap: 10px;
+    padding-top: 14px;
+}
+.context-actions .btn {
+    justify-content: flex-start;
+    text-align: start;
+}
+dialog.context-sheet {
+    margin: 0;
+    width: 320px;
+    max-width: calc(100vw - 32px);
+    right: auto;
+    bottom: auto;
+    max-height: calc(100dvh - 96px);
+    overflow: auto;
+    padding: 22px;
+}
+.context-sheet .dialog-head h2 {
+    font-size: 17px;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+@media (max-width: 760px) {
+    .resume-shortcut {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .resume-shortcut .btn {
+        align-self: flex-start;
+    }
+    .task-row > .item-actions {
+        grid-column: 3;
+    }
+    dialog.context-sheet {
+        top: auto !important;
+        left: 12px !important;
+        right: 12px;
+        bottom: 12px;
+        width: auto;
+        max-width: none;
+        max-height: calc(100dvh - 32px);
+        border-radius: 18px;
+    }
+}
+.project-name,
+.execution-stage {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-width: 0;
+}
+.execution-recent {
+    flex-direction: row-reverse;
+}
+:root[data-identity="mono"] .task-check {
+    border-color: var(--muted);
+}
+:root[data-identity="mono"] .task-check.checked {
+    border-color: var(--primary);
+}
+.last-edited .text-btn {
+    min-width: 0;
+    max-width: 100%;
+    text-align: start;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.empty-execution .btn {
+    margin-top: 14px;
+}
+.task-main strong {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.7;
+}
+@media (max-width: 760px) {
+    .task-row {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr) 44px 44px;
+        column-gap: 9px;
+        row-gap: 5px;
+    }
+    .task-row > .task-check {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .task-row > .task-main {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    .task-row > .item-actions {
+        grid-column: 3;
+        grid-row: 1;
+    }
+    .task-row > .icon-btn:not(.item-actions) {
+        grid-column: 4;
+        grid-row: 1;
+    }
+    .task-row > .badge {
+        grid-column: 2 / -1;
+        grid-row: 2;
+        justify-self: start;
     }
 }

@@ -13,7 +13,12 @@ interface Entry {
 }
 // Shared by entity ID, so moving a task to/from the completed section or
 // navigating away does not lose the newest intent while a write is in flight.
-export function createCompletionQueue() {
+export function createCompletionQueue(
+    options: {
+        intent?: (key: string, desired: boolean) => void;
+        settled?: (key: string, desired: boolean) => void;
+    } = {},
+) {
     const entries = new Map<string, Entry>();
     const listeners = new Map<string, Set<() => void>>();
     const notify = (key: string) => listeners.get(key)?.forEach((fn) => fn());
@@ -28,6 +33,7 @@ export function createCompletionQueue() {
                 // The caller reports the failure. A newer request still gets
                 // its own attempt; otherwise restore the persisted UI state.
                 if (version === entry.version) {
+                    options.settled?.(key, desired);
                     entry.running = false;
                     entry.state = idle;
                     notify(key);
@@ -38,6 +44,7 @@ export function createCompletionQueue() {
             if (version !== entry.version && desired !== entry.state.desired)
                 continue;
             entry.running = false;
+            options.settled?.(key, desired);
             entry.state = { desired, saving: false };
             notify(key);
             break;
@@ -82,6 +89,7 @@ export function createCompletionQueue() {
                 persist,
             };
             const desired = !(entry.state.desired ?? checked);
+            options.intent?.(key, desired);
             entry.persist = persist;
             entry.version++;
             entry.state = { desired, saving: true };

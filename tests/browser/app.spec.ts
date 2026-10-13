@@ -397,7 +397,7 @@ test("مشروع طويل: استكمال آخر خطوة، حفظ موضع ال
     });
     await loadBackup(page, f);
     await page.goto("/#home");
-    await page.getByRole("button", { name: "استكمل من حيث توقفت" }).click();
+    await page.getByRole("button", { name: "أكمل من حيث توقفت" }).click();
     await expect(page).toHaveURL(/#step\/s0-0/);
     await page.goto("/#project/p");
     await page

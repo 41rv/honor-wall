@@ -1,0 +1,48 @@
+import { useEffect, useLayoutEffect, useState } from "react";
+export type ThemeMode = "light" | "dark" | "system";
+export type Identity = "green" | "mono";
+function stored(key: string) {
+    try {
+        return localStorage.getItem(key);
+    } catch {
+        return null;
+    }
+}
+export function useTheme() {
+    const [mode, setMode] = useState<ThemeMode>(() => {
+        const value = stored("masar-theme");
+        return value === "light" || value === "dark" ? value : "system";
+    });
+    const [identity, setIdentity] = useState<Identity>(() =>
+        stored("masar-identity") === "mono" ? "mono" : "green",
+    );
+    const [systemDark, setSystemDark] = useState(
+        () => matchMedia("(prefers-color-scheme: dark)").matches,
+    );
+    const theme = mode === "system" ? (systemDark ? "dark" : "light") : mode;
+    useEffect(() => {
+        const media = matchMedia("(prefers-color-scheme: dark)");
+        const change = () => setSystemDark(media.matches);
+        media.addEventListener("change", change);
+        return () => media.removeEventListener("change", change);
+    }, []);
+    useLayoutEffect(() => {
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.identity = identity;
+        document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute(
+                "content",
+                getComputedStyle(document.documentElement)
+                    .getPropertyValue("--bg")
+                    .trim(),
+            );
+        try {
+            localStorage.setItem("masar-theme", mode);
+            localStorage.setItem("masar-identity", identity);
+        } catch {
+            /* The current appearance still works when storage is unavailable. */
+        }
+    }, [theme, mode, identity]);
+    return { theme, mode, identity, setMode, setIdentity };
+}

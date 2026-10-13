@@ -1,0 +1,905 @@
+{
+  "label": "after",
+  "timestamp": "2026-10-13T22:42:52.091Z",
+  "browser": "154.0.8037.57",
+  "viewport": "1366x900",
+  "cpu_throttle": 1,
+  "samples_per_operation": 3,
+  "measurement": "In-page performance.now from dispatched DOM action to observed DOM state at requestAnimationFrame; save to IndexedDB transaction complete. No Playwright auto-wait overhead.",
+  "errors": [],
+  "samples": [
+    {
+      "steps": 10,
+      "operation": "task_complete",
+      "repetition": 1,
+      "visual_ms": 3.199999999254942,
+      "save_ms": 8
+    },
+    {
+      "steps": 10,
+      "operation": "task_reopen",
+      "repetition": 1,
+      "visual_ms": 5.800000000745058,
+      "save_ms": 8.399999998509884
+    },
+    {
+      "steps": 10,
+      "operation": "project_open",
+      "repetition": 1,
+      "visual_ms": 18.800000000745058,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_open",
+      "repetition": 1,
+      "visual_ms": 11,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "task_add",
+      "repetition": 1,
+      "visual_ms": 23.399999998509884,
+      "save_ms": 3.899999998509884
+    },
+    {
+      "steps": 10,
+      "operation": "search",
+      "repetition": 1,
+      "visual_ms": 15.300000000745058,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_and_dashboard",
+      "repetition": 1,
+      "visual_ms": 38.5,
+      "save_ms": 22.300000000745058
+    },
+    {
+      "steps": 10,
+      "operation": "home_step_reopen",
+      "repetition": 1,
+      "visual_ms": 2.5,
+      "save_ms": 8.899999998509884
+    },
+    {
+      "steps": 10,
+      "operation": "home_step_complete",
+      "repetition": 1,
+      "visual_ms": 2.199999999254942,
+      "save_ms": 9
+    },
+    {
+      "steps": 10,
+      "operation": "home_task_complete",
+      "repetition": 1,
+      "visual_ms": 6.5,
+      "save_ms": 4.199999999254942
+    },
+    {
+      "steps": 10,
+      "operation": "home_task_reopen",
+      "repetition": 1,
+      "visual_ms": 9.200000002980232,
+      "save_ms": 4.200000002980232
+    },
+    {
+      "steps": 10,
+      "operation": "task_complete",
+      "repetition": 2,
+      "visual_ms": 15.299999997019768,
+      "save_ms": 6.899999998509884
+    },
+    {
+      "steps": 10,
+      "operation": "task_reopen",
+      "repetition": 2,
+      "visual_ms": 10.300000000745058,
+      "save_ms": 4.600000001490116
+    },
+    {
+      "steps": 10,
+      "operation": "project_open",
+      "repetition": 2,
+      "visual_ms": 10.200000002980232,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_open",
+      "repetition": 2,
+      "visual_ms": 8.100000001490116,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "task_add",
+      "repetition": 2,
+      "visual_ms": 21.300000000745058,
+      "save_ms": 3.899999998509884
+    },
+    {
+      "steps": 10,
+      "operation": "search",
+      "repetition": 2,
+      "visual_ms": 14.199999999254942,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_and_dashboard",
+      "repetition": 2,
+      "visual_ms": 37.30000000074506,
+      "save_ms": 27.5
+    },
+    {
+      "steps": 10,
+      "operation": "home_step_reopen",
+      "repetition": 2,
+      "visual_ms": 7.900000002235174,
+      "save_ms": 5.199999999254942
+    },
+    {
+      "steps": 10,
+      "operation": "home_step_complete",
+      "repetition": 2,
+      "visual_ms": 12.199999999254942,
+      "save_ms": 4.899999998509884
+    },
+    {
+      "steps": 10,
+      "operation": "home_task_complete",
+      "repetition": 2,
+      "visual_ms": 12,
+      "save_ms": 4.400000002235174
+    },
+    {
+      "steps": 10,
+      "operation": "home_task_reopen",
+      "repetition": 2,
+      "visual_ms": 10.100000001490116,
+      "save_ms": 3.800000000745058
+    },
+    {
+      "steps": 10,
+      "operation": "task_complete",
+      "repetition": 3,
+      "visual_ms": 8.299999997019768,
+      "save_ms": 3.099999997764826
+    },
+    {
+      "steps": 10,
+      "operation": "task_reopen",
+      "repetition": 3,
+      "visual_ms": 9.300000000745058,
+      "save_ms": 3.199999999254942
+    },
+    {
+      "steps": 10,
+      "operation": "project_open",
+      "repetition": 3,
+      "visual_ms": 9.5,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_open",
+      "repetition": 3,
+      "visual_ms": 10,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "task_add",
+      "repetition": 3,
+      "visual_ms": 11.399999998509884,
+      "save_ms": 2.699999999254942
+    },
+    {
+      "steps": 10,
+      "operation": "search",
+      "repetition": 3,
+      "visual_ms": 11,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_and_dashboard",
+      "repetition": 3,
+      "visual_ms": 21.599999997764826,
+      "save_ms": 8.799999997019768
+    },
+    {
+      "steps": 10,
+      "operation": "home_step_reopen",
+      "repetition": 3,
+      "visual_ms": 2.900000002235174,
+      "save_ms": 7.700000002980232
+    },
+    {
+      "steps": 10,
+      "operation": "home_step_complete",
+      "repetition": 3,
+      "visual_ms": 8.199999999254942,
+      "save_ms": 3.5
+    },
+    {
+      "steps": 10,
+      "operation": "home_task_complete",
+      "repetition": 3,
+      "visual_ms": 11.5,
+      "save_ms": 3.199999999254942
+    },
+    {
+      "steps": 10,
+      "operation": "home_task_reopen",
+      "repetition": 3,
+      "visual_ms": 13.399999998509884,
+      "save_ms": 4.199999999254942
+    },
+    {
+      "steps": 100,
+      "operation": "task_complete",
+      "repetition": 1,
+      "visual_ms": 13.300000000745058,
+      "save_ms": 3.5
+    },
+    {
+      "steps": 100,
+      "operation": "task_reopen",
+      "repetition": 1,
+      "visual_ms": 7.5,
+      "save_ms": 3.300000000745058
+    },
+    {
+      "steps": 100,
+      "operation": "project_open",
+      "repetition": 1,
+      "visual_ms": 28.199999999254942,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_open",
+      "repetition": 1,
+      "visual_ms": 17.400000002235174,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "task_add",
+      "repetition": 1,
+      "visual_ms": 15.100000001490116,
+      "save_ms": 6.899999998509884
+    },
+    {
+      "steps": 100,
+      "operation": "search",
+      "repetition": 1,
+      "visual_ms": 14.600000001490116,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_and_dashboard",
+      "repetition": 1,
+      "visual_ms": 50.900000002235174,
+      "save_ms": 34.900000002235174
+    },
+    {
+      "steps": 100,
+      "operation": "home_step_reopen",
+      "repetition": 1,
+      "visual_ms": 1.3999999985098839,
+      "save_ms": 7.600000001490116
+    },
+    {
+      "steps": 100,
+      "operation": "home_step_complete",
+      "repetition": 1,
+      "visual_ms": 5,
+      "save_ms": 10.700000002980232
+    },
+    {
+      "steps": 100,
+      "operation": "home_task_complete",
+      "repetition": 1,
+      "visual_ms": 8.199999999254942,
+      "save_ms": 3.5
+    },
+    {
+      "steps": 100,
+      "operation": "home_task_reopen",
+      "repetition": 1,
+      "visual_ms": 12.800000000745058,
+      "save_ms": 5.600000001490116
+    },
+    {
+      "steps": 100,
+      "operation": "task_complete",
+      "repetition": 2,
+      "visual_ms": 1.5,
+      "save_ms": 6.299999997019768
+    },
+    {
+      "steps": 100,
+      "operation": "task_reopen",
+      "repetition": 2,
+      "visual_ms": 7.900000002235174,
+      "save_ms": 3.100000001490116
+    },
+    {
+      "steps": 100,
+      "operation": "project_open",
+      "repetition": 2,
+      "visual_ms": 22,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_open",
+      "repetition": 2,
+      "visual_ms": 11.800000000745058,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "task_add",
+      "repetition": 2,
+      "visual_ms": 23.699999999254942,
+      "save_ms": 9.900000002235174
+    },
+    {
+      "steps": 100,
+      "operation": "search",
+      "repetition": 2,
+      "visual_ms": 15.099999997764826,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_and_dashboard",
+      "repetition": 2,
+      "visual_ms": 33.70000000298023,
+      "save_ms": 24.900000002235174
+    },
+    {
+      "steps": 100,
+      "operation": "home_step_reopen",
+      "repetition": 2,
+      "visual_ms": 1.6000000014901161,
+      "save_ms": 7.5
+    },
+    {
+      "steps": 100,
+      "operation": "home_step_complete",
+      "repetition": 2,
+      "visual_ms": 3.699999999254942,
+      "save_ms": 7.899999998509884
+    },
+    {
+      "steps": 100,
+      "operation": "home_task_complete",
+      "repetition": 2,
+      "visual_ms": 7.699999999254942,
+      "save_ms": 2.5
+    },
+    {
+      "steps": 100,
+      "operation": "home_task_reopen",
+      "repetition": 2,
+      "visual_ms": 11.699999999254942,
+      "save_ms": 3.300000000745058
+    },
+    {
+      "steps": 100,
+      "operation": "task_complete",
+      "repetition": 3,
+      "visual_ms": 7.699999999254942,
+      "save_ms": 14.199999999254942
+    },
+    {
+      "steps": 100,
+      "operation": "task_reopen",
+      "repetition": 3,
+      "visual_ms": 2.699999999254942,
+      "save_ms": 6.600000001490116
+    },
+    {
+      "steps": 100,
+      "operation": "project_open",
+      "repetition": 3,
+      "visual_ms": 24,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_open",
+      "repetition": 3,
+      "visual_ms": 20,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "task_add",
+      "repetition": 3,
+      "visual_ms": 10.5,
+      "save_ms": 2.7000000029802322
+    },
+    {
+      "steps": 100,
+      "operation": "search",
+      "repetition": 3,
+      "visual_ms": 13.799999997019768,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_and_dashboard",
+      "repetition": 3,
+      "visual_ms": 40.80000000074506,
+      "save_ms": 21.800000000745058
+    },
+    {
+      "steps": 100,
+      "operation": "home_step_reopen",
+      "repetition": 3,
+      "visual_ms": 14.300000000745058,
+      "save_ms": 7.199999999254942
+    },
+    {
+      "steps": 100,
+      "operation": "home_step_complete",
+      "repetition": 3,
+      "visual_ms": 10.199999999254942,
+      "save_ms": 6.300000000745058
+    },
+    {
+      "steps": 100,
+      "operation": "home_task_complete",
+      "repetition": 3,
+      "visual_ms": 12.900000002235174,
+      "save_ms": 3.800000000745058
+    },
+    {
+      "steps": 100,
+      "operation": "home_task_reopen",
+      "repetition": 3,
+      "visual_ms": 9.099999997764826,
+      "save_ms": 3.5
+    },
+    {
+      "steps": 500,
+      "operation": "task_complete",
+      "repetition": 1,
+      "visual_ms": 1.5,
+      "save_ms": 4.899999998509884
+    },
+    {
+      "steps": 500,
+      "operation": "task_reopen",
+      "repetition": 1,
+      "visual_ms": 3.900000002235174,
+      "save_ms": 2.300000000745058
+    },
+    {
+      "steps": 500,
+      "operation": "project_open",
+      "repetition": 1,
+      "visual_ms": 98.5,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_open",
+      "repetition": 1,
+      "visual_ms": 29.600000001490116,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "task_add",
+      "repetition": 1,
+      "visual_ms": 22.700000002980232,
+      "save_ms": 2.100000001490116
+    },
+    {
+      "steps": 500,
+      "operation": "search",
+      "repetition": 1,
+      "visual_ms": 15.399999998509884,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_and_dashboard",
+      "repetition": 1,
+      "visual_ms": 103.39999999850988,
+      "save_ms": 82.39999999850988
+    },
+    {
+      "steps": 500,
+      "operation": "home_step_reopen",
+      "repetition": 1,
+      "visual_ms": 3.5,
+      "save_ms": 10.899999998509884
+    },
+    {
+      "steps": 500,
+      "operation": "home_step_complete",
+      "repetition": 1,
+      "visual_ms": 3.2000000029802322,
+      "save_ms": 11.5
+    },
+    {
+      "steps": 500,
+      "operation": "home_task_complete",
+      "repetition": 1,
+      "visual_ms": 13.5,
+      "save_ms": 4
+    },
+    {
+      "steps": 500,
+      "operation": "home_task_reopen",
+      "repetition": 1,
+      "visual_ms": 10.799999997019768,
+      "save_ms": 3.5
+    },
+    {
+      "steps": 500,
+      "operation": "task_complete",
+      "repetition": 2,
+      "visual_ms": 15.5,
+      "save_ms": 4.700000002980232
+    },
+    {
+      "steps": 500,
+      "operation": "task_reopen",
+      "repetition": 2,
+      "visual_ms": 9.099999997764826,
+      "save_ms": 3.899999998509884
+    },
+    {
+      "steps": 500,
+      "operation": "project_open",
+      "repetition": 2,
+      "visual_ms": 66.40000000223517,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_open",
+      "repetition": 2,
+      "visual_ms": 30.100000001490116,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "task_add",
+      "repetition": 2,
+      "visual_ms": 8.899999998509884,
+      "save_ms": 2
+    },
+    {
+      "steps": 500,
+      "operation": "search",
+      "repetition": 2,
+      "visual_ms": 13.100000001490116,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_and_dashboard",
+      "repetition": 2,
+      "visual_ms": 85.30000000074506,
+      "save_ms": 63.80000000074506
+    },
+    {
+      "steps": 500,
+      "operation": "home_step_reopen",
+      "repetition": 2,
+      "visual_ms": 7.600000001490116,
+      "save_ms": 12.100000001490116
+    },
+    {
+      "steps": 500,
+      "operation": "home_step_complete",
+      "repetition": 2,
+      "visual_ms": 11.300000000745058,
+      "save_ms": 9.900000002235174
+    },
+    {
+      "steps": 500,
+      "operation": "home_task_complete",
+      "repetition": 2,
+      "visual_ms": 10.699999999254942,
+      "save_ms": 3.899999998509884
+    },
+    {
+      "steps": 500,
+      "operation": "home_task_reopen",
+      "repetition": 2,
+      "visual_ms": 8.899999998509884,
+      "save_ms": 3.699999999254942
+    },
+    {
+      "steps": 500,
+      "operation": "task_complete",
+      "repetition": 3,
+      "visual_ms": 1.6000000014901161,
+      "save_ms": 5.300000000745058
+    },
+    {
+      "steps": 500,
+      "operation": "task_reopen",
+      "repetition": 3,
+      "visual_ms": 7.199999999254942,
+      "save_ms": 2.300000000745058
+    },
+    {
+      "steps": 500,
+      "operation": "project_open",
+      "repetition": 3,
+      "visual_ms": 66,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_open",
+      "repetition": 3,
+      "visual_ms": 29.600000001490116,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "task_add",
+      "repetition": 3,
+      "visual_ms": 15.100000001490116,
+      "save_ms": 5.199999999254942
+    },
+    {
+      "steps": 500,
+      "operation": "search",
+      "repetition": 3,
+      "visual_ms": 14.699999999254942,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_and_dashboard",
+      "repetition": 3,
+      "visual_ms": 84.60000000149012,
+      "save_ms": 65.19999999925494
+    },
+    {
+      "steps": 500,
+      "operation": "home_step_reopen",
+      "repetition": 3,
+      "visual_ms": 5,
+      "save_ms": 17.300000000745058
+    },
+    {
+      "steps": 500,
+      "operation": "home_step_complete",
+      "repetition": 3,
+      "visual_ms": 11.699999999254942,
+      "save_ms": 17.599999997764826
+    },
+    {
+      "steps": 500,
+      "operation": "home_task_complete",
+      "repetition": 3,
+      "visual_ms": 2.099999997764826,
+      "save_ms": 6
+    },
+    {
+      "steps": 500,
+      "operation": "home_task_reopen",
+      "repetition": 3,
+      "visual_ms": 3.5,
+      "save_ms": 7.099999997764826
+    }
+  ],
+  "summary": [
+    {
+      "steps": 10,
+      "operation": "task_complete",
+      "visual_ms_median": 8.3,
+      "save_ms_median": 6.9
+    },
+    {
+      "steps": 10,
+      "operation": "task_reopen",
+      "visual_ms_median": 9.3,
+      "save_ms_median": 4.6
+    },
+    {
+      "steps": 10,
+      "operation": "project_open",
+      "visual_ms_median": 10.2,
+      "save_ms_median": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_open",
+      "visual_ms_median": 10,
+      "save_ms_median": null
+    },
+    {
+      "steps": 10,
+      "operation": "task_add",
+      "visual_ms_median": 21.3,
+      "save_ms_median": 3.9
+    },
+    {
+      "steps": 10,
+      "operation": "search",
+      "visual_ms_median": 14.2,
+      "save_ms_median": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_and_dashboard",
+      "visual_ms_median": 37.3,
+      "save_ms_median": 22.3
+    },
+    {
+      "steps": 10,
+      "operation": "home_step_reopen",
+      "visual_ms_median": 2.9,
+      "save_ms_median": 7.7
+    },
+    {
+      "steps": 10,
+      "operation": "home_step_complete",
+      "visual_ms_median": 8.2,
+      "save_ms_median": 4.9
+    },
+    {
+      "steps": 10,
+      "operation": "home_task_complete",
+      "visual_ms_median": 11.5,
+      "save_ms_median": 4.2
+    },
+    {
+      "steps": 10,
+      "operation": "home_task_reopen",
+      "visual_ms_median": 10.1,
+      "save_ms_median": 4.2
+    },
+    {
+      "steps": 100,
+      "operation": "task_complete",
+      "visual_ms_median": 7.7,
+      "save_ms_median": 6.3
+    },
+    {
+      "steps": 100,
+      "operation": "task_reopen",
+      "visual_ms_median": 7.5,
+      "save_ms_median": 3.3
+    },
+    {
+      "steps": 100,
+      "operation": "project_open",
+      "visual_ms_median": 24,
+      "save_ms_median": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_open",
+      "visual_ms_median": 17.4,
+      "save_ms_median": null
+    },
+    {
+      "steps": 100,
+      "operation": "task_add",
+      "visual_ms_median": 15.1,
+      "save_ms_median": 6.9
+    },
+    {
+      "steps": 100,
+      "operation": "search",
+      "visual_ms_median": 14.6,
+      "save_ms_median": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_and_dashboard",
+      "visual_ms_median": 40.8,
+      "save_ms_median": 24.9
+    },
+    {
+      "steps": 100,
+      "operation": "home_step_reopen",
+      "visual_ms_median": 1.6,
+      "save_ms_median": 7.5
+    },
+    {
+      "steps": 100,
+      "operation": "home_step_complete",
+      "visual_ms_median": 5,
+      "save_ms_median": 7.9
+    },
+    {
+      "steps": 100,
+      "operation": "home_task_complete",
+      "visual_ms_median": 8.2,
+      "save_ms_median": 3.5
+    },
+    {
+      "steps": 100,
+      "operation": "home_task_reopen",
+      "visual_ms_median": 11.7,
+      "save_ms_median": 3.5
+    },
+    {
+      "steps": 500,
+      "operation": "task_complete",
+      "visual_ms_median": 1.6,
+      "save_ms_median": 4.9
+    },
+    {
+      "steps": 500,
+      "operation": "task_reopen",
+      "visual_ms_median": 7.2,
+      "save_ms_median": 2.3
+    },
+    {
+      "steps": 500,
+      "operation": "project_open",
+      "visual_ms_median": 66.4,
+      "save_ms_median": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_open",
+      "visual_ms_median": 29.6,
+      "save_ms_median": null
+    },
+    {
+      "steps": 500,
+      "operation": "task_add",
+      "visual_ms_median": 15.1,
+      "save_ms_median": 2.1
+    },
+    {
+      "steps": 500,
+      "operation": "search",
+      "visual_ms_median": 14.7,
+      "save_ms_median": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_and_dashboard",
+      "visual_ms_median": 85.3,
+      "save_ms_median": 65.2
+    },
+    {
+      "steps": 500,
+      "operation": "home_step_reopen",
+      "visual_ms_median": 5,
+      "save_ms_median": 12.1
+    },
+    {
+      "steps": 500,
+      "operation": "home_step_complete",
+      "visual_ms_median": 11.3,
+      "save_ms_median": 11.5
+    },
+    {
+      "steps": 500,
+      "operation": "home_task_complete",
+      "visual_ms_median": 10.7,
+      "save_ms_median": 4
+    },
+    {
+      "steps": 500,
+      "operation": "home_task_reopen",
+      "visual_ms_median": 8.9,
+      "save_ms_median": 3.7
+    }
+  ]
+}

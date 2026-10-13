@@ -1,0 +1,128 @@
+{
+  "url": "https://41rv.github.io/honor-wall/",
+  "deploy_commit": "1e2170554ff80d7b30614c82485aee3076ea2e85",
+  "tls_verification": true,
+  "root_matches_index": true,
+  "files": [
+    {
+      "file": "assets/index-D5sLyYoH.js",
+      "status": 200,
+      "expected_sha256": "5dd4bce7999c020b0cbb2ce2279d0f0f09a9f3fb1c9ee16f09984136fd2692ed",
+      "live_sha256": "5dd4bce7999c020b0cbb2ce2279d0f0f09a9f3fb1c9ee16f09984136fd2692ed",
+      "matched": true
+    },
+    {
+      "file": "assets/index-gRxk7H8t.css",
+      "status": 200,
+      "expected_sha256": "2efac84d3048755ad4a86eca9010a495d49c0332edd6eedbd4eb5bc7d5393973",
+      "live_sha256": "2efac84d3048755ad4a86eca9010a495d49c0332edd6eedbd4eb5bc7d5393973",
+      "matched": true
+    },
+    {
+      "file": "assets/tajawal-arabic-400-normal-CyCXRvzh.woff2",
+      "status": 200,
+      "expected_sha256": "6c9081fd00db08800850fa7d214593aa94992be5159e97557aa60197252cb95a",
+      "live_sha256": "6c9081fd00db08800850fa7d214593aa94992be5159e97557aa60197252cb95a",
+      "matched": true
+    },
+    {
+      "file": "assets/tajawal-arabic-400-normal-DCQxawbB.woff",
+      "status": 200,
+      "expected_sha256": "011a34e9bce80078231d12f8603721d0f99963b7104df560970fb754306ac359",
+      "live_sha256": "011a34e9bce80078231d12f8603721d0f99963b7104df560970fb754306ac359",
+      "matched": true
+    },
+    {
+      "file": "assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2",
+      "status": 200,
+      "expected_sha256": "4255019c1cd986f7cda7869df69baf72730d61304ae14baba4acfeb13085da54",
+      "live_sha256": "4255019c1cd986f7cda7869df69baf72730d61304ae14baba4acfeb13085da54",
+      "matched": true
+    },
+    {
+      "file": "assets/tajawal-arabic-500-normal-CbVEaYEW.woff",
+      "status": 200,
+      "expected_sha256": "9f0beece3bd5a2bda53edfdb5f8c27f80bd9e2d65fb53eb2c7f8ca4b481d6f18",
+      "live_sha256": "9f0beece3bd5a2bda53edfdb5f8c27f80bd9e2d65fb53eb2c7f8ca4b481d6f18",
+      "matched": true
+    },
+    {
+      "file": "assets/tajawal-arabic-700-normal-9L7Zusdl.woff",
+      "status": 200,
+      "expected_sha256": "cd644505aa492ff2d5664dfa384ab52e0df757b7b927a7ab59b836c1713c077f",
+      "live_sha256": "cd644505aa492ff2d5664dfa384ab52e0df757b7b927a7ab59b836c1713c077f",
+      "matched": true
+    },
+    {
+      "file": "assets/tajawal-arabic-700-normal-D2-eand5.woff2",
+      "status": 200,
+      "expected_sha256": "fa5e72326681abee3a4952be582e1c2c2abb27932ef262610c078ce89541f919",
+      "live_sha256": "fa5e72326681abee3a4952be582e1c2c2abb27932ef262610c078ce89541f919",
+      "matched": true
+    },
+    {
+      "file": "assets/workbox-window.prod.es5-Bd17z0YL.js",
+      "status": 200,
+      "expected_sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
+      "live_sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
+      "matched": true
+    },
+    {
+      "file": "fonts/Tajawal-LICENSE.txt",
+      "status": 200,
+      "expected_sha256": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3",
+      "live_sha256": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3",
+      "matched": true
+    },
+    {
+      "file": "icon-192.png",
+      "status": 200,
+      "expected_sha256": "3dad4c5dd200f0ac2d94145c9a53029e8b69a82147390283ebf45ef42ea3f9e7",
+      "live_sha256": "3dad4c5dd200f0ac2d94145c9a53029e8b69a82147390283ebf45ef42ea3f9e7",
+      "matched": true
+    },
+    {
+      "file": "icon-512.png",
+      "status": 200,
+      "expected_sha256": "bb74d2bddcac6d0d98d1320838ce808fe08133c8dafd529f9f541fec883b601e",
+      "live_sha256": "bb74d2bddcac6d0d98d1320838ce808fe08133c8dafd529f9f541fec883b601e",
+      "matched": true
+    },
+    {
+      "file": "icon.svg",
+      "status": 200,
+      "expected_sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "live_sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matched": true
+    },
+    {
+      "file": "index.html",
+      "status": 200,
+      "expected_sha256": "d4fae9a7aed9fdab88a41ec8a2fccf7a564be6fd2073de0517c6e2ed18fc9c6b",
+      "live_sha256": "d4fae9a7aed9fdab88a41ec8a2fccf7a564be6fd2073de0517c6e2ed18fc9c6b",
+      "matched": true
+    },
+    {
+      "file": "manifest.webmanifest",
+      "status": 200,
+      "expected_sha256": "81b8c546204b938370653f6f8ed89f44e2bb7add8f6248a9c5fc021bc0592181",
+      "live_sha256": "81b8c546204b938370653f6f8ed89f44e2bb7add8f6248a9c5fc021bc0592181",
+      "matched": true
+    },
+    {
+      "file": "sw.js",
+      "status": 200,
+      "expected_sha256": "61369cd51c0e5546b3ab27211a3b25cfe0d5e9c5d70e3297e9b8bf90f0a5158a",
+      "live_sha256": "61369cd51c0e5546b3ab27211a3b25cfe0d5e9c5d70e3297e9b8bf90f0a5158a",
+      "matched": true
+    },
+    {
+      "file": "workbox-9c191d2f.js",
+      "status": 200,
+      "expected_sha256": "04b086f1b2f4215ee4b659a7bc9c76162894abdb43fa876247bc7c0bd6fd1c37",
+      "live_sha256": "04b086f1b2f4215ee4b659a7bc9c76162894abdb43fa876247bc7c0bd6fd1c37",
+      "matched": true
+    }
+  ],
+  "all_matched": true
+}
