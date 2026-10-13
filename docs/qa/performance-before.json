@@ -1,0 +1,581 @@
+{
+  "label": "before",
+  "timestamp": "2026-10-13T18:50:02.611Z",
+  "browser": "154.0.8037.57",
+  "viewport": "1366x900",
+  "cpu_throttle": 1,
+  "samples_per_operation": 3,
+  "measurement": "In-page performance.now from dispatched DOM action to observed DOM state at requestAnimationFrame; save to IndexedDB transaction complete. No Playwright auto-wait overhead.",
+  "errors": [],
+  "samples": [
+    {
+      "steps": 10,
+      "operation": "task_complete",
+      "repetition": 1,
+      "visual_ms": 3,
+      "save_ms": 8
+    },
+    {
+      "steps": 10,
+      "operation": "task_reopen",
+      "repetition": 1,
+      "visual_ms": 3.400000000372529,
+      "save_ms": 7.099999999627471
+    },
+    {
+      "steps": 10,
+      "operation": "project_open",
+      "repetition": 1,
+      "visual_ms": 24.09999999962747,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_open",
+      "repetition": 1,
+      "visual_ms": 9.600000001490116,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "task_add",
+      "repetition": 1,
+      "visual_ms": 12.699999999254942,
+      "save_ms": 3.299999998882413
+    },
+    {
+      "steps": 10,
+      "operation": "search",
+      "repetition": 1,
+      "visual_ms": 9.799999998882413,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_and_dashboard",
+      "repetition": 1,
+      "visual_ms": 45.09999999962747,
+      "save_ms": 27.799999998882413
+    },
+    {
+      "steps": 10,
+      "operation": "task_complete",
+      "repetition": 2,
+      "visual_ms": 2.199999999254942,
+      "save_ms": 14
+    },
+    {
+      "steps": 10,
+      "operation": "task_reopen",
+      "repetition": 2,
+      "visual_ms": 4.299999998882413,
+      "save_ms": 5.899999998509884
+    },
+    {
+      "steps": 10,
+      "operation": "project_open",
+      "repetition": 2,
+      "visual_ms": 14.800000000745058,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_open",
+      "repetition": 2,
+      "visual_ms": 15.400000000372529,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "task_add",
+      "repetition": 2,
+      "visual_ms": 16.40000000037253,
+      "save_ms": 3.599999999627471
+    },
+    {
+      "steps": 10,
+      "operation": "search",
+      "repetition": 2,
+      "visual_ms": 13.599999999627471,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_and_dashboard",
+      "repetition": 2,
+      "visual_ms": 34.19999999925494,
+      "save_ms": 18.59999999962747
+    },
+    {
+      "steps": 10,
+      "operation": "task_complete",
+      "repetition": 3,
+      "visual_ms": 14.299999998882413,
+      "save_ms": 5.199999999254942
+    },
+    {
+      "steps": 10,
+      "operation": "task_reopen",
+      "repetition": 3,
+      "visual_ms": 8.599999999627471,
+      "save_ms": 2.900000000372529
+    },
+    {
+      "steps": 10,
+      "operation": "project_open",
+      "repetition": 3,
+      "visual_ms": 11,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_open",
+      "repetition": 3,
+      "visual_ms": 6.299999998882413,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "task_add",
+      "repetition": 3,
+      "visual_ms": 12.599999999627471,
+      "save_ms": 2.099999999627471
+    },
+    {
+      "steps": 10,
+      "operation": "search",
+      "repetition": 3,
+      "visual_ms": 13.300000000745058,
+      "save_ms": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_and_dashboard",
+      "repetition": 3,
+      "visual_ms": 25.40000000037253,
+      "save_ms": 13.699999999254942
+    },
+    {
+      "steps": 100,
+      "operation": "task_complete",
+      "repetition": 1,
+      "visual_ms": 8,
+      "save_ms": 3.5
+    },
+    {
+      "steps": 100,
+      "operation": "task_reopen",
+      "repetition": 1,
+      "visual_ms": 8.399999998509884,
+      "save_ms": 11.199999999254942
+    },
+    {
+      "steps": 100,
+      "operation": "project_open",
+      "repetition": 1,
+      "visual_ms": 71.5,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_open",
+      "repetition": 1,
+      "visual_ms": 8.599999999627471,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "task_add",
+      "repetition": 1,
+      "visual_ms": 13.299999998882413,
+      "save_ms": 3.5
+    },
+    {
+      "steps": 100,
+      "operation": "search",
+      "repetition": 1,
+      "visual_ms": 11,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_and_dashboard",
+      "repetition": 1,
+      "visual_ms": 50,
+      "save_ms": 32.80000000074506
+    },
+    {
+      "steps": 100,
+      "operation": "task_complete",
+      "repetition": 2,
+      "visual_ms": 17.300000000745058,
+      "save_ms": 3.600000001490116
+    },
+    {
+      "steps": 100,
+      "operation": "task_reopen",
+      "repetition": 2,
+      "visual_ms": 10.199999999254942,
+      "save_ms": 3.5
+    },
+    {
+      "steps": 100,
+      "operation": "project_open",
+      "repetition": 2,
+      "visual_ms": 42.600000001490116,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_open",
+      "repetition": 2,
+      "visual_ms": 14.199999999254942,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "task_add",
+      "repetition": 2,
+      "visual_ms": 20,
+      "save_ms": 5.5
+    },
+    {
+      "steps": 100,
+      "operation": "search",
+      "repetition": 2,
+      "visual_ms": 14.599999999627471,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_and_dashboard",
+      "repetition": 2,
+      "visual_ms": 28.700000001117587,
+      "save_ms": 22.600000001490116
+    },
+    {
+      "steps": 100,
+      "operation": "task_complete",
+      "repetition": 3,
+      "visual_ms": 9.099999999627471,
+      "save_ms": 4.699999999254942
+    },
+    {
+      "steps": 100,
+      "operation": "task_reopen",
+      "repetition": 3,
+      "visual_ms": 10.099999999627471,
+      "save_ms": 4.799999998882413
+    },
+    {
+      "steps": 100,
+      "operation": "project_open",
+      "repetition": 3,
+      "visual_ms": 40.5,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_open",
+      "repetition": 3,
+      "visual_ms": 12.399999998509884,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "task_add",
+      "repetition": 3,
+      "visual_ms": 14.099999999627471,
+      "save_ms": 3.199999999254942
+    },
+    {
+      "steps": 100,
+      "operation": "search",
+      "repetition": 3,
+      "visual_ms": 14.5,
+      "save_ms": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_and_dashboard",
+      "repetition": 3,
+      "visual_ms": 47.79999999888241,
+      "save_ms": 38.5
+    },
+    {
+      "steps": 500,
+      "operation": "task_complete",
+      "repetition": 1,
+      "visual_ms": 10,
+      "save_ms": 3.400000000372529
+    },
+    {
+      "steps": 500,
+      "operation": "task_reopen",
+      "repetition": 1,
+      "visual_ms": 13.199999999254942,
+      "save_ms": 2.900000000372529
+    },
+    {
+      "steps": 500,
+      "operation": "project_open",
+      "repetition": 1,
+      "visual_ms": 159.30000000074506,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_open",
+      "repetition": 1,
+      "visual_ms": 27.200000001117587,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "task_add",
+      "repetition": 1,
+      "visual_ms": 23.299999998882413,
+      "save_ms": 5.899999998509884
+    },
+    {
+      "steps": 500,
+      "operation": "search",
+      "repetition": 1,
+      "visual_ms": 12.800000000745058,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_and_dashboard",
+      "repetition": 1,
+      "visual_ms": 68.80000000074506,
+      "save_ms": 54.100000001490116
+    },
+    {
+      "steps": 500,
+      "operation": "task_complete",
+      "repetition": 2,
+      "visual_ms": 1.5,
+      "save_ms": 4.900000000372529
+    },
+    {
+      "steps": 500,
+      "operation": "task_reopen",
+      "repetition": 2,
+      "visual_ms": 3.399999998509884,
+      "save_ms": 10.299999998882413
+    },
+    {
+      "steps": 500,
+      "operation": "project_open",
+      "repetition": 2,
+      "visual_ms": 217.19999999925494,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_open",
+      "repetition": 2,
+      "visual_ms": 25.40000000037253,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "task_add",
+      "repetition": 2,
+      "visual_ms": 20.90000000037253,
+      "save_ms": 2.900000000372529
+    },
+    {
+      "steps": 500,
+      "operation": "search",
+      "repetition": 2,
+      "visual_ms": 13.699999999254942,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_and_dashboard",
+      "repetition": 2,
+      "visual_ms": 82.5,
+      "save_ms": 68.40000000037253
+    },
+    {
+      "steps": 500,
+      "operation": "task_complete",
+      "repetition": 3,
+      "visual_ms": 9.199999999254942,
+      "save_ms": 2.899999998509884
+    },
+    {
+      "steps": 500,
+      "operation": "task_reopen",
+      "repetition": 3,
+      "visual_ms": 10.800000000745058,
+      "save_ms": 2.900000000372529
+    },
+    {
+      "steps": 500,
+      "operation": "project_open",
+      "repetition": 3,
+      "visual_ms": 179.5,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_open",
+      "repetition": 3,
+      "visual_ms": 25.5,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "task_add",
+      "repetition": 3,
+      "visual_ms": 12.700000001117587,
+      "save_ms": 2.600000001490116
+    },
+    {
+      "steps": 500,
+      "operation": "search",
+      "repetition": 3,
+      "visual_ms": 13.699999999254942,
+      "save_ms": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_and_dashboard",
+      "repetition": 3,
+      "visual_ms": 48.70000000111759,
+      "save_ms": 41.30000000074506
+    }
+  ],
+  "summary": [
+    {
+      "steps": 10,
+      "operation": "task_complete",
+      "visual_ms_median": 3,
+      "save_ms_median": 8
+    },
+    {
+      "steps": 10,
+      "operation": "task_reopen",
+      "visual_ms_median": 4.3,
+      "save_ms_median": 5.9
+    },
+    {
+      "steps": 10,
+      "operation": "project_open",
+      "visual_ms_median": 14.8,
+      "save_ms_median": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_open",
+      "visual_ms_median": 9.6,
+      "save_ms_median": null
+    },
+    {
+      "steps": 10,
+      "operation": "task_add",
+      "visual_ms_median": 12.7,
+      "save_ms_median": 3.3
+    },
+    {
+      "steps": 10,
+      "operation": "search",
+      "visual_ms_median": 13.3,
+      "save_ms_median": null
+    },
+    {
+      "steps": 10,
+      "operation": "step_and_dashboard",
+      "visual_ms_median": 34.2,
+      "save_ms_median": 18.6
+    },
+    {
+      "steps": 100,
+      "operation": "task_complete",
+      "visual_ms_median": 9.1,
+      "save_ms_median": 3.6
+    },
+    {
+      "steps": 100,
+      "operation": "task_reopen",
+      "visual_ms_median": 10.1,
+      "save_ms_median": 4.8
+    },
+    {
+      "steps": 100,
+      "operation": "project_open",
+      "visual_ms_median": 42.6,
+      "save_ms_median": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_open",
+      "visual_ms_median": 12.4,
+      "save_ms_median": null
+    },
+    {
+      "steps": 100,
+      "operation": "task_add",
+      "visual_ms_median": 14.1,
+      "save_ms_median": 3.5
+    },
+    {
+      "steps": 100,
+      "operation": "search",
+      "visual_ms_median": 14.5,
+      "save_ms_median": null
+    },
+    {
+      "steps": 100,
+      "operation": "step_and_dashboard",
+      "visual_ms_median": 47.8,
+      "save_ms_median": 32.8
+    },
+    {
+      "steps": 500,
+      "operation": "task_complete",
+      "visual_ms_median": 9.2,
+      "save_ms_median": 3.4
+    },
+    {
+      "steps": 500,
+      "operation": "task_reopen",
+      "visual_ms_median": 10.8,
+      "save_ms_median": 2.9
+    },
+    {
+      "steps": 500,
+      "operation": "project_open",
+      "visual_ms_median": 179.5,
+      "save_ms_median": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_open",
+      "visual_ms_median": 25.5,
+      "save_ms_median": null
+    },
+    {
+      "steps": 500,
+      "operation": "task_add",
+      "visual_ms_median": 20.9,
+      "save_ms_median": 2.9
+    },
+    {
+      "steps": 500,
+      "operation": "search",
+      "visual_ms_median": 13.7,
+      "save_ms_median": null
+    },
+    {
+      "steps": 500,
+      "operation": "step_and_dashboard",
+      "visual_ms_median": 68.8,
+      "save_ms_median": 54.1
+    }
+  ]
+}

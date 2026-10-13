@@ -1,0 +1,93 @@
+export interface CompletionState {
+    desired: boolean | null;
+    saving: boolean;
+}
+const idle: CompletionState = { desired: null, saving: false };
+type Persist = (complete: boolean) => Promise<void>;
+interface Entry {
+    state: CompletionState;
+    version: number;
+    running: boolean;
+    persist: Persist;
+    work?: Promise<void>;
+}
+// Shared by entity ID, so moving a task to/from the completed section or
+// navigating away does not lose the newest intent while a write is in flight.
+export function createCompletionQueue() {
+    const entries = new Map<string, Entry>();
+    const listeners = new Map<string, Set<() => void>>();
+    const notify = (key: string) => listeners.get(key)?.forEach((fn) => fn());
+    async function drain(key: string, entry: Entry) {
+        entry.running = true;
+        while (true) {
+            const version = entry.version;
+            const desired = entry.state.desired!;
+            try {
+                await entry.persist(desired);
+            } catch {
+                // The caller reports the failure. A newer request still gets
+                // its own attempt; otherwise restore the persisted UI state.
+                if (version === entry.version) {
+                    entry.running = false;
+                    entry.state = idle;
+                    notify(key);
+                    break;
+                }
+                continue;
+            }
+            if (version !== entry.version && desired !== entry.state.desired)
+                continue;
+            entry.running = false;
+            entry.state = { desired, saving: false };
+            notify(key);
+            break;
+        }
+        if (!listeners.get(key)?.size) entries.delete(key);
+    }
+    return {
+        flush: () =>
+            Promise.all([...entries.values()].map((entry) => entry.work)).then(
+                () => {},
+            ),
+        state: (key: string) => entries.get(key)?.state ?? idle,
+        subscribe(key: string, listener: () => void) {
+            const group = listeners.get(key) ?? new Set();
+            group.add(listener);
+            listeners.set(key, group);
+            return () => {
+                group.delete(listener);
+                if (!group.size) {
+                    listeners.delete(key);
+                    if (!entries.get(key)?.running) entries.delete(key);
+                }
+            };
+        },
+        acknowledge(key: string, checked: boolean) {
+            const entry = entries.get(key);
+            if (
+                entry &&
+                !entry.running &&
+                (entry.state.desired === null ||
+                    entry.state.desired === checked)
+            ) {
+                entries.delete(key);
+                notify(key);
+            }
+        },
+        toggle(key: string, checked: boolean, persist: Persist) {
+            const entry = entries.get(key) ?? {
+                state: idle,
+                version: 0,
+                running: false,
+                persist,
+            };
+            const desired = !(entry.state.desired ?? checked);
+            entry.persist = persist;
+            entry.version++;
+            entry.state = { desired, saving: true };
+            entries.set(key, entry);
+            notify(key);
+            if (!entry.running) entry.work = drain(key, entry);
+        },
+    };
+}
