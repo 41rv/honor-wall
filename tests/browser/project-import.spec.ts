@@ -200,7 +200,7 @@ for (const width of [390, 1366]) {
                 ).toEqual([]);
                 if (identity === "green" && mode === "light")
                     await page.screenshot({
-                        path: `docs/project-import/preview-${width}.png`,
+                        path: `docs/project-import-open/preview-${width}.png`,
                     });
                 expect(
                     await dialog.evaluate(

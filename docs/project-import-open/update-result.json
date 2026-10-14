@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-10-14T02:02:00.286Z",
+  "basePath": "/honor-wall/",
+  "update_preserved_all_five_stores": true,
+  "backup_created": true,
+  "repeated_toggle_after_update": true,
+  "offline_reload": true,
+  "browser_closed_and_reopened_offline": true,
+  "remembered_step_and_theme_survived_browser_restart": true,
+  "manifest": {
+    "name": "مسار — مساحة لإنجازك",
+    "short_name": "مسار",
+    "description": "مشاريعك ومهامك وأفكارك، على جهازك.",
+    "start_url": "/honor-wall/",
+    "display": "standalone",
+    "background_color": "#f6f7f2",
+    "theme_color": "#185c4b",
+    "lang": "ar",
+    "scope": "/honor-wall/",
+    "id": "/honor-wall/",
+    "dir": "rtl",
+    "icons": [
+      {
+        "src": "/honor-wall/icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/honor-wall/icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/honor-wall/icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+      }
+    ]
+  },
+  "controlled": true,
+  "scope": "http://127.0.0.1:4186/honor-wall/",
+  "databases": [
+    {
+      "name": "masar-v1",
+      "version": 10
+    }
+  ],
+  "cacheNames": [
+    "workbox-precache-v2-http://127.0.0.1:4186/honor-wall/"
+  ],
+  "cachedURLs": [
+    "http://127.0.0.1:4186/honor-wall/icon.svg?__WB_REVISION__=de7a932ec81a649f0c23081bf628f258",
+    "http://127.0.0.1:4186/honor-wall/icon-512.png?__WB_REVISION__=654cfb2b041129a3d924ca82116a45e0",
+    "http://127.0.0.1:4186/honor-wall/icon-192.png?__WB_REVISION__=b03adc1810951eba79db57ec6f0c81bd",
+    "http://127.0.0.1:4186/honor-wall/assets/workbox-window.prod.es5-Bd17z0YL.js",
+    "http://127.0.0.1:4186/honor-wall/assets/tajawal-arabic-700-normal-D2-eand5.woff2",
+    "http://127.0.0.1:4186/honor-wall/assets/tajawal-arabic-700-normal-9L7Zusdl.woff",
+    "http://127.0.0.1:4186/honor-wall/assets/tajawal-arabic-500-normal-CbVEaYEW.woff",
+    "http://127.0.0.1:4186/honor-wall/assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2",
+    "http://127.0.0.1:4186/honor-wall/assets/tajawal-arabic-400-normal-DCQxawbB.woff",
+    "http://127.0.0.1:4186/honor-wall/assets/tajawal-arabic-400-normal-CyCXRvzh.woff2",
+    "http://127.0.0.1:4186/honor-wall/assets/index-CudatNwj.css",
+    "http://127.0.0.1:4186/honor-wall/manifest.webmanifest?__WB_REVISION__=622f02ef935884ba983063bf52311539",
+    "http://127.0.0.1:4186/honor-wall/index.html?__WB_REVISION__=403d8c40b9147d97833b2c7a1fa1dd05",
+    "http://127.0.0.1:4186/honor-wall/assets/index-C0lwCwxi.js"
+  ],
+  "errors": [],
+  "limitations": [
+    "Physical Android installation and Safari/iOS are not tested."
+  ]
+}

@@ -3,7 +3,7 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import assert from "node:assert/strict";
 import { readStore } from "../tests/browser/helpers.ts";
-const build = process.argv[2] || "/tmp/masar-release-106";
+const build = process.argv[2] || "/tmp/masar-release-107";
 const base = "/honor-wall/";
 const root = fs.mkdtempSync("/tmp/masar-import-pwa-");
 fs.mkdirSync(root + base, { recursive: true });
@@ -61,12 +61,22 @@ try {
     await context.setOffline(true);
     await page.goto(url + "#projects");
     await page
-        .getByLabel("استيراد مشروع", { exact: true })
-        .setInputFiles({
-            name: "project.json",
-            mimeType: "application/json",
-            buffer: fs.readFileSync("examples/project-import.json"),
-        });
+        .getByRole("button", { name: "استيراد مشروع", exact: true })
+        .tap();
+    await expect(
+        page.getByRole("dialog", { name: "استيراد مشروع", exact: true }),
+    ).toBeVisible();
+    const chooserRequest = page.waitForEvent("filechooser");
+    await page
+        .getByRole("button", { name: "اختيار ملف JSON", exact: true })
+        .tap();
+    await (
+        await chooserRequest
+    ).setFiles({
+        name: "project.json",
+        mimeType: "application/json",
+        buffer: fs.readFileSync("examples/project-import.json"),
+    });
     await page
         .getByRole("button", { name: "تأكيد استيراد المشروع" })
         .evaluate((button) => {
@@ -129,7 +139,7 @@ try {
     assert.deepEqual(errors, []);
     fs.mkdirSync("docs/project-import", { recursive: true });
     fs.writeFileSync(
-        "docs/project-import/offline-result.json",
+        process.argv[3] || "docs/project-import/offline-result.json",
         JSON.stringify(
             {
                 timestamp: new Date().toISOString(),

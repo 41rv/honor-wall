@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-10-14T02:01:53.332Z",
+  "base": "/honor-wall/",
+  "offline_import": true,
+  "repeated_confirmation_created_one_project": true,
+  "existing_project_unchanged": true,
+  "imported_steps": 8,
+  "terminal_steps": 5,
+  "initial_progress": 0,
+  "progress_after_first_completion": 20,
+  "browser_restart_offline_preserved_import_and_progress": true,
+  "errors": []
+}
