@@ -7,16 +7,54 @@
             content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
         <meta name="theme-color" content="#185c4b" />
+        <meta name="color-scheme" content="light dark" />
+        <script>
+            // Apply the saved appearance before CSS/modules can paint a light canvas.
+            (() => {
+                let mode, identity;
+                try {
+                    mode = localStorage.getItem("masar-theme");
+                    identity = localStorage.getItem("masar-identity");
+                } catch {
+                    // System appearance also works when storage is unavailable.
+                }
+                const theme =
+                    mode === "light" || mode === "dark"
+                        ? mode
+                        : window.matchMedia?.("(prefers-color-scheme: dark)")
+                                .matches
+                          ? "dark"
+                          : "light";
+                identity = identity === "mono" ? "mono" : "green";
+                const color =
+                    theme === "dark"
+                        ? identity === "mono"
+                            ? "#121212"
+                            : "#101b17"
+                        : identity === "mono"
+                          ? "#f5f5f5"
+                          : "#f6f7f2";
+                const root = document.documentElement;
+                root.dataset.theme = theme;
+                root.dataset.identity = identity;
+                root.style.backgroundColor = color;
+                root.style.colorScheme = theme;
+                document.querySelector('meta[name="theme-color"]').content =
+                    color;
+                document.querySelector('meta[name="color-scheme"]').content =
+                    theme;
+            })();
+        </script>
         <meta
             name="description"
             content="مسار، مساحة هادئة لمشاريعك ومهامك وأفكارك. محفوظة على جهازك."
         />
         <link rel="icon" href="/honor-wall/icon.svg" />
         <title>مسار — مساحة لإنجازك</title>
-      <script type="module" crossorigin src="/honor-wall/assets/index-DRZVBuKy.js"></script>
+      <script type="module" crossorigin src="/honor-wall/assets/index-BQz-fmAD.js"></script>
       <link rel="modulepreload" crossorigin href="/honor-wall/assets/rolldown-runtime-CbXtAM7H.js">
       <link rel="modulepreload" crossorigin href="/honor-wall/assets/calendar-Dneqhncv.js">
-      <link rel="stylesheet" crossorigin href="/honor-wall/assets/index-Dtu5VJc-.css">
+      <link rel="stylesheet" crossorigin href="/honor-wall/assets/index-CJxI5SCS.css">
     <link rel="manifest" href="/honor-wall/manifest.webmanifest"></head>
     <body>
         <div id="root"></div>
