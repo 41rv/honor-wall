@@ -1,3 +1,10 @@
+import {
+    validateTaskOptions,
+    currentCycle,
+    firstCycleStart,
+    recurring,
+} from "./taskSchedule";
+import type { TaskOptions, TaskCycle } from "./taskTypes";
 export type Status = "todo" | "doing" | "done";
 export interface Base {
     id: string;
@@ -19,8 +26,11 @@ export interface Step extends Base {
     order: number;
     status: Status;
 }
-export interface Task extends Base {
+export interface Task extends Base, TaskOptions {
     status: Status;
+    scheduleRevision?: number;
+    scheduleSince?: string;
+    scheduleCursor?: string;
 }
 export interface Idea extends Base {
     archived: boolean;
@@ -44,13 +54,14 @@ export interface Event {
     at: string;
 }
 export interface Snapshot {
-    version: 1;
+    version: 1 | 2;
     exportedAt: string;
     projects: Project[];
     steps: Step[];
     tasks: Task[];
     ideas: Idea[];
     events: Event[];
+    taskCycles?: TaskCycle[];
 }
 export const now = () => new Date().toISOString();
 export const uid = () => crypto.randomUUID();
@@ -193,16 +204,43 @@ export function elapsed(created: string, completed: string) {
               : `${days} يومًا منقضيًا`;
 }
 export function achievements(
-    data: Pick<Snapshot, "tasks" | "steps">,
+    data: Pick<Snapshot, "tasks" | "steps"> &
+        Pick<Partial<Snapshot>, "taskCycles">,
     at = new Date(),
 ) {
     const cutoff = at.getTime() - 7 * 86400000;
     const parents = new Set(data.steps.map((s) => s.parentId));
     return [
-        ...data.tasks.map((t) => ({ ...t, entityKind: "task" as const })),
+        ...data.tasks
+            .filter((t) => !t.schedule || t.schedule.repeat === "none")
+            .map((t) => ({
+                ...t,
+                recordId: t.id,
+                entityKind: "task" as const,
+            })),
+        ...(data.taskCycles ?? [])
+            .filter((c) => c.status === "completed")
+            .flatMap((c) => {
+                const task = data.tasks.find((t) => t.id === c.taskId);
+                return task
+                    ? [
+                          {
+                              ...task,
+                              status: "done" as const,
+                              completedAt: c.completedAt,
+                              recordId: c.id,
+                              entityKind: "task" as const,
+                          },
+                      ]
+                    : [];
+            }),
         ...data.steps
             .filter((s) => s.kind === "step" && !parents.has(s.id))
-            .map((s) => ({ ...s, entityKind: "step" as const })),
+            .map((s) => ({
+                ...s,
+                recordId: s.id,
+                entityKind: "step" as const,
+            })),
     ]
         .filter(
             (t) =>
@@ -259,7 +297,10 @@ export function validateBackup(input: unknown): Snapshot {
         );
     };
     if (
-        d.version !== 1 ||
+        ![1, 2].includes(d.version) ||
+        (d.version === 2 && !Array.isArray(d.taskCycles)) ||
+        (d.taskCycles !== undefined && !Array.isArray(d.taskCycles)) ||
+        (d.version === 1 && !!d.taskCycles?.length) ||
         !iso(d.exportedAt) ||
         !["projects", "steps", "tasks", "ideas", "events"].every((k) =>
             Array.isArray(d[k as keyof Snapshot]),
@@ -293,6 +334,40 @@ export function validateBackup(input: unknown): Snapshot {
             )
                 return fail();
             ids.add(x.id);
+            if (kind === "tasks") {
+                const task = x as Task;
+                try {
+                    validateTaskOptions(task);
+                } catch {
+                    return fail();
+                }
+                if (
+                    task.scheduleRevision !== undefined &&
+                    (!Number.isInteger(task.scheduleRevision) ||
+                        task.scheduleRevision < 0)
+                )
+                    return fail();
+                if (
+                    task.scheduleCursor !== undefined &&
+                    !iso(task.scheduleCursor)
+                )
+                    return fail();
+                if (
+                    task.schedule &&
+                    (!Number.isInteger(task.scheduleRevision) ||
+                        task.scheduleRevision! < 1 ||
+                        !iso(task.scheduleSince))
+                )
+                    return fail();
+                if (
+                    task.schedule?.repeat !== undefined &&
+                    task.schedule.repeat !== "none" &&
+                    task.status === "done"
+                )
+                    return fail();
+                if (d.version === 1 && (task.schedule || task.priority))
+                    return fail();
+            }
             if (
                 kind === "projects" &&
                 (!["active", "closed"].includes((x as Project).status) ||
@@ -372,6 +447,91 @@ export function validateBackup(input: unknown): Snapshot {
             return fail();
         eventIds.add(e.id);
     }
+    const cycleIds = new Set<string>();
+    const taskIds = new Map(d.tasks.map((task) => [task.id, task]));
+    for (const c of d.taskCycles ?? []) {
+        const task = taskIds.get(c?.taskId);
+        if (
+            !c ||
+            !task ||
+            cycleIds.has(c.id) ||
+            c.id !== JSON.stringify([c.taskId, c.revision, c.start]) ||
+            !Number.isInteger(c.revision) ||
+            c.revision < 0 ||
+            c.revision > (task.scheduleRevision ?? 0) ||
+            !iso(c.start) ||
+            !iso(c.end) ||
+            Date.parse(c.end) < Date.parse(c.start) ||
+            !iso(c.scheduledAt) ||
+            !["current", "completed", "incomplete"].includes(c.status) ||
+            (c.status === "completed") !== !!c.completedAt ||
+            (c.completedAt !== undefined &&
+                (!iso(c.completedAt) ||
+                    Date.parse(c.completedAt) < Date.parse(c.start) ||
+                    Date.parse(c.completedAt) > Date.parse(c.end))) ||
+            (c.startedAt !== undefined && !iso(c.startedAt)) ||
+            (c.workStatus !== undefined &&
+                !["todo", "doing"].includes(c.workStatus)) ||
+            (c.closedReason !== undefined &&
+                c.closedReason !== "schedule_changed") ||
+            (c.plannedEnd !== undefined && !iso(c.plannedEnd)) ||
+            (c.source !== undefined && c.source !== "legacy")
+        )
+            return fail();
+        if (typeof c.timeZone !== "string" || !c.timeZone) return fail();
+        if (
+            c.status === "current" &&
+            (!recurring(task) ||
+                c.revision !== task.scheduleRevision ||
+                c.closedReason)
+        )
+            return fail();
+        if (
+            recurring(task) &&
+            c.revision === task.scheduleRevision &&
+            !c.source &&
+            !c.closedReason
+        ) {
+            const expected = currentCycle(task, new Date(c.start));
+            if (
+                !expected ||
+                expected.id !== c.id ||
+                expected.end !== c.end ||
+                expected.scheduledAt !== c.scheduledAt ||
+                c.timeZone !== task.schedule!.timeZone
+            )
+                return fail();
+        }
+        try {
+            new Intl.DateTimeFormat("ar", { timeZone: c.timeZone }).format();
+        } catch {
+            return fail();
+        }
+        cycleIds.add(c.id);
+    }
+    const cycleGroups = new Map<string, TaskCycle[]>();
+    for (const c of d.taskCycles ?? []) {
+        const group = cycleGroups.get(c.taskId) ?? [];
+        group.push(c);
+        cycleGroups.set(c.taskId, group);
+    }
+    for (const task of d.tasks)
+        if (recurring(task) && task.scheduleCursor) {
+            const rows = (cycleGroups.get(task.id) ?? [])
+                .filter(
+                    (c) =>
+                        c.revision === task.scheduleRevision &&
+                        !c.source &&
+                        !c.closedReason,
+                )
+                .sort((a, b) => a.start.localeCompare(b.start));
+            let cursor = new Date(firstCycleStart(task)).toISOString();
+            for (const c of rows) {
+                if (c.start !== cursor) return fail();
+                cursor = c.end;
+            }
+            if (cursor !== task.scheduleCursor) return fail();
+        }
     return structuredClone(d);
 }
 

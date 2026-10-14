@@ -7,18 +7,21 @@ export const CompletionButton = memo(function CompletionButton({
     label,
     onToggle,
     text = false,
+    disabled = false,
 }: {
     checked: boolean;
     entityKey: string;
     label: string;
-    onToggle: (complete: boolean) => Promise<void>;
+    onToggle: (complete: boolean, at?: string) => Promise<void>;
     text?: boolean;
+    disabled?: boolean;
 }) {
     const completion = useCompletion(entityKey, checked, onToggle);
     const value = completion.checked;
     return (
         <button
             type="button"
+            disabled={disabled}
             data-completion-key={entityKey}
             className={
                 text

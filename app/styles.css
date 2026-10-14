@@ -2455,3 +2455,111 @@ dialog.context-sheet {
         justify-self: start;
     }
 }
+.task-row {
+    position: relative;
+}
+.priority-strip {
+    outline: 1px solid var(--text);
+    position: absolute;
+    inset-inline-start: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 4px;
+    border-radius: 4px;
+}
+.task-due {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+.task-due.due-overdue {
+    font-weight: 700;
+    color: var(--danger);
+}
+.task-due.due-today,
+.task-due.due-near {
+    font-weight: 700;
+    color: var(--primary);
+}
+.task-fields {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px;
+    margin-top: 16px;
+    min-width: 0;
+}
+.task-fields legend {
+    font-weight: 700;
+}
+.task-fields input[type="date"],
+.task-fields input[type="time"] {
+    direction: ltr;
+    min-width: 0;
+    max-width: 100%;
+}
+.task-fields select {
+    width: 100%;
+    min-height: 44px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 10px;
+}
+.weekdays {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    border: 0;
+    padding: 0;
+    margin-bottom: 16px;
+}
+.weekdays label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 4px 6px;
+}
+.weekdays input {
+    width: 24px;
+    height: 24px;
+    accent-color: var(--primary);
+}
+.task-details {
+    margin: 16px 0;
+}
+.cycle-history {
+    margin-top: 20px;
+}
+.cycle-history summary {
+    min-height: 44px;
+    cursor: pointer;
+}
+.cycle-history article {
+    border-top: 1px solid var(--line);
+    padding: 12px 0;
+    font-size: 13px;
+}
+@media (max-width: 600px) {
+    .task-row .task-due {
+        grid-column: 2 / -1;
+        font-size: 11px;
+    }
+}
+.task-filters {
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+.task-overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+}
+/* Keep every task accessible while avoiding layout/paint for off-screen rows. */
+.task-row {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 84px;
+}

@@ -1,3 +1,4 @@
+import type { TaskView } from "./taskSchedule";
 import { useState, type ReactNode } from "react";
 import {
     ArrowUpLeft,
@@ -137,6 +138,25 @@ export function HomeExecution({
                         إلى المهام <ChevronLeft size={16} />
                     </button>
                 </div>
+                <p className="task-overview muted small">
+                    {[
+                        ["general", "بدون موعد"],
+                        ["today", "اليوم"],
+                        ["near", "اقترب الموعد"],
+                        ["overdue", "متأخرة"],
+                        ["cycle", "دورة حالية"],
+                        ["future", "قادمة"],
+                    ].map(([key, label]) => {
+                        const count = remaining.filter(
+                            (t) => (t as TaskView)._dueState === key,
+                        ).length;
+                        return count ? (
+                            <span key={key}>
+                                {label}: {count}
+                            </span>
+                        ) : null;
+                    })}
+                </p>
                 {remaining.length ? (
                     <div className="surface task-list">
                         {remaining.slice(0, 5).map(renderTask)}

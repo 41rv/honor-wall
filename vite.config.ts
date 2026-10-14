@@ -7,7 +7,16 @@ if (!base.startsWith("/") || !base.endsWith("/"))
     throw new Error("VITE_BASE_PATH must start and end with /");
 export default defineConfig({
     base,
-    build: { outDir: "build" },
+    build: {
+        outDir: "build",
+        rolldownOptions: {
+            output: {
+                codeSplitting: {
+                    groups: [{ name: "calendar", test: /@js-temporal|jsbi/ }],
+                },
+            },
+        },
+    },
     plugins: [
         react(),
         tailwindcss(),

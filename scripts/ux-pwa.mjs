@@ -9,6 +9,8 @@ const newBuild =
     process.argv[2] || new URL("../build", import.meta.url).pathname;
 const oldBuild = process.argv[3] || "/tmp/masar-release-104";
 const basePath = process.argv[4] || "/";
+const tasksMode = process.argv[7] === "tasks";
+let schedulingData, recurringId;
 const reportPath = process.argv[5] || "docs/ux/pwa-result.json";
 const root = fs.mkdtempSync("/tmp/masar-qa-pwa-");
 const site = root + "/site" + basePath;
@@ -151,8 +153,10 @@ try {
     assert.equal(
         cached.databases.find((database) => database.name === "masar-v1")
             .version,
-        beforeDatabases.find((database) => database.name === "masar-v1")
-            .version,
+        process.argv[6]
+            ? Number(process.argv[6])
+            : beforeDatabases.find((database) => database.name === "masar-v1")
+                  .version,
     );
     assert(
         cached.cachedURLs.some((url) =>
@@ -202,11 +206,74 @@ try {
     await expect(page.getByLabel("ملاحظات العنصر")).toHaveValue(
         "ملاحظات مشروع محفوظة",
     );
+    if (tasksMode) {
+        await page.clock.install({ time: new Date("2026-10-17T10:00:00Z") });
+        await page.goto(baseURL + "#tasks");
+        await page
+            .getByRole("button", { name: "مهمة جديدة", exact: true })
+            .tap();
+        const form = page.getByRole("dialog");
+        await form
+            .getByLabel("الاسم", { exact: true })
+            .fill("دورة يومية بعد الترحيل");
+        await form.getByRole("textbox").nth(1).fill("ملاحظات دورة محفوظة");
+        await form.getByLabel("التكرار", { exact: true }).selectOption("daily");
+        await form
+            .getByLabel("الأولوية", { exact: true })
+            .selectOption("important-urgent");
+        await form.getByLabel("الوقت", { exact: false }).fill("20:00");
+        await form.getByRole("button", { name: "إضافة", exact: true }).tap();
+        await expect(form).not.toBeVisible();
+        recurringId = (await readStore(page, "tasks")).find(
+            (t) => t.title === "دورة يومية بعد الترحيل",
+        ).id;
+        await page
+            .getByRole("button", {
+                name: "إكمال دورة يومية بعد الترحيل",
+                exact: true,
+            })
+            .evaluate((button) => {
+                for (let i = 0; i < 13; i++) button.click();
+            });
+        await expect
+            .poll(
+                async () =>
+                    (await readStore(page, "taskCycles")).filter(
+                        (c) => c.status === "completed",
+                    ).length,
+            )
+            .toBe(1);
+        await page.clock.setSystemTime(new Date("2026-10-17T21:00:00Z"));
+        await page.evaluate(() => window.dispatchEvent(new Event("focus")));
+        await expect(
+            page.getByRole("button", {
+                name: "إكمال دورة يومية بعد الترحيل",
+                exact: true,
+            }),
+        ).toBeVisible();
+        await expect
+            .poll(async () => (await readStore(page, "taskCycles")).length)
+            .toBe(2);
+        schedulingData = Object.fromEntries(
+            await Promise.all(
+                [
+                    "projects",
+                    "steps",
+                    "tasks",
+                    "ideas",
+                    "events",
+                    "taskCycles",
+                ].map(async (store) => [store, await readStore(page, store)]),
+            ),
+        );
+    }
     await context.close();
     context = await chromium.launchPersistentContext(profile, options);
     await context.setOffline(true);
     page = await context.newPage();
     recordErrors(page);
+    if (tasksMode)
+        await page.clock.install({ time: new Date("2026-10-17T21:00:00Z") });
     await page.goto(baseURL + projectRoute);
     await expect(page.getByRole("progressbar")).toHaveAttribute(
         "aria-valuenow",
@@ -227,6 +294,36 @@ try {
         .tap();
     assert.equal(new URL(page.url()).hash, rememberedRoute);
     await expect(page.getByLabel("تعديل الاسم")).toHaveValue("خطوة باقية");
+    if (tasksMode) {
+        await page.goto(baseURL + "#tasks");
+        await expect(
+            page.getByRole("button", {
+                name: "إكمال دورة يومية بعد الترحيل",
+                exact: true,
+            }),
+        ).toBeVisible();
+        for (const store of [
+            "projects",
+            "steps",
+            "tasks",
+            "ideas",
+            "events",
+            "taskCycles",
+        ])
+            assert.deepEqual(
+                await readStore(page, store),
+                schedulingData[store],
+            );
+        const source = (await readStore(page, "tasks")).find(
+            (t) => t.id === recurringId,
+        );
+        assert.equal(source.status, "todo");
+        assert.equal(source.priority, "important-urgent");
+        assert.equal(source.notes, "ملاحظات دورة محفوظة");
+        const cycles = await readStore(page, "taskCycles");
+        assert.equal(cycles.filter((c) => c.status === "completed").length, 1);
+        assert.equal(cycles.filter((c) => c.status === "current").length, 1);
+    }
     assert.deepEqual(errors, []);
     fs.mkdirSync(path.dirname(reportPath), { recursive: true });
     fs.writeFileSync(
@@ -236,6 +333,11 @@ try {
                 timestamp: new Date().toISOString(),
                 basePath,
                 update_preserved_all_five_stores: true,
+                task_scheduling_and_six_stores_survived_offline_restart:
+                    tasksMode,
+                native_database_version: cached.databases.find(
+                    (database) => database.name === "masar-v1",
+                ).version,
                 backup_created: true,
                 repeated_toggle_after_update: true,
                 offline_reload: true,

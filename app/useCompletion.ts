@@ -31,7 +31,11 @@ export function trackCompletionFocus(target: EventTarget | null) {
 export function useCompletion(
     key: string,
     checked: boolean,
-    persist: (complete: boolean) => Promise<void>,
+    persist: (
+        complete: boolean,
+        at?: string,
+        mode?: "completion" | "doing",
+    ) => Promise<void>,
 ) {
     const subscribe = useCallback(
         (listener: () => void) => queue.subscribe(key, listener),
@@ -67,6 +71,20 @@ export function useCompletion(
     return {
         checked: state.desired ?? checked,
         saving: state.saving,
+        setStatus: (status: "todo" | "doing" | "done") => {
+            const at = new Date().toISOString();
+            const mode = status === "doing" ? "doing" : "completion";
+            queue.request(
+                key,
+                status === "done",
+                async (value) => {
+                    await startCompletionRecovery().catch(() => {});
+                    await persist(value, at, mode);
+                },
+                at,
+                mode,
+            );
+        },
         toggle: (event?: { detail: number }) => {
             if (
                 event?.detail === 0 &&
@@ -74,10 +92,16 @@ export function useCompletion(
                     .completionKey === key
             )
                 keyboardFocus = { key, route: location.hash };
-            queue.toggle(key, checked, async (value) => {
-                await startCompletionRecovery().catch(() => {});
-                await persist(value);
-            });
+            const at = new Date().toISOString();
+            queue.toggle(
+                key,
+                checked,
+                async (value) => {
+                    await startCompletionRecovery().catch(() => {});
+                    await persist(value, at);
+                },
+                at,
+            );
         },
     };
 }

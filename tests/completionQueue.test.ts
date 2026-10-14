@@ -140,3 +140,26 @@ it("العناصر المختلفة لها طوابير مستقلة ولا تُ
     stopA();
     stopB();
 });
+it("حالتا جار العمل ولم تبدأ لا تتداخلان عندما يكون الإنجاز false للحالتين", async () => {
+    const queue = createCompletionQueue();
+    const blocked = deferred();
+    const writes: string[] = [];
+    queue.subscribe("task/c", () => {});
+    queue.request(
+        "task/c",
+        false,
+        async () => {
+            writes.push("doing");
+            await blocked.promise;
+        },
+        undefined,
+        "doing",
+    );
+    queue.request("task/c", false, async () => {
+        writes.push("todo");
+    });
+    blocked.resolve();
+    await queue.flush();
+    expect(writes).toEqual(["doing", "todo"]);
+    expect(queue.state("task/c").saving).toBe(false);
+});

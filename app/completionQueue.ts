@@ -9,13 +9,19 @@ interface Entry {
     version: number;
     running: boolean;
     persist: Persist;
+    mode: "completion" | "doing";
     work?: Promise<void>;
 }
 // Shared by entity ID, so moving a task to/from the completed section or
 // navigating away does not lose the newest intent while a write is in flight.
 export function createCompletionQueue(
     options: {
-        intent?: (key: string, desired: boolean) => void;
+        intent?: (
+            key: string,
+            desired: boolean,
+            at?: string,
+            mode?: "completion" | "doing",
+        ) => void;
         settled?: (key: string, desired: boolean) => void;
     } = {},
 ) {
@@ -27,6 +33,7 @@ export function createCompletionQueue(
         while (true) {
             const version = entry.version;
             const desired = entry.state.desired!;
+            const mode = entry.mode;
             try {
                 await entry.persist(desired);
             } catch {
@@ -41,7 +48,10 @@ export function createCompletionQueue(
                 }
                 continue;
             }
-            if (version !== entry.version && desired !== entry.state.desired)
+            if (
+                version !== entry.version &&
+                (desired !== entry.state.desired || mode !== entry.mode)
+            )
                 continue;
             entry.running = false;
             options.settled?.(key, desired);
@@ -50,6 +60,29 @@ export function createCompletionQueue(
             break;
         }
         if (!listeners.get(key)?.size) entries.delete(key);
+    }
+    function request(
+        key: string,
+        desired: boolean,
+        persist: Persist,
+        at?: string,
+        mode: "completion" | "doing" = "completion",
+    ) {
+        const entry = entries.get(key) ?? {
+            state: idle,
+            version: 0,
+            running: false,
+            persist,
+            mode,
+        };
+        options.intent?.(key, desired, at, mode);
+        entry.persist = persist;
+        entry.mode = mode;
+        entry.version++;
+        entry.state = { desired, saving: true };
+        entries.set(key, entry);
+        notify(key);
+        if (!entry.running) entry.work = drain(key, entry);
     }
     return {
         flush: () =>
@@ -81,21 +114,14 @@ export function createCompletionQueue(
                 notify(key);
             }
         },
-        toggle(key: string, checked: boolean, persist: Persist) {
-            const entry = entries.get(key) ?? {
-                state: idle,
-                version: 0,
-                running: false,
+        request,
+        toggle(key: string, checked: boolean, persist: Persist, at?: string) {
+            request(
+                key,
+                !(entries.get(key)?.state.desired ?? checked),
                 persist,
-            };
-            const desired = !(entry.state.desired ?? checked);
-            options.intent?.(key, desired);
-            entry.persist = persist;
-            entry.version++;
-            entry.state = { desired, saving: true };
-            entries.set(key, entry);
-            notify(key);
-            if (!entry.running) entry.work = drain(key, entry);
+                at,
+            );
         },
     };
 }

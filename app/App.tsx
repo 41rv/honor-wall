@@ -1,3 +1,8 @@
+import { TaskStatusControls } from "./TaskStatusControls";
+import { TaskFields } from "./TaskFields";
+import { TaskDetails, TaskDue } from "./TaskDetails";
+import { priorities, type TaskOptions } from "./taskTypes";
+import { taskRank, type TaskView } from "./taskSchedule";
 import { Dialog } from "./Dialog";
 import { ProjectImport } from "./ProjectImport";
 import {
@@ -69,6 +74,7 @@ import {
     Palette,
 } from "lucide-react";
 import {
+    setCycleStatus,
     snapshot,
     create,
     update,
@@ -555,14 +561,14 @@ const TaskRow = memo(function TaskRow({
     onComplete,
     onActions,
 }: {
-    task: Task;
-    onComplete: (task: Task, status: Status) => Promise<void>;
+    task: TaskView;
+    onComplete: (task: TaskView, status: Status, at?: string) => Promise<void>;
     onActions: OpenActions;
 }) {
     const completion = useCompletion(
-        `task/${task.id}`,
+        task._cycleId ? `taskCycle/${task._cycleId}` : `task/${task.id}`,
         task.status === "done",
-        (complete) => onComplete(task, complete ? "done" : "todo"),
+        (complete, at) => onComplete(task, complete ? "done" : "todo", at),
     );
     const checked = completion.checked;
     const gestures = useLongPress((rect) =>
@@ -570,14 +576,27 @@ const TaskRow = memo(function TaskRow({
     );
     return (
         <article className="task-row" data-task-id={task.id} {...gestures}>
+            {task.priority && (
+                <span
+                    className="priority-strip"
+                    role="img"
+                    aria-label={priorities[task.priority].name}
+                    style={{ backgroundColor: priorities[task.priority].color }}
+                />
+            )}
             <button
                 className={"task-check " + (checked ? "checked" : "")}
-                data-completion-key={`task/${task.id}`}
+                data-completion-key={
+                    task._cycleId
+                        ? `taskCycle/${task._cycleId}`
+                        : `task/${task.id}`
+                }
                 aria-label={
                     checked ? `إعادة فتح ${task.title}` : `إكمال ${task.title}`
                 }
                 aria-pressed={checked}
                 aria-busy={completion.saving}
+                disabled={task._available === false}
                 onClick={completion.toggle}
             >
                 {checked && <Check size={18} />}
@@ -589,6 +608,7 @@ const TaskRow = memo(function TaskRow({
                         ? `أُنشئت ${date(task.createdAt)} · أُنجزت ${date(task.completedAt)} · ${elapsed(task.createdAt, task.completedAt!)}`
                         : task.notes || `أُنشئت ${date(task.createdAt)}`}
                 </span>
+                <TaskDue task={task} />
             </button>
             <Badge status={task.status} />
             <ActionButton kind="task" item={task} open={onActions} />
@@ -641,6 +661,7 @@ function App() {
     const id = routeId(parts.length ? parts.join("/") : undefined);
     const data = useAppData(page, id);
     const hierarchy = useMemo(() => buildHierarchy(data.steps), [data.steps]);
+    const [taskFilter, setTaskFilter] = useState("all");
     const [completedOpen, setCompletedOpen] = useState(false);
     const [query, setQuery] = useState("");
     const [filter, setFilter] = useState("active");
@@ -802,18 +823,33 @@ function App() {
         },
         [],
     );
-    const completeTask = useCallback(async (task: Task, status: Status) => {
-        try {
-            await changeStatus("task", task.id, status);
-            if (status === "done") {
-                setCompletedOpen(true);
-                setToast(`أُنجزت «${task.title}»`);
-            } else setToast(`أُعيد فتح «${task.title}»`);
-        } catch (e) {
-            setToast(userError(e, "تعذر حفظ حالة المهمة. حاول مجددًا."));
-            throw e;
-        }
-    }, []);
+    const completeTask = useCallback(
+        async (
+            task: TaskView,
+            status: Status,
+            at?: string,
+            autoReveal = true,
+        ) => {
+            try {
+                if (task._cycleId)
+                    await setCycleStatus(task._cycleId, status, at);
+                else await changeStatus("task", task.id, status);
+                if (status === "done") {
+                    if (autoReveal) setCompletedOpen(true);
+                    setToast(`أُنجزت «${task.title}»`);
+                } else
+                    setToast(
+                        status === "doing"
+                            ? `بدأت «${task.title}»`
+                            : `أُعيد فتح «${task.title}»`,
+                    );
+            } catch (e) {
+                setToast(userError(e, "تعذر حفظ حالة المهمة. حاول مجددًا."));
+                throw e;
+            }
+        },
+        [],
+    );
     const completeBranch = useCallback(
         async (id: string, complete: boolean) => {
             try {
@@ -870,8 +906,24 @@ function App() {
     const latestProject = [...data.projects].sort((a, b) =>
         b.updatedAt.localeCompare(a.updatedAt),
     )[0];
-    const remaining = data.tasks.filter((t) => t.status !== "done");
-    const recent = useMemo(() => achievements(data), [data.steps, data.tasks]);
+    const remaining = data.tasks
+        .filter((t) => t.status !== "done")
+        .sort(
+            (a, b) =>
+                taskRank(a) - taskRank(b) ||
+                b.updatedAt.localeCompare(a.updatedAt),
+        );
+    const recent = useMemo(
+        () => achievements(data),
+        [data.steps, data.tasks, data.taskCycles],
+    );
+    const filteredTasks = remaining.filter(
+        (t) =>
+            taskFilter === "all" ||
+            (taskFilter === "cycle"
+                ? !!t.schedule && t.schedule.repeat !== "none"
+                : (t as TaskView)._dueState === taskFilter),
+    );
     function askDelete(kind: EntityKind, item: Base) {
         setConfirm({
             text: `حذف «${item.title}»${kind === "project" ? " وكل مراحله وخطواته" : kind === "step" ? " وكل الخطوات داخله" : ""}؟ يمكنك التراجع بعد الحذف.`,
@@ -1021,7 +1073,7 @@ function App() {
                         {dashboardRecent.map((t) => (
                             <button
                                 className="achievement-row"
-                                key={t.id}
+                                key={t.recordId}
                                 onClick={() => open(t.entityKind, t.id)}
                             >
                                 <span className="achievement-check">
@@ -1186,6 +1238,11 @@ function App() {
                     </div>
                 )}
                 <main>
+                    {data.taskHistoryError && (
+                        <p role="alert" className="warning">
+                            {data.taskHistoryError}
+                        </p>
+                    )}
                     <div className="page-heading">
                         <div>
                             <div className="eyebrow">
@@ -1466,13 +1523,48 @@ function App() {
                                             غير المكتملة أولًا
                                         </span>
                                     </div>
+                                    <div
+                                        className="tabs task-filters"
+                                        role="group"
+                                        aria-label="عرض المهام بحسب موعدها"
+                                    >
+                                        {[
+                                            ["all", "كل المهام"],
+                                            ["general", "بدون موعد"],
+                                            ["today", "اليوم"],
+                                            ["near", "اقترب الموعد"],
+                                            ["overdue", "متأخرة"],
+                                            ["cycle", "متكررة"],
+                                            ["future", "قادمة"],
+                                        ].map(([key, label]) => (
+                                            <button
+                                                key={key}
+                                                aria-pressed={
+                                                    taskFilter === key
+                                                }
+                                                className={
+                                                    taskFilter === key
+                                                        ? "selected"
+                                                        : ""
+                                                }
+                                                onClick={() =>
+                                                    setTaskFilter(key)
+                                                }
+                                            >
+                                                {label}
+                                            </button>
+                                        ))}
+                                    </div>
                                     <div className="surface task-list">
-                                        {remaining.length ? (
-                                            remaining
-                                                .sort((a, b) =>
-                                                    b.updatedAt.localeCompare(
-                                                        a.updatedAt,
-                                                    ),
+                                        {filteredTasks.length ? (
+                                            filteredTasks
+                                                .sort(
+                                                    (a, b) =>
+                                                        taskRank(a) -
+                                                            taskRank(b) ||
+                                                        b.updatedAt.localeCompare(
+                                                            a.updatedAt,
+                                                        ),
                                                 )
                                                 .map((t) => (
                                                     <TaskRow
@@ -1481,7 +1573,13 @@ function App() {
                                                             completeTask
                                                         }
                                                         task={t}
-                                                        key={t.id}
+                                                        key={
+                                                            "recordId" in t
+                                                                ? String(
+                                                                      t.recordId,
+                                                                  )
+                                                                : t.id
+                                                        }
                                                     />
                                                 ))
                                         ) : (
@@ -1534,7 +1632,11 @@ function App() {
                                                     onActions={openActions}
                                                     onComplete={completeTask}
                                                     task={t}
-                                                    key={t.id}
+                                                    key={
+                                                        "recordId" in t
+                                                            ? String(t.recordId)
+                                                            : t.id
+                                                    }
                                                 />
                                             ))}
                                     </details>
@@ -1706,6 +1808,44 @@ function App() {
                                                         </p>
                                                     </div>
                                                 )}
+                                                {page === "task" && (
+                                                    <div className="detail-completion">
+                                                        <CompletionButton
+                                                            text
+                                                            label="المهمة"
+                                                            entityKey={
+                                                                (
+                                                                    currentTask as TaskView
+                                                                )._cycleId
+                                                                    ? `taskCycle/${(currentTask as TaskView)._cycleId}`
+                                                                    : `task/${id}`
+                                                            }
+                                                            disabled={
+                                                                (
+                                                                    currentTask as TaskView
+                                                                )._available ===
+                                                                false
+                                                            }
+                                                            checked={
+                                                                currentTask!
+                                                                    .status ===
+                                                                "done"
+                                                            }
+                                                            onToggle={(
+                                                                value,
+                                                                at,
+                                                            ) =>
+                                                                completeTask(
+                                                                    currentTask!,
+                                                                    value
+                                                                        ? "done"
+                                                                        : "todo",
+                                                                    at,
+                                                                )
+                                                            }
+                                                        />
+                                                    </div>
+                                                )}
                                                 {page === "step" && (
                                                     <div className="detail-completion">
                                                         <CompletionButton
@@ -1754,16 +1894,40 @@ function App() {
                                                     kind={page as EntityKind}
                                                     onError={setToast}
                                                 />
+                                                {page === "task" && (
+                                                    <TaskDetails
+                                                        task={
+                                                            detail as TaskView
+                                                        }
+                                                    />
+                                                )}
                                                 {(page === "task" ||
                                                     page === "step") && (
                                                     <div className="status-controls">
                                                         <label>الحالة</label>
-                                                        {page === "step" &&
-                                                        data.steps.some(
-                                                            (s) =>
-                                                                s.parentId ===
-                                                                id,
-                                                        ) ? (
+                                                        {page === "task" ? (
+                                                            <TaskStatusControls
+                                                                task={
+                                                                    detail as TaskView
+                                                                }
+                                                                onComplete={(
+                                                                    task,
+                                                                    status,
+                                                                    at,
+                                                                ) =>
+                                                                    completeTask(
+                                                                        task,
+                                                                        status,
+                                                                        at,
+                                                                        false,
+                                                                    )
+                                                                }
+                                                            />
+                                                        ) : data.steps.some(
+                                                              (s) =>
+                                                                  s.parentId ===
+                                                                  id,
+                                                          ) ? (
                                                             <p className="muted small">
                                                                 حالة هذا الفرع
                                                                 تُحسب تلقائيًا
@@ -1799,7 +1963,7 @@ function App() {
                                                                                 run(
                                                                                     () =>
                                                                                         changeStatus(
-                                                                                            page,
+                                                                                            "step",
                                                                                             id,
                                                                                             status,
                                                                                         ),
@@ -2343,8 +2507,9 @@ function App() {
             {form && (
                 <CreateForm
                     kind={form.stage ? "مرحلة" : kindNames[form.kind]}
+                    taskForm={form.kind === "task"}
                     onClose={() => setForm(null)}
-                    onSubmit={async (title, notes) => {
+                    onSubmit={async (title, notes, options) => {
                         await create(
                             form.kind,
                             title,
@@ -2352,6 +2517,7 @@ function App() {
                             form.projectId,
                             form.parentId ?? null,
                             form.stage,
+                            options,
                         );
                         setForm(null);
                         setQuery("");
@@ -2361,8 +2527,10 @@ function App() {
                         }
                         setToast("تمت الإضافة.");
                         if (form.kind === "project") go("projects");
-                        else if (form.kind === "task") go("tasks");
-                        else if (form.kind === "idea") go("ideas");
+                        else if (form.kind === "task") {
+                            setTaskFilter("all");
+                            go("tasks");
+                        } else if (form.kind === "idea") go("ideas");
                     }}
                 />
             )}
@@ -2406,8 +2574,9 @@ function App() {
                         النسخة بتاريخ {date(backup.exportedAt)}، تحتوي على{" "}
                         {backup.projects.length} مشاريع و{backup.steps.length}{" "}
                         مراحل وخطوات و{backup.tasks.length} مهام و
-                        {backup.ideas.length} أفكار و{backup.events.length}{" "}
-                        أحداث.
+                        {backup.ideas.length} أفكار و
+                        {backup.taskCycles?.length ?? 0} دورات و
+                        {backup.events.length} أحداث.
                     </p>
                     <p className="warning">
                         سيتم استبدال جميع البيانات الحالية. صدّر نسخة منها
@@ -2627,13 +2796,20 @@ function App() {
 }
 function CreateForm({
     kind,
+    taskForm = false,
     onClose,
     onSubmit,
 }: {
     kind: string;
+    taskForm?: boolean;
     onClose: () => void;
-    onSubmit: (title: string, notes: string) => Promise<void>;
+    onSubmit: (
+        title: string,
+        notes: string,
+        options?: TaskOptions,
+    ) => Promise<void>;
 }) {
+    const [options, setOptions] = useState<TaskOptions>({});
     const [title, setTitle] = useState("");
     const [notes, setNotes] = useState("");
     const [error, setError] = useState("");
@@ -2657,7 +2833,11 @@ function CreateForm({
                     submitting.current = true;
                     setBusy(true);
                     try {
-                        await onSubmit(title, notes);
+                        await onSubmit(
+                            title,
+                            notes,
+                            taskForm ? options : undefined,
+                        );
                     } catch (e) {
                         setError(userError(e));
                         submitting.current = false;
@@ -2687,6 +2867,13 @@ function CreateForm({
                         placeholder="ما الذي ترغب أن تتذكره؟"
                     />
                 </label>
+                {taskForm && (
+                    <TaskFields
+                        value={options}
+                        onChange={setOptions}
+                        disabled={busy}
+                    />
+                )}
                 {error && (
                     <p role="alert" className="error">
                         {error}

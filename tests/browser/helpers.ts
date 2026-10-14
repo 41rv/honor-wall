@@ -70,7 +70,7 @@ export async function importData(page: Page, data: Snapshot) {
 }
 export async function readStore(
     page: Page,
-    name: "projects" | "steps" | "tasks" | "ideas" | "events",
+    name: "projects" | "steps" | "tasks" | "ideas" | "events" | "taskCycles",
 ) {
     return page.evaluate(async (store) => {
         const database = await new Promise<IDBDatabase>((resolve, reject) => {

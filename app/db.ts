@@ -1,4 +1,11 @@
 import Dexie, { type Table } from "dexie";
+import {
+    currentCycle,
+    cycleBatch,
+    recurring,
+    validateTaskOptions,
+} from "./taskSchedule";
+import type { TaskCycle, TaskOptions } from "./taskTypes";
 import { validateProjectImport, importNodes } from "./projectImport";
 import { buildHierarchy, type Hierarchy } from "./hierarchy";
 import {
@@ -24,6 +31,7 @@ export class Database extends Dexie {
     tasks!: Table<Task, string>;
     ideas!: Table<Idea, string>;
     events!: Table<Event, string>;
+    taskCycles!: Table<TaskCycle, string>;
     constructor(name = "masar-v1") {
         super(name);
         this.version(1).stores({
@@ -32,6 +40,12 @@ export class Database extends Dexie {
             tasks: "id,status,completedAt",
             ideas: "id,archived,updatedAt",
             events: "id,entityId,at,action",
+        });
+        // Add one store and an optional index; existing rows and IDs stay intact.
+        this.version(2).stores({
+            tasks: "id,status,completedAt,schedule.repeat",
+            taskCycles:
+                "id,taskId,[taskId+revision+start],[status+end],end,status,completedAt",
         });
     }
 }
@@ -94,22 +108,26 @@ export async function event(
     });
 }
 export async function snapshot(): Promise<Snapshot> {
+    await reconcileTaskCycles();
     return db.transaction("r", db.tables, async () => {
-        const [projects, steps, tasks, ideas, events] = await Promise.all([
-            db.projects.toArray(),
-            db.steps.toArray(),
-            db.tasks.toArray(),
-            db.ideas.toArray(),
-            db.events.toArray(),
-        ]);
+        const [projects, steps, tasks, ideas, events, taskCycles] =
+            await Promise.all([
+                db.projects.toArray(),
+                db.steps.toArray(),
+                db.tasks.toArray(),
+                db.ideas.toArray(),
+                db.events.toArray(),
+                db.taskCycles.toArray(),
+            ]);
         return {
-            version: 1,
+            version: 2,
             exportedAt: now(),
             projects,
             steps,
             tasks,
             ideas,
             events,
+            taskCycles,
         };
     });
 }
@@ -120,20 +138,32 @@ export async function create(
     projectId?: string,
     parentId: string | null = null,
     stage = false,
+    taskOptions: TaskOptions = {},
 ) {
     if (!title.trim()) throw new Error("أدخل اسمًا أولًا.");
     return db.transaction(
         "rw",
         kind === "step"
             ? [db.steps, db.projects, db.events]
-            : [table(kind), db.events],
+            : kind === "task"
+              ? [db.tasks, db.events, db.taskCycles]
+              : [table(kind), db.events],
         async () => {
             const b = base(title, notes);
             let item: Project | Step | Task | Idea;
             if (kind === "project")
                 item = { ...b, status: "active", archived: false };
-            else if (kind === "task") item = { ...b, status: "todo" };
-            else if (kind === "idea") item = { ...b, archived: false };
+            else if (kind === "task") {
+                const options = validateTaskOptions(taskOptions);
+                item = {
+                    ...b,
+                    ...options,
+                    status: "todo",
+                    ...(options.schedule
+                        ? { scheduleRevision: 1, scheduleSince: b.createdAt }
+                        : {}),
+                };
+            } else if (kind === "idea") item = { ...b, archived: false };
             else {
                 if (!projectId || !(await db.projects.get(projectId)))
                     throw new Error("المشروع غير موجود.");
@@ -163,6 +193,18 @@ export async function create(
             }
             await (table(kind) as Table).add(item);
             await event(kind, item, "created");
+            if (kind === "task") {
+                const cycle = currentCycle(
+                    item as Task,
+                    new Date(item.createdAt),
+                );
+                if (cycle) {
+                    await db.taskCycles.add(cycle);
+                    await db.tasks.update(item.id, {
+                        scheduleCursor: cycle.end,
+                    });
+                }
+            }
             if (kind === "step") await refresh(projectId!, parentId);
             return item.id;
         },
@@ -269,6 +311,10 @@ export async function changeStatus(
             const t = table(kind) as Table<Task | Step, string>;
             const item = await t.get(id);
             if (!item || item.status === status) return;
+            if (kind === "task" && recurring(item as Task))
+                throw new Error(
+                    "أنجز الدورة الحالية بدل إغلاق المهمة المتكررة.",
+                );
             if (
                 kind === "step" &&
                 (await db.steps.where("parentId").equals(id).count())
@@ -374,7 +420,9 @@ export async function remove(kind: EntityKind, id: string) {
         "rw",
         kind === "project" || kind === "step"
             ? [db.projects, db.steps, db.events]
-            : [table(kind), db.events],
+            : kind === "task"
+              ? [db.tasks, db.taskCycles, db.events]
+              : [table(kind), db.events],
         async () => {
             const item = await (table(kind) as Table).get(id);
             if (!item) return null;
@@ -384,11 +432,17 @@ export async function remove(kind: EntityKind, id: string) {
                     : kind === "step"
                       ? descendants(await db.steps.toArray(), id)
                       : [];
+            const taskCycles =
+                kind === "task"
+                    ? await db.taskCycles.where("taskId").equals(id).toArray()
+                    : [];
             await (table(kind) as Table).delete(id);
             if (steps.length) await db.steps.bulkDelete(steps.map((s) => s.id));
+            if (taskCycles.length)
+                await db.taskCycles.bulkDelete(taskCycles.map((c) => c.id));
             await event(kind, item, "deleted");
             if (kind === "step") await refresh(item.projectId, item.parentId);
-            return { kind, item, steps } as Deleted;
+            return { kind, item, steps, taskCycles } as Deleted;
         },
     );
 }
@@ -396,13 +450,16 @@ export interface Deleted {
     kind: EntityKind;
     item: Project | Step | Task | Idea;
     steps: Step[];
+    taskCycles?: TaskCycle[];
 }
 export async function undo(data: Deleted) {
     await db.transaction(
         "rw",
         data.kind === "project" || data.kind === "step"
             ? [db.projects, db.steps, db.events]
-            : [table(data.kind), db.events],
+            : data.kind === "task"
+              ? [db.tasks, db.taskCycles, db.events]
+              : [table(data.kind), db.events],
         async () => {
             // Retrying a successful undo must not overwrite later edits or
             // append another restoration event.
@@ -435,6 +492,8 @@ export async function undo(data: Deleted) {
             }
             await (table(data.kind) as Table).put(data.item);
             if (data.steps.length) await db.steps.bulkPut(data.steps);
+            if (data.taskCycles?.length)
+                await db.taskCycles.bulkPut(data.taskCycles);
             await event(data.kind, data.item, "reopened");
             if (data.kind === "step")
                 await refresh(
@@ -453,6 +512,7 @@ export async function importBackup(input: unknown) {
         await db.tasks.bulkAdd(data.tasks);
         await db.ideas.bulkAdd(data.ideas);
         await db.events.bulkAdd(data.events);
+        await db.taskCycles.bulkAdd(data.taskCycles ?? []);
         await completeFinishedProjects();
     });
 }
@@ -536,4 +596,260 @@ export async function setProjectCompletion(id: string, complete: boolean) {
         });
         await event("project", p, complete ? "closed" : "reopened", at);
     });
+}
+
+// Idempotent batches backfill every elapsed period without creating task copies.
+export async function reconcileTaskCycles(at = new Date(), taskId?: string) {
+    const selected = taskId ? await db.tasks.get(taskId) : undefined;
+    const tasks = taskId
+        ? selected && recurring(selected)
+            ? [selected]
+            : []
+        : await db.tasks
+              .where("schedule.repeat")
+              .anyOf("daily", "weekly", "monthly")
+              .toArray();
+    await db.transaction("rw", db.taskCycles, async () => {
+        await db.taskCycles
+            .where("[status+end]")
+            .between(
+                ["current", Dexie.minKey],
+                ["current", at.toISOString()],
+                true,
+                true,
+            )
+            .and((c) => !taskId || c.taskId === taskId)
+            .modify({ status: "incomplete" });
+    });
+    const due = tasks.filter(
+        (task) =>
+            !task.scheduleCursor ||
+            Date.parse(task.scheduleCursor) <= at.getTime(),
+    );
+    // Commit at most 256 new periods at once, across up to 32 tasks. This avoids
+    // one full live-query render for every task at midnight or after a long absence.
+    for (let offset = 0; offset < due.length; offset += 32) {
+        const group = due.slice(offset, offset + 32);
+        let more = true;
+        while (more) {
+            more = await db.transaction(
+                "rw",
+                [db.tasks, db.taskCycles],
+                async () => {
+                    let count = 0,
+                        pending = false;
+                    for (const original of group) {
+                        const actual = await db.tasks.get(original.id);
+                        if (
+                            !actual ||
+                            !recurring(actual) ||
+                            actual.scheduleRevision !==
+                                original.scheduleRevision ||
+                            (actual.scheduleCursor &&
+                                Date.parse(actual.scheduleCursor) >
+                                    at.getTime())
+                        )
+                            continue;
+                        if (count >= 256) {
+                            pending = true;
+                            continue;
+                        }
+                        const batch = cycleBatch(
+                            actual,
+                            at,
+                            actual.scheduleCursor
+                                ? { end: actual.scheduleCursor }
+                                : undefined,
+                            256 - count,
+                        );
+                        if (batch.length) {
+                            const existing = await db.taskCycles.bulkGet(
+                                batch.map((c) => c.id),
+                            );
+                            await db.taskCycles.bulkAdd(
+                                batch.filter((_, i) => !existing[i]),
+                            );
+                            await db.tasks.update(actual.id, {
+                                scheduleCursor: batch.at(-1)!.end,
+                            });
+                            count += batch.length;
+                            if (Date.parse(batch.at(-1)!.end) <= at.getTime())
+                                pending = true;
+                        }
+                    }
+                    return pending;
+                },
+            );
+        }
+    }
+}
+export async function setCycleStatus(
+    id: string,
+    status: Status,
+    intentAt = now(),
+) {
+    const at = new Date(intentAt);
+    if (!Number.isFinite(at.getTime()) || at.getTime() > Date.now() + 1000)
+        throw new Error("وقت الإنجاز غير صالح.");
+    await db.transaction(
+        "rw",
+        [db.tasks, db.taskCycles, db.events],
+        async () => {
+            let cycle = await db.taskCycles.get(id);
+            if (!cycle) {
+                let identity: [string, number, string];
+                try {
+                    identity = JSON.parse(id);
+                } catch {
+                    throw new Error("الدورة غير موجودة.");
+                }
+                if (
+                    !Array.isArray(identity) ||
+                    identity.length !== 3 ||
+                    typeof identity[0] !== "string" ||
+                    !Number.isInteger(identity[1]) ||
+                    typeof identity[2] !== "string" ||
+                    JSON.stringify(identity) !== id
+                )
+                    throw new Error("الدورة غير موجودة.");
+                const task = await db.tasks.get(identity[0]);
+                const expected = task && currentCycle(task, at);
+                if (!expected || expected.id !== id)
+                    throw new Error("الدورة غير موجودة أو تغير جدولها.");
+                await db.taskCycles.add(expected);
+                cycle = expected;
+            }
+            const task = await db.tasks.get(cycle.taskId);
+            if (
+                !task ||
+                at.getTime() < Date.parse(cycle.start) ||
+                at.getTime() >= Date.parse(cycle.end)
+            )
+                throw new Error(
+                    "انتهت هذه الدورة أو لم تبدأ؛ لا يُنسب الإنجاز إلى دورة أخرى. حدّث العرض.",
+                );
+            const completed = status === "done";
+            const desired = completed
+                ? "completed"
+                : Date.now() >= Date.parse(cycle.end)
+                  ? "incomplete"
+                  : "current";
+            if (
+                cycle.status === desired &&
+                (completed || (cycle.workStatus ?? "todo") === status)
+            )
+                return;
+            await db.taskCycles.update(id, {
+                status: desired,
+                completedAt: completed ? intentAt : undefined,
+                workStatus: status === "doing" ? "doing" : "todo",
+                startedAt:
+                    status === "doing"
+                        ? (cycle.startedAt ?? intentAt)
+                        : cycle.startedAt,
+            });
+            await event(
+                "task",
+                task,
+                completed
+                    ? "completed"
+                    : status === "doing"
+                      ? "started"
+                      : "reopened",
+                intentAt,
+            );
+        },
+    );
+}
+export async function updateTaskOptions(
+    id: string,
+    input: TaskOptions,
+    at = new Date(),
+) {
+    const options = validateTaskOptions(input);
+    await reconcileTaskCycles(at, id);
+    await db.transaction(
+        "rw",
+        [db.tasks, db.taskCycles, db.events],
+        async () => {
+            const task = await db.tasks.get(id);
+            if (!task) throw new Error("المهمة غير موجودة.");
+            const boundary = (s: TaskOptions["schedule"]) =>
+                s
+                    ? JSON.stringify([
+                          s.date,
+                          s.time ?? null,
+                          s.repeat,
+                          s.timeZone,
+                          s.repeat === "weekly"
+                              ? [...s.weekdays!].sort()
+                              : null,
+                          s.repeat === "monthly" ? s.monthDay : null,
+                      ])
+                    : "";
+            const changed =
+                boundary(task.schedule) !== boundary(options.schedule);
+            if (!changed) {
+                await db.tasks.update(id, {
+                    ...options,
+                    updatedAt: at.toISOString(),
+                });
+                return;
+            }
+            const current = currentCycle(task, at);
+            if (current) {
+                const row = (await db.taskCycles.get(current.id)) ?? current;
+                await db.taskCycles.put({
+                    ...row,
+                    end: at.toISOString(),
+                    plannedEnd: row.end,
+                    closedReason: "schedule_changed",
+                    status:
+                        row.status === "completed" ? "completed" : "incomplete",
+                });
+            }
+            // A completed legacy task may have no events (old imported backups).
+            const recurrenceChanged =
+                recurring(task) ||
+                (options.schedule && options.schedule.repeat !== "none");
+            if (
+                !recurring(task) &&
+                task.status === "done" &&
+                recurrenceChanged
+            ) {
+                const start = task.createdAt;
+                await db.taskCycles.put({
+                    id: JSON.stringify([id, task.scheduleRevision ?? 0, start]),
+                    taskId: id,
+                    revision: task.scheduleRevision ?? 0,
+                    start,
+                    end: at.toISOString(),
+                    scheduledAt: task.completedAt!,
+                    completedAt: task.completedAt,
+                    status: "completed",
+                    source: "legacy",
+                    timeZone:
+                        options.schedule?.timeZone ??
+                        Intl.DateTimeFormat().resolvedOptions().timeZone,
+                });
+            }
+            const next: Task = {
+                ...task,
+                ...options,
+                schedule: options.schedule,
+                status: recurrenceChanged ? "todo" : task.status,
+                completedAt: recurrenceChanged ? undefined : task.completedAt,
+                updatedAt: at.toISOString(),
+                scheduleRevision: (task.scheduleRevision ?? 0) + 1,
+                scheduleSince: at.toISOString(),
+                scheduleCursor: undefined,
+            };
+            await db.tasks.put(next);
+            const cycle = currentCycle(next, at);
+            if (cycle) {
+                await db.taskCycles.add(cycle);
+                await db.tasks.update(id, { scheduleCursor: cycle.end });
+            }
+        },
+    );
 }
