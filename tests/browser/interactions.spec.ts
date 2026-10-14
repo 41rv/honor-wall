@@ -1,10 +1,11 @@
+import { openCreate } from "./helpers";
 import { test, expect } from "@playwright/test";
 import { largeFixture, importData } from "./helpers";
 test("علامة الإتمام تعمل حتى إذا حدث تحديث للواجهة أثناء الضغط", async ({
     page,
 }) => {
     await page.goto("/#tasks");
-    await page.getByRole("button", { name: "مهمة جديدة", exact: true }).click();
+    await openCreate(page, "task");
     await page
         .getByRole("dialog")
         .getByLabel("الاسم", { exact: true })
@@ -46,7 +47,7 @@ test("قياس سرعة الإضافة والتعديل والإتمام بقا�
     await session.send("Emulation.setCPUThrottlingRate", { rate: 4 });
     const times: Record<string, number> = {};
     await page.goto("/#projects");
-    await page.getByRole("button", { name: "مشروع جديد" }).click();
+    await openCreate(page, "project");
     await page
         .getByRole("dialog")
         .getByLabel("الاسم", { exact: true })

@@ -308,6 +308,8 @@ const ProjectCard = memo(function ProjectCard({
     execution,
     onStepComplete,
     onActions,
+    home = false,
+    omitCurrentId,
 }: {
     project: Project;
     onComplete: (id: string, complete: boolean) => Promise<void>;
@@ -316,13 +318,15 @@ const ProjectCard = memo(function ProjectCard({
     execution: Execution;
     onStepComplete: (id: string, complete: boolean) => Promise<void>;
     onActions: OpenActions;
+    home?: boolean;
+    omitCurrentId?: string;
 }) {
     const gestures = useLongPress((rect) =>
         onActions("project", project, rect, true),
     );
     return (
         <article
-            className="project-card"
+            className={`project-card${home ? " home-project" : ""}`}
             data-project-id={project.id}
             {...gestures}
         >
@@ -356,12 +360,24 @@ const ProjectCard = memo(function ProjectCard({
                 <span className="project-name">{project.title}</span>
                 <ArrowUpLeft size={19} />
             </button>
-            <p className="project-note">
-                {project.notes || "مساحة لخطوتك التالية."}
-            </p>
+            {!home && (
+                <p className="project-note" title={project.notes}>
+                    {project.notes || "مساحة لخطوتك التالية."}
+                </p>
+            )}
             <Progress hierarchy={hierarchy} projectId={project.id} compact />
             <ExecutionSummary
-                execution={execution}
+                execution={
+                    home
+                        ? { ...execution, lastCompleted: undefined }
+                        : execution
+                }
+                stageLabel={
+                    execution.stage
+                        ? `المرحلة ${hierarchy.numbers.get(execution.stage.id)}`
+                        : undefined
+                }
+                omitCurrentId={omitCurrentId}
                 open={(stepId) => go(`step/${stepId}`)}
                 complete={onStepComplete}
             />
@@ -563,10 +579,14 @@ const TaskRow = memo(function TaskRow({
     task,
     onComplete,
     onActions,
+    defaultPriority = false,
+    compact = false,
 }: {
     task: TaskView;
     onComplete: (task: TaskView, status: Status, at?: string) => Promise<void>;
     onActions: OpenActions;
+    defaultPriority?: boolean;
+    compact?: boolean;
 }) {
     const completion = useCompletion(
         task._cycleId ? `taskCycle/${task._cycleId}` : `task/${task.id}`,
@@ -578,13 +598,25 @@ const TaskRow = memo(function TaskRow({
         onActions("task", task, rect, true),
     );
     return (
-        <article className="task-row" data-task-id={task.id} {...gestures}>
-            {task.priority && (
+        <article
+            className={`task-row${compact ? " compact-task" : ""}`}
+            data-task-id={task.id}
+            {...gestures}
+        >
+            {(task.priority || defaultPriority) && (
                 <span
                     className="priority-strip"
                     role="img"
-                    aria-label={priorities[task.priority].name}
-                    style={{ backgroundColor: priorities[task.priority].color }}
+                    aria-label={
+                        task.priority
+                            ? priorities[task.priority].name
+                            : "بدون أولوية"
+                    }
+                    style={{
+                        backgroundColor: task.priority
+                            ? priorities[task.priority].color
+                            : "#8B929D",
+                    }}
                 />
             )}
             <button
@@ -606,22 +638,29 @@ const TaskRow = memo(function TaskRow({
             </button>
             <button className="task-main" onClick={() => go(`task/${task.id}`)}>
                 <strong>{task.title}</strong>
-                <span className="muted small">
-                    {task.status === "done"
-                        ? `أُنشئت ${date(task.createdAt)} · أُنجزت ${date(task.completedAt)} · ${elapsed(task.createdAt, task.completedAt!)}`
-                        : task.notes || `أُنشئت ${date(task.createdAt)}`}
-                </span>
+                {!compact && (
+                    <span className="muted small">
+                        {task.status === "done"
+                            ? `أُنشئت ${date(task.createdAt)} · أُنجزت ${date(task.completedAt)} · ${elapsed(task.createdAt, task.completedAt!)}`
+                            : task.notes || `أُنشئت ${date(task.createdAt)}`}
+                    </span>
+                )}
                 <TaskDue task={task} />
+                {compact && task.status === "doing" && (
+                    <span className="small muted">جارٍ العمل</span>
+                )}
             </button>
-            <Badge status={task.status} />
+            {!compact && <Badge status={task.status} />}
             <ActionButton kind="task" item={task} open={onActions} />
-            <button
-                className="icon-btn"
-                aria-label={`تفاصيل ${task.title}`}
-                onClick={() => go(`task/${task.id}`)}
-            >
-                <FileText size={20} />
-            </button>
+            {!compact && (
+                <button
+                    className="icon-btn"
+                    aria-label={`تفاصيل ${task.title}`}
+                    onClick={() => go(`task/${task.id}`)}
+                >
+                    <FileText size={20} />
+                </button>
+            )}
         </article>
     );
 });
@@ -667,6 +706,10 @@ function App() {
     const [taskFilter, setTaskFilter] = useState("all");
     const [completedOpen, setCompletedOpen] = useState(false);
     const [query, setQuery] = useState("");
+    const [searchOpen, setSearchOpen] = useState(false);
+    const [progressTab, setProgressTab] = useState<
+        "overview" | "insights" | "history"
+    >("overview");
     const [filter, setFilter] = useState("active");
     const [ideaArchive, setIdeaArchive] = useState(false);
     const [ideaLimit, setIdeaLimit] = useState(30);
@@ -906,9 +949,6 @@ function App() {
     const active = data.projects
         .filter((p) => p.status === "active" && !p.archived)
         .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
-    const latestProject = [...data.projects].sort((a, b) =>
-        b.updatedAt.localeCompare(a.updatedAt),
-    )[0];
     const remaining = data.tasks
         .filter((t) => t.status !== "done")
         .sort(
@@ -953,12 +993,6 @@ function App() {
             },
         });
     }
-    const createButton = (kind: EntityKind, label?: string) => (
-        <button className="btn primary" onClick={() => setForm({ kind })}>
-            <Plus size={18} />
-            {label ?? `إضافة ${kindNames[kind]}`}
-        </button>
-    );
     const open = (kind: EntityKind, target: string) => go(`${kind}/${target}`);
     const currentProject = data.projects.find((p) => p.id === id);
     const currentStep = data.steps.find((s) => s.id === id);
@@ -983,13 +1017,31 @@ function App() {
                   ? "tasks"
                   : page;
     const dashboardProjects = active;
+    const latestProject = useMemo(
+        () =>
+            [...data.projects].sort((a, b) =>
+                b.updatedAt.localeCompare(a.updatedAt),
+            )[0],
+        [data.projects],
+    );
     const dashboardRecent = recent.slice(0, 5);
-    const dashboard =
+    const legacyDashboard =
         page === "progress" ? (
             <>
-                <PeriodDashboard data={data} />
-                <details className="general-dashboard">
-                    <summary>المؤشرات العامة وآخر ٧ أيام</summary>
+                <div className="general-dashboard">
+                    {latestProject && (
+                        <p className="last-edited">
+                            آخر مشروع عُدّل:{" "}
+                            <button
+                                className="text-btn"
+                                onClick={() =>
+                                    open("project", latestProject.id)
+                                }
+                            >
+                                {latestProject.title}
+                            </button>
+                        </p>
+                    )}
                     <div className="stats-grid">
                         {[
                             [
@@ -1022,7 +1074,7 @@ function App() {
                             );
                         })}
                     </div>
-                </details>
+                </div>
                 <div className="dashboard-grid">
                     <section className="surface">
                         <div className="section-heading">
@@ -1137,6 +1189,59 @@ function App() {
                 </div>
             </>
         ) : null;
+    const dashboard = (
+        <PeriodDashboard
+            data={data}
+            tab={progressTab}
+            onTabChange={setProgressTab}
+            legacy={legacyDashboard}
+            renderRecord={(record) => {
+                const target =
+                    record.kind === "step"
+                        ? "step"
+                        : record.kind === "project"
+                          ? "project"
+                          : "task";
+                const task = data.tasks.find((t) => t.id === record.id);
+                if (
+                    task &&
+                    (record.kind === "task" ||
+                        (record.kind === "cycle" &&
+                            (task as TaskView)._cycleId === record.cycleId))
+                )
+                    return (
+                        <TaskRow
+                            task={task}
+                            onComplete={completeTask}
+                            onActions={openActions}
+                        />
+                    );
+                return (
+                    <div className="history-record-body">
+                        {(target === "step" || target === "project") && (
+                            <CompletionButton
+                                entityKey={`${target}/${record.id}`}
+                                checked
+                                label={`${target === "step" ? "الخطوة" : "المشروع"} «${record.title}»`}
+                                onToggle={(value) =>
+                                    target === "step"
+                                        ? completeBranch(record.id, value)
+                                        : completeProject(record.id, value)
+                                }
+                            />
+                        )}
+                        <button
+                            className="title-link"
+                            onClick={() => open(target, record.id)}
+                        >
+                            {record.title}
+                            <ArrowUpLeft size={17} />
+                        </button>
+                    </div>
+                );
+            }}
+        />
+    );
     return (
         <div
             className="app-shell"
@@ -1278,7 +1383,7 @@ function App() {
                                     : page === "calendar"
                                       ? "التقويم الأسبوعي"
                                       : page === "home"
-                                        ? "مساحة هادئة. لإنجاز أكبر."
+                                        ? "يومك، بخطوة واضحة"
                                         : page === "projects"
                                           ? "مشاريعك"
                                           : page === "tasks"
@@ -1294,7 +1399,7 @@ function App() {
                             </h1>
                             <p>
                                 {page === "home"
-                                    ? "اجمع ما يشغلك، وابدأ من حيث توقفت."
+                                    ? ""
                                     : page === "projects"
                                       ? "من الفكرة الكبيرة إلى الخطوة التالية."
                                       : page === "tasks"
@@ -1308,55 +1413,35 @@ function App() {
                                               : ""}
                             </p>
                         </div>
-                        {["home", "projects", "tasks", "ideas"].includes(
-                            page,
-                        ) && (
+                        {page === "home" && (
                             <button
-                                className="btn primary heading-add"
-                                onClick={() =>
-                                    page === "home"
-                                        ? setQuick(true)
-                                        : setForm({
-                                              kind:
-                                                  page === "projects"
-                                                      ? "project"
-                                                      : page === "tasks"
-                                                        ? "task"
-                                                        : "idea",
-                                          })
-                                }
+                                className="icon-btn"
+                                aria-label="فتح البحث"
+                                aria-expanded={searchOpen}
+                                onClick={() => setSearchOpen((v) => !v)}
                             >
-                                <Plus size={19} />
-                                {page === "home"
-                                    ? "إضافة سريعة"
-                                    : page === "projects"
-                                      ? "مشروع جديد"
-                                      : page === "tasks"
-                                        ? "مهمة جديدة"
-                                        : "فكرة جديدة"}
+                                <Search size={20} />
                             </button>
                         )}
                     </div>
                     {page === "home" && !query && (
                         <>
-                            <QuickIdeaCapture save={saveQuickIdea} />
                             <HomeExecution
                                 data={data}
                                 active={active}
-                                remaining={remaining}
-                                latestProject={latestProject}
                                 resume={resume}
                                 hierarchy={hierarchy}
-                                executions={executions}
                                 open={go}
                                 complete={completeBranch}
-                                onCreateProject={() =>
-                                    setForm({ kind: "project" })
-                                }
-                                lastVisited={lastVisited}
-                                renderProject={(p, i) => (
+                                openHistory={() => {
+                                    setProgressTab("history");
+                                    go("progress");
+                                }}
+                                renderProject={(p, i, omitCurrentId) => (
                                     <ProjectCard
                                         key={p.id}
+                                        home
+                                        omitCurrentId={omitCurrentId}
                                         project={p}
                                         hierarchy={hierarchy}
                                         execution={executions.get(p.id)!}
@@ -1370,6 +1455,8 @@ function App() {
                                     <TaskRow
                                         onActions={openActions}
                                         key={task.id}
+                                        defaultPriority
+                                        compact
                                         task={task}
                                         onComplete={completeTask}
                                     />
@@ -1377,25 +1464,29 @@ function App() {
                             />
                         </>
                     )}
-                    <div className="search-box">
-                        <Search size={19} />
-                        <input
-                            aria-label="بحث شامل"
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                            placeholder="ابحث في مشاريعك، مهامك، أفكارك وملاحظاتك…"
-                        />
-                        {query && (
-                            <button
-                                className="icon-btn"
-                                aria-label="مسح البحث"
-                                onClick={() => setQuery("")}
-                            >
-                                <X size={16} />
-                            </button>
-                        )}
-                        <span className="search-hint desktop">بحث محلي</span>
-                    </div>
+                    {(page !== "home" || searchOpen || query) && (
+                        <div className="search-box">
+                            <Search size={19} />
+                            <input
+                                aria-label="بحث شامل"
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                placeholder="ابحث في مشاريعك، مهامك، أفكارك وملاحظاتك…"
+                            />
+                            {query && (
+                                <button
+                                    className="icon-btn"
+                                    aria-label="مسح البحث"
+                                    onClick={() => setQuery("")}
+                                >
+                                    <X size={16} />
+                                </button>
+                            )}
+                            <span className="search-hint desktop">
+                                بحث محلي
+                            </span>
+                        </div>
+                    )}
                     {query ? (
                         <section className="surface search-results">
                             <h2>
@@ -1443,6 +1534,8 @@ function App() {
                                     renderTask={(task) => (
                                         <TaskRow
                                             key={task.id}
+                                            defaultPriority
+                                            compact
                                             task={task}
                                             onComplete={completeTask}
                                             onActions={openActions}
@@ -1539,13 +1632,6 @@ function App() {
                                                         ? "رتّب أفكارك الكبيرة في خطوات يمكن إنجازها."
                                                         : "ستجد مشاريعك هنا عندما تتغير حالتها."
                                                 }
-                                                action={
-                                                    filter === "active"
-                                                        ? createButton(
-                                                              "project",
-                                                          )
-                                                        : undefined
-                                                }
                                             />
                                         </div>
                                     )}
@@ -1553,49 +1639,51 @@ function App() {
                             )}
                             {page === "tasks" && (
                                 <>
-                                    <PlanningLinks />
-                                    <div className="section-heading">
-                                        <h2>
-                                            المهام المستقلة{" "}
-                                            <span className="count">
-                                                {remaining.length}
+                                    <div className="task-controls">
+                                        <PlanningLinks all={false} />
+                                        <div className="section-heading">
+                                            <h2>
+                                                المهام المستقلة{" "}
+                                                <span className="count">
+                                                    {remaining.length}
+                                                </span>
+                                            </h2>
+                                            <span className="muted small">
+                                                غير المكتملة أولًا
                                             </span>
-                                        </h2>
-                                        <span className="muted small">
-                                            غير المكتملة أولًا
-                                        </span>
-                                    </div>
-                                    <div
-                                        className="tabs task-filters"
-                                        role="group"
-                                        aria-label="عرض المهام بحسب موعدها"
-                                    >
-                                        {[
-                                            ["all", "كل المهام"],
-                                            ["general", "بدون موعد"],
-                                            ["today", "اليوم"],
-                                            ["near", "اقترب الموعد"],
-                                            ["overdue", "متأخرة"],
-                                            ["cycle", "متكررة"],
-                                            ["future", "قادمة"],
-                                        ].map(([key, label]) => (
-                                            <button
-                                                key={key}
-                                                aria-pressed={
-                                                    taskFilter === key
-                                                }
-                                                className={
-                                                    taskFilter === key
-                                                        ? "selected"
-                                                        : ""
-                                                }
-                                                onClick={() =>
-                                                    setTaskFilter(key)
-                                                }
-                                            >
-                                                {label}
-                                            </button>
-                                        ))}
+                                        </div>
+                                        <div
+                                            className="tabs task-filters"
+                                            role="group"
+                                            aria-label="عرض المهام بحسب موعدها"
+                                        >
+                                            {[
+                                                ["all", "كل المهام"],
+                                                ["general", "بدون موعد"],
+                                                ["today", "اليوم"],
+                                                ["near", "اقترب الموعد"],
+                                                ["overdue", "متأخرة"],
+                                                ["cycle", "متكررة"],
+                                                ["future", "قادمة"],
+                                            ].map(([key, label]) => (
+                                                <button
+                                                    key={key}
+                                                    aria-pressed={
+                                                        taskFilter === key
+                                                    }
+                                                    className={
+                                                        taskFilter === key
+                                                            ? "selected"
+                                                            : ""
+                                                    }
+                                                    onClick={() =>
+                                                        setTaskFilter(key)
+                                                    }
+                                                >
+                                                    {label}
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
                                     <div className="surface task-list">
                                         {filteredTasks.length ? (
@@ -1629,7 +1717,6 @@ function App() {
                                                 icon={CheckCheck}
                                                 title="قائمة خفيفة، ذهن أصفى"
                                                 body="أضف مهمة مستقلة، أو استمتع بخلوّ القائمة."
-                                                action={createButton("task")}
                                             />
                                         )}
                                     </div>
@@ -1706,6 +1793,12 @@ function App() {
                                             الأرشيف
                                         </button>
                                     </div>
+                                    <details className="idea-capture-details">
+                                        <summary>التقاط فكرة بسرعة</summary>
+                                        <QuickIdeaCapture
+                                            save={saveQuickIdea}
+                                        />
+                                    </details>
                                     <div className="idea-grid">
                                         {sortedIdeas
                                             .slice(0, ideaLimit)
@@ -1736,10 +1829,6 @@ function App() {
                                                 icon={Lightbulb}
                                                 title="امنح أفكارك مكانًا"
                                                 body="عنوان واحد يكفي. التفاصيل تأتي لاحقًا، حين ترغب."
-                                                action={createButton(
-                                                    "idea",
-                                                    "التقط أول فكرة",
-                                                )}
                                             />
                                         </div>
                                     )}
@@ -2499,6 +2588,8 @@ function App() {
             <button
                 className="mobile-fab"
                 aria-label="إضافة سريعة"
+                aria-haspopup="dialog"
+                aria-expanded={quick}
                 onClick={() => setQuick(true)}
             >
                 <Plus size={24} />
@@ -2506,6 +2597,7 @@ function App() {
             {quick && (
                 <Dialog
                     title="ماذا تريد أن تضيف؟"
+                    className="add-menu"
                     onClose={() => setQuick(false)}
                 >
                     <div className="quick-options">
@@ -2537,8 +2629,12 @@ function App() {
                             >
                                 <x.icon size={25} />
                                 <div>
-                                    <strong>{kindNames[x.kind]}</strong>
-                                    <p>{x.description}</p>
+                                    <strong>
+                                        {kindNames[x.kind]}{" "}
+                                        {x.kind === "idea" || x.kind === "task"
+                                            ? "جديدة"
+                                            : "جديد"}
+                                    </strong>
                                 </div>
                                 <ChevronLeft size={19} />
                             </button>

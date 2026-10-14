@@ -1,3 +1,4 @@
+import { openCreate } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import type { Snapshot } from "../../app/model";
 const at = "2026-10-11T10:00:00.000Z";
@@ -68,7 +69,13 @@ async function loadBackup(page: Page, data: Snapshot) {
     await expect(page.getByRole("dialog")).not.toBeVisible();
 }
 async function add(page: Page, button: string, title: string, notes = "") {
-    await page.getByRole("button", { name: button, exact: true }).click();
+    const kind = {
+        "مشروع جديد": "project",
+        "مهمة جديدة": "task",
+        "فكرة جديدة": "idea",
+    }[button] as "project" | "task" | "idea" | undefined;
+    if (kind) await openCreate(page, kind);
+    else await page.getByRole("button", { name: button, exact: true }).click();
     const dialog = page.getByRole("dialog");
     await dialog.getByLabel("الاسم", { exact: true }).fill(title);
     if (notes) await dialog.getByRole("textbox").nth(1).fill(notes);
@@ -85,7 +92,7 @@ test.beforeEach(async ({ page }) => {
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto("/");
     await expect(
-        page.getByRole("heading", { name: "مساحة هادئة. لإنجاز أكبر." }),
+        page.getByRole("heading", { name: "يومك، بخطوة واضحة" }),
     ).toBeVisible();
 });
 test("واجهة المشروع: الإنشاء، الترتيب، الملاحظات، النسب والإغلاق", async ({

@@ -1,11 +1,11 @@
 import { useState, type ReactNode } from "react";
 import type { TaskView } from "./taskSchedule";
-import { chosenToday, todayGroups } from "./dailyPlanning";
+import { chosenToday, orderedToday } from "./dailyPlanning";
 import { selectTaskToday } from "./db";
 import { userError } from "./userError";
 import { useWallClock } from "./useWallClock";
 
-export function PlanningLinks() {
+export function PlanningLinks({ all = true }: { all?: boolean }) {
     return (
         <nav className="planning-links" aria-label="تنظيم يومك">
             <a className="btn secondary" href="#today">
@@ -14,9 +14,11 @@ export function PlanningLinks() {
             <a className="btn secondary" href="#calendar">
                 التقويم الأسبوعي
             </a>
-            <a className="text-btn" href="#tasks">
-                كل المهام
-            </a>
+            {all && (
+                <a className="text-btn" href="#tasks">
+                    كل المهام
+                </a>
+            )}
         </nav>
     );
 }
@@ -29,7 +31,7 @@ export function TodayTasks({
 }) {
     const clock = useWallClock();
     const at = new Date(Math.max(clock, Date.now()));
-    const groups = todayGroups(tasks, at);
+    const ordered = orderedToday(tasks, at);
     const [busy, setBusy] = useState("");
     const [error, setError] = useState("");
     async function select(task: TaskView, selected: boolean) {
@@ -56,49 +58,43 @@ export function TodayTasks({
                     {error}
                 </p>
             )}
-            {(
-                [
-                    ["due", "مستحقة اليوم"],
-                    ["selected", "اخترتها لليوم"],
-                    ["available", "دورات سابقة ما زالت متاحة"],
-                    ["overdue", "مهام تجاوزت موعدها"],
-                ] as const
-            ).map(([key, title]) => (
-                <section
-                    key={key}
-                    aria-label={title}
-                    className="planning-section"
-                >
-                    <h2>
-                        {title}{" "}
-                        <span className="count">{groups[key].length}</span>
-                    </h2>
-                    {groups[key].length ? (
-                        <div className="surface task-list">
-                            {groups[key].map((task) => (
-                                <div key={task.id}>
-                                    {renderTask(task)}
-                                    {key === "selected" && (
-                                        <button
-                                            className="text-btn daily-remove"
-                                            disabled={!!busy}
-                                            onClick={() =>
-                                                void select(task, false)
-                                            }
-                                        >
-                                            إزالة «{task.title}» من اليوم
-                                        </button>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <p className="muted small">
-                            لا توجد مهام في هذا القسم.
-                        </p>
-                    )}
-                </section>
-            ))}
+            <div className="surface task-list today-ordered">
+                {ordered.map(({ task, category: key }) => {
+                    const title = {
+                        due: "مستحقة اليوم",
+                        selected: "اخترتها لليوم",
+                        available: "دورات سابقة ما زالت متاحة",
+                        overdue: "مهام تجاوزت موعدها",
+                    }[key];
+                    return (
+                        <section
+                            key={task.id}
+                            aria-label={title}
+                            className={`planning-section planning-${key}`}
+                        >
+                            <span className="planning-context small muted">
+                                {title}
+                            </span>
+                            {renderTask(task)}
+                            {key === "selected" && (
+                                <button
+                                    className="text-btn daily-remove"
+                                    disabled={!!busy}
+                                    onClick={() => void select(task, false)}
+                                >
+                                    إزالة «{task.title}» من اليوم
+                                </button>
+                            )}
+                        </section>
+                    );
+                })}
+                {!ordered.length && (
+                    <p className="compact-empty muted">
+                        لا توجد مهام لليوم. اختر مهمة عامة أدناه أو أضف مهمة من
+                        زر الإضافة.
+                    </p>
+                )}
+            </div>
             <details className="surface daily-picker">
                 <summary>اختيار مهام عامة لليوم</summary>
                 {tasks

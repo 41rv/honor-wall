@@ -1,8 +1,16 @@
+import { showLegacy } from "./helpers";
+import { openCreate } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import { importData, largeFixture } from "./helpers";
 import { readFile } from "node:fs/promises";
 async function add(page: Page, button: string, title: string, notes = "") {
-    await page.getByRole("button", { name: button, exact: true }).click();
+    const kind = {
+        "مشروع جديد": "project",
+        "مهمة جديدة": "task",
+        "فكرة جديدة": "idea",
+    }[button] as "project" | "task" | "idea" | undefined;
+    if (kind) await openCreate(page, kind);
+    else await page.getByRole("button", { name: button, exact: true }).click();
     const dialog = page.getByRole("dialog");
     await dialog.getByLabel("الاسم", { exact: true }).fill(title);
     if (notes) await dialog.getByRole("textbox").nth(1).fill(notes);
@@ -35,15 +43,15 @@ test("أزرار الإضافة والإلغاء والإغلاق والبحث �
         .getByRole("button", { name: "إلغاء", exact: true })
         .click();
     await expect(page.getByRole("dialog")).not.toBeVisible();
-    await page.getByRole("button", { name: "ابدأ مشروعك الأول" }).click();
+    await openCreate(page, "project");
     await page.getByRole("button", { name: "إغلاق", exact: true }).click();
-    await page.getByRole("button", { name: "ابدأ مشروعك الأول" }).click();
+    await openCreate(page, "project");
     await page.keyboard.press("Escape");
     await expect(page.getByRole("dialog")).not.toBeVisible();
-    await page.getByRole("button", { name: "ابدأ مشروعك الأول" }).click();
+    await openCreate(page, "project");
     await page.mouse.click(5, 5);
     await expect(page.getByRole("dialog")).not.toBeVisible();
-    await page.getByRole("button", { name: "ابدأ مشروعك الأول" }).click();
+    await openCreate(page, "project");
     await page
         .getByRole("dialog")
         .getByLabel("الاسم", { exact: true })
@@ -473,29 +481,32 @@ test("روابط الرئيسية والإنجازات تفتح المشروع �
         .click();
     await expect(page).toHaveURL(/#projects/);
     await page.goto("/#home");
-    await page.getByRole("button", { name: "إلى المهام", exact: true }).click();
+    await page
+        .locator(".navigation")
+        .getByRole("link", { name: /^المهام/ })
+        .click();
     await page
         .getByRole("button", { name: "إكمال مهمة 0", exact: true })
         .click();
-    await page.goto("/#progress");
+    await showLegacy(page);
     await page
         .locator(".achievement-row")
         .filter({ hasText: "مهمة 0" })
         .click();
     await expect(page).toHaveURL(/#task\/t0/);
-    await page.goto("/#progress");
+    await showLegacy(page);
     await page
         .locator(".achievement-row")
         .filter({ hasText: "خطوة 0-0" })
         .click();
     await expect(page).toHaveURL(/#step\/step0-0-0/);
-    await page.goto("/#progress");
+    await showLegacy(page);
     await page
         .locator(".dashboard-project")
         .getByRole("button", { name: "مشروع 0", exact: true })
         .click();
     await expect(page).toHaveURL(/#project\/p0/);
-    await page.goto("/#home");
+    await showLegacy(page);
     await page
         .locator(".last-edited")
         .getByRole("button", { name: "مشروع 0", exact: true })
@@ -543,6 +554,6 @@ test("رسالة فشل فتح التخزين وزر إعادة المحاولة
         .getByRole("button", { name: "إعادة المحاولة", exact: true })
         .click();
     await expect(
-        page.getByRole("heading", { name: "مساحة هادئة. لإنجاز أكبر." }),
+        page.getByRole("heading", { name: "يومك، بخطوة واضحة" }),
     ).toBeVisible();
 });

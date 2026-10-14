@@ -4,15 +4,19 @@ export function ExecutionSummary({
     execution,
     open,
     complete,
+    stageLabel,
+    omitCurrentId,
 }: {
     execution: Execution;
     open: (id: string) => void;
     complete: (id: string, value: boolean) => Promise<void>;
+    stageLabel?: string;
+    omitCurrentId?: string;
 }) {
     const { current, stage, lastCompleted, total } = execution;
     return (
         <div className="execution-summary">
-            {current ? (
+            {current && current.id !== omitCurrentId ? (
                 <div
                     className="execution-current"
                     data-execution-id={current.id}
@@ -24,7 +28,7 @@ export function ExecutionSummary({
                                 : "خطوتك التالية"}
                         </span>
                         <strong className="execution-stage">
-                            {stage?.title ?? "خطوات المشروع"}
+                            {stageLabel ?? stage?.title ?? "خطوات المشروع"}
                         </strong>
                         <button
                             className="title-link execution-title"
@@ -43,7 +47,11 @@ export function ExecutionSummary({
                 </div>
             ) : (
                 <p className="execution-empty">
-                    {total ? "جميع الخطوات مكتملة ✓" : "لم تُضف خطوات بعد"}
+                    {current?.id === omitCurrentId
+                        ? "تابع من اختصار الاستكمال أعلاه"
+                        : total
+                          ? "جميع الخطوات مكتملة ✓"
+                          : "لم تُضف خطوات بعد"}
                 </p>
             )}
             {lastCompleted && (
@@ -54,7 +62,7 @@ export function ExecutionSummary({
                     <div>
                         <span className="small muted">
                             {lastCompleted.status === "done"
-                                ? "آخر خطوة أُنجزت · يمكنك إعادة فتحها"
+                                ? "آخر إنجاز"
                                 : "الخطوة مفتوحة مجددًا"}
                         </span>
                         <button

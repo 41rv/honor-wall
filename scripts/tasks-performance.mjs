@@ -1,9 +1,11 @@
 import { chromium, expect } from "@playwright/test";
 import { spawn } from "node:child_process";
 import fs from "node:fs";
+import path from "node:path";
 import { importData } from "../tests/browser/helpers.ts";
 const label = process.argv[2] || "after";
 const directory = process.argv[3] || "build";
+const reportPath = process.argv[4] || `docs/tasks/performance-${label}.json`;
 const base = "http://127.0.0.1:4190";
 const server = spawn(
     "python3",
@@ -125,6 +127,20 @@ try {
                 const cdp = await context.newCDPSession(page);
                 await cdp.send("Emulation.setCPUThrottlingRate", { rate: cpu });
                 for (let sample = 0; sample < 5; sample++) {
+                    if (!(await page.locator(".heading-add").count())) {
+                        await page
+                            .getByRole("button", {
+                                name: "إضافة سريعة",
+                                exact: true,
+                            })
+                            .click();
+                        await expect(
+                            page.getByRole("dialog", {
+                                name: "ماذا تريد أن تضيف؟",
+                                exact: true,
+                            }),
+                        ).toBeVisible();
+                    }
                     await page.evaluate(() => {
                         window.__formProbe = {
                             start: 0,
@@ -145,19 +161,27 @@ try {
                             const p = window.__formProbe;
                             p.start = performance.now();
                             const frame = () => {
-                                const dialog =
-                                    document.querySelector("dialog[open]");
+                                const dialog = document.querySelector(
+                                    "dialog[open]:has(form)",
+                                );
                                 if (dialog?.getBoundingClientRect().height)
                                     p.visible = performance.now() - p.start;
                                 else requestAnimationFrame(frame);
                             };
                             requestAnimationFrame(frame);
                         };
-                        document
-                            .querySelector(".heading-add")
-                            .addEventListener("click", window.__formClick, {
-                                once: true,
-                            });
+                        const target =
+                            document.querySelector(".heading-add") ??
+                            [
+                                ...document.querySelectorAll(
+                                    ".add-menu button",
+                                ),
+                            ].find(
+                                (b) => b.textContent.trim() === "مهمة جديدة",
+                            );
+                        target.addEventListener("click", window.__formClick, {
+                            once: true,
+                        });
                     });
                     await page
                         .getByRole("button", {
@@ -226,9 +250,9 @@ try {
                     ),
                 });
             }
-    fs.mkdirSync("docs/tasks", { recursive: true });
+    fs.mkdirSync(path.dirname(reportPath), { recursive: true });
     fs.writeFileSync(
-        `docs/tasks/performance-${label}.json`,
+        reportPath,
         JSON.stringify(
             {
                 timestamp: new Date().toISOString(),

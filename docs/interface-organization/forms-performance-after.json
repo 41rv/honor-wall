@@ -1,0 +1,584 @@
+{
+  "timestamp": "2026-10-14T19:05:31.632Z",
+  "build": "/tmp/masar-interface-final-root",
+  "samples": [
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 0,
+      "open_form_ms": 19.200000002980232,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 1,
+      "open_form_ms": 10.400000005960464,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 2,
+      "open_form_ms": 12.799999997019768,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 3,
+      "open_form_ms": 11.099999994039536,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 4,
+      "open_form_ms": 9.900000005960464,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 0,
+      "open_form_ms": 13.799999997019768,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 1,
+      "open_form_ms": 10.199999988079071,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 2,
+      "open_form_ms": 10.799999997019768,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 3,
+      "open_form_ms": 11.5,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 4,
+      "open_form_ms": 10.5,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 0,
+      "open_form_ms": 100.59999999403954,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 1,
+      "open_form_ms": 52.5,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 2,
+      "open_form_ms": 51,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 3,
+      "open_form_ms": 58.70000000298023,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 4,
+      "open_form_ms": 44.099999994039536,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 0,
+      "open_form_ms": 101.40000000596046,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 1,
+      "open_form_ms": 50.5,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 2,
+      "open_form_ms": 50.400000005960464,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 3,
+      "open_form_ms": 60.599999994039536,
+      "long_tasks": []
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 4,
+      "open_form_ms": 64,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 0,
+      "open_form_ms": 21.599999994039536,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 1,
+      "open_form_ms": 13.5,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 2,
+      "open_form_ms": 13.799999997019768,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 3,
+      "open_form_ms": 12.100000008940697,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 4,
+      "open_form_ms": 14,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 0,
+      "open_form_ms": 22.19999998807907,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 1,
+      "open_form_ms": 13.700000002980232,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 2,
+      "open_form_ms": 13.699999988079071,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 3,
+      "open_form_ms": 20.19999998807907,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 4,
+      "open_form_ms": 15.299999997019768,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 0,
+      "open_form_ms": 99.70000000298023,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 1,
+      "open_form_ms": 91.29999999701977,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 2,
+      "open_form_ms": 72.59999999403954,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 3,
+      "open_form_ms": 81.19999998807907,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 4,
+      "open_form_ms": 90,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 0,
+      "open_form_ms": 125.5,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 1,
+      "open_form_ms": 85.09999999403954,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 2,
+      "open_form_ms": 79.40000000596046,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 3,
+      "open_form_ms": 87.20000000298023,
+      "long_tasks": []
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 4,
+      "open_form_ms": 81,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 0,
+      "open_form_ms": 38.30000001192093,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 1,
+      "open_form_ms": 31.700000002980232,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 2,
+      "open_form_ms": 26.100000008940697,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 3,
+      "open_form_ms": 30.400000005960464,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "sample": 4,
+      "open_form_ms": 32.400000005960464,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 0,
+      "open_form_ms": 45,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 1,
+      "open_form_ms": 30.799999997019768,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 2,
+      "open_form_ms": 41.6000000089407,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 3,
+      "open_form_ms": 33.599999994039536,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "sample": 4,
+      "open_form_ms": 34.5,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 0,
+      "open_form_ms": 259.5,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 1,
+      "open_form_ms": 210.5,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 2,
+      "open_form_ms": 190.40000000596046,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 3,
+      "open_form_ms": 232.6000000089407,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "sample": 4,
+      "open_form_ms": 203.79999999701977,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 0,
+      "open_form_ms": 211,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 1,
+      "open_form_ms": 205.40000000596046,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 2,
+      "open_form_ms": 222.30000001192093,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 3,
+      "open_form_ms": 171.5,
+      "long_tasks": []
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "sample": 4,
+      "open_form_ms": 221.5,
+      "long_tasks": []
+    }
+  ],
+  "summary": [
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "median_open_form_ms": 11.099999994039536,
+      "maximum_open_form_ms": 19.200000002980232,
+      "longest_task_ms": 0
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "median_open_form_ms": 10.799999997019768,
+      "maximum_open_form_ms": 13.799999997019768,
+      "longest_task_ms": 0
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "median_open_form_ms": 52.5,
+      "maximum_open_form_ms": 100.59999999403954,
+      "longest_task_ms": 0
+    },
+    {
+      "count": 10,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "median_open_form_ms": 60.599999994039536,
+      "maximum_open_form_ms": 101.40000000596046,
+      "longest_task_ms": 0
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "median_open_form_ms": 13.799999997019768,
+      "maximum_open_form_ms": 21.599999994039536,
+      "longest_task_ms": 0
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "median_open_form_ms": 15.299999997019768,
+      "maximum_open_form_ms": 22.19999998807907,
+      "longest_task_ms": 0
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "median_open_form_ms": 90,
+      "maximum_open_form_ms": 99.70000000298023,
+      "longest_task_ms": 0
+    },
+    {
+      "count": 100,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "median_open_form_ms": 85.09999999403954,
+      "maximum_open_form_ms": 125.5,
+      "longest_task_ms": 0
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": false,
+      "median_open_form_ms": 31.700000002980232,
+      "maximum_open_form_ms": 38.30000001192093,
+      "longest_task_ms": 0
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 1,
+      "recurring_tasks": true,
+      "median_open_form_ms": 34.5,
+      "maximum_open_form_ms": 45,
+      "longest_task_ms": 0
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": false,
+      "median_open_form_ms": 210.5,
+      "maximum_open_form_ms": 259.5,
+      "longest_task_ms": 0
+    },
+    {
+      "count": 500,
+      "cpu_slowdown": 4,
+      "recurring_tasks": true,
+      "median_open_form_ms": 211,
+      "maximum_open_form_ms": 222.30000001192093,
+      "longest_task_ms": 0
+    }
+  ]
+}

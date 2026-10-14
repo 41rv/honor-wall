@@ -1,3 +1,4 @@
+import { openCreate } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readStore, importData, sizedFixture } from "./helpers";
@@ -9,7 +10,7 @@ async function time(page: Page, at: string) {
 }
 async function begin(page: Page, title: string) {
     await page.goto("/#tasks");
-    await page.getByRole("button", { name: "مهمة جديدة", exact: true }).click();
+    await openCreate(page, "task");
     const form = page.getByRole("dialog");
     await form.getByLabel("الاسم", { exact: true }).fill(title);
     await form.getByLabel("الملاحظات", { exact: false }).fill("ملاحظات محفوظة");
@@ -242,7 +243,7 @@ test("يومية: إتمام قبل نهاية اليوم، تراجع سريع�
     ).toHaveLength(1);
     await page.goto("/#home");
     await expect(
-        page.locator('[aria-label="مهامك الآن"] .task-row'),
+        page.locator('[aria-label="مهامي اليوم"] .task-row'),
     ).toHaveCount(1);
 });
 test("شهرية ٣١ تعبر السنة وفبراير وتغيير التكرار يحفظ التاريخ", async ({
@@ -510,11 +511,15 @@ test("الرئيسية والقوائم تميز العامة والقريبة �
     }
     await page.goto("/#home");
     await expect(
-        page.locator('[aria-label="مهامك الآن"] .task-row'),
-    ).toHaveCount(5);
-    await expect(page.locator(".task-overview")).toContainText("قادمة: 1");
+        page.locator('[aria-label="مهامي اليوم"] .task-row'),
+    ).toHaveCount(3);
+    await page.goto("/#tasks");
     await expect(
-        page.locator('[aria-label="مهامك الآن"] .task-row').first(),
+        page.getByRole("group", { name: "عرض المهام بحسب موعدها" }),
+    ).toBeVisible();
+    await page.goto("/#home");
+    await expect(
+        page.locator('[aria-label="مهامي اليوم"] .task-row').first(),
     ).toContainText("متأخرة");
 });
 test("إعداد أسبوعي بلا أيام يُرفض ولا يضيف مهمة ناقصة", async ({ page }) => {
@@ -627,10 +632,12 @@ test("الموعد الأسبوعي المستقبلي يمنع الإنجاز �
     await expect(complete).toBeDisabled();
     await expect(page.locator(".task-row .task-due")).toHaveClass(/due-future/);
     await page.goto("/#home");
-    await expect(page.locator(".task-overview")).toContainText("قادمة: 1");
-    await expect(page.locator(".task-overview")).not.toContainText(
-        "دورة حالية",
-    );
+    await expect(
+        page.locator("[data-task-id]").filter({ hasText: "سبت المستقبل" }),
+    ).toHaveCount(0);
+    await expect(
+        page.getByRole("link", { name: "عرض الكل", exact: true }),
+    ).toBeVisible();
     await page.goto("/#tasks");
     await time(page, "2026-10-17T16:59:00Z");
     await expect(complete).toBeDisabled();

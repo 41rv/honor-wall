@@ -1,3 +1,4 @@
+import { openCreate } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import { readStore } from "./helpers";
 import { readFileSync } from "node:fs";
@@ -13,7 +14,7 @@ async function add(
     priority = "",
 ) {
     await page.goto("/#tasks");
-    await page.getByRole("button", { name: "مهمة جديدة", exact: true }).click();
+    await openCreate(page, "task");
     const form = page.getByRole("dialog");
     await form.getByLabel("الاسم", { exact: true }).fill(title);
     if (priority)
@@ -144,7 +145,7 @@ test("مواعيد التكرار المستقبلية غير قابلة للإ�
     page,
 }) => {
     await page.goto("/#tasks");
-    await page.getByRole("button", { name: "مهمة جديدة", exact: true }).click();
+    await openCreate(page, "task");
     const f = page.getByRole("dialog");
     await f.getByLabel("الاسم", { exact: true }).fill("يومية التقويم");
     await f.getByLabel("التكرار", { exact: true }).selectOption("daily");
@@ -236,7 +237,7 @@ test("رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل 
     page,
 }) => {
     await page.goto("/#projects");
-    await page.getByRole("button", { name: "مشروع جديد", exact: true }).click();
+    await openCreate(page, "project");
     let form = page.getByRole("dialog");
     await form.getByLabel("الاسم", { exact: true }).fill("مشروع الرؤى");
     await form.getByRole("button", { name: "إضافة", exact: true }).click();
@@ -270,6 +271,7 @@ test("رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل 
         )
         .toBe(2);
     await page.goto("/#progress");
+    await page.getByRole("tab", { name: "رؤى مسار", exact: true }).click();
     const insights = page.getByRole("region", {
         name: "رؤى مسار",
         exact: true,
@@ -354,6 +356,7 @@ test("رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل 
         .getByRole("button", { name: "إعادة فتح الخطوة «عمل 1»", exact: true })
         .click();
     await page.goto("/#progress");
+    await page.getByRole("tab", { name: "رؤى مسار", exact: true }).click();
     await expect(insights).toContainText("نقطة مئوية");
     await expect
         .poll(async () => (await readStore(page, "projectProgress")).length)
@@ -418,7 +421,7 @@ test("دورة السبت المفتوحة تظهر الأحد في قسم مت�
 }) => {
     await page.clock.setSystemTime(new Date("2026-10-16T09:00:00Z"));
     await page.goto("/#tasks");
-    await page.getByRole("button", { name: "مهمة جديدة", exact: true }).click();
+    await openCreate(page, "task");
     const f = page.getByRole("dialog");
     await f.getByLabel("الاسم", { exact: true }).fill("سبت مرن");
     await f.getByLabel("التكرار", { exact: true }).selectOption("weekly");
@@ -495,12 +498,13 @@ test("إحصاء إتمام المشروع يتحدث داخل الداشبور�
     page,
 }) => {
     await page.goto("/#projects");
-    await page.getByRole("button", { name: "مشروع جديد", exact: true }).click();
+    await openCreate(page, "project");
     const form = page.getByRole("dialog");
     await form.getByLabel("الاسم", { exact: true }).fill("إتمام الآن");
     await form.getByRole("button", { name: "إضافة", exact: true }).click();
     await expect(form).not.toBeVisible();
     await page.goto("/#progress");
+    await page.locator(".progress-legacy > summary").click();
     const metric = page
         .locator(".period-metric")
         .filter({ hasText: "مشاريع اكتملت في الفترة" })

@@ -1,3 +1,4 @@
+import { openCreate } from "./helpers";
 import { test, expect } from "@playwright/test";
 import { sizedFixture, importData, readStore } from "./helpers";
 
@@ -6,9 +7,13 @@ test("لوحة المفاتيح: النافذة تحصر التركيز وتعي
 }) => {
     await importData(page, sizedFixture(10));
     await page.goto("/#tasks");
-    const add = page.getByRole("button", { name: "مهمة جديدة", exact: true });
+    const add = page.getByRole("button", { name: "إضافة سريعة", exact: true });
     await add.focus();
     await page.keyboard.press("Enter");
+    await page
+        .getByRole("dialog")
+        .getByRole("button", { name: "مهمة جديدة", exact: true })
+        .click();
     await expect(
         page.getByRole("dialog").getByLabel("الاسم", { exact: true }),
     ).toBeFocused();
@@ -70,7 +75,7 @@ test("نافذة في مساحة هاتف قصيرة: الحقول والإضا�
     const page = await context.newPage();
     await importData(page, sizedFixture(10));
     await page.goto("/#tasks");
-    await page.getByRole("button", { name: "مهمة جديدة", exact: true }).tap();
+    await openCreate(page, "task", true);
     await page
         .getByRole("dialog")
         .getByLabel("الاسم", { exact: true })

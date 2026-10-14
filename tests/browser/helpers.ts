@@ -1,4 +1,37 @@
 import { expect, type Page } from "@playwright/test";
+export async function openCreate(
+    page: Page,
+    kind: "project" | "task" | "idea",
+    touch = false,
+) {
+    const add = page.getByRole("button", { name: "إضافة سريعة", exact: true });
+    if (touch) await add.tap();
+    else await add.click();
+    const label = {
+        project: "مشروع جديد",
+        task: "مهمة جديدة",
+        idea: "فكرة جديدة",
+    }[kind];
+    const option = page
+        .getByRole("dialog", { name: "ماذا تريد أن تضيف؟", exact: true })
+        .getByRole("button", { name: label, exact: true });
+    if (touch) await option.tap();
+    else await option.click();
+    await expect(page.getByRole("dialog")).toBeVisible();
+}
+export async function openQuickIdeas(page: Page) {
+    await page.goto("/#ideas");
+    const details = page.locator(".idea-capture-details");
+    if ((await details.getAttribute("open")) === null)
+        await details.locator("summary").click();
+}
+export async function showLegacy(page: Page) {
+    await page.goto("/#progress");
+    await page.getByRole("tab", { name: "نظرة عامة", exact: true }).click();
+    const details = page.locator(".progress-legacy");
+    if ((await details.getAttribute("open")) === null)
+        await details.locator("summary").click();
+}
 import type { Snapshot } from "../../app/model";
 export function largeFixture(): Snapshot {
     const at = new Date().toISOString();

@@ -1,3 +1,4 @@
+import { openQuickIdeas } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import { largeFixture, importData } from "./helpers";
 test.use({
@@ -26,28 +27,26 @@ async function small(page: Page) {
     d.events = [];
     await importData(page, d);
 }
-test("الفكرة أول بطاقة وتحتها اختصار الاستكمال والحفظ مباشرة باللمس وبزر الإدخال", async ({
+test("التقاط الفكرة في صفحة الأفكار يحفظ باللمس والإدخال والتفاصيل دون فقد", async ({
     page,
 }) => {
+    await expect(
+        page.getByRole("region", { name: "مهامي اليوم", exact: true }),
+    ).toBeVisible();
+    await expect(
+        page.getByRole("region", { name: "التقاط فكرة سريع" }),
+    ).toHaveCount(0);
+    await openQuickIdeas(page);
     const capture = page.getByRole("region", { name: "التقاط فكرة سريع" });
-    const dashboard = page.getByRole("region", {
-        name: "اختصار الاستكمال",
-    });
     await expect(capture).toBeVisible();
-    expect(
-        await capture.evaluate((el) => el.nextElementSibling?.className),
-    ).toBe("surface resume-shortcut");
-    expect((await capture.boundingBox())!.y).toBeLessThan(
-        (await dashboard.boundingBox())!.y,
-    );
     await page.getByLabel("عنوان الفكرة السريعة").fill("فكرة أولى سريعة");
     await page.getByLabel("عنوان الفكرة السريعة").press("Enter");
     await expect(capture.getByRole("status")).toContainText("حُفظت الفكرة");
-    await expect(page).toHaveURL(/\/$/);
+    await expect(page).toHaveURL(/#ideas/);
     await expect(page.getByLabel("عنوان الفكرة السريعة")).toHaveValue("");
     await page.getByRole("button", { name: "عرض الفكرة", exact: true }).tap();
     await expect(page.getByLabel("تعديل الاسم")).toHaveValue("فكرة أولى سريعة");
-    await page.goto("/#home");
+    await openQuickIdeas(page);
     await page.getByLabel("عنوان الفكرة السريعة").fill("فكرة بوصف");
     await page.getByRole("button", { name: "إضافة تفاصيل", exact: true }).tap();
     await page.getByLabel("تفاصيل الفكرة السريعة").fill("تفاصيل لا تضيع");
@@ -273,6 +272,7 @@ test("فشل الإتمام الجماعي لا يترك علامة صح أو ح
     );
 });
 test("فشل حفظ الفكرة يبقي مسودتها ولا ينشئ نسخًا مكررة", async ({ page }) => {
+    await openQuickIdeas(page);
     await page.getByLabel("عنوان الفكرة السريعة").fill("فكرة لا تفقدها");
     await page.evaluate(() => {
         const add = IDBObjectStore.prototype.add;
@@ -288,6 +288,7 @@ test("فشل حفظ الفكرة يبقي مسودتها ولا ينشئ نسخ�
         "فكرة لا تفقدها",
     );
     await page.reload();
+    await openQuickIdeas(page);
     await expect(page.getByLabel("عنوان الفكرة السريعة")).toHaveValue(
         "فكرة لا تفقدها",
     );

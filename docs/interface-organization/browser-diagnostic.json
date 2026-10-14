@@ -1,0 +1,3933 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "--timeout=12000",
+      "--reporter=line,json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 12000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 12000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "app.spec.ts",
+      "file": "app.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "واجهة المشروع: الإنشاء، الترتيب، الملاحظات، النسب والإغلاق",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1737,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:02:50.787Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-64368df15782569dd45a",
+          "file": "app.spec.ts",
+          "line": 98,
+          "column": 1
+        },
+        {
+          "title": "المهام والأفكار: إنشاء وبدء وإنجاز وإعادة فتح وتحويل وتراجع",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1989,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:02:52.746Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-a95fbd6e3231b82e4f4c",
+          "file": "app.spec.ts",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "إنشاء مشروع ومرحلة وخطوة فرعية وتعديل وأرشفة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1307,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:02:54.751Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-caee3a96508340f807bd",
+          "file": "app.spec.ts",
+          "line": 255,
+          "column": 1
+        },
+        {
+          "title": "تصدير واستيراد كامل، رفض نسخة مكسورة دون فقد البيانات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 645,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:02:56.069Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-aa7e883c9b344e8b7c6b",
+          "file": "app.spec.ts",
+          "line": 283,
+          "column": 1
+        },
+        {
+          "title": "شاشة 320 بكسل، الوضعان وغياب التمرير الأفقي",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1000,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:02:56.728Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-b7543af953a031c9e1f6",
+          "file": "app.spec.ts",
+          "line": 313,
+          "column": 1
+        },
+        {
+          "title": "PWA: الأصول والبيانات متاحة دون إنترنت بعد إعادة التشغيل",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1412,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:02:57.741Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-72d3ff27ba6930d174e1",
+          "file": "app.spec.ts",
+          "line": 347,
+          "column": 1
+        },
+        {
+          "title": "مشروع طويل: استكمال آخر خطوة، حفظ موضع العودة، والتفرع العميق",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1003,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:02:59.167Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-30c3772aad2793da0995",
+          "file": "app.spec.ts",
+          "line": 384,
+          "column": 1
+        },
+        {
+          "title": "فشل حفظ الملاحظات يستعيد المسودة بعد إعادة التحميل ويمكن إعادة حفظها",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1186,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:00.184Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-9cce84b844992ee91563",
+          "file": "app.spec.ts",
+          "line": 448,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "buttons.spec.ts",
+      "file": "buttons.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "أزرار الإضافة والإلغاء والإغلاق والبحث والتنقل والضغط المتكرر",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1548,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:01.409Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "306c8654303d07df1d26-7bd096e499906eed2ca5",
+          "file": "buttons.spec.ts",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "كل أزرار المراحل والخطوات: إضافة وتفاصيل وترتيب وطي وحالات وحذف وتراجع",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2643,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:02.967Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "306c8654303d07df1d26-ed5075947cd964f6ca23",
+          "file": "buttons.spec.ts",
+          "line": 108,
+          "column": 1
+        },
+        {
+          "title": "تصدير الملاحظات فور الكتابة والتحقق وإلغاء الاستيراد والتثبيت المتاح",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 850,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:08.749Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "306c8654303d07df1d26-67510483bc9376bbb11d",
+          "file": "buttons.spec.ts",
+          "line": 340,
+          "column": 1
+        },
+        {
+          "title": "فشل إتمام المهمة يعيد علامتها لحالتها السابقة ولا يسجل إنجازًا زائفًا",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 801,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:09.611Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "306c8654303d07df1d26-5a70912c0be5defb6b16",
+          "file": "buttons.spec.ts",
+          "line": 398,
+          "column": 1
+        },
+        {
+          "title": "الكتابة السريعة تدمج الحفظ وتبقى الملاحظات بعد رجوع فوري",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 925,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:10.424Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "306c8654303d07df1d26-b2419c4235085c6ad0a7",
+          "file": "buttons.spec.ts",
+          "line": 425,
+          "column": 1
+        },
+        {
+          "title": "روابط الرئيسية والإنجازات تفتح المشروع والمهمة والخطوة في مكانها",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 12029,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 12000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 12000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 12000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/buttons.spec.ts",
+                        "column": 73,
+                        "line": 484
+                      },
+                      "message": "Error: locator.click: Test timeout of 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'إلى المهام', exact: true })\u001b[22m\n\n\n  482 |     await expect(page).toHaveURL(/#projects/);\n  483 |     await page.goto(\"/#home\");\n> 484 |     await page.getByRole(\"button\", { name: \"إلى المهام\", exact: true }).click();\n      |                                                                         ^\n  485 |     await page\n  486 |         .getByRole(\"button\", { name: \"إكمال مهمة 0\", exact: true })\n  487 |         .click();\n    at /workspace/honor-wall/tests/browser/buttons.spec.ts:484:73"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:11.363Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/buttons-روابط-الرئيسية-وال-997b8-ع-والمهمة-والخطوة-في-مكانها/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "306c8654303d07df1d26-95af314c03150cab9947",
+          "file": "buttons.spec.ts",
+          "line": 462,
+          "column": 1
+        },
+        {
+          "title": "رسالة فشل فتح التخزين وزر إعادة المحاولة يستعيدان التطبيق دون حذف البيانات",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5671,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'مساحة هادئة. لإنجاز أكبر.' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'مساحة هادئة. لإنجاز أكبر.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'مساحة هادئة. لإنجاز أكبر.' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'مساحة هادئة. لإنجاز أكبر.' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'مساحة هادئة. لإنجاز أكبر.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'مساحة هادئة. لإنجاز أكبر.' })\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/buttons.spec.ts:555:7",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/buttons.spec.ts",
+                      "column": 7,
+                      "line": 555
+                    },
+                    "snippet": "  553 |     await expect(\n  554 |         page.getByRole(\"heading\", { name: \"مساحة هادئة. لإنجاز أكبر.\" }),\n> 555 |     ).toBeVisible();\n      |       ^\n  556 | });\n  557 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/buttons.spec.ts",
+                        "column": 7,
+                        "line": 555
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'مساحة هادئة. لإنجاز أكبر.' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'مساحة هادئة. لإنجاز أكبر.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'مساحة هادئة. لإنجاز أكبر.' })\u001b[22m\n\n\n  553 |     await expect(\n  554 |         page.getByRole(\"heading\", { name: \"مساحة هادئة. لإنجاز أكبر.\" }),\n> 555 |     ).toBeVisible();\n      |       ^\n  556 | });\n  557 |\n    at /workspace/honor-wall/tests/browser/buttons.spec.ts:555:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:23.902Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/buttons-رسالة-فشل-فتح-التخ-0a7ba-ان-التطبيق-دون-حذف-البيانات/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/buttons.spec.ts",
+                    "column": 7,
+                    "line": 555
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "306c8654303d07df1d26-98a85ad2c89805f868da",
+          "file": "buttons.spec.ts",
+          "line": 515,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "محاكاة هاتف ولمس",
+          "file": "buttons.spec.ts",
+          "line": 212,
+          "column": 6,
+          "specs": [
+            {
+              "title": "الصح باللمس وإعادة الفتح وتفاصيل المهمة وحالاتها والإلغاء والتراجع",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1680,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:03:05.631Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "306c8654303d07df1d26-be824f80ea5151616899",
+              "file": "buttons.spec.ts",
+              "line": 218,
+              "column": 5
+            },
+            {
+              "title": "الأفكار: إضافة سريعة وتعديل وبحث وأرشفة واستعادة وتحويل وإلغاء التحويل",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1415,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:03:07.324Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "306c8654303d07df1d26-be86cb5c5e4c3414c59a",
+              "file": "buttons.spec.ts",
+              "line": 286,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "completion-capture.spec.ts",
+      "file": "completion-capture.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "التقاط الفكرة في صفحة الأفكار يحفظ باللمس والإدخال والتفاصيل دون فقد",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1196,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:30.339Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6819dfa5e7536941dc5-285aa3a5f8abd076583c",
+          "file": "completion-capture.spec.ts",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "إتمام الخطوة والمرحلة من الشجرة وتحديث الأرقام والسجل ثم إعادة فتحهما",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1460,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:31.796Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6819dfa5e7536941dc5-28de7d2ba33f144ac7de",
+          "file": "completion-capture.spec.ts",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "المشروع له زر إتمام في البطاقة والتفاصيل وإتمامه لا يغيّر خطواته",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1286,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:33.282Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6819dfa5e7536941dc5-d31ab67b81b7f75f2a1c",
+          "file": "completion-capture.spec.ts",
+          "line": 131,
+          "column": 1
+        },
+        {
+          "title": "آخر مرحلة تُتمّ المشروع تلقائيًا عند ١٠٠٪ ويبقى الإتمام اليدوي متاحًا عند ٥٠٪",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1558,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:34.583Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6819dfa5e7536941dc5-92108daf1f1b9c1a3e18",
+          "file": "completion-capture.spec.ts",
+          "line": 173,
+          "column": 1
+        },
+        {
+          "title": "فشل الإتمام الجماعي لا يترك علامة صح أو حالات جزئية",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 814,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:36.168Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6819dfa5e7536941dc5-ed3899420fa993b6f446",
+          "file": "completion-capture.spec.ts",
+          "line": 238,
+          "column": 1
+        },
+        {
+          "title": "فشل حفظ الفكرة يبقي مسودتها ولا ينشئ نسخًا مكررة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 771,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:37.018Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6819dfa5e7536941dc5-9e2981ea84ac13c99474",
+          "file": "completion-capture.spec.ts",
+          "line": 274,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "ideas-speed.spec.ts",
+      "file": "ideas-speed.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "قياس حفظ فكرة مع ألفي فكرة موجودة ومعالج أبطأ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4396,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "IDEA_SAVE_MS \u001b[33m532\u001b[39m\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:37.813Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c1679c8bc33de8ad3c71-e12d7ff02edb588b25f0",
+          "file": "ideas-speed.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "interactions.spec.ts",
+      "file": "interactions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "علامة الإتمام تعمل حتى إذا حدث تحديث للواجهة أثناء الضغط",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 819,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:42.230Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3a1181bd00640addebc-ecaafc50c12c4c4dee67",
+          "file": "interactions.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "قياس سرعة الإضافة والتعديل والإتمام بقاعدة كبيرة ومعالج أبطأ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6338,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "PERFORMANCE_MS {\"project\":327,\"stage\":459,\"notes\":1365,\"complete\":771}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:43.063Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "latency.json",
+                      "contentType": "application/json",
+                      "body": "eyJwcm9qZWN0IjozMjcsInN0YWdlIjo0NTksIm5vdGVzIjoxMzY1LCJjb21wbGV0ZSI6NzcxfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3a1181bd00640addebc-d3069fcc4017afafa878",
+          "file": "interactions.spec.ts",
+          "line": 41,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "interface-organization.spec.ts",
+      "file": "interface-organization.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "الرئيسية: أول ثلاث مهام بالترتيب نفسه دون تغيير الأولويات وإنجاز وتراجع",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1589,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:49.461Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4259326bbc2555449fe8-1523131fd8ac032cf643",
+          "file": "interface-organization.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "الرئيسية الفارغة مختصرة والاستكمال لا يكرر خطوته في بطاقات المشاريع",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 843,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:51.060Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4259326bbc2555449fe8-960f644591f1c3c5069c",
+          "file": "interface-organization.spec.ts",
+          "line": 72,
+          "column": 1
+        },
+        {
+          "title": "زر إضافة واحد في الصفحات الخمس: النماذج الأصلية ولوحة المفاتيح والإغلاق",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1214,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:51.919Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4259326bbc2555449fe8-9b864a9dae297ee4da7a",
+          "file": "interface-organization.spec.ts",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "بطاقة المشروع تحتفظ بالمعلومات ورقم المرحلة والنصوص الأصلية",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 618,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:53.143Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4259326bbc2555449fe8-c797777cf0351e9df9b2",
+          "file": "interface-organization.spec.ts",
+          "line": 151,
+          "column": 1
+        },
+        {
+          "title": "تبويبات التقدم تحفظ الفترة والسجل الصحيح والتراجع والرؤى دون ازدواج",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2675,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:53.783Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4259326bbc2555449fe8-1c0c1aadf42092d858c5",
+          "file": "interface-organization.spec.ts",
+          "line": 243,
+          "column": 1
+        },
+        {
+          "title": "التصميم بعرض 320: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27006,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:03:56.479Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4259326bbc2555449fe8-7036e430bd3dd3656638",
+          "file": "interface-organization.spec.ts",
+          "line": 348,
+          "column": 5
+        },
+        {
+          "title": "التصميم بعرض 390: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28870,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:04:23.497Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4259326bbc2555449fe8-caf571951d8988679670",
+          "file": "interface-organization.spec.ts",
+          "line": 348,
+          "column": 5
+        },
+        {
+          "title": "التصميم بعرض 1366: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28686,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:04:52.384Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4259326bbc2555449fe8-e349a2d2cecb306043bd",
+          "file": "interface-organization.spec.ts",
+          "line": 348,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "planning.spec.ts",
+      "file": "planning.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "مهامي اليوم: الاختيار والإزالة والإنجاز والتراجع وعبور اليوم دون فقد",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1252,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:05:21.098Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b0549e55fb6efa6229e-9fc8559cec766bf890e7",
+          "file": "planning.spec.ts",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "التقويم: سبعة أيام وتنقل وعودة وإنجاز وتراجع وتعديل دون إنشاء المستقبل",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1011,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:05:22.364Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b0549e55fb6efa6229e-7465e92fed299d6bdf8d",
+          "file": "planning.spec.ts",
+          "line": 92,
+          "column": 1
+        },
+        {
+          "title": "مواعيد التكرار المستقبلية غير قابلة للإنجاز ولا تحفظ كدورات عند التنقل",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 862,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:05:23.388Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b0549e55fb6efa6229e-69d42658af17dc9adc27",
+          "file": "planning.spec.ts",
+          "line": 144,
+          "column": 1
+        },
+        {
+          "title": "الداشبورد يبدل الفترات ويحدث الإنجاز بعد التراجع ويعرض نقص البيانات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 913,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:05:24.267Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b0549e55fb6efa6229e-24c0850ab86fd21b6fcb",
+          "file": "planning.spec.ts",
+          "line": 184,
+          "column": 1
+        },
+        {
+          "title": "رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل وتراجع ونسخة كاملة v3",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2038,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:05:25.192Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b0549e55fb6efa6229e-4692a2ca0039ba2b7ed5",
+          "file": "planning.spec.ts",
+          "line": 236,
+          "column": 1
+        },
+        {
+          "title": "التنظيم والتقويم والرؤى: RTL والثيمات الأربعة بعرض 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10599,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:05:27.242Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b0549e55fb6efa6229e-7ce08bfb311a7b1f3c1a",
+          "file": "planning.spec.ts",
+          "line": 371,
+          "column": 5
+        },
+        {
+          "title": "التنظيم والتقويم والرؤى: RTL والثيمات الأربعة بعرض 1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10425,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:05:37.853Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b0549e55fb6efa6229e-8eac5365379fafec6b4e",
+          "file": "planning.spec.ts",
+          "line": 371,
+          "column": 5
+        },
+        {
+          "title": "دورة السبت المفتوحة تظهر الأحد في قسم متاح وتنجز دون تأخير",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 861,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:05:48.293Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b0549e55fb6efa6229e-ab841d9c360c24ef7d42",
+          "file": "planning.spec.ts",
+          "line": 419,
+          "column": 1
+        },
+        {
+          "title": "موعد الساعة المنقضي اليوم يُفصل عن المستحقة ويتيح الإنجاز والتراجع",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 938,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:05:49.165Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8b0549e55fb6efa6229e-c8bb29002caea7256e84",
+          "file": "planning.spec.ts",
+          "line": 460,
+          "column": 1
+        },
+        {
+          "title": "إحصاء إتمام المشروع يتحدث داخل الداشبورد دون انتظار نبضة الدقيقة",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 12038,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 12000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 12000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 12000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/planning.spec.ts",
+                        "column": 10,
+                        "line": 518
+                      },
+                      "message": "Error: locator.click: Test timeout of 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'إتمام المشروع «إتمام الآن»', exact: true })\u001b[22m\n\n\n  516 |             exact: true,\n  517 |         })\n> 518 |         .click();\n      |          ^\n  519 |     await expect(metric).toHaveText(\"1\");\n  520 | });\n  521 |\n    at /workspace/honor-wall/tests/browser/planning.spec.ts:518:10"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:05:50.113Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/planning-إحصاء-إتمام-المشر-634b0-ورد-دون-انتظار-نبضة-الدقيقة/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8b0549e55fb6efa6229e-a7f64c429751e3c21581",
+          "file": "planning.spec.ts",
+          "line": 497,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "project-import-open.spec.ts",
+      "file": "project-import-open.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "فتح الاستيراد على شاشة أندرويد محاكاة",
+          "file": "project-import-open.spec.ts",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "الفتح والإغلاق المتكرر مستقلان عن البيانات والملفات والمنتقي الأصلي",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3750,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:06:02.675Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "cad187bf54114781aab3-0e912d0e9964f81db901",
+              "file": "project-import-open.spec.ts",
+              "line": 20,
+              "column": 5
+            },
+            {
+              "title": "المنتقي يُفتح بطلب منفصل مرة واحدة ويعمل إلغاؤه وإعادة فتحه ثم المعاينة والحفظ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 667,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:06:06.641Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "cad187bf54114781aab3-0a0a1cfb7def8c77104f",
+              "file": "project-import-open.spec.ts",
+              "line": 116,
+              "column": 5
+            },
+            {
+              "title": "فشل JSON في واجهة الفتح يتيح إعادة الاختيار ولا يحفظ بيانات",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 758,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:06:07.320Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "cad187bf54114781aab3-60858d506f4c1343f21b",
+              "file": "project-import-open.spec.ts",
+              "line": 170,
+              "column": 5
+            },
+            {
+              "title": "عودة التركيز تعيد إتاحة المنتقي للمتصفحات التي لا ترسل cancel",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 648,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:06:08.092Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "cad187bf54114781aab3-9cb9c98fb9ed272a3a8a",
+              "file": "project-import-open.spec.ts",
+              "line": 207,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "project-import.spec.ts",
+      "file": "project-import.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "معاينة وإلغاء ثم حفظ مرة واحدة بالضغط المتكرر مع الحفاظ على البيانات والتقدم",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1511,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:08.784Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d3874469ac8cf9c242e-1e22f8cbf8a4adf61159",
+          "file": "project-import.spec.ts",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "ملفات خاطئة بأخطاء واضحة وإعادة اختيار الملف نفسه دون حفظ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1135,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:10.309Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d3874469ac8cf9c242e-1807eb201775f03ce0aa",
+          "file": "project-import.spec.ts",
+          "line": 105,
+          "column": 1
+        },
+        {
+          "title": "فشل التخزين لا يترك مشروعًا ناقصًا ويتيح تأكيد المعاينة مجددًا",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 612,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:11.459Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d3874469ac8cf9c242e-2944eacb236c1d155653",
+          "file": "project-import.spec.ts",
+          "line": 153,
+          "column": 1
+        },
+        {
+          "title": "المعاينة والأخطاء ولوحة المفاتيح في الثيمات الأربعة بعرض 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2878,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:12.085Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d3874469ac8cf9c242e-235cfe601d2069f7c149",
+          "file": "project-import.spec.ts",
+          "line": 179,
+          "column": 5
+        },
+        {
+          "title": "المعاينة والأخطاء ولوحة المفاتيح في الثيمات الأربعة بعرض 1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2570,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:14.973Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d3874469ac8cf9c242e-0989f0be955daef32715",
+          "file": "project-import.spec.ts",
+          "line": 179,
+          "column": 5
+        },
+        {
+          "title": "معاينة محدودة لمشروع كبير تستورد كل العناصر وترقيم التداخل حتى الحد المعتمد",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 808,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:17.553Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4d3874469ac8cf9c242e-c3b3409f87f0aaf40765",
+          "file": "project-import.spec.ts",
+          "line": 229,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "qa-accessibility.spec.ts",
+      "file": "qa-accessibility.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "لوحة المفاتيح: النافذة تحصر التركيز وتعيده، وعلامة المهمة تحتفظ به عند انتقالها للمنجزة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 767,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:18.378Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36b08d1cf47b08b95212-6dd6dfa61233d40e4ee0",
+          "file": "qa-accessibility.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "نافذة في مساحة هاتف قصيرة: الحقول والإضافة متاحة دون حجب، وتقليل الحركة محترم",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 819,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:19.156Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "36b08d1cf47b08b95212-277b6814fb08a003d7b9",
+          "file": "qa-accessibility.spec.ts",
+          "line": 66,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "qa-functional.spec.ts",
+      "file": "qa-functional.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "نسخة بمعرّفات نصية خاصة وroot تفتح عناصرها وتحفظ العلاقات والإتمام",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 918,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:19.996Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8cbe3dc0df1c43f007f7-2f9c01e15fd38f7f9b4e",
+          "file": "qa-functional.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "العودة لمشروع طويل ذي عناوين ملتفة تستعيد الخطوة الظاهرة نفسها",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 836,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:20.929Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8cbe3dc0df1c43f007f7-bf8e7b110bf0372ff11a",
+          "file": "qa-functional.spec.ts",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "فشل التخزين برسالة المتصفح الأصلية يعرض سببًا عربيًا ويحافظ على الحالة ثم يعاود الحفظ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 755,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:21.776Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8cbe3dc0df1c43f007f7-ed80b63f785a3983f7d3",
+          "file": "qa-functional.spec.ts",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "الاسم المعدّل يُحفظ عند التنقل دون مغادرة حقل الاسم أولًا",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 619,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:22.545Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8cbe3dc0df1c43f007f7-535024d7ef6f692fdb0c",
+          "file": "qa-functional.spec.ts",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "التراجع المتكرر عن الحذف لا يكرر الاستعادة أو سجل الأحداث",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 745,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:23.183Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8cbe3dc0df1c43f007f7-eb9ca31e7ee3a91bd2ee",
+          "file": "qa-functional.spec.ts",
+          "line": 128,
+          "column": 1
+        },
+        {
+          "title": "العناوين المكررة والملاحظات الطويلة تبقى مستقلة ويجد البحث النص المختلط",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 739,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:23.941Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8cbe3dc0df1c43f007f7-a6eb7c9f02c93c21366e",
+          "file": "qa-functional.spec.ts",
+          "line": 162,
+          "column": 1
+        },
+        {
+          "title": "ملف استيراد أكبر من الحد لا يستبدل البيانات وتواريخ المنطقة الزمنية صحيحة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2839,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:24.695Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8cbe3dc0df1c43f007f7-b307c2669cfaa77432d4",
+          "file": "qa-functional.spec.ts",
+          "line": 186,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "qa-rapid.spec.ts",
+      "file": "qa-rapid.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "تبديل عدة مهام أثناء تغيير الصفحة يحفظ النتيجة لكل عنصر",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 787,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:32.512Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "eb286117971d0d8e7073-6defaee568ccd1242a1f",
+          "file": "qa-rapid.spec.ts",
+          "line": 179,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "تبديل سريع على الكمبيوتر",
+          "file": "qa-rapid.spec.ts",
+          "line": 5,
+          "column": 10,
+          "specs": [
+            {
+              "title": "عشرة تبديلات للمهمة والخطوة تحفظ آخر طلب وتطابق الأعداد والنسب بعد إعادة الفتح",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2318,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:06:27.556Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "eb286117971d0d8e7073-8f066e44660d45163bf8",
+              "file": "qa-rapid.spec.ts",
+              "line": 17,
+              "column": 13
+            }
+          ]
+        },
+        {
+          "title": "تبديل سريع باللمس",
+          "file": "qa-rapid.spec.ts",
+          "line": 5,
+          "column": 10,
+          "specs": [
+            {
+              "title": "عشرة تبديلات للمهمة والخطوة تحفظ آخر طلب وتطابق الأعداد والنسب بعد إعادة الفتح",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2612,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:06:29.886Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "eb286117971d0d8e7073-893d2a747dbac83c1391",
+              "file": "qa-rapid.spec.ts",
+              "line": 17,
+              "column": 13
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "task-scheduling.spec.ts",
+      "file": "task-scheduling.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "إنشاء عامة وإتمام وتراجع وتعديل وحذف دون موعد أو أولوية",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1016,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:33.329Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-b2ab1c213bb0e9083f30",
+          "file": "task-scheduling.spec.ts",
+          "line": 45,
+          "column": 1
+        },
+        {
+          "title": "تاريخ فقط ثم وقت وتغيير وإلغاء الموعد مع حفظ المعرف والملاحظات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1155,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:34.356Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-da8e11cd0e63d1cab643",
+          "file": "task-scheduling.spec.ts",
+          "line": 76,
+          "column": 1
+        },
+        {
+          "title": "فترة الاقتراب 0 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 642,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:35.526Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-2cd612a448b0320c8ad5",
+          "file": "task-scheduling.spec.ts",
+          "line": 119,
+          "column": 5
+        },
+        {
+          "title": "فترة الاقتراب 1 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 604,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:36.180Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-04adc4edd986d810649a",
+          "file": "task-scheduling.spec.ts",
+          "line": 119,
+          "column": 5
+        },
+        {
+          "title": "فترة الاقتراب 3 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 660,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:36.799Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-2b150b6ea43d3c5d3b5f",
+          "file": "task-scheduling.spec.ts",
+          "line": 119,
+          "column": 5
+        },
+        {
+          "title": "فترة الاقتراب 7 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 618,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:37.475Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-23b93b499102843207c8",
+          "file": "task-scheduling.spec.ts",
+          "line": 119,
+          "column": 5
+        },
+        {
+          "title": "مهمة السبت تنجز طبيعيًا عند 2026-10-17T09:00:00Z وتعود دورة جديدة السبت التالي",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 783,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:38.107Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-4f7500ce9400cb427c85",
+          "file": "task-scheduling.spec.ts",
+          "line": 141,
+          "column": 5
+        },
+        {
+          "title": "مهمة السبت تنجز طبيعيًا عند 2026-10-18T09:00:00Z وتعود دورة جديدة السبت التالي",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 735,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:38.913Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-212b95455193ddbcc662",
+          "file": "task-scheduling.spec.ts",
+          "line": 141,
+          "column": 5
+        },
+        {
+          "title": "مهمة السبت تنجز طبيعيًا عند 2026-10-23T09:00:00Z وتعود دورة جديدة السبت التالي",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 736,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:39.661Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-8d82c7db8b051894b2d9",
+          "file": "task-scheduling.spec.ts",
+          "line": 141,
+          "column": 5
+        },
+        {
+          "title": "أسبوعية بعدة أيام ووقت: فوت الدورة لا يكرر المهمة والسجل محفوظ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1042,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:40.413Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-fe5b3f871d6599685fd9",
+          "file": "task-scheduling.spec.ts",
+          "line": 180,
+          "column": 1
+        },
+        {
+          "title": "يومية: إتمام قبل نهاية اليوم، تراجع سريع، دورة فائتة، ومراجعة السجل",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 850,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:41.464Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-4bced6563a0cf64f4e64",
+          "file": "task-scheduling.spec.ts",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "شهرية ٣١ تعبر السنة وفبراير وتغيير التكرار يحفظ التاريخ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1188,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:42.328Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-2ade8279cb31dbf9c69c",
+          "file": "task-scheduling.spec.ts",
+          "line": 249,
+          "column": 1
+        },
+        {
+          "title": "الأولويات الأربعة بألوانها ثم الإزالة، مع الاسم في التفاصيل فقط",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1381,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:43.525Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-f5b5e3f3d58eb26fbe3f",
+          "file": "task-scheduling.spec.ts",
+          "line": 290,
+          "column": 1
+        },
+        {
+          "title": "نسخة جديدة تحفظ الدورات والأولوية، واستيراد مشروع مستقل لا يؤثر عليها",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1067,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:44.916Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-1a9c958d3429338327e8",
+          "file": "task-scheduling.spec.ts",
+          "line": 322,
+          "column": 1
+        },
+        {
+          "title": "النموذج والتصنيف وRTL والثيمات الأربعة بعرض 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8057,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:45.996Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-eea237938ae58978ec4f",
+          "file": "task-scheduling.spec.ts",
+          "line": 367,
+          "column": 5
+        },
+        {
+          "title": "النموذج والتصنيف وRTL والثيمات الأربعة بعرض 1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8103,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:06:54.068Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-9103db7486955956431d",
+          "file": "task-scheduling.spec.ts",
+          "line": 367,
+          "column": 5
+        },
+        {
+          "title": "تحويل عامة إلى متكررة ثم عامة يحفظ المعرف والملاحظات وسجل الإنجاز",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1042,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:02.185Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-acaffb8447d6b195130e",
+          "file": "task-scheduling.spec.ts",
+          "line": 443,
+          "column": 1
+        },
+        {
+          "title": "الرئيسية والقوائم تميز العامة والقريبة واليوم والمتأخرة والمتكررة والقادمة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1957,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:03.239Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-be2ca9ab7ac0485ba2dc",
+          "file": "task-scheduling.spec.ts",
+          "line": 477,
+          "column": 1
+        },
+        {
+          "title": "إعداد أسبوعي بلا أيام يُرفض ولا يضيف مهمة ناقصة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 646,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:05.213Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-a6028e9013107f41ec84",
+          "file": "task-scheduling.spec.ts",
+          "line": 525,
+          "column": 1
+        },
+        {
+          "title": "أزرار الحالة وعلامة الإنجاز تتشارك آخر طلب للدورة وتحفظ تاريخ البدء",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 975,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:06.748Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-22bd3d181d7454474d45",
+          "file": "task-scheduling.spec.ts",
+          "line": 577,
+          "column": 1
+        },
+        {
+          "title": "الموعد الأسبوعي المستقبلي يمنع الإنجاز حتى يبدأ ثم يتاح في وقته",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 892,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:07.736Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-713c058117668053c4ec",
+          "file": "task-scheduling.spec.ts",
+          "line": 615,
+          "column": 1
+        },
+        {
+          "title": "النسخة ذات إنجاز على نهاية الدورة تُرفض في الواجهة وتبقى الجداول الستة سليمة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 636,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:08.642Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-7788dc3b5633376f34cb",
+          "file": "task-scheduling.spec.ts",
+          "line": 655,
+          "column": 1
+        },
+        {
+          "title": "حذف المتكررة والتراجع وإعادة التحميل يحفظان الدورات والملاحظات والإنجاز",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1586,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:09.289Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-92bd939327c770a732b5",
+          "file": "task-scheduling.spec.ts",
+          "line": 704,
+          "column": 1
+        },
+        {
+          "title": "قائمة ٥٠٠ مهمة: الوصول إلى الصفوف خارج الشاشة والإنجاز والتراجع على الجوال",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1805,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:10.891Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6a62082ed56ae38d9412-02342af5e89d5f922bc3",
+          "file": "task-scheduling.spec.ts",
+          "line": 769,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "توقيت نيويورك",
+          "file": "task-scheduling.spec.ts",
+          "line": 533,
+          "column": 6,
+          "specs": [
+            {
+              "title": "تاريخ محلي مختلف عن UTC ودورة ٢٥ ساعة دون نسخ بسبب تكرار الساعة",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 859,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:07:05.878Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6a62082ed56ae38d9412-a0a7c6d63e33b4ca924d",
+              "file": "task-scheduling.spec.ts",
+              "line": 535,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ux.spec.ts",
+      "file": "ux.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "طلب إلغاء الإتمام يبقى بعد تحديث فوري مع تأخر إشعار معاملة التخزين",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 12027,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 12000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 12000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 12000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/ux.spec.ts",
+                        "column": 59,
+                        "line": 32
+                      },
+                      "message": "Error: locator.click: Test timeout of 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-completion-key=\"task/t0\"]')\u001b[22m\n\n\n  30 |         });\n  31 |     });\n> 32 |     await page.locator('[data-completion-key=\"task/t0\"]').click();\n     |                                                           ^\n  33 |     await expect.poll(() => state(page, \"tasks\", \"t0\")).toBe(\"done\");\n  34 |     await page.locator('[data-completion-key=\"task/t0\"]').click();\n  35 |     await page.reload();\n    at /workspace/honor-wall/tests/browser/ux.spec.ts:32:59"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:12.732Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/ux-طلب-إلغاء-الإتمام-يبقى--8d335-ع-تأخر-إشعار-معاملة-التخزين/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-96b172ac7f182f92800c",
+          "file": "ux.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "كثرة المشاريع والنصوص الطويلة تعرض خطوة واحدة لكل مشروع وتتيح عرض المزيد دون تكرار الإحصائيات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 604,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:25.226Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-f5b4ea1c8bd596ca21b7",
+          "file": "ux.spec.ts",
+          "line": 49,
+          "column": 1
+        },
+        {
+          "title": "إكمال آخر خطوة وحفظها ثم التراجع من السجل والتفاصيل والمشروع الفارغ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1807,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:44.343Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-da020a9c8d6ede6f1ce3",
+          "file": "ux.spec.ts",
+          "line": 313,
+          "column": 1
+        },
+        {
+          "title": "الهوية مستقلة عن الوضع وتبقى الثيمات الأربعة واتباع النظام بعد إعادة الفتح",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2035,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:46.376Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-50074d0e16199a423162",
+          "file": "ux.spec.ts",
+          "line": 375,
+          "column": 1
+        },
+        {
+          "title": "زر الإجراءات ولوحة المفاتيح والقائمة تحترم التأكيد والتراجع والتعديل والتحويل",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1593,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:48.439Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-aded973cb650b006b27b",
+          "file": "ux.spec.ts",
+          "line": 429,
+          "column": 1
+        },
+        {
+          "title": "الضغط المطول بالماوس يفتح قائمة واحدة ويمنع التنقل ثم يلغى بالحركة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 12000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2075,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T18:07:50.042Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-ff0c9c96da456c2f8dcc",
+          "file": "ux.spec.ts",
+          "line": 487,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "تجربة التنفيذ بالماوس",
+          "file": "ux.spec.ts",
+          "line": 121,
+          "column": 10,
+          "specs": [
+            {
+              "title": "إتمام البطاقة والرئيسية ثم إلغاء الإتمام والتبديل السريع يطابق التخزين والتقدم",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2683,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:07:26.029Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "99cce085edeae8edda86-efb2f8e956a5c7617aba",
+              "file": "ux.spec.ts",
+              "line": 129,
+              "column": 13
+            },
+            {
+              "title": "الاستكمال يبقى بعد إعادة الفتح ويتعامل مع الحذف والأرشفة والإكمال",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5578,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'اختصار الاستكمال' })\nExpected substring: \u001b[32m\"مرحلة ثانية\"\u001b[39m\nReceived string:    \u001b[31m\"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('region', { name: 'اختصار الاستكمال' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'اختصار الاستكمال' })\u001b[22m\n\u001b[2m    14 × locator resolved to <section aria-label=\"اختصار الاستكمال\" class=\"surface resume-shortcut\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'اختصار الاستكمال' })\nExpected substring: \u001b[32m\"مرحلة ثانية\"\u001b[39m\nReceived string:    \u001b[31m\"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('region', { name: 'اختصار الاستكمال' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'اختصار الاستكمال' })\u001b[22m\n\u001b[2m    14 × locator resolved to <section aria-label=\"اختصار الاستكمال\" class=\"surface resume-shortcut\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/ux.spec.ts:263:38",
+                        "location": {
+                          "file": "/workspace/honor-wall/tests/browser/ux.spec.ts",
+                          "column": 38,
+                          "line": 263
+                        },
+                        "snippet": "  261 |                 });\n  262 |                 await expect(resume).toContainText(\"خطوة 3\");\n> 263 |                 await expect(resume).toContainText(\"مرحلة ثانية\");\n      |                                      ^\n  264 |                 await page.reload();\n  265 |                 await resume\n  266 |                     .getByRole(\"button\", { name: \"أكمل من حيث توقفت\" })"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/workspace/honor-wall/tests/browser/ux.spec.ts",
+                            "column": 38,
+                            "line": 263
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'اختصار الاستكمال' })\nExpected substring: \u001b[32m\"مرحلة ثانية\"\u001b[39m\nReceived string:    \u001b[31m\"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('region', { name: 'اختصار الاستكمال' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'اختصار الاستكمال' })\u001b[22m\n\u001b[2m    14 × locator resolved to <section aria-label=\"اختصار الاستكمال\" class=\"surface resume-shortcut\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[22m\n\n\n  261 |                 });\n  262 |                 await expect(resume).toContainText(\"خطوة 3\");\n> 263 |                 await expect(resume).toContainText(\"مرحلة ثانية\");\n      |                                      ^\n  264 |                 await page.reload();\n  265 |                 await resume\n  266 |                     .getByRole(\"button\", { name: \"أكمل من حيث توقفت\" })\n    at /workspace/honor-wall/tests/browser/ux.spec.ts:263:38"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:07:28.733Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/workspace/honor-wall/test-results/ux-تجربة-التنفيذ-بالماوس-ا-2f523--مع-الحذف-والأرشفة-والإكمال/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/workspace/honor-wall/tests/browser/ux.spec.ts",
+                        "column": 38,
+                        "line": 263
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "99cce085edeae8edda86-b11608acfe42bd866646",
+              "file": "ux.spec.ts",
+              "line": 243,
+              "column": 13
+            }
+          ]
+        },
+        {
+          "title": "تجربة التنفيذ باللمس",
+          "file": "ux.spec.ts",
+          "line": 121,
+          "column": 10,
+          "specs": [
+            {
+              "title": "إتمام البطاقة والرئيسية ثم إلغاء الإتمام والتبديل السريع يطابق التخزين والتقدم",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3209,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:07:34.808Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "99cce085edeae8edda86-329519819cab5a212be2",
+              "file": "ux.spec.ts",
+              "line": 129,
+              "column": 13
+            },
+            {
+              "title": "الاستكمال يبقى بعد إعادة الفتح ويتعامل مع الحذف والأرشفة والإكمال",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5629,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'اختصار الاستكمال' })\nExpected substring: \u001b[32m\"مرحلة ثانية\"\u001b[39m\nReceived string:    \u001b[31m\"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('region', { name: 'اختصار الاستكمال' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'اختصار الاستكمال' })\u001b[22m\n\u001b[2m    14 × locator resolved to <section aria-label=\"اختصار الاستكمال\" class=\"surface resume-shortcut\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'اختصار الاستكمال' })\nExpected substring: \u001b[32m\"مرحلة ثانية\"\u001b[39m\nReceived string:    \u001b[31m\"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('region', { name: 'اختصار الاستكمال' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'اختصار الاستكمال' })\u001b[22m\n\u001b[2m    14 × locator resolved to <section aria-label=\"اختصار الاستكمال\" class=\"surface resume-shortcut\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/ux.spec.ts:263:38",
+                        "location": {
+                          "file": "/workspace/honor-wall/tests/browser/ux.spec.ts",
+                          "column": 38,
+                          "line": 263
+                        },
+                        "snippet": "  261 |                 });\n  262 |                 await expect(resume).toContainText(\"خطوة 3\");\n> 263 |                 await expect(resume).toContainText(\"مرحلة ثانية\");\n      |                                      ^\n  264 |                 await page.reload();\n  265 |                 await resume\n  266 |                     .getByRole(\"button\", { name: \"أكمل من حيث توقفت\" })"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/workspace/honor-wall/tests/browser/ux.spec.ts",
+                            "column": 38,
+                            "line": 263
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'اختصار الاستكمال' })\nExpected substring: \u001b[32m\"مرحلة ثانية\"\u001b[39m\nReceived string:    \u001b[31m\"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('region', { name: 'اختصار الاستكمال' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'اختصار الاستكمال' })\u001b[22m\n\u001b[2m    14 × locator resolved to <section aria-label=\"اختصار الاستكمال\" class=\"surface resume-shortcut\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"أكمل من حيث توقفتخطوة 3مشروع 4 خطوة / المرحلة 2\"\u001b[22m\n\n\n  261 |                 });\n  262 |                 await expect(resume).toContainText(\"خطوة 3\");\n> 263 |                 await expect(resume).toContainText(\"مرحلة ثانية\");\n      |                                      ^\n  264 |                 await page.reload();\n  265 |                 await resume\n  266 |                     .getByRole(\"button\", { name: \"أكمل من حيث توقفت\" })\n    at /workspace/honor-wall/tests/browser/ux.spec.ts:263:38"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:07:38.235Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/workspace/honor-wall/test-results/ux-تجربة-التنفيذ-باللمس-ال-d1462--مع-الحذف-والأرشفة-والإكمال/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/workspace/honor-wall/tests/browser/ux.spec.ts",
+                        "column": 38,
+                        "line": 263
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "99cce085edeae8edda86-a29677c8d7c89d9def4d",
+              "file": "ux.spec.ts",
+              "line": 243,
+              "column": 13
+            }
+          ]
+        },
+        {
+          "title": "ضغط مطول باللمس وتمرير طبيعي",
+          "file": "ux.spec.ts",
+          "line": 508,
+          "column": 6,
+          "specs": [
+            {
+              "title": "إلغاء القائمة بالحركة والتمرير، وفتحها بعد ثبات الإصبع دون نقرة تسرب",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 12000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2401,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T18:07:52.128Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "99cce085edeae8edda86-b136616c37d9c01c5750",
+              "file": "ux.spec.ts",
+              "line": 514,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T18:02:49.016Z",
+    "duration": 305619.319,
+    "expected": 96,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  }
+}

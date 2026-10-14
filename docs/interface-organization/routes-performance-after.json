@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-10-14T19:04:09.577Z",
+  "build": "/tmp/masar-interface-final-root",
+  "cpu_slowdown": 4,
+  "projects": 100,
+  "steps": 10000,
+  "tasks": 500,
+  "cycles": 4000,
+  "progress_records": 8000,
+  "results": [
+    {
+      "route": "today",
+      "settled_ms": 649,
+      "long_tasks": [
+        {
+          "start": 7103.9000000059605,
+          "duration": 341
+        },
+        {
+          "start": 7447.5,
+          "duration": 115
+        },
+        {
+          "start": 7594.0999999940395,
+          "duration": 100
+        }
+      ]
+    },
+    {
+      "route": "calendar",
+      "settled_ms": 812.2000000029802,
+      "long_tasks": [
+        {
+          "start": 8452.29999999702,
+          "duration": 71
+        },
+        {
+          "start": 8604.59999999404,
+          "duration": 431
+        },
+        {
+          "start": 9036.09999999404,
+          "duration": 112
+        }
+      ]
+    },
+    {
+      "route": "progress",
+      "settled_ms": 624.5,
+      "long_tasks": [
+        {
+          "start": 9821.20000000298,
+          "duration": 133
+        },
+        {
+          "start": 10151.90000000596,
+          "duration": 89
+        },
+        {
+          "start": 10320,
+          "duration": 54
+        }
+      ]
+    },
+    {
+      "route": "year",
+      "settled_ms": 589.4000000059605,
+      "long_tasks": [
+        {
+          "start": 10732.40000000596,
+          "duration": 63
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

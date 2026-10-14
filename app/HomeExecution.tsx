@@ -1,98 +1,107 @@
-import type { TaskView } from "./taskSchedule";
 import { useState, type ReactNode } from "react";
-import {
-    ArrowUpLeft,
-    ChevronLeft,
-    NotebookPen,
-    ChartNoAxesCombined,
-} from "lucide-react";
-import { stageFor, type Execution } from "./execution";
+import { ArrowUpLeft, ChevronLeft } from "lucide-react";
+import { CompletionButton } from "./CompletionButton";
+import { stageFor } from "./execution";
 import type { Hierarchy } from "./hierarchy";
-import type { Snapshot, Project, Task, Step } from "./model";
-import { ExecutionSummary } from "./ExecutionSummary";
-import { PlanningLinks } from "./TodayTasks";
+import type { Snapshot, Project, Step } from "./model";
+import type { TaskView } from "./taskSchedule";
+import { orderedToday } from "./dailyPlanning";
+import { useWallClock } from "./useWallClock";
 export function HomeExecution({
     data,
     active,
-    remaining,
-    latestProject,
     resume,
     hierarchy,
-    executions,
     renderProject,
     renderTask,
     open,
     complete,
-    onCreateProject,
-    lastVisited,
+    openHistory,
 }: {
     data: Snapshot;
     active: Project[];
-    remaining: Task[];
-    latestProject?: Project;
     resume?: Step;
     hierarchy: Hierarchy;
-    executions: Map<string, Execution>;
-    renderProject: (project: Project, index: number) => ReactNode;
-    renderTask: (task: Task) => ReactNode;
+    renderProject: (
+        project: Project,
+        index: number,
+        omitCurrentId?: string,
+    ) => ReactNode;
+    renderTask: (task: TaskView) => ReactNode;
     open: (route: string) => void;
     complete: (id: string, value: boolean) => Promise<void>;
-    onCreateProject: () => void;
-    lastVisited: string | null;
+    openHistory: () => void;
 }) {
+    const clock = useWallClock();
+    const today = orderedToday(
+        data.tasks,
+        new Date(Math.max(clock, Date.now())),
+    );
     const [limit, setLimit] = useState(4);
     const project = data.projects.find((p) => p.id === resume?.projectId);
     const stage = resume ? stageFor(resume, hierarchy) : undefined;
-    const completedTask = data.tasks
-        .filter((t) => t.status === "done")
-        .sort((a, b) => b.completedAt!.localeCompare(a.completedAt!))[0];
-    const remembered = hierarchy.byId.get(lastVisited ?? "");
-    const rememberedClosed =
-        remembered?.kind === "step" &&
-        !hierarchy.children(remembered.projectId, remembered.id).length &&
-        data.projects.some(
-            (p) =>
-                p.id === remembered.projectId &&
-                p.status === "closed" &&
-                !p.archived,
-        )
-            ? remembered
-            : undefined;
-    const closedStep =
-        rememberedClosed ??
-        data.projects
-            .filter((p) => p.status === "closed" && !p.archived)
-            .flatMap((p) => executions.get(p.id)?.lastCompleted ?? [])
-            .sort((a, b) => b.completedAt!.localeCompare(a.completedAt!))[0];
     return (
         <>
+            <section className="home-today" aria-label="مهامي اليوم">
+                <div className="section-heading">
+                    <h2>
+                        مهامي اليوم{" "}
+                        <span className="count">{today.length}</span>
+                    </h2>
+                    <a className="text-btn" href="#today">
+                        عرض الكل <ChevronLeft size={16} />
+                    </a>
+                </div>
+                {today.length ? (
+                    <div className="surface task-list">
+                        {today.slice(0, 3).map(({ task }) => renderTask(task))}
+                    </div>
+                ) : (
+                    <p className="compact-empty muted">
+                        قائمة اليوم خفيفة. <a href="#today">اختر مهامك لليوم</a>
+                    </p>
+                )}
+            </section>
             <section
                 className="surface resume-shortcut"
                 aria-label="اختصار الاستكمال"
             >
                 <div>
                     <span className="small muted">أكمل من حيث توقفت</span>
-                    <h2>{resume?.title ?? "لا توجد خطوة تنتظر التنفيذ"}</h2>
-                    <p className="muted small">
+                    <h2 title={resume?.title}>
+                        {resume?.title ?? "خطوتك التالية تبدأ هنا"}
+                    </h2>
+                    <p className="muted small" title={project?.title}>
                         {resume
-                            ? `${project?.title} / ${stage?.title ?? "خطوات المشروع"}`
-                            : "أنشئ مشروعًا أو أضف خطوة، وستجد نقطة العودة هنا."}
+                            ? `${project?.title} / ${stage ? `المرحلة ${hierarchy.numbers.get(stage.id)}` : "خطوات المشروع"}`
+                            : "افتح مشروعًا واختر خطوة لتعود إليها هنا."}
                     </p>
                 </div>
                 {resume && (
-                    <button
-                        className="btn secondary"
-                        onClick={() => open(`step/${resume.id}`)}
-                    >
-                        أكمل من حيث توقفت <ArrowUpLeft size={18} />
-                    </button>
+                    <>
+                        <CompletionButton
+                            entityKey={`step/${resume.id}`}
+                            checked={false}
+                            label={`الخطوة «${resume.title}»`}
+                            onToggle={(value) => complete(resume.id, value)}
+                        />
+                        <button
+                            className="icon-btn"
+                            aria-label="أكمل من حيث توقفت"
+                            onClick={() => open(`step/${resume.id}`)}
+                        >
+                            <ArrowUpLeft size={20} />
+                        </button>
+                    </>
                 )}
             </section>
-            <PlanningLinks />
-            <section className="home-execution" aria-label="خطوات مشاريعك الآن">
+            <section
+                className="home-execution"
+                aria-label="خطوات مشاريعك القادمة"
+            >
                 <div className="section-heading">
                     <h2>
-                        خطوات مشاريعك الآن{" "}
+                        خطوات مشاريعك القادمة{" "}
                         <span className="count">{active.length}</span>
                     </h2>
                     <button
@@ -103,125 +112,29 @@ export function HomeExecution({
                     </button>
                 </div>
                 <div className="project-grid">
-                    {active.slice(0, limit).map(renderProject)}
+                    {active
+                        .slice(0, limit)
+                        .map((p, i) => renderProject(p, i, resume?.id))}
                 </div>
                 {!active.length && (
-                    <div className="surface empty-execution">
-                        <p className="muted">
-                            لا توجد مشاريع نشطة. أضف مشروعك التالي عندما تكون
-                            مستعدًا.
-                        </p>
-                        <button
-                            className="btn secondary"
-                            onClick={onCreateProject}
-                        >
-                            {data.projects.length
-                                ? "مشروع جديد"
-                                : "ابدأ مشروعك الأول"}
-                        </button>
-                    </div>
+                    <p className="compact-empty muted">
+                        لا توجد مشاريع نشطة. يمكنك إضافة مشروع من زر الإضافة.
+                    </p>
                 )}
                 {active.length > limit && (
                     <button
-                        className="btn secondary load-more"
-                        onClick={() => setLimit((value) => value + 4)}
+                        className="text-btn load-more"
+                        onClick={() => setLimit((v) => v + 4)}
                     >
                         عرض المزيد من المشاريع ({active.length - limit})
                     </button>
                 )}
             </section>
-            <section className="home-execution" aria-label="مهامك الآن">
-                <div className="section-heading">
-                    <h2>
-                        مهامك الآن{" "}
-                        <span className="count">{remaining.length}</span>
-                    </h2>
-                    <button className="text-btn" onClick={() => open("tasks")}>
-                        إلى المهام <ChevronLeft size={16} />
-                    </button>
-                </div>
-                <p className="task-overview muted small">
-                    {[
-                        ["general", "بدون موعد"],
-                        ["today", "اليوم"],
-                        ["near", "اقترب الموعد"],
-                        ["overdue", "متأخرة"],
-                        ["cycle", "دورة حالية"],
-                        ["future", "قادمة"],
-                    ].map(([key, label]) => {
-                        const count = remaining.filter(
-                            (t) => (t as TaskView)._dueState === key,
-                        ).length;
-                        return count ? (
-                            <span key={key}>
-                                {label}: {count}
-                            </span>
-                        ) : null;
-                    })}
-                </p>
-                {remaining.length ? (
-                    <div className="surface task-list">
-                        {remaining.slice(0, 5).map(renderTask)}
-                    </div>
-                ) : (
-                    <p className="surface muted">لا توجد مهام مستقلة متبقية.</p>
-                )}
-                {remaining.length > 5 && (
-                    <button className="text-btn" onClick={() => open("tasks")}>
-                        عرض كل المهام ({remaining.length})
-                    </button>
-                )}
-                {completedTask && (
-                    <details
-                        className="surface home-recent"
-                        open
-                        key={completedTask.id}
-                    >
-                        <summary>آخر مهمة أُنجزت · إعادة فتحها</summary>
-                        {renderTask(completedTask)}
-                    </details>
-                )}
-            </section>
-            {closedStep && (
-                <details
-                    className="surface home-recent"
-                    open
-                    key={closedStep.id}
-                >
-                    <summary>
-                        {closedStep.status === "done"
-                            ? "آخر خطوة أُنجزت في مشروع مكتمل"
-                            : "آخر خطوة أُعيد فتحها في مشروع مغلق"}
-                    </summary>
-                    <ExecutionSummary
-                        execution={{ total: 1, lastCompleted: closedStep }}
-                        open={(stepId) => open(`step/${stepId}`)}
-                        complete={complete}
-                    />
-                    <button
-                        className="text-btn"
-                        onClick={() => open(`project/${closedStep.projectId}`)}
-                    >
-                        عرض المشروع
-                    </button>
-                </details>
-            )}
-            {latestProject && (
-                <p className="last-edited">
-                    <NotebookPen size={16} /> آخر مشروع عُدّل:{" "}
-                    <button
-                        className="text-btn"
-                        onClick={() => open(`project/${latestProject.id}`)}
-                    >
-                        {latestProject.title}
-                    </button>
-                </p>
-            )}
             <button
                 className="text-btn home-progress-link"
-                onClick={() => open("progress")}
+                onClick={openHistory}
             >
-                كل التقدم <ChartNoAxesCombined size={17} />
+                سجل الإنجاز <ChevronLeft size={16} />
             </button>
         </>
     );

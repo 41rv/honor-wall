@@ -11,6 +11,52 @@ import {
 import type { Task } from "./model";
 import { dateKey } from "./dateKey";
 
+export function sortTodayTasks(tasks: TaskView[]) {
+    const rank = { "important-urgent": 0, important: 1, urgent: 2, low: 3 };
+    const dates = new Map(
+        tasks.map((task) => [
+            task.id,
+            task.schedule
+                ? Date.parse(
+                      task._cycle?.scheduledAt ??
+                          task._next ??
+                          new Date(
+                              calendarScheduledInstant(task),
+                          ).toISOString(),
+                  )
+                : Infinity,
+        ]),
+    );
+    return [...tasks].sort(
+        (a, b) =>
+            (a.priority ? rank[a.priority] : 4) -
+                (b.priority ? rank[b.priority] : 4) ||
+            dates.get(a.id)! - dates.get(b.id)! ||
+            a.createdAt.localeCompare(b.createdAt) ||
+            a.id.localeCompare(b.id),
+    );
+}
+
+export function orderedToday(
+    tasks: TaskView[],
+    at = new Date(),
+    zone = localZone(),
+) {
+    const groups = todayGroups(tasks, at, zone);
+    const category = new Map<string, keyof typeof groups>();
+    for (const key of Object.keys(groups) as Array<keyof typeof groups>)
+        for (const task of groups[key]) category.set(task.id, key);
+    const unique = new Map(
+        Object.values(groups)
+            .flat()
+            .map((task) => [task.id, task]),
+    );
+    return sortTodayTasks([...unique.values()]).map((task) => ({
+        task,
+        category: category.get(task.id)!,
+    }));
+}
+
 export function scheduledInstant(task: Task): number {
     const s = task.schedule!;
     return Temporal.PlainDate.from(s.date).toZonedDateTime({

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, memo } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./db";
 import type { Snapshot } from "./model";
@@ -17,7 +17,7 @@ import {
 import { localZone } from "./taskSchedule";
 import { dayInstant } from "./weekCalendar";
 
-export function MasarInsights({
+export const MasarInsights = memo(function MasarInsights({
     data,
     rows,
     tracking,
@@ -489,4 +489,4 @@ export function MasarInsights({
             )}
         </section>
     );
-}
+});

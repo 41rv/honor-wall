@@ -4,7 +4,7 @@ import { sizedFixture, importData, readStore } from "./helpers";
 test("طلب إلغاء الإتمام يبقى بعد تحديث فوري مع تأخر إشعار معاملة التخزين", async ({
     page,
 }) => {
-    await importData(page, sizedFixture(4));
+    await importData(page, fixture());
     await page.goto("/#home");
     await page.evaluate(() => {
         const descriptor = Object.getOwnPropertyDescriptor(
@@ -68,12 +68,12 @@ test("كثرة المشاريع والنصوص الطويلة تعرض خطوة 
     );
     await importData(page, data);
     await page.goto("/#home");
-    const home = page.getByRole("region", { name: "خطوات مشاريعك الآن" });
+    const home = page.getByRole("region", { name: "خطوات مشاريعك القادمة" });
     await expect(home.locator(".project-card")).toHaveCount(4);
-    await expect(home.locator(".execution-current")).toHaveCount(4);
+    await expect(home.locator(".execution-current")).toHaveCount(3);
     await home.getByRole("button", { name: /عرض المزيد من المشاريع/ }).click();
     await expect(home.locator(".project-card")).toHaveCount(8);
-    await expect(home.locator(".execution-current")).toHaveCount(8);
+    await expect(home.locator(".execution-current")).toHaveCount(7);
     await expect(page.locator(".stat-card")).toHaveCount(0);
     expect(
         (await page
@@ -82,8 +82,8 @@ test("كثرة المشاريع والنصوص الطويلة تعرض خطوة 
     ).toBeLessThan(60);
     await expect(
         page
-            .getByRole("region", { name: "مهامك الآن" })
-            .getByRole("button", { name: /عرض كل المهام/ }),
+            .getByRole("region", { name: "مهامي اليوم" })
+            .getByRole("link", { name: "عرض الكل", exact: true }),
     ).toBeVisible();
     expect(
         await page.evaluate(
@@ -94,6 +94,11 @@ test("كثرة المشاريع والنصوص الطويلة تعرض خطوة 
 
 function fixture() {
     const data = sizedFixture(4);
+    for (const task of data.tasks)
+        task.today = {
+            date: new Date().toISOString().slice(0, 10),
+            timeZone: "UTC",
+        };
     data.steps.push({
         ...data.steps[0],
         id: "stage-two",
@@ -131,7 +136,7 @@ for (const mobile of [false, true]) {
                     card.locator(".execution-current"),
                 ).toHaveAttribute("data-execution-id", "s0");
                 await expect(card.locator(".execution-stage")).toHaveText(
-                    "مرحلة الاختبار",
+                    "المرحلة 1",
                 );
                 const toggle = card.locator('[data-completion-key="step/s0"]');
                 if (mobile) await toggle.tap();
@@ -147,10 +152,8 @@ for (const mobile of [false, true]) {
                     "data-completed-id",
                     "s0",
                 );
-                await page.goto("/#home");
-                const home = page.getByRole("region", {
-                    name: "خطوات مشاريعك الآن",
-                });
+                await page.goto("/#projects");
+                const home = page.locator('[data-project-id="p"]');
                 await expect(home.locator(".execution-current")).toHaveCount(1);
                 await home.locator('[data-completion-key="step/s0"]').click();
                 await expect
@@ -196,7 +199,7 @@ for (const mobile of [false, true]) {
                         '[data-step-id="s0"] [data-completion-key="step/s0"]',
                     )
                     .click();
-                await page.goto("/#home");
+                await page.goto("/#projects");
                 await expect(home.getByRole("progressbar")).toHaveAttribute(
                     "aria-valuenow",
                     "25",
@@ -206,13 +209,17 @@ for (const mobile of [false, true]) {
                     home.locator(".execution-current"),
                 ).toHaveAttribute("data-execution-id", "s2");
                 await expect(home.locator(".execution-stage")).toHaveText(
-                    "مرحلة ثانية",
+                    "المرحلة 2",
                 );
                 await expect(home.getByRole("progressbar")).toHaveAttribute(
                     "aria-valuenow",
                     "50",
                 );
-                const tasks = page.getByRole("region", { name: "مهامك الآن" });
+                await page.goto("/#home");
+                const tasks = page.getByRole("region", {
+                    name: "مهامي اليوم",
+                    exact: true,
+                });
                 await tasks
                     .locator('[data-completion-key="task/t0"]')
                     .evaluate((button: HTMLButtonElement) => {
@@ -221,10 +228,9 @@ for (const mobile of [false, true]) {
                 await expect
                     .poll(() => state(page, "tasks", "t0"))
                     .toBe("done");
-                await expect(tasks.locator(".home-recent")).toHaveAttribute(
-                    "open",
-                    "",
-                );
+                await expect(
+                    tasks.locator('[data-completion-key="task/t0"]'),
+                ).toHaveAttribute("aria-pressed", "true");
                 await tasks.locator('[data-completion-key="task/t0"]').click();
                 await expect
                     .poll(() => state(page, "tasks", "t0"))
@@ -254,7 +260,7 @@ for (const mobile of [false, true]) {
                     name: "اختصار الاستكمال",
                 });
                 await expect(resume).toContainText("خطوة 3");
-                await expect(resume).toContainText("مرحلة ثانية");
+                await expect(resume).toContainText("المرحلة 2");
                 await page.reload();
                 await resume
                     .getByRole("button", { name: "أكمل من حيث توقفت" })
@@ -280,9 +286,7 @@ for (const mobile of [false, true]) {
                     .getByRole("dialog")
                     .getByRole("button", { name: "أرشفة", exact: true })
                     .click();
-                await expect(resume).toContainText(
-                    "لا توجد خطوة تنتظر التنفيذ",
-                );
+                await expect(resume).toContainText("خطوتك التالية تبدأ هنا");
                 await expect(resume.getByRole("button")).toHaveCount(0);
                 await page.goto("/#projects");
                 await page.getByRole("button", { name: /المؤرشفة/ }).click();
@@ -298,7 +302,7 @@ for (const mobile of [false, true]) {
                 await page.goto("/#home");
                 await expect(resume).toContainText("خطوة 2");
                 await page
-                    .getByRole("region", { name: "خطوات مشاريعك الآن" })
+                    .getByRole("region", { name: "اختصار الاستكمال" })
                     .locator('[data-completion-key="step/s2"]')
                     .click();
                 await expect(resume).toContainText("خطوة 0");
@@ -306,35 +310,42 @@ for (const mobile of [false, true]) {
         },
     );
 }
-test("إكمال آخر خطوة يبقي الوصول إليها وإلغاء إتمامها بعد إعادة التحميل والمشروع الفارغ واضح", async ({
+test("إكمال آخر خطوة وحفظها ثم التراجع من السجل والتفاصيل والمشروع الفارغ", async ({
     page,
 }) => {
     const data = sizedFixture(1);
+    for (const t of data.tasks)
+        t.today = {
+            date: new Date().toISOString().slice(0, 10),
+            timeZone: "UTC",
+        };
     await importData(page, data);
     await page.goto("/#home");
     const task = page.locator('[data-completion-key="task/t0"]');
     await task.focus();
     await task.press("Enter");
     await expect.poll(() => state(page, "tasks", "t0")).toBe("done");
-    await expect(
-        page.locator('.home-recent [data-completion-key="task/t0"]'),
-    ).toBeFocused();
+    await expect(task).toBeFocused();
     await page.keyboard.press("Space");
     await expect.poll(() => state(page, "tasks", "t0")).toBe("todo");
-    await expect(task).toBeFocused();
     const leaf = page.locator('[data-completion-key="step/s0"]');
     await leaf.focus();
     await leaf.press("Enter");
     await expect
         .poll(async () => (await readStore(page, "projects"))[0].status)
         .toBe("closed");
-    await expect(
-        page.locator('.home-recent [data-completion-key="step/s0"]'),
-    ).toBeFocused();
     await page.reload();
+    await page
+        .getByRole("button", { name: "سجل الإنجاز", exact: true })
+        .click();
     await expect(
-        page.getByText("آخر خطوة أُنجزت في مشروع مكتمل", { exact: true }),
-    ).toBeVisible();
+        page.locator('[data-completion-key="step/s0"]'),
+    ).toHaveAttribute("aria-pressed", "true");
+    await page
+        .locator(".history-record-body")
+        .filter({ has: page.locator('[data-completion-key="step/s0"]') })
+        .getByRole("button", { name: "خطوة 0", exact: true })
+        .click();
     for (let i = 0; i < 11; i++)
         await page.locator('[data-completion-key="step/s0"]').click();
     await page.reload();
@@ -351,15 +362,13 @@ test("إكمال آخر خطوة يبقي الوصول إليها وإلغاء �
         .getByRole("button", { name: "إعادة فتح المشروع", exact: true })
         .click();
     await page.goto("/#home");
-    await expect(page.locator(".execution-current")).toHaveAttribute(
-        "data-execution-id",
-        "s0",
-    );
-    const empty = sizedFixture(0);
-    await importData(page, empty);
+    await expect(
+        page.getByRole("region", { name: "اختصار الاستكمال" }),
+    ).toContainText("خطوة 0");
+    await importData(page, sizedFixture(0));
     await page.goto("/#home");
     await expect(
-        page.getByRole("region", { name: "خطوات مشاريعك الآن" }),
+        page.getByRole("region", { name: "خطوات مشاريعك القادمة" }),
     ).toContainText("لم تُضف خطوات بعد");
     await expect(page.locator(".execution-current")).toHaveCount(0);
 });

@@ -3,7 +3,7 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
-import { readStore } from "../tests/browser/helpers.ts";
+import { readStore, openCreate } from "../tests/browser/helpers.ts";
 
 const newBuild =
     process.argv[2] || new URL("../build", import.meta.url).pathname;
@@ -71,11 +71,19 @@ try {
     };
     recordErrors(page);
     await page.goto(baseURL);
-    await page.getByLabel("عنوان الفكرة السريعة").waitFor();
+    await page.locator("h1").waitFor();
     await page.evaluate(async () => await navigator.serviceWorker.ready);
     await page.reload();
     async function add(button, title, notes = "") {
-        await page.getByRole("button", { name: button, exact: true }).tap();
+        await page.locator("h1").waitFor();
+        const control = page.getByRole("button", { name: button, exact: true });
+        const kind = {
+            "مشروع جديد": "project",
+            "مهمة جديدة": "task",
+            "فكرة جديدة": "idea",
+        }[button];
+        if (!kind || (await control.isVisible())) await control.tap();
+        else await openCreate(page, kind, true);
         const dialog = page.getByRole("dialog");
         await dialog.getByLabel("الاسم", { exact: true }).fill(title);
         await dialog.getByRole("textbox").nth(1).fill(notes);
@@ -105,6 +113,13 @@ try {
     const before = {};
     const beforeDatabases = await page.evaluate(() => indexedDB.databases());
     const preservedStores = ["projects", "steps", "tasks", "ideas", "events"];
+    if (
+        planningMode &&
+        (await page.evaluate(() => indexedDB.databases())).find(
+            (d) => d.name === "masar-v1",
+        )?.version >= 40
+    )
+        preservedStores.push("projectProgress", "projectTracking");
     if (preexistingTasks) {
         await page.goto(baseURL + "#tasks");
         await page
@@ -253,9 +268,7 @@ try {
     if (tasksMode) {
         await page.clock.install({ time: new Date("2026-10-17T10:00:00Z") });
         await page.goto(baseURL + "#tasks");
-        await page
-            .getByRole("button", { name: "مهمة جديدة", exact: true })
-            .tap();
+        await openCreate(page, "task", true);
         const form = page.getByRole("dialog");
         await form
             .getByLabel("الاسم", { exact: true })
@@ -321,6 +334,9 @@ try {
             ).toContainText("مهمة تجريبية قبل التدقيق");
             await page.goto(baseURL + "#projects");
             await add("مشروع جديد", "مشروع التنظيم بعد الترحيل");
+            const planningProjectId = (await readStore(page, "projects")).find(
+                (p) => p.title === "مشروع التنظيم بعد الترحيل",
+            ).id;
             await page
                 .getByRole("button", {
                     name: "مشروع التنظيم بعد الترحيل",
@@ -339,7 +355,9 @@ try {
                 .poll(
                     async () =>
                         (await readStore(page, "projectProgress")).filter(
-                            (r) => r.reason === "completion",
+                            (r) =>
+                                r.reason === "completion" &&
+                                r.projectId === planningProjectId,
                         ).length,
                 )
                 .toBe(1);
@@ -420,6 +438,15 @@ try {
             await page.goto(baseURL + "#calendar");
             await expect(page.locator(".calendar-day")).toHaveCount(7);
             await page.goto(baseURL + "#progress");
+            const insightsTab = page.getByRole("tab", {
+                name: "رؤى مسار",
+                exact: true,
+            });
+            await insightsTab
+                .or(page.getByRole("region", { name: "رؤى مسار", exact: true }))
+                .first()
+                .waitFor();
+            if (await insightsTab.isVisible()) await insightsTab.tap();
             await expect(
                 page.getByRole("region", { name: "رؤى مسار", exact: true }),
             ).toBeVisible();
@@ -439,6 +466,13 @@ try {
                 timestamp: new Date().toISOString(),
                 basePath,
                 update_preserved_all_five_stores: true,
+                update_preserved_store_names: preservedStores,
+                update_preserved_preexisting_project_history:
+                    preservedStores.includes("projectProgress") &&
+                    preservedStores.includes("projectTracking"),
+                native_database_version_before: beforeDatabases.find(
+                    (d) => d.name === "masar-v1",
+                ).version,
                 update_preserved_preexisting_task_cycles: preexistingTasks,
                 planning_and_eight_stores_survived_offline_restart:
                     planningMode,

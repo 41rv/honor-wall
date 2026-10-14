@@ -1,3 +1,4 @@
+import { openCreate } from "./helpers";
 import { test, expect } from "@playwright/test";
 import { largeFixture, importData } from "./helpers";
 test("قياس حفظ فكرة مع ألفي فكرة موجودة ومعالج أبطأ", async ({ page }) => {
@@ -19,7 +20,7 @@ test("قياس حفظ فكرة مع ألفي فكرة موجودة ومعالج 
     await page.getByRole("button", { name: "الأرشيف", exact: true }).click();
     await page.getByLabel("بحث شامل").fill("بحث لا يطابق الفكرة الجديدة");
     await expect(page.getByText("لم نجد نتيجة")).toBeVisible();
-    await page.getByRole("button", { name: "فكرة جديدة", exact: true }).click();
+    await openCreate(page, "idea");
     await page
         .getByRole("dialog")
         .getByLabel("الاسم", { exact: true })

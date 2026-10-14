@@ -202,9 +202,14 @@ try {
             await expect(
                 page.locator('.period-dashboard [role="status"]'),
             ).toHaveCount(0);
-            await expect(
-                page.locator(".masar-insights svg path"),
-            ).toHaveAttribute("d", /^M/);
+            if (
+                !(await page
+                    .getByRole("tab", { name: "رؤى مسار", exact: true })
+                    .count())
+            )
+                await expect(
+                    page.locator(".masar-insights svg path"),
+                ).toHaveAttribute("d", /^M/);
             if (route === "year")
                 await expect(
                     page
