@@ -10,6 +10,7 @@ import { stageFor, type Execution } from "./execution";
 import type { Hierarchy } from "./hierarchy";
 import type { Snapshot, Project, Task, Step } from "./model";
 import { ExecutionSummary } from "./ExecutionSummary";
+import { PlanningLinks } from "./TodayTasks";
 export function HomeExecution({
     data,
     active,
@@ -87,6 +88,7 @@ export function HomeExecution({
                     </button>
                 )}
             </section>
+            <PlanningLinks />
             <section className="home-execution" aria-label="خطوات مشاريعك الآن">
                 <div className="section-heading">
                     <h2>

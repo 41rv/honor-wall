@@ -1,0 +1,117 @@
+{
+  "timestamp": "2026-10-14T11:01:22.833Z",
+  "build": "/tmp/masar-planning-performance-before",
+  "cpu_slowdown": 4,
+  "projects": 100,
+  "steps": 10000,
+  "tasks": 500,
+  "cycles": 4000,
+  "progress_records": 8000,
+  "results": [
+    {
+      "route": "today",
+      "settled_ms": 1183.199999988079,
+      "long_tasks": [
+        {
+          "start": 7025,
+          "duration": 153
+        },
+        {
+          "start": 7205.600000008941,
+          "duration": 493
+        },
+        {
+          "start": 7700.70000000298,
+          "duration": 98
+        },
+        {
+          "start": 7832.300000011921,
+          "duration": 170
+        },
+        {
+          "start": 8011,
+          "duration": 152
+        }
+      ]
+    },
+    {
+      "route": "calendar",
+      "settled_ms": 3132.2000000029802,
+      "long_tasks": [
+        {
+          "start": 9374.800000011921,
+          "duration": 192
+        },
+        {
+          "start": 9579,
+          "duration": 1136
+        },
+        {
+          "start": 10716.90000000596,
+          "duration": 683
+        },
+        {
+          "start": 11452.60000000894,
+          "duration": 814
+        },
+        {
+          "start": 12286.10000000894,
+          "duration": 125
+        }
+      ]
+    },
+    {
+      "route": "progress",
+      "settled_ms": 3444,
+      "long_tasks": [
+        {
+          "start": 14407.5,
+          "duration": 155
+        },
+        {
+          "start": 14575,
+          "duration": 641
+        },
+        {
+          "start": 15216.90000000596,
+          "duration": 203
+        },
+        {
+          "start": 15500.800000011921,
+          "duration": 480
+        },
+        {
+          "start": 15992.10000000894,
+          "duration": 178
+        },
+        {
+          "start": 16488.40000000596,
+          "duration": 428
+        },
+        {
+          "start": 17018.30000001192,
+          "duration": 726
+        }
+      ]
+    },
+    {
+      "route": "year",
+      "settled_ms": 2670.7000000029802,
+      "long_tasks": [
+        {
+          "start": 19030.60000000894,
+          "duration": 59
+        },
+        {
+          "start": 19185.40000000596,
+          "duration": 55
+        },
+        {
+          "start": 19337.20000000298,
+          "duration": 1007
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

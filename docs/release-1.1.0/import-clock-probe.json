@@ -1,0 +1,17 @@
+{
+  "opening_operations": [],
+  "after_minute_tick": [
+    {
+      "key": "openCursor",
+      "store": "schedule.repeat",
+      "at": "2026-10-14T12:01:00.000Z",
+      "stack": "Error\n    at proto.<computed> [as openCursor] (eval at evaluate (:370:30), <anonymous>:1:349)\n    at http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:42808\n    at e (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:2869)\n    at new R (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:3157)\n    at Object.openCursor (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:42596)\n    at h.<computed> [as openCursor] (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:68144)\n    at Object.openCursor (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:61267)\n    at Nt (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:22714)\n    at Pt (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:23224)\n    at http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:25265"
+    },
+    {
+      "key": "openCursor",
+      "store": "[status+end]",
+      "at": "2026-10-14T12:01:00.001Z",
+      "stack": "Error\n    at proto.<computed> [as openCursor] (eval at evaluate (:370:30), <anonymous>:1:349)\n    at http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:42808\n    at e (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:2869)\n    at new R (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:3157)\n    at Object.openCursor (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:42596)\n    at h.<computed> [as openCursor] (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:68144)\n    at Object.openCursor (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:61267)\n    at Nt (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:22714)\n    at Pt (http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:23224)\n    at http://127.0.0.1:4173/assets/index-fhMV1InD.js:11:24320"
+    }
+  ]
+}

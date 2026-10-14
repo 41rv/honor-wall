@@ -1,4 +1,7 @@
 import { TaskStatusControls } from "./TaskStatusControls";
+import { TodayTasks, PlanningLinks } from "./TodayTasks";
+import { WeekCalendar } from "./WeekCalendar";
+import { PeriodDashboard } from "./PeriodDashboard";
 import { TaskFields } from "./TaskFields";
 import { TaskDetails, TaskDue } from "./TaskDetails";
 import { priorities, type TaskOptions } from "./taskTypes";
@@ -976,35 +979,50 @@ function App() {
               ? "tasks"
               : page === "idea"
                 ? "ideas"
-                : page;
+                : ["today", "calendar"].includes(page)
+                  ? "tasks"
+                  : page;
     const dashboardProjects = active;
     const dashboardRecent = recent.slice(0, 5);
     const dashboard =
         page === "progress" ? (
             <>
-                <div className="stats-grid">
-                    {[
-                        ["إجمالي المشاريع", data.projects.length, FolderKanban],
-                        ["المشاريع النشطة", active.length, Play],
-                        [
-                            "المشاريع المغلقة",
-                            data.projects.filter((p) => p.status === "closed")
-                                .length,
-                            CheckCheck,
-                        ],
-                        ["مهام مستقلة متبقية", remaining.length, NotebookPen],
-                        ["منجز آخر ٧ أيام", recent.length, Leaf],
-                    ].map(([label, value, Icon]) => {
-                        const I = Icon as typeof Leaf;
-                        return (
-                            <div className="stat-card" key={String(label)}>
-                                <I size={21} />
-                                <strong>{String(value)}</strong>
-                                <span>{String(label)}</span>
-                            </div>
-                        );
-                    })}
-                </div>
+                <PeriodDashboard data={data} />
+                <details className="general-dashboard">
+                    <summary>المؤشرات العامة وآخر ٧ أيام</summary>
+                    <div className="stats-grid">
+                        {[
+                            [
+                                "إجمالي المشاريع",
+                                data.projects.length,
+                                FolderKanban,
+                            ],
+                            ["المشاريع النشطة", active.length, Play],
+                            [
+                                "المشاريع المغلقة",
+                                data.projects.filter(
+                                    (p) => p.status === "closed",
+                                ).length,
+                                CheckCheck,
+                            ],
+                            [
+                                "مهام مستقلة متبقية",
+                                remaining.length,
+                                NotebookPen,
+                            ],
+                            ["منجز آخر ٧ أيام", recent.length, Leaf],
+                        ].map(([label, value, Icon]) => {
+                            const I = Icon as typeof Leaf;
+                            return (
+                                <div className="stat-card" key={String(label)}>
+                                    <I size={21} />
+                                    <strong>{String(value)}</strong>
+                                    <span>{String(label)}</span>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </details>
                 <div className="dashboard-grid">
                     <section className="surface">
                         <div className="section-heading">
@@ -1255,20 +1273,24 @@ function App() {
                                     : "خطوة صغيرة، أثر مستمر"}
                             </div>
                             <h1>
-                                {page === "home"
-                                    ? "مساحة هادئة. لإنجاز أكبر."
-                                    : page === "projects"
-                                      ? "مشاريعك"
-                                      : page === "tasks"
-                                        ? "مهامك"
-                                        : page === "ideas"
-                                          ? "مساحة الأفكار"
-                                          : page === "progress"
-                                            ? "كل خطوة تصنع فرقًا"
-                                            : page === "backup"
-                                              ? "بياناتك في أمان"
-                                              : (detail?.title ??
-                                                "العنصر غير موجود")}
+                                {page === "today"
+                                    ? "مهامي اليوم"
+                                    : page === "calendar"
+                                      ? "التقويم الأسبوعي"
+                                      : page === "home"
+                                        ? "مساحة هادئة. لإنجاز أكبر."
+                                        : page === "projects"
+                                          ? "مشاريعك"
+                                          : page === "tasks"
+                                            ? "مهامك"
+                                            : page === "ideas"
+                                              ? "مساحة الأفكار"
+                                              : page === "progress"
+                                                ? "كل خطوة تصنع فرقًا"
+                                                : page === "backup"
+                                                  ? "بياناتك في أمان"
+                                                  : (detail?.title ??
+                                                    "العنصر غير موجود")}
                             </h1>
                             <p>
                                 {page === "home"
@@ -1409,6 +1431,25 @@ function App() {
                         </section>
                     ) : (
                         <>
+                            {page === "calendar" && (
+                                <WeekCalendar
+                                    tasks={data.tasks}
+                                    onComplete={completeTask}
+                                />
+                            )}
+                            {page === "today" && (
+                                <TodayTasks
+                                    tasks={data.tasks as TaskView[]}
+                                    renderTask={(task) => (
+                                        <TaskRow
+                                            key={task.id}
+                                            task={task}
+                                            onComplete={completeTask}
+                                            onActions={openActions}
+                                        />
+                                    )}
+                                />
+                            )}
                             {page === "projects" && (
                                 <>
                                     <ProjectImport
@@ -1512,6 +1553,7 @@ function App() {
                             )}
                             {page === "tasks" && (
                                 <>
+                                    <PlanningLinks />
                                     <div className="section-heading">
                                         <h2>
                                             المهام المستقلة{" "}

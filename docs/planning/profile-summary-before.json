@@ -1,0 +1,350 @@
+[
+  {
+    "route": "today",
+    "self_sources": [
+      {
+        "name": "(program)",
+        "ms": 807
+      },
+      {
+        "name": "../../node_modules/@js-temporal/polyfill/dist/index.esm.js",
+        "ms": 560
+      },
+      {
+        "name": "../../node_modules/jsbi/dist/jsbi-umd.js",
+        "ms": 286
+      },
+      {
+        "name": "../../node_modules/react-dom/cjs/react-dom-client.production.js",
+        "ms": 136
+      },
+      {
+        "name": "../../app/TaskDetails.tsx",
+        "ms": 63
+      },
+      {
+        "name": "setAttribute",
+        "ms": 41
+      },
+      {
+        "name": "../../app/taskSchedule.ts",
+        "ms": 35
+      },
+      {
+        "name": "(garbage collector)",
+        "ms": 33
+      },
+      {
+        "name": "../../app/App.tsx",
+        "ms": 24
+      },
+      {
+        "name": "../../node_modules/lucide-react/dist/esm/shared/src/build/buildLucideIconNode.mjs",
+        "ms": 20
+      }
+    ],
+    "app_inclusive": [
+      {
+        "name": "../../app/taskSchedule.ts:145 currentCycle",
+        "ms": 802
+      },
+      {
+        "name": "../../app/TodayTasks.tsx:23 TodayTasks",
+        "ms": 591
+      },
+      {
+        "name": "../../app/dailyPlanning.ts:28 todayGroups",
+        "ms": 564
+      },
+      {
+        "name": "../../app/taskSchedule.ts:130 makeCycle",
+        "ms": 420
+      },
+      {
+        "name": "../../app/taskSchedule.ts:14 instant",
+        "ms": 327
+      },
+      {
+        "name": "../../app/useAppData.ts:32 ",
+        "ms": 322
+      },
+      {
+        "name": "../../app/useAppData.ts:35 ",
+        "ms": 307
+      },
+      {
+        "name": "../../app/taskSchedule.ts:10 localDay",
+        "ms": 242
+      },
+      {
+        "name": "../../app/taskSchedule.ts:110 firstCycleStart",
+        "ms": 238
+      },
+      {
+        "name": "../../app/taskSchedule.ts:92 nextSlot",
+        "ms": 234
+      }
+    ]
+  },
+  {
+    "route": "calendar",
+    "self_sources": [
+      {
+        "name": "../../node_modules/@js-temporal/polyfill/dist/index.esm.js",
+        "ms": 1306
+      },
+      {
+        "name": "(program)",
+        "ms": 1292
+      },
+      {
+        "name": "../../node_modules/jsbi/dist/jsbi-umd.js",
+        "ms": 651
+      },
+      {
+        "name": "../../node_modules/react-dom/cjs/react-dom-client.production.js",
+        "ms": 166
+      },
+      {
+        "name": "(garbage collector)",
+        "ms": 112
+      },
+      {
+        "name": "../../app/taskSchedule.ts",
+        "ms": 95
+      },
+      {
+        "name": "../../app/weekCalendar.ts",
+        "ms": 36
+      },
+      {
+        "name": "../../node_modules/dexie/dist/dexie.min.js",
+        "ms": 23
+      },
+      {
+        "name": "../../app/WeekCalendar.tsx",
+        "ms": 22
+      },
+      {
+        "name": "../../app/App.tsx",
+        "ms": 18
+      }
+    ],
+    "app_inclusive": [
+      {
+        "name": "../../app/WeekCalendar.tsx:17 WeekCalendar",
+        "ms": 1827
+      },
+      {
+        "name": "../../app/WeekCalendar.tsx:46 useMemo",
+        "ms": 1778
+      },
+      {
+        "name": "../../app/weekCalendar.ts:39 calendarEntries",
+        "ms": 1773
+      },
+      {
+        "name": "../../app/taskSchedule.ts:130 makeCycle",
+        "ms": 1560
+      },
+      {
+        "name": "../../app/taskSchedule.ts:174 cycleBatch",
+        "ms": 1249
+      },
+      {
+        "name": "../../app/taskSchedule.ts:92 nextSlot",
+        "ms": 863
+      },
+      {
+        "name": "../../app/taskSchedule.ts:14 instant",
+        "ms": 772
+      },
+      {
+        "name": "../../app/taskSchedule.ts:145 currentCycle",
+        "ms": 653
+      },
+      {
+        "name": "../../app/taskSchedule.ts:10 localDay",
+        "ms": 471
+      },
+      {
+        "name": "../../app/useAppData.ts:32 ",
+        "ms": 300
+      }
+    ]
+  },
+  {
+    "route": "progress",
+    "self_sources": [
+      {
+        "name": "(program)",
+        "ms": 1072
+      },
+      {
+        "name": "../../app/model.ts",
+        "ms": 829
+      },
+      {
+        "name": "../../node_modules/@js-temporal/polyfill/dist/index.esm.js",
+        "ms": 630
+      },
+      {
+        "name": "../../app/projectInsights.ts",
+        "ms": 449
+      },
+      {
+        "name": "../../node_modules/jsbi/dist/jsbi-umd.js",
+        "ms": 370
+      },
+      {
+        "name": "../../node_modules/react-dom/cjs/react-dom-client.production.js",
+        "ms": 130
+      },
+      {
+        "name": "../../app/MasarInsights.tsx",
+        "ms": 119
+      },
+      {
+        "name": "../../app/analytics.ts",
+        "ms": 82
+      },
+      {
+        "name": "../../node_modules/dexie/dist/dexie.min.js",
+        "ms": 68
+      },
+      {
+        "name": "../../app/PeriodDashboard.tsx",
+        "ms": 61
+      }
+    ],
+    "app_inclusive": [
+      {
+        "name": "../../app/PeriodDashboard.tsx:16 PeriodDashboard",
+        "ms": 1122
+      },
+      {
+        "name": "../../app/MasarInsights.tsx:19 MasarInsights",
+        "ms": 878
+      },
+      {
+        "name": "../../app/model.ts:108 leaves",
+        "ms": 798
+      },
+      {
+        "name": "../../app/MasarInsights.tsx:57 useMemo",
+        "ms": 709
+      },
+      {
+        "name": "../../app/MasarInsights.tsx:60 ",
+        "ms": 707
+      },
+      {
+        "name": "../../app/projectInsights.ts:84 projectComparison",
+        "ms": 641
+      },
+      {
+        "name": "../../app/projectInsights.ts:71 periodDays",
+        "ms": 628
+      },
+      {
+        "name": "../../app/PeriodDashboard.tsx:70 useMemo",
+        "ms": 614
+      },
+      {
+        "name": "../../app/projectInsights.ts:162 projectPeriodSummary",
+        "ms": 612
+      },
+      {
+        "name": "../../app/projectInsights.ts:182 ",
+        "ms": 566
+      }
+    ]
+  },
+  {
+    "route": "year",
+    "self_sources": [
+      {
+        "name": "../../node_modules/jsbi/dist/jsbi-umd.js",
+        "ms": 1203
+      },
+      {
+        "name": "../../node_modules/@js-temporal/polyfill/dist/index.esm.js",
+        "ms": 1000
+      },
+      {
+        "name": "(program)",
+        "ms": 504
+      },
+      {
+        "name": "../../app/projectInsights.ts",
+        "ms": 207
+      },
+      {
+        "name": "../../node_modules/dexie/dist/dexie.min.js",
+        "ms": 192
+      },
+      {
+        "name": "../../app/analytics.ts",
+        "ms": 152
+      },
+      {
+        "name": "../../app/model.ts",
+        "ms": 131
+      },
+      {
+        "name": "../../app/PeriodDashboard.tsx",
+        "ms": 126
+      },
+      {
+        "name": "../../app/MasarInsights.tsx",
+        "ms": 122
+      },
+      {
+        "name": "../../app/taskSchedule.ts",
+        "ms": 112
+      }
+    ],
+    "app_inclusive": [
+      {
+        "name": "../../app/PeriodDashboard.tsx:16 PeriodDashboard",
+        "ms": 2513
+      },
+      {
+        "name": "../../app/taskSchedule.ts:10 localDay",
+        "ms": 2220
+      },
+      {
+        "name": "../../app/PeriodDashboard.tsx:103 ",
+        "ms": 1963
+      },
+      {
+        "name": "../../app/MasarInsights.tsx:19 MasarInsights",
+        "ms": 533
+      },
+      {
+        "name": "../../app/MasarInsights.tsx:57 useMemo",
+        "ms": 415
+      },
+      {
+        "name": "../../app/MasarInsights.tsx:60 ",
+        "ms": 413
+      },
+      {
+        "name": "../../app/projectInsights.ts:84 projectComparison",
+        "ms": 327
+      },
+      {
+        "name": "../../app/projectInsights.ts:71 periodDays",
+        "ms": 280
+      },
+      {
+        "name": "../../app/PeriodDashboard.tsx:41 useMemo",
+        "ms": 236
+      },
+      {
+        "name": "../../app/analytics.ts:89 taskMetrics",
+        "ms": 190
+      }
+    ]
+  }
+]

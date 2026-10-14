@@ -334,7 +334,7 @@ test("نسخة جديدة تحفظ الدورات والأولوية، واست�
     await page.getByRole("button", { name: "تصدير JSON", exact: true }).click();
     const file = await download;
     const data = JSON.parse(readFileSync((await file.path())!, "utf8"));
-    expect(data.version).toBe(2);
+    expect(data.version).toBe(3);
     expect(data.taskCycles).toHaveLength(1);
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
         name: "backup.json",
@@ -605,4 +605,209 @@ test("أزرار الحالة وعلامة الإنجاز تتشارك آخر ط
         .poll(async () => (await readStore(page, "taskCycles"))[0].workStatus)
         .toBe("todo");
     expect((await readStore(page, "tasks"))[0].status).toBe("todo");
+});
+
+test("الموعد الأسبوعي المستقبلي يمنع الإنجاز حتى يبدأ ثم يتاح في وقته", async ({
+    page,
+}) => {
+    const form = await begin(page, "سبت المستقبل");
+    await form.getByLabel("التكرار", { exact: true }).selectOption("weekly");
+    await form
+        .getByLabel("تاريخ بداية التكرار", { exact: true })
+        .fill("2026-10-17");
+    await form.getByLabel("الوقت", { exact: false }).fill("20:00");
+    // Creation defaults to Friday; select Saturday explicitly.
+    await form.getByRole("checkbox", { name: "الجمعة", exact: true }).uncheck();
+    await form.getByRole("checkbox", { name: "السبت", exact: true }).check();
+    await save(page);
+    const complete = page.getByRole("button", {
+        name: "إكمال سبت المستقبل",
+        exact: true,
+    });
+    await expect(complete).toBeDisabled();
+    await expect(page.locator(".task-row .task-due")).toHaveClass(/due-future/);
+    await page.goto("/#home");
+    await expect(page.locator(".task-overview")).toContainText("قادمة: 1");
+    await expect(page.locator(".task-overview")).not.toContainText(
+        "دورة حالية",
+    );
+    await page.goto("/#tasks");
+    await time(page, "2026-10-17T16:59:00Z");
+    await expect(complete).toBeDisabled();
+    expect(await readStore(page, "taskCycles")).toHaveLength(0);
+    await page.clock.runFor(60000);
+    await expect(complete).toBeEnabled();
+    await expect(page.locator(".task-row .task-due")).toHaveClass(/due-cycle/);
+    await complete.click();
+    await expect
+        .poll(async () => (await readStore(page, "taskCycles"))[0]?.status)
+        .toBe("completed");
+    expect((await readStore(page, "tasks"))[0].status).toBe("todo");
+});
+
+test("النسخة ذات إنجاز على نهاية الدورة تُرفض في الواجهة وتبقى الجداول الستة سليمة", async ({
+    page,
+}) => {
+    const form = await begin(page, "نسخة محمية");
+    await form.getByLabel("التكرار", { exact: true }).selectOption("daily");
+    await save(page);
+    await expect
+        .poll(async () => (await readStore(page, "taskCycles")).length)
+        .toBe(1);
+    const names = [
+        "projects",
+        "steps",
+        "tasks",
+        "ideas",
+        "events",
+        "taskCycles",
+    ] as const;
+    const original = Object.fromEntries(
+        await Promise.all(
+            names.map(async (name) => [name, await readStore(page, name)]),
+        ),
+    );
+    const malformed = structuredClone(original);
+    const cycle = malformed.taskCycles[0];
+    cycle.status = "completed";
+    cycle.completedAt = cycle.end;
+    await page.goto("/#backup");
+    await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
+        name: "invalid-cycle.json",
+        mimeType: "application/json",
+        buffer: Buffer.from(
+            JSON.stringify({
+                ...malformed,
+                version: 2,
+                exportedAt: "2026-10-16T09:00:00.000Z",
+            }),
+        ),
+    });
+    await expect(
+        page.getByText(
+            "النسخة غير صالحة: تحقق من الإصدار والحقول والعلاقات والتواريخ.",
+            { exact: true },
+        ),
+    ).toBeVisible();
+    await expect(page.getByRole("dialog")).not.toBeVisible();
+    for (const name of names)
+        expect(await readStore(page, name)).toEqual(original[name]);
+});
+
+test("حذف المتكررة والتراجع وإعادة التحميل يحفظان الدورات والملاحظات والإنجاز", async ({
+    page,
+}) => {
+    const form = await begin(page, "سجل محفوظ");
+    await form.getByLabel("التكرار", { exact: true }).selectOption("daily");
+    await save(page);
+    await page
+        .getByRole("button", { name: "إكمال سجل محفوظ", exact: true })
+        .click();
+    await time(page, "2026-10-17T09:00:00Z");
+    await expect
+        .poll(async () => (await readStore(page, "taskCycles")).length)
+        .toBe(2);
+    const originalTask = (await readStore(page, "tasks"))[0];
+    const originalCycles = await readStore(page, "taskCycles");
+    await showTask(page, "سجل محفوظ");
+    await page.getByRole("button", { name: "حذف", exact: true }).click();
+    await page
+        .getByRole("dialog")
+        .getByRole("button", { name: "تأكيد", exact: true })
+        .click();
+    await expect
+        .poll(async () => (await readStore(page, "tasks")).length)
+        .toBe(0);
+    expect(await readStore(page, "taskCycles")).toHaveLength(0);
+    await page.getByRole("button", { name: "تراجع", exact: true }).click();
+    await expect
+        .poll(async () => readStore(page, "tasks"))
+        .toEqual([originalTask]);
+    expect(await readStore(page, "taskCycles")).toEqual(originalCycles);
+    await page.reload();
+    await expect(page.locator(".task-row")).toHaveCount(1);
+    await page
+        .getByRole("button", { name: "إكمال سجل محفوظ", exact: true })
+        .click();
+    await expect
+        .poll(
+            async () =>
+                (await readStore(page, "taskCycles")).filter(
+                    (c) => c.status === "completed",
+                ).length,
+        )
+        .toBe(2);
+    await page.reload();
+    await page.locator("summary").filter({ hasText: "المهام المنجزة" }).click();
+    await expect(
+        page.getByRole("button", { name: "إعادة فتح سجل محفوظ", exact: true }),
+    ).toHaveAttribute("aria-pressed", "true");
+    await page
+        .getByRole("button", { name: "إعادة فتح سجل محفوظ", exact: true })
+        .click();
+    await expect
+        .poll(
+            async () =>
+                (await readStore(page, "taskCycles")).filter(
+                    (c) => c.status === "completed",
+                ).length,
+        )
+        .toBe(1);
+    await showTask(page, "سجل محفوظ");
+    await page.locator(".cycle-history summary").click();
+    await expect(page.locator(".cycle-history article")).toHaveCount(2);
+    expect((await readStore(page, "tasks"))[0]).toEqual(originalTask);
+});
+
+test("قائمة ٥٠٠ مهمة: الوصول إلى الصفوف خارج الشاشة والإنجاز والتراجع على الجوال", async ({
+    page,
+}) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    const data = sizedFixture(2);
+    data.tasks = Array.from({ length: 500 }, (_, i) => ({
+        ...data.tasks[0],
+        id: `many-${i}`,
+        title: `عمل طويل ${i}`,
+    }));
+    await importData(page, data);
+    await page.goto("/#tasks");
+    await expect(page.locator(".task-row")).toHaveCount(500);
+    const target = page.getByRole("button", {
+        name: "إكمال عمل طويل 499",
+        exact: true,
+    });
+    await target.scrollIntoViewIfNeeded();
+    await expect(target).toBeInViewport();
+    await target.focus();
+    await page.keyboard.press("Space");
+    await expect
+        .poll(
+            async () =>
+                (await readStore(page, "tasks")).find(
+                    (t) => t.id === "many-499",
+                )?.status,
+        )
+        .toBe("done");
+    const reopen = page.getByRole("button", {
+        name: "إعادة فتح عمل طويل 499",
+        exact: true,
+    });
+    await reopen.click();
+    await expect
+        .poll(
+            async () =>
+                (await readStore(page, "tasks")).find(
+                    (t) => t.id === "many-499",
+                )?.status,
+        )
+        .toBe("todo");
+    await page
+        .getByRole("button", { name: "تفاصيل عمل طويل 499", exact: true })
+        .click();
+    await expect(page.getByLabel("تعديل الاسم")).toHaveValue("عمل طويل 499");
+    expect(
+        await page.evaluate(
+            () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+    ).toBe(true);
 });

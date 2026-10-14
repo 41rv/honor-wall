@@ -1,0 +1,113 @@
+{
+  "timestamp": "2026-10-14T11:09:44.687Z",
+  "build": "/tmp/masar-planning-profile-before",
+  "cpu_slowdown": 4,
+  "projects": 100,
+  "steps": 10000,
+  "tasks": 500,
+  "cycles": 4000,
+  "progress_records": 8000,
+  "results": [
+    {
+      "route": "today",
+      "settled_ms": 1319,
+      "long_tasks": [
+        {
+          "start": 9157.40000000596,
+          "duration": 502
+        },
+        {
+          "start": 9660.20000000298,
+          "duration": 98
+        },
+        {
+          "start": 9807.60000000894,
+          "duration": 226
+        },
+        {
+          "start": 10039,
+          "duration": 183
+        }
+      ]
+    },
+    {
+      "route": "calendar",
+      "settled_ms": 3121.8999999910593,
+      "long_tasks": [
+        {
+          "start": 12251.5,
+          "duration": 1120
+        },
+        {
+          "start": 13372.300000011921,
+          "duration": 834
+        },
+        {
+          "start": 14243,
+          "duration": 939
+        },
+        {
+          "start": 15187.70000000298,
+          "duration": 143
+        }
+      ]
+    },
+    {
+      "route": "progress",
+      "settled_ms": 3519.5,
+      "long_tasks": [
+        {
+          "start": 17974,
+          "duration": 648
+        },
+        {
+          "start": 18623.5,
+          "duration": 232
+        },
+        {
+          "start": 18883,
+          "duration": 519
+        },
+        {
+          "start": 19412,
+          "duration": 137
+        },
+        {
+          "start": 19570.40000000596,
+          "duration": 51
+        },
+        {
+          "start": 19956.60000000894,
+          "duration": 463
+        },
+        {
+          "start": 20521.60000000894,
+          "duration": 840
+        }
+      ]
+    },
+    {
+      "route": "year",
+      "settled_ms": 3705.3999999910593,
+      "long_tasks": [
+        {
+          "start": 23085.40000000596,
+          "duration": 143
+        },
+        {
+          "start": 23256.70000000298,
+          "duration": 1109
+        },
+        {
+          "start": 24397.20000000298,
+          "duration": 66
+        },
+        {
+          "start": 24514.5,
+          "duration": 977
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

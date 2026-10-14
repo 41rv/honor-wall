@@ -28,7 +28,8 @@ export function useAppData(
     const projects = useLiveQuery(() => db.projects.toArray(), [], []);
     const steps = useLiveQuery(() => db.steps.toArray(), [], []);
     const tasks = useLiveQuery(() => db.tasks.toArray(), [], []);
-    const cycles = useLiveQuery(
+    const includeRecent = page === "home" || page === "progress";
+    const currentCycles = useLiveQuery(
         async () => {
             const at = new Date(Math.max(clock, Date.now()));
             const keys = tasks.flatMap(
@@ -37,21 +38,29 @@ export function useAppData(
             const current = (await db.taskCycles.bulkGet(keys)).filter(
                 (c) => !!c,
             );
-            const recent =
-                page === "home" || page === "progress"
-                    ? await db.taskCycles
-                          .where("completedAt")
-                          .above(new Date(clock - 7 * 86400000).toISOString())
-                          .toArray()
-                    : [];
-            return [
-                ...new Map(
-                    [...current, ...recent].map((c) => [c.id, c]),
-                ).values(),
-            ];
+            return current;
         },
-        [tasks, clock, page],
+        [tasks, clock],
         [],
+    );
+    const recentCycles = useLiveQuery(
+        async () =>
+            includeRecent
+                ? await db.taskCycles
+                      .where("completedAt")
+                      .above(new Date(clock - 7 * 86400000).toISOString())
+                      .toArray()
+                : [],
+        [clock, includeRecent],
+        [],
+    );
+    const cycles = useMemo(
+        () => [
+            ...new Map(
+                [...recentCycles, ...currentCycles].map((c) => [c.id, c]),
+            ).values(),
+        ],
+        [recentCycles, currentCycles],
     );
     useEffect(() => {
         void reconcileTaskCycles(new Date(clock))
@@ -69,18 +78,25 @@ export function useAppData(
             .join("|"),
     ]);
     const views = useMemo(() => {
-        const byId = new Map(cycles.map((c) => [c.id, c]));
+        const byId = new Map(currentCycles.map((c) => [c.id, c]));
         const at = new Date(Math.max(clock, Date.now()));
         return tasks.map((task) => projectTask(task, byId, at));
-    }, [tasks, cycles, clock]);
+    }, [tasks, currentCycles, clock]);
     const ideas = useLiveQuery(() => db.ideas.toArray(), [], []);
+    const eventScope =
+        id && ["project", "step", "task", "idea"].includes(page)
+            ? id
+            : undefined;
     const events = useLiveQuery(
         async () => {
-            if (id && ["project", "step", "task", "idea"].includes(page))
-                return db.events.where("entityId").equals(id).sortBy("at");
+            if (eventScope)
+                return db.events
+                    .where("entityId")
+                    .equals(eventScope)
+                    .sortBy("at");
             return [];
         },
-        [page, id],
+        [eventScope],
         [],
     );
     const data = useMemo<Snapshot>(

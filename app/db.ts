@@ -4,8 +4,15 @@ import {
     cycleBatch,
     recurring,
     validateTaskOptions,
+    localDay,
+    localZone,
 } from "./taskSchedule";
 import type { TaskCycle, TaskOptions } from "./taskTypes";
+import type {
+    ProjectProgress,
+    ProjectTracking,
+    ProgressReason,
+} from "./projectProgressTypes";
 import { validateProjectImport, importNodes } from "./projectImport";
 import { buildHierarchy, type Hierarchy } from "./hierarchy";
 import {
@@ -32,6 +39,8 @@ export class Database extends Dexie {
     ideas!: Table<Idea, string>;
     events!: Table<Event, string>;
     taskCycles!: Table<TaskCycle, string>;
+    projectProgress!: Table<ProjectProgress, string>;
+    projectTracking!: Table<ProjectTracking, string>;
     constructor(name = "masar-v1") {
         super(name);
         this.version(1).stores({
@@ -47,9 +56,184 @@ export class Database extends Dexie {
             taskCycles:
                 "id,taskId,[taskId+revision+start],[status+end],end,status,completedAt",
         });
+        this.version(3).stores({
+            taskCycles:
+                "id,taskId,[taskId+revision+start],[status+end],end,status,completedAt,scheduledAt",
+        });
+        this.version(4)
+            .stores({
+                projectProgress: "id,projectId,[projectId+order],at,reason",
+                projectTracking: "projectId,since",
+            })
+            .upgrade(async (tx) => {
+                const projects = (await tx
+                    .table("projects")
+                    .toArray()) as Project[];
+                const index = buildHierarchy(
+                    (await tx.table("steps").toArray()) as Step[],
+                );
+                const since = now();
+                await tx.table("projectTracking").bulkAdd(
+                    projects.map((p) => ({
+                        projectId: p.id,
+                        since,
+                        initialPercent: index.metric(p.id).percent,
+                        origin: "existing",
+                        lastOrder: 0,
+                    })),
+                );
+            });
     }
 }
 export const db = new Database();
+async function captureProjectProgress(projectId: string) {
+    const project = await db.projects.get(projectId);
+    if (!project) throw new Error("المشروع غير موجود.");
+    const percent = buildHierarchy(
+        await db.steps.where("projectId").equals(projectId).toArray(),
+    ).metric(projectId).percent;
+    if (!(await db.projectTracking.get(projectId)))
+        await db.projectTracking.add({
+            projectId,
+            since: now(),
+            initialPercent: percent,
+            origin: "existing",
+            lastOrder: 0,
+        });
+    return percent;
+}
+async function recordProjectProgress(
+    projectId: string,
+    before: number | null,
+    reason: ProgressReason,
+    intendedAt?: string,
+) {
+    const after = buildHierarchy(
+        await db.steps.where("projectId").equals(projectId).toArray(),
+    ).metric(projectId).percent;
+    if (before === after) return;
+    const tracking = (await db.projectTracking.get(projectId))!;
+    const order = tracking.lastOrder + 1;
+    const at = intendedAt ?? now();
+    await db.projectProgress.add({
+        id: JSON.stringify([projectId, order]),
+        projectId,
+        order,
+        at,
+        before,
+        after,
+        reason,
+    });
+    await db.projectTracking.update(projectId, {
+        lastOrder: order,
+        ...(reason === "completion" && (after ?? 0) > (before ?? 0)
+            ? { lastProgressAt: at }
+            : {}),
+    });
+}
+export async function ensureProjectTracking() {
+    await db.transaction(
+        "rw",
+        [db.projects, db.steps, db.projectTracking],
+        async () => {
+            const projects = await db.projects.toArray(),
+                tracking = new Set(
+                    (await db.projectTracking.toArray()).map(
+                        (t) => t.projectId,
+                    ),
+                );
+            const missing = projects.filter((p) => !tracking.has(p.id));
+            if (!missing.length) return;
+            const index = buildHierarchy(await db.steps.toArray()),
+                since = now();
+            await db.projectTracking.bulkAdd(
+                missing.map((p) => ({
+                    projectId: p.id,
+                    since,
+                    initialPercent: index.metric(p.id).percent,
+                    origin: "existing" as const,
+                    lastOrder: 0,
+                })),
+            );
+        },
+    );
+}
+const todayPrefix = "masar-pending-today/";
+export async function selectTaskToday(
+    id: string,
+    selected: boolean,
+    at = new Date(),
+    timeZone = localZone(),
+) {
+    const today = selected
+        ? { date: localDay(at, timeZone).toString(), timeZone }
+        : undefined;
+    const key = todayPrefix + encodeURIComponent(id);
+    const intent = JSON.stringify({ id, today: today ?? null });
+    try {
+        localStorage.setItem(key, intent);
+    } catch {
+        /* IndexedDB remains primary. */
+    }
+    try {
+        await db.transaction("rw", db.tasks, async () => {
+            const task = await db.tasks.get(id);
+            if (!task) throw new Error("المهمة غير موجودة.");
+            if (task.schedule)
+                throw new Error("الاختيار اليدوي للمهام العامة بدون موعد فقط.");
+            await db.tasks.update(id, {
+                today,
+            });
+        });
+    } finally {
+        try {
+            if (localStorage.getItem(key) === intent)
+                localStorage.removeItem(key);
+        } catch {
+            /* Primary write is unaffected. */
+        }
+    }
+}
+export async function restoreTodaySelections() {
+    let keys: string[];
+    try {
+        keys = Object.keys(localStorage).filter((k) =>
+            k.startsWith(todayPrefix),
+        );
+    } catch {
+        return;
+    }
+    for (const key of keys) {
+        const raw = localStorage.getItem(key);
+        let record: { id: string; today: Task["today"] | null };
+        try {
+            record = JSON.parse(raw ?? "null");
+            if (
+                !record ||
+                typeof record.id !== "string" ||
+                key !== todayPrefix + encodeURIComponent(record.id)
+            )
+                throw new Error();
+            if (record.today !== null) {
+                if (!record.today) throw new Error();
+                validateTaskOptions({
+                    schedule: { ...record.today, repeat: "none", leadDays: 0 },
+                });
+            }
+        } catch {
+            localStorage.removeItem(key);
+            continue;
+        }
+        await db.transaction("rw", db.tasks, async () => {
+            const task = await db.tasks.get(record.id);
+            if (task && !task.schedule)
+                await db.tasks.update(task.id, {
+                    today: record.today ?? undefined,
+                });
+        });
+        if (localStorage.getItem(key) === raw) localStorage.removeItem(key);
+    }
+}
 // Additive import: one transaction, fresh IDs, no changes to existing rows.
 export async function importProject(input: unknown): Promise<string> {
     const file = validateProjectImport(input);
@@ -77,11 +261,23 @@ export async function importProject(input: unknown): Promise<string> {
         action: "created",
         at: item.createdAt,
     }));
-    await db.transaction("rw", [db.projects, db.steps, db.events], async () => {
-        await db.projects.add(project);
-        await db.steps.bulkAdd(steps);
-        await db.events.bulkAdd(events);
-    });
+    await db.transaction(
+        "rw",
+        [db.projects, db.steps, db.events, db.projectTracking],
+        async () => {
+            await db.projects.add(project);
+            await db.steps.bulkAdd(steps);
+            await db.events.bulkAdd(events);
+            await db.projectTracking.add({
+                projectId: project.id,
+                since: project.createdAt,
+                initialPercent: buildHierarchy(steps).metric(project.id)
+                    .percent,
+                origin: "new",
+                lastOrder: 0,
+            });
+        },
+    );
     return project.id;
 }
 const table = (kind: EntityKind) =>
@@ -109,18 +305,29 @@ export async function event(
 }
 export async function snapshot(): Promise<Snapshot> {
     await reconcileTaskCycles();
+    await ensureProjectTracking();
     return db.transaction("r", db.tables, async () => {
-        const [projects, steps, tasks, ideas, events, taskCycles] =
-            await Promise.all([
-                db.projects.toArray(),
-                db.steps.toArray(),
-                db.tasks.toArray(),
-                db.ideas.toArray(),
-                db.events.toArray(),
-                db.taskCycles.toArray(),
-            ]);
+        const [
+            projects,
+            steps,
+            tasks,
+            ideas,
+            events,
+            taskCycles,
+            projectProgress,
+            projectTracking,
+        ] = await Promise.all([
+            db.projects.toArray(),
+            db.steps.toArray(),
+            db.tasks.toArray(),
+            db.ideas.toArray(),
+            db.events.toArray(),
+            db.taskCycles.toArray(),
+            db.projectProgress.toArray(),
+            db.projectTracking.toArray(),
+        ]);
         return {
-            version: 2,
+            version: 3,
             exportedAt: now(),
             projects,
             steps,
@@ -128,6 +335,8 @@ export async function snapshot(): Promise<Snapshot> {
             ideas,
             events,
             taskCycles,
+            projectProgress,
+            projectTracking,
         };
     });
 }
@@ -144,12 +353,24 @@ export async function create(
     return db.transaction(
         "rw",
         kind === "step"
-            ? [db.steps, db.projects, db.events]
+            ? [
+                  db.steps,
+                  db.projects,
+                  db.events,
+                  db.projectTracking,
+                  db.projectProgress,
+              ]
             : kind === "task"
               ? [db.tasks, db.events, db.taskCycles]
-              : [table(kind), db.events],
+              : kind === "project"
+                ? [db.projects, db.events, db.projectTracking]
+                : [table(kind), db.events],
         async () => {
             const b = base(title, notes);
+            const previous =
+                kind === "step" && projectId
+                    ? await captureProjectProgress(projectId)
+                    : null;
             let item: Project | Step | Task | Idea;
             if (kind === "project")
                 item = { ...b, status: "active", archived: false };
@@ -193,6 +414,14 @@ export async function create(
             }
             await (table(kind) as Table).add(item);
             await event(kind, item, "created");
+            if (kind === "project")
+                await db.projectTracking.add({
+                    projectId: item.id,
+                    since: item.createdAt,
+                    initialPercent: null,
+                    origin: "new",
+                    lastOrder: 0,
+                });
             if (kind === "task") {
                 const cycle = currentCycle(
                     item as Task,
@@ -205,7 +434,10 @@ export async function create(
                     });
                 }
             }
-            if (kind === "step") await refresh(projectId!, parentId);
+            if (kind === "step") {
+                await refresh(projectId!, parentId);
+                await recordProjectProgress(projectId!, previous, "step_added");
+            }
             return item.id;
         },
     );
@@ -262,6 +494,7 @@ async function closeIfFinished(
 }
 // Also apply the new rule to existing data when opening the app or a backup.
 export async function completeFinishedProjects() {
+    await ensureProjectTracking();
     await db.transaction("rw", [db.projects, db.steps, db.events], async () => {
         const projects = await db.projects
             .where("status")
@@ -305,7 +538,13 @@ export async function changeStatus(
     await db.transaction(
         "rw",
         kind === "step"
-            ? [db.steps, db.projects, db.events]
+            ? [
+                  db.steps,
+                  db.projects,
+                  db.events,
+                  db.projectTracking,
+                  db.projectProgress,
+              ]
             : [db.tasks, db.events],
         async () => {
             const t = table(kind) as Table<Task | Step, string>;
@@ -321,6 +560,10 @@ export async function changeStatus(
             )
                 throw new Error("حالة هذا الفرع تُحسب من خطواته النهائية.");
             const at = now();
+            const previous =
+                kind === "step"
+                    ? await captureProjectProgress((item as Step).projectId)
+                    : null;
             await t.update(id, {
                 status,
                 updatedAt: at,
@@ -350,6 +593,12 @@ export async function changeStatus(
                         await db.projects.update(p.id, { startedAt: at });
                 }
                 await refresh(s.projectId, s.parentId);
+                await recordProjectProgress(
+                    s.projectId,
+                    previous,
+                    status === "done" ? "completion" : "reopen",
+                    at,
+                );
             }
         },
     );
@@ -419,13 +668,34 @@ export async function remove(kind: EntityKind, id: string) {
     return db.transaction(
         "rw",
         kind === "project" || kind === "step"
-            ? [db.projects, db.steps, db.events]
+            ? [
+                  db.projects,
+                  db.steps,
+                  db.events,
+                  db.projectTracking,
+                  db.projectProgress,
+              ]
             : kind === "task"
               ? [db.tasks, db.taskCycles, db.events]
               : [table(kind), db.events],
         async () => {
             const item = await (table(kind) as Table).get(id);
             if (!item) return null;
+            const previous =
+                kind === "step"
+                    ? await captureProjectProgress(item.projectId)
+                    : null;
+            const tracking =
+                kind === "project"
+                    ? await db.projectTracking.get(id)
+                    : undefined;
+            const projectProgress =
+                kind === "project"
+                    ? await db.projectProgress
+                          .where("projectId")
+                          .equals(id)
+                          .toArray()
+                    : [];
             const steps =
                 kind === "project"
                     ? await db.steps.where("projectId").equals(id).toArray()
@@ -441,8 +711,26 @@ export async function remove(kind: EntityKind, id: string) {
             if (taskCycles.length)
                 await db.taskCycles.bulkDelete(taskCycles.map((c) => c.id));
             await event(kind, item, "deleted");
-            if (kind === "step") await refresh(item.projectId, item.parentId);
-            return { kind, item, steps, taskCycles } as Deleted;
+            if (kind === "step") {
+                await refresh(item.projectId, item.parentId);
+                await recordProjectProgress(
+                    item.projectId,
+                    previous,
+                    "step_deleted",
+                );
+            }
+            if (kind === "project") {
+                await db.projectTracking.delete(id);
+                await db.projectProgress.where("projectId").equals(id).delete();
+            }
+            return {
+                kind,
+                item,
+                steps,
+                taskCycles,
+                tracking,
+                projectProgress,
+            } as Deleted;
         },
     );
 }
@@ -451,12 +739,20 @@ export interface Deleted {
     item: Project | Step | Task | Idea;
     steps: Step[];
     taskCycles?: TaskCycle[];
+    tracking?: ProjectTracking;
+    projectProgress?: ProjectProgress[];
 }
 export async function undo(data: Deleted) {
     await db.transaction(
         "rw",
         data.kind === "project" || data.kind === "step"
-            ? [db.projects, db.steps, db.events]
+            ? [
+                  db.projects,
+                  db.steps,
+                  db.events,
+                  db.projectTracking,
+                  db.projectProgress,
+              ]
             : data.kind === "task"
               ? [db.tasks, db.taskCycles, db.events]
               : [table(data.kind), db.events],
@@ -464,6 +760,12 @@ export async function undo(data: Deleted) {
             // Retrying a successful undo must not overwrite later edits or
             // append another restoration event.
             if (await (table(data.kind) as Table).get(data.item.id)) return;
+            const previous =
+                data.kind === "step"
+                    ? await captureProjectProgress(
+                          (data.item as Step).projectId,
+                      )
+                    : null;
             if (data.kind === "step") {
                 const s = data.item as Step;
                 if (
@@ -494,12 +796,21 @@ export async function undo(data: Deleted) {
             if (data.steps.length) await db.steps.bulkPut(data.steps);
             if (data.taskCycles?.length)
                 await db.taskCycles.bulkPut(data.taskCycles);
+            if (data.tracking) await db.projectTracking.put(data.tracking);
+            if (data.projectProgress?.length)
+                await db.projectProgress.bulkPut(data.projectProgress);
             await event(data.kind, data.item, "reopened");
-            if (data.kind === "step")
+            if (data.kind === "step") {
                 await refresh(
                     (data.item as Step).projectId,
                     (data.item as Step).parentId,
                 );
+                await recordProjectProgress(
+                    (data.item as Step).projectId,
+                    previous,
+                    "restore",
+                );
+            }
         },
     );
 }
@@ -513,74 +824,93 @@ export async function importBackup(input: unknown) {
         await db.ideas.bulkAdd(data.ideas);
         await db.events.bulkAdd(data.events);
         await db.taskCycles.bulkAdd(data.taskCycles ?? []);
+        await db.projectTracking.bulkAdd(data.projectTracking ?? []);
+        await db.projectProgress.bulkAdd(data.projectProgress ?? []);
         await completeFinishedProjects();
     });
 }
 // Complete or reopen an entire branch in one atomic operation. Only terminal
 // executable steps count toward progress; empty stages can still have a state.
 export async function setBranchCompletion(id: string, complete: boolean) {
-    await db.transaction("rw", [db.steps, db.projects, db.events], async () => {
-        const root = await db.steps.get(id);
-        if (!root) throw new Error("الخطوة أو المرحلة غير موجودة.");
-        const all = await db.steps
-            .where("projectId")
-            .equals(root.projectId)
-            .toArray();
-        const index = buildHierarchy(all);
-        const subtree = [root, ...descendants(all, id)];
-        const at = now();
-        const desired: Status = complete ? "done" : "todo";
-        const updates = new Map<string, Step>();
-        const logs: Event[] = [];
-        const set = (s: Step, status: Status) => {
-            if (s.status === status) return;
-            updates.set(s.id, {
-                ...s,
-                status,
-                updatedAt: at,
-                startedAt:
-                    status === "doing" ? (s.startedAt ?? at) : s.startedAt,
-                completedAt: status === "done" ? at : undefined,
-            });
-            logs.push({
-                id: uid(),
-                entityId: s.id,
-                entityKind: "step",
-                title: s.title,
-                action:
-                    status === "done"
-                        ? "completed"
-                        : s.status === "done" || status === "todo"
-                          ? "reopened"
-                          : "started",
-                at,
-            });
-        };
-        for (const s of subtree)
-            if (!index.children(s.projectId, s.id).length) set(s, desired);
-        const next = all.map((s) => updates.get(s.id) ?? s);
-        const after = buildHierarchy(next);
-        const parents = new Set(
-            subtree
-                .filter((s) => index.children(s.projectId, s.id).length)
-                .map((s) => s.id),
-        );
-        let parent = root.parentId;
-        while (parent) {
-            parents.add(parent);
-            parent = index.byId.get(parent)?.parentId ?? null;
-        }
-        for (const id of parents) {
-            const s = index.byId.get(id)!;
-            set(s, after.nodes.get(id)!.status);
-        }
-        if (updates.size) {
-            await db.steps.bulkPut([...updates.values()]);
-            await db.events.bulkAdd(logs);
-            await db.projects.update(root.projectId, { updatedAt: at });
-            await closeIfFinished(root.projectId, after, at);
-        }
-    });
+    await db.transaction(
+        "rw",
+        [
+            db.steps,
+            db.projects,
+            db.events,
+            db.projectTracking,
+            db.projectProgress,
+        ],
+        async () => {
+            const root = await db.steps.get(id);
+            if (!root) throw new Error("الخطوة أو المرحلة غير موجودة.");
+            const previous = await captureProjectProgress(root.projectId);
+            const all = await db.steps
+                .where("projectId")
+                .equals(root.projectId)
+                .toArray();
+            const index = buildHierarchy(all);
+            const subtree = [root, ...descendants(all, id)];
+            const at = now();
+            const desired: Status = complete ? "done" : "todo";
+            const updates = new Map<string, Step>();
+            const logs: Event[] = [];
+            const set = (s: Step, status: Status) => {
+                if (s.status === status) return;
+                updates.set(s.id, {
+                    ...s,
+                    status,
+                    updatedAt: at,
+                    startedAt:
+                        status === "doing" ? (s.startedAt ?? at) : s.startedAt,
+                    completedAt: status === "done" ? at : undefined,
+                });
+                logs.push({
+                    id: uid(),
+                    entityId: s.id,
+                    entityKind: "step",
+                    title: s.title,
+                    action:
+                        status === "done"
+                            ? "completed"
+                            : s.status === "done" || status === "todo"
+                              ? "reopened"
+                              : "started",
+                    at,
+                });
+            };
+            for (const s of subtree)
+                if (!index.children(s.projectId, s.id).length) set(s, desired);
+            const next = all.map((s) => updates.get(s.id) ?? s);
+            const after = buildHierarchy(next);
+            const parents = new Set(
+                subtree
+                    .filter((s) => index.children(s.projectId, s.id).length)
+                    .map((s) => s.id),
+            );
+            let parent = root.parentId;
+            while (parent) {
+                parents.add(parent);
+                parent = index.byId.get(parent)?.parentId ?? null;
+            }
+            for (const id of parents) {
+                const s = index.byId.get(id)!;
+                set(s, after.nodes.get(id)!.status);
+            }
+            if (updates.size) {
+                await db.steps.bulkPut([...updates.values()]);
+                await db.events.bulkAdd(logs);
+                await db.projects.update(root.projectId, { updatedAt: at });
+                await closeIfFinished(root.projectId, after, at);
+                await recordProjectProgress(
+                    root.projectId,
+                    previous,
+                    complete ? "completion" : "reopen",
+                    at,
+                );
+            }
+        },
+    );
 }
 export async function setProjectCompletion(id: string, complete: boolean) {
     await db.transaction("rw", [db.projects, db.events], async () => {

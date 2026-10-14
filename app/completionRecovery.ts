@@ -4,6 +4,7 @@ import {
     setBranchCompletion,
     setProjectCompletion,
     setCycleStatus,
+    restoreTodaySelections,
 } from "./db";
 const prefix = "masar-pending-completion/";
 const storageKey = (key: string) => prefix + encodeURIComponent(key);
@@ -134,5 +135,5 @@ export async function restoreCompletions() {
 }
 let startup: Promise<void> | undefined;
 export function startCompletionRecovery() {
-    return (startup ??= restoreCompletions());
+    return (startup ??= restoreCompletions().then(restoreTodaySelections));
 }

@@ -20,6 +20,9 @@ test.describe("فتح الاستيراد على شاشة أندرويد محاك
     test("الفتح والإغلاق المتكرر مستقلان عن البيانات والملفات والمنتقي الأصلي", async ({
         page,
     }) => {
+        // Keep the opening probe separate from the independent minute-based
+        // task-cycle reconciliation. The test timeout cannot reach this tick.
+        await page.clock.install({ time: new Date("2026-10-14T12:00:00Z") });
         await importData(page, largeFixture());
         await page.goto("/#projects");
         await expect(page.locator(".project-card")).toHaveCount(20);

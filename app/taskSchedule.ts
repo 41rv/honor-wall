@@ -221,7 +221,7 @@ export function projectTask(
             _cycleId: cycle?.id,
             _available: !!cycle,
             _next: next,
-            _dueState: "cycle",
+            _dueState: cycle ? "cycle" : "future",
             _dueLabel: `${repeatLabel(task.schedule!)}${cycle?.status === "completed" ? " · أُنجزت الدورة" : cycle ? " · الدورة الحالية" : " · لم تبدأ الدورة"}`,
         };
     }

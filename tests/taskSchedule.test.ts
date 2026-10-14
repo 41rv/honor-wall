@@ -394,7 +394,7 @@ it("نسخة v2 تحفظ الدورة والأولوية والموعد وتست
     );
     await setCycleStatus(currentCycle((await db.tasks.get(id))!)!.id, "done");
     const data = await snapshot();
-    expect(data.version).toBe(2);
+    expect(data.version).toBe(3);
     expect(
         validateBackup(JSON.parse(JSON.stringify(data))).taskCycles,
     ).toHaveLength(1);
@@ -437,7 +437,7 @@ it("ترحيل Dexie 1 إلى 2 يحافظ على الصفوف القديمة ح
     await migrated.open();
     expect(await migrated.tasks.get(item.id)).toEqual(item);
     expect(await migrated.taskCycles.count()).toBe(0);
-    expect(migrated.verno).toBe(2);
+    expect(migrated.verno).toBe(db.verno);
     await migrated.delete();
 });
 it("استعادة نية الإنجاز بعد منتصف الليل تبقى في دورتها الأصلية", async () => {
@@ -551,5 +551,133 @@ it("الدورة اليومية المستقبلية تعرض موعد السا�
     const t = task(schedule("daily", { date: "2026-10-17", time: "20:00" }));
     const view = projectTask(t, new Map(), new Date("2026-10-16T09:00:00Z"));
     expect(view._available).toBe(false);
+    expect(view._dueState).toBe("future");
     expect(view._next).toBe("2026-10-17T17:00:00.000Z");
+});
+
+it.each(["completedAt", "startedAt"] as const)(
+    "النسخة ترفض %s عند نهاية دورة عادية دون استبدال بيانات المستخدم",
+    async (field) => {
+        const id = await create(
+            "task",
+            "دورة آمنة",
+            "ملاحظات",
+            undefined,
+            null,
+            false,
+            {
+                schedule: schedule("daily", { date: "2026-10-16" }),
+            },
+        );
+        const original = await snapshot();
+        for (const timestamp of [
+            original.taskCycles![0].end,
+            new Date(
+                Date.parse(original.taskCycles![0].start) - 1,
+            ).toISOString(),
+        ]) {
+            const malformed = structuredClone(original);
+            const cycle = malformed.taskCycles![0];
+            cycle[field] = timestamp;
+            if (field === "completedAt") cycle.status = "completed";
+            await expect(importBackup(malformed)).rejects.toThrow(
+                "النسخة غير صالحة",
+            );
+        }
+        expect(await db.tasks.get(id)).toEqual(original.tasks[0]);
+        expect(await db.taskCycles.toArray()).toEqual(original.taskCycles);
+    },
+);
+
+it("إغلاق الجدول في نفس لحظة الإنجاز يبقى نسخة صالحة دون فقد السجل", async () => {
+    const id = await create("task", "تغيير فوري", "", undefined, null, false, {
+        schedule: schedule("daily", { date: "2026-10-16" }),
+    });
+    const cycle = currentCycle((await db.tasks.get(id))!)!;
+    await setCycleStatus(cycle.id, "doing");
+    await setCycleStatus(cycle.id, "done");
+    await updateTaskOptions(id, {});
+    const data = await snapshot();
+    expect(data.taskCycles![0].end).toBe(data.taskCycles![0].completedAt);
+    await importBackup(JSON.parse(JSON.stringify(data)));
+    expect((await snapshot()).taskCycles).toEqual(data.taskCycles);
+});
+
+it("استعادة جارٍ العمل تحفظ وقت الطلب وتستمر مرة واحدة بعد إعادة الفتح", async () => {
+    const storage: Record<string, unknown> = {};
+    Object.assign(storage, {
+        setItem: (k: string, v: string) => {
+            storage[k] = v;
+        },
+        getItem: (k: string) => storage[k] ?? null,
+        removeItem: (k: string) => {
+            delete storage[k];
+        },
+    });
+    vi.stubGlobal("localStorage", storage);
+    const id = await create(
+        "task",
+        "استعادة العمل",
+        "",
+        undefined,
+        null,
+        false,
+        {
+            schedule: schedule("daily", { date: "2026-10-16" }),
+        },
+    );
+    const at = clock("2026-10-16T10:00:00Z").toISOString();
+    const cycle = currentCycle((await db.tasks.get(id))!)!;
+    rememberCompletion("taskCycle/" + cycle.id, false, at, "doing");
+    clock("2026-10-16T11:00:00Z");
+    await restoreCompletions();
+    const recovered = (await db.taskCycles.get(cycle.id))!;
+    expect(recovered.workStatus).toBe("doing");
+    expect(recovered.startedAt).toBe(at);
+    expect(recovered.status).toBe("current");
+    const events = await db.events.toArray();
+    await restoreCompletions();
+    expect(await db.events.toArray()).toEqual(events);
+    expect(validateBackup(await snapshot()).taskCycles![0]).toEqual(recovered);
+});
+
+it("تعديل أيام الأسبوع بترتيب مختلف والأولوية فقط يحافظ على الدورة المكتملة", async () => {
+    const id = await create("task", "أسبوعية", "", undefined, null, false, {
+        schedule: schedule("weekly", { date: "2026-10-16", weekdays: [5, 2] }),
+    });
+    const original = (await db.tasks.get(id))!;
+    await setCycleStatus(currentCycle(original)!.id, "done");
+    const cycles = await db.taskCycles.toArray();
+    await updateTaskOptions(id, {
+        schedule: { ...original.schedule!, weekdays: [5, 2], leadDays: 7 },
+        priority: "important",
+    });
+    expect((await db.tasks.get(id))!.scheduleRevision).toBe(
+        original.scheduleRevision,
+    );
+    expect(await db.taskCycles.toArray()).toEqual(cycles);
+});
+
+it("تغيير منطقة الجدول يحفظ تاريخ المنطقة السابقة ولا ينسب طلبًا قديمًا للجديدة", async () => {
+    const id = await create("task", "مناطق", "", undefined, null, false, {
+        schedule: schedule("daily", { date: "2026-10-16" }),
+    });
+    const oldCycle = currentCycle((await db.tasks.get(id))!)!;
+    clock("2026-10-16T10:00:00Z");
+    await setCycleStatus(oldCycle.id, "done");
+    const changedAt = clock("2026-10-16T11:00:00Z");
+    await updateTaskOptions(id, {
+        schedule: schedule("daily", {
+            date: "2026-10-16",
+            timeZone: "America/New_York",
+        }),
+    });
+    const newCycle = currentCycle((await db.tasks.get(id))!, changedAt)!;
+    expect(newCycle.timeZone).toBe("America/New_York");
+    expect((await db.taskCycles.get(oldCycle.id))!.timeZone).toBe(zone);
+    await expect(setCycleStatus(oldCycle.id, "done")).rejects.toThrow(
+        "انتهت هذه الدورة",
+    );
+    expect((await db.taskCycles.get(newCycle.id))!.status).toBe("current");
+    expect(validateBackup(await snapshot()).taskCycles).toHaveLength(2);
 });

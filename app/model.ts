@@ -5,6 +5,7 @@ import {
     recurring,
 } from "./taskSchedule";
 import type { TaskOptions, TaskCycle } from "./taskTypes";
+import type { ProjectProgress, ProjectTracking } from "./projectProgressTypes";
 export type Status = "todo" | "doing" | "done";
 export interface Base {
     id: string;
@@ -28,6 +29,7 @@ export interface Step extends Base {
 }
 export interface Task extends Base, TaskOptions {
     status: Status;
+    today?: { date: string; timeZone: string };
     scheduleRevision?: number;
     scheduleSince?: string;
     scheduleCursor?: string;
@@ -54,7 +56,7 @@ export interface Event {
     at: string;
 }
 export interface Snapshot {
-    version: 1 | 2;
+    version: 1 | 2 | 3;
     exportedAt: string;
     projects: Project[];
     steps: Step[];
@@ -62,6 +64,8 @@ export interface Snapshot {
     ideas: Idea[];
     events: Event[];
     taskCycles?: TaskCycle[];
+    projectProgress?: ProjectProgress[];
+    projectTracking?: ProjectTracking[];
 }
 export const now = () => new Date().toISOString();
 export const uid = () => crypto.randomUUID();
@@ -297,8 +301,16 @@ export function validateBackup(input: unknown): Snapshot {
         );
     };
     if (
-        ![1, 2].includes(d.version) ||
-        (d.version === 2 && !Array.isArray(d.taskCycles)) ||
+        ![1, 2, 3].includes(d.version) ||
+        (d.version >= 2 && !Array.isArray(d.taskCycles)) ||
+        (d.version === 3 &&
+            (!Array.isArray(d.projectProgress) ||
+                !Array.isArray(d.projectTracking))) ||
+        [d.projectProgress, d.projectTracking].some(
+            (rows) => rows !== undefined && !Array.isArray(rows),
+        ) ||
+        (d.version < 3 &&
+            (!!d.projectProgress?.length || !!d.projectTracking?.length)) ||
         (d.taskCycles !== undefined && !Array.isArray(d.taskCycles)) ||
         (d.version === 1 && !!d.taskCycles?.length) ||
         !iso(d.exportedAt) ||
@@ -338,6 +350,17 @@ export function validateBackup(input: unknown): Snapshot {
                 const task = x as Task;
                 try {
                     validateTaskOptions(task);
+                    if (task.today !== undefined) {
+                        if (!task.today || typeof task.today !== "object")
+                            return fail();
+                        validateTaskOptions({
+                            schedule: {
+                                ...task.today,
+                                repeat: "none",
+                                leadDays: 0,
+                            },
+                        });
+                    }
                 } catch {
                     return fail();
                 }
@@ -451,6 +474,15 @@ export function validateBackup(input: unknown): Snapshot {
     const taskIds = new Map(d.tasks.map((task) => [task.id, task]));
     for (const c of d.taskCycles ?? []) {
         const task = taskIds.get(c?.taskId);
+        // Scheduled periods are [start, end). A schedule edit can close a
+        // period at the exact instant of a valid action; legacy rows also
+        // include that closing instant to preserve old completion records.
+        const withinCycle = (at: string) =>
+            iso(at) &&
+            Date.parse(at) >= Date.parse(c.start) &&
+            (Date.parse(at) < Date.parse(c.end) ||
+                (Date.parse(at) === Date.parse(c.end) &&
+                    (!!c.closedReason || c.source === "legacy")));
         if (
             !c ||
             !task ||
@@ -465,11 +497,8 @@ export function validateBackup(input: unknown): Snapshot {
             !iso(c.scheduledAt) ||
             !["current", "completed", "incomplete"].includes(c.status) ||
             (c.status === "completed") !== !!c.completedAt ||
-            (c.completedAt !== undefined &&
-                (!iso(c.completedAt) ||
-                    Date.parse(c.completedAt) < Date.parse(c.start) ||
-                    Date.parse(c.completedAt) > Date.parse(c.end))) ||
-            (c.startedAt !== undefined && !iso(c.startedAt)) ||
+            (c.completedAt !== undefined && !withinCycle(c.completedAt)) ||
+            (c.startedAt !== undefined && !withinCycle(c.startedAt)) ||
             (c.workStatus !== undefined &&
                 !["todo", "doing"].includes(c.workStatus)) ||
             (c.closedReason !== undefined &&
@@ -532,6 +561,94 @@ export function validateBackup(input: unknown): Snapshot {
             }
             if (cursor !== task.scheduleCursor) return fail();
         }
+    const tracked = new Map<string, ProjectTracking>();
+    const projectById = new Map(d.projects.map((p) => [p.id, p]));
+    const percent = (n: unknown) =>
+        n === null ||
+        (Number.isInteger(n) && Number(n) >= 0 && Number(n) <= 100);
+    for (const tracking of d.projectTracking ?? []) {
+        const project = projectById.get(tracking?.projectId);
+        if (
+            !tracking ||
+            !project ||
+            tracked.has(tracking.projectId) ||
+            !iso(tracking.since) ||
+            (tracking.origin === "new" &&
+                Date.parse(tracking.since) < Date.parse(project.createdAt)) ||
+            !percent(tracking.initialPercent) ||
+            !["new", "existing"].includes(tracking.origin) ||
+            !Number.isInteger(tracking.lastOrder) ||
+            tracking.lastOrder < 0 ||
+            (tracking.lastProgressAt !== undefined &&
+                (!iso(tracking.lastProgressAt) ||
+                    Date.parse(tracking.lastProgressAt) <
+                        Date.parse(tracking.since)))
+        )
+            return fail();
+        tracked.set(tracking.projectId, tracking);
+    }
+    if (d.version === 3 && tracked.size !== d.projects.length) return fail();
+    const records = new Map<string, ProjectProgress[]>(),
+        recordIds = new Set<string>();
+    for (const row of d.projectProgress ?? []) {
+        const tracking = tracked.get(row?.projectId);
+        if (
+            !row ||
+            !tracking ||
+            recordIds.has(row.id) ||
+            row.id !== JSON.stringify([row.projectId, row.order]) ||
+            !Number.isInteger(row.order) ||
+            row.order < 1 ||
+            !iso(row.at) ||
+            Date.parse(row.at) < Date.parse(tracking.since) ||
+            !percent(row.before) ||
+            !percent(row.after) ||
+            row.before === row.after ||
+            ![
+                "completion",
+                "reopen",
+                "step_added",
+                "step_deleted",
+                "structure_changed",
+                "restore",
+            ].includes(row.reason)
+        )
+            return fail();
+        recordIds.add(row.id);
+        const rows = records.get(row.projectId) ?? [];
+        rows.push(row);
+        records.set(row.projectId, rows);
+    }
+    for (const tracking of tracked.values()) {
+        const rows = (records.get(tracking.projectId) ?? []).sort(
+            (a, b) => a.order - b.order,
+        );
+        let previous = tracking.initialPercent,
+            stamp = Date.parse(tracking.since),
+            order = 0;
+        for (const row of rows) {
+            if (
+                row.order !== ++order ||
+                row.before !== previous ||
+                Date.parse(row.at) < stamp
+            )
+                return fail();
+            previous = row.after;
+            stamp = Date.parse(row.at);
+        }
+        const lastWork = rows
+            .filter(
+                (row) =>
+                    row.reason === "completion" &&
+                    (row.after ?? 0) > (row.before ?? 0),
+            )
+            .at(-1)?.at;
+        if (
+            order !== tracking.lastOrder ||
+            tracking.lastProgressAt !== lastWork
+        )
+            return fail();
+    }
     return structuredClone(d);
 }
 

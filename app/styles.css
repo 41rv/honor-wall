@@ -957,6 +957,8 @@ main {
     gap: 20px;
 }
 .dashboard-project {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 150px;
     padding: 22px 0;
     border-top: 1px solid var(--line);
 }
@@ -2562,4 +2564,224 @@ dialog.context-sheet {
 .task-row {
     content-visibility: auto;
     contain-intrinsic-size: auto 84px;
+}
+.planning-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 16px 0 24px;
+}
+.planning-section {
+    margin: 24px 0;
+}
+.planning-section h2 {
+    margin-bottom: 12px;
+}
+.daily-picker {
+    padding: 20px;
+    margin-top: 24px;
+}
+.daily-picker summary {
+    cursor: pointer;
+    min-height: 44px;
+}
+.daily-choice {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+}
+.daily-choice span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.daily-remove {
+    margin: 0 20px 12px;
+}
+@media (max-width: 760px) {
+    .daily-choice {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+.calendar-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.calendar-week {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+.calendar-day {
+    padding: 14px;
+    min-width: 0;
+}
+.calendar-day[data-today="true"] {
+    border: 2px solid var(--primary);
+}
+.calendar-day h2 {
+    font-size: 15px;
+    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 14px;
+}
+.calendar-entry {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 128px;
+    position: relative;
+    border-top: 1px solid var(--line);
+    padding: 14px 6px;
+    overflow-wrap: anywhere;
+}
+.calendar-entry-head {
+    display: flex;
+    align-items: start;
+    gap: 8px;
+}
+.calendar-entry-head a {
+    color: var(--text);
+    text-decoration: none;
+    min-width: 0;
+}
+.calendar-entry p {
+    font-size: 12px;
+    margin-top: 8px;
+}
+@media (max-width: 1200px) {
+    .calendar-week {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (max-width: 600px) {
+    .calendar-week {
+        grid-template-columns: 1fr;
+    }
+    .calendar-day h2 {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+.period-dashboard {
+    margin-bottom: 28px;
+}
+.period-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+}
+.period-metric {
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+.period-metric strong {
+    font-size: 28px;
+}
+.period-metric span {
+    color: var(--muted);
+    font-size: 14px;
+}
+.period-comparison {
+    padding: 20px;
+    margin: 16px 0;
+}
+.general-dashboard {
+    margin: 20px 0;
+}
+.general-dashboard summary {
+    cursor: pointer;
+    padding: 14px 0;
+}
+@media (max-width: 760px) {
+    .period-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .period-dashboard .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+.masar-insights {
+    padding: 24px;
+    margin: 28px 0;
+}
+.masar-insights > p {
+    margin: 12px 0;
+    line-height: 1.9;
+}
+.masar-insights .field {
+    max-width: 520px;
+    margin: 20px 0;
+}
+.project-chart {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    direction: ltr;
+}
+.project-chart svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.insight-milestones {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+}
+.insight-milestones > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-size: 13px;
+}
+.insight-milestones strong {
+    font-size: 22px;
+}
+.progress-history summary {
+    min-height: 44px;
+    cursor: pointer;
+}
+.table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+}
+.progress-history table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: start;
+}
+.progress-history th,
+.progress-history td {
+    padding: 12px;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+}
+@media (max-width: 760px) {
+    .masar-insights {
+        padding: 18px;
+    }
+    .insight-milestones {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
