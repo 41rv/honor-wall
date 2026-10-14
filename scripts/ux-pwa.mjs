@@ -1,6 +1,7 @@
 import { chromium, expect } from "@playwright/test";
 import { spawn } from "node:child_process";
 import fs from "node:fs";
+import path from "node:path";
 import assert from "node:assert/strict";
 import { readStore } from "../tests/browser/helpers.ts";
 
@@ -8,6 +9,7 @@ const newBuild =
     process.argv[2] || new URL("../build", import.meta.url).pathname;
 const oldBuild = process.argv[3] || "/tmp/masar-release-104";
 const basePath = process.argv[4] || "/";
+const reportPath = process.argv[5] || "docs/ux/pwa-result.json";
 const root = fs.mkdtempSync("/tmp/masar-qa-pwa-");
 const site = root + "/site" + basePath;
 const profile = root + "/isolated-browser-profile";
@@ -226,9 +228,9 @@ try {
     assert.equal(new URL(page.url()).hash, rememberedRoute);
     await expect(page.getByLabel("تعديل الاسم")).toHaveValue("خطوة باقية");
     assert.deepEqual(errors, []);
-    fs.mkdirSync("docs/ux", { recursive: true });
+    fs.mkdirSync(path.dirname(reportPath), { recursive: true });
     fs.writeFileSync(
-        "docs/ux/pwa-result.json",
+        reportPath,
         JSON.stringify(
             {
                 timestamp: new Date().toISOString(),

@@ -1,4 +1,5 @@
 import Dexie, { type Table } from "dexie";
+import { validateProjectImport, importNodes } from "./projectImport";
 import { buildHierarchy, type Hierarchy } from "./hierarchy";
 import {
     base,
@@ -35,6 +36,40 @@ export class Database extends Dexie {
     }
 }
 export const db = new Database();
+// Additive import: one transaction, fresh IDs, no changes to existing rows.
+export async function importProject(input: unknown): Promise<string> {
+    const file = validateProjectImport(input);
+    const project: Project = {
+        ...base(file.project.title, file.project.description),
+        status: "active",
+        archived: false,
+    };
+    const nodes = importNodes(file);
+    const ids = nodes.map(() => uid());
+    const steps: Step[] = nodes.map((node, i) => ({
+        ...base(node.title, node.notes),
+        id: ids[i],
+        projectId: project.id,
+        parentId: node.parent === null ? null : ids[node.parent],
+        kind: node.kind,
+        order: node.order,
+        status: "todo",
+    }));
+    const events: Event[] = [project, ...steps].map((item) => ({
+        id: uid(),
+        entityId: item.id,
+        entityKind: item === project ? "project" : "step",
+        title: item.title,
+        action: "created",
+        at: item.createdAt,
+    }));
+    await db.transaction("rw", [db.projects, db.steps, db.events], async () => {
+        await db.projects.add(project);
+        await db.steps.bulkAdd(steps);
+        await db.events.bulkAdd(events);
+    });
+    return project.id;
+}
 const table = (kind: EntityKind) =>
     kind === "project"
         ? db.projects

@@ -1327,6 +1327,42 @@ dialog {
 dialog::backdrop {
     background: var(--backdrop);
 }
+.project-import {
+    margin-bottom: 20px;
+}
+.project-import > p {
+    margin-top: 8px;
+}
+.import-title,
+.import-description,
+.import-preview {
+    overflow-wrap: anywhere;
+}
+.import-description,
+.import-preview p {
+    white-space: pre-wrap;
+}
+.import-preview {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid var(--line);
+}
+.import-preview li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+}
+.import-preview li > span:first-child {
+    color: var(--muted);
+    margin-inline-end: 8px;
+}
+.import-stage {
+    font-weight: 700;
+}
+.import-preview p {
+    font-weight: 400;
+    color: var(--muted);
+    margin: 6px 0 0;
+}
 .dialog-head {
     display: flex;
     align-items: center;
