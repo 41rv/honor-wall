@@ -64,7 +64,9 @@ export async function restoreCompletions() {
         } catch {
             try {
                 localStorage.removeItem(storedKey);
-            } catch {}
+            } catch {
+                // Ignore an unusable recovery entry without discarding user data.
+            }
             continue;
         }
         const separator = record.key.indexOf("/");

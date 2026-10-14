@@ -12,6 +12,7 @@ const basePath = process.argv[4] || "/";
 const tasksMode = process.argv[7] === "tasks";
 const preexistingTasks = process.argv[8] === "preexisting-tasks";
 const planningMode = process.argv[9] === "planning";
+const darkAudit = process.argv[10] === "dark-audit";
 const restartStores = [
     "projects",
     "steps",
@@ -58,7 +59,9 @@ try {
     for (let i = 0; i < 40; i++) {
         try {
             if ((await fetch(baseURL)).ok) break;
-        } catch {}
+        } catch {
+            // Retry while the local test server starts.
+        }
         await new Promise((resolve) => setTimeout(resolve, 100));
     }
     context = await chromium.launchPersistentContext(profile, options);
@@ -122,9 +125,12 @@ try {
         preservedStores.push("projectProgress", "projectTracking");
     if (preexistingTasks) {
         await page.goto(baseURL + "#tasks");
-        await page
-            .getByRole("button", { name: "مهمة جديدة", exact: true })
-            .tap();
+        const oldCreate = page.getByRole("button", {
+            name: "مهمة جديدة",
+            exact: true,
+        });
+        if (await oldCreate.isVisible()) await oldCreate.tap();
+        else await openCreate(page, "task", true);
         const form = page.getByRole("dialog");
         await form
             .getByLabel("الاسم", { exact: true })
@@ -227,6 +233,25 @@ try {
             new URL(url).pathname.endsWith(".woff2"),
         ),
     );
+    if (darkAudit) {
+        const html = fs.readFileSync(path.join(newBuild, "index.html"), "utf8");
+        const expected = [
+            ...html.matchAll(
+                /(?:src|href)="([^"]*\/assets\/index-[^"]+\.(?:js|css))"/g,
+            ),
+        ]
+            .map((match) => match[1])
+            .sort();
+        const actual = cached.cachedURLs
+            .map((url) => new URL(url).pathname)
+            .filter((pathname) =>
+                /\/assets\/index-[^/]+\.(?:js|css)$/.test(pathname),
+            )
+            .sort();
+        assert.equal(expected.length, 2);
+        assert.deepEqual(actual, expected);
+        assert.equal(manifest.background_color, "#185c4b");
+    }
     await page.goto(baseURL + "#tasks");
     await page
         .getByRole("button", {
@@ -401,6 +426,22 @@ try {
     await page.goto(baseURL + "#home");
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await expect(page.locator("html")).toHaveAttribute("data-identity", "mono");
+    if (darkAudit) {
+        for (const selector of ["html", "body", "#root"])
+            await expect(page.locator(selector)).toHaveCSS(
+                "background-color",
+                "rgb(18, 18, 18)",
+            );
+        await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
+            "content",
+            "#121212",
+        );
+        await expect(page.locator('meta[name="color-scheme"]')).toHaveAttribute(
+            "content",
+            "dark",
+        );
+        await expect(page.locator("html")).toHaveCSS("color-scheme", "dark");
+    }
     await page
         .getByRole("button", { name: "أكمل من حيث توقفت", exact: true })
         .tap();
@@ -486,6 +527,12 @@ try {
                 offline_reload: true,
                 browser_closed_and_reopened_offline: true,
                 remembered_step_and_theme_survived_browser_restart: true,
+                ...(darkAudit
+                    ? {
+                          dark_canvas_and_system_metadata_survived_offline_restart: true,
+                          precache_contains_only_current_entry_js_and_css: true,
+                      }
+                    : {}),
                 manifest,
                 ...cached,
                 errors,

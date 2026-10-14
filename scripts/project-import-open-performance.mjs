@@ -3,6 +3,7 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import assert from "node:assert/strict";
 import { largeFixture, importData } from "../tests/browser/helpers.ts";
+import { freezeDate } from "./qa-clock.mjs";
 const label = process.argv[2] || "before";
 const directory = process.argv[3] || "/tmp/masar-import-open-baseline";
 const base = "http://127.0.0.1:4189";
@@ -20,7 +21,7 @@ const server = spawn(
     ],
     { stdio: "ignore" },
 );
-const out = "docs/project-import-open";
+const out = process.argv[5] || "docs/project-import-open";
 fs.mkdirSync(out, { recursive: true });
 let browser;
 const results = [];
@@ -28,7 +29,9 @@ try {
     for (let i = 0; i < 40; i++) {
         try {
             if ((await fetch(base)).ok) break;
-        } catch {}
+        } catch {
+            // Retry while the local test server starts.
+        }
         await new Promise((resolve) => setTimeout(resolve, 100));
     }
     browser = await chromium.launch({
@@ -193,11 +196,17 @@ try {
                 };
             }, label);
             const page = await context.newPage();
+            // Keep the periodic minute refresh outside the opening measurement.
+            await freezeDate(page, "2026-10-14T09:00:00Z");
             const cdp = await context.newCDPSession(page);
             let fileChooserEvents = 0;
             cdp.on("Page.fileChooserOpened", () => fileChooserEvents++);
             if (dataset === "large") await importData(page, largeFixture());
             await page.goto("/#projects");
+            assert.match(
+                await page.evaluate(() => performance.now.toString()),
+                /\[native code\]/,
+            );
             await page.evaluate(
                 async () => await navigator.serviceWorker.ready,
             );
@@ -258,17 +267,14 @@ try {
                               );
                           })
                         : null;
-                if (label === "before")
-                    await page
-                        .locator(".project-import > label")
-                        [profile === "mobile" ? "tap" : "click"]();
-                else
-                    await page
-                        .getByRole("button", {
-                            name: "استيراد مشروع",
-                            exact: true,
-                        })
-                        [profile === "mobile" ? "tap" : "click"]();
+                const opener =
+                    label === "before"
+                        ? page.locator(".project-import > label")
+                        : page.getByRole("button", {
+                              name: "استيراد مشروع",
+                              exact: true,
+                          });
+                await opener[profile === "mobile" ? "tap" : "click"]();
                 let boundary;
                 if (label === "before") {
                     const chooser = await chooserTime;

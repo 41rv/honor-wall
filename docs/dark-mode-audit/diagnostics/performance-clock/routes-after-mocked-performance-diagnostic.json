@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-10-14T21:30:19.423Z",
+  "build": "/tmp/masar-dark-audit-final-root",
+  "cpu_slowdown": 4,
+  "simulated_time": "2026-10-14T09:00:00.000Z",
+  "projects": 100,
+  "steps": 10000,
+  "tasks": 500,
+  "cycles": 4000,
+  "progress_records": 8000,
+  "results": [
+    {
+      "route": "today",
+      "settled_ms": 518,
+      "long_tasks": [
+        {
+          "start": 7277.5,
+          "duration": 310
+        },
+        {
+          "start": 7588.9000000059605,
+          "duration": 95
+        }
+      ]
+    },
+    {
+      "route": "calendar",
+      "settled_ms": 1061,
+      "long_tasks": [
+        {
+          "start": 8482,
+          "duration": 60
+        },
+        {
+          "start": 8679.5,
+          "duration": 494
+        },
+        {
+          "start": 9174.60000000894,
+          "duration": 125
+        }
+      ]
+    },
+    {
+      "route": "progress",
+      "settled_ms": 499,
+      "long_tasks": [
+        {
+          "start": 9919.60000000894,
+          "duration": 142
+        },
+        {
+          "start": 10189.60000000894,
+          "duration": 53
+        },
+        {
+          "start": 10263,
+          "duration": 82
+        }
+      ]
+    },
+    {
+      "route": "year",
+      "settled_ms": 687,
+      "long_tasks": [
+        {
+          "start": 10762.90000000596,
+          "duration": 72
+        },
+        {
+          "start": 10851.40000000596,
+          "duration": 144
+        },
+        {
+          "start": 10998.90000000596,
+          "duration": 82
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

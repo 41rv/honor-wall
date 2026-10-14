@@ -27,16 +27,20 @@ export function useTheme() {
         return () => media.removeEventListener("change", change);
     }, []);
     useLayoutEffect(() => {
-        document.documentElement.dataset.theme = theme;
-        document.documentElement.dataset.identity = identity;
+        const root = document.documentElement;
+        root.dataset.theme = theme;
+        root.dataset.identity = identity;
+        const background = getComputedStyle(root)
+            .getPropertyValue("--bg")
+            .trim();
+        root.style.backgroundColor = background;
+        root.style.colorScheme = theme;
         document
             .querySelector('meta[name="theme-color"]')
-            ?.setAttribute(
-                "content",
-                getComputedStyle(document.documentElement)
-                    .getPropertyValue("--bg")
-                    .trim(),
-            );
+            ?.setAttribute("content", background);
+        document
+            .querySelector('meta[name="color-scheme"]')
+            ?.setAttribute("content", theme);
         try {
             localStorage.setItem("masar-theme", mode);
             localStorage.setItem("masar-identity", identity);

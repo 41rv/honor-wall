@@ -1,0 +1,58 @@
+[
+  {
+    "route": "today",
+    "settled_ms": 499.40000000596046,
+    "long_tasks": [
+      {
+        "start": 7248.70000000298,
+        "duration": 299
+      },
+      {
+        "start": 7549.79999999702,
+        "duration": 103
+      }
+    ]
+  },
+  {
+    "route": "calendar",
+    "settled_ms": 914.5,
+    "long_tasks": [
+      {
+        "start": 8439,
+        "duration": 62
+      },
+      {
+        "start": 8666.5,
+        "duration": 417
+      },
+      {
+        "start": 9084.09999999404,
+        "duration": 107
+      }
+    ]
+  },
+  {
+    "route": "progress",
+    "settled_ms": 419.5,
+    "long_tasks": [
+      {
+        "start": 9742.70000000298,
+        "duration": 120
+      },
+      {
+        "start": 9971.09999999404,
+        "duration": 95
+      }
+    ]
+  },
+  {
+    "route": "year",
+    "settled_ms": 526.1000000089407,
+    "long_tasks": [
+      {
+        "start": 10443.70000000298,
+        "duration": 66
+      }
+    ]
+  }
+]

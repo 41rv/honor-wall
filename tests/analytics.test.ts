@@ -158,3 +158,27 @@ it("الفترة السابقة لا تُنسب إليها إنجازات لاح
         due: 0,
     });
 });
+
+it.each(["week", "month", "year"] as const)(
+    "%s بعد منتصف الليل: لا يُحسب إنجاز الساعة القادمة ولو وقع داخل الفترة نفسها",
+    (period) => {
+        const at = new Date("2026-10-14T21:30:00Z");
+        const range = periodWindows(period, at, zone).current;
+        const done: Task = {
+            ...task("actual"),
+            status: "done",
+            completedAt: "2026-10-14T21:15:00Z",
+        };
+        const future: Task = {
+            ...task("future"),
+            status: "done",
+            completedAt: "2026-10-14T22:00:00Z",
+        };
+        expect(taskMetrics([done, future], [], range, zone)).toMatchObject({
+            completed: 1,
+            due: 0,
+            rate: null,
+        });
+        expect(taskMetrics([future], [], range, zone).completed).toBe(0);
+    },
+);

@@ -778,6 +778,7 @@ function App() {
     useEffect(() => {
         setContext(null);
         setAppearanceOpen(false);
+        setQuick(false);
     }, [route]);
     useEffect(() => {
         if (

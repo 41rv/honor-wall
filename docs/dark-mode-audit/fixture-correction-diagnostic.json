@@ -1,0 +1,279 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/dark-audit-extended.spec.ts",
+      "--grep",
+      "منتصف الليل|بيانات استخدام|المستمعين",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "dark-audit-extended.spec.ts",
+      "file": "dark-audit-extended.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "تكرار التنقل والثيم لا يسرب المستمعين والتبويبات المستقرة لا تعيد قراءات التخزين",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5911,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: \u001b[32m\"تقويم\u001b[7mك\u001b[27m الأسبوعي\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mال\u001b[27mتقويم الأسبوعي\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('h1') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    14 × locator resolved to <h1>التقويم الأسبوعي</h1>\u001b[22m\n\u001b[2m       - unexpected value \"التقويم الأسبوعي\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: \u001b[32m\"تقويم\u001b[7mك\u001b[27m الأسبوعي\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mال\u001b[27mتقويم الأسبوعي\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('h1') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    14 × locator resolved to <h1>التقويم الأسبوعي</h1>\u001b[22m\n\u001b[2m       - unexpected value \"التقويم الأسبوعي\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/dark-audit-extended.spec.ts:296:46",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/dark-audit-extended.spec.ts",
+                      "column": 46,
+                      "line": 296
+                    },
+                    "snippet": "  294 |                 location.hash = route;\n  295 |             }, route);\n> 296 |             await expect(page.locator(\"h1\")).toHaveText(\n      |                                              ^\n  297 |                 {\n  298 |                     today: \"مهامي اليوم\",\n  299 |                     calendar: \"تقويمك الأسبوعي\","
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/dark-audit-extended.spec.ts",
+                        "column": 46,
+                        "line": 296
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: \u001b[32m\"تقويم\u001b[7mك\u001b[27m الأسبوعي\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mال\u001b[27mتقويم الأسبوعي\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('h1') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    14 × locator resolved to <h1>التقويم الأسبوعي</h1>\u001b[22m\n\u001b[2m       - unexpected value \"التقويم الأسبوعي\"\u001b[22m\n\n\n  294 |                 location.hash = route;\n  295 |             }, route);\n> 296 |             await expect(page.locator(\"h1\")).toHaveText(\n      |                                              ^\n  297 |                 {\n  298 |                     today: \"مهامي اليوم\",\n  299 |                     calendar: \"تقويمك الأسبوعي\",\n    at /workspace/honor-wall/tests/browser/dark-audit-extended.spec.ts:296:46"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T21:20:05.682Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/dark-audit-extended-تكرار--57f52-تقرة-لا-تعيد-قراءات-التخزين/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/dark-audit-extended.spec.ts",
+                    "column": 46,
+                    "line": 296
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7db3c3565fbb356c08c1-0ba69285a2c1f842896d",
+          "file": "dark-audit-extended.spec.ts",
+          "line": 260,
+          "column": 1
+        },
+        {
+          "title": "منتصف الليل والسنة: الأسبوع السبت-الجمعة والاختيارات والتكرار دون دورة خاطئة",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 991,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"2026-12-31T21:00:00.\u001b[7m000\u001b[27mZ\"\u001b[39m\nReceived: \u001b[31m\"2026-12-31T21:00:00.\u001b[7m102\u001b[27mZ\"\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"2026-12-31T21:00:00.\u001b[7m000\u001b[27mZ\"\u001b[39m\nReceived: \u001b[31m\"2026-12-31T21:00:00.\u001b[7m102\u001b[27mZ\"\u001b[39m\n    at /workspace/honor-wall/tests/browser/dark-audit-extended.spec.ts:521:31",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/dark-audit-extended.spec.ts",
+                      "column": 31,
+                      "line": 521
+                    },
+                    "snippet": "  519 |     )!;\n  520 |     expect(cycle.start).toBe(\"2026-12-31T21:00:00.000Z\");\n> 521 |     expect(cycle.completedAt).toBe(\"2026-12-31T21:00:00.000Z\");\n      |                               ^\n  522 | });\n  523 |\n  524 | test(\"بيانات استخدام مختلطة وسجل طويل: تصفية وترقيم صفحات ونسخ واستعادة مرتان بلا ازدواج\", async ({"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/dark-audit-extended.spec.ts",
+                        "column": 31,
+                        "line": 521
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"2026-12-31T21:00:00.\u001b[7m000\u001b[27mZ\"\u001b[39m\nReceived: \u001b[31m\"2026-12-31T21:00:00.\u001b[7m102\u001b[27mZ\"\u001b[39m\n\n  519 |     )!;\n  520 |     expect(cycle.start).toBe(\"2026-12-31T21:00:00.000Z\");\n> 521 |     expect(cycle.completedAt).toBe(\"2026-12-31T21:00:00.000Z\");\n      |                               ^\n  522 | });\n  523 |\n  524 | test(\"بيانات استخدام مختلطة وسجل طويل: تصفية وترقيم صفحات ونسخ واستعادة مرتان بلا ازدواج\", async ({\n    at /workspace/honor-wall/tests/browser/dark-audit-extended.spec.ts:521:31"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T21:20:12.402Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/dark-audit-extended-منتصف--a84f9-رات-والتكرار-دون-دورة-خاطئة/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/dark-audit-extended.spec.ts",
+                    "column": 31,
+                    "line": 521
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7db3c3565fbb356c08c1-4b55af06534797a4017f",
+          "file": "dark-audit-extended.spec.ts",
+          "line": 422,
+          "column": 1
+        },
+        {
+          "title": "بيانات استخدام مختلطة وسجل طويل: تصفية وترقيم صفحات ونسخ واستعادة مرتان بلا ازدواج",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2719,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T21:20:14.207Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7db3c3565fbb356c08c1-dcefffc34c202d6f6244",
+          "file": "dark-audit-extended.spec.ts",
+          "line": 524,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T21:20:04.062Z",
+    "duration": 13256.385,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

@@ -82,7 +82,9 @@ try {
     for (let i = 0; i < 40; i++) {
         try {
             if ((await fetch(base)).ok) break;
-        } catch {}
+        } catch {
+            // Retry while the local test server starts.
+        }
         await new Promise((r) => setTimeout(r, 100));
     }
     browser = await chromium.launch({

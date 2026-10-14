@@ -76,6 +76,11 @@
 body {
     margin: 0;
     min-width: 320px;
+    background: var(--bg);
+}
+#root {
+    min-height: 100dvh;
+    background: var(--bg);
 }
 button,
 input,

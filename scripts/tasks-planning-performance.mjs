@@ -3,6 +3,7 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { importData } from "../tests/browser/helpers.ts";
+import { freezeDate } from "./qa-clock.mjs";
 const directory =
     process.argv[2] || new URL("../build", import.meta.url).pathname;
 const reportPath = process.argv[3] || "docs/planning/routes-performance.json";
@@ -22,7 +23,7 @@ const server = spawn(
 );
 const baseURL = "http://127.0.0.1:4192",
     zone = "Asia/Riyadh",
-    now = Date.now(),
+    now = Date.parse(process.argv[5] || "2026-10-14T09:00:00Z"),
     dayKey = (at) =>
         new Intl.DateTimeFormat("en-CA", { timeZone: zone }).format(
             new Date(at),
@@ -146,7 +147,9 @@ try {
     for (let i = 0; i < 40; i++) {
         try {
             if ((await fetch(baseURL)).ok) break;
-        } catch {}
+        } catch {
+            // Retry while the local test server starts.
+        }
         await new Promise((r) => setTimeout(r, 100));
     }
     browser = await chromium.launch({
@@ -160,7 +163,11 @@ try {
         }),
         page = await context.newPage();
     page.on("pageerror", (err) => errors.push(err.message));
+    await freezeDate(page, now);
     await importData(page, fixture);
+    expect(await page.evaluate(() => performance.now.toString())).toContain(
+        "[native code]",
+    );
     const cdp = await context.newCDPSession(page);
     await cdp.send("Emulation.setCPUThrottlingRate", { rate: 4 });
     if (profiling) {
@@ -245,6 +252,8 @@ try {
                 timestamp: new Date().toISOString(),
                 build: directory,
                 cpu_slowdown: 4,
+                simulated_time: new Date(now).toISOString(),
+                native_performance_clock: true,
                 projects: 100,
                 steps: 10000,
                 tasks: 500,

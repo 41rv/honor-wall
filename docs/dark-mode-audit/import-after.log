@@ -1,0 +1,90 @@
+[
+  {
+    "dataset": "empty",
+    "cpu_slowdown": 1,
+    "median_click_to_boundary_ms": 7.299999997019768,
+    "median_click_to_next_frame_ms": 15.299999997019768,
+    "median_click_to_dialog_frame_ms": 15.400000005960464,
+    "app_renders": 0,
+    "file_reads": 0,
+    "database_transactions": 0,
+    "max_click_to_boundary_ms": 12.700000002980232,
+    "max_long_task_ms": 0,
+    "native_chooser_requests": 0,
+    "database_operations": 0,
+    "resource_requests": 0,
+    "react_commits_per_click": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "dataset": "empty",
+    "cpu_slowdown": 4,
+    "median_click_to_boundary_ms": 34.3999999910593,
+    "median_click_to_next_frame_ms": 21.099999994039536,
+    "median_click_to_dialog_frame_ms": 21.099999994039536,
+    "app_renders": 0,
+    "file_reads": 0,
+    "database_transactions": 0,
+    "max_click_to_boundary_ms": 62.29999999701977,
+    "max_long_task_ms": 0,
+    "native_chooser_requests": 0,
+    "database_operations": 0,
+    "resource_requests": 0,
+    "react_commits_per_click": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "dataset": "large",
+    "cpu_slowdown": 1,
+    "median_click_to_boundary_ms": 15.100000008940697,
+    "median_click_to_next_frame_ms": 12.600000008940697,
+    "median_click_to_dialog_frame_ms": 12.600000008940697,
+    "app_renders": 0,
+    "file_reads": 0,
+    "database_transactions": 0,
+    "max_click_to_boundary_ms": 18.700000002980232,
+    "max_long_task_ms": 0,
+    "native_chooser_requests": 0,
+    "database_operations": 0,
+    "resource_requests": 0,
+    "react_commits_per_click": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "dataset": "large",
+    "cpu_slowdown": 4,
+    "median_click_to_boundary_ms": 93.5,
+    "median_click_to_next_frame_ms": 47.099999994039536,
+    "median_click_to_dialog_frame_ms": 47.099999994039536,
+    "app_renders": 0,
+    "file_reads": 0,
+    "database_transactions": 0,
+    "max_click_to_boundary_ms": 103.59999999403954,
+    "max_long_task_ms": 0,
+    "native_chooser_requests": 0,
+    "database_operations": 0,
+    "resource_requests": 0,
+    "react_commits_per_click": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  }
+]

@@ -12,7 +12,9 @@ export const QuickIdeaCapture = memo(function QuickIdeaCapture({
             const d = JSON.parse(localStorage.getItem(key) ?? "null");
             if (d && typeof d.title === "string" && typeof d.notes === "string")
                 return d;
-        } catch {}
+        } catch {
+            // Missing or invalid storage must not prevent capture.
+        }
         return { title: "", notes: "" };
     }
     const [draft, setDraft] = useState<{ title: string; notes: string }>(
@@ -72,7 +74,9 @@ export const QuickIdeaCapture = memo(function QuickIdeaCapture({
                             setDraft(latest.current);
                             try {
                                 localStorage.removeItem(key);
-                            } catch {}
+                            } catch {
+                                // The idea is already saved in IndexedDB.
+                            }
                         }
                     } catch (e) {
                         setError(

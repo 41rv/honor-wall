@@ -1,0 +1,435 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/dark-audit.spec.ts",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "dark-audit.spec.ts",
+      "file": "dark-audit.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "قبل React وCSS: الثيم المحفوظ green/light يحدد خلفية البداية وألوان النظام",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5368,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"light\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"light\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/dark-audit.spec.ts:24:48",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                      "column": 48,
+                      "line": 24
+                    },
+                    "snippet": "  22 |             await page.goto(\"/#home\");\n  23 |             await expect(page.locator(\"#root\")).toBeEmpty();\n> 24 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-theme\", mode);\n     |                                                ^\n  25 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-identity\", identity);\n  26 |             await expect(page.locator(\"html\")).toHaveCSS(\"background-color\", backgrounds[`${identity}-${mode}`]);\n  27 |             await expect(page.locator('meta[name=\"color-scheme\"]')).toHaveAttribute(\"content\", mode);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                        "column": 48,
+                        "line": 24
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"light\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  22 |             await page.goto(\"/#home\");\n  23 |             await expect(page.locator(\"#root\")).toBeEmpty();\n> 24 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-theme\", mode);\n     |                                                ^\n  25 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-identity\", identity);\n  26 |             await expect(page.locator(\"html\")).toHaveCSS(\"background-color\", backgrounds[`${identity}-${mode}`]);\n  27 |             await expect(page.locator('meta[name=\"color-scheme\"]')).toHaveAttribute(\"content\", mode);\n    at /workspace/honor-wall/tests/browser/dark-audit.spec.ts:24:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T21:09:15.862Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/dark-audit-قبل-React-وCSS--76b90-خلفية-البداية-وألوان-النظام/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                    "column": 48,
+                    "line": 24
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3bb003403afbdd4937f6-346be2a483739916bd61",
+          "file": "dark-audit.spec.ts",
+          "line": 13,
+          "column": 9
+        },
+        {
+          "title": "قبل React وCSS: الثيم المحفوظ green/dark يحدد خلفية البداية وألوان النظام",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5282,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"dark\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"dark\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/dark-audit.spec.ts:24:48",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                      "column": 48,
+                      "line": 24
+                    },
+                    "snippet": "  22 |             await page.goto(\"/#home\");\n  23 |             await expect(page.locator(\"#root\")).toBeEmpty();\n> 24 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-theme\", mode);\n     |                                                ^\n  25 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-identity\", identity);\n  26 |             await expect(page.locator(\"html\")).toHaveCSS(\"background-color\", backgrounds[`${identity}-${mode}`]);\n  27 |             await expect(page.locator('meta[name=\"color-scheme\"]')).toHaveAttribute(\"content\", mode);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                        "column": 48,
+                        "line": 24
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"dark\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  22 |             await page.goto(\"/#home\");\n  23 |             await expect(page.locator(\"#root\")).toBeEmpty();\n> 24 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-theme\", mode);\n     |                                                ^\n  25 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-identity\", identity);\n  26 |             await expect(page.locator(\"html\")).toHaveCSS(\"background-color\", backgrounds[`${identity}-${mode}`]);\n  27 |             await expect(page.locator('meta[name=\"color-scheme\"]')).toHaveAttribute(\"content\", mode);\n    at /workspace/honor-wall/tests/browser/dark-audit.spec.ts:24:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T21:09:21.910Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/dark-audit-قبل-React-وCSS--5e04e-خلفية-البداية-وألوان-النظام/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                    "column": 48,
+                    "line": 24
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3bb003403afbdd4937f6-5bfca5576a77c7df29ac",
+          "file": "dark-audit.spec.ts",
+          "line": 13,
+          "column": 9
+        },
+        {
+          "title": "قبل React وCSS: الثيم المحفوظ mono/light يحدد خلفية البداية وألوان النظام",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5247,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"light\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"light\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/dark-audit.spec.ts:24:48",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                      "column": 48,
+                      "line": 24
+                    },
+                    "snippet": "  22 |             await page.goto(\"/#home\");\n  23 |             await expect(page.locator(\"#root\")).toBeEmpty();\n> 24 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-theme\", mode);\n     |                                                ^\n  25 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-identity\", identity);\n  26 |             await expect(page.locator(\"html\")).toHaveCSS(\"background-color\", backgrounds[`${identity}-${mode}`]);\n  27 |             await expect(page.locator('meta[name=\"color-scheme\"]')).toHaveAttribute(\"content\", mode);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                        "column": 48,
+                        "line": 24
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"light\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  22 |             await page.goto(\"/#home\");\n  23 |             await expect(page.locator(\"#root\")).toBeEmpty();\n> 24 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-theme\", mode);\n     |                                                ^\n  25 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-identity\", identity);\n  26 |             await expect(page.locator(\"html\")).toHaveCSS(\"background-color\", backgrounds[`${identity}-${mode}`]);\n  27 |             await expect(page.locator('meta[name=\"color-scheme\"]')).toHaveAttribute(\"content\", mode);\n    at /workspace/honor-wall/tests/browser/dark-audit.spec.ts:24:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T21:09:27.809Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/dark-audit-قبل-React-وCSS--bfa7d-خلفية-البداية-وألوان-النظام/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                    "column": 48,
+                    "line": 24
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3bb003403afbdd4937f6-ea83c6ce9c8d73d082c4",
+          "file": "dark-audit.spec.ts",
+          "line": 13,
+          "column": 9
+        },
+        {
+          "title": "قبل React وCSS: الثيم المحفوظ mono/dark يحدد خلفية البداية وألوان النظام",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5259,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"dark\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"dark\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/dark-audit.spec.ts:24:48",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                      "column": 48,
+                      "line": 24
+                    },
+                    "snippet": "  22 |             await page.goto(\"/#home\");\n  23 |             await expect(page.locator(\"#root\")).toBeEmpty();\n> 24 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-theme\", mode);\n     |                                                ^\n  25 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-identity\", identity);\n  26 |             await expect(page.locator(\"html\")).toHaveCSS(\"background-color\", backgrounds[`${identity}-${mode}`]);\n  27 |             await expect(page.locator('meta[name=\"color-scheme\"]')).toHaveAttribute(\"content\", mode);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                        "column": 48,
+                        "line": 24
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('html')\nExpected: \u001b[32m\"dark\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('html') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('html')\u001b[22m\n\u001b[2m    14 × locator resolved to <html lang=\"ar\" dir=\"rtl\">…</html>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  22 |             await page.goto(\"/#home\");\n  23 |             await expect(page.locator(\"#root\")).toBeEmpty();\n> 24 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-theme\", mode);\n     |                                                ^\n  25 |             await expect(page.locator(\"html\")).toHaveAttribute(\"data-identity\", identity);\n  26 |             await expect(page.locator(\"html\")).toHaveCSS(\"background-color\", backgrounds[`${identity}-${mode}`]);\n  27 |             await expect(page.locator('meta[name=\"color-scheme\"]')).toHaveAttribute(\"content\", mode);\n    at /workspace/honor-wall/tests/browser/dark-audit.spec.ts:24:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T21:09:33.683Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/dark-audit-قبل-React-وCSS--d002f-خلفية-البداية-وألوان-النظام/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                    "column": 48,
+                    "line": 24
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3bb003403afbdd4937f6-584ed44d07281e2025f6",
+          "file": "dark-audit.spec.ts",
+          "line": 13,
+          "column": 9
+        },
+        {
+          "title": "التنقل بالرجوع يغلق قائمة الإضافة ولا يترك نافذة على صفحة أخرى",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5599,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog')\nExpected: not visible\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toBeVisible\" getByRole('dialog') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog')\u001b[22m\n\u001b[2m    14 × locator resolved to <dialog open=\"\" class=\"add-menu\" aria-label=\"ماذا تريد أن تضيف؟\">…</dialog>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog')\nExpected: not visible\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toBeVisible\" getByRole('dialog') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog')\u001b[22m\n\u001b[2m    14 × locator resolved to <dialog open=\"\" class=\"add-menu\" aria-label=\"ماذا تريد أن تضيف؟\">…</dialog>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/dark-audit.spec.ts:40:48",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                      "column": 48,
+                      "line": 40
+                    },
+                    "snippet": "  38 |     await page.goBack();\n  39 |     await expect(page).toHaveURL(/#home$/);\n> 40 |     await expect(page.getByRole(\"dialog\")).not.toBeVisible();\n     |                                                ^\n  41 |     await openCreate(page, \"task\");\n  42 |     await expect(page.getByRole(\"dialog\").getByLabel(\"الاسم\", { exact: true })).toBeFocused();\n  43 |     await page.keyboard.press(\"Escape\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                        "column": 48,
+                        "line": 40
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog')\nExpected: not visible\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toBeVisible\" getByRole('dialog') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog')\u001b[22m\n\u001b[2m    14 × locator resolved to <dialog open=\"\" class=\"add-menu\" aria-label=\"ماذا تريد أن تضيف؟\">…</dialog>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n\n  38 |     await page.goBack();\n  39 |     await expect(page).toHaveURL(/#home$/);\n> 40 |     await expect(page.getByRole(\"dialog\")).not.toBeVisible();\n     |                                                ^\n  41 |     await openCreate(page, \"task\");\n  42 |     await expect(page.getByRole(\"dialog\").getByLabel(\"الاسم\", { exact: true })).toBeFocused();\n  43 |     await page.keyboard.press(\"Escape\");\n    at /workspace/honor-wall/tests/browser/dark-audit.spec.ts:40:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T21:09:39.594Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/dark-audit-التنقل-بالرجوع--f86bc-لا-يترك-نافذة-على-صفحة-أخرى/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/dark-audit.spec.ts",
+                    "column": 48,
+                    "line": 40
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3bb003403afbdd4937f6-dbdc8f9e41d6e760c10c",
+          "file": "dark-audit.spec.ts",
+          "line": 33,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T21:09:14.464Z",
+    "duration": 31019.395,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "timestamp": "2026-10-14T21:39:33.710Z",
+  "build": "/tmp/masar-release-111-root",
+  "cpu_slowdown": 4,
+  "simulated_time": "2026-10-14T09:00:00.000Z",
+  "native_performance_clock": true,
+  "projects": 100,
+  "steps": 10000,
+  "tasks": 500,
+  "cycles": 4000,
+  "progress_records": 8000,
+  "results": [
+    {
+      "route": "today",
+      "settled_ms": 544.7000000029802,
+      "long_tasks": [
+        {
+          "start": 7622.70000000298,
+          "duration": 333
+        },
+        {
+          "start": 7957.29999999702,
+          "duration": 105
+        }
+      ]
+    },
+    {
+      "route": "calendar",
+      "settled_ms": 1084.5,
+      "long_tasks": [
+        {
+          "start": 8905.29999999702,
+          "duration": 71
+        },
+        {
+          "start": 9088.29999999702,
+          "duration": 488
+        },
+        {
+          "start": 9576.39999999106,
+          "duration": 125
+        }
+      ]
+    },
+    {
+      "route": "progress",
+      "settled_ms": 477.29999999701977,
+      "long_tasks": [
+        {
+          "start": 10507.09999999404,
+          "duration": 135
+        },
+        {
+          "start": 10767.29999999702,
+          "duration": 123
+        }
+      ]
+    },
+    {
+      "route": "year",
+      "settled_ms": 594.7999999970198,
+      "long_tasks": [
+        {
+          "start": 11134.09999999404,
+          "duration": 73
+        },
+        {
+          "start": 11304.20000000298,
+          "duration": 77
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

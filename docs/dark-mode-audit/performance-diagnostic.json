@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-10-14T21:32:18.412787+00:00",
+  "observed_on_both_builds": true,
+  "expected_by_old_harness": 2100,
+  "actual_UI_on_both_builds": 2000,
+  "reason": "At the real test time just after local midnight, 100 one-off completions generated at midnight + 1 hour were future events. The application correctly excludes them.",
+  "fix": "Use the same controllable clock at 2026-10-14T09:00:00Z for fixture generation and the browser; retain the 2100 assertion. Added three unit cases for current-period future completions after local midnight.",
+  "application_logic_changed": false
+}

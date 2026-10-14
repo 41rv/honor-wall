@@ -42,7 +42,9 @@ try {
     for (let i = 0; i < 40; i++) {
         try {
             if ((await fetch(baseURL)).ok) break;
-        } catch {}
+        } catch {
+            // Retry while the local test server starts.
+        }
         await new Promise((resolve) => setTimeout(resolve, 100));
     }
     context = await chromium.launchPersistentContext(profile, options);

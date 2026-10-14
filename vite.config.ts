@@ -33,7 +33,9 @@ export default defineConfig({
                 dir: "rtl",
                 description: "مشاريعك ومهامك وأفكارك، على جهازك.",
                 theme_color: "#185c4b",
-                background_color: "#f6f7f2",
+                // Native launch screens cannot read the user's localStorage theme.
+                // A stable dark brand color avoids a white PWA splash in dark mode.
+                background_color: "#185c4b",
                 display: "standalone",
                 start_url: base,
                 icons: [
