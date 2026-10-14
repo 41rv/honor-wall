@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-10-14T14:49:46.023515+00:00",
+  "version": "1.1.0",
+  "user_approved": true,
+  "published": true,
+  "url": "https://41rv.github.io/honor-wall/",
+  "source_commit": "989a80432cb10b3d8d885a3042f98cf225269034",
+  "deployment_commit": "8e1a8477cd0ee41f23d9680542417d6db3be4899",
+  "previous_deployment": "fe01a3830a9ec529ac63058cedc2bc094752f4e6",
+  "pages_status": "built",
+  "production_files_match": true,
+  "unit_tests": {
+    "passed": 163,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser_tests": {
+    "passed": 94,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "live_smoke": {
+    "passed_groups": 5,
+    "failed": 0,
+    "transport": "Per-request live HTTPS using curl with default TLS verification; browser route fulfillment; Chromium direct HTTPS unavailable (untrusted environment proxy CA); serviceWorkers blocked in this isolated live check, offline migration tested separately"
+  },
+  "database": {
+    "name": "masar-v1",
+    "native_before": 20,
+    "native_after": 40,
+    "migration_preservation_verified": true,
+    "backup_version": 3,
+    "restore_verified": true
+  }
+}
