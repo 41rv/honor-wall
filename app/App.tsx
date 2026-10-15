@@ -2,10 +2,12 @@ import { orderedToday } from "./dailyPlanning";
 import { usePaceData } from "./usePaceData";
 import { ProjectPacePanel, PaceSummary } from "./ProjectPacePanel";
 import { ProjectCapacitySettings, CapacityOptions } from "./ProjectCapacity";
+import { ProjectRestSettings } from "./ProjectRestSettings";
+import { isProjectRest } from "./projectRest";
 import { PaceRecommendations } from "./PaceRecommendations";
 import { ActiveProjectLimitError } from "./db";
 import { activeProject, dailySteps, paused, projectPace } from "./projectPace";
-import type { ProjectPlan, StepWork } from "./paceTypes";
+import type { ProjectPlan, StepWork, PaceSettings } from "./paceTypes";
 import { TaskStatusControls } from "./TaskStatusControls";
 import { PlanningLinks } from "./TodayTasks";
 import { WeekCalendar } from "./WeekCalendar";
@@ -323,10 +325,12 @@ const ProjectCard = memo(function ProjectCard({
     plan,
     paceWork,
     paceClock,
+    paceSettings,
 }: {
     plan?: ProjectPlan;
     paceWork?: StepWork[];
     paceClock?: number;
+    paceSettings?: PaceSettings;
     project: Project;
     onComplete: (id: string, complete: boolean) => Promise<void>;
     hierarchy: Hierarchy;
@@ -392,6 +396,7 @@ const ProjectCard = memo(function ProjectCard({
                         hierarchy={hierarchy}
                         work={paceWork}
                         clock={paceClock}
+                        settings={paceSettings}
                     />
                     {(() => {
                         const pace = projectPace(
@@ -400,6 +405,7 @@ const ProjectCard = memo(function ProjectCard({
                             hierarchy,
                             paceWork,
                             new Date(Math.max(paceClock, Date.now())),
+                            paceSettings,
                         );
                         const steps = dailySteps(
                             project.id,
@@ -412,13 +418,15 @@ const ProjectCard = memo(function ProjectCard({
                                 aria-label="اقتراح خطوات اليوم"
                             >
                                 <p className="small muted">
-                                    {pace.today
-                                        ? `اقتراح مرن لليوم: ${pace.today} خطوة؛ دون تراكم أو تأخير.`
-                                        : pace.remaining
-                                          ? "لا توجد خطوات إضافية مقترحة اليوم. تبقى خطوات المشروع متاحة."
-                                          : pace.total
-                                            ? "اكتملت خطوات المشروع."
-                                            : "أضف خطوات للمشروع لتحديد وتيرته."}
+                                    {pace.restDay
+                                        ? "الإنجاز اختياري اليوم؛ افتح المشروع للوصول إلى خطواته."
+                                        : pace.today
+                                          ? `اقتراح مرن لليوم: ${pace.today} خطوة؛ دون تراكم أو تأخير.`
+                                          : pace.remaining
+                                            ? "لا توجد خطوات إضافية مقترحة اليوم. تبقى خطوات المشروع متاحة."
+                                            : pace.total
+                                              ? "اكتملت خطوات المشروع."
+                                              : "أضف خطوات للمشروع لتحديد وتيرته."}
                                 </p>
                                 {steps.map((step) => (
                                     <div
@@ -1309,7 +1317,11 @@ function App() {
         ) : null;
     const dashboard = (
         <PeriodDashboard
-            data={{ ...data, projectPlans: pace.plans }}
+            data={{
+                ...data,
+                projectPlans: pace.plans,
+                paceSettings: pace.settings ? [pace.settings] : [],
+            }}
             tab={progressTab}
             onTabChange={setProgressTab}
             legacy={legacyDashboard}
@@ -1551,10 +1563,23 @@ function App() {
                             )}
                             <HomeExecution
                                 expanded={routePage === "today"}
+                                projectRest={isProjectRest(
+                                    new Date(Math.max(pace.clock, Date.now())),
+                                    pace.settings,
+                                )}
                                 recommendation={
                                     <PaceRecommendations
                                         rows={pace.recommendations}
                                         projects={data.projects}
+                                        resting={isProjectRest(
+                                            new Date(
+                                                Math.max(
+                                                    pace.clock,
+                                                    Date.now(),
+                                                ),
+                                            ),
+                                            pace.settings,
+                                        )}
                                         main
                                     />
                                 }
@@ -1589,6 +1614,7 @@ function App() {
                                         plan={plansById.get(p.id)}
                                         paceWork={pace.work}
                                         paceClock={pace.clock}
+                                        paceSettings={pace.settings}
                                         hierarchy={hierarchy}
                                         execution={executions.get(p.id)!}
                                         onComplete={completeProject}
@@ -2203,6 +2229,7 @@ function App() {
                                                         hierarchy={hierarchy}
                                                         work={pace.work}
                                                         clock={pace.clock}
+                                                        settings={pace.settings}
                                                         commitments={
                                                             orderedToday(
                                                                 data.tasks,
@@ -2651,11 +2678,18 @@ function App() {
                                 <PaceRecommendations
                                     rows={pace.recommendations}
                                     projects={data.projects}
+                                    resting={isProjectRest(
+                                        new Date(
+                                            Math.max(pace.clock, Date.now()),
+                                        ),
+                                        pace.settings,
+                                    )}
                                 />
                             )}
                             {page === "backup" && (
                                 <section className="surface backup-page">
                                     <ProjectCapacitySettings />
+                                    <ProjectRestSettings />
                                     <ShieldCheck size={35} />
                                     <h2>
                                         بياناتك محلية. نسختك الاحتياطية بيدك.

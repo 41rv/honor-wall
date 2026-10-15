@@ -36,6 +36,12 @@ beforeEach(async () => {
     await db.transaction("rw", db.tables, async () => {
         for (const t of db.tables) await t.clear();
     });
+    // These regression scenarios explicitly use the supported seven-workday calendar.
+    await db.paceSettings.put({
+        id: "pace",
+        activeLimit: 3,
+        restHistory: [{ since: initial, days: [], timeZone: "UTC" }],
+    });
 });
 afterEach(() => vi.useRealTimers());
 async function fixture(count = 40, days = 40) {
@@ -401,7 +407,7 @@ it("حذف واستعادة مشروع يحتفظان بجميع معلومات 
     expect(a.recommendations).toEqual(b.recommendations);
     validateBackup(a);
 });
-it("ترحيل Dexie4→5 إضافي يحافظ على كل صف قديم حرفيًا", async () => {
+it("ترحيل Dexie4→6 إضافي يحافظ على كل صف قديم حرفيًا", async () => {
     await observed();
     const b = await snapshot(),
         name = "pace-migration-" + crypto.randomUUID(),
@@ -432,7 +438,7 @@ it("ترحيل Dexie4→5 إضافي يحافظ على كل صف قديم حرف
     const next = new Database(name);
     try {
         await next.open();
-        expect(next.verno).toBe(5);
+        expect(next.verno).toBe(6);
         for (const store of [
             "projects",
             "steps",
@@ -451,9 +457,10 @@ it("ترحيل Dexie4→5 إضافي يحافظ على كل صف قديم حرف
             workOrder: 0,
             pauses: [],
         });
-        expect(await next.paceSettings.get("pace")).toEqual({
+        expect(await next.paceSettings.get("pace")).toMatchObject({
             id: "pace",
             activeLimit: 3,
+            restHistory: [{ since: new Date().toISOString(), days: [5, 6] }],
         });
     } finally {
         await next.delete();

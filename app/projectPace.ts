@@ -6,7 +6,16 @@ import type {
     ProjectPlan,
     StepWork,
     PaceRecommendation,
+    PaceSettings,
 } from "./paceTypes";
+import {
+    availableProjectDays,
+    isProjectRest,
+    remainingWorkDays,
+    finishOnWorkDay,
+    projectRestSettings,
+    restScheduleAt,
+} from "./projectRest";
 import { dateKey } from "./dateKey";
 import { localZone } from "./taskSchedule";
 import { orderedToday } from "./dailyPlanning";
@@ -76,23 +85,6 @@ export function effectiveTarget(plan: ProjectPlan, at: Date) {
         }
     return addDays(g.targetDate, shift);
 }
-function pauseOverlap(
-    plan: ProjectPlan,
-    start: number,
-    end: number,
-    at: number,
-) {
-    return plan.pauses.reduce(
-        (sum, p) =>
-            sum +
-            Math.max(
-                0,
-                Math.min(end, Date.parse(p.end ?? new Date(at).toISOString())) -
-                    Math.max(start, Date.parse(p.start)),
-            ),
-        0,
-    );
-}
 export interface PaceResult {
     total: number;
     done: number;
@@ -100,6 +92,10 @@ export interface PaceResult {
     percent: number | null;
     target?: string;
     days?: number;
+    workingDays?: number;
+    restDay: boolean;
+    restCompleted: number;
+    restSettings?: PaceSettings;
     required?: number;
     today: number;
     allocation?: {
@@ -129,7 +125,9 @@ export function projectPace(
     hierarchy: Hierarchy,
     work: StepWork[],
     at = new Date(),
+    settings?: PaceSettings,
 ): PaceResult {
+    settings = projectRestSettings(settings, plan);
     const metric = hierarchy.metric(project.id);
     const result: PaceResult = {
         ...metric,
@@ -142,29 +140,41 @@ export function projectPace(
         recentBelowApproved: 0,
         paused: paused(plan),
         sufficient: false,
+        restDay: isProjectRest(at, settings),
+        restCompleted: 0,
+        restSettings: settings,
     };
     if (!plan) return result;
-    const zone = plan.goal?.timeZone ?? localZone(),
-        today = dateKey(at, zone);
+    const goalZone = plan.goal?.timeZone ?? localZone(),
+        goalToday = dateKey(at, goalZone);
     result.target = effectiveTarget(plan, at);
     if (result.target) {
-        result.days = Math.max(0, betweenDays(today, result.target) + 1);
+        result.days = Math.max(0, betweenDays(goalToday, result.target) + 1);
+        result.workingDays = remainingWorkDays(
+            [goalToday, plan.goal!.anchor].sort().at(-1)!,
+            result.target,
+            settings,
+            at,
+            goalZone,
+        );
         result.required = metric.remaining
-            ? result.days
-                ? metric.remaining / result.days
+            ? result.workingDays
+                ? metric.remaining / result.workingDays
                 : undefined
             : 0;
-        if (result.days) {
-            const low = Math.floor(metric.remaining / result.days),
-                highDays = metric.remaining % result.days;
+        if (result.workingDays) {
+            const low = Math.floor(metric.remaining / result.workingDays),
+                highDays = metric.remaining % result.workingDays;
             result.allocation = {
                 low,
                 high: low + (highDays ? 1 : 0),
                 highDays,
-                lowDays: result.days - highDays,
+                lowDays: result.workingDays - highDays,
             };
         }
     }
+    const zone = restScheduleAt(settings, at)?.timeZone ?? goalZone;
+    const today = dateKey(at, zone);
     // Net work: only the latest state of each step contributes, even if it was
     // rapidly completed, undone and completed again. Deleted steps keep history.
     const latest = new Map<string, StepWork>();
@@ -175,7 +185,8 @@ export function projectPace(
             Date.parse(row.at) <= at.getTime()
         )
             latest.set(row.stepId, row);
-    const byDay = new Map<string, number>();
+    const byDay = new Map<string, number>(),
+        workingByDay = new Map<string, number>();
     for (const row of latest.values())
         if (
             row.complete &&
@@ -187,6 +198,9 @@ export function projectPace(
         ) {
             const day = dateKey(row.at, zone);
             byDay.set(day, (byDay.get(day) ?? 0) + 1);
+            if (isProjectRest(new Date(row.at), settings)) {
+                if (day >= addDays(today, -28)) result.restCompleted++;
+            } else workingByDay.set(day, (workingByDay.get(day) ?? 0) + 1);
         }
     result.completedToday = byDay.get(today) ?? 0;
     const sinceDay = dateKey(plan.since, zone),
@@ -200,13 +214,15 @@ export function projectPace(
     for (let day = first; day < today; day = addDays(day, 1)) {
         const start = Math.max(startOf(day, zone), Date.parse(plan.since)),
             end = startOf(addDays(day, 1), zone);
-        const weight = Math.max(
-            0,
-            (end - start - pauseOverlap(plan, start, end, at.getTime())) /
-                (end - startOf(day, zone)),
+        const weight = availableProjectDays(
+            start,
+            end,
+            settings,
+            plan.pauses,
+            zone,
         );
         if (!weight) continue;
-        const count = byDay.get(day) ?? 0;
+        const count = workingByDay.get(day) ?? 0;
         result.observationDays += weight;
         result.dailyCounts.push(count);
         if (count) result.workDays++;
@@ -256,19 +272,24 @@ export function projectPace(
     result.forecastRate = rate;
     if (olderDays >= 3) result.robustOlder = robust(olderCounts, olderDays);
     if (result.sufficient && rate > 0 && activeProject(project, plan))
-        result.forecast = addDays(
-            today,
-            Math.max(0, Math.ceil(metric.remaining / rate) - 1),
+        result.forecast = finishOnWorkDay(
+            at,
+            Math.ceil(metric.remaining / rate),
+            settings,
+            goalZone,
         );
     const daily =
-        result.days === 0
+        result.workingDays === 0
             ? undefined
             : (plan.approvedPace ??
               (result.required === undefined
                   ? undefined
                   : Math.ceil(result.required)));
     result.today =
-        result.paused || !activeProject(project, plan)
+        result.paused ||
+        result.restDay ||
+        result.workingDays === 0 ||
+        !activeProject(project, plan)
             ? 0
             : Math.min(
                   metric.remaining,
@@ -291,7 +312,12 @@ export function accelerationOptions(
     zone = localZone(),
     commitments = 0,
 ): Acceleration[] {
-    if (!pace.target || !pace.remaining || pace.paused || pace.days === 0)
+    if (
+        !pace.target ||
+        !pace.remaining ||
+        pace.paused ||
+        pace.workingDays === 0
+    )
         return [];
     const positive = pace.dailyCounts
         .filter((n) => n > 0)
@@ -311,10 +337,13 @@ export function accelerationOptions(
     return observed
         .map((n, i) => {
             const daily = pace.sufficient ? Math.max(1, n) : n;
-            const finish = addDays(
-                dateKey(at, zone),
-                Math.max(0, Math.ceil(pace.remaining / daily) - 1),
+            const finish = finishOnWorkDay(
+                at,
+                Math.ceil(pace.remaining / daily),
+                pace.restSettings,
+                zone,
             );
+            if (!finish) return [];
             const saved = betweenDays(finish, pace.target!);
             const valid = daily > previous && daily >= baseline && saved > 0;
             previous = Math.max(previous, daily);
@@ -329,7 +358,7 @@ export function accelerationOptions(
                           hypothetical: !pace.sufficient,
                           reason: !pace.sufficient
                               ? "خيار حسابي افتراضي؛ لا يوجد سجل كافٍ لتوصية شخصية."
-                              : `${["معدل حديث محافظ، يشمل أيام السكون ويحدّ من أثر الدفعات", "وسيط إنجاز أيام النشاط", "الربيع الأعلى لأيام النشاط؛ ضغط أكبر وقد لا يستمر"][i]}. الثقة أولية من ${positive.length} أيام إنجاز. لديك ${commitments} التزامات ظاهرة اليوم؛ عدد الخطوات لا يقيس الجهد.`,
+                              : `${["معدل حديث محافظ لكل يوم عمل، يستبعد الراحة والإيقاف ويحدّ من أثر الدفعات", "وسيط إنجاز أيام العمل النشطة", "الربيع الأعلى لأيام العمل النشطة؛ ضغط أكبر وقد لا يستمر"][i]}. الثقة أولية من ${positive.length} أيام إنجاز. لديك ${commitments} التزامات ظاهرة اليوم؛ عدد الخطوات لا يقيس الجهد.`,
                       },
                   ]
                 : [];
@@ -357,12 +386,14 @@ export interface RecommendationContext {
     work: StepWork[];
     hierarchy: Hierarchy;
     tasks: Task[];
+    settings?: PaceSettings;
 }
 export function recommendationCandidates(
     ctx: RecommendationContext,
     at = new Date(),
 ): PaceRecommendation[] {
-    const { projects, plans, work, hierarchy, tasks } = ctx;
+    const { projects, plans, work, hierarchy, tasks, settings } = ctx;
+    if (isProjectRest(at, settings)) return [];
     const open = projects.filter((p) =>
         activeProject(
             p,
@@ -394,6 +425,7 @@ export function recommendationCandidates(
                 hierarchy,
                 groupedWork.get(p.id) ?? [],
                 at,
+                settings,
             ),
         };
     });
@@ -421,6 +453,7 @@ export function recommendationCandidates(
             evidence,
             load,
             open.map((p) => p.id).sort(),
+            settings?.restHistory?.at(-1),
         ]);
         // Same situation remains dismissed across days; no date in identity.
         const key = JSON.stringify([
@@ -437,6 +470,7 @@ export function recommendationCandidates(
             evidence,
             Math.floor(load / 3),
             open.map((p) => p.id).sort(),
+            settings?.restHistory?.at(-1),
         ]);
         candidates.push({
             id: key,
@@ -473,10 +507,10 @@ export function recommendationCandidates(
             build(
                 "accelerate",
                 [p.id],
-                `لديك إنجاز في ${pace.workDays} أيام فعلية، ومتوسط ${pace.actual!.toFixed(1)} خطوة لكل يوم متاح للرصد.`,
+                `لديك إنجاز في ${pace.workDays} أيام فعلية، ومتوسط ${pace.actual!.toFixed(1)} خطوة لكل يوم عمل متاح للرصد.`,
                 plan.goal?.deadline === "fixed"
-                    ? `${o.daily} خطوة يوميًا؛ انتهاء حسابي ${o.finish} مع بقاء الموعد الإلزامي ${pace.target}.`
-                    : `${o.daily} خطوة يوميًا؛ هدف مرن جديد ${o.finish} بدل ${pace.target}.`,
+                    ? `${o.daily} خطوة لكل يوم عمل؛ انتهاء حسابي ${o.finish} مع بقاء الموعد الإلزامي ${pace.target}.`
+                    : `${o.daily} خطوة لكل يوم عمل؛ هدف مرن جديد ${o.finish} بدل ${pace.target}.`,
                 [
                     {
                         type:
@@ -512,16 +546,18 @@ export function recommendationCandidates(
                     1,
                     Math.ceil(pace.recent ?? pace.actual ?? 1),
                 ),
-                finish = addDays(
-                    dateKey(at, plan.goal.timeZone),
-                    Math.ceil(pace.remaining / daily) - 1,
+                finish = finishOnWorkDay(
+                    at,
+                    Math.ceil(pace.remaining / daily),
+                    pace.restSettings,
+                    plan.goal.timeZone,
                 );
-            if (finish > pace.target!)
+            if (finish && finish > pace.target!)
                 build(
                     "ease",
                     [p.id],
                     `لم تبلغ الوتيرة المعتمدة في خمسة أيام متاحة على الأقل من آخر أسبوع مرصود بعد اعتمادها.${pace.workDays < 3 ? " هذه خطة تجريبية لتخفيف الضغط، وليست قدرة شخصية مثبتة." : ""}`,
-                    `تخفيف إلى ${daily} خطوة يوميًا وتمديد الهدف المرن إلى ${finish}.`,
+                    `تخفيف إلى ${daily} خطوة لكل يوم عمل وتمديد الهدف المرن إلى ${finish}.`,
                     [
                         {
                             type: "target",
@@ -553,7 +589,7 @@ export function recommendationCandidates(
         build(
             "focus",
             [fast.p.id, slow.p.id],
-            `إنجاز «${fast.p.title}» أعلى من الفترة الأقدم، و«${slow.p.title}» لم يسجل إنجازًا خلال الأيام السبعة المتاحة الأخيرة. هذه مقارنة أعداد، لا قياس جهد.`,
+            `إنجاز «${fast.p.title}» أعلى من الفترة الأقدم، و«${slow.p.title}» لم يسجل إنجازًا خلال الأسبوع الأخير مع استبعاد الراحة والإيقاف. هذه مقارنة أعداد، لا قياس جهد.`,
             `إتاحة التركيز على «${fast.p.title}» عبر إيقاف «${slow.p.title}» مؤقتًا. هدفه المرن يتجمد ويمكن استئنافه في أي وقت.`,
             [{ type: "pause", projectId: slow.p.id }],
             [

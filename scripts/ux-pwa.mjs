@@ -14,6 +14,7 @@ const preexistingTasks = process.argv[8] === "preexisting-tasks";
 const planningMode = process.argv[9] === "planning";
 const darkAudit = process.argv[10] === "dark-audit";
 const paceMode = process.argv[11] === "pace";
+const restMode = process.argv[12] === "project-rest";
 const restartStores = [
     "projects",
     "steps",
@@ -162,6 +163,11 @@ try {
             .toBe(1);
         preservedStores.push("taskCycles");
     }
+    if (restMode)
+        preservedStores.push("projectPlans", "stepWork", "recommendations");
+    const oldPaceSettings = restMode
+        ? await readStore(page, "paceSettings")
+        : undefined;
     for (const store of preservedStores)
         before[store] = await readStore(page, store);
     await page.goto(baseURL + "#backup");
@@ -184,6 +190,28 @@ try {
     await page.getByRole("heading", { name: "بياناتك في أمان" }).waitFor();
     for (const store of preservedStores)
         assert.deepEqual(await readStore(page, store), before[store]);
+    if (restMode) {
+        const after = await readStore(page, "paceSettings");
+        assert.deepEqual(
+            after.map(({ restHistory: _rest, ...old }) => old),
+            oldPaceSettings,
+        );
+        assert.deepEqual(after[0].restHistory.at(-1).days, [5, 6]);
+        await page.locator(".project-rest-settings summary").tap();
+        await page
+            .getByRole("checkbox", { name: "الاثنين", exact: true })
+            .check();
+        await page
+            .getByRole("button", { name: "حفظ أيام الراحة", exact: true })
+            .tap();
+        await expect(page.locator(".project-rest-settings")).toContainText(
+            "حُفظت أيام الراحة",
+        );
+        assert.deepEqual(
+            (await readStore(page, "paceSettings"))[0].restHistory.at(-1).days,
+            [1, 5, 6],
+        );
+    }
     const manifest = await (
         await page.request.get(baseURL + "manifest.webmanifest")
     ).json();
@@ -393,7 +421,10 @@ try {
             if (paceMode) {
                 // The former project completion stays unobserved; the new work
                 // after migration has a genuine step timestamp and sequence.
-                assert.equal((await readStore(page, "stepWork")).length, 1);
+                assert.equal(
+                    (await readStore(page, "stepWork")).length,
+                    (restMode ? before.stepWork.length : 0) + 1,
+                );
                 await page
                     .getByRole("button", {
                         name: "إعداد الهدف الزمني",
@@ -553,6 +584,7 @@ try {
                     preservedStores.includes("projectProgress") &&
                     preservedStores.includes("projectTracking"),
                 pace_sidecars_persisted_offline: paceMode,
+                project_rest_history_persisted_offline: restMode,
                 native_database_version_before: beforeDatabases.find(
                     (d) => d.name === "masar-v1",
                 ).version,

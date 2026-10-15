@@ -1,0 +1,15 @@
+{
+  "app/taskSchedule.ts": "35ab52cbb5c2ca961eada845cb30dd531ef68ae72838401b701e08bb8345e792",
+  "app/taskTypes.ts": "cabbbd53f701ae04eb8cda39ecbe008fea265bf84e21ab37cfa36552198f89a1",
+  "app/dailyPlanning.ts": "06d8da6a2bd221aed3e437eb756775169a7d0ae9a3b5dd8dd2c38621dae37bb4",
+  "app/WeekCalendar.tsx": "d107765835e753f7db0c1feb40f4f95e1f31dece655ee386eed24e4daf6dd2c8",
+  "app/analytics.ts": "ad9353134548f0e3c263a9709534df191420e0073851268344703147324c19d3",
+  "app/TaskFields.tsx": "32461bdae7b214bb18e7c35e2d91ba3ec399a864a7be56179c0882ae721212cd",
+  "app/TaskDetails.tsx": "c6fff39ec55c30e6808e8dcc4024728e14073ad3d251df15e48446c906a6920c",
+  "app/TaskStatusControls.tsx": "9ce17c236352e6353163801a11f5d2dc4e9c6c32f783e15783b6ce35684adb29",
+  "app/model.ts": "73008e2c7249a9e13de894b586eed7b1c619c31ef573b9242c155c66232dc5f2",
+  "vite.config.ts": "613500504c7f46413ac16b1b06b934ede8fbe00d70f8e51ff5ef4b9c19deecc2",
+  "index.html": "1c2402124dbe5fd3af983499e1f0f9daa18e2bdd8320c9dda8830eac001cc2d2",
+  "package.json": "b179a42bdd8bb528e40543d0f0abd602f123b43263f213722da8b5620fc05ede",
+  "package-lock.json": "ab9ada81a63421672a29a55f60a80ff45245b16879b7ce22165023668d295f38"
+}

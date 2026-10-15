@@ -1,4 +1,6 @@
 import { activeProject, pausedCalendarDays } from "./projectPace";
+import { availableProjectDays, projectRestSettings } from "./projectRest";
+import type { PaceSettings } from "./paceTypes";
 import type { ProjectPlan } from "./paceTypes";
 import { dateKey } from "./dateKey";
 import type { Project, Snapshot } from "./model";
@@ -16,6 +18,7 @@ export function activityPeriods(
     at = new Date(),
     zone = localZone(),
     plan?: ProjectPlan,
+    settings?: PaceSettings,
 ) {
     const active: { start: string; end: string; kind: "active" }[] = [],
         idle: { start: string; end: string; kind: "idle" }[] = [];
@@ -95,6 +98,64 @@ export function activityPeriods(
                       ]
                     : []),
             ];
+        });
+    }
+    const calendar = projectRestSettings(settings, plan);
+    if (calendar?.restHistory?.length) {
+        const firstRest = calendar.restHistory.find((s) => s.days.length > 0);
+        if (!firstRest) return { active, idle: available };
+        const firstRestDay = dateKey(firstRest.since, zone);
+        available = available.flatMap((row) => {
+            if (row.end < firstRestDay) return [row];
+            const periods: typeof available = [];
+            if (row.start < firstRestDay)
+                periods.push({
+                    ...row,
+                    end: Temporal.PlainDate.from(firstRestDay)
+                        .subtract({ days: 1 })
+                        .toString(),
+                });
+            for (
+                let day = Temporal.PlainDate.from(
+                    row.start < firstRestDay ? firstRestDay : row.start,
+                );
+                day.toString() <= row.end;
+                day = day.add({ days: 1 })
+            ) {
+                const start = day.toZonedDateTime({
+                    timeZone: zone,
+                    plainTime: "00:00",
+                }).epochMilliseconds;
+                const end = day.add({ days: 1 }).toZonedDateTime({
+                    timeZone: zone,
+                    plainTime: "00:00",
+                }).epochMilliseconds;
+                if (
+                    availableProjectDays(
+                        start,
+                        end,
+                        calendar,
+                        plan?.pauses,
+                        zone,
+                    ) <= 0
+                )
+                    continue;
+                const previous = periods.at(-1);
+                if (
+                    previous &&
+                    Temporal.PlainDate.from(previous.end)
+                        .add({ days: 1 })
+                        .toString() === day.toString()
+                )
+                    previous.end = day.toString();
+                else
+                    periods.push({
+                        ...row,
+                        start: day.toString(),
+                        end: day.toString(),
+                    });
+            }
+            return periods;
         });
     }
     return { active, idle: available };
@@ -186,8 +247,34 @@ export function inactivityDays(
     at = new Date(),
     zone = localZone(),
     plan?: ProjectPlan,
+    settings?: PaceSettings,
 ) {
     if (!tracking) return null;
+    if (settings?.restHistory?.length || plan?.restBefore) {
+        const start = localDay(
+            new Date(tracking.lastProgressAt ?? tracking.since),
+            zone,
+        ).toZonedDateTime({
+            timeZone: zone,
+            plainTime: "00:00",
+        }).epochMilliseconds;
+        const end = localDay(at, zone).toZonedDateTime({
+            timeZone: zone,
+            plainTime: "00:00",
+        }).epochMilliseconds;
+        return Math.max(
+            0,
+            Math.floor(
+                availableProjectDays(
+                    start,
+                    end,
+                    projectRestSettings(settings, plan),
+                    plan?.pauses,
+                    zone,
+                ) + 1e-9,
+            ),
+        );
+    }
     return Math.max(
         0,
         localDay(
@@ -203,7 +290,10 @@ export function inactivityDays(
     );
 }
 export function projectPeriodSummary(
-    data: Pick<Snapshot, "projects" | "steps" | "projectPlans">,
+    data: Pick<
+        Snapshot,
+        "projects" | "steps" | "projectPlans" | "paceSettings"
+    >,
     rows: ProjectProgress[],
     tracking: ProjectTracking[],
     range: TimeRange,
@@ -249,6 +339,7 @@ export function projectPeriodSummary(
                     at,
                     zone,
                     data.projectPlans?.find((plan) => plan.projectId === p.id),
+                    data.paceSettings?.[0],
                 ) ?? 0) >= 14,
         ),
         active: active.length,

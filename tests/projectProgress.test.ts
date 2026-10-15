@@ -166,7 +166,7 @@ it("استعادة v2 تسجل نقطة الحالة الحالية فقط دو�
         since: "2026-10-19T09:00:00.000Z",
     });
 });
-it("ترحيل Dexie2 إلى5 يحافظ على الحقول والدورات ويبدأ التتبع من اليوم", async () => {
+it("ترحيل Dexie2 إلى6 يحافظ على الحقول والدورات ويبدأ التتبع من اليوم", async () => {
     const data = await fixture();
     const before = await snapshot(),
         name = "history-migration-" + crypto.randomUUID(),
@@ -194,7 +194,7 @@ it("ترحيل Dexie2 إلى5 يحافظ على الحقول والدورات و
             initialPercent: 0,
             lastOrder: 0,
         });
-        expect(next.verno).toBe(5);
+        expect(next.verno).toBe(6);
     } finally {
         await next.delete();
     }

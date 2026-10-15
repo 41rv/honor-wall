@@ -20,9 +20,11 @@ export function HomeExecution({
     openHistory,
     expanded = false,
     recommendation,
+    projectRest = false,
 }: {
     expanded?: boolean;
     recommendation?: ReactNode;
+    projectRest?: boolean;
     data: Snapshot;
     active: Project[];
     resume?: Step;
@@ -107,12 +109,22 @@ export function HomeExecution({
                         كل المشاريع <ChevronLeft size={16} />
                     </button>
                 </div>
+                {projectRest && (
+                    <p className="project-rest-notice surface" role="status">
+                        اليوم راحة من المشاريع. تبقى متاحة للإنجاز الاختياري؛ لا
+                        خطوات مطلوبة اليوم.
+                    </p>
+                )}
                 <section
                     className="surface resume-shortcut"
                     aria-label="اختصار الاستكمال"
                 >
                     <div>
-                        <span className="small muted">أكمل من حيث توقفت</span>
+                        <span className="small muted">
+                            {projectRest
+                                ? "خطوة متاحة اختياريًا"
+                                : "أكمل من حيث توقفت"}
+                        </span>
                         <h2 title={resume?.title}>
                             {resume?.title ?? "خطوتك التالية تبدأ هنا"}
                         </h2>

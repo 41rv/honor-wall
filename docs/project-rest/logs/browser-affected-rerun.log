@@ -1,0 +1,51 @@
+
+> masar-personal@1.2.0 test:e2e
+> playwright test tests/browser/project-pace.spec.ts tests/browser/project-rest.spec.ts tests/browser/project-rest-boundaries.spec.ts --reporter=line
+
+[WebServer] (node:400540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:400553) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 28 tests using 1 worker
+
+(node:400577) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/28] tests/browser/project-pace.spec.ts:137:1 › 40/20 من الواجهة: هدف ووتيرة وإنجاز من الرئيسية وتراجع دون خلط المهام
+[2/28] tests/browser/project-pace.spec.ts:193:1 › تسريع افتراضي: معاينة دون تعديل ثم اعتماد مؤكد وسجل قرار
+[3/28] tests/browser/project-pace.spec.ts:226:1 › توصية شخصية: الرئيسية تعرض واحدة والرفض لا يغير الخطة ولا يعود غدًا
+[4/28] tests/browser/project-pace.spec.ts:250:1 › اعتماد توصية شخصية وتحديث مؤشرات المشروع والتراجع عن الخطة من إعداد الهدف
+[5/28] tests/browser/project-pace.spec.ts:272:1 › الإيقاف والاستئناف يجمدان20يومًا والموعد الإلزامي لا يتحرك
+[6/28] tests/browser/project-pace.spec.ts:327:1 › الحد النشط: الرابع يحتاج قرارًا صريحًا مع حفظ مسودة الإنشاء
+[7/28] tests/browser/project-pace.spec.ts:366:1 › الدمج عبر الواجهة يحفظ الأصل ويمنع تكرار الملف ويستعيد الحقول الجديدة
+[8/28] tests/browser/project-pace.spec.ts:392:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 320
+[9/28] tests/browser/project-pace.spec.ts:392:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 390
+[10/28] tests/browser/project-pace.spec.ts:392:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 768
+[11/28] tests/browser/project-pace.spec.ts:392:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 1366
+[12/28] tests/browser/project-pace.spec.ts:467:1 › إلغاء تجاوز الحد لا ينشئ شيئًا، وإيقاف مشروع بديل قرار منفصل عن الإضافة
+[13/28] tests/browser/project-pace.spec.ts:507:1 › استيراد masar.project1 عند الحد يحفظ المعاينة ثم يستورد مرة واحدة بعد القرار
+[14/28] tests/browser/project-pace.spec.ts:544:1 › إتمام آخر خطوة من الرئيسية ثم التراجع يعيد المشروع والخطوة والمؤشرات ذريًا
+[15/28] tests/browser/project-pace.spec.ts:569:1 › الداشبورد والرؤى لا يعدّان الإيقاف تعثرًا ويستعيدان العدد بعد الاستئناف
+[16/28] tests/browser/project-pace.spec.ts:612:1 › النافذة فوق مشروع كبير: حصر التركيز وARIA وEscape والرجوع والنقر الخارجي والتنظيف
+[17/28] tests/browser/project-pace.spec.ts:701:1 › المتصفح بلا CloseWatcher يحتفظ بالنافذة الأصلية وسلوك Escape
+[18/28] tests/browser/project-rest-boundaries.spec.ts:72:1 › توصية موجودة تختفي بهدوء عند منتصف ليل الرياض وتبقى في التقدم دون إجراءات ملحة
+[19/28] tests/browser/project-rest-boundaries.spec.ts:115:1 › حدود اليوم المحلي: تبدأ الراحة وتستحق المهمة وتتعاقب دوراتها دون تغيير قواعدها
+[20/28] tests/browser/project-rest.spec.ts:69:1 › افتراضي الراحة والتعديل وحفظ السجل وإعادة التحميل وإلغاء جميع الأيام
+[21/28] tests/browser/project-rest.spec.ts:115:1 › 40/20 =14 يوم عمل: الهدف ثابت والتوزيع يتحدث عند تغيير الراحة
+[22/28] tests/browser/project-rest.spec.ts:140:1 › كل الأسبوع راحة: تحذير وحفظ وغياب الاقتراحات دون إيقاف أو تمديد
+[23/28] tests/browser/project-rest.spec.ts:173:1 › الجمعة: المهمة والمتكررة تعملان والإنجاز اليدوي للمشروع يُحفظ دون مطالبة يومية
+[24/28] tests/browser/project-rest.spec.ts:229:1 › النسخ الجديدة والقديمة: تنزيل واستعادة الجدول والدمج دون تبديل إعداد الجهاز
+[25/28] tests/browser/project-rest.spec.ts:272:5 › إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض320
+[26/28] tests/browser/project-rest.spec.ts:272:5 › إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض390
+[27/28] tests/browser/project-rest.spec.ts:272:5 › إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض768
+[28/28] tests/browser/project-rest.spec.ts:272:5 › إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض1366
+  28 passed (53.8s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

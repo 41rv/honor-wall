@@ -39,6 +39,7 @@ import type {
     PaceSettings,
 } from "./paceTypes";
 import { activeProject } from "./projectPace";
+import { withProjectRestDefaults, projectRestSettings } from "./projectRest";
 export class Database extends Dexie {
     projectPlans!: Table<ProjectPlan, string>;
     stepWork!: Table<StepWork, string>;
@@ -118,6 +119,14 @@ export class Database extends Dexie {
                 await tx
                     .table("paceSettings")
                     .put({ id: "pace", activeLimit: 3 });
+            });
+        this.version(6)
+            .stores({ paceSettings: "id" })
+            .upgrade(async (tx) => {
+                const table = tx.table("paceSettings");
+                await table.put(
+                    withProjectRestDefaults(await table.get("pace")),
+                );
             });
     }
 }
@@ -1425,8 +1434,9 @@ export async function ensurePacePlans() {
                         pauses: [],
                     })),
                 );
-            if (!(await db.paceSettings.get("pace")))
-                await db.paceSettings.add({ id: "pace", activeLimit: 3 });
+            const settings = await db.paceSettings.get("pace");
+            if (!settings?.restHistory?.length)
+                await db.paceSettings.put(withProjectRestDefaults(settings));
         },
     );
 }
@@ -1526,6 +1536,13 @@ export async function mergeBackup(input: unknown) {
             (data.projectPlans ?? []).map((p) => ({
                 ...p,
                 projectId: map(p.projectId),
+                restBefore: {
+                    until: now(),
+                    history: (
+                        projectRestSettings(data.paceSettings?.[0], p)
+                            ?.restHistory ?? []
+                    ).filter((s) => s.since <= now()),
+                },
             })),
         );
         await db.stepWork.bulkAdd(

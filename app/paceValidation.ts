@@ -1,5 +1,6 @@
 import { Temporal } from "@js-temporal/polyfill";
 import type { Snapshot } from "./model";
+import type { ProjectRestSchedule } from "./paceTypes";
 export function validatePaceData(d: Snapshot, fail: () => never) {
     const names = [
         "projectPlans",
@@ -30,6 +31,29 @@ export function validatePaceData(d: Snapshot, fail: () => never) {
     };
     const ids = new Set(d.projects.map((p) => p.id)),
         plans = new Map();
+    const historyValid = (history: ProjectRestSchedule[]) => {
+        if (!Array.isArray(history)) return false;
+        let previous = "";
+        for (const row of history) {
+            if (
+                !row ||
+                !iso(row.since) ||
+                row.since <= previous ||
+                !Array.isArray(row.days) ||
+                new Set(row.days).size !== row.days.length ||
+                row.days.some((n) => !Number.isInteger(n) || n < 0 || n > 6)
+            )
+                return false;
+            try {
+                Temporal.Now.zonedDateTimeISO(row.timeZone);
+            } catch {
+                return false;
+            }
+            if (typeof row.timeZone !== "string" || !row.timeZone) return false;
+            previous = row.since;
+        }
+        return true;
+    };
     for (const p of d.projectPlans ?? []) {
         if (
             !p ||
@@ -45,6 +69,14 @@ export function validatePaceData(d: Snapshot, fail: () => never) {
                 (!Number.isInteger(p.approvedPace) || p.approvedPace < 1)) ||
             (p.approvedAt !== undefined && !iso(p.approvedAt)) ||
             !!p.approvedPace !== !!p.approvedAt
+        )
+            return fail();
+        if (
+            p.restBefore !== undefined &&
+            (!p.restBefore ||
+                !iso(p.restBefore.until) ||
+                !historyValid(p.restBefore.history) ||
+                p.restBefore.history.some((s) => s.since > p.restBefore!.until))
         )
             return fail();
         let last = p.since;
@@ -181,7 +213,11 @@ export function validatePaceData(d: Snapshot, fail: () => never) {
                 s.id !== "pace" ||
                 !Number.isInteger(s.activeLimit) ||
                 s.activeLimit < 1 ||
-                s.activeLimit > 1000,
+                s.activeLimit > 1000 ||
+                (s.restHistory !== undefined &&
+                    (!Array.isArray(s.restHistory) ||
+                        !s.restHistory.length ||
+                        !historyValid(s.restHistory))),
         )
     )
         return fail();

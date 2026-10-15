@@ -3226,3 +3226,29 @@ dialog.add-menu {
     margin: auto;
     height: fit-content;
 }
+
+.rest-weekdays {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin-block: 12px;
+}
+.rest-weekdays label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 40px;
+}
+.rest-weekdays input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary);
+}
+.project-rest-notice {
+    padding: 14px;
+    margin-block: 12px;
+    color: var(--muted);
+}

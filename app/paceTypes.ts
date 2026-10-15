@@ -19,6 +19,8 @@ export interface ProjectPlan {
     pauses: ProjectPause[];
     approvedPace?: number;
     approvedAt?: string;
+    // On additive backup merge, retain the source calendar for past work only.
+    restBefore?: { until: string; history: ProjectRestSchedule[] };
 }
 // Only genuine changes of terminal executable steps are recorded. Parent/stage
 // propagation and structural edits are not work. Undo is a new, inverse event.
@@ -34,6 +36,14 @@ export interface PaceSettings {
     id: "pace";
     activeLimit: number;
     importDigests?: string[];
+    // Effective instants preserve the schedule used for historical observations.
+    // Sunday=0 … Saturday=6. The zone is captured on each explicit change.
+    restHistory?: ProjectRestSchedule[];
+}
+export interface ProjectRestSchedule {
+    since: string;
+    days: number[];
+    timeZone: string;
 }
 export type PlanChange =
     | {

@@ -11,6 +11,44 @@ import {
     type RecommendationContext,
 } from "./projectPace";
 import { buildHierarchy } from "./hierarchy";
+import { withProjectRestDefaults, isProjectRest } from "./projectRest";
+
+export async function setProjectRestDays(days: number[], at = new Date()) {
+    if (
+        !Array.isArray(days) ||
+        days.some((d) => !Number.isInteger(d) || d < 0 || d > 6) ||
+        new Set(days).size !== days.length
+    )
+        throw new Error("اختر أيامًا صحيحة من الأسبوع دون تكرار.");
+    await db.transaction("rw", db.paceSettings, async () => {
+        const old = withProjectRestDefaults(
+            await db.paceSettings.get("pace"),
+            at,
+        );
+        const history = old.restHistory!;
+        const last = history.at(-1)!;
+        if (Date.parse(last.since) > +at)
+            throw new Error(
+                "ساعة الجهاز تسبق آخر تعديل للراحة؛ صحّحها قبل التعديل.",
+            );
+        const normalized = [...days].sort((a, b) => a - b);
+        const zone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (
+            JSON.stringify(last.days) === JSON.stringify(normalized) &&
+            last.timeZone === zone
+        )
+            return;
+        const row = {
+            since: at.toISOString(),
+            days: normalized,
+            timeZone: zone,
+        };
+        await db.paceSettings.put({
+            ...old,
+            restHistory: [...history.filter((s) => s.since !== row.since), row],
+        });
+    });
+}
 
 export async function setActiveLimit(limit: number) {
     if (!Number.isInteger(limit) || limit < 1 || limit > 1000)
@@ -93,7 +131,7 @@ export async function setProjectPaused(
     );
 }
 async function context(at = new Date()): Promise<RecommendationContext> {
-    const [projects, plans, work, steps, tasks] = await Promise.all([
+    const [projects, plans, work, steps, tasks, settings] = await Promise.all([
         db.projects.toArray(),
         db.projectPlans.toArray(),
         db.stepWork
@@ -102,6 +140,7 @@ async function context(at = new Date()): Promise<RecommendationContext> {
             .toArray(),
         db.steps.toArray(),
         db.tasks.toArray(),
+        db.paceSettings.get("pace"),
     ]);
     const cycles = (
         await db.taskCycles.bulkGet(
@@ -115,6 +154,7 @@ async function context(at = new Date()): Promise<RecommendationContext> {
         work,
         hierarchy: buildHierarchy(steps),
         tasks: tasks.map((t) => projectTask(t, byId, at)),
+        settings,
     };
 }
 const recommendationTables = () => [
@@ -130,7 +170,11 @@ const recommendationTables = () => [
 export async function refreshRecommendations(at = new Date()) {
     await ensurePacePlans();
     await db.transaction("rw", recommendationTables(), async () => {
-        const candidates = recommendationCandidates(await context(at), at),
+        const ctx = await context(at);
+        // Keep existing advice and decisions accessible in progress history;
+        // a rest day alone neither generates nor invalidates recommendations.
+        if (isProjectRest(at, ctx.settings)) return;
+        const candidates = recommendationCandidates(ctx, at),
             current = await db.recommendations.toArray(),
             byKey = new Map(current.map((r) => [r.key, r]));
         for (const r of current)
@@ -283,7 +327,14 @@ export async function adoptAcceleration(
             throw new Error("تغير المشروع؛ أعد فتح المعاينة.");
         if (!Number.isInteger(daily) || daily < 1)
             throw new Error("الوتيرة غير صالحة.");
-        const pace = projectPace(project, plan, ctx.hierarchy, ctx.work, at);
+        const pace = projectPace(
+            project,
+            plan,
+            ctx.hierarchy,
+            ctx.work,
+            at,
+            ctx.settings,
+        );
         if (
             !accelerationOptions(pace, at, plan.goal?.timeZone).some(
                 (o) => o.daily === daily && o.finish === finish,
@@ -307,8 +358,8 @@ export async function adoptAcceleration(
             reason: "اختيار صريح من معاينة مستويات التسريع.",
             effect:
                 plan.goal?.deadline === "fixed"
-                    ? `${daily} خطوة يوميًا؛ انتهاء حسابي ${finish} مع بقاء الموعد الإلزامي ${plan.goal.targetDate}.`
-                    : `${daily} خطوة يوميًا؛ هدف مرن ${finish}.`,
+                    ? `${daily} خطوة لكل يوم عمل؛ انتهاء حسابي ${finish} مع بقاء الموعد الإلزامي ${plan.goal.targetDate}.`
+                    : `${daily} خطوة لكل يوم عمل؛ هدف مرن ${finish}.`,
             createdAt: stamp,
             status: "accepted",
             decidedAt: stamp,
@@ -334,6 +385,7 @@ function meaningfulChange(
             b = JSON.parse(old.basis);
         if (!Array.isArray(a[0]) || !Array.isArray(b[0])) return false;
         if (JSON.stringify(a[3]) !== JSON.stringify(b[3])) return true;
+        if (JSON.stringify(a[4]) !== JSON.stringify(b[4])) return true;
         if (a[0].some((row: unknown[], i: number) => row[3] !== b[0][i]?.[3]))
             return true;
         if (

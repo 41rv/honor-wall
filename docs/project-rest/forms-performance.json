@@ -1,0 +1,424 @@
+{
+  "directory": "/tmp/masar-project-rest-final-root",
+  "steps": 4000,
+  "work_records": 2000,
+  "native_performance_clock": true,
+  "summary": [
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "median_ms": 60.400000005960464,
+      "max_ms": 62.79999998211861,
+      "long_tasks": 0
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "median_ms": 82.90000000596046,
+      "max_ms": 87.2999999821186,
+      "long_tasks": 0
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "median_ms": 347.90000000596046,
+      "max_ms": 535.5999999940395,
+      "long_tasks": 0
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "median_ms": 389,
+      "max_ms": 428.40000000596046,
+      "long_tasks": 5
+    }
+  ],
+  "results": [
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 0,
+      "elapsed_ms": 56.400000005960464,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 77,
+        "LayoutCount": 3,
+        "RecalcStyleCount": 4,
+        "LayoutDuration": 0.000904,
+        "RecalcStyleDuration": 0.031786999999999996,
+        "ScriptDuration": 0.013622000000000002,
+        "TaskDuration": 0.06848899999999997
+      }
+    },
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 1,
+      "elapsed_ms": 51.599999994039536,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 77,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 4,
+        "LayoutDuration": 0.0005369999999999999,
+        "RecalcStyleDuration": 0.030577000000000007,
+        "ScriptDuration": 0.010190999999999999,
+        "TaskDuration": 0.06371900000000003
+      }
+    },
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 2,
+      "elapsed_ms": 61.900000005960464,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 77,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 5,
+        "LayoutDuration": 0.0007030000000000001,
+        "RecalcStyleDuration": 0.036442,
+        "ScriptDuration": 0.012955999999999995,
+        "TaskDuration": 0.07725599999999999
+      }
+    },
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 3,
+      "elapsed_ms": 60.400000005960464,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 77,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 4,
+        "LayoutDuration": 0.0006069999999999999,
+        "RecalcStyleDuration": 0.03717099999999998,
+        "ScriptDuration": 0.011821000000000012,
+        "TaskDuration": 0.072716
+      }
+    },
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 4,
+      "elapsed_ms": 62.79999998211861,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 77,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 5,
+        "LayoutDuration": 0.0006049999999999996,
+        "RecalcStyleDuration": 0.035773,
+        "ScriptDuration": 0.012816000000000008,
+        "TaskDuration": 0.07663200000000003
+      }
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 0,
+      "elapsed_ms": 83.2999999821186,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 28,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 5,
+        "LayoutDuration": 0.0007399999999999629,
+        "RecalcStyleDuration": 0.04859300000000011,
+        "ScriptDuration": 0.01168100000000001,
+        "TaskDuration": 0.14818900000000035
+      }
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 1,
+      "elapsed_ms": 82.90000000596046,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 28,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 4,
+        "LayoutDuration": 0.0006829999999999892,
+        "RecalcStyleDuration": 0.04695100000000019,
+        "ScriptDuration": 0.010775000000000007,
+        "TaskDuration": 0.09528099999999995
+      }
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 2,
+      "elapsed_ms": 87.2999999821186,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 28,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 4,
+        "LayoutDuration": 0.0006890000000000507,
+        "RecalcStyleDuration": 0.05332300000000001,
+        "ScriptDuration": 0.010912000000000005,
+        "TaskDuration": 0.09904699999999966
+      }
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 3,
+      "elapsed_ms": 79.59999999403954,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 28,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 4,
+        "LayoutDuration": 0.0006110000000000282,
+        "RecalcStyleDuration": 0.046108999999999956,
+        "ScriptDuration": 0.010811999999999988,
+        "TaskDuration": 0.09212799999999977
+      }
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 4,
+      "elapsed_ms": 76.59999999403954,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 28,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 4,
+        "LayoutDuration": 0.0006490000000000107,
+        "RecalcStyleDuration": 0.04503400000000002,
+        "ScriptDuration": 0.010712999999999973,
+        "TaskDuration": 0.0881110000000005
+      }
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 0,
+      "elapsed_ms": 535.5999999940395,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 77,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 4,
+        "LayoutDuration": 0.0037089999999999623,
+        "RecalcStyleDuration": 0.2162980000000001,
+        "ScriptDuration": 0.05415399999999998,
+        "TaskDuration": 0.585432
+      }
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 1,
+      "elapsed_ms": 311.5,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 77,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 6,
+        "LayoutDuration": 0.002263000000000015,
+        "RecalcStyleDuration": 0.20354099999999975,
+        "ScriptDuration": 0.054366000000000025,
+        "TaskDuration": 0.614355999999999
+      }
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 2,
+      "elapsed_ms": 347.90000000596046,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 77,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 6,
+        "LayoutDuration": 0.0024250000000000105,
+        "RecalcStyleDuration": 0.22658500000000004,
+        "ScriptDuration": 0.064052,
+        "TaskDuration": 0.6355409999999999
+      }
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 3,
+      "elapsed_ms": 353.09999999403954,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 77,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 6,
+        "LayoutDuration": 0.0029200000000000337,
+        "RecalcStyleDuration": 0.23075,
+        "ScriptDuration": 0.05820399999999992,
+        "TaskDuration": 0.5987629999999999
+      }
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 4,
+      "elapsed_ms": 335.40000000596046,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [],
+      "metrics": {
+        "Nodes": 77,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 6,
+        "LayoutDuration": 0.0027599999999999847,
+        "RecalcStyleDuration": 0.22124699999999997,
+        "ScriptDuration": 0.055683999999999956,
+        "TaskDuration": 0.5998549999999998
+      }
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 0,
+      "elapsed_ms": 368.19999998807907,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 27074.5,
+          "duration": 117
+        }
+      ],
+      "metrics": {
+        "Nodes": 28,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 6,
+        "LayoutDuration": 0.0036930000000000573,
+        "RecalcStyleDuration": 0.19277199999999972,
+        "ScriptDuration": 0.048435000000000006,
+        "TaskDuration": 0.5188959999999998
+      }
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 1,
+      "elapsed_ms": 428.40000000596046,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 29452.40000000596,
+          "duration": 166
+        }
+      ],
+      "metrics": {
+        "Nodes": 28,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 4,
+        "LayoutDuration": 0.0041039999999999965,
+        "RecalcStyleDuration": 0.20864100000000008,
+        "ScriptDuration": 0.11473300000000008,
+        "TaskDuration": 0.5584179999999996
+      }
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 2,
+      "elapsed_ms": 345.19999998807907,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 31769.80000001192,
+          "duration": 95
+        }
+      ],
+      "metrics": {
+        "Nodes": 28,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 4,
+        "LayoutDuration": 0.003682000000000074,
+        "RecalcStyleDuration": 0.20668000000000042,
+        "ScriptDuration": 0.04979599999999995,
+        "TaskDuration": 0.4055350000000004
+      }
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 3,
+      "elapsed_ms": 389,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 33915.70000001788,
+          "duration": 119
+        }
+      ],
+      "metrics": {
+        "Nodes": 28,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 4,
+        "LayoutDuration": 0.003122999999999987,
+        "RecalcStyleDuration": 0.23215400000000042,
+        "ScriptDuration": 0.04998199999999997,
+        "TaskDuration": 0.4424910000000004
+      }
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 4,
+      "elapsed_ms": 402.5,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 36171.80000001192,
+          "duration": 137
+        }
+      ],
+      "metrics": {
+        "Nodes": 28,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 6,
+        "LayoutDuration": 0.004217000000000026,
+        "RecalcStyleDuration": 0.22396300000000036,
+        "ScriptDuration": 0.051593,
+        "TaskDuration": 0.4699629999999999
+      }
+    }
+  ],
+  "errors": []
+}

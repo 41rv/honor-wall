@@ -1,4 +1,5 @@
 import { activeProject } from "./projectPace";
+import { availableProjectDays, projectRestSettings } from "./projectRest";
 import { useState, useMemo, memo } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./db";
@@ -73,10 +74,26 @@ export const MasarInsights = memo(function MasarInsights({
     }, [rows]);
     const durations = useMemo(
         () => ({
-            current: periodDays(current, zone),
-            previous: periodDays(previous, zone),
+            current: data.paceSettings?.[0]?.restHistory
+                ? availableProjectDays(
+                      current.start,
+                      current.cutoff,
+                      data.paceSettings[0],
+                      [],
+                      zone,
+                  )
+                : periodDays(current, zone),
+            previous: data.paceSettings?.[0]?.restHistory
+                ? availableProjectDays(
+                      previous.start,
+                      previous.cutoff,
+                      data.paceSettings[0],
+                      [],
+                      zone,
+                  )
+                : periodDays(previous, zone),
         }),
-        [current, previous, zone],
+        [current, previous, zone, data.paceSettings],
     );
     const projects = useMemo(
         () =>
@@ -89,7 +106,36 @@ export const MasarInsights = memo(function MasarInsights({
                         current,
                         previous,
                         zone,
-                        durations,
+                        data.projectPlans?.find(
+                            (plan) => plan.projectId === p.id,
+                        )?.restBefore
+                            ? {
+                                  current: availableProjectDays(
+                                      current.start,
+                                      current.cutoff,
+                                      projectRestSettings(
+                                          data.paceSettings?.[0],
+                                          data.projectPlans?.find(
+                                              (plan) => plan.projectId === p.id,
+                                          ),
+                                      ),
+                                      [],
+                                      zone,
+                                  ),
+                                  previous: availableProjectDays(
+                                      previous.start,
+                                      previous.cutoff,
+                                      projectRestSettings(
+                                          data.paceSettings?.[0],
+                                          data.projectPlans?.find(
+                                              (plan) => plan.projectId === p.id,
+                                          ),
+                                      ),
+                                      [],
+                                      zone,
+                                  ),
+                              }
+                            : durations,
                     ),
                     idle: inactivityDays(
                         byId.get(p.id),
@@ -98,6 +144,7 @@ export const MasarInsights = memo(function MasarInsights({
                         data.projectPlans?.find(
                             (plan) => plan.projectId === p.id,
                         ),
+                        data.paceSettings?.[0],
                     ),
                     affectedByPause: data.projectPlans
                         ?.find((plan) => plan.projectId === p.id)
@@ -113,6 +160,7 @@ export const MasarInsights = memo(function MasarInsights({
         [
             data.projects,
             data.projectPlans,
+            data.paceSettings,
             byProject,
             byId,
             current,
@@ -175,6 +223,7 @@ export const MasarInsights = memo(function MasarInsights({
               new Date(clock),
               zone,
               data.projectPlans?.find((plan) => plan.projectId === project?.id),
+              data.paceSettings?.[0],
           )
         : null;
     const lastWork = (history ?? []).filter(
@@ -190,14 +239,24 @@ export const MasarInsights = memo(function MasarInsights({
                 data.projectPlans?.find(
                     (plan) => plan.projectId === project?.id,
                 ),
+                data.paceSettings?.[0],
             ),
-        [history, baseline, clock, zone, data.projectPlans, project?.id],
+        [
+            history,
+            baseline,
+            clock,
+            zone,
+            data.projectPlans,
+            data.paceSettings,
+            project?.id,
+        ],
     );
     return (
         <section className="surface masar-insights" aria-label="رؤى مسار">
             <h2>رؤى مسار</h2>
             <p className="muted">
-                نقيس وتيرة التقدم عبر الزمن التقويمي، لا ساعات العمل أو مقدار
+                يعرض الرسم التقدم عبر الزمن التقويمي، وتستبعد مقارنة الوتيرة
+                أيام راحة المشاريع والإيقاف، ولا تقيس ساعات العمل أو مقدار
                 الجهد. تغييرات البنية تظهر في الرسم والسجل، ولا تُحسب كإنجاز
                 عمل.
             </p>
@@ -249,7 +308,7 @@ export const MasarInsights = memo(function MasarInsights({
                 .map((p) => (
                     <p key={`idle-${p.project.id}`}>
                         لم يسجل «{p.project.title}» تقدم عمل إيجابيًا منذ{" "}
-                        {p.idle} يومًا ضمن مدة التتبع المتاحة.
+                        {p.idle} أيام عمل ضمن مدة التتبع المتاحة.
                     </p>
                 ))}
             {project ? (
@@ -427,7 +486,7 @@ export const MasarInsights = memo(function MasarInsights({
                         }
                         .{" "}
                         {last !== null
-                            ? `منذ آخر تقدم إيجابي مرصود: ${last} يومًا، مع استبعاد أيام الإيقاف.`
+                            ? `منذ آخر تقدم إيجابي مرصود: ${last} يومًا، مع استبعاد الراحة والإيقاف.`
                             : "لا توجد بيانات كافية لتحديد آخر تقدم."}
                     </p>
                     {!!(periods.active.length + periods.idle.length) && (

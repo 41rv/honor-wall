@@ -78,6 +78,6 @@ export function usePaceData(
         return () => {
             alive = false;
         };
-    }, [enabled, clock, projects, steps, tasks, plans]);
+    }, [enabled, clock, projects, steps, tasks, plans, settings]);
     return { plans, work, recommendations, settings, error, clock };
 }

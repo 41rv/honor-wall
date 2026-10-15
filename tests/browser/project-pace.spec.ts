@@ -1,6 +1,11 @@
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
-import { openCreate, importData, readStore, sizedFixture } from "./helpers";
+import {
+    openCreate,
+    importData as importRaw,
+    readStore,
+    sizedFixture,
+} from "./helpers";
 import type { Snapshot, Project, Step } from "../../app/model";
 import type { StepWork, ProjectPlan } from "../../app/paceTypes";
 const clock = "2026-10-08T00:00:00.000Z",
@@ -89,6 +94,20 @@ function observedFixture(): Snapshot {
         recommendations: [],
         paceSettings: [{ id: "pace", activeLimit: 3 }],
     };
+}
+async function importData(page: Page, data: Snapshot) {
+    await importRaw(page, data);
+    const section = page.locator(".project-rest-settings");
+    if ((await section.getAttribute("open")) === null)
+        await section.locator("summary").click();
+    for (const checkbox of await section.getByRole("checkbox").all())
+        await checkbox.uncheck();
+    await section
+        .getByRole("button", { name: "حفظ أيام الراحة", exact: true })
+        .click();
+    await expect(section.getByRole("status")).toContainText(
+        "حُفظت أيام الراحة",
+    );
 }
 async function goal(
     page: Page,

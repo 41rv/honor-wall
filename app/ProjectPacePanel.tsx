@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import type { Project } from "./model";
-import type { ProjectPlan, StepWork } from "./paceTypes";
+import type { ProjectPlan, StepWork, PaceSettings } from "./paceTypes";
 import type { Hierarchy } from "./hierarchy";
 import {
     accelerationOptions,
@@ -24,12 +24,14 @@ export function PaceSummary({
     hierarchy,
     work,
     clock,
+    settings,
 }: {
     project: Project;
     plan?: ProjectPlan;
     hierarchy: Hierarchy;
     work: StepWork[];
     clock: number;
+    settings?: PaceSettings;
 }) {
     const pace = useMemo(
         () =>
@@ -39,25 +41,34 @@ export function PaceSummary({
                 hierarchy,
                 work,
                 new Date(Math.max(clock, Date.now())),
+                settings,
             ),
-        [project, plan, hierarchy, work, clock],
+        [project, plan, hierarchy, work, clock, settings],
     );
     return (
         <div className="pace-summary">
             <p>
-                <span className="muted">الوتيرة المطلوبة:</span>{" "}
+                <span className="muted">الوتيرة المطلوبة لكل يوم عمل:</span>{" "}
                 {pace.paused
                     ? "متوقفة مؤقتًا"
                     : pace.required === undefined
                       ? pace.days === 0
                           ? "انتهى الموعد المستهدف؛ راجع الخطة"
-                          : "أضف هدفًا زمنيًا"
-                      : `${pace.required.toLocaleString("ar", { maximumFractionDigits: 1 })} خطوة / يوم`}
+                          : pace.workingDays === 0
+                            ? "لا توجد أيام عمل متبقية قبل الهدف؛ راجع الخطة"
+                            : "أضف هدفًا زمنيًا"
+                      : `${pace.required.toLocaleString("ar", { maximumFractionDigits: 1 })} خطوة / يوم عمل`}
             </p>
             {plan?.goal && (
                 <p className="small muted">
                     الموعد المستهدف {pace.target} ·{" "}
                     {plan.goal.deadline === "fixed" ? "إلزامي لا يتأجل" : "مرن"}
+                </p>
+            )}
+            {pace.workingDays !== undefined && (
+                <p className="small muted">
+                    {pace.workingDays} أيام عمل متبقية ضمن {pace.days} يومًا
+                    تقويميًا؛ الراحة لا تؤجل الهدف.
                 </p>
             )}
         </div>
@@ -70,6 +81,7 @@ export function ProjectPacePanel({
     work,
     clock,
     commitments = 0,
+    settings,
 }: {
     project: Project;
     plan?: ProjectPlan;
@@ -77,14 +89,15 @@ export function ProjectPacePanel({
     work: StepWork[];
     clock: number;
     commitments?: number;
+    settings?: PaceSettings;
 }) {
     const at = useMemo(
         () => new Date(Math.max(clock, Date.now())),
         [clock, project, plan, hierarchy, work],
     );
     const pace = useMemo(
-        () => projectPace(project, plan, hierarchy, work, at),
-        [project, plan, hierarchy, work, at],
+        () => projectPace(project, plan, hierarchy, work, at, settings),
+        [project, plan, hierarchy, work, at, settings],
     );
     const [dialog, setDialog] = useState<"goal" | "levels" | "pause" | null>(
         null,
@@ -146,16 +159,23 @@ export function ProjectPacePanel({
                     إعداد الهدف الزمني
                 </button>
             </div>
-            <PaceSummary {...{ project, plan, hierarchy, work, clock }} />
+            <PaceSummary
+                {...{ project, plan, hierarchy, work, clock, settings }}
+            />
+            {pace.restDay && (
+                <p className="muted small">
+                    اليوم راحة من المشاريع؛ الإنجاز اختياري ويُحفظ بصورة طبيعية.
+                </p>
+            )}
             <div className="pace-metrics">
                 <div>
                     <span className="muted small">
-                        الوتيرة الفعلية المرصودة
+                        الوتيرة الفعلية لكل يوم عمل مرصود
                     </span>
                     <strong>
                         {pace.actual === undefined
                             ? "لا يوجد رصد كافٍ"
-                            : `${pace.actual.toLocaleString("ar", { maximumFractionDigits: 1 })} خطوة / يوم`}
+                            : `${pace.actual.toLocaleString("ar", { maximumFractionDigits: 1 })} خطوة / يوم عمل`}
                     </strong>
                 </div>
                 <div>
@@ -173,10 +193,15 @@ export function ProjectPacePanel({
                 </div>
             </div>
             <p className="muted small">
-                التوقع تقديري بعد 7 أيام رصد متاحة وإنجاز في 3 أيام مختلفة على
-                الأقل، ويشمل أيام السكون. يحدّ التوقع من أثر دفعات الإنجاز
-                الكبيرة باستخدام وسيط أيام النشاط. عدد الخطوات لا يقيس جهدها؛ لا
-                تُغيّر الحسابات هدفك تلقائيًا.
+                التوقع تقديري بعد 7 أيام عمل متاحة للرصد وإنجاز في 3 أيام عمل
+                مختلفة على الأقل، ويشمل أيام السكون. يحدّ التوقع من أثر دفعات
+                الإنجاز الكبيرة باستخدام وسيط أيام النشاط. عدد الخطوات لا يقيس
+                جهدها؛ لا تُغيّر الحسابات هدفك تلقائيًا.
+            </p>
+            <p className="muted small">
+                يُستبعد السكون في الراحة من الرصد. إنجاز الراحة الاختياري:{" "}
+                {pace.restCompleted} خطوة في نافذة الرصد؛ يحسّن التقدم ويقلّل
+                المتبقي، ولا يُفترض وتيرة مستدامة لأيام العمل.
             </p>
             {pace.allocation && pace.remaining > 0 && (
                 <p>
@@ -189,7 +214,7 @@ export function ProjectPacePanel({
             )}
             {plan?.approvedPace && (
                 <p className="small">
-                    الخطة المعتمدة: {plan.approvedPace} خطوة يوميًا.
+                    الخطة المعتمدة: {plan.approvedPace} خطوة لكل يوم عمل.
                 </p>
             )}
             <div className="pace-actions">
@@ -235,9 +260,9 @@ export function ProjectPacePanel({
                         ? new Date(plan.since).toLocaleDateString("ar")
                         : "تفعيل الميزة"}
                     ، دون اختلاق إنجازات سابقة. نافذة القياس آخر 28 يومًا،
-                    ويُستبعد الإيقاف. الأيام المرصودة المتاحة:{" "}
-                    {pace.observationDays.toFixed(1)}؛ أيام الإنجاز:{" "}
-                    {pace.workDays}.
+                    وتُستبعد الراحة والإيقاف معًا دون مضاعفة. أيام العمل
+                    المرصودة المتاحة: {pace.observationDays.toFixed(1)}؛ أيام
+                    الإنجاز: {pace.workDays}.
                 </p>
                 {plan?.pauses.map((p) => (
                     <p className="small" key={p.start}>
@@ -374,8 +399,8 @@ export function ProjectPacePanel({
                                             {o ? (
                                                 <>
                                                     <p>
-                                                        {o.daily} خطوة / يوم ·
-                                                        انتهاء {o.finish} ·
+                                                        {o.daily} خطوة / يوم عمل
+                                                        · انتهاء {o.finish} ·
                                                         تبكير {o.saved} أيام
                                                     </p>
                                                     <p className="muted small">
@@ -427,7 +452,7 @@ export function ProjectPacePanel({
                                             ? `يبقى الموعد الإلزامي ${pace.target}، والانتهاء الحسابي بالخطة ${choice.finish}،`
                                             : `سيصبح الهدف المرن ${choice.finish}،`}
                                         والوتيرة المعتمدة {choice.daily} خطوة
-                                        يوميًا.{" "}
+                                        لكل يوم عمل.{" "}
                                         {choice.hypothetical
                                             ? "هذه خطة افتراضية وليست توصية شخصية."
                                             : "يمكن تعديلها أو التراجع عنها من إعداد الهدف."}

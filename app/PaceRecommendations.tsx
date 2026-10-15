@@ -9,10 +9,12 @@ export function PaceRecommendations({
     rows,
     projects,
     main = false,
+    resting = false,
 }: {
     rows: PaceRecommendation[];
     projects: Project[];
     main?: boolean;
+    resting?: boolean;
 }) {
     const [preview, setPreview] = useState<PaceRecommendation | null>(null),
         [busy, setBusy] = useState(false),
@@ -29,6 +31,9 @@ export function PaceRecommendations({
             return () => cancelAnimationFrame(frame);
         }
     }, [main]);
+    useEffect(() => {
+        if (resting) setPreview(null);
+    }, [resting]);
     const fresh = rows
         .filter((r) => r.status === "new")
         .sort(
@@ -37,7 +42,13 @@ export function PaceRecommendations({
                     { ease: 0, focus: 1, accelerate: 2 }[b.type] ||
                 b.createdAt.localeCompare(a.createdAt),
         );
-    const visible = main ? fresh.slice(0, 1) : history ? rows : fresh;
+    const visible = main
+        ? resting
+            ? []
+            : fresh.slice(0, 1)
+        : history
+          ? rows
+          : fresh;
     async function act(fn: () => Promise<unknown>) {
         if (lock.current) return;
         lock.current = true;
@@ -53,6 +64,7 @@ export function PaceRecommendations({
             setBusy(false);
         }
     }
+    if (main && resting) return null;
     return (
         <section
             id={main ? undefined : "pace-recommendations"}
@@ -96,7 +108,11 @@ export function PaceRecommendations({
                     </p>
                     <p>{r.reason}</p>
                     <p>{r.effect}</p>
-                    {r.status === "new" ? (
+                    {r.status === "new" && resting ? (
+                        <p className="small muted">
+                            محفوظة للمراجعة بعد الراحة؛ لا مطالبة بالعمل اليوم.
+                        </p>
+                    ) : r.status === "new" ? (
                         <div className="pace-actions">
                             <button
                                 className="btn primary"
@@ -134,9 +150,11 @@ export function PaceRecommendations({
             ))}
             {!visible.length && (
                 <p className="compact-empty muted">
-                    {history
-                        ? "لا توجد توصيات محفوظة بعد."
-                        : "لا يوجد اقتراح جديد تدعمه البيانات الآن."}
+                    {resting
+                        ? "اليوم راحة من المشاريع؛ يمكنك مراجعة سجل القرارات."
+                        : history
+                          ? "لا توجد توصيات محفوظة بعد."
+                          : "لا يوجد اقتراح جديد تدعمه البيانات الآن."}
                 </p>
             )}
             {!main && history && rows.length >= 100 && (
@@ -170,8 +188,8 @@ export function PaceRecommendations({
                                 {c.type === "pause"
                                     ? "إيقاف مؤقت مع تجميد الهدف المرن"
                                     : c.type === "pace"
-                                      ? `اعتماد ${c.daily} خطوة يوميًا مع بقاء الموعد الإلزامي؛ انتهاء حسابي ${c.targetDate}`
-                                      : `استبدال الهدف المرن بـ ${c.targetDate}، واعتماد ${c.daily} خطوة يوميًا`}
+                                      ? `اعتماد ${c.daily} خطوة لكل يوم عمل مع بقاء الموعد الإلزامي؛ انتهاء حسابي ${c.targetDate}`
+                                      : `استبدال الهدف المرن بـ ${c.targetDate}، واعتماد ${c.daily} خطوة لكل يوم عمل`}
                             </li>
                         ))}
                     </ul>
