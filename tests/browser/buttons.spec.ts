@@ -554,6 +554,6 @@ test("رسالة فشل فتح التخزين وزر إعادة المحاولة
         .getByRole("button", { name: "إعادة المحاولة", exact: true })
         .click();
     await expect(
-        page.getByRole("heading", { name: "يومك، بخطوة واضحة" }),
+        page.getByRole("heading", { name: "مهامي اليوم", level: 1 }),
     ).toBeVisible();
 });

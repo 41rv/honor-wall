@@ -47,6 +47,7 @@ export function PeriodDashboard({
             data.ideas,
             data.events,
             data.taskCycles,
+            data.projectPlans,
         ],
     );
     function chooseTab(next: ProgressTab) {
@@ -125,6 +126,7 @@ export function PeriodDashboard({
         [
             data.projects,
             data.steps,
+            data.projectPlans,
             projectRows,
             tracking,
             windows,
@@ -163,7 +165,7 @@ export function PeriodDashboard({
     );
     const projects = useMemo(
         () => projectMetrics(data, windows.current),
-        [data.projects, data.steps, windows],
+        [data.projects, data.steps, data.projectPlans, windows],
     );
     const format = new Intl.DateTimeFormat("ar", {
         timeZone: zone,
@@ -356,7 +358,8 @@ export function PeriodDashboard({
                                 بداية الفترة السابقة، مع مراعاة طول الشهر.
                                 الأسبوع يبدأ السبت. التوقف منذ آخر تقدم عمل مسجل
                                 أو بداية التتبع، بحد ١٤ يومًا؛ لا يُستنتج تاريخ
-                                قبل بدء السجل.
+                                قبل بدء السجل. تُستبعد أيام الإيقاف المؤقت من
+                                عدّاد التوقف.
                             </p>
                         </details>
                         <details className="progress-legacy">

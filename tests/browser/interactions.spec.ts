@@ -43,6 +43,14 @@ test("قياس سرعة الإضافة والتعديل والإتمام بقا�
 }) => {
     test.setTimeout(120000);
     await importData(page, largeFixture());
+    // This performance scenario adds another active project to a legacy set.
+    // Raise capacity explicitly outside the measured operation.
+    await page.goto("/#projects");
+    await page.getByText("إعداد المشاريع النشطة", { exact: true }).click();
+    await page.getByLabel("الحد الأقصى للمشاريع النشطة").fill("30");
+    await page
+        .getByRole("button", { name: "حفظ حد المشاريع", exact: true })
+        .click();
     const session = await page.context().newCDPSession(page);
     await session.send("Emulation.setCPUThrottlingRate", { rate: 4 });
     const times: Record<string, number> = {};

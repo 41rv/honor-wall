@@ -308,7 +308,7 @@ test("رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل 
     const backup = JSON.parse(
         readFileSync((await (await download).path())!, "utf8"),
     );
-    expect(backup.version).toBe(3);
+    expect(backup.version).toBe(4);
     expect(backup.projectProgress).toHaveLength(3);
     expect(backup.projectTracking).toHaveLength(1);
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({

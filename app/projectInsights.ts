@@ -1,3 +1,6 @@
+import { activeProject, pausedCalendarDays } from "./projectPace";
+import type { ProjectPlan } from "./paceTypes";
+import { dateKey } from "./dateKey";
 import type { Project, Snapshot } from "./model";
 import { Temporal } from "@js-temporal/polyfill";
 import { localDay, localZone } from "./taskSchedule";
@@ -12,6 +15,7 @@ export function activityPeriods(
     tracking: ProjectTracking | undefined,
     at = new Date(),
     zone = localZone(),
+    plan?: ProjectPlan,
 ) {
     const active: { start: string; end: string; kind: "active" }[] = [],
         idle: { start: string; end: string; kind: "idle" }[] = [];
@@ -61,7 +65,39 @@ export function activityPeriods(
             end: lastComplete.toString(),
             kind: "idle",
         });
-    return { active, idle };
+    let available = idle;
+    for (const pause of plan?.pauses ?? []) {
+        const endStamp = Date.parse(pause.end ?? at.toISOString());
+        if (endStamp <= Date.parse(pause.start)) continue;
+        const begin = dateKey(pause.start, zone),
+            finish = dateKey(endStamp - 1, zone);
+        available = available.flatMap((row) => {
+            if (row.end < begin || row.start > finish) return [row];
+            return [
+                ...(row.start < begin
+                    ? [
+                          {
+                              ...row,
+                              end: Temporal.PlainDate.from(begin)
+                                  .subtract({ days: 1 })
+                                  .toString(),
+                          },
+                      ]
+                    : []),
+                ...(row.end > finish
+                    ? [
+                          {
+                              ...row,
+                              start: Temporal.PlainDate.from(finish)
+                                  .add({ days: 1 })
+                                  .toString(),
+                          },
+                      ]
+                    : []),
+            ];
+        });
+    }
+    return { active, idle: available };
 }
 export function progressPace(rows: ProjectProgress[], range: TimeRange) {
     return rows
@@ -149,6 +185,7 @@ export function inactivityDays(
     tracking: ProjectTracking | undefined,
     at = new Date(),
     zone = localZone(),
+    plan?: ProjectPlan,
 ) {
     if (!tracking) return null;
     return Math.max(
@@ -156,11 +193,17 @@ export function inactivityDays(
         localDay(
             new Date(tracking.lastProgressAt ?? tracking.since),
             zone,
-        ).until(localDay(at, zone)).days,
+        ).until(localDay(at, zone)).days -
+            pausedCalendarDays(
+                plan,
+                new Date(tracking.lastProgressAt ?? tracking.since),
+                at,
+                zone,
+            ),
     );
 }
 export function projectPeriodSummary(
-    data: Pick<Snapshot, "projects" | "steps">,
+    data: Pick<Snapshot, "projects" | "steps" | "projectPlans">,
     rows: ProjectProgress[],
     tracking: ProjectTracking[],
     range: TimeRange,
@@ -174,8 +217,11 @@ export function projectPeriodSummary(
         list.push(row);
         grouped.set(row.projectId, list);
     }
-    const active = data.projects.filter(
-        (p) => p.status === "active" && !p.archived,
+    const active = data.projects.filter((p) =>
+        activeProject(
+            p,
+            data.projectPlans?.find((plan) => plan.projectId === p.id),
+        ),
     );
     const legacy = new Set<string>(),
         parents = new Set(data.steps.map((s) => s.parentId));
@@ -197,7 +243,13 @@ export function projectPeriodSummary(
                 legacy.has(p.id),
         ).length,
         stalled: active.filter(
-            (p) => (inactivityDays(tracked.get(p.id), at, zone) ?? 0) >= 14,
+            (p) =>
+                (inactivityDays(
+                    tracked.get(p.id),
+                    at,
+                    zone,
+                    data.projectPlans?.find((plan) => plan.projectId === p.id),
+                ) ?? 0) >= 14,
         ),
         active: active.length,
     };

@@ -180,3 +180,54 @@ it("تجمع أيام النشاط وتحدد فجوات التوقف بعد ا�
     ]);
     expect(activityPeriods([], undefined, now, zone).idle).toEqual([]);
 });
+
+it("الإيقاف مستبعد من عدد المشاريع النشطة والتعثر وعداد السكون", async () => {
+    const { projectMetrics } = await import("../app/analytics");
+    const plan = {
+        projectId: "p",
+        since: project.createdAt,
+        revision: 1,
+        workOrder: 0,
+        pauses: [{ start: project.createdAt }],
+    };
+    const data = { projects: [project], steps: [], projectPlans: [plan] },
+        range = periodWindows("month", now, zone).current;
+    expect(projectMetrics(data, range).active).toBe(0);
+    expect(
+        projectPeriodSummary(data, [], [tracking], range, now, zone).stalled,
+    ).toHaveLength(0);
+    expect(inactivityDays(tracking, now, zone, plan)).toBe(0);
+    const resumed = {
+        ...plan,
+        pauses: [{ start: project.createdAt, end: "2026-10-16T09:00:00.000Z" }],
+    };
+    expect(inactivityDays(tracking, now, zone, resumed)).toBe(2);
+    expect(
+        projectMetrics({ ...data, projectPlans: [resumed] }, range).active,
+    ).toBe(1);
+});
+it("سجل النسبة لا يسمي أيام الإيقاف فترات توقف في الإنجاز", () => {
+    const plan = {
+        projectId: "p",
+        since: project.createdAt,
+        revision: 1,
+        workOrder: 0,
+        pauses: [
+            {
+                start: "2026-10-03T00:00:00.000Z",
+                end: "2026-10-10T00:00:00.000Z",
+            },
+        ],
+    };
+    const periods = activityPeriods([], tracking, now, "UTC", plan);
+    expect(
+        periods.idle.some(
+            (p) => p.start <= "2026-10-05" && p.end >= "2026-10-05",
+        ),
+    ).toBe(false);
+    expect(
+        periods.idle.some(
+            (p) => p.start <= "2026-10-10" && p.end >= "2026-10-10",
+        ),
+    ).toBe(true);
+});

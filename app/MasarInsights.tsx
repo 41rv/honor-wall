@@ -1,3 +1,4 @@
+import { activeProject } from "./projectPace";
 import { useState, useMemo, memo } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./db";
@@ -90,11 +91,28 @@ export const MasarInsights = memo(function MasarInsights({
                         zone,
                         durations,
                     ),
-                    idle: inactivityDays(byId.get(p.id), new Date(clock), zone),
+                    idle: inactivityDays(
+                        byId.get(p.id),
+                        new Date(clock),
+                        zone,
+                        data.projectPlans?.find(
+                            (plan) => plan.projectId === p.id,
+                        ),
+                    ),
+                    affectedByPause: data.projectPlans
+                        ?.find((plan) => plan.projectId === p.id)
+                        ?.pauses.some(
+                            (pause) =>
+                                Date.parse(pause.start) < current.cutoff &&
+                                Date.parse(
+                                    pause.end ?? new Date(clock).toISOString(),
+                                ) > previous.start,
+                        ),
                 }))
                 .sort((a, b) => b.currentGain - a.currentGain),
         [
             data.projects,
+            data.projectPlans,
             byProject,
             byId,
             current,
@@ -152,14 +170,28 @@ export const MasarInsights = memo(function MasarInsights({
     const weekly = periodWindows("week", new Date(clock), zone),
         monthly = periodWindows("month", new Date(clock), zone);
     const last = baseline
-        ? inactivityDays(baseline, new Date(clock), zone)
+        ? inactivityDays(
+              baseline,
+              new Date(clock),
+              zone,
+              data.projectPlans?.find((plan) => plan.projectId === project?.id),
+          )
         : null;
     const lastWork = (history ?? []).filter(
         (r) => r.reason === "completion" && (r.after ?? 0) > (r.before ?? 0),
     );
     const periods = useMemo(
-        () => activityPeriods(history ?? [], baseline, new Date(clock), zone),
-        [history, baseline, clock, zone],
+        () =>
+            activityPeriods(
+                history ?? [],
+                baseline,
+                new Date(clock),
+                zone,
+                data.projectPlans?.find(
+                    (plan) => plan.projectId === project?.id,
+                ),
+            ),
+        [history, baseline, clock, zone, data.projectPlans, project?.id],
     );
     return (
         <section className="surface masar-insights" aria-label="رؤى مسار">
@@ -176,7 +208,11 @@ export const MasarInsights = memo(function MasarInsights({
                 </p>
             )}
             {projects
-                .filter((p) => p.trend === "faster" || p.trend === "slower")
+                .filter(
+                    (p) =>
+                        !p.affectedByPause &&
+                        (p.trend === "faster" || p.trend === "slower"),
+                )
                 .slice(0, 3)
                 .map((p) => (
                     <p key={p.project.id}>
@@ -186,6 +222,13 @@ export const MasarInsights = memo(function MasarInsights({
                         {p.previousGain} نقطة مئوية.
                     </p>
                 ))}
+            {projects.some((p) => p.affectedByPause) && (
+                <p className="muted small">
+                    فترات الإيقاف لا تُعد تباطؤًا. أُوقفت مقارنات النسبة التي
+                    تتداخل معها؛ تجد الوتيرة الفعلية والتوقع المبنيين على
+                    الخطوات والأيام المتاحة في تفاصيل المشروع.
+                </p>
+            )}
             {!projects.some((p) => p.covered) && (
                 <p className="muted small">
                     سجل التقدم لا يغطي الفترة السابقة بعد؛ لن نستنتج تسارعًا أو
@@ -195,9 +238,12 @@ export const MasarInsights = memo(function MasarInsights({
             {projects
                 .filter(
                     (p) =>
-                        p.project.status === "active" &&
-                        !p.project.archived &&
-                        (p.idle ?? 0) >= 14,
+                        activeProject(
+                            p.project,
+                            data.projectPlans?.find(
+                                (plan) => plan.projectId === p.project.id,
+                            ),
+                        ) && (p.idle ?? 0) >= 14,
                 )
                 .slice(0, 3)
                 .map((p) => (
@@ -381,7 +427,7 @@ export const MasarInsights = memo(function MasarInsights({
                         }
                         .{" "}
                         {last !== null
-                            ? `منذ آخر تقدم إيجابي مرصود: ${last} يومًا.`
+                            ? `منذ آخر تقدم إيجابي مرصود: ${last} يومًا، مع استبعاد أيام الإيقاف.`
                             : "لا توجد بيانات كافية لتحديد آخر تقدم."}
                     </p>
                     {!!(periods.active.length + periods.idle.length) && (

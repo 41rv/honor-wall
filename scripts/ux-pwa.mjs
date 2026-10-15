@@ -13,6 +13,7 @@ const tasksMode = process.argv[7] === "tasks";
 const preexistingTasks = process.argv[8] === "preexisting-tasks";
 const planningMode = process.argv[9] === "planning";
 const darkAudit = process.argv[10] === "dark-audit";
+const paceMode = process.argv[11] === "pace";
 const restartStores = [
     "projects",
     "steps",
@@ -21,6 +22,9 @@ const restartStores = [
     "events",
     "taskCycles",
     ...(planningMode ? ["projectProgress", "projectTracking"] : []),
+    ...(paceMode
+        ? ["projectPlans", "stepWork", "recommendations", "paceSettings"]
+        : []),
 ];
 let schedulingData, recurringId;
 const reportPath = process.argv[5] || "docs/ux/pwa-result.json";
@@ -386,6 +390,43 @@ try {
                         ).length,
                 )
                 .toBe(1);
+            if (paceMode) {
+                // The former project completion stays unobserved; the new work
+                // after migration has a genuine step timestamp and sequence.
+                assert.equal((await readStore(page, "stepWork")).length, 1);
+                await page
+                    .getByRole("button", {
+                        name: "إعداد الهدف الزمني",
+                        exact: true,
+                    })
+                    .tap();
+                let paceDialog = page.getByRole("dialog", {
+                    name: "هدف المشروع الزمني",
+                });
+                await paceDialog
+                    .getByLabel("نوع الهدف")
+                    .selectOption("duration");
+                await paceDialog
+                    .getByLabel("المدة بالأيام", { exact: true })
+                    .fill("20");
+                await paceDialog
+                    .getByRole("button", { name: "حفظ الهدف", exact: true })
+                    .tap();
+                await expect(paceDialog).not.toBeVisible();
+                await page
+                    .getByRole("button", { name: "إيقاف مؤقت", exact: true })
+                    .tap();
+                await page
+                    .getByRole("button", { name: "تأكيد الإيقاف", exact: true })
+                    .tap();
+                await expect(page.getByRole("dialog")).toHaveCount(0);
+                assert.equal(
+                    (await readStore(page, "projectPlans")).filter(
+                        (p) => p.goal && p.pauses.length,
+                    ).length,
+                    1,
+                );
+            }
             // Completing the new project's step correctly updates resume.
             // Visit the intended final location before testing its restart.
             await page.goto(baseURL + rememberedRoute);
@@ -511,6 +552,7 @@ try {
                 update_preserved_preexisting_project_history:
                     preservedStores.includes("projectProgress") &&
                     preservedStores.includes("projectTracking"),
+                pace_sidecars_persisted_offline: paceMode,
                 native_database_version_before: beforeDatabases.find(
                     (d) => d.name === "masar-v1",
                 ).version,

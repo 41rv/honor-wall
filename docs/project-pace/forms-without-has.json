@@ -1,0 +1,81 @@
+{
+  "directory": "/tmp/masar-pace-memo-root",
+  "steps": 4000,
+  "work_records": 2000,
+  "native_performance_clock": true,
+  "summary": [
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "long_tasks": 0
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "long_tasks": 0
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "median_ms": 237.59999999403954,
+      "max_ms": 237.59999999403954,
+      "long_tasks": 1
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "median_ms": 4744.399999991059,
+      "max_ms": 4744.399999991059,
+      "long_tasks": 1
+    }
+  ],
+  "results": [
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 0,
+      "elapsed_ms": 237.59999999403954,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 11638.20000000298,
+          "duration": 81
+        }
+      ],
+      "metrics": {
+        "Nodes": 77,
+        "LayoutCount": 2,
+        "RecalcStyleCount": 3,
+        "LayoutDuration": 0.006148000000000001,
+        "RecalcStyleDuration": 0.024033,
+        "ScriptDuration": 0.082964,
+        "TaskDuration": 1.226617
+      }
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 0,
+      "elapsed_ms": 4744.399999991059,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 26709,
+          "duration": 846
+        }
+      ],
+      "metrics": {
+        "Nodes": -49,
+        "LayoutCount": 1,
+        "RecalcStyleCount": 2,
+        "LayoutDuration": 0.0061149999999998705,
+        "RecalcStyleDuration": 3.856815,
+        "ScriptDuration": 0.024767999999999984,
+        "TaskDuration": 5.343933000000002
+      }
+    }
+  ],
+  "errors": []
+}

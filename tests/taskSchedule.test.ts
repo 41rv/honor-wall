@@ -394,7 +394,7 @@ it("نسخة v2 تحفظ الدورة والأولوية والموعد وتست
     );
     await setCycleStatus(currentCycle((await db.tasks.get(id))!)!.id, "done");
     const data = await snapshot();
-    expect(data.version).toBe(3);
+    expect(data.version).toBe(4);
     expect(
         validateBackup(JSON.parse(JSON.stringify(data))).taskCycles,
     ).toHaveLength(1);

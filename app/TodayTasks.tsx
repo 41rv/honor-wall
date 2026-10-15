@@ -8,7 +8,7 @@ import { useWallClock } from "./useWallClock";
 export function PlanningLinks({ all = true }: { all?: boolean }) {
     return (
         <nav className="planning-links" aria-label="تنظيم يومك">
-            <a className="btn secondary" href="#today">
+            <a className="btn secondary" href="#home">
                 مهامي اليوم
             </a>
             <a className="btn secondary" href="#calendar">

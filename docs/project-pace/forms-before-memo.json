@@ -1,0 +1,294 @@
+{
+  "directory": "/tmp/masar-pace-before-memo",
+  "steps": 4000,
+  "work_records": 2000,
+  "native_performance_clock": true,
+  "summary": [
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "median_ms": 71.80000001192093,
+      "max_ms": 89,
+      "long_tasks": 0
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "median_ms": 767.9000000059605,
+      "max_ms": 836.9000000059605,
+      "long_tasks": 5
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "median_ms": 4097.100000008941,
+      "max_ms": 4430,
+      "long_tasks": 5
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "median_ms": 4344.70000000298,
+      "max_ms": 4571.79999999702,
+      "long_tasks": 5
+    }
+  ],
+  "results": [
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 0,
+      "elapsed_ms": 84.5,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": []
+    },
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 1,
+      "elapsed_ms": 89,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": []
+    },
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 2,
+      "elapsed_ms": 58.599999994039536,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": []
+    },
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 3,
+      "elapsed_ms": 71.80000001192093,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": []
+    },
+    {
+      "cpu": 1,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 4,
+      "elapsed_ms": 62.30000001192093,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": []
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 0,
+      "elapsed_ms": 836.9000000059605,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 13739.20000000298,
+          "duration": 157
+        }
+      ]
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 1,
+      "elapsed_ms": 766.9000000059605,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 15741.90000000596,
+          "duration": 143
+        }
+      ]
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 2,
+      "elapsed_ms": 750.4000000059605,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 17522.79999999702,
+          "duration": 142
+        }
+      ]
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 3,
+      "elapsed_ms": 767.9000000059605,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 19396.29999999702,
+          "duration": 143
+        }
+      ]
+    },
+    {
+      "cpu": 1,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 4,
+      "elapsed_ms": 774.3999999910593,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 21286.79999999702,
+          "duration": 146
+        }
+      ]
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 0,
+      "elapsed_ms": 4009.5,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 26324.90000000596,
+          "duration": 697
+        }
+      ]
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 1,
+      "elapsed_ms": 4364.5,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 36080.5,
+          "duration": 706
+        }
+      ]
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 2,
+      "elapsed_ms": 4073.2000000029802,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 45411.90000000596,
+          "duration": 724
+        }
+      ]
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 3,
+      "elapsed_ms": 4430,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 54829.79999999702,
+          "duration": 722
+        }
+      ]
+    },
+    {
+      "cpu": 4,
+      "label": "إعداد الهدف الزمني",
+      "repeat": 4,
+      "elapsed_ms": 4097.100000008941,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 64600,
+          "duration": 637
+        }
+      ]
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 0,
+      "elapsed_ms": 4571.79999999702,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 75666.90000000596,
+          "duration": 803
+        }
+      ]
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 1,
+      "elapsed_ms": 4518.70000000298,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 86604,
+          "duration": 708
+        }
+      ]
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 2,
+      "elapsed_ms": 3668.6000000089407,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 96522.79999999702,
+          "duration": 685
+        }
+      ]
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 3,
+      "elapsed_ms": 4344.70000000298,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 106497.60000000894,
+          "duration": 775
+        }
+      ]
+    },
+    {
+      "cpu": 4,
+      "label": "معاينة مستويات التسريع",
+      "repeat": 4,
+      "elapsed_ms": 4314.29999999702,
+      "reads": 0,
+      "writes": 0,
+      "long_tasks": [
+        {
+          "start": 115851.40000000596,
+          "duration": 751
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

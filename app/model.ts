@@ -55,8 +55,10 @@ export interface Event {
     action: Action;
     at: string;
 }
-export interface Snapshot {
-    version: 1 | 2 | 3;
+import type { PaceData } from "./paceTypes";
+import { validatePaceData } from "./paceValidation";
+export interface Snapshot extends PaceData {
+    version: 1 | 2 | 3 | 4;
     exportedAt: string;
     projects: Project[];
     steps: Step[];
@@ -301,9 +303,9 @@ export function validateBackup(input: unknown): Snapshot {
         );
     };
     if (
-        ![1, 2, 3].includes(d.version) ||
+        ![1, 2, 3, 4].includes(d.version) ||
         (d.version >= 2 && !Array.isArray(d.taskCycles)) ||
-        (d.version === 3 &&
+        (d.version >= 3 &&
             (!Array.isArray(d.projectProgress) ||
                 !Array.isArray(d.projectTracking))) ||
         [d.projectProgress, d.projectTracking].some(
@@ -587,7 +589,7 @@ export function validateBackup(input: unknown): Snapshot {
             return fail();
         tracked.set(tracking.projectId, tracking);
     }
-    if (d.version === 3 && tracked.size !== d.projects.length) return fail();
+    if (d.version >= 3 && tracked.size !== d.projects.length) return fail();
     const records = new Map<string, ProjectProgress[]>(),
         recordIds = new Set<string>();
     for (const row of d.projectProgress ?? []) {
@@ -649,6 +651,7 @@ export function validateBackup(input: unknown): Snapshot {
         )
             return fail();
     }
+    validatePaceData(d, fail);
     return structuredClone(d);
 }
 

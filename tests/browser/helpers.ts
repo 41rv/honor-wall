@@ -111,7 +111,11 @@ export async function readStore(
         | "events"
         | "taskCycles"
         | "projectProgress"
-        | "projectTracking",
+        | "projectTracking"
+        | "projectPlans"
+        | "stepWork"
+        | "recommendations"
+        | "paceSettings",
 ) {
     return page.evaluate(async (store) => {
         const database = await new Promise<IDBDatabase>((resolve, reject) => {

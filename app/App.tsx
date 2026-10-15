@@ -1,5 +1,13 @@
+import { orderedToday } from "./dailyPlanning";
+import { usePaceData } from "./usePaceData";
+import { ProjectPacePanel, PaceSummary } from "./ProjectPacePanel";
+import { ProjectCapacitySettings, CapacityOptions } from "./ProjectCapacity";
+import { PaceRecommendations } from "./PaceRecommendations";
+import { ActiveProjectLimitError } from "./db";
+import { activeProject, dailySteps, paused, projectPace } from "./projectPace";
+import type { ProjectPlan, StepWork } from "./paceTypes";
 import { TaskStatusControls } from "./TaskStatusControls";
-import { TodayTasks, PlanningLinks } from "./TodayTasks";
+import { PlanningLinks } from "./TodayTasks";
 import { WeekCalendar } from "./WeekCalendar";
 import { PeriodDashboard } from "./PeriodDashboard";
 import { TaskFields } from "./TaskFields";
@@ -91,7 +99,9 @@ import {
     undo,
     convertIdea,
     archiveIdea,
+    db,
     importBackup,
+    mergeBackup,
     type Deleted,
 } from "./db";
 import {
@@ -310,7 +320,13 @@ const ProjectCard = memo(function ProjectCard({
     onActions,
     home = false,
     omitCurrentId,
+    plan,
+    paceWork,
+    paceClock,
 }: {
+    plan?: ProjectPlan;
+    paceWork?: StepWork[];
+    paceClock?: number;
     project: Project;
     onComplete: (id: string, complete: boolean) => Promise<void>;
     hierarchy: Hierarchy;
@@ -346,7 +362,9 @@ const ProjectCard = memo(function ProjectCard({
                         ? "مؤرشف"
                         : project.status === "closed"
                           ? "مغلق"
-                          : "نشط"}{" "}
+                          : paused(plan)
+                            ? "موقوف مؤقتًا"
+                            : "نشط"}{" "}
                     <span className="project-index">
                         {" "}
                         / {String(index + 1).padStart(2, "0")}
@@ -366,21 +384,88 @@ const ProjectCard = memo(function ProjectCard({
                 </p>
             )}
             <Progress hierarchy={hierarchy} projectId={project.id} compact />
-            <ExecutionSummary
-                execution={
-                    home
-                        ? { ...execution, lastCompleted: undefined }
-                        : execution
-                }
-                stageLabel={
-                    execution.stage
-                        ? `المرحلة ${hierarchy.numbers.get(execution.stage.id)}`
-                        : undefined
-                }
-                omitCurrentId={omitCurrentId}
-                open={(stepId) => go(`step/${stepId}`)}
-                complete={onStepComplete}
-            />
+            {home && paceWork && paceClock !== undefined ? (
+                <>
+                    <PaceSummary
+                        project={project}
+                        plan={plan}
+                        hierarchy={hierarchy}
+                        work={paceWork}
+                        clock={paceClock}
+                    />
+                    {(() => {
+                        const pace = projectPace(
+                            project,
+                            plan,
+                            hierarchy,
+                            paceWork,
+                            new Date(Math.max(paceClock, Date.now())),
+                        );
+                        const steps = dailySteps(
+                            project.id,
+                            hierarchy,
+                            Math.min(3, pace.today),
+                        ).filter((s) => s.id !== omitCurrentId);
+                        return (
+                            <div
+                                className="daily-project-steps"
+                                aria-label="اقتراح خطوات اليوم"
+                            >
+                                <p className="small muted">
+                                    {pace.today
+                                        ? `اقتراح مرن لليوم: ${pace.today} خطوة؛ دون تراكم أو تأخير.`
+                                        : pace.remaining
+                                          ? "لا توجد خطوات إضافية مقترحة اليوم. تبقى خطوات المشروع متاحة."
+                                          : pace.total
+                                            ? "اكتملت خطوات المشروع."
+                                            : "أضف خطوات للمشروع لتحديد وتيرته."}
+                                </p>
+                                {steps.map((step) => (
+                                    <div
+                                        className="daily-project-step"
+                                        key={step.id}
+                                    >
+                                        <CompletionButton
+                                            entityKey={`step/${step.id}`}
+                                            checked={false}
+                                            label={`الخطوة «${step.title}»`}
+                                            onToggle={(value) =>
+                                                onStepComplete(step.id, value)
+                                            }
+                                        />
+                                        <button
+                                            className="text-btn"
+                                            onClick={() =>
+                                                go(`step/${step.id}`)
+                                            }
+                                        >
+                                            {step.title}
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        );
+                    })()}
+                </>
+            ) : (
+                <>
+                    <ExecutionSummary
+                        execution={
+                            home
+                                ? { ...execution, lastCompleted: undefined }
+                                : execution
+                        }
+                        stageLabel={
+                            execution.stage
+                                ? `المرحلة ${hierarchy.numbers.get(execution.stage.id)}`
+                                : undefined
+                        }
+                        omitCurrentId={omitCurrentId}
+                        open={(stepId) => go(`step/${stepId}`)}
+                        complete={onStepComplete}
+                    />
+                </>
+            )}
             <div className="card-foot">
                 <span>آخر تعديل {date(project.updatedAt)}</span>
                 <button
@@ -699,10 +784,18 @@ interface CreateOptions {
 }
 function App() {
     const [route] = [useRoute()];
-    const [page, ...parts] = route.split("/");
+    const [routePage, ...parts] = route.split("/");
+    const page = routePage === "today" ? "home" : routePage;
     const id = routeId(parts.length ? parts.join("/") : undefined);
     const data = useAppData(page, id);
     const hierarchy = useMemo(() => buildHierarchy(data.steps), [data.steps]);
+    const pace = usePaceData(page, id, data.projects, data.steps, data.tasks);
+    const plansById = useMemo(
+        () => new Map(pace.plans.map((p) => [p.projectId, p])),
+        [pace.plans],
+    );
+    const [capacityError, setCapacityError] =
+        useState<ActiveProjectLimitError | null>(null);
     const [taskFilter, setTaskFilter] = useState("all");
     const [completedOpen, setCompletedOpen] = useState(false);
     const [query, setQuery] = useState("");
@@ -722,6 +815,14 @@ function App() {
         run: () => Promise<unknown>;
     } | null>(null);
     const [toast, setToast] = useState("");
+    const [stepUndo, setStepUndo] = useState<{
+        id: string;
+        projectId: string;
+        reopen: boolean;
+        value: boolean;
+    } | null>(null);
+    const projectsRef = useRef(data.projects);
+    projectsRef.current = data.projects;
     const confirmLock = useRef(false);
     const importLock = useRef(false);
     useEffect(() => {
@@ -755,7 +856,7 @@ function App() {
         [data.projects, hierarchy],
     );
     const resume = resumeStep(
-        data.projects,
+        data.projects.filter((p) => activeProject(p, plansById.get(p.id))),
         hierarchy,
         executions,
         lastVisited,
@@ -860,6 +961,7 @@ function App() {
                 await fn();
                 if (message) setToast(message);
             } catch (e) {
+                if (e instanceof ActiveProjectLimitError) setCapacityError(e);
                 setToast(
                     userError(
                         e,
@@ -900,7 +1002,21 @@ function App() {
     const completeBranch = useCallback(
         async (id: string, complete: boolean) => {
             try {
+                const projectId = hierarchyRef.current.byId.get(id)?.projectId;
+                const wasActive =
+                    projectsRef.current.find((p) => p.id === projectId)
+                        ?.status === "active";
                 await setBranchCompletion(id, complete);
+                if (projectId && complete) {
+                    setDeleted(null);
+                }
+                if (projectId && complete)
+                    setStepUndo({
+                        id,
+                        projectId,
+                        reopen: wasActive,
+                        value: false,
+                    });
                 rememberStep(id);
                 setToast(
                     complete
@@ -924,6 +1040,7 @@ function App() {
                         : "أُعيد فتح المشروع.",
                 );
             } catch (e) {
+                if (e instanceof ActiveProjectLimitError) setCapacityError(e);
                 setToast(userError(e, "تعذر حفظ حالة المشروع."));
                 throw e;
             }
@@ -948,7 +1065,7 @@ function App() {
         [data.ideas, ideaArchive],
     );
     const active = data.projects
-        .filter((p) => p.status === "active" && !p.archived)
+        .filter((p) => activeProject(p, plansById.get(p.id)))
         .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
     const remaining = data.tasks
         .filter((t) => t.status !== "done")
@@ -1192,7 +1309,7 @@ function App() {
         ) : null;
     const dashboard = (
         <PeriodDashboard
-            data={data}
+            data={{ ...data, projectPlans: pace.plans }}
             tab={progressTab}
             onTabChange={setProgressTab}
             legacy={legacyDashboard}
@@ -1384,7 +1501,7 @@ function App() {
                                     : page === "calendar"
                                       ? "التقويم الأسبوعي"
                                       : page === "home"
-                                        ? "يومك، بخطوة واضحة"
+                                        ? "مهامي اليوم"
                                         : page === "projects"
                                           ? "مشاريعك"
                                           : page === "tasks"
@@ -1427,10 +1544,35 @@ function App() {
                     </div>
                     {page === "home" && !query && (
                         <>
+                            {pace.error && (
+                                <p className="warning" role="alert">
+                                    {pace.error}
+                                </p>
+                            )}
                             <HomeExecution
+                                expanded={routePage === "today"}
+                                recommendation={
+                                    <PaceRecommendations
+                                        rows={pace.recommendations}
+                                        projects={data.projects}
+                                        main
+                                    />
+                                }
                                 data={data}
-                                active={active}
-                                resume={resume}
+                                active={active.filter((p) =>
+                                    activeProject(p, plansById.get(p.id)),
+                                )}
+                                resume={
+                                    resume &&
+                                    activeProject(
+                                        data.projects.find(
+                                            (p) => p.id === resume.projectId,
+                                        )!,
+                                        plansById.get(resume.projectId),
+                                    )
+                                        ? resume
+                                        : undefined
+                                }
                                 hierarchy={hierarchy}
                                 open={go}
                                 complete={completeBranch}
@@ -1444,6 +1586,9 @@ function App() {
                                         home
                                         omitCurrentId={omitCurrentId}
                                         project={p}
+                                        plan={plansById.get(p.id)}
+                                        paceWork={pace.work}
+                                        paceClock={pace.clock}
                                         hierarchy={hierarchy}
                                         execution={executions.get(p.id)!}
                                         onComplete={completeProject}
@@ -1529,21 +1674,6 @@ function App() {
                                     onComplete={completeTask}
                                 />
                             )}
-                            {page === "today" && (
-                                <TodayTasks
-                                    tasks={data.tasks as TaskView[]}
-                                    renderTask={(task) => (
-                                        <TaskRow
-                                            key={task.id}
-                                            defaultPriority
-                                            compact
-                                            task={task}
-                                            onComplete={completeTask}
-                                            onActions={openActions}
-                                        />
-                                    )}
-                                />
-                            )}
                             {page === "projects" && (
                                 <>
                                     <ProjectImport
@@ -1559,6 +1689,7 @@ function App() {
                                     >
                                         {[
                                             ["active", "النشطة"],
+                                            ["paused", "الموقوفة مؤقتًا"],
                                             ["closed", "المغلقة"],
                                             ["archived", "المؤرشفة"],
                                         ].map(([value, label]) => (
@@ -1581,21 +1712,54 @@ function App() {
                                                                 "archived"
                                                                     ? p.archived
                                                                     : !p.archived &&
-                                                                      p.status ===
-                                                                          value,
+                                                                      (value ===
+                                                                      "paused"
+                                                                          ? p.status ===
+                                                                                "active" &&
+                                                                            paused(
+                                                                                plansById.get(
+                                                                                    p.id,
+                                                                                ),
+                                                                            )
+                                                                          : p.status ===
+                                                                                value &&
+                                                                            (value !==
+                                                                                "active" ||
+                                                                                !paused(
+                                                                                    plansById.get(
+                                                                                        p.id,
+                                                                                    ),
+                                                                                ))),
                                                         ).length
                                                     }
                                                 </span>
                                             </button>
                                         ))}
                                     </div>
+                                    <ProjectCapacitySettings />
                                     <div className="project-grid">
                                         {data.projects
                                             .filter((p) =>
                                                 filter === "archived"
                                                     ? p.archived
                                                     : !p.archived &&
-                                                      p.status === filter,
+                                                      (filter === "paused"
+                                                          ? p.status ===
+                                                                "active" &&
+                                                            paused(
+                                                                plansById.get(
+                                                                    p.id,
+                                                                ),
+                                                            )
+                                                          : p.status ===
+                                                                filter &&
+                                                            (filter !==
+                                                                "active" ||
+                                                                !paused(
+                                                                    plansById.get(
+                                                                        p.id,
+                                                                    ),
+                                                                ))),
                                             )
                                             .sort((a, b) =>
                                                 b.updatedAt.localeCompare(
@@ -1606,6 +1770,9 @@ function App() {
                                                 <ProjectCard
                                                     key={p.id}
                                                     project={p}
+                                                    plan={plansById.get(p.id)}
+                                                    paceWork={pace.work}
+                                                    paceClock={pace.clock}
                                                     onComplete={completeProject}
                                                     hierarchy={hierarchy}
                                                     execution={executions.get(
@@ -1623,7 +1790,14 @@ function App() {
                                         filter === "archived"
                                             ? p.archived
                                             : !p.archived &&
-                                              p.status === filter,
+                                              (filter === "paused"
+                                                  ? p.status === "active" &&
+                                                    paused(plansById.get(p.id))
+                                                  : p.status === filter &&
+                                                    (filter !== "active" ||
+                                                        !paused(
+                                                            plansById.get(p.id),
+                                                        ))),
                                     ) && (
                                         <div className="surface">
                                             <Empty
@@ -2019,6 +2193,32 @@ function App() {
                                                             </p>
                                                         )}
                                                     </div>
+                                                )}
+                                                {page === "project" && (
+                                                    <ProjectPacePanel
+                                                        project={
+                                                            detail as Project
+                                                        }
+                                                        plan={plansById.get(id)}
+                                                        hierarchy={hierarchy}
+                                                        work={pace.work}
+                                                        clock={pace.clock}
+                                                        commitments={
+                                                            orderedToday(
+                                                                data.tasks,
+                                                                new Date(
+                                                                    Math.max(
+                                                                        pace.clock,
+                                                                        Date.now(),
+                                                                    ),
+                                                                ),
+                                                            ).filter(
+                                                                ({ task }) =>
+                                                                    task.status !==
+                                                                    "done",
+                                                            ).length
+                                                        }
+                                                    />
                                                 )}
                                                 <Editor
                                                     key={detail.id}
@@ -2447,8 +2647,15 @@ function App() {
                                         }
                                     />
                                 )}
+                            {page === "progress" && (
+                                <PaceRecommendations
+                                    rows={pace.recommendations}
+                                    projects={data.projects}
+                                />
+                            )}
                             {page === "backup" && (
                                 <section className="surface backup-page">
+                                    <ProjectCapacitySettings />
                                     <ShieldCheck size={35} />
                                     <h2>
                                         بياناتك محلية. نسختك الاحتياطية بيدك.
@@ -2595,6 +2802,21 @@ function App() {
             >
                 <Plus size={24} />
             </button>
+            {capacityError && (
+                <Dialog
+                    title="حد المشاريع النشطة"
+                    onClose={() => setCapacityError(null)}
+                >
+                    <CapacityOptions
+                        error={capacityError}
+                        onResolved={() => {
+                            setCapacityError(null);
+                            setToast("تم تحديث الاختيار؛ أعد محاولة التنشيط.");
+                        }}
+                        onCancel={() => setCapacityError(null)}
+                    />
+                </Dialog>
+            )}
             {quick && (
                 <Dialog
                     title="ماذا تريد أن تضيف؟"
@@ -2718,9 +2940,16 @@ function App() {
                         {backup.events.length} أحداث.
                     </p>
                     <p className="warning">
-                        سيتم استبدال جميع البيانات الحالية. صدّر نسخة منها
-                        أولًا. يُطبّق الاستيراد كاملًا داخل معاملة واحدة أو لا
-                        يُطبّق.
+                        زر الاستبدال يحل النسخة محل جميع البيانات؛ زر الدمج
+                        يضيفها بمعرفات مستقلة ويمنع تكرار الملف نفسه. صدّر نسخة
+                        من بياناتك أولًا. يُطبّق الاستيراد كاملًا داخل معاملة
+                        واحدة أو لا يُطبّق.
+                    </p>
+                    <p className="muted small">
+                        الاستعادة والدمج يحفظان حالات المشاريع من الملف، حتى لو
+                        تجاوزت الحد النشط؛ لا يُوقف أي مشروع تلقائيًا. النسخ
+                        الجديدة تتضمن الأهداف وفترات الإيقاف وأحداث الخطوات
+                        وقرارات التوصيات.
                     </p>
                     <div className="dialog-buttons">
                         <button
@@ -2759,6 +2988,32 @@ function App() {
                             }
                         >
                             تأكيد استبدال البيانات
+                        </button>
+                        <button
+                            className="btn secondary"
+                            onClick={() =>
+                                void run(async () => {
+                                    if (importLock.current) return;
+                                    importLock.current = true;
+                                    try {
+                                        await flushAllSaves();
+                                        await flushCompletions();
+                                        const merged =
+                                            await mergeBackup(backup);
+                                        setBackup(null);
+                                        setDeleted(null);
+                                        setToast(
+                                            merged
+                                                ? "دُمجت النسخة بمعرفات مستقلة دون استبدال بياناتك. المشاريع القديمة فوق الحد تبقى كما هي."
+                                                : "هذه النسخة دُمجت سابقًا؛ لم تُكرر البيانات.",
+                                        );
+                                    } finally {
+                                        importLock.current = false;
+                                    }
+                                })
+                            }
+                        >
+                            دمج دون استبدال
                         </button>
                     </div>
                 </Dialog>
@@ -2906,6 +3161,43 @@ function App() {
             {toast && (
                 <div className="toast" role="status">
                     <span>{toast}</span>
+                    {stepUndo &&
+                        !deleted &&
+                        toast === "تم إتمام الخطوة أو المرحلة." && (
+                            <button
+                                className="text-btn"
+                                onClick={() =>
+                                    void run(async () => {
+                                        const action = stepUndo;
+                                        await db.transaction(
+                                            "rw",
+                                            db.tables,
+                                            async () => {
+                                                await setBranchCompletion(
+                                                    action.id,
+                                                    action.value,
+                                                );
+                                                if (action.reopen) {
+                                                    const p =
+                                                        await db.projects.get(
+                                                            action.projectId,
+                                                        );
+                                                    if (p?.status === "closed")
+                                                        await setProjectCompletion(
+                                                            action.projectId,
+                                                            false,
+                                                        );
+                                                }
+                                            },
+                                        );
+                                        setStepUndo(null);
+                                        setToast("تم التراجع عن إنجاز الخطوة.");
+                                    })
+                                }
+                            >
+                                تراجع عن إنجاز الخطوة
+                            </button>
+                        )}
                     {deleted && (
                         <button
                             className="text-btn"
@@ -2948,6 +3240,9 @@ function CreateForm({
         options?: TaskOptions,
     ) => Promise<void>;
 }) {
+    const [capacity, setCapacity] = useState<ActiveProjectLimitError | null>(
+        null,
+    );
     const [options, setOptions] = useState<TaskOptions>({});
     const [title, setTitle] = useState("");
     const [notes, setNotes] = useState("");
@@ -2978,6 +3273,8 @@ function CreateForm({
                             taskForm ? options : undefined,
                         );
                     } catch (e) {
+                        if (e instanceof ActiveProjectLimitError)
+                            setCapacity(e);
                         setError(userError(e));
                         submitting.current = false;
                         setBusy(false);
@@ -3006,6 +3303,18 @@ function CreateForm({
                         placeholder="ما الذي ترغب أن تتذكره؟"
                     />
                 </label>
+                {capacity && (
+                    <CapacityOptions
+                        error={capacity}
+                        onResolved={() => {
+                            setCapacity(null);
+                            setError(
+                                "تم تحديث الاختيار. اضغط إضافة لإعادة المحاولة.",
+                            );
+                        }}
+                        onCancel={onClose}
+                    />
+                )}
                 {taskForm && (
                     <TaskFields
                         value={options}

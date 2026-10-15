@@ -1,3 +1,5 @@
+import { CapacityOptions } from "./ProjectCapacity";
+import { ActiveProjectLimitError } from "./db";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Upload } from "lucide-react";
 import { Dialog } from "./Dialog";
@@ -16,6 +18,9 @@ export function ProjectImport({
     onImported: (id: string) => void;
 }) {
     const [file, setFile] = useState<ProjectImportFile | null>(null);
+    const [capacity, setCapacity] = useState<ActiveProjectLimitError | null>(
+        null,
+    );
     const [error, setError] = useState("");
     const [busy, setBusy] = useState(false);
     const [open, setOpen] = useState(false);
@@ -53,6 +58,7 @@ export function ProjectImport({
     }, []);
     const close = () => {
         if (!lock.current) {
+            setCapacity(null);
             setOpen(false);
             setFile(null);
             setError("");
@@ -133,6 +139,18 @@ export function ProjectImport({
                                 <p role="alert" className="warning">
                                     {error}
                                 </p>
+                            )}
+                            {capacity && (
+                                <CapacityOptions
+                                    error={capacity}
+                                    onResolved={() => {
+                                        setCapacity(null);
+                                        setError(
+                                            "تم تحديث الاختيار؛ أعد تأكيد الاستيراد.",
+                                        );
+                                    }}
+                                    onCancel={close}
+                                />
                             )}
                             <div className="dialog-buttons" aria-busy={busy}>
                                 <button
@@ -221,6 +239,18 @@ export function ProjectImport({
                                     {error}
                                 </p>
                             )}
+                            {capacity && (
+                                <CapacityOptions
+                                    error={capacity}
+                                    onResolved={() => {
+                                        setCapacity(null);
+                                        setError(
+                                            "تم تحديث الاختيار؛ أعد تأكيد الاستيراد.",
+                                        );
+                                    }}
+                                    onCancel={close}
+                                />
+                            )}
                             <div className="dialog-buttons" aria-busy={busy}>
                                 <button
                                     className="btn secondary"
@@ -244,6 +274,11 @@ export function ProjectImport({
                                             setFile(null);
                                             onImported(id);
                                         } catch (err) {
+                                            if (
+                                                err instanceof
+                                                ActiveProjectLimitError
+                                            )
+                                                setCapacity(err);
                                             setError(userError(err));
                                         } finally {
                                             lock.current = false;

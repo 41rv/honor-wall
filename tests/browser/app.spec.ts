@@ -92,7 +92,7 @@ test.beforeEach(async ({ page }) => {
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto("/");
     await expect(
-        page.getByRole("heading", { name: "يومك، بخطوة واضحة" }),
+        page.getByRole("heading", { name: "مهامي اليوم", level: 1 }),
     ).toBeVisible();
 });
 test("واجهة المشروع: الإنشاء، الترتيب، الملاحظات، النسب والإغلاق", async ({

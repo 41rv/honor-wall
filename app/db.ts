@@ -32,7 +32,18 @@ import {
     type Status,
     type Action,
 } from "./model";
+import type {
+    ProjectPlan,
+    StepWork,
+    PaceRecommendation,
+    PaceSettings,
+} from "./paceTypes";
+import { activeProject } from "./projectPace";
 export class Database extends Dexie {
+    projectPlans!: Table<ProjectPlan, string>;
+    stepWork!: Table<StepWork, string>;
+    recommendations!: Table<PaceRecommendation, string>;
+    paceSettings!: Table<PaceSettings, string>;
     projects!: Table<Project, string>;
     steps!: Table<Step, string>;
     tasks!: Table<Task, string>;
@@ -82,6 +93,31 @@ export class Database extends Dexie {
                         lastOrder: 0,
                     })),
                 );
+            });
+        this.version(5)
+            .stores({
+                projectPlans: "projectId,since",
+                stepWork: "id,projectId,[projectId+at],at,stepId",
+                recommendations: "id,key,status,createdAt,*projectIds",
+                paceSettings: "id",
+            })
+            .upgrade(async (tx) => {
+                const projects = (await tx
+                    .table("projects")
+                    .toArray()) as Project[];
+                const since = now();
+                await tx.table("projectPlans").bulkAdd(
+                    projects.map((p) => ({
+                        projectId: p.id,
+                        since,
+                        revision: 0,
+                        workOrder: 0,
+                        pauses: [],
+                    })),
+                );
+                await tx
+                    .table("paceSettings")
+                    .put({ id: "pace", activeLimit: 3 });
             });
     }
 }
@@ -263,9 +299,24 @@ export async function importProject(input: unknown): Promise<string> {
     }));
     await db.transaction(
         "rw",
-        [db.projects, db.steps, db.events, db.projectTracking],
+        [
+            db.projects,
+            db.steps,
+            db.events,
+            db.projectTracking,
+            db.projectPlans,
+            db.paceSettings,
+        ],
         async () => {
+            await assertProjectCapacity();
             await db.projects.add(project);
+            await db.projectPlans.add({
+                projectId: project.id,
+                since: now(),
+                revision: 0,
+                workOrder: 0,
+                pauses: [],
+            });
             await db.steps.bulkAdd(steps);
             await db.events.bulkAdd(events);
             await db.projectTracking.add({
@@ -306,6 +357,7 @@ export async function event(
 export async function snapshot(): Promise<Snapshot> {
     await reconcileTaskCycles();
     await ensureProjectTracking();
+    await ensurePacePlans();
     return db.transaction("r", db.tables, async () => {
         const [
             projects,
@@ -316,6 +368,10 @@ export async function snapshot(): Promise<Snapshot> {
             taskCycles,
             projectProgress,
             projectTracking,
+            projectPlans,
+            stepWork,
+            recommendations,
+            paceSettings,
         ] = await Promise.all([
             db.projects.toArray(),
             db.steps.toArray(),
@@ -325,9 +381,13 @@ export async function snapshot(): Promise<Snapshot> {
             db.taskCycles.toArray(),
             db.projectProgress.toArray(),
             db.projectTracking.toArray(),
+            db.projectPlans.toArray(),
+            db.stepWork.toArray(),
+            db.recommendations.toArray(),
+            db.paceSettings.toArray(),
         ]);
         return {
-            version: 3,
+            version: 4,
             exportedAt: now(),
             projects,
             steps,
@@ -337,6 +397,10 @@ export async function snapshot(): Promise<Snapshot> {
             taskCycles,
             projectProgress,
             projectTracking,
+            projectPlans,
+            stepWork,
+            recommendations,
+            paceSettings,
         };
     });
 }
@@ -359,11 +423,21 @@ export async function create(
                   db.events,
                   db.projectTracking,
                   db.projectProgress,
+                  db.projectPlans,
+                  db.stepWork,
+                  db.recommendations,
+                  db.paceSettings,
               ]
             : kind === "task"
               ? [db.tasks, db.events, db.taskCycles]
               : kind === "project"
-                ? [db.projects, db.events, db.projectTracking]
+                ? [
+                      db.projects,
+                      db.events,
+                      db.projectTracking,
+                      db.projectPlans,
+                      db.paceSettings,
+                  ]
                 : [table(kind), db.events],
         async () => {
             const b = base(title, notes);
@@ -372,9 +446,17 @@ export async function create(
                     ? await captureProjectProgress(projectId)
                     : null;
             let item: Project | Step | Task | Idea;
-            if (kind === "project")
+            if (kind === "project") {
+                await assertProjectCapacity();
                 item = { ...b, status: "active", archived: false };
-            else if (kind === "task") {
+                await db.projectPlans.add({
+                    projectId: b.id,
+                    since: b.createdAt,
+                    revision: 0,
+                    workOrder: 0,
+                    pauses: [],
+                });
+            } else if (kind === "task") {
                 const options = validateTaskOptions(taskOptions);
                 item = {
                     ...b,
@@ -544,6 +626,10 @@ export async function changeStatus(
                   db.events,
                   db.projectTracking,
                   db.projectProgress,
+                  db.projectPlans,
+                  db.stepWork,
+                  db.recommendations,
+                  db.paceSettings,
               ]
             : [db.tasks, db.events],
         async () => {
@@ -564,6 +650,12 @@ export async function changeStatus(
                 kind === "step"
                     ? await captureProjectProgress((item as Step).projectId)
                     : null;
+            if (
+                kind === "step" &&
+                (item as Step).kind === "step" &&
+                (status === "done" || item.status === "done")
+            )
+                await recordStepWork(item as Step, status === "done", at);
             await t.update(id, {
                 status,
                 updatedAt: at,
@@ -604,26 +696,40 @@ export async function changeStatus(
     );
 }
 export async function projectState(id: string, action: "archive" | "close") {
-    await db.transaction("rw", [db.projects, db.events], async () => {
-        const p = await db.projects.get(id);
-        if (!p) return;
-        const at = now();
-        if (action === "archive") {
-            await db.projects.update(id, {
-                archived: !p.archived,
-                updatedAt: at,
-            });
-            await event("project", p, p.archived ? "reopened" : "archived", at);
-        } else {
-            const closed = p.status === "active";
-            await db.projects.update(id, {
-                status: closed ? "closed" : "active",
-                completedAt: closed ? at : undefined,
-                updatedAt: at,
-            });
-            await event("project", p, closed ? "closed" : "reopened", at);
-        }
-    });
+    await db.transaction(
+        "rw",
+        [db.projects, db.events, db.projectPlans, db.paceSettings],
+        async () => {
+            const p = await db.projects.get(id);
+            if (!p) return;
+            const at = now();
+            if (
+                (action === "archive" && p.archived && p.status === "active") ||
+                (action === "close" && p.status === "closed" && !p.archived)
+            )
+                await assertProjectCapacity(id);
+            if (action === "archive") {
+                await db.projects.update(id, {
+                    archived: !p.archived,
+                    updatedAt: at,
+                });
+                await event(
+                    "project",
+                    p,
+                    p.archived ? "reopened" : "archived",
+                    at,
+                );
+            } else {
+                const closed = p.status === "active";
+                await db.projects.update(id, {
+                    status: closed ? "closed" : "active",
+                    completedAt: closed ? at : undefined,
+                    updatedAt: at,
+                });
+                await event("project", p, closed ? "closed" : "reopened", at);
+            }
+        },
+    );
 }
 export async function archiveIdea(id: string) {
     await db.transaction("rw", db.ideas, db.events, async () => {
@@ -674,6 +780,10 @@ export async function remove(kind: EntityKind, id: string) {
                   db.events,
                   db.projectTracking,
                   db.projectProgress,
+                  db.projectPlans,
+                  db.stepWork,
+                  db.recommendations,
+                  db.paceSettings,
               ]
             : kind === "task"
               ? [db.tasks, db.taskCycles, db.events]
@@ -696,6 +806,20 @@ export async function remove(kind: EntityKind, id: string) {
                           .equals(id)
                           .toArray()
                     : [];
+            const paceData =
+                kind === "project"
+                    ? {
+                          plan: await db.projectPlans.get(id),
+                          work: await db.stepWork
+                              .where("projectId")
+                              .equals(id)
+                              .toArray(),
+                          recommendations: await db.recommendations
+                              .where("projectIds")
+                              .equals(id)
+                              .toArray(),
+                      }
+                    : undefined;
             const steps =
                 kind === "project"
                     ? await db.steps.where("projectId").equals(id).toArray()
@@ -720,6 +844,12 @@ export async function remove(kind: EntityKind, id: string) {
                 );
             }
             if (kind === "project") {
+                await db.projectPlans.delete(id);
+                await db.stepWork.where("projectId").equals(id).delete();
+                if (paceData?.recommendations.length)
+                    await db.recommendations.bulkDelete(
+                        paceData.recommendations.map((r) => r.id),
+                    );
                 await db.projectTracking.delete(id);
                 await db.projectProgress.where("projectId").equals(id).delete();
             }
@@ -730,11 +860,17 @@ export async function remove(kind: EntityKind, id: string) {
                 taskCycles,
                 tracking,
                 projectProgress,
+                paceData,
             } as Deleted;
         },
     );
 }
 export interface Deleted {
+    paceData?: {
+        plan?: ProjectPlan;
+        work: StepWork[];
+        recommendations: PaceRecommendation[];
+    };
     kind: EntityKind;
     item: Project | Step | Task | Idea;
     steps: Step[];
@@ -752,6 +888,10 @@ export async function undo(data: Deleted) {
                   db.events,
                   db.projectTracking,
                   db.projectProgress,
+                  db.projectPlans,
+                  db.stepWork,
+                  db.recommendations,
+                  db.paceSettings,
               ]
             : data.kind === "task"
               ? [db.tasks, db.taskCycles, db.events]
@@ -792,6 +932,26 @@ export async function undo(data: Deleted) {
                                 .map((x) => x.order),
                         ) + 1;
             }
+            if (data.kind === "project") {
+                if (activeProject(data.item as Project, data.paceData?.plan))
+                    await assertProjectCapacity();
+                if (data.paceData?.plan)
+                    await db.projectPlans.put(data.paceData.plan);
+                if (data.paceData?.work.length)
+                    await db.stepWork.bulkPut(data.paceData.work);
+                if (data.paceData?.recommendations.length) {
+                    const projects = new Set(
+                        (await db.projects.toArray())
+                            .map((p) => p.id)
+                            .concat(data.item.id),
+                    );
+                    await db.recommendations.bulkPut(
+                        data.paceData.recommendations.filter((r) =>
+                            r.projectIds.every((id) => projects.has(id)),
+                        ),
+                    );
+                }
+            }
             await (table(data.kind) as Table).put(data.item);
             if (data.steps.length) await db.steps.bulkPut(data.steps);
             if (data.taskCycles?.length)
@@ -826,6 +986,11 @@ export async function importBackup(input: unknown) {
         await db.taskCycles.bulkAdd(data.taskCycles ?? []);
         await db.projectTracking.bulkAdd(data.projectTracking ?? []);
         await db.projectProgress.bulkAdd(data.projectProgress ?? []);
+        await db.projectPlans.bulkAdd(data.projectPlans ?? []);
+        await db.stepWork.bulkAdd(data.stepWork ?? []);
+        await db.recommendations.bulkAdd(data.recommendations ?? []);
+        await db.paceSettings.bulkAdd(data.paceSettings ?? []);
+        await ensurePacePlans();
         await completeFinishedProjects();
     });
 }
@@ -840,6 +1005,10 @@ export async function setBranchCompletion(id: string, complete: boolean) {
             db.events,
             db.projectTracking,
             db.projectProgress,
+            db.projectPlans,
+            db.stepWork,
+            db.recommendations,
+            db.paceSettings,
         ],
         async () => {
             const root = await db.steps.get(id);
@@ -898,6 +1067,19 @@ export async function setBranchCompletion(id: string, complete: boolean) {
                 set(s, after.nodes.get(id)!.status);
             }
             if (updates.size) {
+                for (const changed of updates.values()) {
+                    const before = index.byId.get(changed.id)!;
+                    if (
+                        before.kind === "step" &&
+                        !index.children(before.projectId, before.id).length &&
+                        (before.status === "done" || changed.status === "done")
+                    )
+                        await recordStepWork(
+                            before,
+                            changed.status === "done",
+                            at,
+                        );
+                }
                 await db.steps.bulkPut([...updates.values()]);
                 await db.events.bulkAdd(logs);
                 await db.projects.update(root.projectId, { updatedAt: at });
@@ -913,19 +1095,24 @@ export async function setBranchCompletion(id: string, complete: boolean) {
     );
 }
 export async function setProjectCompletion(id: string, complete: boolean) {
-    await db.transaction("rw", [db.projects, db.events], async () => {
-        const p = await db.projects.get(id);
-        if (!p) throw new Error("المشروع غير موجود.");
-        const status = complete ? "closed" : "active";
-        if (p.status === status) return;
-        const at = now();
-        await db.projects.update(id, {
-            status,
-            updatedAt: at,
-            completedAt: complete ? at : undefined,
-        });
-        await event("project", p, complete ? "closed" : "reopened", at);
-    });
+    await db.transaction(
+        "rw",
+        [db.projects, db.events, db.projectPlans, db.paceSettings],
+        async () => {
+            const p = await db.projects.get(id);
+            if (!p) throw new Error("المشروع غير موجود.");
+            const status = complete ? "closed" : "active";
+            if (p.status === status) return;
+            if (!complete && !p.archived) await assertProjectCapacity(id);
+            const at = now();
+            await db.projects.update(id, {
+                status,
+                updatedAt: at,
+                completedAt: complete ? at : undefined,
+            });
+            await event("project", p, complete ? "closed" : "reopened", at);
+        },
+    );
 }
 
 // Idempotent batches backfill every elapsed period without creating task copies.
@@ -1182,4 +1369,208 @@ export async function updateTaskOptions(
             }
         },
     );
+}
+
+export class ActiveProjectLimitError extends Error {
+    constructor(
+        public limit: number,
+        public excludeId?: string,
+    ) {
+        super(
+            `وصلت إلى حد المشاريع النشطة (${limit}). اختر مشروعًا لإيقافه، أو عدّل الحد، أو ألغِ العملية.`,
+        );
+    }
+}
+export async function assertProjectCapacity(excludeId?: string) {
+    const projects = await db.projects.toArray(),
+        plans = await db.projectPlans.toArray();
+    const selected = excludeId
+        ? plans.find((p) => p.projectId === excludeId)
+        : undefined;
+    if (selected?.pauses.at(-1) && !selected.pauses.at(-1)!.end) return;
+    const limit = (await db.paceSettings.get("pace"))?.activeLimit ?? 3;
+    if (
+        projects.filter(
+            (p) =>
+                p.id !== excludeId &&
+                activeProject(
+                    p,
+                    plans.find((r) => r.projectId === p.id),
+                ),
+        ).length >= limit
+    )
+        throw new ActiveProjectLimitError(limit, excludeId);
+}
+export async function ensurePacePlans() {
+    await db.transaction(
+        "rw",
+        db.projects,
+        db.projectPlans,
+        db.paceSettings,
+        async () => {
+            const existing = new Set(
+                await db.projectPlans.toCollection().primaryKeys(),
+            );
+            const since = now();
+            const missing = (await db.projects.toArray()).filter(
+                (p) => !existing.has(p.id),
+            );
+            if (missing.length)
+                await db.projectPlans.bulkAdd(
+                    missing.map((p) => ({
+                        projectId: p.id,
+                        since,
+                        revision: 0,
+                        workOrder: 0,
+                        pauses: [],
+                    })),
+                );
+            if (!(await db.paceSettings.get("pace")))
+                await db.paceSettings.add({ id: "pace", activeLimit: 3 });
+        },
+    );
+}
+async function recordStepWork(step: Step, complete: boolean, at: string) {
+    if (!(await db.projectPlans.get(step.projectId)))
+        await db.projectPlans.put({
+            projectId: step.projectId,
+            since: at,
+            revision: 0,
+            workOrder: 0,
+            pauses: [],
+        });
+    const plan = (await db.projectPlans.get(step.projectId))!;
+    const order = plan.workOrder + 1;
+    await db.stepWork.add({
+        id: JSON.stringify([step.projectId, order]),
+        projectId: step.projectId,
+        stepId: step.id,
+        order,
+        at,
+        complete,
+    });
+    await db.projectPlans.update(step.projectId, { workOrder: order });
+}
+// Additive restore remaps the whole imported graph. No incoming ID can overwrite
+// local data; a SHA-256 receipt makes repeated merging of the same file harmless.
+export async function mergeBackup(input: unknown) {
+    const data = validateBackup(input);
+    const bytes = new TextEncoder().encode(
+        JSON.stringify({ ...data, exportedAt: "" }),
+    );
+    const digest = [
+        ...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)),
+    ]
+        .map((b) => b.toString(16).padStart(2, "0"))
+        .join("");
+    return db.transaction("rw", db.tables, async () => {
+        const settings = await db.paceSettings.get("pace");
+        if (settings?.importDigests?.includes(digest)) return false;
+        const mapping = new Map<string, string>();
+        for (const x of [
+            ...data.projects,
+            ...data.steps,
+            ...data.tasks,
+            ...data.ideas,
+        ])
+            mapping.set(x.id, uid());
+        const map = (id: string) => {
+            if (!mapping.has(id)) mapping.set(id, uid());
+            return mapping.get(id)!;
+        };
+        await db.projects.bulkAdd(
+            data.projects.map((p) => ({ ...p, id: map(p.id) })),
+        );
+        await db.steps.bulkAdd(
+            data.steps.map((s) => ({
+                ...s,
+                id: map(s.id),
+                projectId: map(s.projectId),
+                parentId: s.parentId ? map(s.parentId) : null,
+            })),
+        );
+        await db.tasks.bulkAdd(
+            data.tasks.map((t) => ({ ...t, id: map(t.id) })),
+        );
+        await db.ideas.bulkAdd(
+            data.ideas.map((i) => ({ ...i, id: map(i.id) })),
+        );
+        await db.events.bulkAdd(
+            data.events.map((e) => ({
+                ...e,
+                id: uid(),
+                entityId: map(e.entityId),
+            })),
+        );
+        await db.taskCycles.bulkAdd(
+            (data.taskCycles ?? []).map((c) => ({
+                ...c,
+                taskId: map(c.taskId),
+                id: cycleIdForMerge(map(c.taskId), c.revision, c.start),
+            })),
+        );
+        await db.projectTracking.bulkAdd(
+            (data.projectTracking ?? []).map((p) => ({
+                ...p,
+                projectId: map(p.projectId),
+            })),
+        );
+        await db.projectProgress.bulkAdd(
+            (data.projectProgress ?? []).map((p) => ({
+                ...p,
+                projectId: map(p.projectId),
+                id: JSON.stringify([map(p.projectId), p.order]),
+            })),
+        );
+        await db.projectPlans.bulkAdd(
+            (data.projectPlans ?? []).map((p) => ({
+                ...p,
+                projectId: map(p.projectId),
+            })),
+        );
+        await db.stepWork.bulkAdd(
+            (data.stepWork ?? []).map((w) => ({
+                ...w,
+                projectId: map(w.projectId),
+                stepId: map(w.stepId),
+                id: JSON.stringify([map(w.projectId), w.order]),
+            })),
+        );
+        await db.recommendations.bulkAdd(
+            (data.recommendations ?? []).map((r) => {
+                const changes = r.changes.map((c) => ({
+                    ...c,
+                    projectId: map(c.projectId),
+                }));
+                const mergedId = uid();
+                // Historical decisions remain history. Pending advice is invalidated
+                // because merging changes the workload and project identities.
+                return {
+                    ...r,
+                    id: mergedId,
+                    key: mergedId,
+                    projectIds: r.projectIds.map(map),
+                    changes,
+                    approvedChanges: r.approvedChanges ? changes : undefined,
+                    status:
+                        r.status === "new" ? ("invalid" as const) : r.status,
+                    decidedAt: r.status === "new" ? now() : r.decidedAt,
+                };
+            }),
+        );
+        await db.paceSettings.put({
+            ...settings,
+            id: "pace",
+            activeLimit: settings?.activeLimit ?? 3,
+            importDigests: [
+                ...new Set([...(settings?.importDigests ?? []), digest]),
+            ],
+        });
+        await ensurePacePlans();
+        await completeFinishedProjects();
+        return true;
+    });
+}
+function cycleIdForMerge(taskId: string, revision: number, start: string) {
+    return JSON.stringify([taskId, revision, start]);
 }

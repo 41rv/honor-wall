@@ -70,10 +70,10 @@ test("كثرة المشاريع والنصوص الطويلة تعرض خطوة 
     await page.goto("/#home");
     const home = page.getByRole("region", { name: "خطوات مشاريعك القادمة" });
     await expect(home.locator(".project-card")).toHaveCount(4);
-    await expect(home.locator(".execution-current")).toHaveCount(3);
+    await expect(home.locator(".daily-project-step")).toHaveCount(3);
     await home.getByRole("button", { name: /عرض المزيد من المشاريع/ }).click();
     await expect(home.locator(".project-card")).toHaveCount(8);
-    await expect(home.locator(".execution-current")).toHaveCount(7);
+    await expect(home.locator(".daily-project-step")).toHaveCount(7);
     await expect(page.locator(".stat-card")).toHaveCount(0);
     expect(
         (await page

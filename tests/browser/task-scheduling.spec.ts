@@ -335,7 +335,7 @@ test("نسخة جديدة تحفظ الدورات والأولوية، واست�
     await page.getByRole("button", { name: "تصدير JSON", exact: true }).click();
     const file = await download;
     const data = JSON.parse(readFileSync((await file.path())!, "utf8"));
-    expect(data.version).toBe(3);
+    expect(data.version).toBe(4);
     expect(data.taskCycles).toHaveLength(1);
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
         name: "backup.json",

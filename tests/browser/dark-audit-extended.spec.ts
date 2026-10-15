@@ -299,7 +299,7 @@ test("تكرار التنقل والثيم لا يسرب المستمعين وا
                     calendar: "التقويم الأسبوعي",
                     progress: "كل خطوة تصنع فرقًا",
                     tasks: "مهامك",
-                    home: "يومك، بخطوة واضحة",
+                    home: "مهامي اليوم",
                 }[route]!,
             );
         }
@@ -624,7 +624,7 @@ test("بيانات استخدام مختلطة وسجل طويل: تصفية و�
             return Buffer.concat(parts).toString();
         }),
     );
-    expect(backup.version).toBe(3);
+    expect(backup.version).toBe(4);
     const stores = [
         "projects",
         "steps",

@@ -1,3 +1,4 @@
+import { activeProject } from "./projectPace";
 import { Temporal } from "@js-temporal/polyfill";
 import { localDay, localZone, recurring } from "./taskSchedule";
 import { calendarScheduledInstant, taskDeadline } from "./dailyPlanning";
@@ -6,7 +7,7 @@ import type { Task, Snapshot } from "./model";
 import { dateKey } from "./dateKey";
 import type { TaskCycle } from "./taskTypes";
 export function projectMetrics(
-    data: Pick<Snapshot, "projects" | "steps">,
+    data: Pick<Snapshot, "projects" | "steps" | "projectPlans">,
     range: TimeRange,
 ) {
     return {
@@ -18,8 +19,11 @@ export function projectMetrics(
                 )
                 .map((p) => p.id),
         ).size,
-        active: data.projects.filter(
-            (p) => p.status === "active" && !p.archived,
+        active: data.projects.filter((p) =>
+            activeProject(
+                p,
+                data.projectPlans?.find((plan) => plan.projectId === p.id),
+            ),
         ).length,
     };
 }

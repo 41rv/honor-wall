@@ -1,0 +1,22 @@
+
+> masar-personal@1.1.2 test
+> vitest run --reporter=dot
+
+
+ RUN  v5.0.4 /workspace/honor-wall
+
+··········································································································································································································································
+
+ Test Files  16 passed (16)
+      Tests  234 passed (234)
+   Start at  03:51:09
+   Duration  2.85s (tests 79%, import 15%, transform 4%, worker 1%)
+
+    Isolate  16 workers spawned · ~98ms startup each (spawn + environment, per file)
+             at least ~425ms faster with isolate: false — reuses workers across files instead of one per file
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

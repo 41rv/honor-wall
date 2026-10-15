@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { ArrowUpLeft, ChevronLeft } from "lucide-react";
 import { CompletionButton } from "./CompletionButton";
 import { stageFor } from "./execution";
@@ -7,6 +7,7 @@ import type { Snapshot, Project, Step } from "./model";
 import type { TaskView } from "./taskSchedule";
 import { orderedToday } from "./dailyPlanning";
 import { useWallClock } from "./useWallClock";
+import { TodayTasks } from "./TodayTasks";
 export function HomeExecution({
     data,
     active,
@@ -17,7 +18,11 @@ export function HomeExecution({
     open,
     complete,
     openHistory,
+    expanded = false,
+    recommendation,
 }: {
+    expanded?: boolean;
+    recommendation?: ReactNode;
     data: Snapshot;
     active: Project[];
     resume?: Step;
@@ -38,6 +43,10 @@ export function HomeExecution({
         new Date(Math.max(clock, Date.now())),
     );
     const [limit, setLimit] = useState(4);
+    const [all, setAll] = useState(expanded);
+    useEffect(() => {
+        setAll(expanded);
+    }, [expanded]);
     const project = data.projects.find((p) => p.id === resume?.projectId);
     const stage = resume ? stageFor(resume, hierarchy) : undefined;
     return (
@@ -48,51 +57,38 @@ export function HomeExecution({
                         مهامي اليوم{" "}
                         <span className="count">{today.length}</span>
                     </h2>
-                    <a className="text-btn" href="#today">
-                        عرض الكل <ChevronLeft size={16} />
+                    <a
+                        className="text-btn"
+                        href="#today"
+                        aria-expanded={all}
+                        onClick={(e) => {
+                            if (all) {
+                                e.preventDefault();
+                                setAll(false);
+                            } else setAll(true);
+                        }}
+                    >
+                        {all ? "عرض مختصر" : "عرض الكل"}{" "}
+                        <ChevronLeft size={16} />
                     </a>
                 </div>
-                {today.length ? (
+                {all ? (
+                    <TodayTasks tasks={data.tasks} renderTask={renderTask} />
+                ) : today.length ? (
                     <div className="surface task-list">
                         {today.slice(0, 3).map(({ task }) => renderTask(task))}
                     </div>
                 ) : (
                     <p className="compact-empty muted">
-                        قائمة اليوم خفيفة. <a href="#today">اختر مهامك لليوم</a>
-                    </p>
-                )}
-            </section>
-            <section
-                className="surface resume-shortcut"
-                aria-label="اختصار الاستكمال"
-            >
-                <div>
-                    <span className="small muted">أكمل من حيث توقفت</span>
-                    <h2 title={resume?.title}>
-                        {resume?.title ?? "خطوتك التالية تبدأ هنا"}
-                    </h2>
-                    <p className="muted small" title={project?.title}>
-                        {resume
-                            ? `${project?.title} / ${stage ? `المرحلة ${hierarchy.numbers.get(stage.id)}` : "خطوات المشروع"}`
-                            : "افتح مشروعًا واختر خطوة لتعود إليها هنا."}
-                    </p>
-                </div>
-                {resume && (
-                    <>
-                        <CompletionButton
-                            entityKey={`step/${resume.id}`}
-                            checked={false}
-                            label={`الخطوة «${resume.title}»`}
-                            onToggle={(value) => complete(resume.id, value)}
-                        />
-                        <button
-                            className="icon-btn"
-                            aria-label="أكمل من حيث توقفت"
-                            onClick={() => open(`step/${resume.id}`)}
+                        قائمة اليوم خفيفة.{" "}
+                        <a
+                            className="text-btn"
+                            href="#today"
+                            onClick={() => setAll(true)}
                         >
-                            <ArrowUpLeft size={20} />
-                        </button>
-                    </>
+                            اختر مهامك لليوم
+                        </a>
+                    </p>
                 )}
             </section>
             <section
@@ -111,6 +107,39 @@ export function HomeExecution({
                         كل المشاريع <ChevronLeft size={16} />
                     </button>
                 </div>
+                <section
+                    className="surface resume-shortcut"
+                    aria-label="اختصار الاستكمال"
+                >
+                    <div>
+                        <span className="small muted">أكمل من حيث توقفت</span>
+                        <h2 title={resume?.title}>
+                            {resume?.title ?? "خطوتك التالية تبدأ هنا"}
+                        </h2>
+                        <p className="muted small" title={project?.title}>
+                            {resume
+                                ? `${project?.title} / ${stage ? `المرحلة ${hierarchy.numbers.get(stage.id)}` : "خطوات المشروع"}`
+                                : "افتح مشروعًا واختر خطوة لتعود إليها هنا."}
+                        </p>
+                    </div>
+                    {resume && (
+                        <>
+                            <CompletionButton
+                                entityKey={`step/${resume.id}`}
+                                checked={false}
+                                label={`الخطوة «${resume.title}»`}
+                                onToggle={(value) => complete(resume.id, value)}
+                            />
+                            <button
+                                className="icon-btn"
+                                aria-label="أكمل من حيث توقفت"
+                                onClick={() => open(`step/${resume.id}`)}
+                            >
+                                <ArrowUpLeft size={20} />
+                            </button>
+                        </>
+                    )}
+                </section>
                 <div className="project-grid">
                     {active
                         .slice(0, limit)
@@ -130,6 +159,7 @@ export function HomeExecution({
                     </button>
                 )}
             </section>
+            {recommendation}
             <button
                 className="text-btn home-progress-link"
                 onClick={openHistory}
