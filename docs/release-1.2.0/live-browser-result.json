@@ -1,0 +1,325 @@
+{
+  "timestamp": "2026-10-15T04:12:07.720Z",
+  "release": "1.2.0",
+  "url": "https://41rv.github.io/honor-wall/",
+  "status": "passed",
+  "checks": [
+    "today_auto_manual_complete_undo",
+    "calendar_seven_days_navigation_complete_undo",
+    "dashboard_all_periods_project_history_50percent_12hours",
+    "three_progress_tabs_history_readonly_filter_state",
+    "organized_home_unified_add_menu_create_idea_close_reopen",
+    "rtl_mobile_desktop_no_overflow",
+    "download_v4_restore_all_twelve_stores",
+    "project_goal_persists_insufficient_forecast_honest",
+    "explicit_pause_resume_saved_home_exclusion",
+    "acceleration_preview_readonly_explicit_confirmation_and_decision_log",
+    "home_step_complete_atomic_auto_close_undo_without_task_statistics_pollution",
+    "dark_theme_persists_with_new_pace_interfaces"
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "url": "https://41rv.github.io/honor-wall/",
+      "path": "index.html",
+      "sha256": "8136f8380e8facbbe245f9d813a297463227250eddad8f2bf884674f8d932908",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/rolldown-runtime-CbXtAM7H.js",
+      "path": "assets/rolldown-runtime-CbXtAM7H.js",
+      "sha256": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/index-BBF_mT_5.css",
+      "path": "assets/index-BBF_mT_5.css",
+      "sha256": "fa386ecf06d2cc50ec35662d4c1dac56704869e7c356507d076e1cde4ad0ab90",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/index-C3jDSMf9.js",
+      "path": "assets/index-C3jDSMf9.js",
+      "sha256": "5fa874a445c90ba8ec88612b9b4ff77cb2260dbf4c12a5fedc76f2607b1f38ff",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/calendar-Dneqhncv.js",
+      "path": "assets/calendar-Dneqhncv.js",
+      "sha256": "0c06ca30dfcb03b9f3721ca60fe0d25dd2ee43a31d7002438bcb74c3358d171b",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/tajawal-arabic-400-normal-CyCXRvzh.woff2",
+      "path": "assets/tajawal-arabic-400-normal-CyCXRvzh.woff2",
+      "sha256": "6c9081fd00db08800850fa7d214593aa94992be5159e97557aa60197252cb95a",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/tajawal-arabic-700-normal-D2-eand5.woff2",
+      "path": "assets/tajawal-arabic-700-normal-D2-eand5.woff2",
+      "sha256": "fa5e72326681abee3a4952be582e1c2c2abb27932ef262610c078ce89541f919",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2",
+      "path": "assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2",
+      "sha256": "4255019c1cd986f7cda7869df69baf72730d61304ae14baba4acfeb13085da54",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/workbox-window.prod.es5-Bd17z0YL.js",
+      "path": "assets/workbox-window.prod.es5-Bd17z0YL.js",
+      "sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/",
+      "path": "index.html",
+      "sha256": "8136f8380e8facbbe245f9d813a297463227250eddad8f2bf884674f8d932908",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/calendar-Dneqhncv.js",
+      "path": "assets/calendar-Dneqhncv.js",
+      "sha256": "0c06ca30dfcb03b9f3721ca60fe0d25dd2ee43a31d7002438bcb74c3358d171b",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/index-BBF_mT_5.css",
+      "path": "assets/index-BBF_mT_5.css",
+      "sha256": "fa386ecf06d2cc50ec35662d4c1dac56704869e7c356507d076e1cde4ad0ab90",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/rolldown-runtime-CbXtAM7H.js",
+      "path": "assets/rolldown-runtime-CbXtAM7H.js",
+      "sha256": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/index-C3jDSMf9.js",
+      "path": "assets/index-C3jDSMf9.js",
+      "sha256": "5fa874a445c90ba8ec88612b9b4ff77cb2260dbf4c12a5fedc76f2607b1f38ff",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/workbox-window.prod.es5-Bd17z0YL.js",
+      "path": "assets/workbox-window.prod.es5-Bd17z0YL.js",
+      "sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/tajawal-arabic-700-normal-D2-eand5.woff2",
+      "path": "assets/tajawal-arabic-700-normal-D2-eand5.woff2",
+      "sha256": "fa5e72326681abee3a4952be582e1c2c2abb27932ef262610c078ce89541f919",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/tajawal-arabic-400-normal-CyCXRvzh.woff2",
+      "path": "assets/tajawal-arabic-400-normal-CyCXRvzh.woff2",
+      "sha256": "6c9081fd00db08800850fa7d214593aa94992be5159e97557aa60197252cb95a",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2",
+      "path": "assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2",
+      "sha256": "4255019c1cd986f7cda7869df69baf72730d61304ae14baba4acfeb13085da54",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/",
+      "path": "index.html",
+      "sha256": "8136f8380e8facbbe245f9d813a297463227250eddad8f2bf884674f8d932908",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/index-BBF_mT_5.css",
+      "path": "assets/index-BBF_mT_5.css",
+      "sha256": "fa386ecf06d2cc50ec35662d4c1dac56704869e7c356507d076e1cde4ad0ab90",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/calendar-Dneqhncv.js",
+      "path": "assets/calendar-Dneqhncv.js",
+      "sha256": "0c06ca30dfcb03b9f3721ca60fe0d25dd2ee43a31d7002438bcb74c3358d171b",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/rolldown-runtime-CbXtAM7H.js",
+      "path": "assets/rolldown-runtime-CbXtAM7H.js",
+      "sha256": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/index-C3jDSMf9.js",
+      "path": "assets/index-C3jDSMf9.js",
+      "sha256": "5fa874a445c90ba8ec88612b9b4ff77cb2260dbf4c12a5fedc76f2607b1f38ff",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/tajawal-arabic-400-normal-CyCXRvzh.woff2",
+      "path": "assets/tajawal-arabic-400-normal-CyCXRvzh.woff2",
+      "sha256": "6c9081fd00db08800850fa7d214593aa94992be5159e97557aa60197252cb95a",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2",
+      "path": "assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2",
+      "sha256": "4255019c1cd986f7cda7869df69baf72730d61304ae14baba4acfeb13085da54",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/tajawal-arabic-700-normal-D2-eand5.woff2",
+      "path": "assets/tajawal-arabic-700-normal-D2-eand5.woff2",
+      "sha256": "fa5e72326681abee3a4952be582e1c2c2abb27932ef262610c078ce89541f919",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/assets/workbox-window.prod.es5-Bd17z0YL.js",
+      "path": "assets/workbox-window.prod.es5-Bd17z0YL.js",
+      "sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
+      "matches": true
+    },
+    {
+      "url": "https://41rv.github.io/honor-wall/icon.svg",
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    }
+  ],
+  "transport": "Per-request live HTTPS using curl with default TLS verification; browser route fulfillment; Chromium direct HTTPS unavailable (untrusted environment proxy CA); serviceWorkers blocked in this isolated live check, offline migration tested separately",
+  "user_data": "isolated synthetic local browser profile; no access to personal device data"
+}
