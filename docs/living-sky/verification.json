@@ -1,0 +1,52 @@
+{
+  "source_head": "a7d2e71bdf0955b3b341d9685ea83e3d93c0ef32",
+  "published": false,
+  "pushed": false,
+  "package_version": "1.3.1 (unchanged local candidate)",
+  "database_and_existing_logic_files_unchanged": true,
+  "unit": {
+    "numTotalTests": 360,
+    "numPassedTests": 360,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "browser": {
+    "startTime": "2026-10-16T05:44:32.311Z",
+    "duration": 467997.024,
+    "expected": 178,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "browser_runner": {
+    "started_at": "2026-10-16T05:44:31.555625+00:00",
+    "finished_at": "2026-10-16T05:52:20.333623+00:00",
+    "exit_code": 0
+  },
+  "pixel_contrast": {
+    "cases": 192,
+    "sampled_text_runs": 2592,
+    "failed_runs": 0
+  },
+  "pwa": {
+    "passed_groups": 11,
+    "errors": [],
+    "database_version_before": 60,
+    "database_version_after": 60,
+    "physical_android_tested": false
+  },
+  "source_sha256": {
+    "app/App.tsx": "feeeeb610e9fba8155847afd85bcfdb087b4a1b0116c2031c6be853a797a7327",
+    "app/HomeExecution.tsx": "5534ea695c94b67fa32addc17ce321d2a009c742ea424fcdcb02151d9362f5f1",
+    "app/TodayTasks.tsx": "66631e91468f6dba62890c7a88a680aa264c4a0a54a4e8cbab872863f3e5c7c1",
+    "app/main.tsx": "a2097b8e5259e7fc475e7bf30bd92aba933802b75e951f7d3e2298a3ba62c753",
+    "app/useTheme.ts": "32f7e533b7d48356714338d8a7798af4d853c2db64849229050de304d25d7620",
+    "app/LivingSky.tsx": "794422503f448cf0c15a86ac4ce732e75353b34bed01251889eb7c3b01969b88",
+    "app/livingSky.ts": "06df87afca8b20416c7b9cdf6ff0061aa001060013929d3bec338620aa7dbd35",
+    "app/livingSky.css": "89830b26ec4973e59929f1cc7a6a45743bc5feedf388824570ca1b7c78e06763",
+    "app/skySettings.ts": "2a666a28eff6602d1945286b4b9aaa6962afbe87b82a049459f705c5582aea34",
+    "tests/livingSky.test.ts": "543e0671df370e9bc29cd4dd245c411e1301a6b964254162cd948bfa6faa933e",
+    "tests/browser/living-sky.spec.ts": "63eb769e9e36c95a8963241c115d5b67e1fcbf61f40680e844346c546df2e52c"
+  }
+}

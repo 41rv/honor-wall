@@ -77,11 +77,11 @@ export function HomeExecution({
                 {all ? (
                     <TodayTasks tasks={data.tasks} renderTask={renderTask} />
                 ) : today.length ? (
-                    <div className="surface task-list">
+                    <div className="surface task-list sky-glass">
                         {today.slice(0, 3).map(({ task }) => renderTask(task))}
                     </div>
                 ) : (
-                    <p className="compact-empty muted">
+                    <p className="compact-empty muted sky-glass">
                         قائمة اليوم خفيفة.{" "}
                         <a
                             className="text-btn"
@@ -116,7 +116,7 @@ export function HomeExecution({
                     </p>
                 )}
                 <section
-                    className="surface resume-shortcut"
+                    className="surface resume-shortcut sky-glass"
                     aria-label="اختصار الاستكمال"
                 >
                     <div>
@@ -158,7 +158,7 @@ export function HomeExecution({
                         .map((p, i) => renderProject(p, i, resume?.id))}
                 </div>
                 {!active.length && (
-                    <p className="compact-empty muted">
+                    <p className="compact-empty muted sky-glass">
                         لا توجد مشاريع نشطة. يمكنك إضافة مشروع من زر الإضافة.
                     </p>
                 )}

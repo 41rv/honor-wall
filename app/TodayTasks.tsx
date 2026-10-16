@@ -38,7 +38,7 @@ export function TodayTasks({
                 موعد. أضفها أو أزلها من قائمة ⋮ للمهمة. الدورات المفتوحة تظل
                 متاحة حتى الموعد التالي، وتبقى إنجازات اليوم أسفل القائمة.
             </p>
-            <div className="surface task-list today-ordered">
+            <div className="surface task-list today-ordered sky-glass">
                 {ordered.map(({ task, category: key }) => {
                     const title = {
                         due: "مستحقة اليوم",

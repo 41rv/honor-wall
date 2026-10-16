@@ -1,0 +1,32 @@
+{
+  "unchanged_existing_production_files": {
+    "app/livingSky.ts": true,
+    "app/App.tsx": true,
+    "app/HomeExecution.tsx": true,
+    "app/TodayTasks.tsx": true,
+    "app/useTheme.ts": true,
+    "app/styles.css": true,
+    "app/db.ts": true,
+    "app/model.ts": true,
+    "app/main.tsx": true,
+    "app/skySettings.ts": true,
+    "package.json": true,
+    "package-lock.json": true,
+    "vite.config.ts": true
+  },
+  "sky_time_component_only_adds_nonvisual_filter_definition": true,
+  "sky_rules_unchanged": {
+    ".living-sky": true,
+    ".sky-scene": true,
+    ".sky-atmosphere": true,
+    ".sky-orbit": true,
+    ".sky-sun,\n.sky-moon": true,
+    ".sky-sun": true,
+    ".sky-moon": true,
+    ".sky-stars": true,
+    ".sky-legibility": true
+  },
+  "database_schema_changed": false,
+  "published": false,
+  "pushed": false
+}

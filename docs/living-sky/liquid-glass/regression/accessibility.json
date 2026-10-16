@@ -1,0 +1,57 @@
+[
+  {
+    "theme": "light",
+    "scene": "dawn",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "scene": "morning",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "scene": "noon",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "scene": "sunset",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "scene": "night",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "scene": "dawn",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "scene": "morning",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "scene": "noon",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "scene": "sunset",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "scene": "night",
+    "violations": []
+  },
+  {
+    "theme": "dialog",
+    "scene": "controls",
+    "violations": []
+  }
+]

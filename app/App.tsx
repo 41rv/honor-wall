@@ -1,3 +1,4 @@
+import { LivingSky } from "./LivingSky";
 import { chosenToday, orderedToday } from "./dailyPlanning";
 import { usePaceData } from "./usePaceData";
 import { ProjectPacePanel, PaceSummary } from "./ProjectPacePanel";
@@ -844,7 +845,8 @@ function App() {
             );
     }, []);
     const [deleted, setDeleted] = useState<Deleted | null>(null);
-    const { theme, mode, identity, setMode, setIdentity } = useTheme();
+    const { theme, mode, identity, setMode, setIdentity, skyBlur, setSkyBlur } =
+        useTheme();
     const [appearanceOpen, setAppearanceOpen] = useState(false);
     const [context, setContext] = useState<{
         kind: EntityKind;
@@ -1382,9 +1384,10 @@ function App() {
     );
     return (
         <div
-            className="app-shell"
+            className={"app-shell" + (page === "home" ? " living-home" : "")}
             onFocusCapture={(event) => trackCompletionFocus(event.target)}
         >
+            {page === "home" && <LivingSky blur={skyBlur} />}
             <aside className="sidebar">
                 <a className="brand" href="#home">
                     <span className="brand-mark">
@@ -3093,6 +3096,34 @@ function App() {
                             <option value="system">اتباع النظام</option>
                         </select>
                     </label>
+                    <div className="sky-blur-setting">
+                        <div className="sky-blur-heading">
+                            <label htmlFor="sky-blur">ضبابية الخلفية</label>
+                            <span className="sky-blur-value" aria-hidden="true">
+                                {skyBlur}
+                            </span>
+                        </div>
+                        <input
+                            id="sky-blur"
+                            type="range"
+                            min="0"
+                            max="30"
+                            step="1"
+                            value={skyBlur}
+                            aria-valuetext={`${skyBlur} من 30`}
+                            aria-describedby="sky-blur-hint"
+                            onChange={(event) =>
+                                setSkyBlur(event.target.valueAsNumber)
+                            }
+                        />
+                        <div className="sky-blur-ends" aria-hidden="true">
+                            <span>واضحة</span>
+                            <span>ضبابية عالية</span>
+                        </div>
+                        <p className="muted small" id="sky-blur-hint">
+                            لسماء الرئيسية فقط؛ تبقى البطاقات والنصوص واضحة.
+                        </p>
+                    </div>
                     <p className="muted small">يُحفظ اختيارك على هذا الجهاز.</p>
                     <button
                         className="btn primary"

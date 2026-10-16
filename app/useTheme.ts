@@ -1,3 +1,4 @@
+import { SKY_BLUR_KEY, normalizeSkyBlur } from "./skySettings";
 import { useEffect, useLayoutEffect, useState } from "react";
 export type ThemeMode = "light" | "dark" | "system";
 export type Identity = "green" | "mono";
@@ -16,6 +17,16 @@ export function useTheme() {
     const [identity, setIdentity] = useState<Identity>(() =>
         stored("masar-identity") === "mono" ? "mono" : "green",
     );
+    const [skyBlur, setSkyBlur] = useState(() =>
+        normalizeSkyBlur(stored(SKY_BLUR_KEY)),
+    );
+    useLayoutEffect(() => {
+        try {
+            localStorage.setItem(SKY_BLUR_KEY, String(skyBlur));
+        } catch {
+            /* Appearance remains usable when storage is unavailable. */
+        }
+    }, [skyBlur]);
     const [systemDark, setSystemDark] = useState(
         () => matchMedia("(prefers-color-scheme: dark)").matches,
     );
@@ -48,5 +59,13 @@ export function useTheme() {
             /* The current appearance still works when storage is unavailable. */
         }
     }, [theme, mode, identity]);
-    return { theme, mode, identity, setMode, setIdentity };
+    return {
+        theme,
+        mode,
+        identity,
+        setMode,
+        setIdentity,
+        skyBlur,
+        setSkyBlur: (value: number) => setSkyBlur(normalizeSkyBlur(value)),
+    };
 }

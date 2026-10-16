@@ -1,0 +1,66 @@
+{
+  "head_unchanged": "a7d2e71bdf0955b3b341d9685ea83e3d93c0ef32",
+  "published": false,
+  "pushed": false,
+  "unit": {
+    "numTotalTests": 360,
+    "numPassedTests": 360,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "browser": {
+    "startTime": "2026-10-16T06:14:03.889Z",
+    "duration": 527232.8659999999,
+    "expected": 183,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "browser_exit": {
+    "started_at": "2026-10-16T06:14:03.241391+00:00",
+    "finished_at": "2026-10-16T06:22:51.156532+00:00",
+    "exit_code": 0
+  },
+  "new_browser_tests": 5,
+  "contrast": {
+    "cases": 192,
+    "text_runs": 2592,
+    "failed": 0
+  },
+  "axe_runs": 11,
+  "axe_violations": 0,
+  "pwa_groups": 11,
+  "physical_android_tested": false,
+  "rim_pixels": {
+    "edge_changed_pixels": 3059,
+    "center_changed_pixels": 0,
+    "maximum_channel_difference": 165,
+    "width": 354,
+    "height": 227
+  },
+  "geometry_identical_in_6_scenarios": true,
+  "original_living_sky_evidence_restored": true,
+  "new_sky_evidence_files": 44,
+  "source_sha256": {
+    "app/GlassOptics.tsx": "3cde0e40aee115ea5b1c3ed47dc462c5dea32efa9bf2b580c1028ff472db030b",
+    "app/LivingSky.tsx": "0d8c2eee6db55e356b5e32bca495d5c0bcefb6ae642a002bb24cf234c3c9efd8",
+    "app/livingSky.css": "0c244a7a8ea4be798627192c3044f1f75fef53da24a864d8866fe546bcc87c67",
+    "tests/browser/living-glass.spec.ts": "8553367b12051416780149a002f0f089305b273e95b7636ebf86f500d44c7611"
+  },
+  "comparison_screenshots_sha256": {
+    "after-sunset-light-390.png": "24ce7bc432d7cdc6247d9ed959f692e93b31bd2ecd2f32e9618972209cf2a7cb",
+    "fallback-css-dark-390.png": "48a63c661dc7d70cdef8efc3c767b6814f803e92781d25244c9317a7ef35f395",
+    "after-day-light-390.png": "4d1a74d52416d1a7122f4ce6e2677f4362b01c4d17e70ca53399cc19d92f5403",
+    "after-night-light-390.png": "021c6d1299e951687758e6611aa814faf88a82ea5a16db4877996c95d1afbeaf",
+    "before-night-dark-390.png": "213c66e23f747060d7c12d8a94dedb17fc4b9f79913b690cd916f78d1ddd98d4",
+    "before-day-light-390.png": "4977544a29cdf99300d76931480ced18154f966f7801e10c21505d77863b0324",
+    "before-night-light-390.png": "f950f24ef5561cfefd742cffc003cf61cbd8b4cd98222a8735e1375b83f425b0",
+    "after-sunset-dark-390.png": "0aac28c4fb3bb8e6023e60af7624f0f86245cda401bcaa744ead61e2152a44a7",
+    "before-sunset-light-390.png": "74a50d71e2508ad79e7b75015a15f64f684cdd1f6564c9a0bf1f75141e6c2994",
+    "after-day-dark-390.png": "e1743df4e0f1d67a2764eeeff2b724ca5d9fee793597a1dc254913528e63ff61",
+    "before-sunset-dark-390.png": "cebd776643f366d8e1432832ac8b0930f060fa082449ec2e5a588a7e60ee9d16",
+    "after-night-dark-390.png": "1c3c5f2032ff1d6f4eb1f918196afe11e706a7ff7ab051e956b828def60c35a2",
+    "before-day-dark-390.png": "ba196235e4e8667baa3588cea633c92c01dd4544d941897cdf82b905f420cd91"
+  }
+}

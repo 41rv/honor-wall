@@ -1,0 +1,61 @@
+{
+  "conditions": {
+    "browser": "Chromium",
+    "viewport": [
+      390,
+      844
+    ],
+    "cpu_throttle": 4,
+    "scroll_wheel_events": 12,
+    "frame_intervals_per_run": 149,
+    "physical_android": false
+  },
+  "before": {
+    "cpu_throttle": 4,
+    "frames": 149,
+    "median_frame_ms": 16.699999999999818,
+    "p95_frame_ms": 16.799999999999955,
+    "frames_over_50ms": 0,
+    "main_thread_task_seconds": 0.170504,
+    "layout_seconds": 0,
+    "recalc_style_seconds": 0.012929,
+    "dialog_response_ms": [
+      108,
+      114,
+      88,
+      95,
+      100
+    ],
+    "hardware_android": false
+  },
+  "after": {
+    "cpu_throttle": 4,
+    "frames": 149,
+    "median_frame_ms": 16.699999999999818,
+    "p95_frame_ms": 16.700000000000273,
+    "frames_over_50ms": 0,
+    "main_thread_task_seconds": 0.251432,
+    "layout_seconds": 0,
+    "recalc_style_seconds": 0.010218,
+    "dialog_response_ms": [
+      110,
+      84,
+      107,
+      96,
+      104
+    ],
+    "hardware_android": false
+  },
+  "summary": {
+    "median_frame_ms_before": 16.7,
+    "median_frame_ms_after": 16.7,
+    "p95_frame_ms_before": 16.8,
+    "p95_frame_ms_after": 16.7,
+    "frames_over_50ms_before": 0,
+    "frames_over_50ms_after": 0,
+    "dialog_mean_ms_before": 101,
+    "dialog_mean_ms_after": 100.2,
+    "main_thread_task_increase_ms": 80.928
+  },
+  "interpretation": "Stable frame intervals and no observed long frames in this sample; extra main-thread task time is reported explicitly. This does not establish physical Android GPU/battery performance."
+}

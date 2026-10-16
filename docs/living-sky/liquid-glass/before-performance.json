@@ -1,0 +1,18 @@
+{
+  "cpu_throttle": 4,
+  "frames": 149,
+  "median_frame_ms": 16.699999999999818,
+  "p95_frame_ms": 16.799999999999955,
+  "frames_over_50ms": 0,
+  "main_thread_task_seconds": 0.170504,
+  "layout_seconds": 0,
+  "recalc_style_seconds": 0.012929,
+  "dialog_response_ms": [
+    108,
+    114,
+    88,
+    95,
+    100
+  ],
+  "hardware_android": false
+}

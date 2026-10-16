@@ -1,0 +1,326 @@
+/* Living Sky: a decorative canvas, isolated from layout, hit testing and data. */
+.living-home {
+    position: relative;
+    isolation: isolate;
+    --sky-glass: rgb(255 255 252 / 54%);
+    --sky-glass-edge: rgb(255 255 255 / 78%);
+    --sky-glass-line: rgb(255 255 255 / 34%);
+    --sky-glass-divider: rgb(120 148 141 / 28%);
+    --sky-glass-shadow: rgb(25 49 57 / 10%);
+    --sky-glass-glint: rgb(255 255 255 / 96%);
+    --sky-glass-shade: rgb(45 75 79 / 20%);
+    --sky-chrome: rgb(246 247 242 / 92%);
+    --muted: #415b50;
+}
+:root[data-theme="dark"] .living-home {
+    --sky-glass: rgb(17 31 34 / 62%);
+    --sky-glass-edge: rgb(222 239 241 / 24%);
+    --sky-glass-line: rgb(207 228 228 / 12%);
+    --sky-glass-divider: rgb(207 228 228 / 15%);
+    --sky-glass-shadow: rgb(2 9 17 / 22%);
+    --sky-glass-glint: rgb(220 241 249 / 62%);
+    --sky-glass-shade: rgb(2 10 19 / 38%);
+    --sky-chrome: rgb(16 27 23 / 94%);
+    --muted: #b2c3bc;
+}
+.living-sky {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+    contain: strict;
+    background: var(--sky-top);
+}
+.sky-scene {
+    position: absolute;
+    inset: -96px;
+    overflow: hidden;
+    filter: blur(var(--sky-blur, 12px));
+    background: linear-gradient(
+        175deg,
+        var(--sky-top),
+        var(--sky-middle) 48%,
+        var(--sky-horizon) 80%,
+        var(--sky-ground)
+    );
+}
+.sky-atmosphere {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            ellipse at 76% 36%,
+            rgb(255 249 225 / 16%),
+            transparent 54%
+        ),
+        radial-gradient(ellipse at 8% 80%, var(--sky-horizon), transparent 65%),
+        linear-gradient(
+            175deg,
+            var(--sky-top),
+            var(--sky-middle) 48%,
+            var(--sky-horizon) 80%,
+            var(--sky-ground)
+        );
+    transition: opacity 3s ease;
+}
+/* Overscan is three times maximum blur; orbit coordinates use the visible
+   content viewport, so changing blur never moves the sun or moon. */
+.sky-orbit {
+    position: absolute;
+    inset: 96px;
+    right: calc(96px + 238px);
+}
+@media (max-width: 1100px) {
+    .sky-orbit {
+        right: calc(96px + 200px);
+    }
+}
+@media (max-width: 760px) {
+    .sky-orbit {
+        right: 96px;
+    }
+}
+:root[data-identity="mono"] .living-home {
+    --muted: #4d5452;
+}
+:root[data-identity="mono"][data-theme="dark"] .living-home {
+    --muted: #bbc2c0;
+}
+:root[data-theme="dark"] .sky-sun {
+    filter: brightness(0.72);
+}
+.sky-sun,
+.sky-moon {
+    position: absolute;
+    width: clamp(52px, 7vw, 88px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition:
+        left 3s ease,
+        top 3s ease,
+        opacity 3s ease;
+}
+.sky-sun {
+    background: radial-gradient(
+        circle at 40% 35%,
+        #fffbee,
+        #ffe4b2 64%,
+        rgb(255 221 159 / 82%)
+    );
+    box-shadow: 0 0 42px 16px rgb(255 228 177 / 21%);
+}
+.sky-moon {
+    width: clamp(52px, 5vw, 68px);
+    background: radial-gradient(
+        circle at 68% 30%,
+        transparent 0 42%,
+        #e7eff0 44% 73%,
+        rgb(220 235 241 / 55%) 76%
+    );
+    filter: drop-shadow(0 0 16px rgb(208 228 248 / 20%));
+}
+.sky-stars {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 17% 16%, #e8edf6 0 1px, transparent 1.8px),
+        radial-gradient(circle at 37% 9%, #e8edf6 0 0.7px, transparent 1.6px),
+        radial-gradient(circle at 63% 23%, #e8edf6 0 0.8px, transparent 1.6px),
+        radial-gradient(circle at 81% 13%, #e8edf6 0 1px, transparent 1.8px),
+        radial-gradient(circle at 91% 33%, #e8edf6 0 0.7px, transparent 1.5px),
+        radial-gradient(circle at 9% 39%, #e8edf6 0 0.6px, transparent 1.4px),
+        radial-gradient(circle at 48% 34%, #e8edf6 0 0.8px, transparent 1.6px),
+        radial-gradient(circle at 73% 43%, #e8edf6 0 0.6px, transparent 1.4px);
+    transition: opacity 3s ease;
+}
+/* Theme controls readability; civil time never changes the user's theme. */
+.sky-legibility {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgb(246 247 242 / calc(0.8 - var(--sky-light) * 0.35)),
+        rgb(246 247 242 / calc(0.76 - var(--sky-light) * 0.26)) 55%,
+        var(--bg) 100%
+    );
+}
+:root[data-theme="dark"] .sky-legibility {
+    background: linear-gradient(
+        180deg,
+        rgb(8 18 24 / calc(0.4 + var(--sky-light) * 0.3)),
+        rgb(8 18 24 / calc(0.55 + var(--sky-light) * 0.18)) 58%,
+        var(--bg) 100%
+    );
+}
+.living-home :is(.sky-glass, .home-project, .recommendation-card) {
+    position: relative;
+    isolation: isolate;
+    background: var(--sky-glass);
+    border: 1px solid var(--sky-glass-line);
+    border-top-color: var(--sky-glass-edge);
+    border-radius: 18px;
+    box-shadow:
+        inset 0 1px 1px rgb(255 255 255 / 12%),
+        inset 0 -1px 1px var(--sky-glass-shade),
+        0 2px 4px var(--sky-glass-shadow),
+        0 10px 24px var(--sky-glass-shadow);
+}
+.sky-glass-optics {
+    position: absolute;
+    pointer-events: none;
+}
+/* Bevels are masked rings. They never cover or filter the card's contents.
+   A small CSS optical rim is the baseline; SVG displacement is progressive. */
+@supports ((mask-composite: exclude) or (-webkit-mask-composite: xor)) {
+    .living-home :is(.sky-glass, .home-project, .recommendation-card)::before,
+    .living-home :is(.sky-glass, .home-project, .recommendation-card)::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+    }
+    .living-home :is(.sky-glass, .home-project, .recommendation-card)::before {
+        z-index: -1;
+        padding: 5px;
+        background: linear-gradient(
+            145deg,
+            rgb(255 255 255 / 14%),
+            transparent 30% 65%,
+            rgb(203 231 242 / 10%)
+        );
+        -webkit-backdrop-filter: blur(0.5px) saturate(1.12);
+        backdrop-filter: blur(0.5px) saturate(1.12);
+    }
+    .living-home :is(.sky-glass, .home-project, .recommendation-card)::after {
+        z-index: 1;
+        padding: 1px;
+        background:
+            radial-gradient(
+                ellipse at 3% 0%,
+                var(--sky-glass-glint),
+                transparent 48%
+            ),
+            radial-gradient(
+                ellipse at 98% 100%,
+                var(--sky-glass-edge),
+                transparent 46%
+            ),
+            linear-gradient(
+                132deg,
+                var(--sky-glass-edge),
+                transparent 28% 43%,
+                var(--sky-glass-shade) 60%,
+                transparent 76%,
+                var(--sky-glass-edge)
+            );
+    }
+}
+@supports (backdrop-filter: url("#masar-glass-rim")) and
+    (mask-composite: exclude) {
+    .living-home :is(.sky-glass, .home-project, .recommendation-card)::before {
+        backdrop-filter: url("#masar-glass-rim") saturate(1.12);
+    }
+}
+/* Expanded Today can be thousands of pixels tall. Keep the painted bevel,
+   without allocating another full-list backdrop/displacement surface. */
+.living-home .today-ordered::before {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+@supports (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+    .living-home :is(.sky-glass, .home-project, .recommendation-card) {
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
+    }
+}
+@supports not (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+    .living-home :is(.sky-glass, .home-project, .recommendation-card) {
+        background: var(--surface);
+    }
+    .living-home :is(.sky-glass, .home-project, .recommendation-card)::before {
+        content: none;
+    }
+}
+.living-home .topbar {
+    background: var(--sky-chrome);
+}
+.living-home :is(.home-today, .home-execution) > .compact-empty,
+.living-home .today-ordered > .compact-empty {
+    padding: 16px 18px;
+}
+.living-home .home-today .task-row {
+    border-color: var(--sky-glass-divider);
+}
+.living-home .home-today .count {
+    background: var(--soft);
+}
+.sky-blur-setting {
+    margin: 20px 0 14px;
+}
+.sky-blur-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-weight: 700;
+}
+.sky-blur-value {
+    font-variant-numeric: tabular-nums;
+    min-width: 32px;
+    text-align: center;
+    padding: 4px 8px;
+    background: var(--soft);
+    border-radius: 8px;
+    color: var(--primary);
+}
+.sky-blur-setting input[type="range"] {
+    width: 100%;
+    min-height: 44px;
+    margin: 8px 0 0;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+.sky-blur-ends {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .living-sky :is(.sky-atmosphere, .sky-sun, .sky-moon, .sky-stars) {
+        transition: none;
+    }
+}
+@media (forced-colors: active) {
+    .living-sky {
+        display: none;
+    }
+    .living-home :is(.sky-glass, .home-project, .recommendation-card) {
+        background: Canvas;
+        border-color: CanvasText;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+    .living-home :is(.sky-glass, .home-project, .recommendation-card)::before,
+    .living-home :is(.sky-glass, .home-project, .recommendation-card)::after {
+        content: none;
+    }
+}
