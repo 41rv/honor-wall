@@ -1,0 +1,41 @@
+
+> masar-personal@1.4.3 build
+> tsc -b && vite build --outDir /tmp/masar-release-143-production --emptyOutDir
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 1977 modules transformed.
+rendering chunks...
+computing gzip size...
+../../tmp/masar-release-143-production/manifest.webmanifest                               0.60 kB
+../../tmp/masar-release-143-production/index.html                                         2.77 kB │ gzip:   0.99 kB
+../../tmp/masar-release-143-production/assets/tajawal-arabic-400-normal-CyCXRvzh.woff2    8.93 kB
+../../tmp/masar-release-143-production/assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2    8.94 kB
+../../tmp/masar-release-143-production/assets/tajawal-arabic-700-normal-D2-eand5.woff2    9.02 kB
+../../tmp/masar-release-143-production/assets/tajawal-arabic-500-normal-CbVEaYEW.woff    11.88 kB
+../../tmp/masar-release-143-production/assets/tajawal-arabic-400-normal-DCQxawbB.woff    12.01 kB
+../../tmp/masar-release-143-production/assets/tajawal-arabic-700-normal-9L7Zusdl.woff    12.16 kB
+../../tmp/masar-release-143-production/assets/index-BfhApSv6.css                         74.90 kB │ gzip:  15.03 kB
+../../tmp/masar-release-143-production/assets/rolldown-runtime-CbXtAM7H.js                0.58 kB │ gzip:   0.36 kB
+../../tmp/masar-release-143-production/assets/workbox-window.prod.es5-Bd17z0YL.js         5.65 kB │ gzip:   2.20 kB
+../../tmp/masar-release-143-production/assets/calendar-Dneqhncv.js                      159.08 kB │ gzip:  45.70 kB
+../../tmp/masar-release-143-production/assets/index-DBl7oqy4.js                         548.60 kB │ gzip: 168.75 kB
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 619ms
+
+PWA v2.0.0
+mode      generateSW
+precache  19 entries (837.86 KiB)
+files generated
+  ../../tmp/masar-release-143-production/sw.js
+  ../../tmp/masar-release-143-production/workbox-9c191d2f.js
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

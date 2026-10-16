@@ -1,3 +1,4 @@
+import { GlassChoices } from "./GlassChoices";
 import { LivingSky } from "./LivingSky";
 import { useRouteMotion } from "./useRouteMotion";
 import { chosenToday, orderedToday } from "./dailyPlanning";
@@ -1740,7 +1741,7 @@ function App() {
                                             go("project/" + projectId);
                                         }}
                                     />
-                                    <div
+                                    <GlassChoices
                                         className="tabs"
                                         role="group"
                                         aria-label="تصفية المشاريع"
@@ -1793,7 +1794,7 @@ function App() {
                                                 </span>
                                             </button>
                                         ))}
-                                    </div>
+                                    </GlassChoices>
                                     <ProjectCapacitySettings />
                                     <div className="project-grid">
                                         {data.projects
@@ -1885,7 +1886,7 @@ function App() {
                                                 غير المكتملة أولًا
                                             </span>
                                         </div>
-                                        <div
+                                        <GlassChoices
                                             className="tabs task-filters"
                                             role="group"
                                             aria-label="عرض المهام بحسب موعدها"
@@ -1916,7 +1917,7 @@ function App() {
                                                     {label}
                                                 </button>
                                             ))}
-                                        </div>
+                                        </GlassChoices>
                                     </div>
                                     <div className="surface task-list">
                                         {filteredTasks.length ? (
@@ -2006,7 +2007,7 @@ function App() {
                             )}
                             {page === "ideas" && (
                                 <>
-                                    <div className="tabs">
+                                    <GlassChoices className="tabs" aria-label="عرض الأفكار">
                                         <button
                                             className={
                                                 !ideaArchive ? "selected" : ""
@@ -2025,7 +2026,7 @@ function App() {
                                         >
                                             الأرشيف
                                         </button>
-                                    </div>
+                                    </GlassChoices>
                                     <details className="idea-capture-details">
                                         <summary>التقاط فكرة بسرعة</summary>
                                         <QuickIdeaCapture
@@ -2326,7 +2327,7 @@ function App() {
                                                                 النهائية.
                                                             </p>
                                                         ) : (
-                                                            <div className="tabs">
+                                                            <GlassChoices className="tabs" aria-label="حالة الخطوة">
                                                                 {(
                                                                     [
                                                                         "todo",
@@ -2369,7 +2370,7 @@ function App() {
                                                                         </button>
                                                                     ),
                                                                 )}
-                                                            </div>
+                                                            </GlassChoices>
                                                         )}
                                                     </div>
                                                 )}

@@ -1,0 +1,549 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/internal-controls.spec.ts",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "internal-controls.spec.ts",
+      "file": "internal-controls.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "visual inventory 320 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12151,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:54:21.927Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-e4d65f4ca8f0aee39975",
+          "file": "internal-controls.spec.ts",
+          "line": 56,
+          "column": 9
+        },
+        {
+          "title": "visual inventory 320 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10353,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:54:34.436Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-402f04673938408b9ee0",
+          "file": "internal-controls.spec.ts",
+          "line": 56,
+          "column": 9
+        },
+        {
+          "title": "visual inventory 390 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10415,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:54:44.799Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-8925cb1559a2c61c7b2b",
+          "file": "internal-controls.spec.ts",
+          "line": 56,
+          "column": 9
+        },
+        {
+          "title": "visual inventory 390 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10680,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:54:55.222Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-eb22f830746f141d0407",
+          "file": "internal-controls.spec.ts",
+          "line": 56,
+          "column": 9
+        },
+        {
+          "title": "internal controls retain selection, keyboard semantics and task data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1165,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:55:05.910Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-c304fdb9c779519a3310",
+          "file": "internal-controls.spec.ts",
+          "line": 151,
+          "column": 1
+        },
+        {
+          "title": "shared indicator follows selection, wrapping and RTL scrolling 320",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3608,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m2\u001b[39m\nReceived:   \u001b[31m69.78125\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m2\u001b[39m\nReceived:   \u001b[31m69.78125\u001b[39m\n    at aligned (/workspace/honor-wall/tests/browser/internal-controls.spec.ts:46:49)\n    at /workspace/honor-wall/tests/browser/internal-controls.spec.ts:235:13",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/internal-controls.spec.ts",
+                      "column": 49,
+                      "line": 46
+                    },
+                    "snippet": "  44 |         expect(b).not.toBeNull();\n  45 |         for (const key of [\"x\", \"y\", \"width\", \"height\"] as const)\n> 46 |             expect(Math.abs(a![key] - b![key])).toBeLessThan(2);\n     |                                                 ^\n  47 |         await expect(selected).toHaveCSS(\n  48 |             \"background-color\",\n  49 |             \"rgba(0, 0, 0, 0)\","
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/internal-controls.spec.ts",
+                        "column": 49,
+                        "line": 46
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m2\u001b[39m\nReceived:   \u001b[31m69.78125\u001b[39m\n\n  44 |         expect(b).not.toBeNull();\n  45 |         for (const key of [\"x\", \"y\", \"width\", \"height\"] as const)\n> 46 |             expect(Math.abs(a![key] - b![key])).toBeLessThan(2);\n     |                                                 ^\n  47 |         await expect(selected).toHaveCSS(\n  48 |             \"background-color\",\n  49 |             \"rgba(0, 0, 0, 0)\",\n    at aligned (/workspace/honor-wall/tests/browser/internal-controls.spec.ts:46:49)\n    at /workspace/honor-wall/tests/browser/internal-controls.spec.ts:235:13"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:55:07.086Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/internal-controls-shared-i-870f5-pping-and-RTL-scrolling-320/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/internal-controls.spec.ts",
+                    "column": 49,
+                    "line": 46
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-8efc55826fbf3d636e69",
+          "file": "internal-controls.spec.ts",
+          "line": 203,
+          "column": 5
+        },
+        {
+          "title": "shared indicator follows selection, wrapping and RTL scrolling 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3941,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:55:11.244Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-e6c6f57b21317ca2bb92",
+          "file": "internal-controls.spec.ts",
+          "line": 203,
+          "column": 5
+        },
+        {
+          "title": "shared indicator follows selection, wrapping and RTL scrolling 768",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3338,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m2\u001b[39m\nReceived:   \u001b[31m204.109375\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m2\u001b[39m\nReceived:   \u001b[31m204.109375\u001b[39m\n    at aligned (/workspace/honor-wall/tests/browser/internal-controls.spec.ts:46:49)\n    at /workspace/honor-wall/tests/browser/internal-controls.spec.ts:235:13",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/internal-controls.spec.ts",
+                      "column": 49,
+                      "line": 46
+                    },
+                    "snippet": "  44 |         expect(b).not.toBeNull();\n  45 |         for (const key of [\"x\", \"y\", \"width\", \"height\"] as const)\n> 46 |             expect(Math.abs(a![key] - b![key])).toBeLessThan(2);\n     |                                                 ^\n  47 |         await expect(selected).toHaveCSS(\n  48 |             \"background-color\",\n  49 |             \"rgba(0, 0, 0, 0)\","
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/internal-controls.spec.ts",
+                        "column": 49,
+                        "line": 46
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m2\u001b[39m\nReceived:   \u001b[31m204.109375\u001b[39m\n\n  44 |         expect(b).not.toBeNull();\n  45 |         for (const key of [\"x\", \"y\", \"width\", \"height\"] as const)\n> 46 |             expect(Math.abs(a![key] - b![key])).toBeLessThan(2);\n     |                                                 ^\n  47 |         await expect(selected).toHaveCSS(\n  48 |             \"background-color\",\n  49 |             \"rgba(0, 0, 0, 0)\",\n    at aligned (/workspace/honor-wall/tests/browser/internal-controls.spec.ts:46:49)\n    at /workspace/honor-wall/tests/browser/internal-controls.spec.ts:235:13"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:55:15.420Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/internal-controls-shared-i-6dbd6-pping-and-RTL-scrolling-768/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/internal-controls.spec.ts",
+                    "column": 49,
+                    "line": 46
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-1a38205a46bc2028367d",
+          "file": "internal-controls.spec.ts",
+          "line": 203,
+          "column": 5
+        },
+        {
+          "title": "shared indicator follows selection, wrapping and RTL scrolling 1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3694,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:55:19.231Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-cb3317abe4f8d662b79a",
+          "file": "internal-controls.spec.ts",
+          "line": 203,
+          "column": 5
+        },
+        {
+          "title": "rapid filters keep a single selected option without editing records or leaking observers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3097,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:55:23.138Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-96176efe7ffbdf2c9e29",
+          "file": "internal-controls.spec.ts",
+          "line": 239,
+          "column": 1
+        },
+        {
+          "title": "reduced motion and forced colors retain readable selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1194,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:55:26.251Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-1b5c66e02c8983909f24",
+          "file": "internal-controls.spec.ts",
+          "line": 292,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T17:54:20.287Z",
+    "duration": 67302.467,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

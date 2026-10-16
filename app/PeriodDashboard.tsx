@@ -1,3 +1,4 @@
+import { GlassChoices } from "./GlassChoices";
 import { useState, useMemo, useEffect, type ReactNode } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./db";
@@ -173,7 +174,7 @@ export function PeriodDashboard({
     });
     return (
         <section className="period-dashboard" aria-label="إحصائيات الفترة">
-            <div
+            <GlassChoices
                 className="progress-tabs tabs"
                 role="tablist"
                 aria-label="أقسام التقدم"
@@ -217,10 +218,10 @@ export function PeriodDashboard({
                         {label}
                     </button>
                 ))}
-            </div>
+            </GlassChoices>
             <div className="section-heading">
                 <h2 className="small muted">الفترة</h2>
-                <div className="tabs" role="group" aria-label="نطاق الإحصائيات">
+                <GlassChoices className="tabs" role="group" aria-label="نطاق الإحصائيات">
                     {(
                         [
                             ["week", "أسبوعي"],
@@ -237,7 +238,7 @@ export function PeriodDashboard({
                             {label}
                         </button>
                     ))}
-                </div>
+                </GlassChoices>
             </div>
             <p className="muted small">
                 {format.format(new Date(windows.current.start))} —{" "}

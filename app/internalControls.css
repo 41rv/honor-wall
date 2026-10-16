@@ -1,0 +1,253 @@
+/* Shared optical material for INTERNAL controls. No SVG displacement or
+   per-row backdrop surfaces; navigation/FAB/sky remain in controls.css. */
+:root {
+    --control-base: rgb(249 253 249 / 68%);
+    --control-selected: rgb(221 240 229 / 80%);
+    --control-hover: rgb(229 242 232 / 82%);
+    --control-line: rgb(54 91 78 / 23%);
+    --control-edge: rgb(255 255 255 / 90%);
+    --control-shade: rgb(26 63 50 / 10%);
+    --control-ink: #244d3e;
+    --control-menu: rgb(248 251 246 / 94%);
+}
+:root[data-theme="dark"] {
+    --control-base: rgb(31 52 48 / 65%);
+    --control-selected: rgb(64 100 83 / 76%);
+    --control-hover: rgb(60 85 73 / 78%);
+    --control-line: rgb(190 220 207 / 27%);
+    --control-edge: rgb(221 242 233 / 27%);
+    --control-shade: rgb(1 15 12 / 22%);
+    --control-ink: #e4f2e9;
+    --control-menu: rgb(24 41 35 / 95%);
+}
+.glass-choices.tabs {
+    position: relative;
+    isolation: isolate;
+    max-width: 100%;
+    min-width: 0;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--control-line);
+    border-top-color: var(--control-edge);
+    border-radius: 14px;
+    background:
+        linear-gradient(165deg, rgb(255 255 255 / 10%), transparent 48%),
+        var(--control-base);
+    box-shadow:
+        inset 0 1px 0 var(--control-edge),
+        0 3px 10px var(--control-shade);
+}
+.glass-choices.tabs > button {
+    position: relative;
+    z-index: 1;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-weight: 500;
+    transition:
+        color 170ms ease,
+        background-color 170ms ease;
+}
+.glass-choices.tabs > button.selected {
+    color: var(--control-ink);
+    background: transparent;
+    border-color: transparent;
+    font-weight: 700;
+}
+.glass-choice-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+    border: 1px solid var(--control-line);
+    border-top-color: var(--control-edge);
+    border-radius: 10px;
+    background:
+        linear-gradient(160deg, rgb(255 255 255 / 22%), transparent 48%),
+        var(--control-selected);
+    box-shadow:
+        inset 0 1px 1px var(--control-edge),
+        inset 0 -1px 1px var(--control-shade),
+        0 2px 5px var(--control-shade);
+    transition: transform 190ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.glass-choices.tabs > button > span {
+    background: var(--control-base);
+    color: var(--text);
+}
+/* The only blur is on a small independent choice rail or action sheet.
+   Nested groups, long lists and inputs keep painted highlights instead. */
+@supports (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+    .living-app .glass-choices:not(.surface *) {
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+    }
+}
+:is(
+    .btn.secondary,
+    .quick-options > button,
+    .field select,
+    .history-filters select,
+    .weekdays > label,
+    .rest-weekdays > label
+) {
+    background:
+        linear-gradient(155deg, rgb(255 255 255 / 10%), transparent 55%),
+        var(--control-base);
+    color: var(--text);
+    border: 1px solid var(--control-line);
+    border-top-color: var(--control-edge);
+    box-shadow:
+        inset 0 1px 0 var(--control-edge),
+        0 2px 5px var(--control-shade);
+    transition:
+        background-color 170ms ease,
+        border-color 170ms ease,
+        box-shadow 170ms ease;
+}
+.btn.secondary {
+    white-space: normal;
+    text-align: center;
+}
+.field select,
+.history-filters select {
+    min-width: 0;
+    max-width: 100%;
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+select option,
+select optgroup {
+    background: var(--surface);
+    color: var(--text);
+}
+:is(.pace-option, .capacity-options, .pace-confirm) {
+    border-color: var(--control-line);
+    border-top-color: var(--control-edge);
+    background:
+        linear-gradient(160deg, rgb(255 255 255 / 7%), transparent 50%),
+        var(--control-base);
+    box-shadow: inset 0 1px 0 var(--control-edge);
+}
+/* Quiet icons keep their footprint. Completion/destructive buttons excluded. */
+:is(main, dialog) .icon-btn:not(:disabled):hover {
+    background: var(--control-hover);
+    box-shadow: inset 0 1px 0 var(--control-edge);
+}
+:is(.weekdays, .rest-weekdays) > label {
+    border-radius: 10px;
+    padding: 7px 10px;
+    min-height: 44px;
+    align-items: center;
+}
+:is(.weekdays, .rest-weekdays) > label:has(input:checked) {
+    background: var(--control-selected);
+    color: var(--control-ink);
+    border-color: var(--control-line);
+}
+:is(.weekdays, .rest-weekdays) input {
+    accent-color: var(--primary);
+}
+:is(.weekdays, .rest-weekdays) > label:has(input:focus-visible) {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+dialog:is(.context-sheet, .add-menu) {
+    background:
+        linear-gradient(155deg, rgb(255 255 255 / 8%), transparent 50%),
+        var(--control-menu);
+    border-color: var(--control-line);
+    border-top-color: var(--control-edge);
+    box-shadow:
+        inset 0 1px 1px var(--control-edge),
+        0 12px 36px var(--control-shade);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+/* Keep native disclosure/selection semantics, no expanding-height animation. */
+:is(
+        .pace-settings,
+        .cycle-history,
+        .progress-history,
+        .period-details,
+        .progress-legacy,
+        .idea-capture-details,
+        .completed-list
+    )
+    > summary {
+    border-radius: 10px;
+    background:
+        linear-gradient(165deg, rgb(255 255 255 / 8%), transparent 55%),
+        var(--control-base);
+    border: 1px solid var(--control-line);
+    box-shadow: inset 0 1px 0 var(--control-edge);
+    padding: 10px 12px;
+    color: var(--text);
+    transition:
+        background-color 170ms ease,
+        border-color 170ms ease;
+}
+:is(
+        .pace-settings,
+        .cycle-history,
+        .progress-history,
+        .period-details,
+        .progress-legacy,
+        .idea-capture-details,
+        .completed-list
+    )[open]
+    > summary {
+    border-color: var(--control-line);
+    background-color: var(--control-selected);
+}
+@media (hover: hover) {
+    :is(.btn.secondary, .quick-options > button, .glass-choices > button):not(
+            :disabled
+        ):hover {
+        background-color: var(--control-hover);
+    }
+}
+@supports not (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+    .glass-choices.tabs,
+    dialog:is(.context-sheet, .add-menu) {
+        background: var(--surface);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .glass-choices *,
+    .btn.secondary,
+    .quick-options > button,
+    .field select,
+    .history-filters select,
+    summary {
+        transition: none !important;
+    }
+}
+@media (forced-colors: active) {
+    .glass-choices.tabs,
+    .glass-choice-indicator,
+    .btn.secondary,
+    .quick-options > button,
+    .field select,
+    .history-filters select,
+    .weekdays > label,
+    .rest-weekdays > label {
+        background: Canvas;
+        color: ButtonText;
+        border-color: ButtonText;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+    .glass-choice-indicator {
+        border: 2px solid Highlight;
+    }
+    .glass-choices.tabs > button.selected {
+        color: Highlight;
+    }
+}

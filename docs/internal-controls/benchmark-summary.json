@@ -1,0 +1,35 @@
+{
+  "method": "Three independent contexts per version, alternating Before/After, CPU4x, 500 tasks and 500 steps; native browser clock/rAF; same local scene13:00 and data",
+  "before": {
+    "samples": 3,
+    "navigation_p95_median_ms": 579.1999999880791,
+    "navigation_p95_range_ms": [
+      512.4000000059605,
+      709.2000000178814
+    ],
+    "commit_p95_median_ms": 450,
+    "scroll_frame_p95_median_ms": 33.399999999999636,
+    "scroll_frames_over50": [
+      0,
+      0,
+      0
+    ],
+    "navigation_frame_p95_median_ms": 49.899999999999636
+  },
+  "after": {
+    "samples": 3,
+    "navigation_p95_median_ms": 556.8999999761581,
+    "navigation_p95_range_ms": [
+      536.5,
+      745
+    ],
+    "commit_p95_median_ms": 409.19999998807907,
+    "scroll_frame_p95_median_ms": 33.400000000001455,
+    "scroll_frames_over50": [
+      0,
+      0,
+      3
+    ],
+    "navigation_frame_p95_median_ms": 50
+  }
+}

@@ -1,0 +1,777 @@
+[
+  {
+    "file": "app/AchievementLog.tsx",
+    "line": 64,
+    "tag": "select"
+  },
+  {
+    "file": "app/AchievementLog.tsx",
+    "line": 74,
+    "tag": "select"
+  },
+  {
+    "file": "app/AchievementLog.tsx",
+    "line": 127,
+    "tag": "button"
+  },
+  {
+    "file": "app/ActionButton.tsx",
+    "line": 25,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 383,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 449,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 484,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 540,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 570,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 603,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 611,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 619,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 720,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 737,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 754,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 779,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1175,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1240,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1284,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1377,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1447,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1472,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1479,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1496,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1512,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1580,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1675,
+    "tag": "input"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1682,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1705,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1744,
+    "tag": "GlassChoices"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1755,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1889,
+    "tag": "GlassChoices"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1903,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 1966,
+    "tag": "summary"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2010,
+    "tag": "GlassChoices"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2011,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2021,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2031,
+    "tag": "summary"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2048,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2078,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2330,
+    "tag": "GlassChoices"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2341,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2402,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2425,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2449,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2473,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2493,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2615,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2632,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2701,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2738,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2778,
+    "tag": "input"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2818,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2840,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2863,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2913,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2969,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 2975,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3022,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3028,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3059,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3095,
+    "tag": "select"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3109,
+    "tag": "select"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3128,
+    "tag": "input"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3151,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3168,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3181,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3199,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3217,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3241,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3262,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3281,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3316,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3330,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3401,
+    "tag": "input"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3413,
+    "tag": "textarea"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3446,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3454,
+    "tag": "button"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3581,
+    "tag": "input"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3607,
+    "tag": "textarea"
+  },
+  {
+    "file": "app/App.tsx",
+    "line": 3624,
+    "tag": "button"
+  },
+  {
+    "file": "app/CompletionButton.tsx",
+    "line": 22,
+    "tag": "button"
+  },
+  {
+    "file": "app/Dialog.tsx",
+    "line": 212,
+    "tag": "button"
+  },
+  {
+    "file": "app/ErrorBoundary.tsx",
+    "line": 21,
+    "tag": "button"
+  },
+  {
+    "file": "app/ExecutionSummary.tsx",
+    "line": 33,
+    "tag": "button"
+  },
+  {
+    "file": "app/ExecutionSummary.tsx",
+    "line": 68,
+    "tag": "button"
+  },
+  {
+    "file": "app/HomeExecution.tsx",
+    "line": 105,
+    "tag": "button"
+  },
+  {
+    "file": "app/HomeExecution.tsx",
+    "line": 145,
+    "tag": "button"
+  },
+  {
+    "file": "app/HomeExecution.tsx",
+    "line": 166,
+    "tag": "button"
+  },
+  {
+    "file": "app/HomeExecution.tsx",
+    "line": 175,
+    "tag": "button"
+  },
+  {
+    "file": "app/MasarInsights.tsx",
+    "line": 318,
+    "tag": "select"
+  },
+  {
+    "file": "app/MasarInsights.tsx",
+    "line": 494,
+    "tag": "summary"
+  },
+  {
+    "file": "app/MasarInsights.tsx",
+    "line": 534,
+    "tag": "summary"
+  },
+  {
+    "file": "app/MasarInsights.tsx",
+    "line": 581,
+    "tag": "button"
+  },
+  {
+    "file": "app/PaceRecommendations.tsx",
+    "line": 81,
+    "tag": "button"
+  },
+  {
+    "file": "app/PaceRecommendations.tsx",
+    "line": 117,
+    "tag": "button"
+  },
+  {
+    "file": "app/PaceRecommendations.tsx",
+    "line": 127,
+    "tag": "button"
+  },
+  {
+    "file": "app/PaceRecommendations.tsx",
+    "line": 203,
+    "tag": "button"
+  },
+  {
+    "file": "app/PaceRecommendations.tsx",
+    "line": 210,
+    "tag": "button"
+  },
+  {
+    "file": "app/PeriodDashboard.tsx",
+    "line": 177,
+    "tag": "GlassChoices"
+  },
+  {
+    "file": "app/PeriodDashboard.tsx",
+    "line": 183,
+    "tag": "button"
+  },
+  {
+    "file": "app/PeriodDashboard.tsx",
+    "line": 224,
+    "tag": "GlassChoices"
+  },
+  {
+    "file": "app/PeriodDashboard.tsx",
+    "line": 232,
+    "tag": "button"
+  },
+  {
+    "file": "app/PeriodDashboard.tsx",
+    "line": 337,
+    "tag": "summary"
+  },
+  {
+    "file": "app/PeriodDashboard.tsx",
+    "line": 367,
+    "tag": "summary"
+  },
+  {
+    "file": "app/ProjectCapacity.tsx",
+    "line": 38,
+    "tag": "select"
+  },
+  {
+    "file": "app/ProjectCapacity.tsx",
+    "line": 65,
+    "tag": "input"
+  },
+  {
+    "file": "app/ProjectCapacity.tsx",
+    "line": 81,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectCapacity.tsx",
+    "line": 90,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectCapacity.tsx",
+    "line": 126,
+    "tag": "summary"
+  },
+  {
+    "file": "app/ProjectCapacity.tsx",
+    "line": 151,
+    "tag": "input"
+  },
+  {
+    "file": "app/ProjectCapacity.tsx",
+    "line": 159,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectImport.tsx",
+    "line": 70,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectImport.tsx",
+    "line": 81,
+    "tag": "input"
+  },
+  {
+    "file": "app/ProjectImport.tsx",
+    "line": 157,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectImport.tsx",
+    "line": 164,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectImport.tsx",
+    "line": 256,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectImport.tsx",
+    "line": 263,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectPacePanel.tsx",
+    "line": 158,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectPacePanel.tsx",
+    "line": 221,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectPacePanel.tsx",
+    "line": 243,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectPacePanel.tsx",
+    "line": 256,
+    "tag": "summary"
+  },
+  {
+    "file": "app/ProjectPacePanel.tsx",
+    "line": 306,
+    "tag": "select"
+  },
+  {
+    "file": "app/ProjectPacePanel.tsx",
+    "line": 327,
+    "tag": "input"
+  },
+  {
+    "file": "app/ProjectPacePanel.tsx",
+    "line": 353,
+    "tag": "select"
+  },
+  {
+    "file": "app/ProjectPacePanel.tsx",
+    "line": 378,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectPacePanel.tsx",
+    "line": 410,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectPacePanel.tsx",
+    "line": 461,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectPacePanel.tsx",
+    "line": 490,
+    "tag": "button"
+  },
+  {
+    "file": "app/ProjectRestSettings.tsx",
+    "line": 17,
+    "tag": "summary"
+  },
+  {
+    "file": "app/ProjectRestSettings.tsx",
+    "line": 45,
+    "tag": "input"
+  },
+  {
+    "file": "app/ProjectRestSettings.tsx",
+    "line": 74,
+    "tag": "button"
+  },
+  {
+    "file": "app/QuickIdeaCapture.tsx",
+    "line": 95,
+    "tag": "input"
+  },
+  {
+    "file": "app/QuickIdeaCapture.tsx",
+    "line": 106,
+    "tag": "button"
+  },
+  {
+    "file": "app/QuickIdeaCapture.tsx",
+    "line": 115,
+    "tag": "button"
+  },
+  {
+    "file": "app/QuickIdeaCapture.tsx",
+    "line": 126,
+    "tag": "textarea"
+  },
+  {
+    "file": "app/QuickIdeaCapture.tsx",
+    "line": 149,
+    "tag": "button"
+  },
+  {
+    "file": "app/TaskDetails.tsx",
+    "line": 53,
+    "tag": "button"
+  },
+  {
+    "file": "app/TaskDetails.tsx",
+    "line": 68,
+    "tag": "summary"
+  },
+  {
+    "file": "app/TaskDetails.tsx",
+    "line": 104,
+    "tag": "button"
+  },
+  {
+    "file": "app/TaskDetails.tsx",
+    "line": 152,
+    "tag": "button"
+  },
+  {
+    "file": "app/TaskDetails.tsx",
+    "line": 160,
+    "tag": "button"
+  },
+  {
+    "file": "app/TaskFields.tsx",
+    "line": 34,
+    "tag": "select"
+  },
+  {
+    "file": "app/TaskFields.tsx",
+    "line": 55,
+    "tag": "select"
+  },
+  {
+    "file": "app/TaskFields.tsx",
+    "line": 85,
+    "tag": "input"
+  },
+  {
+    "file": "app/TaskFields.tsx",
+    "line": 106,
+    "tag": "input"
+  },
+  {
+    "file": "app/TaskFields.tsx",
+    "line": 119,
+    "tag": "input"
+  },
+  {
+    "file": "app/TaskFields.tsx",
+    "line": 146,
+    "tag": "select"
+  },
+  {
+    "file": "app/TaskFields.tsx",
+    "line": 170,
+    "tag": "select"
+  },
+  {
+    "file": "app/TaskFields.tsx",
+    "line": 199,
+    "tag": "button"
+  },
+  {
+    "file": "app/TaskStatusControls.tsx",
+    "line": 23,
+    "tag": "GlassChoices"
+  },
+  {
+    "file": "app/TaskStatusControls.tsx",
+    "line": 25,
+    "tag": "button"
+  },
+  {
+    "file": "app/WeekCalendar.tsx",
+    "line": 111,
+    "tag": "button"
+  },
+  {
+    "file": "app/WeekCalendar.tsx",
+    "line": 117,
+    "tag": "button"
+  },
+  {
+    "file": "app/WeekCalendar.tsx",
+    "line": 120,
+    "tag": "button"
+  }
+]

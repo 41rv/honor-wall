@@ -1,3 +1,4 @@
+import { GlassChoices } from "./GlassChoices";
 import type { TaskView } from "./taskSchedule";
 import { useCompletion } from "./useCompletion";
 import { statusNames, type Status } from "./model";
@@ -19,7 +20,7 @@ export function TaskStatusControls({
             ),
     );
     return (
-        <div className="tabs">
+        <GlassChoices className="tabs" aria-label="حالة المهمة">
             {(["todo", "doing", "done"] as Status[]).map((status) => (
                 <button
                     key={status}
@@ -39,6 +40,6 @@ export function TaskStatusControls({
                     {statusNames[status]}
                 </button>
             ))}
-        </div>
+        </GlassChoices>
     );
 }
