@@ -308,6 +308,13 @@ try {
             for (const hash of ["home", "projects", "tasks", "ideas", "progress"]) {
                 await page.locator(`.navigation a[href="#${hash}"]`).click();
                 await expect(page.locator(`.navigation a[href="#${hash}"]`)).toHaveAttribute("aria-current", "page");
+                await expect(page.locator("main")).toHaveAttribute("data-route", hash);
+                await expect(page.locator(".nav-active-indicator")).toBeVisible();
+                await expect.poll(async () => {
+                    const marker = await page.locator(".nav-active-indicator").boundingBox();
+                    const selected = await page.locator(`.navigation a[href="#${hash}"]`).boundingBox();
+                    return Math.abs(marker.x + marker.width / 2 - selected.x - selected.width / 2);
+                }).toBeLessThan(2);
                 await expect(page.locator(".living-sky")).toHaveCount(1);
                 assert.equal(await page.evaluate(() => window.__releaseSky === document.querySelector(".living-sky")), true);
                 await expect(page.locator(".sky-scene")).toHaveCSS("filter", "blur(12px)");
