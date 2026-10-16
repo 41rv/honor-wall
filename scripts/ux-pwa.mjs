@@ -376,16 +376,21 @@ try {
             )
             .toBe(2);
         if (planningMode) {
-            await page.goto(baseURL + "#today");
-            await page
-                .getByText("اختيار مهام عامة لليوم", { exact: true })
-                .tap();
+            await page.goto(baseURL + "#tasks");
             await page
                 .getByRole("button", {
-                    name: "إضافة «مهمة تجريبية قبل التدقيق» إلى اليوم",
+                    name: "إجراءات المهمة «مهمة تجريبية قبل التدقيق»",
                     exact: true,
                 })
                 .tap();
+            await page
+                .getByRole("dialog")
+                .getByRole("button", {
+                    name: "إضافة إلى مهامي اليوم",
+                    exact: true,
+                })
+                .tap();
+            await page.goto(baseURL + "#today");
             await expect(
                 page.getByRole("region", { name: "اخترتها لليوم" }),
             ).toContainText("مهمة تجريبية قبل التدقيق");

@@ -1,0 +1,40 @@
+{
+  "release": "1.3.1",
+  "at": "2026-10-16T04:43:46.529Z",
+  "base": "http://127.0.0.1:4186/honor-wall/",
+  "checks": [
+    "upgrade_all_12_stores_exactly_preserved",
+    "no_database_version_change_60_to_60",
+    "manifest_identity_scope_start_url_unchanged",
+    "new_order_and_existing_cycle_completed_after_update",
+    "menu_selection_complete_undo_compact_expanded",
+    "recurring_undo_recomplete_same_cycle",
+    "backup_v4_restores_all_12_stores_json_values",
+    "cache_only_current_js_css",
+    "full_browser_close_restart_offline_all_12_stores_theme_and_new_menu"
+  ],
+  "checks_passed": 9,
+  "errors": [],
+  "old_deployment": "c102794ee1a26dc3c6f0fc94157df662a587ce10",
+  "database_before": 60,
+  "database_after": 60,
+  "stores_before_counts": {
+    "projects": 1,
+    "steps": 5,
+    "tasks": 4,
+    "ideas": 1,
+    "events": 4,
+    "taskCycles": 1,
+    "projectProgress": 1,
+    "projectTracking": 1,
+    "projectPlans": 1,
+    "stepWork": 1,
+    "recommendations": 0,
+    "paceSettings": 1
+  },
+  "backup_restored": true,
+  "full_offline_browser_restart": true,
+  "physical_android_tested": false,
+  "isolated_profile": true,
+  "personal_user_data_accessed": false
+}

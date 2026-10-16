@@ -42,10 +42,10 @@ test("الرئيسية: أول ثلاث مهام بالترتيب نفسه دو�
     await page
         .getByRole("button", { name: "إكمال أهم مهمة", exact: true })
         .click();
+    await home.getByRole("link", { name: "عرض الكل", exact: true }).click();
     await page
         .getByRole("button", { name: "إعادة فتح أهم مهمة", exact: true })
         .click();
-    await home.getByRole("link", { name: "عرض الكل", exact: true }).click();
     await expect(page).toHaveURL(/#today/);
     await expect(page.locator(".today-ordered .task-main strong")).toHaveText([
         "أهم مهمة",

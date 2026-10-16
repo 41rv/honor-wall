@@ -103,7 +103,8 @@ test("أزرار الإضافة والإلغاء والإغلاق والبحث �
     await page.locator(".brand").click();
     await expect(page).toHaveURL(/#home/);
     await page.getByRole("button", { name: "إخفاء الرسالة" }).click();
-    await expect(page.getByRole("status")).not.toBeVisible();
+    // The project-rest notice is also a status; only the dismissed toast should disappear.
+    await expect(page.locator('.toast[role="status"]')).not.toBeVisible();
 });
 test("كل أزرار المراحل والخطوات: إضافة وتفاصيل وترتيب وطي وحالات وحذف وتراجع", async ({
     page,

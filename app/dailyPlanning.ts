@@ -1,6 +1,5 @@
 import { Temporal } from "@js-temporal/polyfill";
 import {
-    currentCycle,
     firstCycleStart,
     makeCycle,
     localZone,
@@ -51,7 +50,20 @@ export function orderedToday(
             .flat()
             .map((task) => [task.id, task]),
     );
-    return sortTodayTasks([...unique.values()]).map((task) => ({
+    // Keep the established priority/deadline ordering for open work. Completed
+    // rows follow it, oldest completion first, with a stable identity tie-break.
+    const rows = [...unique.values()];
+    const pending = sortTodayTasks(
+        rows.filter((task) => task.status !== "done"),
+    );
+    const completed = rows
+        .filter((task) => task.status === "done")
+        .sort(
+            (a, b) =>
+                a.completedAt!.localeCompare(b.completedAt!) ||
+                a.id.localeCompare(b.id),
+        );
+    return [...pending, ...completed].map((task) => ({
         task,
         category: category.get(task.id)!,
     }));
@@ -96,18 +108,32 @@ export function todayGroups(
         "due" | "selected" | "available" | "overdue",
         TaskView[]
     > = { due: [], selected: [], available: [], overdue: [] };
-    for (const task of tasks) {
+    for (const row of tasks) {
+        const storedCycle = row._cycle;
+        const hasCurrentCycle =
+            storedCycle &&
+            storedCycle.revision === row.scheduleRevision &&
+            Date.parse(storedCycle.start) <= at.getTime() &&
+            Date.parse(storedCycle.end) > at.getTime();
+        const task =
+            recurring(row) && !hasCurrentCycle
+                ? projectTask(
+                      row,
+                      new Map(row._cycle ? [[row._cycle.id, row._cycle]] : []),
+                      at,
+                  )
+                : row;
+        // Completion belongs to the displayed cycle, not to the recurring
+        // definition. Never carry yesterday's completed cycle into today's list.
+        if (
+            task.status === "done" &&
+            (!task.completedAt || dateKey(task.completedAt, zone) !== day)
+        )
+            continue;
         if (!task.schedule) {
             if (chosenToday(task, at, zone)) groups.selected.push(task);
         } else if (recurring(task)) {
-            const stored = task._cycle;
-            const cycle =
-                stored &&
-                stored.revision === task.scheduleRevision &&
-                Date.parse(stored.start) <= at.getTime() &&
-                Date.parse(stored.end) > at.getTime()
-                    ? stored
-                    : currentCycle(task, at);
+            const cycle = task._cycle;
             if (cycle)
                 groups[
                     dateKey(cycle.scheduledAt, zone) === day

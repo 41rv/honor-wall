@@ -182,3 +182,21 @@ export function sizedFixture(count: number): Snapshot {
         events: [],
     };
 }
+
+export async function chooseTaskToday(
+    page: Page,
+    title: string,
+    selected = true,
+) {
+    await page
+        .getByRole("button", { name: `إجراءات المهمة «${title}»`, exact: true })
+        .click();
+    const dialog = page.getByRole("dialog");
+    await dialog
+        .getByRole("button", {
+            name: selected ? "إضافة إلى مهامي اليوم" : "إزالة من مهامي اليوم",
+            exact: true,
+        })
+        .click();
+    await expect(dialog).not.toBeVisible();
+}

@@ -3252,3 +3252,9 @@ dialog.add-menu {
     margin-block: 12px;
     color: var(--muted);
 }
+
+/* Today's completed work stays readable and can be reopened in the same list. */
+.home-today .task-completed .task-main strong {
+    color: var(--muted);
+    text-decoration: line-through;
+}

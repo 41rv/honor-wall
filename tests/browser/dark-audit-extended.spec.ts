@@ -388,6 +388,7 @@ test("الرئيسية تتحدث بعد تعديل الموعد والأولو�
     await home
         .getByRole("button", { name: "إكمال تعديل ينعكس فورًا", exact: true })
         .click();
+    await home.getByRole("link", { name: "عرض الكل", exact: true }).click();
     await home
         .getByRole("button", {
             name: "إعادة فتح تعديل ينعكس فورًا",
@@ -398,7 +399,6 @@ test("الرئيسية تتحدث بعد تعديل الموعد والأولو�
     expect(task.notes).toBe("ملاحظات لا تضيع عند الجدولة");
     expect(task.status).toBe("todo");
     expect(task.priority).toBe("important-urgent");
-    await home.getByRole("link", { name: "عرض الكل", exact: true }).click();
     await expect(page.locator(".today-ordered .task-row")).toHaveCount(5);
     await page.goto("/#calendar");
     const day = page.getByRole("region", { name: "2026-10-14", exact: true });

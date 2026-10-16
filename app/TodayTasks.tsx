@@ -1,8 +1,6 @@
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { TaskView } from "./taskSchedule";
-import { chosenToday, orderedToday } from "./dailyPlanning";
-import { selectTaskToday } from "./db";
-import { userError } from "./userError";
+import { orderedToday } from "./dailyPlanning";
 import { useWallClock } from "./useWallClock";
 
 export function PlanningLinks({ all = true }: { all?: boolean }) {
@@ -32,32 +30,14 @@ export function TodayTasks({
     const clock = useWallClock();
     const at = new Date(Math.max(clock, Date.now()));
     const ordered = orderedToday(tasks, at);
-    const [busy, setBusy] = useState("");
-    const [error, setError] = useState("");
-    async function select(task: TaskView, selected: boolean) {
-        if (busy) return;
-        setBusy(task.id);
-        setError("");
-        try {
-            await selectTaskToday(task.id, selected);
-        } catch (err) {
-            setError(userError(err));
-        } finally {
-            setBusy("");
-        }
-    }
     return (
         <section className="daily-planning" aria-label="قائمة مهامي اليوم">
             <PlanningLinks />
             <p className="muted">
                 اختياراتك العامة تخص هذا اليوم فقط؛ تبقى المهمة الأصلية بدون
-                موعد. الدورات المفتوحة تظل متاحة حتى الموعد التالي.
+                موعد. أضفها أو أزلها من قائمة ⋮ للمهمة. الدورات المفتوحة تظل
+                متاحة حتى الموعد التالي، وتبقى إنجازات اليوم أسفل القائمة.
             </p>
-            {error && (
-                <p role="alert" className="warning">
-                    {error}
-                </p>
-            )}
             <div className="surface task-list today-ordered">
                 {ordered.map(({ task, category: key }) => {
                     const title = {
@@ -76,58 +56,16 @@ export function TodayTasks({
                                 {title}
                             </span>
                             {renderTask(task)}
-                            {key === "selected" && (
-                                <button
-                                    className="text-btn daily-remove"
-                                    disabled={!!busy}
-                                    onClick={() => void select(task, false)}
-                                >
-                                    إزالة «{task.title}» من اليوم
-                                </button>
-                            )}
                         </section>
                     );
                 })}
                 {!ordered.length && (
                     <p className="compact-empty muted">
-                        لا توجد مهام لليوم. اختر مهمة عامة أدناه أو أضف مهمة من
-                        زر الإضافة.
+                        لا توجد مهام لليوم. من «كل المهام» افتح قائمة ⋮ للمهمة
+                        العامة واختر «إضافة إلى مهامي اليوم».
                     </p>
                 )}
             </div>
-            <details className="surface daily-picker">
-                <summary>اختيار مهام عامة لليوم</summary>
-                {tasks
-                    .filter(
-                        (t) =>
-                            !t.schedule &&
-                            t.status !== "done" &&
-                            !chosenToday(t, at),
-                    )
-                    .map((task) => (
-                        <div key={task.id} className="daily-choice">
-                            <span>{task.title}</span>
-                            <button
-                                className="btn secondary"
-                                disabled={!!busy}
-                                onClick={() => void select(task, true)}
-                            >
-                                إضافة «{task.title}» إلى اليوم
-                            </button>
-                        </div>
-                    ))}
-                {!tasks.some(
-                    (t) =>
-                        !t.schedule &&
-                        t.status !== "done" &&
-                        !chosenToday(t, at),
-                ) && (
-                    <p className="muted">
-                        لا توجد مهام عامة أخرى. يمكنك إنشاء مهمة من قائمة
-                        المهام.
-                    </p>
-                )}
-            </details>
         </section>
     );
 }

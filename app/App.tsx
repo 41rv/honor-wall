@@ -1,4 +1,4 @@
-import { orderedToday } from "./dailyPlanning";
+import { chosenToday, orderedToday } from "./dailyPlanning";
 import { usePaceData } from "./usePaceData";
 import { ProjectPacePanel, PaceSummary } from "./ProjectPacePanel";
 import { ProjectCapacitySettings, CapacityOptions } from "./ProjectCapacity";
@@ -88,6 +88,7 @@ import {
 } from "lucide-react";
 import {
     setCycleStatus,
+    selectTaskToday,
     snapshot,
     create,
     update,
@@ -692,7 +693,7 @@ const TaskRow = memo(function TaskRow({
     );
     return (
         <article
-            className={`task-row${compact ? " compact-task" : ""}`}
+            className={`task-row${compact ? " compact-task" : ""}${checked ? " task-completed" : ""}`}
             data-task-id={task.id}
             {...gestures}
         >
@@ -851,6 +852,13 @@ function App() {
         position?: { top: number; left: number };
         fromHold?: boolean;
     } | null>(null);
+    const contextTask =
+        context?.kind === "task"
+            ? data.tasks.find((task) => task.id === context.item.id)
+            : undefined;
+    const contextSelectedToday = contextTask
+        ? chosenToday(contextTask, new Date())
+        : false;
     const [editTarget, setEditTarget] = useState<string | null>(null);
     const [lastVisited, setLastVisited] = useState<string | null>(() => {
         try {
@@ -3115,6 +3123,24 @@ function App() {
                             <NotebookPen size={17} />
                             تعديل الاسم والملاحظات
                         </button>
+                        {contextTask && !contextTask.schedule && (
+                            <button
+                                className="btn secondary"
+                                onClick={() => {
+                                    setContext(null);
+                                    void run(() =>
+                                        selectTaskToday(
+                                            contextTask.id,
+                                            !contextSelectedToday,
+                                        ),
+                                    );
+                                }}
+                            >
+                                {contextSelectedToday
+                                    ? "إزالة من مهامي اليوم"
+                                    : "إضافة إلى مهامي اليوم"}
+                            </button>
+                        )}
                         {context.kind === "step" && (
                             <button
                                 className="btn secondary"

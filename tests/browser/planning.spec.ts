@@ -1,4 +1,4 @@
-import { openCreate } from "./helpers";
+import { openCreate, chooseTaskToday } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import { readStore } from "./helpers";
 import { readFileSync } from "node:fs";
@@ -33,17 +33,11 @@ test("مهامي اليوم: الاختيار والإزالة والإنجاز 
 }) => {
     await add(page, "عامة لليوم");
     await add(page, "موعد اليوم", true);
+    await chooseTaskToday(page, "عامة لليوم");
     await page.goto("/#today");
     await expect(
         page.getByRole("region", { name: "مستحقة اليوم" }),
     ).toContainText("موعد اليوم");
-    await page.getByText("اختيار مهام عامة لليوم", { exact: true }).click();
-    await page
-        .getByRole("button", {
-            name: "إضافة «عامة لليوم» إلى اليوم",
-            exact: true,
-        })
-        .click();
     await expect(
         page
             .getByRole("region", { name: "اخترتها لليوم" })
@@ -55,18 +49,10 @@ test("مهامي اليوم: الاختيار والإزالة والإنجاز 
     await page
         .getByRole("button", { name: "إعادة فتح عامة لليوم", exact: true })
         .click();
-    await page
-        .getByRole("button", {
-            name: "إزالة «عامة لليوم» من اليوم",
-            exact: true,
-        })
-        .click();
-    await page
-        .getByRole("button", {
-            name: "إضافة «عامة لليوم» إلى اليوم",
-            exact: true,
-        })
-        .click();
+    await chooseTaskToday(page, "عامة لليوم", false);
+    await page.goto("/#tasks");
+    await chooseTaskToday(page, "عامة لليوم");
+    await page.goto("/#today");
     await page.reload();
     await expect(
         page.getByRole("button", { name: "إكمال عامة لليوم", exact: true }),

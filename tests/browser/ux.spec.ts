@@ -1,11 +1,19 @@
 import { test, expect, type Page } from "@playwright/test";
 import { sizedFixture, importData, readStore } from "./helpers";
 
+const workday = "2026-10-21T09:00:00.000Z";
+test.use({ timezoneId: "UTC" });
+test.beforeEach(async ({ page }) => {
+    // These scenarios assert daily project suggestions; rest days have their own suite.
+    await page.clock.install({ time: new Date(workday) });
+});
+
 test("طلب إلغاء الإتمام يبقى بعد تحديث فوري مع تأخر إشعار معاملة التخزين", async ({
     page,
 }) => {
     await importData(page, fixture());
-    await page.goto("/#home");
+    // Keep the completed row available while exercising the delayed-write recovery.
+    await page.goto("/#today");
     await page.evaluate(() => {
         const descriptor = Object.getOwnPropertyDescriptor(
             IDBTransaction.prototype,
@@ -96,7 +104,7 @@ function fixture() {
     const data = sizedFixture(4);
     for (const task of data.tasks)
         task.today = {
-            date: new Date().toISOString().slice(0, 10),
+            date: workday.slice(0, 10),
             timeZone: "UTC",
         };
     data.steps.push({
@@ -215,7 +223,7 @@ for (const mobile of [false, true]) {
                     "aria-valuenow",
                     "50",
                 );
-                await page.goto("/#home");
+                await page.goto("/#today");
                 const tasks = page.getByRole("region", {
                     name: "مهامي اليوم",
                     exact: true,
@@ -316,11 +324,11 @@ test("إكمال آخر خطوة وحفظها ثم التراجع من السج�
     const data = sizedFixture(1);
     for (const t of data.tasks)
         t.today = {
-            date: new Date().toISOString().slice(0, 10),
+            date: workday.slice(0, 10),
             timeZone: "UTC",
         };
     await importData(page, data);
-    await page.goto("/#home");
+    await page.goto("/#today");
     const task = page.locator('[data-completion-key="task/t0"]');
     await task.focus();
     await task.press("Enter");
