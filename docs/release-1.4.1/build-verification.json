@@ -1,0 +1,33 @@
+{
+  "version": "1.4.1",
+  "production_base": "/honor-wall/",
+  "all_production_bytes_match_reviewed_candidate": true,
+  "files": {
+    "workbox-9c191d2f.js": "04b086f1b2f4215ee4b659a7bc9c76162894abdb43fa876247bc7c0bd6fd1c37",
+    "sw.js": "4493b9548ada647624b66e5a5415f77b79f8a407edda83794ac305b08f49ecba",
+    "manifest.webmanifest": "aea3006c3f486ea0bbc5074c318b4d1f6eaa86cad71c6c01f175de9ff7b7db85",
+    "index.html": "70bff99d66c1a1a4f72364951e777d2d1fd2fe732cdd100dd1e74b08e57b3e8f",
+    "icon.svg": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+    "icon-512.png": "bb74d2bddcac6d0d98d1320838ce808fe08133c8dafd529f9f541fec883b601e",
+    "icon-192.png": "3dad4c5dd200f0ac2d94145c9a53029e8b69a82147390283ebf45ef42ea3f9e7",
+    "assets/tajawal-arabic-700-normal-D2-eand5.woff2": "fa5e72326681abee3a4952be582e1c2c2abb27932ef262610c078ce89541f919",
+    "assets/tajawal-arabic-700-normal-9L7Zusdl.woff": "cd644505aa492ff2d5664dfa384ab52e0df757b7b927a7ab59b836c1713c077f",
+    "assets/tajawal-arabic-500-normal-CbVEaYEW.woff": "9f0beece3bd5a2bda53edfdb5f8c27f80bd9e2d65fb53eb2c7f8ca4b481d6f18",
+    "assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2": "4255019c1cd986f7cda7869df69baf72730d61304ae14baba4acfeb13085da54",
+    "assets/tajawal-arabic-400-normal-DCQxawbB.woff": "011a34e9bce80078231d12f8603721d0f99963b7104df560970fb754306ac359",
+    "assets/tajawal-arabic-400-normal-CyCXRvzh.woff2": "6c9081fd00db08800850fa7d214593aa94992be5159e97557aa60197252cb95a",
+    "assets/index-BdvJgnHa.css": "cd7682bc69ae816eb37dbd775e7944a8a70a88c2eab57535978d840aa56e57dc",
+    "assets/workbox-window.prod.es5-Bd17z0YL.js": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
+    "assets/rolldown-runtime-CbXtAM7H.js": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a",
+    "assets/calendar-Dneqhncv.js": "0c06ca30dfcb03b9f3721ca60fe0d25dd2ee43a31d7002438bcb74c3358d171b",
+    "assets/index-Dixaeakl.js": "00f60f8316763ddad8b4a1330ad8795a9b9cef6f546cbd35931a06f0b0812b1e",
+    "fonts/Tajawal-LICENSE.txt": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3"
+  },
+  "file_count": 19,
+  "unit_integration_passed": 360,
+  "unit_integration_failed": 0,
+  "typecheck_build": true,
+  "lint": true,
+  "database_schema_changed": false,
+  "manifest_changed": false
+}

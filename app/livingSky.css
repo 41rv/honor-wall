@@ -1,5 +1,5 @@
 /* Living Sky: a decorative canvas, isolated from layout, hit testing and data. */
-.living-home {
+.living-app {
     position: relative;
     isolation: isolate;
     --sky-glass: rgb(255 255 252 / 54%);
@@ -9,10 +9,12 @@
     --sky-glass-shadow: rgb(25 49 57 / 10%);
     --sky-glass-glint: rgb(255 255 255 / 96%);
     --sky-glass-shade: rgb(45 75 79 / 20%);
-    --sky-chrome: rgb(246 247 242 / 92%);
-    --muted: #415b50;
+    --sky-chrome: rgb(246 247 242 / 68%);
+    --sky-navigation: rgb(246 247 242 / 78%);
+    --sky-chrome-edge: rgb(255 255 255 / 38%);
+    --muted: #3c544b;
 }
-:root[data-theme="dark"] .living-home {
+:root[data-theme="dark"] .living-app {
     --sky-glass: rgb(17 31 34 / 62%);
     --sky-glass-edge: rgb(222 239 241 / 24%);
     --sky-glass-line: rgb(207 228 228 / 12%);
@@ -20,8 +22,10 @@
     --sky-glass-shadow: rgb(2 9 17 / 22%);
     --sky-glass-glint: rgb(220 241 249 / 62%);
     --sky-glass-shade: rgb(2 10 19 / 38%);
-    --sky-chrome: rgb(16 27 23 / 94%);
-    --muted: #b2c3bc;
+    --sky-chrome: rgb(16 27 23 / 68%);
+    --sky-navigation: rgb(16 27 23 / 74%);
+    --sky-chrome-edge: rgb(218 239 235 / 13%);
+    --muted: #c2d0c9;
 }
 .living-sky {
     position: fixed;
@@ -82,11 +86,11 @@
         right: 96px;
     }
 }
-:root[data-identity="mono"] .living-home {
-    --muted: #4d5452;
+:root[data-identity="mono"] .living-app {
+    --muted: #414846;
 }
-:root[data-identity="mono"][data-theme="dark"] .living-home {
-    --muted: #bbc2c0;
+:root[data-identity="mono"][data-theme="dark"] .living-app {
+    --muted: #cbd2cf;
 }
 :root[data-theme="dark"] .sky-sun {
     filter: brightness(0.72);
@@ -155,7 +159,16 @@
         var(--bg) 100%
     );
 }
-.living-home :is(.sky-glass, .home-project, .recommendation-card) {
+.living-app
+    :is(
+        .sky-glass,
+        .project-card,
+        .idea-card,
+        .stat-card,
+        .period-metric,
+        .surface,
+        .recommendation-card
+    ):not(:where(.surface, .project-card, .idea-card, .stat-card) *) {
     position: relative;
     isolation: isolate;
     background: var(--sky-glass);
@@ -175,8 +188,30 @@
 /* Bevels are masked rings. They never cover or filter the card's contents.
    A small CSS optical rim is the baseline; SVG displacement is progressive. */
 @supports ((mask-composite: exclude) or (-webkit-mask-composite: xor)) {
-    .living-home :is(.sky-glass, .home-project, .recommendation-card)::before,
-    .living-home :is(.sky-glass, .home-project, .recommendation-card)::after {
+    .living-app
+        :is(
+            .sky-glass,
+            .project-card,
+            .idea-card,
+            .stat-card,
+            .period-metric,
+            .surface,
+            .recommendation-card
+        ):not(
+            :where(.surface, .project-card, .idea-card, .stat-card) *
+        )::before,
+    .living-app
+        :is(
+            .sky-glass,
+            .project-card,
+            .idea-card,
+            .stat-card,
+            .period-metric,
+            .surface,
+            .recommendation-card
+        ):not(
+            :where(.surface, .project-card, .idea-card, .stat-card) *
+        )::after {
         content: "";
         position: absolute;
         inset: 0;
@@ -191,7 +226,18 @@
         -webkit-mask-composite: xor;
         mask-composite: exclude;
     }
-    .living-home :is(.sky-glass, .home-project, .recommendation-card)::before {
+    .living-app
+        :is(
+            .sky-glass,
+            .project-card,
+            .idea-card,
+            .stat-card,
+            .period-metric,
+            .surface,
+            .recommendation-card
+        ):not(
+            :where(.surface, .project-card, .idea-card, .stat-card) *
+        )::before {
         z-index: -1;
         padding: 5px;
         background: linear-gradient(
@@ -203,7 +249,18 @@
         -webkit-backdrop-filter: blur(0.5px) saturate(1.12);
         backdrop-filter: blur(0.5px) saturate(1.12);
     }
-    .living-home :is(.sky-glass, .home-project, .recommendation-card)::after {
+    .living-app
+        :is(
+            .sky-glass,
+            .project-card,
+            .idea-card,
+            .stat-card,
+            .period-metric,
+            .surface,
+            .recommendation-card
+        ):not(
+            :where(.surface, .project-card, .idea-card, .stat-card) *
+        )::after {
         z-index: 1;
         padding: 1px;
         background:
@@ -229,20 +286,46 @@
 }
 @supports (backdrop-filter: url("#masar-glass-rim")) and
     (mask-composite: exclude) {
-    .living-home :is(.sky-glass, .home-project, .recommendation-card)::before {
+    .living-app
+        :is(
+            .sky-glass,
+            .project-card,
+            .idea-card,
+            .stat-card,
+            .period-metric,
+            .surface,
+            .recommendation-card
+        ):not(
+            :where(.surface, .project-card, .idea-card, .stat-card) *
+        )::before {
         backdrop-filter: url("#masar-glass-rim") saturate(1.12);
     }
 }
+/* Full lists/panels use the painted material, not a viewport-sized SVG
+   lens. Small independent cards retain the shared refractive rim. */
+.living-app :is(.surface, .stat-card, .period-metric):not(.sky-glass)::before {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
 /* Expanded Today can be thousands of pixels tall. Keep the painted bevel,
    without allocating another full-list backdrop/displacement surface. */
-.living-home .today-ordered::before {
+.living-app .today-ordered::before {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
 }
 @supports (
     (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
 ) {
-    .living-home :is(.sky-glass, .home-project, .recommendation-card) {
+    .living-app
+        :is(
+            .sky-glass,
+            .project-card,
+            .idea-card,
+            .stat-card,
+            .period-metric,
+            .surface,
+            .recommendation-card
+        ):not(:where(.surface, .project-card, .idea-card, .stat-card) *) {
         -webkit-backdrop-filter: blur(2px);
         backdrop-filter: blur(2px);
     }
@@ -250,24 +333,103 @@
 @supports not (
     (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
 ) {
-    .living-home :is(.sky-glass, .home-project, .recommendation-card) {
+    .living-app
+        :is(
+            .sky-glass,
+            .project-card,
+            .idea-card,
+            .stat-card,
+            .period-metric,
+            .surface,
+            .recommendation-card
+        ):not(:where(.surface, .project-card, .idea-card, .stat-card) *) {
         background: var(--surface);
     }
-    .living-home :is(.sky-glass, .home-project, .recommendation-card)::before {
+    .living-app
+        :is(
+            .sky-glass,
+            .project-card,
+            .idea-card,
+            .stat-card,
+            .period-metric,
+            .surface,
+            .recommendation-card
+        ):not(
+            :where(.surface, .project-card, .idea-card, .stat-card) *
+        )::before {
         content: none;
     }
 }
-.living-home .topbar {
-    background: var(--sky-chrome);
+/* A long list must not allocate a full-height backdrop texture. */
+.living-app .surface:not(.sky-glass),
+.living-app .today-ordered {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
 }
-.living-home :is(.home-today, .home-execution) > .compact-empty,
-.living-home .today-ordered > .compact-empty {
+/* Masks also allocate offscreen surfaces. Long lists keep the glass tint,
+   fine border and inset highlight, without a full-height masked texture. */
+.living-app
+    :is(
+        .task-list:not(.sky-glass),
+        .today-ordered,
+        .completed-list,
+        .achievement-records,
+        .hierarchy,
+        .timeline,
+        .masar-insights
+    )::before,
+.living-app
+    :is(
+        .task-list:not(.sky-glass),
+        .today-ordered,
+        .completed-list,
+        .achievement-records,
+        .hierarchy,
+        .timeline,
+        .masar-insights
+    )::after {
+    content: none;
+}
+.living-app .topbar {
+    background: var(--sky-chrome);
+    border-color: var(--sky-chrome-edge);
+    padding-top: env(safe-area-inset-top, 0px);
+    height: calc(82px + env(safe-area-inset-top, 0px));
+}
+.living-app .sidebar {
+    background: var(--sky-navigation);
+    border-color: var(--sky-chrome-edge);
+    box-shadow: 0 -2px 16px rgb(10 35 34 / 4%);
+}
+@supports (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+    .living-app :is(.topbar, .sidebar) {
+        -webkit-backdrop-filter: blur(12px) saturate(1.05);
+        backdrop-filter: blur(12px) saturate(1.05);
+    }
+}
+@supports not (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+    .living-app :is(.topbar, .sidebar) {
+        background: var(--surface);
+    }
+}
+@media (max-width: 760px) {
+    .living-app .topbar {
+        height: calc(64px + env(safe-area-inset-top, 0px));
+    }
+}
+
+.living-app :is(.home-today, .home-execution) > .compact-empty,
+.living-app .today-ordered > .compact-empty {
     padding: 16px 18px;
 }
-.living-home .home-today .task-row {
+.living-app .home-today .task-row {
     border-color: var(--sky-glass-divider);
 }
-.living-home .home-today .count {
+.living-app .home-today .count {
     background: var(--soft);
 }
 .sky-blur-setting {
@@ -312,15 +474,46 @@
     .living-sky {
         display: none;
     }
-    .living-home :is(.sky-glass, .home-project, .recommendation-card) {
+    .living-app
+        :is(
+            .sky-glass,
+            .project-card,
+            .idea-card,
+            .stat-card,
+            .period-metric,
+            .surface,
+            .recommendation-card
+        ):not(:where(.surface, .project-card, .idea-card, .stat-card) *) {
         background: Canvas;
         border-color: CanvasText;
         box-shadow: none;
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
     }
-    .living-home :is(.sky-glass, .home-project, .recommendation-card)::before,
-    .living-home :is(.sky-glass, .home-project, .recommendation-card)::after {
+    .living-app
+        :is(
+            .sky-glass,
+            .project-card,
+            .idea-card,
+            .stat-card,
+            .period-metric,
+            .surface,
+            .recommendation-card
+        ):not(
+            :where(.surface, .project-card, .idea-card, .stat-card) *
+        )::before,
+    .living-app
+        :is(
+            .sky-glass,
+            .project-card,
+            .idea-card,
+            .stat-card,
+            .period-metric,
+            .surface,
+            .recommendation-card
+        ):not(
+            :where(.surface, .project-card, .idea-card, .stat-card) *
+        )::after {
         content: none;
     }
 }

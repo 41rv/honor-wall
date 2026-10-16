@@ -1,0 +1,122 @@
+[
+  {
+    "width": 320,
+    "theme": "light",
+    "route": "home",
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "route": "projects",
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "route": "tasks",
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "route": "ideas",
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "route": "progress",
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "route": "home",
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "route": "projects",
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "route": "tasks",
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "route": "ideas",
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "route": "progress",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "route": "home",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "route": "projects",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "route": "tasks",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "route": "ideas",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "route": "progress",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "route": "home",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "route": "projects",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "route": "tasks",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "route": "ideas",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "route": "progress",
+    "violations": []
+  }
+]

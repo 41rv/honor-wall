@@ -2855,23 +2855,13 @@ dialog.add-menu {
         padding-top: 18px;
         padding-bottom: 154px;
     }
-    /* The add button has its own protected row above navigation. Content
-       scrolls above it instead of showing through the button or its shadow. */
+    /* Only the floating button occupies the space above navigation. End
+       padding lets the final control scroll clear of its 48px touch target. */
     html {
         scroll-padding-bottom: calc(154px + env(safe-area-inset-bottom));
     }
     main :is(button, a, input, textarea, summary) {
         scroll-margin-bottom: calc(154px + env(safe-area-inset-bottom));
-    }
-    .sidebar::before {
-        content: "";
-        position: absolute;
-        bottom: 100%;
-        left: 0;
-        right: 0;
-        height: 74px;
-        background: var(--bg);
-        pointer-events: auto;
     }
     .topbar {
         height: 64px;

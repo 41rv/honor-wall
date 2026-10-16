@@ -1,0 +1,1307 @@
+{
+  "recorded_at_utc": "2026-10-16T14:49:20.516485+00:00",
+  "source_head": "125347996b6079fe39f9a064dd986469409a29c9",
+  "source_changed_app_files": [
+    "app/App.tsx",
+    "app/livingSky.css",
+    "app/styles.css"
+  ],
+  "app_sha256": {
+    "app/AchievementLog.tsx": "4f8715d07c5c064bcb7ca78922a68faf76216433411eced434e16c6bc14a854e",
+    "app/ActionButton.tsx": "ee6676368254ad8af207d184b414041f2f3c1e58d86e45028d4d44c5e5018c24",
+    "app/App.tsx": "6bd2eb1041a133e07074d097b9b9568a309e234d8284c629b26836022d44fd09",
+    "app/CompletionButton.tsx": "c2ea3b05a6613ab5292202238f69dfd088348e15935311f7adcca6e2ad363240",
+    "app/Dialog.tsx": "24025e77cd71e74cbb63574cf05a3ab59973d8de1cd702891fde4fc3efb24817",
+    "app/ErrorBoundary.tsx": "66227f6ae97b51e351774cc11062d1b8daa1d44451e3ad1a3c54f2ca8aac23ba",
+    "app/ExecutionSummary.tsx": "8cb7f1ff08be1067a8b4d61813f1f60061ac154972c848df835f7ae6f4c28a72",
+    "app/GlassOptics.tsx": "3cde0e40aee115ea5b1c3ed47dc462c5dea32efa9bf2b580c1028ff472db030b",
+    "app/HomeExecution.tsx": "5534ea695c94b67fa32addc17ce321d2a009c742ea424fcdcb02151d9362f5f1",
+    "app/LivingSky.tsx": "0d8c2eee6db55e356b5e32bca495d5c0bcefb6ae642a002bb24cf234c3c9efd8",
+    "app/MasarInsights.tsx": "f8bbe4d0cbdf82c0bb5dde235f2ddc3d18688a3b0058eb43fc07870162b3f628",
+    "app/PaceRecommendations.tsx": "8e9f56d6fa490265ed5bdbf53da4eb2fee9164cad5e251302f78cc936d277bf0",
+    "app/PeriodDashboard.tsx": "abade269993843888eaded2ce528bb5fda271ea4a4c49f2f7b79fc98aeae0191",
+    "app/ProjectCapacity.tsx": "ff21a7f2e977a370a2e5f5a267e0c6393c64c1aba9b5133ad2846985669c5af8",
+    "app/ProjectImport.tsx": "133088dc045e919b3d2ef9596fe14ce02cb5345457f4e924cf20bfc0091fea12",
+    "app/ProjectPacePanel.tsx": "da78f6fb8e18918b2b6cccf61fb5b2d7a1b3539e3528ef81d825e53cc30f4fc0",
+    "app/ProjectRestSettings.tsx": "2bda0a086af06d5b379fa786c384249a4cbe33800c06c92817c4fdff6240ed1f",
+    "app/QuickIdeaCapture.tsx": "1ed1cd9f9c55a49932dd0ede30ee3f7c6685df48a917b79cb54df6132c3c3b51",
+    "app/TaskDetails.tsx": "c6fff39ec55c30e6808e8dcc4024728e14073ad3d251df15e48446c906a6920c",
+    "app/TaskFields.tsx": "32461bdae7b214bb18e7c35e2d91ba3ec399a864a7be56179c0882ae721212cd",
+    "app/TaskStatusControls.tsx": "9ce17c236352e6353163801a11f5d2dc4e9c6c32f783e15783b6ce35684adb29",
+    "app/TodayTasks.tsx": "66631e91468f6dba62890c7a88a680aa264c4a0a54a4e8cbab872863f3e5c7c1",
+    "app/WeekCalendar.tsx": "d107765835e753f7db0c1feb40f4f95e1f31dece655ee386eed24e4daf6dd2c8",
+    "app/achievementRecords.ts": "cbc7c4843bf6ebd34100e42a11d9d334ea0aaffe08652424b616055a4f8c1142",
+    "app/analytics.ts": "ad9353134548f0e3c263a9709534df191420e0073851268344703147324c19d3",
+    "app/completionQueue.ts": "b3366ba747a99c908ef5a71d705e673ad7deb0871660b9e83b21f403bc272e46",
+    "app/completionRecovery.ts": "198fe7a17d9f9b9179fe51a1699c72d71d4252380c8936932b51c42abb84f053",
+    "app/dailyPlanning.ts": "32a26e50159c79fbe6d768ee0b8acd9b417147331172e91f3dff8c80b079725e",
+    "app/dateKey.ts": "dd4ab5a98f0c497ac76575fe9f2f80fb24e7237f49354c3f69cc96f986c66404",
+    "app/db.ts": "76373d3e50bf484845f96fa76892bbc84d546a98957addc04802a3c450c81b14",
+    "app/execution.ts": "41597f983d8e36f2f69e23b0b1c5e2e973f87fb30bf724deb6415aef7411dbd2",
+    "app/hierarchy.ts": "cada379b4015fbcb1b4dc737193617e3857ce1e8fa077dbfa3c58d1a3e292deb",
+    "app/livingSky.css": "f2dc3ef2e5b2377192dfac5df6854da1e9c041abdef07aa6b08b68daaf51bac7",
+    "app/livingSky.ts": "06df87afca8b20416c7b9cdf6ff0061aa001060013929d3bec338620aa7dbd35",
+    "app/main.tsx": "a2097b8e5259e7fc475e7bf30bd92aba933802b75e951f7d3e2298a3ba62c753",
+    "app/model.ts": "73008e2c7249a9e13de894b586eed7b1c619c31ef573b9242c155c66232dc5f2",
+    "app/paceTypes.ts": "505d309c503a236abd74feedb357a565c816348c93a20291337edca18c9f5e81",
+    "app/paceValidation.ts": "e671106f6877dbc1e9f8c35516352e9b8bb97584380566c370c11f91e73e4804",
+    "app/projectImport.ts": "9fd44dc6540068f06122340700d85a654ab7406defbafbe3be5588b375de48ad",
+    "app/projectInsights.ts": "10c9e07711860cf1dcf8b2c2ed6e9e0a752a3f9aedbdb6f281fc1bdac6909ebc",
+    "app/projectPace.ts": "3ffaa78833f34e3fe9b67feb91cd791db38d716fc2b4f94dec0666fb53a867bd",
+    "app/projectPaceStore.ts": "e499a314e17c6cfd17b32a0a2af3e31664c8b86e27e7921b2671788128eefcf7",
+    "app/projectProgressTypes.ts": "4789d47e2878984a317b07b3850c2bddcfd938e222365aa85a14273db8bca7e1",
+    "app/projectRest.ts": "831ae0b7b7f8b3c47d5614e927878155e5b41b97fa3e3539fc9d4b53f7b78cf6",
+    "app/saveQueue.ts": "a8f51ffe43840e81017f5ac211067c6db58f44c911e3d7062f1d0892d6598e09",
+    "app/skySettings.ts": "2a666a28eff6602d1945286b4b9aaa6962afbe87b82a049459f705c5582aea34",
+    "app/styles.css": "92e2d38147beac65ab47ae5ecfe2d8dd48c187d6f0b185ac9323c9130087b92f",
+    "app/taskSchedule.ts": "35ab52cbb5c2ca961eada845cb30dd531ef68ae72838401b701e08bb8345e792",
+    "app/taskTypes.ts": "cabbbd53f701ae04eb8cda39ecbe008fea265bf84e21ab37cfa36552198f89a1",
+    "app/useAppData.ts": "9ac538dc43464a2e3a52af23598471b29a2b6043de0f59128cc0fa8ce6404fe6",
+    "app/useCompletion.ts": "3ad7178c9e3e80fd601162f7fd0c7df3d8654fcd67cb845118f0749f2561dca7",
+    "app/useLongPress.ts": "bd64a374ddf0ff10b3fc6e14c6894a6919f5ff02887ff46c8a4e8ef76454c345",
+    "app/usePaceData.ts": "a8651e6802f99624a80ceed5d17fb7bda3281216f282afbc293e586bf63d9791",
+    "app/useTheme.ts": "32f7e533b7d48356714338d8a7798af4d853c2db64849229050de304d25d7620",
+    "app/useWallClock.ts": "6900c8a15d6e887595aed92547f8e5d41e3f029a9f03015d675589353efbba84",
+    "app/userError.ts": "d756b9566c0d860ba64ee8d8b60a1718b49bc35b965332580dbe94bbf52a74a1",
+    "app/vite-env.d.ts": "63402eb45931ed925cec4f2a9bc8bda714753d3fb9aef48bb09ea05493fe8fa8",
+    "app/weekCalendar.ts": "1593089fc910ccf644cc86bbbd162e1734a38d107e293431c8243635e1b96d1c"
+  },
+  "browser_full_run": {
+    "startTime": "2026-10-16T14:30:02.626Z",
+    "duration": 646642.154,
+    "expected": 193,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "browser_affected_retest": {
+    "startTime": "2026-10-16T14:43:20.007Z",
+    "duration": 125307.87,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "browser_unique_final_cases": 195,
+  "browser_final_statuses": {
+    "expected": 195
+  },
+  "new_browser_cases": 12,
+  "full_clean_rerun_claimed": false,
+  "resolved_test_synchronization_failure": true,
+  "unit_integration": {
+    "passed": 360,
+    "failed": 0,
+    "skipped": 0
+  },
+  "rendered_contrast": {
+    "scenarios": 200,
+    "visible_text_runs": 3999,
+    "failures": 0
+  },
+  "axe_scenarios": 20,
+  "axe_violations": 0,
+  "pwa_check_groups": 12,
+  "database_version_before": 60,
+  "database_version_after": 60,
+  "data_stores_exactly_preserved": 12,
+  "task_project_logic_changed": false,
+  "sky_math_colors_orbits_changed": false,
+  "dependencies_changed": false,
+  "manifest_changed": false,
+  "physical_android_tested": false,
+  "new_changes_published": false,
+  "new_changes_pushed": false,
+  "performance": {
+    "tasks": 500,
+    "cpu_throttle": 4,
+    "frames": 149,
+    "median_frame_ms": 16.699999999999818,
+    "p95_frame_ms": 16.799999999999727,
+    "frames_over_50ms": 0,
+    "dialog_open_ms": 70.40000000596046,
+    "automation_lookup_and_click_ms": 254,
+    "physical_android": false
+  },
+  "search_performance": {
+    "results": 500,
+    "cpu_throttle": 4,
+    "frames": 149,
+    "median_frame_ms": 16.699999999999818,
+    "p95_frame_ms": 16.700000000000273,
+    "frames_over_50ms": 0,
+    "physical_android": false
+  },
+  "final_browser_case_results": [
+    {
+      "suite": "app.spec.ts",
+      "title": "PWA: الأصول والبيانات متاحة دون إنترنت بعد إعادة التشغيل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "app.spec.ts",
+      "title": "إنشاء مشروع ومرحلة وخطوة فرعية وتعديل وأرشفة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "app.spec.ts",
+      "title": "المهام والأفكار: إنشاء وبدء وإنجاز وإعادة فتح وتحويل وتراجع",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "app.spec.ts",
+      "title": "تصدير واستيراد كامل، رفض نسخة مكسورة دون فقد البيانات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "app.spec.ts",
+      "title": "شاشة 320 بكسل، الوضعان وغياب التمرير الأفقي",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "app.spec.ts",
+      "title": "فشل حفظ الملاحظات يستعيد المسودة بعد إعادة التحميل ويمكن إعادة حفظها",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "app.spec.ts",
+      "title": "مشروع طويل: استكمال آخر خطوة، حفظ موضع العودة، والتفرع العميق",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "app.spec.ts",
+      "title": "واجهة المشروع: الإنشاء، الترتيب، الملاحظات، النسب والإغلاق",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "buttons.spec.ts",
+      "title": "أزرار الإضافة والإلغاء والإغلاق والبحث والتنقل والضغط المتكرر",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "buttons.spec.ts",
+      "title": "الكتابة السريعة تدمج الحفظ وتبقى الملاحظات بعد رجوع فوري",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "buttons.spec.ts",
+      "title": "تصدير الملاحظات فور الكتابة والتحقق وإلغاء الاستيراد والتثبيت المتاح",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "buttons.spec.ts",
+      "title": "رسالة فشل فتح التخزين وزر إعادة المحاولة يستعيدان التطبيق دون حذف البيانات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "buttons.spec.ts",
+      "title": "روابط الرئيسية والإنجازات تفتح المشروع والمهمة والخطوة في مكانها",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "buttons.spec.ts",
+      "title": "فشل إتمام المهمة يعيد علامتها لحالتها السابقة ولا يسجل إنجازًا زائفًا",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "buttons.spec.ts",
+      "title": "كل أزرار المراحل والخطوات: إضافة وتفاصيل وترتيب وطي وحالات وحذف وتراجع",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "buttons.spec.ts/محاكاة هاتف ولمس",
+      "title": "الأفكار: إضافة سريعة وتعديل وبحث وأرشفة واستعادة وتحويل وإلغاء التحويل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "buttons.spec.ts/محاكاة هاتف ولمس",
+      "title": "الصح باللمس وإعادة الفتح وتفاصيل المهمة وحالاتها والإلغاء والتراجع",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "completion-capture.spec.ts",
+      "title": "آخر مرحلة تُتمّ المشروع تلقائيًا عند ١٠٠٪ ويبقى الإتمام اليدوي متاحًا عند ٥٠٪",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "completion-capture.spec.ts",
+      "title": "إتمام الخطوة والمرحلة من الشجرة وتحديث الأرقام والسجل ثم إعادة فتحهما",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "completion-capture.spec.ts",
+      "title": "التقاط الفكرة في صفحة الأفكار يحفظ باللمس والإدخال والتفاصيل دون فقد",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "completion-capture.spec.ts",
+      "title": "المشروع له زر إتمام في البطاقة والتفاصيل وإتمامه لا يغيّر خطواته",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "completion-capture.spec.ts",
+      "title": "فشل الإتمام الجماعي لا يترك علامة صح أو حالات جزئية",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "completion-capture.spec.ts",
+      "title": "فشل حفظ الفكرة يبقي مسودتها ولا ينشئ نسخًا مكررة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "PWA: لون بدء ثابت غير أبيض وهوية ومسار التثبيت محفوظان",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 1366",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 320",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 390",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 768",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "الرئيسية تتحدث بعد تعديل الموعد والأولوية وتحفظ العدد والمعرف والملاحظات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "المساحة الآمنة السفلية ذات ٢٤ بكسل مغطاة بخلفية داكنة والزر لا يحجب التنقل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "بداية تتبع النظام دون React والتخزين فارغ",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "بداية تتبع النظام دون React والتخزين محجوب",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "بيانات استخدام مختلطة وسجل طويل: تصفية وترقيم صفحات ونسخ واستعادة مرتان بلا ازدواج",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "تكرار التنقل والثيم لا يسرب المستمعين والتبويبات المستقرة لا تعيد قراءات التخزين",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit-extended.spec.ts",
+      "title": "منتصف الليل والسنة: الأسبوع السبت-الجمعة والاختيارات والتكرار دون دورة خاطئة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit.spec.ts",
+      "title": "التنقل بالرجوع يغلق قائمة الإضافة ولا يترك نافذة على صفحة أخرى",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit.spec.ts",
+      "title": "قبل React وCSS: الثيم المحفوظ green/dark يحدد خلفية البداية وألوان النظام",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit.spec.ts",
+      "title": "قبل React وCSS: الثيم المحفوظ green/light يحدد خلفية البداية وألوان النظام",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit.spec.ts",
+      "title": "قبل React وCSS: الثيم المحفوظ mono/dark يحدد خلفية البداية وألوان النظام",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "dark-audit.spec.ts",
+      "title": "قبل React وCSS: الثيم المحفوظ mono/light يحدد خلفية البداية وألوان النظام",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ideas-speed.spec.ts",
+      "title": "قياس حفظ فكرة مع ألفي فكرة موجودة ومعالج أبطأ",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interactions.spec.ts",
+      "title": "علامة الإتمام تعمل حتى إذا حدث تحديث للواجهة أثناء الضغط",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interactions.spec.ts",
+      "title": "قياس سرعة الإضافة والتعديل والإتمام بقاعدة كبيرة ومعالج أبطأ",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interface-organization.spec.ts",
+      "title": "التبويبات تحفظ المشروع وفلاتر السجل ولا تعدل الجداول الثمانية",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interface-organization.spec.ts",
+      "title": "التصميم بعرض 1366: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interface-organization.spec.ts",
+      "title": "التصميم بعرض 320: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interface-organization.spec.ts",
+      "title": "التصميم بعرض 390: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interface-organization.spec.ts",
+      "title": "التصميم بعرض 768: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interface-organization.spec.ts",
+      "title": "الرئيسية الفارغة مختصرة والاستكمال لا يكرر خطوته في بطاقات المشاريع",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interface-organization.spec.ts",
+      "title": "الرئيسية: أول ثلاث مهام بالترتيب نفسه دون تغيير الأولويات وإنجاز وتراجع",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interface-organization.spec.ts",
+      "title": "بطاقة المشروع تحتفظ بالمعلومات ورقم المرحلة والنصوص الأصلية",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interface-organization.spec.ts",
+      "title": "تبويبات التقدم تحفظ الفترة والسجل الصحيح والتراجع والرؤى دون ازدواج",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "interface-organization.spec.ts",
+      "title": "زر إضافة واحد في الصفحات الخمس: النماذج الأصلية ولوحة المفاتيح والإغلاق",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-glass.spec.ts",
+      "title": "الانكسار يغير بكسلات الإطار فقط، ووسط النص يبقى مطابقًا",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-glass.spec.ts",
+      "title": "البديل البسيط والألوان القسرية وتقليل الحركة لا يعطلان البطاقات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-glass.spec.ts",
+      "title": "الخامة لا تغير التفاعل ولا تضيف مرشحات إلى النصوص والأزرار",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-glass.spec.ts",
+      "title": "قياس تمرير البطاقات واستجابة الزر على نفس Chromium عند خفض CPU أربع مرات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-glass.spec.ts",
+      "title": "مقارنة ست لقطات جوال بنفس البيانات والوقت والقياسات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-search.spec.ts",
+      "title": "بحث500 نتيجة: التمرير والوصول إلى آخر زر دون تجمد أو حجب",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-shell.spec.ts",
+      "title": "إعداد واحد يؤثر على الصفحات كلها ويحفظ بعد إعادة الفتح دون اتصال",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-shell.spec.ts",
+      "title": "إمكانية الوصول للصفحات الخمس في الثيمين والمقاسين",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-shell.spec.ts",
+      "title": "التفاعل الفعلي لا يتغير: المهمة والفكرة والمشروع والنوافذ القصيرة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-shell.spec.ts",
+      "title": "المشهد نفسه يبقى مركبًا عبر ثلاثين انتقالًا دون تغيير الزمن أو الضبابية",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-shell.spec.ts",
+      "title": "تباين النص الفعلي في الصفحات والأشرطة عبر أوقات السماء والتمرير",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-shell.spec.ts",
+      "title": "زر عائم دون شريط أو اعتراض اللمس مع Safe Area24 وبدونها",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-shell.spec.ts",
+      "title": "صور الصفحات الخمس والتفاعل 320 dark",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-shell.spec.ts",
+      "title": "صور الصفحات الخمس والتفاعل 320 light",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-shell.spec.ts",
+      "title": "صور الصفحات الخمس والتفاعل 390 dark",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-shell.spec.ts",
+      "title": "صور الصفحات الخمس والتفاعل 390 light",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky-shell.spec.ts",
+      "title": "قائمة500 مهمة: تمرير فعلي دون مرشحات ضخمة وباستجابة سريعة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "RTL والثيمات الحالية والنوافذ والتمرير بعرض1366",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "RTL والثيمات الحالية والنوافذ والتمرير بعرض320",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "RTL والثيمات الحالية والنوافذ والتمرير بعرض390",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "RTL والثيمات الحالية والنوافذ والتمرير بعرض768",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "إعداد واحد فقط؛ كل درجات الضبابية فورية ومحفوظة والتحكم بلوحة المفاتيح",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "الحدود ومنتصف الليل والوقت المحلي والعودة من الخلفية دون تغيير الثيم",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "الخامة الاحتياطية تبقى مقروءة دون مرشح الخلفية — محاكاة قاعدة CSS البديلة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "القيم التالفة والتخزين المحجوب لا يعطلان التطبيق أو بقية إعدادات المظهر",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "المشهد لا يحجب النقر والإنجاز والتراجع والمشروع والقائمة والنوافذ والتمرير",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "تقليل الحركة يعرض الوقت الحالي دون انتقالات ويستجيب لتغييره أثناء التشغيل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "حفظ إعداد الضبابية والثيم دون اتصال وبعد إعادة فتح الصفحة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "صور الفترات الخمس والضبابية0و12و30 في الوضعdark",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "صور الفترات الخمس والضبابية0و12و30 في الوضعlight",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "فحص أداء التحكم بالضبابية وعدم تسرب مستمعي المشهد أو كتابة بيانات المهام",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "فحص إمكانية الوصول للفترات الخمس والثيمين والنموذج",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "قياس تباين النص فوق خلفية السماء الفعلية وليس التخمين من التدرج",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "living-sky.spec.ts",
+      "title": "لا يوجد تحديث إطار مستمر، والتحديث بالدقيقة مستقل عن بيانات المهام",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "planning.spec.ts",
+      "title": "إحصاء إتمام المشروع يتحدث داخل الداشبورد دون انتظار نبضة الدقيقة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "planning.spec.ts",
+      "title": "التقويم: سبعة أيام وتنقل وعودة وإنجاز وتراجع وتعديل دون إنشاء المستقبل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "planning.spec.ts",
+      "title": "التنظيم والتقويم والرؤى: RTL والثيمات الأربعة بعرض 1366",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "planning.spec.ts",
+      "title": "التنظيم والتقويم والرؤى: RTL والثيمات الأربعة بعرض 390",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "planning.spec.ts",
+      "title": "الداشبورد يبدل الفترات ويحدث الإنجاز بعد التراجع ويعرض نقص البيانات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "planning.spec.ts",
+      "title": "دورة السبت المفتوحة تظهر الأحد في قسم متاح وتنجز دون تأخير",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "planning.spec.ts",
+      "title": "رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل وتراجع ونسخة كاملة v3",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "planning.spec.ts",
+      "title": "مهامي اليوم: الاختيار والإزالة والإنجاز والتراجع وعبور اليوم دون فقد",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "planning.spec.ts",
+      "title": "مواعيد التكرار المستقبلية غير قابلة للإنجاز ولا تحفظ كدورات عند التنقل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "planning.spec.ts",
+      "title": "موعد الساعة المنقضي اليوم يُفصل عن المستحقة ويتيح الإنجاز والتراجع",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-import-open.spec.ts/فتح الاستيراد على شاشة أندرويد محاكاة",
+      "title": "الفتح والإغلاق المتكرر مستقلان عن البيانات والملفات والمنتقي الأصلي",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-import-open.spec.ts/فتح الاستيراد على شاشة أندرويد محاكاة",
+      "title": "المنتقي يُفتح بطلب منفصل مرة واحدة ويعمل إلغاؤه وإعادة فتحه ثم المعاينة والحفظ",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-import-open.spec.ts/فتح الاستيراد على شاشة أندرويد محاكاة",
+      "title": "عودة التركيز تعيد إتاحة المنتقي للمتصفحات التي لا ترسل cancel",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-import-open.spec.ts/فتح الاستيراد على شاشة أندرويد محاكاة",
+      "title": "فشل JSON في واجهة الفتح يتيح إعادة الاختيار ولا يحفظ بيانات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-import.spec.ts",
+      "title": "المعاينة والأخطاء ولوحة المفاتيح في الثيمات الأربعة بعرض 1366",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-import.spec.ts",
+      "title": "المعاينة والأخطاء ولوحة المفاتيح في الثيمات الأربعة بعرض 390",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-import.spec.ts",
+      "title": "فشل التخزين لا يترك مشروعًا ناقصًا ويتيح تأكيد المعاينة مجددًا",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-import.spec.ts",
+      "title": "معاينة محدودة لمشروع كبير تستورد كل العناصر وترقيم التداخل حتى الحد المعتمد",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-import.spec.ts",
+      "title": "معاينة وإلغاء ثم حفظ مرة واحدة بالضغط المتكرر مع الحفاظ على البيانات والتقدم",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-import.spec.ts",
+      "title": "ملفات خاطئة بأخطاء واضحة وإعادة اختيار الملف نفسه دون حفظ",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "40/20 من الواجهة: هدف ووتيرة وإنجاز من الرئيسية وتراجع دون خلط المهام",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "إتمام آخر خطوة من الرئيسية ثم التراجع يعيد المشروع والخطوة والمؤشرات ذريًا",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "إلغاء تجاوز الحد لا ينشئ شيئًا، وإيقاف مشروع بديل قرار منفصل عن الإضافة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "استيراد masar.project1 عند الحد يحفظ المعاينة ثم يستورد مرة واحدة بعد القرار",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "اعتماد توصية شخصية وتحديث مؤشرات المشروع والتراجع عن الخطة من إعداد الهدف",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "الإيقاف والاستئناف يجمدان20يومًا والموعد الإلزامي لا يتحرك",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "الحد النشط: الرابع يحتاج قرارًا صريحًا مع حفظ مسودة الإنشاء",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "الداشبورد والرؤى لا يعدّان الإيقاف تعثرًا ويستعيدان العدد بعد الاستئناف",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "الدمج عبر الواجهة يحفظ الأصل ويمنع تكرار الملف ويستعيد الحقول الجديدة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "المتصفح بلا CloseWatcher يحتفظ بالنافذة الأصلية وسلوك Escape",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "النافذة فوق مشروع كبير: حصر التركيز وARIA وEscape والرجوع والنقر الخارجي والتنظيف",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "تسريع افتراضي: معاينة دون تعديل ثم اعتماد مؤكد وسجل قرار",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "توصية شخصية: الرئيسية تعرض واحدة والرفض لا يغير الخطة ولا يعود غدًا",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 1366",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 320",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 390",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-pace.spec.ts",
+      "title": "واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 768",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-rest-boundaries.spec.ts",
+      "title": "توصية موجودة تختفي بهدوء عند منتصف ليل الرياض وتبقى في التقدم دون إجراءات ملحة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-rest-boundaries.spec.ts",
+      "title": "حدود اليوم المحلي: تبدأ الراحة وتستحق المهمة وتتعاقب دوراتها دون تغيير قواعدها",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-rest.spec.ts",
+      "title": "40/20 =14 يوم عمل: الهدف ثابت والتوزيع يتحدث عند تغيير الراحة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-rest.spec.ts",
+      "title": "إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض1366",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-rest.spec.ts",
+      "title": "إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض320",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-rest.spec.ts",
+      "title": "إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض390",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-rest.spec.ts",
+      "title": "إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض768",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-rest.spec.ts",
+      "title": "افتراضي الراحة والتعديل وحفظ السجل وإعادة التحميل وإلغاء جميع الأيام",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-rest.spec.ts",
+      "title": "الجمعة: المهمة والمتكررة تعملان والإنجاز اليدوي للمشروع يُحفظ دون مطالبة يومية",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-rest.spec.ts",
+      "title": "النسخ الجديدة والقديمة: تنزيل واستعادة الجدول والدمج دون تبديل إعداد الجهاز",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "project-rest.spec.ts",
+      "title": "كل الأسبوع راحة: تحذير وحفظ وغياب الاقتراحات دون إيقاف أو تمديد",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-accessibility.spec.ts",
+      "title": "لوحة المفاتيح: النافذة تحصر التركيز وتعيده، وعلامة المهمة تحتفظ به عند انتقالها للمنجزة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-accessibility.spec.ts",
+      "title": "نافذة في مساحة هاتف قصيرة: الحقول والإضافة متاحة دون حجب، وتقليل الحركة محترم",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-functional.spec.ts",
+      "title": "الاسم المعدّل يُحفظ عند التنقل دون مغادرة حقل الاسم أولًا",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-functional.spec.ts",
+      "title": "التراجع المتكرر عن الحذف لا يكرر الاستعادة أو سجل الأحداث",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-functional.spec.ts",
+      "title": "العناوين المكررة والملاحظات الطويلة تبقى مستقلة ويجد البحث النص المختلط",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-functional.spec.ts",
+      "title": "العودة لمشروع طويل ذي عناوين ملتفة تستعيد الخطوة الظاهرة نفسها",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-functional.spec.ts",
+      "title": "فشل التخزين برسالة المتصفح الأصلية يعرض سببًا عربيًا ويحافظ على الحالة ثم يعاود الحفظ",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-functional.spec.ts",
+      "title": "ملف استيراد أكبر من الحد لا يستبدل البيانات وتواريخ المنطقة الزمنية صحيحة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-functional.spec.ts",
+      "title": "نسخة بمعرّفات نصية خاصة وroot تفتح عناصرها وتحفظ العلاقات والإتمام",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-rapid.spec.ts",
+      "title": "تبديل عدة مهام أثناء تغيير الصفحة يحفظ النتيجة لكل عنصر",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-rapid.spec.ts/تبديل سريع باللمس",
+      "title": "عشرة تبديلات للمهمة والخطوة تحفظ آخر طلب وتطابق الأعداد والنسب بعد إعادة الفتح",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "qa-rapid.spec.ts/تبديل سريع على الكمبيوتر",
+      "title": "عشرة تبديلات للمهمة والخطوة تحفظ آخر طلب وتطابق الأعداد والنسب بعد إعادة الفتح",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "أزرار الحالة وعلامة الإنجاز تتشارك آخر طلب للدورة وتحفظ تاريخ البدء",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "أسبوعية بعدة أيام ووقت: فوت الدورة لا يكرر المهمة والسجل محفوظ",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "إعداد أسبوعي بلا أيام يُرفض ولا يضيف مهمة ناقصة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "إنشاء عامة وإتمام وتراجع وتعديل وحذف دون موعد أو أولوية",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "الأولويات الأربعة بألوانها ثم الإزالة، مع الاسم في التفاصيل فقط",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "الرئيسية والقوائم تميز العامة والقريبة واليوم والمتأخرة والمتكررة والقادمة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "الموعد الأسبوعي المستقبلي يمنع الإنجاز حتى يبدأ ثم يتاح في وقته",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "النسخة ذات إنجاز على نهاية الدورة تُرفض في الواجهة وتبقى الجداول الستة سليمة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "النموذج والتصنيف وRTL والثيمات الأربعة بعرض 1366",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "النموذج والتصنيف وRTL والثيمات الأربعة بعرض 390",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "تاريخ فقط ثم وقت وتغيير وإلغاء الموعد مع حفظ المعرف والملاحظات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "تحويل عامة إلى متكررة ثم عامة يحفظ المعرف والملاحظات وسجل الإنجاز",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "حذف المتكررة والتراجع وإعادة التحميل يحفظان الدورات والملاحظات والإنجاز",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "شهرية ٣١ تعبر السنة وفبراير وتغيير التكرار يحفظ التاريخ",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "فترة الاقتراب 0 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "فترة الاقتراب 1 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "فترة الاقتراب 3 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "فترة الاقتراب 7 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "قائمة ٥٠٠ مهمة: الوصول إلى الصفوف خارج الشاشة والإنجاز والتراجع على الجوال",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "مهمة السبت تنجز طبيعيًا عند 2026-10-17T09:00:00Z وتعود دورة جديدة السبت التالي",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "مهمة السبت تنجز طبيعيًا عند 2026-10-18T09:00:00Z وتعود دورة جديدة السبت التالي",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "مهمة السبت تنجز طبيعيًا عند 2026-10-23T09:00:00Z وتعود دورة جديدة السبت التالي",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "نسخة جديدة تحفظ الدورات والأولوية، واستيراد مشروع مستقل لا يؤثر عليها",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts",
+      "title": "يومية: إتمام قبل نهاية اليوم، تراجع سريع، دورة فائتة، ومراجعة السجل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "task-scheduling.spec.ts/توقيت نيويورك",
+      "title": "تاريخ محلي مختلف عن UTC ودورة ٢٥ ساعة دون نسخ بسبب تكرار الساعة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "الحفظ وإعادة فتح المتصفح والعمل دون اتصال يحتفظان بإنجاز اليوم",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "العرض 1366: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "العرض 320: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "العرض 390: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "العرض 768: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "القائمة الأصلية للإجراءات تعرض الإضافة والإزالة وتحافظ على خصائص المهمة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "المختصر لا يزاحم المفتوح بالمكتمل والعرض الموسع يتيح التراجع",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "المكتمل ينتقل للأسفل ويبقى بعد إعادة التحميل والتراجع يعيد ترتيب الأولويات والمواعيد",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "دورة daily: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "دورة monthly: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "دورة weekly: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "today-experience.spec.ts",
+      "title": "فترة السماح والمتأخرة وإنجاز اليوم المحلي لا يحمل إنجاز الأمس",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ux.spec.ts",
+      "title": "إكمال آخر خطوة وحفظها ثم التراجع من السجل والتفاصيل والمشروع الفارغ",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ux.spec.ts",
+      "title": "الضغط المطول بالماوس يفتح قائمة واحدة ويمنع التنقل ثم يلغى بالحركة",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ux.spec.ts",
+      "title": "الهوية مستقلة عن الوضع وتبقى الثيمات الأربعة واتباع النظام بعد إعادة الفتح",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ux.spec.ts",
+      "title": "زر الإجراءات ولوحة المفاتيح والقائمة تحترم التأكيد والتراجع والتعديل والتحويل",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ux.spec.ts",
+      "title": "طلب إلغاء الإتمام يبقى بعد تحديث فوري مع تأخر إشعار معاملة التخزين",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ux.spec.ts",
+      "title": "كثرة المشاريع والنصوص الطويلة تعرض خطوة واحدة لكل مشروع وتتيح عرض المزيد دون تكرار الإحصائيات",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ux.spec.ts/تجربة التنفيذ باللمس",
+      "title": "إتمام البطاقة والرئيسية ثم إلغاء الإتمام والتبديل السريع يطابق التخزين والتقدم",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ux.spec.ts/تجربة التنفيذ باللمس",
+      "title": "الاستكمال يبقى بعد إعادة الفتح ويتعامل مع الحذف والأرشفة والإكمال",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ux.spec.ts/تجربة التنفيذ بالماوس",
+      "title": "إتمام البطاقة والرئيسية ثم إلغاء الإتمام والتبديل السريع يطابق التخزين والتقدم",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ux.spec.ts/تجربة التنفيذ بالماوس",
+      "title": "الاستكمال يبقى بعد إعادة الفتح ويتعامل مع الحذف والأرشفة والإكمال",
+      "project": "",
+      "status": "expected"
+    },
+    {
+      "suite": "ux.spec.ts/ضغط مطول باللمس وتمرير طبيعي",
+      "title": "إلغاء القائمة بالحركة والتمرير، وفتحها بعد ثبات الإصبع دون نقرة تسرب",
+      "project": "",
+      "status": "expected"
+    }
+  ]
+}

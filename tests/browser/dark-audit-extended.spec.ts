@@ -140,19 +140,19 @@ for (const width of [320, 390, 768, 1366])
                                     .trim(),
                             ),
                     );
-                    expect(
-                        await page
-                            .locator(".sidebar")
-                            .evaluate(
-                                (e) => getComputedStyle(e).backgroundColor,
-                            ),
-                    ).toBe(
-                        mode === "light"
-                            ? "rgb(255, 255, 255)"
-                            : identity === "mono"
-                              ? "rgb(30, 30, 30)"
-                              : "rgb(25, 39, 34)",
-                    );
+                    const navigationColor = await page
+                        .locator(".sidebar")
+                        .evaluate((e) => getComputedStyle(e).backgroundColor);
+                    const channels = navigationColor
+                        .match(/[\d.]+/g)!
+                        .map(Number);
+                    expect(channels).toHaveLength(4);
+                    expect(channels[3]).toBeGreaterThan(0.5);
+                    expect(channels[3]).toBeLessThan(1);
+                    for (const channel of channels.slice(0, 3)) {
+                        if (mode === "dark") expect(channel).toBeLessThan(45);
+                        else expect(channel).toBeGreaterThan(220);
+                    }
                     expect(
                         await page.evaluate(
                             () =>
@@ -235,7 +235,7 @@ test("المساحة الآمنة السفلية ذات ٢٤ بكسل مغطاة
     await expect(page.locator(".sidebar")).toHaveCSS("padding-bottom", "24px");
     await expect(page.locator(".sidebar")).toHaveCSS(
         "background-color",
-        "rgb(25, 39, 34)",
+        "rgba(16, 27, 23, 0.74)",
     );
     expect(
         await page.evaluate(() => {

@@ -1384,10 +1384,12 @@ function App() {
     );
     return (
         <div
-            className={"app-shell" + (page === "home" ? " living-home" : "")}
+            className={
+                "app-shell living-app" + (page === "home" ? " living-home" : "")
+            }
             onFocusCapture={(event) => trackCompletionFocus(event.target)}
         >
-            {page === "home" && <LivingSky blur={skyBlur} />}
+            <LivingSky blur={skyBlur} />
             <aside className="sidebar">
                 <a className="brand" href="#home">
                     <span className="brand-mark">
@@ -3121,7 +3123,7 @@ function App() {
                             <span>ضبابية عالية</span>
                         </div>
                         <p className="muted small" id="sky-blur-hint">
-                            لسماء الرئيسية فقط؛ تبقى البطاقات والنصوص واضحة.
+                            لسماء مسار في جميع الصفحات؛ تبقى البطاقات والنصوص واضحة.
                         </p>
                     </div>
                     <p className="muted small">يُحفظ اختيارك على هذا الجهاز.</p>

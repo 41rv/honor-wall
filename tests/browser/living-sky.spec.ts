@@ -408,7 +408,8 @@ test("المشهد لا يحجب النقر والإنجاز والتراجع و
         ),
     ).toBe(true);
     await page.goto("/#tasks");
-    await expect(page.locator(".living-sky")).toHaveCount(0);
+    await expect(page.locator(".living-sky")).toHaveCount(1);
+    await expect(page.locator(".app-shell")).toHaveClass(/living-app/);
     await expect(page.locator(".app-shell")).not.toHaveClass(/living-home/);
 });
 for (const width of [320, 390, 768, 1366])
@@ -796,10 +797,22 @@ test("فحص أداء التحكم بالضبابية وعدم تسرب مستم
     );
     for (let i = 0; i < 10; i++) {
         await page.locator('.navigation a[href="#tasks"]').click();
-        await expect(page.locator(".living-sky")).toHaveCount(0);
+        await expect(page.locator(".living-sky")).toHaveCount(1);
         await page.locator('.navigation a[href="#home"]').click();
         await expect(page.locator(".living-sky")).toBeAttached();
+        // Sky is persistent now, so its attachment no longer signals that
+        // the Home route has committed and installed its passive effects.
+        await expect(page.locator(".home-today")).toBeVisible();
     }
+    await expect
+        .poll(() =>
+            page.evaluate(() =>
+                (
+                    window as unknown as { skyListenerCounts: () => object }
+                ).skyListenerCounts(),
+            ),
+        )
+        .toEqual(initial);
     const final = await page.evaluate(() =>
         (
             window as unknown as { skyListenerCounts: () => object }

@@ -1,0 +1,17 @@
+{
+  "changed_app_files": [
+    "app/livingSky.css",
+    "app/styles.css",
+    "app/App.tsx"
+  ],
+  "all_other_app_files_unchanged": true,
+  "sky_math_component_and_svg_unchanged": true,
+  "database_schema_changed": false,
+  "task_and_project_logic_changed": false,
+  "dependencies_changed": false,
+  "manifest_changed": false,
+  "published_new_changes": false,
+  "pushed_new_changes": false,
+  "previous_published_source": "125347996b6079fe39f9a064dd986469409a29c9",
+  "previous_deployment": "17dfa24533aaa9e1e6c2cb4f2249510b853d71b7"
+}
