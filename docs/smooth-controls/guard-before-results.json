@@ -1,0 +1,248 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/smooth-controls.spec.ts",
+      "--grep",
+      "منع الإغلاق",
+      "--reporter=list,json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "smooth-controls.spec.ts",
+      "file": "smooth-controls.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "منع الإغلاق أثناء الحفظ وقبوله بعد انتهاء القفل 24",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7003,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog')\nExpected: not \u001b[32m\"closing\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mclosing\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveAttribute\" getByRole('dialog') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog')\u001b[22m\n\u001b[2m    14 × locator resolved to <dialog open=\"\" tabindex=\"-1\" aria-modal=\"true\" data-motion=\"closing\" aria-label=\"إضافة مهمة\">…</dialog>\u001b[22m\n\u001b[2m       - unexpected value \"closing\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog')\nExpected: not \u001b[32m\"closing\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mclosing\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveAttribute\" getByRole('dialog') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog')\u001b[22m\n\u001b[2m    14 × locator resolved to <dialog open=\"\" tabindex=\"-1\" aria-modal=\"true\" data-motion=\"closing\" aria-label=\"إضافة مهمة\">…</dialog>\u001b[22m\n\u001b[2m       - unexpected value \"closing\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:318:42",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                      "column": 42,
+                      "line": 318
+                    },
+                    "snippet": "  316 |                 if (!duringExit) await page.keyboard.press(\"Escape\");\n  317 |                 await expect(dialog).toBeVisible();\n> 318 |                 await expect(dialog).not.toHaveAttribute(\n      |                                          ^\n  319 |                     \"data-motion\",\n  320 |                     \"closing\",\n  321 |                 );"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                        "column": 42,
+                        "line": 318
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog')\nExpected: not \u001b[32m\"closing\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mclosing\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveAttribute\" getByRole('dialog') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog')\u001b[22m\n\u001b[2m    14 × locator resolved to <dialog open=\"\" tabindex=\"-1\" aria-modal=\"true\" data-motion=\"closing\" aria-label=\"إضافة مهمة\">…</dialog>\u001b[22m\n\u001b[2m       - unexpected value \"closing\"\u001b[22m\n\n\n  316 |                 if (!duringExit) await page.keyboard.press(\"Escape\");\n  317 |                 await expect(dialog).toBeVisible();\n> 318 |                 await expect(dialog).not.toHaveAttribute(\n      |                                          ^\n  319 |                     \"data-motion\",\n  320 |                     \"closing\",\n  321 |                 );\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:318:42"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:15:56.898Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/smooth-controls-منع-الإغلا-057b9--وقبوله-بعد-انتهاء-القفل-24/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                    "column": 42,
+                    "line": 318
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-2ab6d72be8375e359bbc",
+          "file": "smooth-controls.spec.ts",
+          "line": 233,
+          "column": 9
+        },
+        {
+          "title": "منع الإغلاق أثناء الحفظ وقبوله بعد انتهاء القفل 500",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7550,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog')\nExpected: not \u001b[32m\"closing\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mclosing\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveAttribute\" getByRole('dialog') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog')\u001b[22m\n\u001b[2m    13 × locator resolved to <dialog open=\"\" tabindex=\"-1\" aria-modal=\"true\" data-motion=\"closing\" aria-label=\"إضافة مهمة\">…</dialog>\u001b[22m\n\u001b[2m       - unexpected value \"closing\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog')\nExpected: not \u001b[32m\"closing\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mclosing\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveAttribute\" getByRole('dialog') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog')\u001b[22m\n\u001b[2m    13 × locator resolved to <dialog open=\"\" tabindex=\"-1\" aria-modal=\"true\" data-motion=\"closing\" aria-label=\"إضافة مهمة\">…</dialog>\u001b[22m\n\u001b[2m       - unexpected value \"closing\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:318:42",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                      "column": 42,
+                      "line": 318
+                    },
+                    "snippet": "  316 |                 if (!duringExit) await page.keyboard.press(\"Escape\");\n  317 |                 await expect(dialog).toBeVisible();\n> 318 |                 await expect(dialog).not.toHaveAttribute(\n      |                                          ^\n  319 |                     \"data-motion\",\n  320 |                     \"closing\",\n  321 |                 );"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                        "column": 42,
+                        "line": 318
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog')\nExpected: not \u001b[32m\"closing\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mclosing\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveAttribute\" getByRole('dialog') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog')\u001b[22m\n\u001b[2m    13 × locator resolved to <dialog open=\"\" tabindex=\"-1\" aria-modal=\"true\" data-motion=\"closing\" aria-label=\"إضافة مهمة\">…</dialog>\u001b[22m\n\u001b[2m       - unexpected value \"closing\"\u001b[22m\n\n\n  316 |                 if (!duringExit) await page.keyboard.press(\"Escape\");\n  317 |                 await expect(dialog).toBeVisible();\n> 318 |                 await expect(dialog).not.toHaveAttribute(\n      |                                          ^\n  319 |                     \"data-motion\",\n  320 |                     \"closing\",\n  321 |                 );\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:318:42"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:16:04.603Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/smooth-controls-منع-الإغلا-770fe-وقبوله-بعد-انتهاء-القفل-500/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                    "column": 42,
+                    "line": 318
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-854d02647f5c17d9afa0",
+          "file": "smooth-controls.spec.ts",
+          "line": 233,
+          "column": 9
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T17:15:55.860Z",
+    "duration": 16611.793,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

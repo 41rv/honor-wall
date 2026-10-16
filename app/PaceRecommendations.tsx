@@ -171,6 +171,7 @@ export function PaceRecommendations({
             {preview && (
                 <Dialog
                     title="تأكيد تغييرات التوصية"
+                    canClose={() => !lock.current}
                     onClose={() => {
                         if (!lock.current) setPreview(null);
                     }}

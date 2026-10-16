@@ -1,5 +1,11 @@
 import { createPortal } from "react-dom";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+    type ReactNode,
+} from "react";
 import { X } from "lucide-react";
 interface PlatformCloseWatcher extends EventTarget {
     destroy(): void;
@@ -11,6 +17,7 @@ export function Dialog({
     className,
     position,
     suppressInitialClick = false,
+    canClose,
 }: {
     title: string;
     children: ReactNode;
@@ -18,10 +25,70 @@ export function Dialog({
     className?: string;
     position?: { top: number; left: number };
     suppressInitialClick?: boolean;
+    canClose?: () => boolean;
 }) {
     const ref = useRef<HTMLDialogElement>(null);
     const closeRef = useRef(onClose);
     closeRef.current = onClose;
+    const canCloseRef = useRef(canClose);
+    canCloseRef.current = canClose;
+    const exit = useRef<(() => void) | null>(null);
+    const requestClose = useCallback(() => {
+        const dialog = ref.current;
+        if (!dialog || exit.current || canCloseRef.current?.() === false)
+            return;
+        const preference = matchMedia("(prefers-reduced-motion: reduce)");
+        if (preference.matches || !dialog.animate) {
+            closeRef.current();
+            return;
+        }
+        const menu = dialog.matches(".context-sheet, .add-menu");
+        const computed = getComputedStyle(dialog);
+        const from = {
+            opacity: computed.opacity,
+            transform: computed.transform,
+        };
+        dialog.dataset.motion = "closing";
+        dialog.style.animation = "none";
+        const animation = dialog.animate(
+            [
+                from,
+                {
+                    opacity: 0,
+                    transform: menu
+                        ? "scale(.97)"
+                        : "translateY(6px) scale(.985)",
+                },
+            ],
+            {
+                duration: 180,
+                easing: "cubic-bezier(.4,0,1,1)",
+                fill: "forwards",
+            },
+        );
+        let finished = false;
+        const finish = () => {
+            if (finished) return;
+            finished = true;
+            preference.removeEventListener("change", finish);
+            // A save may have started during the exit. Keep the original
+            // close guard authoritative and leave a usable, visible dialog.
+            if (canCloseRef.current?.() === false) {
+                animation.cancel();
+                dialog.dataset.motion = "idle";
+                exit.current = null;
+                return;
+            }
+            closeRef.current();
+        };
+        animation.addEventListener("finish", finish, { once: true });
+        preference.addEventListener("change", finish, { once: true });
+        exit.current = () => {
+            finished = true;
+            preference.removeEventListener("change", finish);
+            animation.cancel();
+        };
+    }, []);
     // showModal() propagates native inertness through every rendered node.
     // On large documents Chromium spends seconds restyling that background.
     // Keep the native path for ordinary documents and older platforms; a
@@ -58,7 +125,7 @@ export function Dialog({
             if (event.key === "Escape") {
                 event.preventDefault();
                 event.stopPropagation();
-                closeRef.current();
+                requestClose();
             }
         };
         if (layered) {
@@ -69,7 +136,7 @@ export function Dialog({
             document.addEventListener("focusin", keepFocus);
             document.addEventListener("keydown", escape, true);
             watcher = new NativeCloseWatcher!();
-            watcher.addEventListener("close", () => closeRef.current());
+            watcher.addEventListener("close", requestClose);
         } else {
             dialog.showModal();
             dialog
@@ -77,6 +144,7 @@ export function Dialog({
                 ?.focus();
         }
         return () => {
+            exit.current?.();
             watcher?.destroy();
             document.removeEventListener("focusin", keepFocus);
             document.removeEventListener("keydown", escape, true);
@@ -115,10 +183,10 @@ export function Dialog({
             }
             onCancel={(e) => {
                 e.preventDefault();
-                onClose();
+                requestClose();
             }}
             onClick={(e) => {
-                if (e.target === e.currentTarget) onClose();
+                if (e.target === e.currentTarget) requestClose();
             }}
             aria-label={title}
             onKeyDown={(e) => {
@@ -144,7 +212,7 @@ export function Dialog({
                 <button
                     className="icon-btn"
                     aria-label="إغلاق"
-                    onClick={onClose}
+                    onClick={requestClose}
                 >
                     <X size={20} />
                 </button>
@@ -167,7 +235,7 @@ export function Dialog({
                       ignoreReleaseClick.current = false;
                   }}
                   onClick={(event) => {
-                      if (event.target === event.currentTarget) onClose();
+                      if (event.target === event.currentTarget) requestClose();
                   }}
               >
                   {content}

@@ -1,0 +1,98 @@
+[
+  {
+    "width": 320,
+    "theme": "light",
+    "dialog": false,
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "dialog": true,
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "dialog": false,
+    "violations": []
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "dialog": true,
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "dialog": false,
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "dialog": true,
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "dialog": false,
+    "violations": []
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "dialog": true,
+    "violations": []
+  },
+  {
+    "width": 768,
+    "theme": "light",
+    "dialog": false,
+    "violations": []
+  },
+  {
+    "width": 768,
+    "theme": "light",
+    "dialog": true,
+    "violations": []
+  },
+  {
+    "width": 768,
+    "theme": "dark",
+    "dialog": false,
+    "violations": []
+  },
+  {
+    "width": 768,
+    "theme": "dark",
+    "dialog": true,
+    "violations": []
+  },
+  {
+    "width": 1366,
+    "theme": "light",
+    "dialog": false,
+    "violations": []
+  },
+  {
+    "width": 1366,
+    "theme": "light",
+    "dialog": true,
+    "violations": []
+  },
+  {
+    "width": 1366,
+    "theme": "dark",
+    "dialog": false,
+    "violations": []
+  },
+  {
+    "width": 1366,
+    "theme": "dark",
+    "dialog": true,
+    "violations": []
+  }
+]

@@ -1,0 +1,924 @@
+[
+  {
+    "stage": "before",
+    "repeat": 1,
+    "navigation": [
+      {
+        "route": "projects",
+        "commit_ms": 51.599999994039536,
+        "paint_ms": 92.19999998807907
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 399,
+        "paint_ms": 485
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 80,
+        "paint_ms": 100.09999999403954
+      },
+      {
+        "route": "progress",
+        "commit_ms": 96.2999999821186,
+        "paint_ms": 144.90000000596046
+      },
+      {
+        "route": "home",
+        "commit_ms": 55.30000001192093,
+        "paint_ms": 100.90000000596046
+      },
+      {
+        "route": "projects",
+        "commit_ms": 42,
+        "paint_ms": 85.59999999403954
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 429.59999999403954,
+        "paint_ms": 529.5999999940395
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 106.69999998807907,
+        "paint_ms": 130.80000001192093
+      },
+      {
+        "route": "progress",
+        "commit_ms": 59.099999994039536,
+        "paint_ms": 98
+      },
+      {
+        "route": "home",
+        "commit_ms": 88.7999999821186,
+        "paint_ms": 152.69999998807907
+      },
+      {
+        "route": "projects",
+        "commit_ms": 39.19999998807907,
+        "paint_ms": 72.2999999821186
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 361.19999998807907,
+        "paint_ms": 479.09999999403954
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 106.40000000596046,
+        "paint_ms": 147.90000000596046
+      },
+      {
+        "route": "progress",
+        "commit_ms": 50,
+        "paint_ms": 86.09999999403954
+      },
+      {
+        "route": "home",
+        "commit_ms": 44.900000005960464,
+        "paint_ms": 102.19999998807907
+      }
+    ],
+    "navigation_p95_ms": 529.5999999940395,
+    "navigation_commit_p95_ms": 429.59999999403954,
+    "frames_navigation": {
+      "count": 305,
+      "median_ms": 16.699999999999818,
+      "p95_ms": 33.399999999999636,
+      "over50": 10
+    },
+    "frames_scroll": {
+      "count": 100,
+      "median_ms": 16.700000000000728,
+      "p95_ms": 33.399999999999636,
+      "over50": 0
+    },
+    "long_tasks": [
+      {
+        "duration": 332,
+        "phase": "navigation"
+      },
+      {
+        "duration": 108,
+        "phase": "navigation"
+      },
+      {
+        "duration": 56,
+        "phase": "navigation"
+      },
+      {
+        "duration": 67,
+        "phase": "navigation"
+      },
+      {
+        "duration": 356,
+        "phase": "navigation"
+      },
+      {
+        "duration": 120,
+        "phase": "navigation"
+      },
+      {
+        "duration": 79,
+        "phase": "navigation"
+      },
+      {
+        "duration": 72,
+        "phase": "navigation"
+      },
+      {
+        "duration": 53,
+        "phase": "navigation"
+      },
+      {
+        "duration": 52,
+        "phase": "navigation"
+      },
+      {
+        "duration": 306,
+        "phase": "navigation"
+      },
+      {
+        "duration": 119,
+        "phase": "navigation"
+      },
+      {
+        "duration": 80,
+        "phase": "navigation"
+      },
+      {
+        "duration": 327,
+        "phase": "settle"
+      },
+      {
+        "duration": 111,
+        "phase": "settle"
+      }
+    ],
+    "tasks": 500,
+    "cpu_throttle": 4,
+    "clock": "Date proxy only; native performance.now and native requestAnimationFrame",
+    "physical_android": false
+  },
+  {
+    "stage": "after",
+    "repeat": 1,
+    "navigation": [
+      {
+        "route": "projects",
+        "commit_ms": 127.69999998807907,
+        "paint_ms": 173.7999999821186
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 450.7999999821186,
+        "paint_ms": 611.5
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 102.40000000596046,
+        "paint_ms": 135.90000000596046
+      },
+      {
+        "route": "progress",
+        "commit_ms": 90.2999999821186,
+        "paint_ms": 144.90000000596046
+      },
+      {
+        "route": "home",
+        "commit_ms": 60.599999994039536,
+        "paint_ms": 111.09999999403954
+      },
+      {
+        "route": "projects",
+        "commit_ms": 42,
+        "paint_ms": 81.59999999403954
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 365.19999998807907,
+        "paint_ms": 479.69999998807907
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 62.900000005960464,
+        "paint_ms": 82.80000001192093
+      },
+      {
+        "route": "progress",
+        "commit_ms": 57.80000001192093,
+        "paint_ms": 106.5
+      },
+      {
+        "route": "home",
+        "commit_ms": 53.900000005960464,
+        "paint_ms": 101.80000001192093
+      },
+      {
+        "route": "projects",
+        "commit_ms": 45.30000001192093,
+        "paint_ms": 91
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 401.5,
+        "paint_ms": 535.5
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 69.90000000596046,
+        "paint_ms": 102.30000001192093
+      },
+      {
+        "route": "progress",
+        "commit_ms": 45.5,
+        "paint_ms": 94.69999998807907
+      },
+      {
+        "route": "home",
+        "commit_ms": 48.599999994039536,
+        "paint_ms": 105.40000000596046
+      }
+    ],
+    "navigation_p95_ms": 611.5,
+    "navigation_commit_p95_ms": 450.7999999821186,
+    "frames_navigation": {
+      "count": 299,
+      "median_ms": 16.699999999999818,
+      "p95_ms": 33.40000000000009,
+      "over50": 8
+    },
+    "frames_scroll": {
+      "count": 100,
+      "median_ms": 16.700000000000728,
+      "p95_ms": 33.29999999999927,
+      "over50": 0
+    },
+    "long_tasks": [
+      {
+        "duration": 380,
+        "phase": "navigation"
+      },
+      {
+        "duration": 169,
+        "phase": "navigation"
+      },
+      {
+        "duration": 71,
+        "phase": "navigation"
+      },
+      {
+        "duration": 54,
+        "phase": "navigation"
+      },
+      {
+        "duration": 315,
+        "phase": "navigation"
+      },
+      {
+        "duration": 102,
+        "phase": "navigation"
+      },
+      {
+        "duration": 338,
+        "phase": "navigation"
+      },
+      {
+        "duration": 136,
+        "phase": "navigation"
+      },
+      {
+        "duration": 51,
+        "phase": "navigation"
+      },
+      {
+        "duration": 232,
+        "phase": "settle"
+      },
+      {
+        "duration": 111,
+        "phase": "settle"
+      },
+      {
+        "duration": 56,
+        "phase": "scroll"
+      }
+    ],
+    "tasks": 500,
+    "cpu_throttle": 4,
+    "clock": "Date proxy only; native performance.now and native requestAnimationFrame",
+    "physical_android": false
+  },
+  {
+    "stage": "before",
+    "repeat": 2,
+    "navigation": [
+      {
+        "route": "projects",
+        "commit_ms": 60.400000005960464,
+        "paint_ms": 123.90000000596046
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 516.7000000178814,
+        "paint_ms": 616.8000000119209
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 95.2000000178814,
+        "paint_ms": 132
+      },
+      {
+        "route": "progress",
+        "commit_ms": 92.80000001192093,
+        "paint_ms": 145.80000001192093
+      },
+      {
+        "route": "home",
+        "commit_ms": 40.900000005960464,
+        "paint_ms": 83.40000000596046
+      },
+      {
+        "route": "projects",
+        "commit_ms": 38.10000002384186,
+        "paint_ms": 68
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 393.2000000178814,
+        "paint_ms": 498.09999999403954
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 64.80000001192093,
+        "paint_ms": 84.09999999403954
+      },
+      {
+        "route": "progress",
+        "commit_ms": 50.20000001788139,
+        "paint_ms": 98
+      },
+      {
+        "route": "home",
+        "commit_ms": 42.69999998807907,
+        "paint_ms": 74
+      },
+      {
+        "route": "projects",
+        "commit_ms": 34.20000001788139,
+        "paint_ms": 51.70000001788139
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 292,
+        "paint_ms": 390.09999999403954
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 74.2999999821186,
+        "paint_ms": 105.59999999403954
+      },
+      {
+        "route": "progress",
+        "commit_ms": 47.400000005960464,
+        "paint_ms": 89.80000001192093
+      },
+      {
+        "route": "home",
+        "commit_ms": 40.900000005960464,
+        "paint_ms": 84.5
+      }
+    ],
+    "navigation_p95_ms": 616.8000000119209,
+    "navigation_commit_p95_ms": 516.7000000178814,
+    "frames_navigation": {
+      "count": 306,
+      "median_ms": 16.699999999999818,
+      "p95_ms": 33.30000000000018,
+      "over50": 5
+    },
+    "frames_scroll": {
+      "count": 100,
+      "median_ms": 16.700000000000728,
+      "p95_ms": 33.399999999999636,
+      "over50": 0
+    },
+    "long_tasks": [
+      {
+        "duration": 426,
+        "phase": "navigation"
+      },
+      {
+        "duration": 137,
+        "phase": "navigation"
+      },
+      {
+        "duration": 64,
+        "phase": "navigation"
+      },
+      {
+        "duration": 59,
+        "phase": "navigation"
+      },
+      {
+        "duration": 335,
+        "phase": "navigation"
+      },
+      {
+        "duration": 111,
+        "phase": "navigation"
+      },
+      {
+        "duration": 245,
+        "phase": "navigation"
+      },
+      {
+        "duration": 96,
+        "phase": "navigation"
+      },
+      {
+        "duration": 51,
+        "phase": "navigation"
+      },
+      {
+        "duration": 261,
+        "phase": "settle"
+      },
+      {
+        "duration": 94,
+        "phase": "settle"
+      }
+    ],
+    "tasks": 500,
+    "cpu_throttle": 4,
+    "clock": "Date proxy only; native performance.now and native requestAnimationFrame",
+    "physical_android": false
+  },
+  {
+    "stage": "after",
+    "repeat": 2,
+    "navigation": [
+      {
+        "route": "projects",
+        "commit_ms": 75.60000002384186,
+        "paint_ms": 170
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 543.6999999880791,
+        "paint_ms": 700.8000000119209
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 97.19999998807907,
+        "paint_ms": 125.89999997615814
+      },
+      {
+        "route": "progress",
+        "commit_ms": 96.5,
+        "paint_ms": 131
+      },
+      {
+        "route": "home",
+        "commit_ms": 60.19999998807907,
+        "paint_ms": 127.2999999821186
+      },
+      {
+        "route": "projects",
+        "commit_ms": 50.10000002384186,
+        "paint_ms": 94.80000001192093
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 400.19999998807907,
+        "paint_ms": 523.2999999821186
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 84.5,
+        "paint_ms": 115.09999999403954
+      },
+      {
+        "route": "progress",
+        "commit_ms": 66.40000000596046,
+        "paint_ms": 125
+      },
+      {
+        "route": "home",
+        "commit_ms": 55.599999994039536,
+        "paint_ms": 79.30000001192093
+      },
+      {
+        "route": "projects",
+        "commit_ms": 46,
+        "paint_ms": 88.89999997615814
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 351.2999999821186,
+        "paint_ms": 464.5
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 81.10000002384186,
+        "paint_ms": 106.30000001192093
+      },
+      {
+        "route": "progress",
+        "commit_ms": 60.79999998211861,
+        "paint_ms": 120.09999999403954
+      },
+      {
+        "route": "home",
+        "commit_ms": 50.79999998211861,
+        "paint_ms": 80.90000000596046
+      }
+    ],
+    "navigation_p95_ms": 700.8000000119209,
+    "navigation_commit_p95_ms": 543.6999999880791,
+    "frames_navigation": {
+      "count": 290,
+      "median_ms": 16.699999999999818,
+      "p95_ms": 50,
+      "over50": 11
+    },
+    "frames_scroll": {
+      "count": 100,
+      "median_ms": 16.700000000000728,
+      "p95_ms": 33.399999999999636,
+      "over50": 0
+    },
+    "long_tasks": [
+      {
+        "duration": 66,
+        "phase": "navigation"
+      },
+      {
+        "duration": 456,
+        "phase": "navigation"
+      },
+      {
+        "duration": 173,
+        "phase": "navigation"
+      },
+      {
+        "duration": 67,
+        "phase": "navigation"
+      },
+      {
+        "duration": 58,
+        "phase": "navigation"
+      },
+      {
+        "duration": 337,
+        "phase": "navigation"
+      },
+      {
+        "duration": 118,
+        "phase": "navigation"
+      },
+      {
+        "duration": 61,
+        "phase": "navigation"
+      },
+      {
+        "duration": 286,
+        "phase": "navigation"
+      },
+      {
+        "duration": 126,
+        "phase": "navigation"
+      },
+      {
+        "duration": 57,
+        "phase": "navigation"
+      },
+      {
+        "duration": 272,
+        "phase": "settle"
+      },
+      {
+        "duration": 138,
+        "phase": "settle"
+      }
+    ],
+    "tasks": 500,
+    "cpu_throttle": 4,
+    "clock": "Date proxy only; native performance.now and native requestAnimationFrame",
+    "physical_android": false
+  },
+  {
+    "stage": "before",
+    "repeat": 3,
+    "navigation": [
+      {
+        "route": "projects",
+        "commit_ms": 59.400000005960464,
+        "paint_ms": 106.30000001192093
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 430.7999999821186,
+        "paint_ms": 564.5
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 123.2999999821186,
+        "paint_ms": 154.19999998807907
+      },
+      {
+        "route": "progress",
+        "commit_ms": 88.19999998807907,
+        "paint_ms": 139.09999999403954
+      },
+      {
+        "route": "home",
+        "commit_ms": 42.599999994039536,
+        "paint_ms": 88.69999998807907
+      },
+      {
+        "route": "projects",
+        "commit_ms": 48.30000001192093,
+        "paint_ms": 85.80000001192093
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 394.7999999821186,
+        "paint_ms": 511.2999999821186
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 77.90000000596046,
+        "paint_ms": 111.7000000178814
+      },
+      {
+        "route": "progress",
+        "commit_ms": 56.80000001192093,
+        "paint_ms": 111.30000001192093
+      },
+      {
+        "route": "home",
+        "commit_ms": 59.80000001192093,
+        "paint_ms": 110.90000000596046
+      },
+      {
+        "route": "projects",
+        "commit_ms": 39.70000001788139,
+        "paint_ms": 73.2000000178814
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 391.10000002384186,
+        "paint_ms": 608.9000000059605
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 91.10000002384186,
+        "paint_ms": 113.10000002384186
+      },
+      {
+        "route": "progress",
+        "commit_ms": 61.70000001788139,
+        "paint_ms": 124.80000001192093
+      },
+      {
+        "route": "home",
+        "commit_ms": 46.5,
+        "paint_ms": 102.2000000178814
+      }
+    ],
+    "navigation_p95_ms": 608.9000000059605,
+    "navigation_commit_p95_ms": 430.7999999821186,
+    "frames_navigation": {
+      "count": 308,
+      "median_ms": 16.699999999999818,
+      "p95_ms": 33.39999999999998,
+      "over50": 9
+    },
+    "frames_scroll": {
+      "count": 100,
+      "median_ms": 16.700000000000728,
+      "p95_ms": 33.400000000001455,
+      "over50": 0
+    },
+    "long_tasks": [
+      {
+        "duration": 358,
+        "phase": "navigation"
+      },
+      {
+        "duration": 128,
+        "phase": "navigation"
+      },
+      {
+        "duration": 85,
+        "phase": "navigation"
+      },
+      {
+        "duration": 61,
+        "phase": "navigation"
+      },
+      {
+        "duration": 322,
+        "phase": "navigation"
+      },
+      {
+        "duration": 121,
+        "phase": "navigation"
+      },
+      {
+        "duration": 59,
+        "phase": "navigation"
+      },
+      {
+        "duration": 305,
+        "phase": "navigation"
+      },
+      {
+        "duration": 200,
+        "phase": "navigation"
+      },
+      {
+        "duration": 56,
+        "phase": "navigation"
+      },
+      {
+        "duration": 348,
+        "phase": "settle"
+      },
+      {
+        "duration": 144,
+        "phase": "settle"
+      },
+      {
+        "duration": 52,
+        "phase": "scroll"
+      },
+      {
+        "duration": 51,
+        "phase": "scroll"
+      }
+    ],
+    "tasks": 500,
+    "cpu_throttle": 4,
+    "clock": "Date proxy only; native performance.now and native requestAnimationFrame",
+    "physical_android": false
+  },
+  {
+    "stage": "after",
+    "repeat": 3,
+    "navigation": [
+      {
+        "route": "projects",
+        "commit_ms": 58.099999994039536,
+        "paint_ms": 147.59999999403954
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 369.40000000596046,
+        "paint_ms": 479.90000000596046
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 107.2999999821186,
+        "paint_ms": 124.59999999403954
+      },
+      {
+        "route": "progress",
+        "commit_ms": 101.2000000178814,
+        "paint_ms": 163.40000000596046
+      },
+      {
+        "route": "home",
+        "commit_ms": 62.900000005960464,
+        "paint_ms": 92.80000001192093
+      },
+      {
+        "route": "projects",
+        "commit_ms": 42.099999994039536,
+        "paint_ms": 74.30000001192093
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 341.2000000178814,
+        "paint_ms": 476.5
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 87.19999998807907,
+        "paint_ms": 107.69999998807907
+      },
+      {
+        "route": "progress",
+        "commit_ms": 62.099999994039536,
+        "paint_ms": 128.69999998807907
+      },
+      {
+        "route": "home",
+        "commit_ms": 46,
+        "paint_ms": 71.90000000596046
+      },
+      {
+        "route": "projects",
+        "commit_ms": 41.5,
+        "paint_ms": 78.30000001192093
+      },
+      {
+        "route": "tasks",
+        "commit_ms": 319.90000000596046,
+        "paint_ms": 439.90000000596046
+      },
+      {
+        "route": "ideas",
+        "commit_ms": 76.60000002384186,
+        "paint_ms": 96.10000002384186
+      },
+      {
+        "route": "progress",
+        "commit_ms": 48.099999994039536,
+        "paint_ms": 90.59999999403954
+      },
+      {
+        "route": "home",
+        "commit_ms": 44.89999997615814,
+        "paint_ms": 73
+      }
+    ],
+    "navigation_p95_ms": 479.90000000596046,
+    "navigation_commit_p95_ms": 369.40000000596046,
+    "frames_navigation": {
+      "count": 289,
+      "median_ms": 16.699999999999818,
+      "p95_ms": 49.900000000000546,
+      "over50": 11
+    },
+    "frames_scroll": {
+      "count": 100,
+      "median_ms": 16.700000000000728,
+      "p95_ms": 33.400000000001455,
+      "over50": 1
+    },
+    "long_tasks": [
+      {
+        "duration": 308,
+        "phase": "navigation"
+      },
+      {
+        "duration": 109,
+        "phase": "navigation"
+      },
+      {
+        "duration": 77,
+        "phase": "navigation"
+      },
+      {
+        "duration": 59,
+        "phase": "navigation"
+      },
+      {
+        "duration": 277,
+        "phase": "navigation"
+      },
+      {
+        "duration": 124,
+        "phase": "navigation"
+      },
+      {
+        "duration": 64,
+        "phase": "navigation"
+      },
+      {
+        "duration": 259,
+        "phase": "navigation"
+      },
+      {
+        "duration": 122,
+        "phase": "navigation"
+      },
+      {
+        "duration": 54,
+        "phase": "navigation"
+      },
+      {
+        "duration": 308,
+        "phase": "settle"
+      },
+      {
+        "duration": 122,
+        "phase": "settle"
+      },
+      {
+        "duration": 61,
+        "phase": "scroll"
+      },
+      {
+        "duration": 72,
+        "phase": "scroll"
+      }
+    ],
+    "tasks": 500,
+    "cpu_throttle": 4,
+    "clock": "Date proxy only; native performance.now and native requestAnimationFrame",
+    "physical_android": false
+  }
+]

@@ -194,6 +194,18 @@ for (const width of [390, 1366]) {
                 await upload(page);
                 const dialog = page.getByRole("dialog");
                 await expect(dialog).toBeVisible();
+                // Visibility includes partially faded-in dialogs. Audit the
+                // final material after its requested entrance animation;
+                // keep every contrast/keyboard/layout assertion unchanged.
+                await dialog.evaluate(async (element) => {
+                    await Promise.all(
+                        element
+                            .getAnimations({ subtree: true })
+                            .map((animation) =>
+                                animation.finished.catch(() => {}),
+                            ),
+                    );
+                });
                 expect(
                     (await new AxeBuilder({ page }).include("dialog").analyze())
                         .violations,

@@ -5,6 +5,7 @@ import "@fontsource/tajawal/arabic-500.css";
 import "@fontsource/tajawal/arabic-700.css";
 import "./styles.css";
 import "./livingSky.css";
+import "./controls.css";
 import App from "./App";
 import { ErrorBoundary } from "./ErrorBoundary";
 createRoot(document.getElementById("root")!).render(

@@ -1,0 +1,985 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/smooth-controls.spec.ts",
+      "--reporter=list,json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "smooth-controls.spec.ts",
+      "file": "smooth-controls.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "صور الخامة والقوائم light 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1631,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:00.593Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-f4d07dde294375dc3caa",
+          "file": "smooth-controls.spec.ts",
+          "line": 73,
+          "column": 9
+        },
+        {
+          "title": "صور الخامة والقوائم dark 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1653,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:02.441Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-3e7859a323dd0b2835e1",
+          "file": "smooth-controls.spec.ts",
+          "line": 73,
+          "column": 9
+        },
+        {
+          "title": "صور الخامة والقوائم light 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1688,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:04.116Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-8099755765debe9b3335",
+          "file": "smooth-controls.spec.ts",
+          "line": 73,
+          "column": 9
+        },
+        {
+          "title": "صور الخامة والقوائم dark 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1567,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:05.818Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-8dbe937b13a7b73bbb88",
+          "file": "smooth-controls.spec.ts",
+          "line": 73,
+          "column": 9
+        },
+        {
+          "title": "صور الخامة والقوائم light 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1652,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:07.403Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-bf1ed039fbc7ca4079ba",
+          "file": "smooth-controls.spec.ts",
+          "line": 73,
+          "column": 9
+        },
+        {
+          "title": "صور الخامة والقوائم dark 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1743,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:09.081Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-4b7348cafe6ecb8b2f0b",
+          "file": "smooth-controls.spec.ts",
+          "line": 73,
+          "column": 9
+        },
+        {
+          "title": "صور الخامة والقوائم light 1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1848,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:10.841Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-4b29a2be8e30043d5a6f",
+          "file": "smooth-controls.spec.ts",
+          "line": 73,
+          "column": 9
+        },
+        {
+          "title": "صور الخامة والقوائم dark 1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2001,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:12.702Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-ca66836195770a124042",
+          "file": "smooth-controls.spec.ts",
+          "line": 73,
+          "column": 9
+        },
+        {
+          "title": "قياس التنقل والتمرير مع500 مهمة وCPU أبطأ أربع مرات",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11222,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m700\u001b[39m\nReceived:   \u001b[31m718\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m700\u001b[39m\nReceived:   \u001b[31m718\u001b[39m\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:182:39",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                      "column": 39,
+                      "line": 182
+                    },
+                    "snippet": "  180 |     await cdp.send(\"Emulation.setCPUThrottlingRate\", { rate: 1 });\n  181 |     expect(await page.locator(\".task-row\").count()).toBe(500);\n> 182 |     expect(metrics.navigation_p95_ms).toBeLessThan(700);\n      |                                       ^\n  183 |     fs.writeFileSync(\n  184 |         `${output}/${before ? \"before\" : \"after\"}-performance.json`,\n  185 |         JSON.stringify("
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                        "column": 39,
+                        "line": 182
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m700\u001b[39m\nReceived:   \u001b[31m718\u001b[39m\n\n  180 |     await cdp.send(\"Emulation.setCPUThrottlingRate\", { rate: 1 });\n  181 |     expect(await page.locator(\".task-row\").count()).toBe(500);\n> 182 |     expect(metrics.navigation_p95_ms).toBeLessThan(700);\n      |                                       ^\n  183 |     fs.writeFileSync(\n  184 |         `${output}/${before ? \"before\" : \"after\"}-performance.json`,\n  185 |         JSON.stringify(\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:182:39"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:14.718Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/smooth-controls-قياس-التنق-dbd2f-00-مهمة-وCPU-أبطأ-أربع-مرات/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                    "column": 39,
+                    "line": 182
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-de1bd23b1cb3dde44d54",
+          "file": "smooth-controls.spec.ts",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "التنقل في الاتجاهين والرجوع والسياق الزجاجي 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3916,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:26.424Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-739373086ee77e042445",
+          "file": "smooth-controls.spec.ts",
+          "line": 195,
+          "column": 9
+        },
+        {
+          "title": "التنقل في الاتجاهين والرجوع والسياق الزجاجي 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3752,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:30.549Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-cfa8806bcffc0194fa8d",
+          "file": "smooth-controls.spec.ts",
+          "line": 195,
+          "column": 9
+        },
+        {
+          "title": "التنقل في الاتجاهين والرجوع والسياق الزجاجي 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3830,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:34.320Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-4b5670d4f6eb47b075a3",
+          "file": "smooth-controls.spec.ts",
+          "line": 195,
+          "column": 9
+        },
+        {
+          "title": "التنقل في الاتجاهين والرجوع والسياق الزجاجي 1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3851,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:38.166Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-ea799ed5f7e6e71cbb40",
+          "file": "smooth-controls.spec.ts",
+          "line": 195,
+          "column": 9
+        },
+        {
+          "title": "النقر السريع يلغي الحركة السابقة ولا ينسخ المحتوى أو السماء",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2016,
+                  "error": {
+                    "message": "Error: locator.tap: The page does not support tap. Use hasTouch context option to enable touch support.",
+                    "stack": "Error: locator.tap: The page does not support tap. Use hasTouch context option to enable touch support.\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:352:67",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                      "column": 67,
+                      "line": 352
+                    },
+                    "snippet": "  350 |         await expect(page.locator(\".home-today\")).toHaveCount(1);\n  351 |         for (const route of [\"tasks\", \"ideas\", \"home\"])\n> 352 |             await page.locator(`.navigation a[href=\"#${route}\"]`).tap();\n      |                                                                   ^\n  353 |         await expect(page.locator(\"main\")).toHaveAttribute(\n  354 |             \"data-route\",\n  355 |             \"home\","
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                        "column": 67,
+                        "line": 352
+                      },
+                      "message": "Error: locator.tap: The page does not support tap. Use hasTouch context option to enable touch support.\n\n  350 |         await expect(page.locator(\".home-today\")).toHaveCount(1);\n  351 |         for (const route of [\"tasks\", \"ideas\", \"home\"])\n> 352 |             await page.locator(`.navigation a[href=\"#${route}\"]`).tap();\n      |                                                                   ^\n  353 |         await expect(page.locator(\"main\")).toHaveAttribute(\n  354 |             \"data-route\",\n  355 |             \"home\",\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:352:67"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:42.042Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/smooth-controls-النقر-السر-fd8ce--ولا-ينسخ-المحتوى-أو-السماء/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                    "column": 67,
+                    "line": 352
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-9db46b88732de684f2d9",
+          "file": "smooth-controls.spec.ts",
+          "line": 302,
+          "column": 5
+        },
+        {
+          "title": "موضع التمرير محفوظ عند العودة إلى القائمة الطويلة",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2913,
+                  "error": {
+                    "message": "Error: page.evaluate: ReferenceError: y is not defined\n    at eval (eval at evaluate (:370:30), <anonymous>:1:26)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+                    "stack": "Error: page.evaluate: ReferenceError: y is not defined\n    at eval (eval at evaluate (:370:30), <anonymous>:1:26)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:370:30), <anonymous>:1:26)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:380:30\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:379:9",
+                    "location": {
+                      "file": "eval at evaluate (:370:30), <anonymous>",
+                      "column": 26,
+                      "line": 1
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "eval at evaluate (:370:30), <anonymous>",
+                        "column": 26,
+                        "line": 1
+                      },
+                      "message": "Error: page.evaluate: ReferenceError: y is not defined\n    at eval (eval at evaluate (:370:30), <anonymous>:1:26)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at eval (eval at evaluate (:370:30), <anonymous>:1:26)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:380:30\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:379:9"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:44.576Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/smooth-controls-موضع-التمر-30f87--العودة-إلى-القائمة-الطويلة/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "eval at evaluate (:370:30), <anonymous>",
+                    "column": 26,
+                    "line": 1
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-b3ce12e6dc04834fa0dd",
+          "file": "smooth-controls.spec.ts",
+          "line": 359,
+          "column": 5
+        },
+        {
+          "title": "النوافذ وEscape وحصر التركيز وإعادته 24",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1607,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:434:19",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                      "column": 19,
+                      "line": 434
+                    },
+                    "snippet": "  432 |                                 .length,\n  433 |                     ),\n> 434 |                 ).toBe(0);\n      |                   ^\n  435 |             }\n  436 |             await openCreate(page, \"task\");\n  437 |             await expect(page.getByRole(\"dialog\")).toHaveCount(1);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                        "column": 19,
+                        "line": 434
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\n\n  432 |                                 .length,\n  433 |                     ),\n> 434 |                 ).toBe(0);\n      |                   ^\n  435 |             }\n  436 |             await openCreate(page, \"task\");\n  437 |             await expect(page.getByRole(\"dialog\")).toHaveCount(1);\n    at /workspace/honor-wall/tests/browser/smooth-controls.spec.ts:434:19"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:48.184Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/smooth-controls-النوافذ-وEscape-وحصر-التركيز-وإعادته-24/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/smooth-controls.spec.ts",
+                    "column": 19,
+                    "line": 434
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-37b41cc29057775c42e6",
+          "file": "smooth-controls.spec.ts",
+          "line": 385,
+          "column": 9
+        },
+        {
+          "title": "النوافذ وEscape وحصر التركيز وإعادته 500",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6038,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:50.456Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-dad1c2961e5cbef4b98d",
+          "file": "smooth-controls.spec.ts",
+          "line": 385,
+          "column": 9
+        },
+        {
+          "title": "تقليل الحركة منذ البداية وعند تغييره أثناء الانتقال",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1114,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:56.724Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-6e141834468fc3f09132",
+          "file": "smooth-controls.spec.ts",
+          "line": 475,
+          "column": 5
+        },
+        {
+          "title": "الزر عائم فعليًا والضغط .94 والمساحة الآمنة والأطراف لا تعترض اللمس",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6145,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:52:57.856Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-c630859a365ea8d4eb1c",
+          "file": "smooth-controls.spec.ts",
+          "line": 521,
+          "column": 5
+        },
+        {
+          "title": "تباين الأيقونات والنصوص الزجاجية في المشاهد الخمسة والثيمين",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4979,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:53:04.012Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-97f282cab87b8f52c599",
+          "file": "smooth-controls.spec.ts",
+          "line": 583,
+          "column": 5
+        },
+        {
+          "title": "Axe للثيمين والمقاسات الأربعة وحوار الإضافة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12346,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:53:09.002Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-ac5a2db2d88a1497b75c",
+          "file": "smooth-controls.spec.ts",
+          "line": 674,
+          "column": 5
+        },
+        {
+          "title": "حفظ الإنجاز والبيانات وإعادة الفتح دون اتصال مع التحكم المتحرك",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2597,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T16:53:21.361Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263a7271419fe2700eee-9cc893d731d8b67f40c6",
+          "file": "smooth-controls.spec.ts",
+          "line": 717,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T16:51:59.056Z",
+    "duration": 85019.926,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

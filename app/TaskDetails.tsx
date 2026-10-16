@@ -113,6 +113,7 @@ export function TaskDetails({ task }: { task: TaskView }) {
             {editing && (
                 <Dialog
                     title="موعد المهمة وأولويتها"
+                    canClose={() => !lock.current}
                     onClose={() => {
                         if (!lock.current) setEditing(false);
                     }}

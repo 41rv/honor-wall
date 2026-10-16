@@ -273,6 +273,7 @@ export function ProjectPacePanel({
             </details>
             {dialog && (
                 <Dialog
+                    canClose={() => !lock.current}
                     title={
                         dialog === "goal"
                             ? "هدف المشروع الزمني"

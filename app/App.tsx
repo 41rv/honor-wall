@@ -1,4 +1,5 @@
 import { LivingSky } from "./LivingSky";
+import { useRouteMotion } from "./useRouteMotion";
 import { chosenToday, orderedToday } from "./dailyPlanning";
 import { usePaceData } from "./usePaceData";
 import { ProjectPacePanel, PaceSummary } from "./ProjectPacePanel";
@@ -30,6 +31,7 @@ import {
     useRef,
     useState,
     type ReactNode,
+    type CSSProperties,
 } from "react";
 import { useAppData } from "./useAppData";
 import { userError } from "./userError";
@@ -796,6 +798,7 @@ function App() {
     const [route] = [useRoute()];
     const [routePage, ...parts] = route.split("/");
     const page = routePage === "today" ? "home" : routePage;
+    const mainMotion = useRouteMotion(page);
     const id = routeId(parts.length ? parts.join("/") : undefined);
     const data = useAppData(page, id);
     const hierarchy = useMemo(() => buildHierarchy(data.steps), [data.steps]);
@@ -1400,7 +1403,23 @@ function App() {
                     </strong>
                 </a>
                 <div className="nav-caption">مساحتك الشخصية</div>
-                <nav className="navigation" aria-label="التنقل الرئيسي">
+                <nav
+                    className="navigation"
+                    aria-label="التنقل الرئيسي"
+                    style={
+                        {
+                            "--nav-index": Math.max(
+                                0,
+                                nav.findIndex((n) => n.id === section),
+                            ),
+                        } as CSSProperties
+                    }
+                >
+                    <span
+                        className="nav-active-indicator"
+                        aria-hidden="true"
+                        hidden={!nav.some((n) => n.id === section)}
+                    />
                     {nav.map((n) => (
                         <a
                             key={n.id}
@@ -1503,7 +1522,7 @@ function App() {
                         </button>
                     </div>
                 )}
-                <main>
+                <main ref={mainMotion} data-route={page}>
                     {data.taskHistoryError && (
                         <p role="alert" className="warning">
                             {data.taskHistoryError}
@@ -3123,7 +3142,8 @@ function App() {
                             <span>ضبابية عالية</span>
                         </div>
                         <p className="muted small" id="sky-blur-hint">
-                            لسماء مسار في جميع الصفحات؛ تبقى البطاقات والنصوص واضحة.
+                            لسماء مسار في جميع الصفحات؛ تبقى البطاقات والنصوص
+                            واضحة.
                         </p>
                     </div>
                     <p className="muted small">يُحفظ اختيارك على هذا الجهاز.</p>
@@ -3345,6 +3365,7 @@ function CreateForm({
     return (
         <Dialog
             title={`إضافة ${kind}`}
+            canClose={() => !submitting.current}
             onClose={() => {
                 if (!submitting.current) onClose();
             }}

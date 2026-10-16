@@ -122,6 +122,7 @@ export function ProjectImport({
             {open && (
                 <Dialog
                     key={file ? "preview" : "choose"}
+                    canClose={() => !lock.current}
                     title={file ? "معاينة استيراد المشروع" : "استيراد مشروع"}
                     onClose={close}
                 >

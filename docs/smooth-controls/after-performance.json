@@ -1,0 +1,40 @@
+{
+  "navigation_ms": [
+    132,
+    589,
+    171,
+    214,
+    92,
+    103,
+    547,
+    143,
+    160,
+    124,
+    98,
+    522,
+    146,
+    164,
+    135
+  ],
+  "navigation_p95_ms": 589,
+  "frame_count": 367,
+  "frame_median_ms": 16,
+  "frame_p95_ms": 66,
+  "frames_over_50ms": 28,
+  "long_tasks_ms": [
+    323,
+    146,
+    75,
+    57,
+    334,
+    102,
+    54,
+    274,
+    139,
+    64,
+    318,
+    95
+  ],
+  "cpu_throttle": 4,
+  "physical_android": false
+}
