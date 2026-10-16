@@ -144,9 +144,10 @@ try {
     await expect(names()).toHaveText(["أولى", "ثانية", "ثالثة"]);
     const after = await readStore(page, "tasks");
     const old = before.find((t) => t.title === "رابعة");
+    const { today: _selection, ...unchanged } = old;
     assert.deepEqual(
         after.find((t) => t.title === "رابعة"),
-        { ...old, today: undefined },
+        unchanged,
     );
     checks.push("undo_and_menu_remove_preserve_task_properties");
     await add("دورة يومية", "daily", "important");
