@@ -1,0 +1,45 @@
+{
+  "format": "masar.habits",
+  "version": 1,
+  "kind": "path",
+  "path": {
+    "title": "المسار الثقافي",
+    "habits": [
+      {
+        "key": "reading",
+        "title": "القراءة",
+        "kind": "progressive",
+        "schedule": {
+          "repeat": "daily"
+        },
+        "phases": [
+          {
+            "key": "pages",
+            "title": "قراءة بالصفحات",
+            "unit": "صفحة",
+            "start": 1,
+            "goal": 20,
+            "step": 1
+          }
+        ],
+        "current": {
+          "phaseKey": "pages",
+          "target": 1
+        }
+      },
+      {
+        "key": "capture",
+        "title": "تدوين فكرة",
+        "kind": "simple",
+        "schedule": {
+          "repeat": "weekly",
+          "weekdays": [
+            0,
+            2,
+            4
+          ]
+        }
+      }
+    ]
+  }
+}

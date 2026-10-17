@@ -1,0 +1,13 @@
+app/habitCalendar.ts 75ms
+app/habitStore.ts 39ms
+app/Habits.tsx 92ms
+app/useHabitData.ts 5ms
+app/habits.css 34ms
+app/HomeExecution.tsx 13ms (unchanged)
+app/App.tsx 207ms
+app/db.ts 98ms (unchanged)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

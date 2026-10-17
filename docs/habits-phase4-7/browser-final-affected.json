@@ -1,0 +1,953 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "-c",
+      "docs/habits-phase4-7/supplemental.config.mjs",
+      "tests/browser/habits-phase4-7.spec.ts",
+      "tests/browser/habits-phase47-edge.spec.ts",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/docs/habits-phase4-7/supplemental.config.mjs",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/masar-phase47-edge-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "habits-phase4-7.spec.ts",
+          "habits-phase47-edge.spec.ts",
+          "internal-controls.spec.ts",
+          "living-glass.spec.ts",
+          "ux.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/tmp/masar-phase47-edge-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "habits-phase4-7.spec.ts",
+          "habits-phase47-edge.spec.ts",
+          "internal-controls.spec.ts",
+          "living-glass.spec.ts",
+          "ux.spec.ts"
+        ],
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4195",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "python3 -m http.server 4195 --bind 127.0.0.1 --directory /tmp/masar-phase47-final-root",
+      "url": "http://127.0.0.1:4195",
+      "cwd": "/workspace/honor-wall",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "habits-phase4-7.spec.ts",
+      "file": "habits-phase4-7.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "phase4 graded CRUD and home 320 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2388,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:00:35.209Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-22476010452c49dd9cfa",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 28,
+          "column": 9
+        },
+        {
+          "title": "phase4 graded CRUD and home 320 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2482,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:00:37.839Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-583efbb07ea6e11e32cf",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 28,
+          "column": 9
+        },
+        {
+          "title": "phase4 graded CRUD and home 390 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3130,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:00:40.357Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-91531f7a6e6c3f5ec970",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 28,
+          "column": 9
+        },
+        {
+          "title": "phase4 graded CRUD and home 390 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2620,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:00:43.509Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-c231f349954127f56055",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 28,
+          "column": 9
+        },
+        {
+          "title": "phase5 import preview duplicate and validation 320 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2016,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:00:46.145Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-1d98d6f47830e833b892",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 145,
+          "column": 5
+        },
+        {
+          "title": "phase5 import preview duplicate and validation 390 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1965,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:00:48.186Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-0dfccad99e3b4d67c464",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 145,
+          "column": 5
+        },
+        {
+          "title": "phase6 reminders CRUD and ideas regression 320 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2520,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:00:50.165Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-24e4c6a925af4202567d",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 238,
+          "column": 5
+        },
+        {
+          "title": "phase6 reminders CRUD and ideas regression 390 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2522,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:00:52.697Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-e67172df908cab82c731",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 238,
+          "column": 5
+        },
+        {
+          "title": "phase7 advice explicit preview accept undo and summaries 320 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1941,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:00:55.238Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-506bb3de3293b77afa74",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 396,
+          "column": 5
+        },
+        {
+          "title": "phase7 advice explicit preview accept undo and summaries 390 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2055,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:00:57.192Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-db36499d1dd6f702835c",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 396,
+          "column": 5
+        },
+        {
+          "title": "phase7 accepts only confirmed current recommendation, keeps today threshold and history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2077,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:00:59.260Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-eb0e7e85a44b4e6ac5ca",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 476,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "habits-phase47-edge.spec.ts",
+      "file": "habits-phase47-edge.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "graded historical editing, tomorrow goal and optional difficulty phase remain separate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2776,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:01.411Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-731187f8f3999f9a33aa",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "new controls accessibility RTL 320 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2341,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:04.200Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-ab37c5691b80e5985572",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 320 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2463,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:06.557Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-aef443f928f9a9ee3d07",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 390 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2419,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:09.035Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-e16141e872806929fe44",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 390 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2465,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:11.465Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-268c45ef5a03ef362b02",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 768 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2523,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:13.943Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-322b4a2a09152fedf9e2",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 768 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2587,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:16.476Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-e5fa8420920822704862",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 1366 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2629,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:19.077Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-7feb6a087bfe094455ac",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 1366 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2693,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:21.715Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-5e90d4ef18e5f04f2085",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "local search locates habits paths and reminders without legacy entity mutations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1199,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:24.423Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-43956dbf17b23b90b36b",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 180,
+          "column": 1
+        },
+        {
+          "title": "habit form and long lists remain bounded and responsive under4x CPU",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1798,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:25.633Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-e35f07560c5ba312e75a",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "home idle query boundaries stay stable instead of reopening IndexedDB queries on each render",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2309,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:27.450Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-801c661f2a0f2fee817b",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 251,
+          "column": 1
+        },
+        {
+          "title": "simultaneous timestamp recording from a second tab updates the first quantity without duplicate rows",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1790,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:01:29.772Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-5d41268b7c6deb566c6b",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 291,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T02:00:34.482Z",
+    "duration": 57188.214,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

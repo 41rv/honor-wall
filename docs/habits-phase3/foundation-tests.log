@@ -1,0 +1,67 @@
+
+ RUN  v5.0.4 /workspace/honor-wall
+
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > التوقيت المحلي 2026-10-03T20:59:59Z 9ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > التوقيت المحلي 2026-10-03T21:00:00Z 0ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > التوقيت المحلي 2026-12-31T21:00:00Z 0ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > طول اليوم فيDST 2026-03-08 3ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > طول اليوم فيDST 2026-11-01 1ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > يعبر السنة والكبيسة دون24ساعة ثابتة 1ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > يرفض تاريخًا غير قانوني 2026-02-31 1ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > يرفض تاريخًا غير قانوني 2026-13-01 0ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > يرفض تاريخًا غير قانوني bad 0ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > يرفض تاريخًا غير قانوني 2026-1-01 0ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > آخر مراجعة لليوم نفسه هي الفعالة دون تعديل السابقة 0ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > اليوم الجاري مفتوح حتى مع وجودإنجاز، والمستقبل ليس إخفاقًا 15ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > لا100% وهمية عند غيابالأيام 6ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > الأيام المحددة فقط تدخل المقام 1ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > الإنجاز الاختياري لا يضخم الالتزام 2ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > يوم الإيقاف والاستئناف الجزئي محايدان حتى لوأُنجزا 1ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > استئناف عند منتصفالليل يسمح باليوم الكامل التالي 0ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > اتحاد إيقافالمسار والعادة لا يخصم اليوممرتين 1ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > النقل يحفظ نسبة المسارالسابق ولاينقلها للجديد 1ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > لا تُنقل سجلات الأيام عند تغيير توقيتالجهاز 1ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > مهاماليوم تبدأغيرالمنجز وتحفظ المكتمل مرةواحدة 1ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > الإيقافيخفي المطالبة فورًا ولايمنعاليومالمحايد بعداستئناف 1ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > استئناف المسار لايلغي الإيقافالمستقل 0ms
+ ✓ tests/habitCalendar.test.ts > التقويم والالتزام: أيام مغلقة مؤهلة فقط > الأرشيف والمستقبل والمتدرج لا يدخلون بطاقةاليوم 1ms
+ ✓ tests/habitRecording.test.ts > ينشئ مستقلةبخطةبسيطة دون أي بياناتتلقائية أخرى 43ms
+ ✓ tests/habitRecording.test.ts > مسار جديد وتعديله يحفظالمعرف والتاريخ 4ms
+ ✓ tests/habitRecording.test.ts > يرفض الاسمغيرالصحيح دونكتابة 3ms
+ ✓ tests/habitRecording.test.ts > يرفض الاسمغيرالصحيح دونكتابة 2ms
+ ✓ tests/habitRecording.test.ts > يرفضأيام الأسبوعغيرالصالحة undefined 2ms
+ ✓ tests/habitRecording.test.ts > يرفضأيام الأسبوعغيرالصالحة 0 2ms
+ ✓ tests/habitRecording.test.ts > يرفضأيام الأسبوعغيرالصالحة 7 3ms
+ ✓ tests/habitRecording.test.ts > يرفضأيام الأسبوعغيرالصالحة -1 3ms
+ ✓ tests/habitRecording.test.ts > يرفضأيام الأسبوعغيرالصالحة 1.5 2ms
+ ✓ tests/habitRecording.test.ts > يرفض مسارًا غائبًا أو مؤرشفًا 3ms
+ ✓ tests/habitRecording.test.ts > يرفض البدايةالماضية والمستحيلة ويقبلالمستقبل 5ms
+ ✓ tests/habitRecording.test.ts > إتمام وتراجع وتصحيحالسابق يحدث نفسالصف ويحفظوقتالإدخال 10ms
+ ✓ tests/habitRecording.test.ts > تكرار الحالة نفسها لا يغيروقتها ولايولدسجلًا 8ms
+ ✓ tests/habitRecording.test.ts > 20تسجيلًا متزامنًا ينتج صفًا واحدًا والحالةالمطلوبة فقط 16ms
+ ✓ tests/habitRecording.test.ts > المستقبل وقبلالبداية لايكتبان شيئًا 3ms
+ ✓ tests/habitRecording.test.ts > تعديل الجدول يسريغدًا ولايغيرخطة تسجيلاليوم 9ms
+ ✓ tests/habitRecording.test.ts > آخر تعديل للغد يسريويحفظجميعالمراجعات 9ms
+ ✓ tests/habitRecording.test.ts > تعديل عادةلمتبدأ لايقدمبدايتها ولايؤخر تسلسل المراجعات 7ms
+ ✓ tests/habitRecording.test.ts > إضافةلمسار ثم نقل ثم فصل يحفظالسجل والمعرفوالعضويةالتاريخية 8ms
+ ✓ tests/habitRecording.test.ts > الإيقاف والاستئناف متكرران بأمان والاستئناف لايلغيتوقفالعادة 6ms
+ ✓ tests/habitRecording.test.ts > أداءاختياري أثناءالإيقاف محفوظولايدخلالالتزام 5ms
+ ✓ tests/habitRecording.test.ts > أرشفةالمسار تفصلالحاضر وتحفظالخططوالسجل ولا تحذفأيصف 7ms
+ ✓ tests/habitRecording.test.ts > أرشفةالعادة واستعادتها تحفظالإيقاف حتىاستئنافصريح 3ms
+ ✓ tests/habitRecording.test.ts > حفظالعادةوخطةالبداية ذري عندفشلإدراجالخطة 3ms
+ ✓ tests/habitRecording.test.ts > أرشفةالمسارذرية عندفشل تعديلطفل 6ms
+ ✓ tests/habitRecording.test.ts > النسخالاحتياطي ينتظرالتسجيلالمعلق ويحفظالجداولالقديمة 8ms
+ ✓ tests/habitRecording.test.ts > تصدير واستعادة ودمج بياناتالمرحلةالثالثة دونتكرارأوخللروابط 26ms
+ ✓ tests/habitRecording.test.ts > التسجيلفيDST23/25ساعة يطابقعقدSnapshot5 7ms
+ ✓ tests/habitRecording.test.ts > تغيرالساعةللخلف لايكسرتاريخالتسجيل 5ms
+
+ Test Files  2 passed (2)
+      Tests  53 passed (53)
+   Start at  00:36:58
+   Duration  529ms (tests 47%, transform 28%, import 23%, worker 1%)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

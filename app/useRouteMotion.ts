@@ -1,14 +1,24 @@
 import { useLayoutEffect, useRef } from "react";
 
-const tabs = ["home", "projects", "tasks", "ideas", "progress"];
+import { primarySection, primarySections } from "./navigation";
+const workspace = ["projects", "tasks", "ideas", "progress"];
 
 /** Tab order is reliable in both link navigation and history traversal.
  * Unknown/detail routes and initial loads keep their existing behavior. */
 export function routeOffset(from: string, to: string, rtl = true): number {
-    const a = tabs.indexOf(from),
-        b = tabs.indexOf(to);
-    if (a < 0 || b < 0 || a === b) return 0;
-    return Math.sign(b - a) * (rtl ? -10 : 10);
+    const fromSection = primarySection(from),
+        toSection = primarySection(to);
+    if (!fromSection || !toSection || from === to) return 0;
+    if (fromSection !== toSection)
+        return (
+            Math.sign(
+                primarySections.indexOf(toSection) -
+                    primarySections.indexOf(fromSection),
+            ) * (rtl ? -10 : 10)
+        );
+    const a = workspace.indexOf(from),
+        b = workspace.indexOf(to);
+    return a >= 0 && b >= 0 ? Math.sign(b - a) * (rtl ? -10 : 10) : 0;
 }
 
 export function useRouteMotion(route: string) {

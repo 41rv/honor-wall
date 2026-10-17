@@ -1,0 +1,371 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/habits-phase4-7.spec.ts",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "habits-phase4-7.spec.ts",
+      "file": "habits-phase4-7.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "phase4 graded CRUD and home 320 light",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7085,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    14 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    14 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:83:50",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                      "column": 50,
+                      "line": 83
+                    },
+                    "snippet": "  81 |                 .click();\n  82 |             await page.reload();\n> 83 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n     |                                                  ^\n  84 |             await context.setOffline(true);\n  85 |             await page.reload();\n  86 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                        "column": 50,
+                        "line": 83
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    14 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n\n\n  81 |                 .click();\n  82 |             await page.reload();\n> 83 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n     |                                                  ^\n  84 |             await context.setOffline(true);\n  85 |             await page.reload();\n  86 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:83:50"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:24:26.343Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/habits-phase4-7-phase4-graded-CRUD-and-home-320-light/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                    "column": 50,
+                    "line": 83
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-22476010452c49dd9cfa",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 28,
+          "column": 9
+        },
+        {
+          "title": "phase4 graded CRUD and home 320 dark",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6947,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    13 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    13 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:83:50",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                      "column": 50,
+                      "line": 83
+                    },
+                    "snippet": "  81 |                 .click();\n  82 |             await page.reload();\n> 83 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n     |                                                  ^\n  84 |             await context.setOffline(true);\n  85 |             await page.reload();\n  86 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                        "column": 50,
+                        "line": 83
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    13 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n\n\n  81 |                 .click();\n  82 |             await page.reload();\n> 83 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n     |                                                  ^\n  84 |             await context.setOffline(true);\n  85 |             await page.reload();\n  86 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:83:50"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:24:34.087Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/habits-phase4-7-phase4-graded-CRUD-and-home-320-dark/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                    "column": 50,
+                    "line": 83
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-583efbb07ea6e11e32cf",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 28,
+          "column": 9
+        },
+        {
+          "title": "phase4 graded CRUD and home 390 light",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6896,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    13 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    13 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:83:50",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                      "column": 50,
+                      "line": 83
+                    },
+                    "snippet": "  81 |                 .click();\n  82 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n> 83 |             await page.reload();\n     |                                 ^\n  84 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n  85 |             await context.setOffline(true);\n  86 |             await page.reload();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                        "column": 50,
+                        "line": 83
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    13 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n\n\n  81 |                 .click();\n  82 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n> 83 |             await page.reload();\n     |                                 ^\n  84 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n  85 |             await context.setOffline(true);\n  86 |             await page.reload();\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:83:50"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:24:41.673Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/habits-phase4-7-phase4-graded-CRUD-and-home-390-light/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                    "column": 50,
+                    "line": 83
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-91531f7a6e6c3f5ec970",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 28,
+          "column": 9
+        },
+        {
+          "title": "phase4 graded CRUD and home 390 dark",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6853,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    13 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    13 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:83:50",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                      "column": 50,
+                      "line": 83
+                    },
+                    "snippet": "  81 |                 .click();\n  82 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n> 83 |             await page.reload();\n     |                                 ^\n  84 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n  85 |             await context.setOffline(true);\n  86 |             await page.reload();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                        "column": 50,
+                        "line": 83
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\nExpected: \u001b[32m\"\u001b[7m1\u001b[27m/1\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m0\u001b[27m/1\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('.count')\u001b[22m\n\u001b[2m    13 × locator resolved to <span class=\"count\">0/1</span>\u001b[22m\n\u001b[2m       - unexpected value \"0/1\"\u001b[22m\n\n\n  81 |                 .click();\n  82 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n> 83 |             await page.reload();\n     |                                 ^\n  84 |             await expect(home.locator(\".count\")).toHaveText(\"1/1\");\n  85 |             await context.setOffline(true);\n  86 |             await page.reload();\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:83:50"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:24:49.222Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/habits-phase4-7-phase4-graded-CRUD-and-home-390-dark/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                    "column": 50,
+                    "line": 83
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-c231f349954127f56055",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 28,
+          "column": 9
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T01:24:25.011Z",
+    "duration": 31373.624000000003,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

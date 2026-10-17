@@ -1,0 +1,47 @@
+[WebServer] (node:727363) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:727376) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+(node:727400) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/1] tests/browser/habits-phase8.spec.ts:7:1 › الاستعادة الجارية لا توهم بالإلغاء عند Escape أو النقر خارج النافذة
+  1) tests/browser/habits-phase8.spec.ts:7:1 › الاستعادة الجارية لا توهم بالإلغاء عند Escape أو النقر خارج النافذة 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog', { name: 'معاينة النسخة الاحتياطية', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog', { name: 'معاينة النسخة الاحتياطية', exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'معاينة النسخة الاحتياطية', exact: true })
+
+
+      42 |             await Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {})));
+      43 |         });
+    > 44 |         await expect(dialog).toBeVisible();
+         |                              ^
+      45 |         await page.mouse.click(2, 2);
+      46 |         await dialog.evaluate(async node => {
+      47 |             await Promise.all(node.getAnimations().map(animation => animation.finished.catch(() => {})));
+        at /workspace/honor-wall/tests/browser/habits-phase8.spec.ts:44:30
+
+    Error Context: test-results/habits-phase8-الاستعادة-ال-2f0b0-scape-أو-النقر-خارج-النافذة/error-context.md
+
+
+  1 failed
+    tests/browser/habits-phase8.spec.ts:7:1 › الاستعادة الجارية لا توهم بالإلغاء عند Escape أو النقر خارج النافذة 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

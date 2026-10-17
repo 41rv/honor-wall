@@ -1,0 +1,46 @@
+
+Running 33 tests using 1 worker
+
+(node:679812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/33] tests/browser/living-glass.spec.ts:83:1 › مقارنة ست لقطات جوال بنفس البيانات والوقت والقياسات
+[2/33] tests/browser/living-glass.spec.ts:187:1 › قياس تمرير البطاقات واستجابة الزر على نفس Chromium عند خفض CPU أربع مرات
+[3/33] tests/browser/living-glass.spec.ts:260:1 › الخامة لا تغير التفاعل ولا تضيف مرشحات إلى النصوص والأزرار
+[4/33] tests/browser/living-glass.spec.ts:320:5 › الانكسار يغير بكسلات الإطار فقط، ووسط النص يبقى مطابقًا
+[5/33] tests/browser/living-glass.spec.ts:385:5 › البديل البسيط والألوان القسرية وتقليل الحركة لا يعطلان البطاقات
+[6/33] tests/browser/living-sky-shell.spec.ts:112:9 › صور الصفحات الخمس والتفاعل 320 light
+[7/33] tests/browser/living-sky-shell.spec.ts:112:9 › صور الصفحات الخمس والتفاعل 320 dark
+[8/33] tests/browser/living-sky-shell.spec.ts:112:9 › صور الصفحات الخمس والتفاعل 390 light
+[9/33] tests/browser/living-sky-shell.spec.ts:112:9 › صور الصفحات الخمس والتفاعل 390 dark
+[10/33] tests/browser/living-sky-shell.spec.ts:163:5 › تباين النص الفعلي في الصفحات والأشرطة عبر أوقات السماء والتمرير
+[11/33] tests/browser/living-sky-shell.spec.ts:381:5 › قائمة500 مهمة: تمرير فعلي دون مرشحات ضخمة وباستجابة سريعة
+[12/33] tests/browser/living-sky-shell.spec.ts:504:5 › المشهد نفسه يبقى مركبًا عبر ثلاثين انتقالًا دون تغيير الزمن أو الضبابية
+[13/33] tests/browser/living-sky-shell.spec.ts:553:5 › زر عائم دون شريط أو اعتراض اللمس مع Safe Area24 وبدونها
+[14/33] tests/browser/living-sky-shell.spec.ts:597:5 › إعداد واحد يؤثر على الصفحات كلها ويحفظ بعد إعادة الفتح دون اتصال
+[15/33] tests/browser/living-sky-shell.spec.ts:634:5 › التفاعل الفعلي لا يتغير: المهمة والفكرة والمشروع والنوافذ القصيرة
+[16/33] tests/browser/living-sky-shell.spec.ts:709:5 › إمكانية الوصول للصفحات الخمس في الثيمين والمقاسين
+[17/33] tests/browser/project-pace.spec.ts:137:1 › 40/20 من الواجهة: هدف ووتيرة وإنجاز من الرئيسية وتراجع دون خلط المهام
+[18/33] tests/browser/project-pace.spec.ts:194:1 › تسريع افتراضي: معاينة دون تعديل ثم اعتماد مؤكد وسجل قرار
+[19/33] tests/browser/project-pace.spec.ts:227:1 › توصية شخصية: الرئيسية تعرض واحدة والرفض لا يغير الخطة ولا يعود غدًا
+[20/33] tests/browser/project-pace.spec.ts:251:1 › اعتماد توصية شخصية وتحديث مؤشرات المشروع والتراجع عن الخطة من إعداد الهدف
+[21/33] tests/browser/project-pace.spec.ts:273:1 › الإيقاف والاستئناف يجمدان20يومًا والموعد الإلزامي لا يتحرك
+[22/33] tests/browser/project-pace.spec.ts:328:1 › الحد النشط: الرابع يحتاج قرارًا صريحًا مع حفظ مسودة الإنشاء
+[23/33] tests/browser/project-pace.spec.ts:367:1 › الدمج عبر الواجهة يحفظ الأصل ويمنع تكرار الملف ويستعيد الحقول الجديدة
+[24/33] tests/browser/project-pace.spec.ts:393:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 320
+[25/33] tests/browser/project-pace.spec.ts:393:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 390
+[26/33] tests/browser/project-pace.spec.ts:393:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 768
+[27/33] tests/browser/project-pace.spec.ts:393:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 1366
+[28/33] tests/browser/project-pace.spec.ts:468:1 › إلغاء تجاوز الحد لا ينشئ شيئًا، وإيقاف مشروع بديل قرار منفصل عن الإضافة
+[29/33] tests/browser/project-pace.spec.ts:508:1 › استيراد masar.project1 عند الحد يحفظ المعاينة ثم يستورد مرة واحدة بعد القرار
+[30/33] tests/browser/project-pace.spec.ts:545:1 › إتمام آخر خطوة من الرئيسية ثم التراجع يعيد المشروع والخطوة والمؤشرات ذريًا
+[31/33] tests/browser/project-pace.spec.ts:570:1 › الداشبورد والرؤى لا يعدّان الإيقاف تعثرًا ويستعيدان العدد بعد الاستئناف
+[32/33] tests/browser/project-pace.spec.ts:613:1 › النافذة فوق مشروع كبير: حصر التركيز وARIA وEscape والرجوع والنقر الخارجي والتنظيف
+[33/33] tests/browser/project-pace.spec.ts:702:1 › المتصفح بلا CloseWatcher يحتفظ بالنافذة الأصلية وسلوك Escape
+  33 passed (3.2m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

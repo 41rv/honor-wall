@@ -1,0 +1,168 @@
+{
+  "allExistingAssertionsAndJourneysPreservedExactly": true,
+  "additionalChecks": [
+    "search navigation waits for destination main and cleared input before next query"
+  ],
+  "files": [
+    {
+      "file": "app.spec.ts",
+      "urlWrappers": 31,
+      "baselineSha256": "8cae24094219d822964f5fdaf6425786850934692082b5663536edad56da4e41"
+    },
+    {
+      "file": "buttons.spec.ts",
+      "urlWrappers": 9,
+      "baselineSha256": "f1916e6c0f541b95088fcb92761a6a28fde0df7855d47fab85025e7db166ea10"
+    },
+    {
+      "file": "completion-capture.spec.ts",
+      "urlWrappers": 9,
+      "baselineSha256": "9817466c4a8c350c2ae22bb161090a99ee86c735c3a4a0a5545fd11f052094f5"
+    },
+    {
+      "file": "dark-audit-extended.spec.ts",
+      "urlWrappers": 18,
+      "baselineSha256": "5e54674d2ca89944b50455a514708391c64883f24bfe852981cbe9d044578f5c"
+    },
+    {
+      "file": "dark-audit.spec.ts",
+      "urlWrappers": 2,
+      "baselineSha256": "1fbc9ca888f0455ffd5328e8cde9eefe9409a22e2da32c57f6f860841f8a30ba"
+    },
+    {
+      "file": "habits-phase2.spec.ts",
+      "urlWrappers": 2,
+      "baselineSha256": "1d1a3284fbfe0ce56304a5ce7c51b11151480411528de3a7afee86424265b938"
+    },
+    {
+      "file": "habits-phase3.spec.ts",
+      "urlWrappers": 24,
+      "baselineSha256": "d4b7d835769d9ed79afb4086411824e1f79a93254d5df4f746b2a0d50518fa27"
+    },
+    {
+      "file": "habits-phase4-7.spec.ts",
+      "urlWrappers": 10,
+      "baselineSha256": "be45173cce5606d2331108bef3bd3b9f8e7e5096f4797fe3db4398b1184629c6"
+    },
+    {
+      "file": "habits-phase47-edge.spec.ts",
+      "urlWrappers": 5,
+      "baselineSha256": "552921504409d87f1dce0adb89c1e4c2861b42bfa104858dc73cbd4941cb9c2c"
+    },
+    {
+      "file": "helpers.ts",
+      "urlWrappers": 3,
+      "baselineSha256": "4fd3dc4e522883be58b4c8c85641121d8243b596869a8c726351b88763ba6756"
+    },
+    {
+      "file": "ideas-speed.spec.ts",
+      "urlWrappers": 1,
+      "baselineSha256": "e5c0417aea0bfa0dbead6e55a698c281c2ac161daa64d68f84e38ed834a222e6"
+    },
+    {
+      "file": "interactions.spec.ts",
+      "urlWrappers": 5,
+      "baselineSha256": "7c26c562c7c6178cb0aa8496023fdaaee8efe37851bbc540f3a5ffd5400d273f"
+    },
+    {
+      "file": "interface-organization.spec.ts",
+      "urlWrappers": 15,
+      "baselineSha256": "9601830363295d38180939fb4cfdb1763e33ac8749fd0f535cd752c5d04417c1"
+    },
+    {
+      "file": "internal-controls.spec.ts",
+      "urlWrappers": 16,
+      "baselineSha256": "27d1852d2ee6f993fb48c1c1c9f43dd0b0fac5f64187f4066528ca3954c48eaa"
+    },
+    {
+      "file": "living-glass.spec.ts",
+      "urlWrappers": 1,
+      "baselineSha256": "145a2e877c5e3f568ff7b9d3bd169e16ba88489dc8aa419aea350c1b40231939"
+    },
+    {
+      "file": "living-sky-search.spec.ts",
+      "urlWrappers": 1,
+      "baselineSha256": "5cda0883405db5119824ecd17ef426687432c6f0e73c96364dc569870cd9df57"
+    },
+    {
+      "file": "living-sky-shell.spec.ts",
+      "urlWrappers": 1,
+      "baselineSha256": "917eba056abb0730b72fba69178cd38428424b4181035ca0c2da4a29d169e3f3"
+    },
+    {
+      "file": "living-sky.spec.ts",
+      "urlWrappers": 4,
+      "baselineSha256": "ad26d96e2ebfe79673d2c39a0a609b101d76bb845442f4ebdb24f0298e1a20a5"
+    },
+    {
+      "file": "navigation-phase1.spec.ts",
+      "urlWrappers": 9,
+      "baselineSha256": "95f6447d6d6c5770b9b06063a625c38b1bcc9bf4bb87d2c26b166e0773e306d5"
+    },
+    {
+      "file": "planning.spec.ts",
+      "urlWrappers": 25,
+      "baselineSha256": "838871796499c54a2f87abc674921984bd7411fc5969c045d6c6d5215898c65e"
+    },
+    {
+      "file": "project-import-open.spec.ts",
+      "urlWrappers": 4,
+      "baselineSha256": "12c3321b6a9476049eead6d8b7dccbf6fd98381e4036e8a3e4067ad4c9860acd"
+    },
+    {
+      "file": "project-import.spec.ts",
+      "urlWrappers": 7,
+      "baselineSha256": "1dc009f0d4c105adb4bad741da494b668e194944bfd6145184b834ed5c351e84"
+    },
+    {
+      "file": "project-pace.spec.ts",
+      "urlWrappers": 24,
+      "baselineSha256": "20eb267fff4e189e1a6357d6a39088baecaa72a5c8aedf043af46753b2770dd8"
+    },
+    {
+      "file": "project-rest-boundaries.spec.ts",
+      "urlWrappers": 5,
+      "baselineSha256": "f91928660b04560f958fe12380bc7f72e04f4c2a1d3bba31ee89dd72faa1caa1"
+    },
+    {
+      "file": "project-rest.spec.ts",
+      "urlWrappers": 11,
+      "baselineSha256": "92690f4ce96dd05b639e0c88e25937b8b3b49514f0af16252635b1376e3c9b4f"
+    },
+    {
+      "file": "qa-accessibility.spec.ts",
+      "urlWrappers": 3,
+      "baselineSha256": "f4d7869d14930d842bff09978b3a3cf0d0314f94bc4482b0d1935361dba8c77e"
+    },
+    {
+      "file": "qa-functional.spec.ts",
+      "urlWrappers": 10,
+      "baselineSha256": "a91ee5570d4fdcf1777b8f81e683b1a5c1dd61d49244dfef17f43ee1a5a9955d"
+    },
+    {
+      "file": "qa-rapid.spec.ts",
+      "urlWrappers": 5,
+      "baselineSha256": "9955b7b4118b808ddc060792eabb9e4981380e2e44b6db702c7f5a8289a79186"
+    },
+    {
+      "file": "smooth-controls.spec.ts",
+      "urlWrappers": 1,
+      "baselineSha256": "7159679f58765026c2fb01f32cd017e2477d80485cbddaa6ebbd4d2f1eb8182a"
+    },
+    {
+      "file": "task-scheduling.spec.ts",
+      "urlWrappers": 15,
+      "baselineSha256": "883cb54883a25ea8788e6f38518f4c861d8a18872e52e22b06e1d28bdbb4bed3"
+    },
+    {
+      "file": "today-experience.spec.ts",
+      "urlWrappers": 8,
+      "baselineSha256": "3c6ef178baa7361b1122946c469c291e2ccf666ee5722be9d195f897c103a85c"
+    },
+    {
+      "file": "ux.spec.ts",
+      "urlWrappers": 23,
+      "baselineSha256": "8d073f2f5dbed62a0c84f0517d4d24e85901465282fd4ee154c392fe0ca40d22"
+    }
+  ]
+}

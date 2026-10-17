@@ -1,0 +1,74 @@
+[WebServer] (node:645293) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:645306) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 21 tests using 1 worker
+
+(node:645330) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/21] tests/browser/habits-phase3.spec.ts:126:1 › حساب جديد:لا بياناتافتراضية،إنشاءمساروعادةمستقلةوأسبوعيةوتعديلها
+[2/21] tests/browser/habits-phase3.spec.ts:183:1 › الرئيسيةتسجلوترجعفورًاوالتسجيلوالإحصاءاتمنفصلةعنالمهاموالمشاريع
+[3/21] tests/browser/habits-phase3.spec.ts:226:1 › التسجيلالمتزامنمننافذتينلاينشئسجلينيوميين
+[4/21] tests/browser/habits-phase3.spec.ts:298:1 › تصحيحتسجيلقديموخارجالشهرالظاهرلاينسخالسجلويحفظوقتإدخاله
+[5/21] tests/browser/habits-phase3.spec.ts:342:1 › نقلالعادةبينالمساراتوفصلهايحفظالسجلويظهرالسريانغدًا
+[6/21] tests/browser/habits-phase3.spec.ts:366:1 › الإيقافالمتداخلوالاستئنافلايغيرالسجلولايلغيتوقفالعادة
+[7/21] tests/browser/habits-phase3.spec.ts:393:1 › أرشفةواستعادةالمساروالعادةمحافظتانوتتطلبالأرشفةتأكيدًا
+[8/21] tests/browser/habits-phase3.spec.ts:429:1 › منتصفالليلودورةاليومالجديدوالأسبوعلايرحلانالتسجيل
+[9/21] tests/browser/habits-phase3.spec.ts:455:1 › الروابطالمباشرةوالرجوعوالتمريروEscapeوالإضافةالعائمةتبقىسليمة
+  1) tests/browser/habits-phase3.spec.ts:455:1 › الروابطالمباشرةوالرجوعوالتمريروEscapeوالإضافةالعائمةتبقىسليمة 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('dialog')
+    Expected: 0
+    Received: 1
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('dialog') with timeout 5000ms
+      - waiting for getByRole('dialog')
+        14 × locator resolved to 1 element
+           - unexpected value "1"
+
+
+      476 |     await expect(page.getByRole("dialog")).toHaveCount(1);
+      477 |     await page.keyboard.press("Escape");
+    > 478 |     await expect(page.getByRole("dialog")).toHaveCount(0);
+          |                                            ^
+      479 |     await page.goto("/#habit/not-found");
+      480 |     await expect(
+      481 |         page
+        at /workspace/honor-wall/tests/browser/habits-phase3.spec.ts:478:44
+
+    Error Context: test-results/habits-phase3-الروابطالمبا-b71de-apeوالإضافةالعائمةتبقىسليمة/error-context.md
+
+
+(node:645866) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[10/21] tests/browser/habits-phase3.spec.ts:486:1 › النسخوالاستعادةتحفظالإنجازوالإيقافاتالجديدةمعالجداولالقديمة
+[11/21] tests/browser/habits-phase3.spec.ts:509:9 › العرضوالصورRTL 320 light
+[12/21] tests/browser/habits-phase3.spec.ts:509:9 › العرضوالصورRTL 320 dark
+[13/21] tests/browser/habits-phase3.spec.ts:509:9 › العرضوالصورRTL 390 light
+[14/21] tests/browser/habits-phase3.spec.ts:509:9 › العرضوالصورRTL 390 dark
+[15/21] tests/browser/habits-phase3.spec.ts:509:9 › العرضوالصورRTL 768 light
+[16/21] tests/browser/habits-phase3.spec.ts:509:9 › العرضوالصورRTL 768 dark
+[17/21] tests/browser/habits-phase3.spec.ts:509:9 › العرضوالصورRTL 1366 light
+[18/21] tests/browser/habits-phase3.spec.ts:509:9 › العرضوالصورRTL 1366 dark
+[19/21] tests/browser/habits-phase3.spec.ts:554:1 › فتحوتسجيلسريعانمعقائمةطويلةوإبطاءCPUدونحسابالتاريخكله
+[20/21] tests/browser/habits-phase3.spec.ts:598:1 › النقرالمتكرروالأرشيفمنعرضاليوموالرابطالمباشر
+[21/21] tests/browser/habits-phase3.spec.ts:633:1 › حدودالشهوروالسنةتحدثالتقويموالمطالبةفورعودةالتطبيق
+  1 failed
+    tests/browser/habits-phase3.spec.ts:455:1 › الروابطالمباشرةوالرجوعوالتمريروEscapeوالإضافةالعائمةتبقىسليمة 
+  20 passed (1.1m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

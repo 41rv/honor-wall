@@ -1,0 +1,129 @@
+.topbar-tools .task-shortcut {
+    position: relative;
+    color: var(--primary);
+    border: 1px solid var(--control-line);
+    border-radius: 12px;
+    background: var(--control-base);
+    box-shadow: inset 0 1px 0 var(--control-edge);
+}
+.task-shortcut-count {
+    position: absolute;
+    inset-inline-end: -2px;
+    top: -2px;
+    min-width: 17px;
+    height: 17px;
+    padding-inline: 3px;
+    border-radius: 6px;
+    font-size: 10px;
+    line-height: 17px;
+    font-weight: 700;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--line);
+    pointer-events: none;
+}
+.project-gateway {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.project-gateway > a.surface {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    min-height: 72px;
+    padding: 16px;
+    margin: 0;
+    color: var(--primary);
+}
+.project-gateway a > span {
+    flex: 1;
+    min-width: 0;
+}
+.project-gateway strong {
+    display: block;
+    font-size: 15px;
+}
+.project-gateway small {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+.workspace-back {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+.workspace-back > * {
+    min-height: 44px;
+}
+.habits-introduction {
+    max-width: 700px;
+    margin-inline: auto;
+    padding: 28px;
+}
+.habits-introduction > svg {
+    color: var(--primary);
+    margin-bottom: 14px;
+}
+.habits-introduction h2 {
+    margin-bottom: 12px;
+}
+.habits-introduction .planning-links {
+    margin: 20px 0 0;
+}
+@media (max-width: 760px) {
+    .project-gateway {
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+    .project-gateway > a.surface {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 7px;
+        padding: 12px;
+    }
+    .project-gateway a > svg:last-child {
+        display: none;
+    }
+    .project-gateway small {
+        font-size: 11px;
+    }
+    .habits-introduction {
+        padding: 20px;
+    }
+    .topbar-tools {
+        gap: 4px;
+    }
+    /* The task shortcut replaces the decorative avatar. On narrow screens
+       the offline icon conveys status without taking another text column. */
+    .offline-label {
+        font-size: 0;
+        gap: 0;
+    }
+}
+@media (forced-colors: active) {
+    .topbar-tools .task-shortcut {
+        background: Canvas;
+        color: LinkText;
+        border-color: ButtonText;
+        box-shadow: none;
+    }
+}
+
+.detail-return-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* The new contextual return row can position period metadata over the
+   moonlight. Use the existing high-contrast text token for this bare line. */
+.living-app .period-dashboard > p.muted {
+    color: var(--text);
+}

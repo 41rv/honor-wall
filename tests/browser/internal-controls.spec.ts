@@ -1,3 +1,5 @@
+import { appUrl } from "./url";
+import { navigateView } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import { importData, sizedFixture, readStore } from "./helpers";
 import AxeBuilder from "@axe-core/playwright";
@@ -115,7 +117,7 @@ for (const width of [320, 390])
                     );
                 }
             };
-            await page.goto("/#progress");
+            await page.goto(appUrl("/#progress"));
             await capture("progress");
             await page
                 .getByRole("tab", { name: "رؤى مسار", exact: true })
@@ -134,14 +136,14 @@ for (const width of [320, 390])
                 ["task/t0", "task"],
                 ["idea/idea", "idea"],
             ]) {
-                await page.goto("/#" + route);
+                await page.goto(appUrl("/#" + route));
                 if (name === "task" || name === "step")
                     await page
                         .locator(".status-controls")
                         .scrollIntoViewIfNeeded();
                 await capture(name);
             }
-            await page.goto("/#task/t0");
+            await page.goto(appUrl("/#task/t0"));
             await page
                 .getByRole("button", {
                     name: "تعديل الموعد والأولوية",
@@ -154,19 +156,19 @@ for (const width of [320, 390])
             await capture("task-options");
             await page.keyboard.press("Escape");
             await expect(page.getByRole("dialog")).not.toBeVisible();
-            await page.goto("/#projects");
+            await page.goto(appUrl("/#projects"));
             await page
                 .getByRole("button", { name: "المظهر والألوان", exact: true })
                 .click();
             await capture("appearance");
             await page.keyboard.press("Escape");
             await expect(page.getByRole("dialog")).not.toBeVisible();
-            await page.goto("/#backup");
+            await page.goto(appUrl("/#backup"));
             await capture("backup");
             await page.locator(".project-rest-settings > summary").click();
             await page.locator(".rest-weekdays").scrollIntoViewIfNeeded();
             await capture("rest");
-            await page.goto("/#tasks");
+            await page.goto(appUrl("/#tasks"));
             await page
                 .getByRole("button", {
                     name: "إجراءات المهمة «مهمة 0»",
@@ -183,7 +185,7 @@ test("internal controls retain selection, keyboard semantics and task data", asy
     test.skip(before, "Before captures only");
     await page.setViewportSize({ width: 320, height: 844 });
     await setup(page);
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await page.getByRole("button", { name: "شهري", exact: true }).click();
     await page.getByRole("tab", { name: "رؤى مسار", exact: true }).click();
     await expect(
@@ -195,7 +197,7 @@ test("internal controls retain selection, keyboard semantics and task data", asy
     await expect(
         page.getByRole("tab", { name: "سجل الإنجاز", exact: true }),
     ).toBeFocused();
-    await page.goto("/#task/t0");
+    await page.goto(appUrl("/#task/t0"));
     const original = (await readStore(page, "tasks")).find(
         (t) => t.id === "t0",
     )!;
@@ -242,11 +244,11 @@ for (const width of [320, 390, 768, 1366])
             "task/t0",
             "step/s0",
         ]) {
-            await page.goto("/#" + route);
+            await page.goto(appUrl("/#" + route));
             await expect(page.locator(".glass-choices").first()).toBeVisible();
             await aligned(page);
         }
-        await page.goto("/#tasks");
+        await page.goto(appUrl("/#tasks"));
         await page.getByRole("button", { name: "قادمة", exact: true }).click();
         await aligned(page);
         await expect(
@@ -257,7 +259,7 @@ for (const width of [320, 390, 768, 1366])
                 () => document.documentElement.scrollWidth <= innerWidth,
             ),
         ).toBe(true);
-        await page.goto("/#projects");
+        await page.goto(appUrl("/#projects"));
         await page.getByRole("button", { name: /الموقوفة مؤقتًا/ }).click();
         for (const size of [390, 320, 768]) {
             await page.setViewportSize({ width: size, height: 844 });
@@ -284,11 +286,11 @@ test("rapid filters keep a single selected option without editing records or lea
         };
     });
     await setup(page);
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     const original = await readStore(page, "tasks");
     for (let i = 0; i < 8; i++) {
-        await page.locator(".navigation a[href='#progress']").click();
-        await page.locator(".navigation a[href='#tasks']").click();
+        await navigateView(page, "progress");
+        await navigateView(page, "tasks");
         await page.locator(".task-filters").evaluate((group) => {
             const buttons = group.querySelectorAll<HTMLButtonElement>("button");
             for (let j = 0; j < 30; j++) buttons[j % buttons.length].click();
@@ -307,7 +309,35 @@ test("rapid filters keep a single selected option without editing records or lea
                     .controlObservers.size,
         ),
     ).toBe(1);
-    await page.goto("/#ideas");
+    await page.goto(appUrl("/#ideas"));
+    await settled(page);
+    expect(
+        await page.evaluate(
+            () =>
+                (window as unknown as { controlObservers: Set<unknown> })
+                    .controlObservers.size,
+        ),
+    ).toBe(2); // Ideas archive controls + the approved Ideas/Reminders tabs.
+    await expect(page.locator(".glass-choices")).toHaveCount(2);
+    await page.getByRole("button", { name: "تذكيرات", exact: true }).click();
+    await settled(page);
+    expect(
+        await page.evaluate(
+            () =>
+                (window as unknown as { controlObservers: Set<unknown> })
+                    .controlObservers.size,
+        ),
+    ).toBe(1);
+    await page.getByRole("button", { name: "الأفكار", exact: true }).click();
+    await settled(page);
+    expect(
+        await page.evaluate(
+            () =>
+                (window as unknown as { controlObservers: Set<unknown> })
+                    .controlObservers.size,
+        ),
+    ).toBe(2);
+    await page.goto(appUrl("/#tasks"));
     await settled(page);
     expect(
         await page.evaluate(
@@ -323,7 +353,7 @@ test("reduced motion and forced colors retain readable selection", async ({
 }) => {
     await setup(page, "dark");
     await page.emulateMedia({ reducedMotion: "reduce" });
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await page.getByRole("button", { name: "سنوي", exact: true }).click();
     await aligned(page);
     await expect(page.locator(".glass-choice-indicator").first()).toHaveCSS(
@@ -368,7 +398,7 @@ test("painted contrast of internal controls in five skies and both themes", asyn
             );
             await page.evaluate(() => window.dispatchEvent(new Event("focus")));
             for (const route of ["progress", "task/t0"]) {
-                await page.goto("/#" + route);
+                await page.goto(appUrl("/#" + route));
                 if (route === "task/t0") {
                     await page
                         .getByRole("button", {

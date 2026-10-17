@@ -1,0 +1,461 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/navigation-phase1.spec.ts",
+      "--grep",
+      "back and forward",
+      "--repeat-each=10",
+      "--trace",
+      "retain-on-failure",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 10,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 10,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          },
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "navigation-phase1.spec.ts",
+      "file": "navigation-phase1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3754,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:18:49.881Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-d60a66362351bc30ec5a",
+          "file": "navigation-phase1.spec.ts",
+          "line": 188,
+          "column": 1
+        },
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3771,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:18:54.297Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-7d1364b0f1b4df25cab1",
+          "file": "navigation-phase1.spec.ts",
+          "line": 188,
+          "column": 1
+        },
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3459,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:18:58.756Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-5178613086565cdef103",
+          "file": "navigation-phase1.spec.ts",
+          "line": 188,
+          "column": 1
+        },
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3179,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:19:02.888Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-a8fa6e3d2f278aa27d2e",
+          "file": "navigation-phase1.spec.ts",
+          "line": 188,
+          "column": 1
+        },
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3746,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:19:06.749Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-38d980c018426b15404a",
+          "file": "navigation-phase1.spec.ts",
+          "line": 188,
+          "column": 1
+        },
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3316,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:19:11.139Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-189d77d47f673844bb49",
+          "file": "navigation-phase1.spec.ts",
+          "line": 188,
+          "column": 1
+        },
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3570,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:19:15.096Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-6f71ec9b5b9d64fd3ea6",
+          "file": "navigation-phase1.spec.ts",
+          "line": 188,
+          "column": 1
+        },
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3688,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:19:19.374Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-4fa83e1c66962a21a040",
+          "file": "navigation-phase1.spec.ts",
+          "line": 188,
+          "column": 1
+        },
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3561,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:19:23.725Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-991acb5820e4431ec7de",
+          "file": "navigation-phase1.spec.ts",
+          "line": 188,
+          "column": 1
+        },
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3276,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:19:27.967Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-77f4aa43cd6ba6890e89",
+          "file": "navigation-phase1.spec.ts",
+          "line": 188,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T23:18:48.535Z",
+    "duration": 43026.162000000004,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

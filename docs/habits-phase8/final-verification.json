@@ -1,0 +1,13 @@
+{
+  "sourceAndBuildUnchanged": true,
+  "unit": 614,
+  "browser": 315,
+  "pwaChecks": 20,
+  "automatedFailures": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "physicalAndroidVerified": false,
+  "androidBackupDownloadGate": "pending \u2014 blocks publication",
+  "published": false,
+  "pushed": false
+}

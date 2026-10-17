@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { openQuickIdeas } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import { largeFixture, importData } from "./helpers";
@@ -11,7 +12,7 @@ test.beforeEach(async ({ page }) => {
     const messages: string[] = [];
     errors.set(page, messages);
     page.on("pageerror", (e) => messages.push(e.message));
-    await page.goto("/");
+    await page.goto(appUrl("/"));
 });
 test.afterEach(async ({ page }) => {
     expect(errors.get(page)).toEqual([]);
@@ -53,7 +54,7 @@ test("التقاط الفكرة في صفحة الأفكار يحفظ باللم
     await page.getByRole("button", { name: "حفظ الفكرة", exact: true }).tap();
     await expect(page.locator(".capture-saved")).toContainText("حُفظت الفكرة");
     await page.reload();
-    await page.goto("/#ideas");
+    await page.goto(appUrl("/#ideas"));
     await page.getByRole("button", { name: "فكرة بوصف", exact: true }).tap();
     await expect(page.getByLabel("ملاحظات العنصر")).toHaveValue(
         "تفاصيل لا تضيع",
@@ -68,7 +69,7 @@ test("إتمام الخطوة والمرحلة من الشجرة وتحديث ا
     page,
 }) => {
     await small(page);
-    await page.goto("/#project/p0");
+    await page.goto(appUrl("/#project/p0"));
     const leaf = page.getByRole("button", {
         name: "إتمام الخطوة «خطوة 0-0»",
         exact: true,
@@ -132,7 +133,7 @@ test("المشروع له زر إتمام في البطاقة والتفاصيل
     page,
 }) => {
     await small(page);
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await page
         .getByRole("button", { name: "إتمام المشروع «مشروع 0»", exact: true })
         .tap();
@@ -155,14 +156,14 @@ test("المشروع له زر إتمام في البطاقة والتفاصيل
     await expect(
         page.getByRole("button", { name: "إعادة فتح المشروع", exact: true }),
     ).toBeVisible();
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await expect(
         page
             .locator(".stat-card")
             .filter({ hasText: "المشاريع المغلقة" })
             .locator("strong"),
     ).toHaveText("1");
-    await page.goto("/#project/p0");
+    await page.goto(appUrl("/#project/p0"));
     await page
         .getByRole("button", { name: "إعادة فتح المشروع", exact: true })
         .tap();
@@ -174,7 +175,7 @@ test("آخر مرحلة تُتمّ المشروع تلقائيًا عند ١٠٠
     page,
 }) => {
     await small(page);
-    await page.goto("/#project/p0");
+    await page.goto(appUrl("/#project/p0"));
     await page.getByLabel("ملاحظات العنصر").fill("ملاحظات مشروع محفوظة");
     await page
         .getByRole("button", { name: "إتمام المرحلة «مرحلة 0»", exact: true })
@@ -239,7 +240,7 @@ test("فشل الإتمام الجماعي لا يترك علامة صح أو ح
     page,
 }) => {
     await small(page);
-    await page.goto("/#project/p0");
+    await page.goto(appUrl("/#project/p0"));
     await page.evaluate(() => {
         const put = IDBObjectStore.prototype.put;
         IDBObjectStore.prototype.put = function (value, key) {
@@ -301,7 +302,7 @@ test("فشل حفظ الفكرة يبقي مسودتها ولا ينشئ نسخ�
         );
     });
     await expect(page.locator(".capture-saved")).toContainText("حُفظت الفكرة");
-    await page.goto("/#ideas");
+    await page.goto(appUrl("/#ideas"));
     await expect(
         page.getByRole("button", { name: "فكرة لا تفقدها", exact: true }),
     ).toHaveCount(1);

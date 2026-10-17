@@ -8,6 +8,8 @@ import type { TaskView } from "./taskSchedule";
 import { orderedToday } from "./dailyPlanning";
 import { useWallClock } from "./useWallClock";
 import { TodayTasks } from "./TodayTasks";
+import { HomeSummaries } from "./HomeSummaries";
+import { TodayHabitsCard } from "./Habits";
 export function HomeExecution({
     data,
     active,
@@ -44,7 +46,7 @@ export function HomeExecution({
         data.tasks,
         new Date(Math.max(clock, Date.now())),
     );
-    const [limit, setLimit] = useState(4);
+    const [limit, setLimit] = useState(2);
     const [all, setAll] = useState(expanded);
     useEffect(() => {
         setAll(expanded);
@@ -74,6 +76,10 @@ export function HomeExecution({
                         <ChevronLeft size={16} />
                     </a>
                 </div>
+                <p className="small muted home-today-count">
+                    {today.filter((r) => r.task.status === "done").length} منجزة
+                    من {today.length} في قائمة اليوم
+                </p>
                 {all ? (
                     <TodayTasks tasks={data.tasks} renderTask={renderTask} />
                 ) : today.length ? (
@@ -93,6 +99,7 @@ export function HomeExecution({
                     </p>
                 )}
             </section>
+            <TodayHabitsCard />
             <section
                 className="home-execution"
                 aria-label="خطوات مشاريعك القادمة"
@@ -165,12 +172,13 @@ export function HomeExecution({
                 {active.length > limit && (
                     <button
                         className="text-btn load-more"
-                        onClick={() => setLimit((v) => v + 4)}
+                        onClick={() => setLimit((v) => v + 2)}
                     >
                         عرض المزيد من المشاريع ({active.length - limit})
                     </button>
                 )}
             </section>
+            <HomeSummaries data={data} />
             {recommendation}
             <button
                 className="text-btn home-progress-link"

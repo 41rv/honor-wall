@@ -221,7 +221,11 @@ export function PeriodDashboard({
             </GlassChoices>
             <div className="section-heading">
                 <h2 className="small muted">الفترة</h2>
-                <GlassChoices className="tabs" role="group" aria-label="نطاق الإحصائيات">
+                <GlassChoices
+                    className="tabs"
+                    role="group"
+                    aria-label="نطاق الإحصائيات"
+                >
                     {(
                         [
                             ["week", "أسبوعي"],
@@ -253,9 +257,7 @@ export function PeriodDashboard({
                 {(visited.has("overview") || tab === "overview") && (
                     <>
                         {history === undefined && (
-                            <p role="status" className="muted">
-                                قراءة سجل الإنجاز…
-                            </p>
+                            <p role="status">قراءة سجل الإنجاز…</p>
                         )}
                         {data.tasks.some(
                             (t) =>

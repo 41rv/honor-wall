@@ -1,0 +1,390 @@
+[
+  {
+    "stage": "after",
+    "repeat": 1,
+    "navigation": [
+      {
+        "route": "projects",
+        "commit_ms": 74.39999997615814,
+        "paint_ms": 112.5
+      },
+      {
+        "route": "habits",
+        "commit_ms": 27,
+        "paint_ms": 46.5
+      },
+      {
+        "route": "home",
+        "commit_ms": 54,
+        "paint_ms": 114.90000003576279
+      },
+      {
+        "route": "projects",
+        "commit_ms": 50.10000002384186,
+        "paint_ms": 83.40000003576279
+      },
+      {
+        "route": "habits",
+        "commit_ms": 29.80000001192093,
+        "paint_ms": 52.60000002384186
+      },
+      {
+        "route": "home",
+        "commit_ms": 53.200000047683716,
+        "paint_ms": 112.20000004768372
+      },
+      {
+        "route": "projects",
+        "commit_ms": 45.59999996423721,
+        "paint_ms": 90.09999996423721
+      },
+      {
+        "route": "habits",
+        "commit_ms": 30,
+        "paint_ms": 52.799999952316284
+      },
+      {
+        "route": "home",
+        "commit_ms": 69.80000001192093,
+        "paint_ms": 142.89999997615814
+      },
+      {
+        "route": "projects",
+        "commit_ms": 53.80000001192093,
+        "paint_ms": 109.10000002384186
+      },
+      {
+        "route": "habits",
+        "commit_ms": 33.30000001192093,
+        "paint_ms": 50.60000002384186
+      },
+      {
+        "route": "home",
+        "commit_ms": 57.90000003576279,
+        "paint_ms": 109.19999998807907
+      },
+      {
+        "route": "projects",
+        "commit_ms": 59.30000001192093,
+        "paint_ms": 115.39999997615814
+      },
+      {
+        "route": "habits",
+        "commit_ms": 26.69999998807907,
+        "paint_ms": 52.09999996423721
+      },
+      {
+        "route": "home",
+        "commit_ms": 52,
+        "paint_ms": 125.19999998807907
+      },
+      {
+        "route": "projects",
+        "commit_ms": 39,
+        "paint_ms": 83.69999998807907
+      },
+      {
+        "route": "habits",
+        "commit_ms": 28.400000035762787,
+        "paint_ms": 46.40000003576279
+      },
+      {
+        "route": "home",
+        "commit_ms": 47.60000002384186,
+        "paint_ms": 109.30000001192093
+      }
+    ],
+    "navigation_p95_ms": 142.89999997615814,
+    "navigation_commit_p95_ms": 74.39999997615814,
+    "frames_navigation": {
+      "count": 356,
+      "median_ms": 16.699999999999818,
+      "p95_ms": 33.399999999999636,
+      "over50": 4
+    },
+    "frames_scroll": {
+      "count": 100,
+      "median_ms": 16.700000000000728,
+      "p95_ms": 33.399999999999636,
+      "over50": 0
+    },
+    "long_tasks": [
+      {
+        "duration": 62,
+        "phase": "navigation"
+      },
+      {
+        "duration": 546,
+        "phase": "settle"
+      },
+      {
+        "duration": 113,
+        "phase": "settle"
+      }
+    ],
+    "tasks": 500,
+    "cpu_throttle": 4,
+    "clock": "Date proxy only; native performance.now and native requestAnimationFrame",
+    "physical_android": false
+  },
+  {
+    "stage": "after",
+    "repeat": 2,
+    "navigation": [
+      {
+        "route": "projects",
+        "commit_ms": 68.19999998807907,
+        "paint_ms": 96
+      },
+      {
+        "route": "habits",
+        "commit_ms": 28.600000023841858,
+        "paint_ms": 50.19999998807907
+      },
+      {
+        "route": "home",
+        "commit_ms": 54.200000047683716,
+        "paint_ms": 125.80000001192093
+      },
+      {
+        "route": "projects",
+        "commit_ms": 53.19999998807907,
+        "paint_ms": 98.30000001192093
+      },
+      {
+        "route": "habits",
+        "commit_ms": 33.89999997615814,
+        "paint_ms": 68
+      },
+      {
+        "route": "home",
+        "commit_ms": 45.80000001192093,
+        "paint_ms": 103.10000002384186
+      },
+      {
+        "route": "projects",
+        "commit_ms": 63,
+        "paint_ms": 95
+      },
+      {
+        "route": "habits",
+        "commit_ms": 26.5,
+        "paint_ms": 56.5
+      },
+      {
+        "route": "home",
+        "commit_ms": 54.10000002384186,
+        "paint_ms": 121.20000004768372
+      },
+      {
+        "route": "projects",
+        "commit_ms": 47.5,
+        "paint_ms": 70
+      },
+      {
+        "route": "habits",
+        "commit_ms": 24.69999998807907,
+        "paint_ms": 50.89999997615814
+      },
+      {
+        "route": "home",
+        "commit_ms": 49.299999952316284,
+        "paint_ms": 109.79999995231628
+      },
+      {
+        "route": "projects",
+        "commit_ms": 41.19999998807907,
+        "paint_ms": 60.5
+      },
+      {
+        "route": "habits",
+        "commit_ms": 27,
+        "paint_ms": 55.799999952316284
+      },
+      {
+        "route": "home",
+        "commit_ms": 48.60000002384186,
+        "paint_ms": 87.39999997615814
+      },
+      {
+        "route": "projects",
+        "commit_ms": 44.299999952316284,
+        "paint_ms": 63.5
+      },
+      {
+        "route": "habits",
+        "commit_ms": 26.200000047683716,
+        "paint_ms": 44.5
+      },
+      {
+        "route": "home",
+        "commit_ms": 74,
+        "paint_ms": 132.89999997615814
+      }
+    ],
+    "navigation_p95_ms": 132.89999997615814,
+    "navigation_commit_p95_ms": 74,
+    "frames_navigation": {
+      "count": 350,
+      "median_ms": 16.699999999999818,
+      "p95_ms": 33.30000000000018,
+      "over50": 3
+    },
+    "frames_scroll": {
+      "count": 100,
+      "median_ms": 16.700000000000728,
+      "p95_ms": 33.399999999999636,
+      "over50": 1
+    },
+    "long_tasks": [
+      {
+        "duration": 52,
+        "phase": "navigation"
+      },
+      {
+        "duration": 52,
+        "phase": "navigation"
+      },
+      {
+        "duration": 329,
+        "phase": "settle"
+      },
+      {
+        "duration": 79,
+        "phase": "settle"
+      }
+    ],
+    "tasks": 500,
+    "cpu_throttle": 4,
+    "clock": "Date proxy only; native performance.now and native requestAnimationFrame",
+    "physical_android": false
+  },
+  {
+    "stage": "after",
+    "repeat": 3,
+    "navigation": [
+      {
+        "route": "projects",
+        "commit_ms": 68,
+        "paint_ms": 99.59999996423721
+      },
+      {
+        "route": "habits",
+        "commit_ms": 24.799999952316284,
+        "paint_ms": 46.89999997615814
+      },
+      {
+        "route": "home",
+        "commit_ms": 51.90000003576279,
+        "paint_ms": 97.80000001192093
+      },
+      {
+        "route": "projects",
+        "commit_ms": 42.39999997615814,
+        "paint_ms": 71.39999997615814
+      },
+      {
+        "route": "habits",
+        "commit_ms": 32.89999997615814,
+        "paint_ms": 61.299999952316284
+      },
+      {
+        "route": "home",
+        "commit_ms": 57.59999996423721,
+        "paint_ms": 116.09999996423721
+      },
+      {
+        "route": "projects",
+        "commit_ms": 60.69999998807907,
+        "paint_ms": 116
+      },
+      {
+        "route": "habits",
+        "commit_ms": 33,
+        "paint_ms": 69.5
+      },
+      {
+        "route": "home",
+        "commit_ms": 44.10000002384186,
+        "paint_ms": 90.80000001192093
+      },
+      {
+        "route": "projects",
+        "commit_ms": 50.10000002384186,
+        "paint_ms": 89.10000002384186
+      },
+      {
+        "route": "habits",
+        "commit_ms": 24.69999998807907,
+        "paint_ms": 50.89999997615814
+      },
+      {
+        "route": "home",
+        "commit_ms": 39.10000002384186,
+        "paint_ms": 80.60000002384186
+      },
+      {
+        "route": "projects",
+        "commit_ms": 56.5,
+        "paint_ms": 100.89999997615814
+      },
+      {
+        "route": "habits",
+        "commit_ms": 26.5,
+        "paint_ms": 44.69999998807907
+      },
+      {
+        "route": "home",
+        "commit_ms": 39.09999996423721,
+        "paint_ms": 100.89999997615814
+      },
+      {
+        "route": "projects",
+        "commit_ms": 48.40000003576279,
+        "paint_ms": 92.90000003576279
+      },
+      {
+        "route": "habits",
+        "commit_ms": 22.5,
+        "paint_ms": 45.90000003576279
+      },
+      {
+        "route": "home",
+        "commit_ms": 46.80000001192093,
+        "paint_ms": 83.10000002384186
+      }
+    ],
+    "navigation_p95_ms": 116.09999996423721,
+    "navigation_commit_p95_ms": 68,
+    "frames_navigation": {
+      "count": 360,
+      "median_ms": 16.699999999999818,
+      "p95_ms": 33.30000000000018,
+      "over50": 3
+    },
+    "frames_scroll": {
+      "count": 100,
+      "median_ms": 16.700000000000728,
+      "p95_ms": 33.399999999999636,
+      "over50": 0
+    },
+    "long_tasks": [
+      {
+        "duration": 54,
+        "phase": "navigation"
+      },
+      {
+        "duration": 353,
+        "phase": "settle"
+      },
+      {
+        "duration": 70,
+        "phase": "settle"
+      }
+    ],
+    "tasks": 500,
+    "cpu_throttle": 4,
+    "clock": "Date proxy only; native performance.now and native requestAnimationFrame",
+    "physical_android": false
+  }
+]

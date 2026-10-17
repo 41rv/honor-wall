@@ -1,3 +1,5 @@
+import { appUrl } from "./url";
+import { navigateView } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import {
     importData,
@@ -99,7 +101,7 @@ function fixture(): Snapshot {
 }
 async function setup(page: Page) {
     await importData(page, fixture());
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(page.locator(".living-sky")).toBeAttached();
 }
 async function appearance(page: Page) {
@@ -407,7 +409,7 @@ test("المشهد لا يحجب النقر والإنجاز والتراجع و
             () => document.documentElement.scrollWidth <= innerWidth,
         ),
     ).toBe(true);
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await expect(page.locator(".living-sky")).toHaveCount(1);
     await expect(page.locator(".app-shell")).toHaveClass(/living-app/);
     await expect(page.locator(".app-shell")).not.toHaveClass(/living-home/);
@@ -526,7 +528,7 @@ test("حفظ إعداد الضبابية والثيم دون اتصال وبعد
     expect(await readStore(page, "tasks")).toEqual(before);
     const other = await context.newPage();
     await other.clock.install({ time: new Date(iso(23)) });
-    await other.goto("/#home");
+    await other.goto(appUrl("/#home"));
     await expect(other.locator(".sky-scene")).toHaveCSS("filter", "blur(27px)");
     await expect(other.locator(".living-sky")).toHaveAttribute(
         "data-phase",
@@ -564,7 +566,7 @@ test("قياس تباين النص فوق خلفية السماء الفعلية
                 events: [],
                 taskCycles: [],
             });
-            await page.goto("/#home");
+            await page.goto(appUrl("/#home"));
         }
         for (const theme of ["light", "dark"]) {
             for (const scene of times) {
@@ -796,9 +798,9 @@ test("فحص أداء التحكم بالضبابية وعدم تسرب مستم
         ).skyListenerCounts(),
     );
     for (let i = 0; i < 10; i++) {
-        await page.locator('.navigation a[href="#tasks"]').click();
+        await navigateView(page, "tasks");
         await expect(page.locator(".living-sky")).toHaveCount(1);
-        await page.locator('.navigation a[href="#home"]').click();
+        await navigateView(page, "home");
         await expect(page.locator(".living-sky")).toBeAttached();
         // Sky is persistent now, so its attachment no longer signals that
         // the Home route has committed and installed its passive effects.

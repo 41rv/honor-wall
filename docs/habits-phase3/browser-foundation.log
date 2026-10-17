@@ -1,0 +1,132 @@
+[WebServer] (node:643654) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:643667) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 19 tests using 1 worker
+
+(node:643691) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/19] tests/browser/habits-phase3.spec.ts:117:1 › حساب جديد:لا بياناتافتراضية،إنشاءمساروعادةمستقلةوأسبوعيةوتعديلها
+[2/19] tests/browser/habits-phase3.spec.ts:174:1 › الرئيسيةتسجلوترجعفورًاوالتسجيلوالإحصاءاتمنفصلةعنالمهاموالمشاريع
+[3/19] tests/browser/habits-phase3.spec.ts:217:1 › التسجيلالمتزامنمننافذتينلاينشئسجلينيوميين
+  1) tests/browser/habits-phase3.spec.ts:217:1 › التسجيلالمتزامنمننافذتينلاينشئسجلينيوميين ─────────
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('.habit-detail > .habit-row').getByRole('button')
+    Expected: "true"
+    Received: "false"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('.habit-detail > .habit-row').getByRole('button') with timeout 5000ms
+      - waiting for locator('.habit-detail > .habit-row').getByRole('button')
+        - locator resolved to <button disabled type="button" aria-busy="true" class="task-check " aria-pressed="false" aria-label="تسجيل عادة «ترتيب السرير»"></button>
+        13 × unexpected value "false"
+           - locator resolved to <button type="button" aria-busy="false" class="task-check " aria-pressed="false" aria-label="تسجيل عادة «ترتيب السرير»"></button>
+        - unexpected value "false"
+
+
+      231 |         "true",
+      232 |     );
+    > 233 |     await expect(current(second).getByRole("button")).toHaveAttribute(
+          |                                                       ^
+      234 |         "aria-pressed",
+      235 |         "true",
+      236 |     );
+        at /workspace/honor-wall/tests/browser/habits-phase3.spec.ts:233:55
+
+    Error Context: test-results/habits-phase3-التسجيلالمتزامنمننافذتينلاينشئسجلينيوميين/error-context.md
+
+
+(node:643911) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[4/19] tests/browser/habits-phase3.spec.ts:244:1 › تصحيحتسجيلقديموخارجالشهرالظاهرلاينسخالسجلويحفظوقتإدخاله
+[5/19] tests/browser/habits-phase3.spec.ts:288:1 › نقلالعادةبينالمساراتوفصلهايحفظالسجلويظهرالسريانغدًا
+[6/19] tests/browser/habits-phase3.spec.ts:312:1 › الإيقافالمتداخلوالاستئنافلايغيرالسجلولايلغيتوقفالعادة
+  2) tests/browser/habits-phase3.spec.ts:312:1 › الإيقافالمتداخلوالاستئنافلايغيرالسجلولايلغيتوقفالعادة 
+
+    Test timeout of 45000ms exceeded.
+
+    Error: locator.click: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for getByRole('dialog').getByRole('button', { name: 'استئناف', exact: true })
+
+
+      112 |         .getByRole("dialog")
+      113 |         .getByRole("button", { name: action, exact: true })
+    > 114 |         .click();
+          |          ^
+      115 | }
+      116 | const current = (page: Page) => page.locator(".habit-detail > .habit-row");
+      117 | test("حساب جديد:لا بياناتافتراضية،إنشاءمساروعادةمستقلةوأسبوعيةوتعديلها", async ({
+        at menu (/workspace/honor-wall/tests/browser/habits-phase3.spec.ts:114:10)
+        at /workspace/honor-wall/tests/browser/habits-phase3.spec.ts:320:5
+
+    Error Context: test-results/habits-phase3-الإيقافالمتد-76349-ايغيرالسجلولايلغيتوقفالعادة/error-context.md
+
+
+(node:644326) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[7/19] tests/browser/habits-phase3.spec.ts:339:1 › أرشفةواستعادةالمساروالعادةمحافظتانوتتطلبالأرشفةتأكيدًا
+  3) tests/browser/habits-phase3.spec.ts:339:1 › أرشفةواستعادةالمساروالعادةمحافظتانوتتطلبالأرشفةتأكيدًا 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('موقوفة مؤقتًا', { exact: true }).first()
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('موقوفة مؤقتًا', { exact: true }).first() with timeout 5000ms
+      - waiting for getByText('موقوفة مؤقتًا', { exact: true }).first()
+
+
+      371 |     await expect(
+      372 |         page.getByText("موقوفة مؤقتًا", { exact: true }).first(),
+    > 373 |     ).toBeVisible();
+          |       ^
+      374 | });
+      375 | test("منتصفالليلودورةاليومالجديدوالأسبوعلايرحلانالتسجيل", async ({ page }) => {
+      376 |     await seed(page);
+        at /workspace/honor-wall/tests/browser/habits-phase3.spec.ts:373:7
+
+    Error Context: test-results/habits-phase3-أرشفةواستعاد-d6da6-حافظتانوتتطلبالأرشفةتأكيدًا/error-context.md
+
+
+(node:644463) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[8/19] tests/browser/habits-phase3.spec.ts:375:1 › منتصفالليلودورةاليومالجديدوالأسبوعلايرحلانالتسجيل
+[9/19] tests/browser/habits-phase3.spec.ts:401:1 › الروابطالمباشرةوالرجوعوالتمريروEscapeوالإضافةالعائمةتبقىسليمة
+[10/19] tests/browser/habits-phase3.spec.ts:432:1 › النسخوالاستعادةتحفظالإنجازوالإيقافاتالجديدةمعالجداولالقديمة
+[11/19] tests/browser/habits-phase3.spec.ts:455:9 › العرضوالصورRTL 320 light
+[12/19] tests/browser/habits-phase3.spec.ts:455:9 › العرضوالصورRTL 320 dark
+[13/19] tests/browser/habits-phase3.spec.ts:455:9 › العرضوالصورRTL 390 light
+[14/19] tests/browser/habits-phase3.spec.ts:455:9 › العرضوالصورRTL 390 dark
+[15/19] tests/browser/habits-phase3.spec.ts:455:9 › العرضوالصورRTL 768 light
+[16/19] tests/browser/habits-phase3.spec.ts:455:9 › العرضوالصورRTL 768 dark
+[17/19] tests/browser/habits-phase3.spec.ts:455:9 › العرضوالصورRTL 1366 light
+[18/19] tests/browser/habits-phase3.spec.ts:455:9 › العرضوالصورRTL 1366 dark
+[19/19] tests/browser/habits-phase3.spec.ts:500:1 › فتحوتسجيلسريعانمعقائمةطويلةوإبطاءCPUدونحسابالتاريخكله
+  3 failed
+    tests/browser/habits-phase3.spec.ts:217:1 › التسجيلالمتزامنمننافذتينلاينشئسجلينيوميين ──────────
+    tests/browser/habits-phase3.spec.ts:312:1 › الإيقافالمتداخلوالاستئنافلايغيرالسجلولايلغيتوقفالعادة 
+    tests/browser/habits-phase3.spec.ts:339:1 › أرشفةواستعادةالمساروالعادةمحافظتانوتتطلبالأرشفةتأكيدًا 
+  16 passed (1.9m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

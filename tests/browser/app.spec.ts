@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { openCreate } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import type { Snapshot } from "../../app/model";
@@ -56,7 +57,7 @@ function fixture(): Snapshot {
     };
 }
 async function loadBackup(page: Page, data: Snapshot) {
-    await page.goto("/#backup");
+    await page.goto(appUrl("/#backup"));
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
         name: "backup.json",
         mimeType: "application/json",
@@ -90,7 +91,7 @@ test.beforeEach(async ({ page }) => {
     const errors: string[] = [];
     runtimeErrors.set(page, errors);
     page.on("pageerror", (e) => errors.push(e.message));
-    await page.goto("/");
+    await page.goto(appUrl("/"));
     await expect(
         page.getByRole("heading", { name: "مهامي اليوم", level: 1 }),
     ).toBeVisible();
@@ -99,7 +100,7 @@ test("واجهة المشروع: الإنشاء، الترتيب، الملاح�
     page,
 }) => {
     await loadBackup(page, fixture());
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await expect(page.getByRole("progressbar")).toHaveAttribute(
         "aria-valuenow",
         "0",
@@ -115,15 +116,15 @@ test("واجهة المشروع: الإنشاء، الترتيب، الملاح�
     });
     await expect(row.locator(".tree-number")).toHaveText("1.2");
     for (const id of ["s0-0", "s0-1", "s0-2"]) {
-        await page.goto("/#step/" + id);
+        await page.goto(appUrl("/#step/" + id));
         await page.getByRole("button", { name: "مكتملة", exact: true }).click();
     }
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await expect(page.getByRole("progressbar")).toHaveAttribute(
         "aria-valuenow",
         "30",
     );
-    await page.goto("/#step/s0-0");
+    await page.goto(appUrl("/#step/s0-0"));
     await page.getByLabel("ملاحظات العنصر").fill("تفصيل مهم محفوظ للعودة");
     await page.getByRole("button", { name: "العودة للمشروع" }).click();
     await page.getByLabel("بحث شامل").fill("تفصيل مهم");
@@ -136,10 +137,10 @@ test("واجهة المشروع: الإنشاء، الترتيب، الملاح�
         "تفصيل مهم محفوظ للعودة",
     );
     for (const id of ["s0-3", "s0-4", "s1-0", "s1-1", "s1-2", "s1-3", "s1-4"]) {
-        await page.goto("/#step/" + id);
+        await page.goto(appUrl("/#step/" + id));
         await page.getByRole("button", { name: "مكتملة", exact: true }).click();
     }
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await expect(page.getByRole("progressbar")).toHaveAttribute(
         "aria-valuenow",
         "100",
@@ -147,7 +148,7 @@ test("واجهة المشروع: الإنشاء، الترتيب، الملاح�
     await expect(
         page.getByRole("button", { name: "إعادة فتح المشروع", exact: true }),
     ).toBeVisible();
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await expect(
         page
             .locator(".stat-card")
@@ -160,11 +161,11 @@ test("واجهة المشروع: الإنشاء، الترتيب، الملاح�
             .filter({ hasText: "المشاريع النشطة" })
             .locator("strong"),
     ).toHaveText("0");
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await page
         .getByRole("button", { name: "إعادة فتح المشروع", exact: true })
         .click();
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await expect(
         page
             .locator(".stat-card")
@@ -175,7 +176,7 @@ test("واجهة المشروع: الإنشاء، الترتيب، الملاح�
 test("المهام والأفكار: إنشاء وبدء وإنجاز وإعادة فتح وتحويل وتراجع", async ({
     page,
 }) => {
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await add(page, "مهمة جديدة", "مراجعة التصميم", "راجع النسخة النهائية");
     await page
         .getByRole("button", { name: /مراجعة التصميم راجع النسخة/ })
@@ -202,14 +203,14 @@ test("المهام والأفكار: إنشاء وبدء وإنجاز وإعاد
     await expect(
         page.locator(".timeline li").filter({ hasText: "إنجاز" }),
     ).toHaveCount(2);
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await expect(
         page
             .locator(".stat-card")
             .filter({ hasText: "منجز آخر" })
             .locator("strong"),
     ).toHaveText("1");
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await page.locator(".completed-list summary").click();
     await expect(page.locator(".completed-list")).toContainText("أُنجزت");
     await page.getByRole("button", { name: "تفاصيل مراجعة التصميم" }).click();
@@ -223,7 +224,7 @@ test("المهام والأفكار: إنشاء وبدء وإنجاز وإعاد
     await expect(page.locator(".completed-list")).toContainText(
         "مراجعة التصميم",
     );
-    await page.goto("/#ideas");
+    await page.goto(appUrl("/#ideas"));
     await add(page, "فكرة جديدة", "فكرة للتجربة", "الوصف يبقى");
     await page
         .getByRole("button", { name: "فكرة للتجربة", exact: true })
@@ -237,7 +238,7 @@ test("المهام والأفكار: إنشاء وبدء وإنجاز وإعاد
         .click();
     await expect(page).toHaveURL(/#project/);
     await expect(page.getByLabel("ملاحظات العنصر")).toHaveValue("الوصف يبقى");
-    await page.goto("/#ideas");
+    await page.goto(appUrl("/#ideas"));
     await add(page, "فكرة جديدة", "فكرة مهمة", "تفاصيل المهمة");
     await page.getByRole("button", { name: "فكرة مهمة", exact: true }).click();
     await page
@@ -253,7 +254,7 @@ test("المهام والأفكار: إنشاء وبدء وإنجاز وإعاد
     );
 });
 test("إنشاء مشروع ومرحلة وخطوة فرعية وتعديل وأرشفة", async ({ page }) => {
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await add(page, "مشروع جديد", "مشروعي الجديد", "وصف المشروع");
     await page
         .getByRole("button", { name: "مشروعي الجديد", exact: true })
@@ -274,7 +275,7 @@ test("إنشاء مشروع ومرحلة وخطوة فرعية وتعديل وأ
     ).toBeVisible();
     await page.getByRole("button", { name: "العودة للمشروع" }).click();
     await page.getByRole("button", { name: "أرشفة", exact: true }).click();
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await page.getByRole("button", { name: /المؤرشفة/ }).click();
     await expect(
         page.getByRole("button", { name: "مشروعي الجديد", exact: true }),
@@ -286,7 +287,7 @@ test("تصدير واستيراد كامل، رفض نسخة مكسورة دون
     const f = fixture();
     f.steps[1].notes = "تفاصيل التصدير";
     await loadBackup(page, f);
-    await page.goto("/#backup");
+    await page.goto(appUrl("/#backup"));
     const downloadPromise = page.waitForEvent("download");
     await page.getByRole("button", { name: "تصدير JSON" }).click();
     const download = await downloadPromise;
@@ -303,9 +304,9 @@ test("تصدير واستيراد كامل، رفض نسخة مكسورة دون
     await expect(page.getByRole("dialog")).not.toBeVisible();
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles(path!);
     await page.getByRole("button", { name: "تأكيد استبدال البيانات" }).click();
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await expect(page.locator(".tree-row")).toHaveCount(12);
-    await page.goto("/#step/s0-0");
+    await page.goto(appUrl("/#step/s0-0"));
     await expect(page.getByLabel("ملاحظات العنصر")).toHaveValue(
         "تفاصيل التصدير",
     );
@@ -323,7 +324,7 @@ test("شاشة 320 بكسل، الوضعان وغياب التمرير الأف�
         "step/s0-0",
         "backup",
     ]) {
-        await page.goto("/#" + route);
+        await page.goto(appUrl("/#" + route));
         await expect(page.locator("h1")).toBeVisible();
         expect(
             await page.evaluate(
@@ -334,14 +335,14 @@ test("شاشة 320 بكسل، الوضعان وغياب التمرير الأف�
     }
     await page.getByRole("button", { name: "الوضع الداكن" }).click();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await page.screenshot({
         path: "/tmp/masar-mobile-dark.png",
         fullPage: true,
     });
     await page.getByRole("button", { name: "الوضع الفاتح" }).click();
     await page.setViewportSize({ width: 1440, height: 1000 });
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await page.screenshot({ path: "/tmp/masar-desktop.png", fullPage: true });
 });
 test("PWA: الأصول والبيانات متاحة دون إنترنت بعد إعادة التشغيل", async ({
@@ -356,16 +357,16 @@ test("PWA: الأصول والبيانات متاحة دون إنترنت بعد
     await expect
         .poll(() => page.evaluate(() => !!navigator.serviceWorker.controller))
         .toBe(true);
-    const manifest = await page.request.get("/manifest.webmanifest");
+    const manifest = await page.request.get(appUrl("/manifest.webmanifest"));
     expect(manifest.ok()).toBe(true);
     for (const size of [192, 512])
-        expect((await page.request.get(`/icon-${size}.png`)).ok()).toBe(true);
+        expect((await page.request.get(appUrl(`/icon-${size}.png`))).ok()).toBe(true);
     await context.setOffline(true);
     await page.reload();
     await expect(
         page.getByRole("heading", { name: "بياناتك في أمان" }),
     ).toBeVisible();
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await expect(
         page.getByRole("heading", { name: "دليل الهوية البصرية", level: 1 }),
     ).toBeVisible();
@@ -403,10 +404,10 @@ test("مشروع طويل: استكمال آخر خطوة، حفظ موضع ال
         at,
     });
     await loadBackup(page, f);
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await page.getByRole("button", { name: "أكمل من حيث توقفت" }).click();
     await expect(page).toHaveURL(/#step\/s0-0/);
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await page
         .getByRole("button", { name: "خطوة طويلة 64 خطوة", exact: true })
         .scrollIntoViewIfNeeded();
@@ -432,7 +433,7 @@ test("مشروع طويل: استكمال آخر خطوة، حفظ موضع ال
     }
     await loadBackup(page, deep);
     await page.setViewportSize({ width: 320, height: 740 });
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     expect(
         await page.evaluate(
             () => document.documentElement.scrollWidth <= innerWidth,
@@ -449,7 +450,7 @@ test("فشل حفظ الملاحظات يستعيد المسودة بعد إعا
     page,
 }) => {
     await loadBackup(page, fixture());
-    await page.goto("/#step/s0-0");
+    await page.goto(appUrl("/#step/s0-0"));
     await page.evaluate(() => {
         const original = IDBObjectStore.prototype.put;
         IDBObjectStore.prototype.put = function (value, key) {

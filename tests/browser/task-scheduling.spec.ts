@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { openCreate } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
@@ -9,7 +10,7 @@ async function time(page: Page, at: string) {
     await page.evaluate(() => window.dispatchEvent(new Event("focus")));
 }
 async function begin(page: Page, title: string) {
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await openCreate(page, "task");
     const form = page.getByRole("dialog");
     await form.getByLabel("الاسم", { exact: true }).fill(title);
@@ -241,7 +242,7 @@ test("يومية: إتمام قبل نهاية اليوم، تراجع سريع�
             (c) => c.status === "completed",
         ),
     ).toHaveLength(1);
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(
         page.locator('[aria-label="مهامي اليوم"] .task-row'),
     ).toHaveCount(1);
@@ -299,12 +300,12 @@ test("الأولويات الأربعة بألوانها ثم الإزالة، �
         ["urgent", "rgb(230, 163, 61)", "عاجل وغير هام"],
         ["low", "rgb(139, 146, 157)", "غير هام وغير عاجل"],
     ]) {
-        await page.goto("/#task/" + id);
+        await page.goto(appUrl("/#task/" + id));
         const f = await options(page);
         await f.getByLabel("الأولوية", { exact: true }).selectOption(key);
         await settings(page);
         await expect(page.locator(".task-details")).toContainText(name);
-        await page.goto("/#tasks");
+        await page.goto(appUrl("/#tasks"));
         expect(
             await page
                 .locator(".priority-strip")
@@ -316,7 +317,7 @@ test("الأولويات الأربعة بألوانها ثم الإزالة، �
     const f = await options(page);
     await f.getByLabel("الأولوية", { exact: true }).selectOption("");
     await settings(page);
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await expect(page.locator(".priority-strip")).toHaveCount(0);
 });
 test("نسخة جديدة تحفظ الدورات والأولوية، واستيراد مشروع مستقل لا يؤثر عليها", async ({
@@ -330,12 +331,12 @@ test("نسخة جديدة تحفظ الدورات والأولوية، واست�
     await page
         .getByRole("button", { name: "إكمال يومية للنسخ", exact: true })
         .click();
-    await page.goto("/#backup");
+    await page.goto(appUrl("/#backup"));
     const download = page.waitForEvent("download");
     await page.getByRole("button", { name: "تصدير JSON", exact: true }).click();
     const file = await download;
     const data = JSON.parse(readFileSync((await file.path())!, "utf8"));
-    expect(data.version).toBe(4);
+    expect(data.version).toBe(5);
     expect(data.taskCycles).toHaveLength(1);
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
         name: "backup.json",
@@ -344,7 +345,7 @@ test("نسخة جديدة تحفظ الدورات والأولوية، واست�
     });
     await page.getByRole("button", { name: "تأكيد استبدال البيانات" }).click();
     await expect(page.getByRole("dialog")).not.toBeVisible();
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await page.getByLabel("استيراد مشروع", { exact: true }).setInputFiles({
         name: "project.json",
         mimeType: "application/json",
@@ -368,7 +369,7 @@ for (const width of [390, 1366]) {
         page,
     }) => {
         await page.setViewportSize({ width, height: 850 });
-        await page.goto("/#tasks");
+        await page.goto(appUrl("/#tasks"));
         for (const identity of ["green", "mono"])
             for (const mode of ["light", "dark"]) {
                 await page.evaluate(
@@ -509,15 +510,15 @@ test("الرئيسية والقوائم تميز العامة والقريبة �
         await expect(page.locator(".task-row")).toHaveCount(1);
         await expect(page.locator(".task-row")).toContainText(title);
     }
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(
         page.locator('[aria-label="مهامي اليوم"] .task-row'),
     ).toHaveCount(3);
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await expect(
         page.getByRole("group", { name: "عرض المهام بحسب موعدها" }),
     ).toBeVisible();
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(
         page.locator('[aria-label="مهامي اليوم"] .task-row').first(),
     ).toContainText("متأخرة");
@@ -631,14 +632,14 @@ test("الموعد الأسبوعي المستقبلي يمنع الإنجاز �
     });
     await expect(complete).toBeDisabled();
     await expect(page.locator(".task-row .task-due")).toHaveClass(/due-future/);
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(
         page.locator("[data-task-id]").filter({ hasText: "سبت المستقبل" }),
     ).toHaveCount(0);
     await expect(
         page.getByRole("link", { name: "عرض الكل", exact: true }),
     ).toBeVisible();
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await time(page, "2026-10-17T16:59:00Z");
     await expect(complete).toBeDisabled();
     expect(await readStore(page, "taskCycles")).toHaveLength(0);
@@ -678,7 +679,7 @@ test("النسخة ذات إنجاز على نهاية الدورة تُرفض �
     const cycle = malformed.taskCycles[0];
     cycle.status = "completed";
     cycle.completedAt = cycle.end;
-    await page.goto("/#backup");
+    await page.goto(appUrl("/#backup"));
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
         name: "invalid-cycle.json",
         mimeType: "application/json",
@@ -777,7 +778,7 @@ test("قائمة ٥٠٠ مهمة: الوصول إلى الصفوف خارج ال
         title: `عمل طويل ${i}`,
     }));
     await importData(page, data);
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await expect(page.locator(".task-row")).toHaveCount(500);
     const target = page.getByRole("button", {
         name: "إكمال عمل طويل 499",

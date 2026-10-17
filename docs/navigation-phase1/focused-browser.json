@@ -1,0 +1,553 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/navigation-phase1.spec.ts",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "navigation-phase1.spec.ts",
+      "file": "navigation-phase1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "navigation screenshots 320 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4074,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:11:52.058Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-ef5fc923f9c322e01a6a",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        },
+        {
+          "title": "navigation screenshots 320 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2932,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:11:56.504Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-1cf258578f5c95e88c9b",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        },
+        {
+          "title": "navigation screenshots 390 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2862,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:11:59.451Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-60fb72e4b88eaa74deca",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        },
+        {
+          "title": "navigation screenshots 390 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2837,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:12:02.330Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-cff38f0d2928915cbb85",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        },
+        {
+          "title": "three primary sections and reachable gateway 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3858,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:12:05.183Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-831c71a1934881c81e4b",
+          "file": "navigation-phase1.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "three primary sections and reachable gateway 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4264,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:12:09.053Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-a8071f477dd0126f2a44",
+          "file": "navigation-phase1.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "three primary sections and reachable gateway 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3126,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:12:13.330Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-769bb1d076eae4c1e486",
+          "file": "navigation-phase1.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "three primary sections and reachable gateway 1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3284,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:12:16.468Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-5a86d87b45824ee6b654",
+          "file": "navigation-phase1.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "task shortcut is one click from every current page and habits is storage-neutral",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1956,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:12:19.768Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-d49e57d93e0b739c8909",
+          "file": "navigation-phase1.spec.ts",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2862,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:12:21.742Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-d60a66362351bc30ec5a",
+          "file": "navigation-phase1.spec.ts",
+          "line": 188,
+          "column": 1
+        },
+        {
+          "title": "task-list and project-tree scroll positions survive section navigation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6513,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m800\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m800\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at /workspace/honor-wall/tests/browser/navigation-phase1.spec.ts:249:59",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                      "column": 59,
+                      "line": 249
+                    },
+                    "snippet": "  247 |     await page.locator(\".task-shortcut\").click();\n  248 |     await settle(page);\n> 249 |     await expect.poll(() => page.evaluate(() => scrollY)).toBe(y);\n      |                                                           ^\n  250 | });\n  251 |\n  252 | test(\"legacy creation, completion and accessible light/dark shell remain available\", async ({"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                        "column": 59,
+                        "line": 249
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m800\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  247 |     await page.locator(\".task-shortcut\").click();\n  248 |     await settle(page);\n> 249 |     await expect.poll(() => page.evaluate(() => scrollY)).toBe(y);\n      |                                                           ^\n  250 | });\n  251 |\n  252 | test(\"legacy creation, completion and accessible light/dark shell remain available\", async ({\n    at /workspace/honor-wall/tests/browser/navigation-phase1.spec.ts:249:59"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:12:24.617Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/navigation-phase1-task-lis-cb907--survive-section-navigation/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                    "column": 59,
+                    "line": 249
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ed7279ef776062541642-8163bb121760cc29d999",
+          "file": "navigation-phase1.spec.ts",
+          "line": 217,
+          "column": 1
+        },
+        {
+          "title": "legacy creation, completion and accessible light/dark shell remain available",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12907,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:12:31.636Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-755f1a085226475b9e75",
+          "file": "navigation-phase1.spec.ts",
+          "line": 252,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T23:11:50.470Z",
+    "duration": 54366.485,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

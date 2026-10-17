@@ -1,3 +1,5 @@
+import { appUrl } from "./url";
+import { navigateView } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import { importData, sizedFixture, readStore, openCreate } from "./helpers";
 import { validateBackup } from "../../app/model";
@@ -81,7 +83,7 @@ async function setup(page: Page, theme = "light", count = 24, clock = true) {
             localStorage.setItem("masar-sky-blur", "12");
     }, theme);
     await importData(page, fixture(count));
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await page.evaluate(() => document.fonts.ready);
     const close = page.getByRole("button", {
         name: "إخفاء الرسالة",
@@ -115,7 +117,7 @@ for (const width of [320, 390])
             await page.setViewportSize({ width, height: 844 });
             await setup(page, theme);
             for (const route of routes) {
-                await page.locator(`.navigation a[href="#${route}"]`).click();
+                await navigateView(page, route);
                 await expect(page.locator(".page-heading h1")).toBeVisible();
                 await page.mouse.move(0, 0);
                 await page.screenshot({
@@ -126,7 +128,10 @@ for (const width of [320, 390])
                 await expect(page.locator(".living-sky")).toHaveCount(1);
                 await expect(
                     page.locator('.navigation a[aria-current="page"]'),
-                ).toHaveAttribute("href", `#${route}`);
+                ).toHaveAttribute(
+                    "href",
+                    route === "home" ? "#home" : "#projects",
+                );
                 expect(
                     await page.evaluate(
                         () =>
@@ -194,9 +199,7 @@ if (!before) {
                         window.dispatchEvent(new Event("focus")),
                     );
                     for (const route of routes) {
-                        await page
-                            .locator(`.navigation a[href="#${route}"]`)
-                            .click();
+                        await navigateView(page, route);
                         for (const scroll of [0, 360]) {
                             await page.evaluate(
                                 (y) => window.scrollTo(0, y),
@@ -381,7 +384,7 @@ if (!before) {
     }) => {
         test.setTimeout(60000);
         await setup(page, "dark", 500, false);
-        await page.locator('.navigation a[href="#tasks"]').click();
+        await navigateView(page, "tasks");
         await expect(page.locator(".task-list")).toHaveCSS(
             "backdrop-filter",
             "none",
@@ -521,9 +524,7 @@ if (!before) {
             .locator(".living-sky")
             .getAttribute("data-minute");
         for (let i = 0; i < 30; i++) {
-            await page
-                .locator(`.navigation a[href="#${routes[i % 5]}"]`)
-                .click();
+            await navigateView(page, routes[i % 5]);
             expect(
                 await page.evaluate(
                     () =>
@@ -561,7 +562,7 @@ if (!before) {
                 insets: { bottom },
             });
             for (const route of routes) {
-                await page.locator(`.navigation a[href="#${route}"]`).click();
+                await navigateView(page, route);
                 expect(
                     await page
                         .locator(".sidebar")
@@ -620,7 +621,7 @@ if (!before) {
         await context.setOffline(true);
         await page.reload();
         for (const route of routes) {
-            await page.locator(`.navigation a[href="#${route}"]`).click();
+            await navigateView(page, route);
             await expect(page.locator(".sky-scene")).toHaveCSS(
                 "filter",
                 "blur(27px)",
@@ -635,7 +636,7 @@ if (!before) {
         page,
     }) => {
         await setup(page);
-        await page.locator('.navigation a[href="#tasks"]').click();
+        await navigateView(page, "tasks");
         await page
             .getByRole("button", {
                 name: "إكمال مراجعة خطة الأسبوع",
@@ -672,7 +673,7 @@ if (!before) {
             .click();
         await expect(page.getByRole("dialog")).toBeVisible();
         await page.keyboard.press("Escape");
-        await page.locator('.navigation a[href="#ideas"]').click();
+        await navigateView(page, "ideas");
         await openCreate(page, "idea");
         await page
             .getByRole("dialog")
@@ -689,7 +690,7 @@ if (!before) {
                 ),
             )
             .toBe(true);
-        await page.locator('.navigation a[href="#projects"]').click();
+        await navigateView(page, "projects");
         await page
             .locator(".project-card .title-link")
             .filter({ hasText: "بناء عادة القراءة" })
@@ -730,9 +731,7 @@ if (!before) {
                     .getByRole("button", { name: "تم", exact: true })
                     .click();
                 for (const route of routes) {
-                    await page
-                        .locator(`.navigation a[href="#${route}"]`)
-                        .click();
+                    await navigateView(page, route);
                     const axe = await new AxeBuilder({ page })
                         .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
                         .analyze();

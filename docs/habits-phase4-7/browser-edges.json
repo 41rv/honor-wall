@@ -1,0 +1,555 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "-c",
+      "docs/habits-phase4-7/supplemental.config.mjs",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/docs/habits-phase4-7/supplemental.config.mjs",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/masar-phase47-edge-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "habits-phase47-edge.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/tmp/masar-phase47-edge-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "habits-phase47-edge.spec.ts",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4195",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4195 --strictPort",
+      "url": "http://127.0.0.1:4195",
+      "cwd": "/workspace/honor-wall",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "habits-phase47-edge.spec.ts",
+      "file": "habits-phase47-edge.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "graded historical editing, tomorrow goal and optional difficulty phase remain separate",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7289,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeUndefined\u001b[2m()\u001b[22m\n\nReceived: \u001b[31m\"hard\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeUndefined\u001b[2m()\u001b[22m\n\nReceived: \u001b[31m\"hard\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at /workspace/honor-wall/tests/browser/habits-phase47-edge.spec.ts:95:10",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/habits-phase47-edge.spec.ts",
+                      "column": 10,
+                      "line": 95
+                    },
+                    "snippet": "  93 |                 )?.difficulty,\n  94 |         )\n> 95 |         .toBeUndefined();\n     |          ^\n  96 |     await page\n  97 |         .getByRole(\"button\", { name: \"خيارات العادة أو المسار\", exact: true })\n  98 |         .click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/habits-phase47-edge.spec.ts",
+                        "column": 10,
+                        "line": 95
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeUndefined\u001b[2m()\u001b[22m\n\nReceived: \u001b[31m\"hard\"\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  93 |                 )?.difficulty,\n  94 |         )\n> 95 |         .toBeUndefined();\n     |          ^\n  96 |     await page\n  97 |         .getByRole(\"button\", { name: \"خيارات العادة أو المسار\", exact: true })\n  98 |         .click();\n    at /workspace/honor-wall/tests/browser/habits-phase47-edge.spec.ts:95:10"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:14.988Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/tmp/masar-phase47-edge-results/habits-phase47-edge-graded-db375-culty-phase-remain-separate/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/habits-phase47-edge.spec.ts",
+                    "column": 10,
+                    "line": 95
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-731187f8f3999f9a33aa",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "new controls accessibility RTL 320 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3071,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:23.071Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-ab37c5691b80e5985572",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 320 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2783,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:26.414Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-aef443f928f9a9ee3d07",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 390 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3198,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:29.214Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-e16141e872806929fe44",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 390 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2632,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:32.442Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-268c45ef5a03ef362b02",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 768 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3205,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:35.093Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-322b4a2a09152fedf9e2",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 768 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2688,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:38.312Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-e5fa8420920822704862",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 1366 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2957,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:41.019Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-7feb6a087bfe094455ac",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "new controls accessibility RTL 1366 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3139,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:43.994Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-5e90d4ef18e5f04f2085",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 143,
+          "column": 9
+        },
+        {
+          "title": "local search locates habits paths and reminders without legacy entity mutations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1622,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:47.152Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-43956dbf17b23b90b36b",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 180,
+          "column": 1
+        },
+        {
+          "title": "habit form and long lists remain bounded and responsive under4x CPU",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2613,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:48.796Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-e35f07560c5ba312e75a",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "home idle query boundaries stay stable instead of reopening IndexedDB queries on each render",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2568,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:51.429Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-801c661f2a0f2fee817b",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 249,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T01:40:13.484Z",
+    "duration": 40655.352999999996,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

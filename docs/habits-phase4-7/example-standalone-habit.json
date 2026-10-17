@@ -1,0 +1,13 @@
+{
+  "format": "masar.habits",
+  "version": 1,
+  "kind": "habit",
+  "habit": {
+    "key": "bed",
+    "title": "ترتيب السرير",
+    "kind": "simple",
+    "schedule": {
+      "repeat": "daily"
+    }
+  }
+}

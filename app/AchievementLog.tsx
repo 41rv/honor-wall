@@ -85,11 +85,7 @@ export function AchievementLog({
                     </select>
                 </label>
             </div>
-            {history === undefined && (
-                <p className="muted" role="status">
-                    قراءة سجل الإنجاز…
-                </p>
-            )}
+            {history === undefined && <p role="status">قراءة سجل الإنجاز…</p>}
             <p className="muted small">
                 {filtered.length} إنجاز · تُعرض الحالات المكتملة المحفوظة فقط،
                 دون إنشاء أحداث قديمة.

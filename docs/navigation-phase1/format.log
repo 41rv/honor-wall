@@ -1,0 +1,21 @@
+app/App.tsx 409ms
+app/navigation.ts 6ms (unchanged)
+app/WorkspaceNavigation.tsx 8ms (unchanged)
+app/navigation.css 34ms (unchanged)
+app/useRouteMotion.ts 11ms (unchanged)
+[error] No files matching the pattern were found: "tests/browser/helpers.spec.ts".
+tests/browser/navigation-phase1.spec.ts 32ms (unchanged)
+tests/browser/smooth-controls.spec.ts 95ms
+tests/browser/living-sky-shell.spec.ts 56ms
+tests/browser/internal-controls.spec.ts 36ms (unchanged)
+tests/browser/dark-audit.spec.ts 6ms (unchanged)
+tests/browser/dark-audit-extended.spec.ts 51ms (unchanged)
+tests/browser/living-sky.spec.ts 58ms (unchanged)
+tests/browser/buttons.spec.ts 43ms (unchanged)
+tests/navigation.test.ts 5ms (unchanged)
+tests/routeMotion.test.ts 3ms (unchanged)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

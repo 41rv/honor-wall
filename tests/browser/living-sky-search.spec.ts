@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { test, expect } from "@playwright/test";
 import { sizedFixture, importData } from "./helpers";
 import fs from "node:fs";
@@ -18,7 +19,7 @@ test("بحث500 نتيجة: التمرير والوصول إلى آخر زر د�
         notes: "ملاحظة لاختبار وضوح النصوص والخامة أثناء التمرير.",
     }));
     await importData(page, data);
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await page.getByLabel("بحث شامل", { exact: true }).fill("نتيجة-متكررة");
     await expect(page.locator(".search-result")).toHaveCount(500);
     await page.locator(".page-heading h1").click();

@@ -1,0 +1,50 @@
+
+ RUN  v5.0.4 /workspace/honor-wall
+
+stderr | tests/habitStorage.test.ts > اتصال قديم يستقبلversionchange ويغلق قبل الترقية دون فقد بيانات
+Another connection wants to upgrade database 'habit-two-tabs-5c747b97-8f2a-459f-92a5-07f6c495cde3'. Closing db now to resume the upgrade.
+
+ ✓ tests/habitStorage.test.ts (29 tests) 1087ms
+ ✓ tests/projectRestStore.test.ts (21 tests) 1773ms
+   ✓ التوصية السابقة والسجل يبقيان محفوظين يوم الجمعة دون توليد أو تغيير خطة 386ms
+ ✓ tests/model.test.ts (26 tests) 991ms
+ ✓ tests/taskSchedule.test.ts (48 tests) 838ms
+ ✓ tests/completionQueue.test.ts (8 tests) 492ms
+ ✓ tests/livingSky.test.ts (68 tests) 479ms
+   ✓ جميع دقائق اليوم حتمية وبحدود صالحة 467ms
+ ✓ tests/projectProgress.test.ts (9 tests) 359ms
+ ✓ tests/habitRecording.test.ts (31 tests) 552ms
+ ✓ tests/projectPaceStore.test.ts (34 tests) 4628ms
+   ✓ توصية التركيز تشرح مشروعين ولا توقف أحدهما قبل التأكيد 588ms
+ ✓ tests/projectImport.test.ts (14 tests) 196ms
+ ✓ tests/todayCompletion.test.ts (14 tests) 366ms
+ ✓ tests/dailyPlanning.test.ts (8 tests) 145ms
+ ✓ tests/habitValidation.test.ts (69 tests) 92ms
+ ✓ tests/projectRest.test.ts (23 tests) 182ms
+ ✓ tests/habitCalendar.test.ts (25 tests) 74ms
+ ✓ tests/projectPace.test.ts (23 tests) 180ms
+ ✓ tests/completionRecovery.test.ts (7 tests) 94ms
+ ✓ tests/analytics.test.ts (16 tests) 87ms
+ ✓ tests/weekCalendar.test.ts (6 tests) 104ms
+ ✓ tests/saveQueue.test.ts (8 tests) 71ms
+ ✓ tests/todayOrder.test.ts (4 tests) 56ms
+ ✓ tests/projectInsights.test.ts (8 tests) 50ms
+ ✓ tests/achievementRecords.test.ts (5 tests) 8ms
+ ✓ tests/execution.test.ts (10 tests) 20ms
+ ✓ tests/navigation.test.ts (22 tests) 8ms
+ ✓ tests/routeMotion.test.ts (4 tests) 4ms
+
+ Test Files  26 passed (26)
+      Tests  540 passed (540)
+   Start at  00:59:50
+   Duration  7.17s (tests 79%, import 15%, transform 5%, worker 1%)
+
+    Isolate  26 workers spawned · ~168ms startup each (spawn + environment, per file)
+             at least ~1.28s faster with isolate: false — reuses workers across files instead of one per file
+
+JSON report written to /workspace/honor-wall/docs/habits-phase3/unit-results.json
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

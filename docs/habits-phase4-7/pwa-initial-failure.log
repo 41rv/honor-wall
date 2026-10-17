@@ -1,0 +1,843 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+... Skipped lines
+
+  {
+    events: [],
+    habitEntries: [
+      {
+        dayEnd: '2026-10-05T21:00:00.000Z',
+...
+      {
++       basisHash: 'b554592a5df19cc6d32fa40b3decdbc24080b6c3cbc91c51206238f6daabcb1e',
++       createdAt: '2026-10-21T10:00:00.000Z',
++       effect: 'يبقى المستوى والجدول كما هما. لا خفض أو تصفير بسبب الانقطاع.',
++       habitId: 'reading',
++       id: '15586e35-f799-4ab1-ac74-c4eb923c5840',
++       planId: 'hp2',
++       reason: 'الاستمرار مناسب حاليًا: 0/7 أيام تحقيق. يلزم الأداء المسجل في يومه على3 أيام منفصلة، ولا تكفي تعبئة أيام قديمة دفعة واحدة لاقتراح تطوير.',
++       status: 'new',
++       type: 'maintain'
++     },
++     {
+        appliedPlanId: 'hp2',
+        basisHash: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        change: {
+          phaseKey: 'pages',
+          target: 2
+
+    at file:///workspace/honor-wall/docs/habits-phase4-7/pwa-check.mjs:243:12 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    projects: [
+      {
+        id: 'p',
+        title: 'مشروع 3 خطوة',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'active',
+        archived: false
+      }
+    ],
+    steps: [
+      {
+        id: 's0',
+        title: 'خطوة 0',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        projectId: 'p',
+        parentId: 'stage',
+        kind: 'step',
+        order: 0,
+        status: 'todo'
+      },
+      {
+        id: 's1',
+        title: 'خطوة 1',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        projectId: 'p',
+        parentId: 'stage',
+        kind: 'step',
+        order: 1,
+        status: 'todo'
+      },
+      {
+        id: 's2',
+        title: 'خطوة 2',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        projectId: 'p',
+        parentId: 'stage',
+        kind: 'step',
+        order: 2,
+        status: 'todo'
+      },
+      {
+        id: 'stage',
+        title: 'مرحلة الاختبار',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        projectId: 'p',
+        parentId: null,
+        kind: 'stage',
+        order: 0,
+        status: 'todo'
+      }
+    ],
+    tasks: [
+      {
+        id: 't0',
+        title: 'مهمة 0',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't1',
+        title: 'مهمة 1',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't2',
+        title: 'مهمة 2',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't3',
+        title: 'مهمة 3',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't4',
+        title: 'مهمة 4',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't5',
+        title: 'مهمة 5',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't6',
+        title: 'مهمة 6',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't7',
+        title: 'مهمة 7',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't8',
+        title: 'مهمة 8',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't9',
+        title: 'مهمة 9',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      }
+    ],
+    ideas: [
+      {
+        id: 'idea',
+        title: 'فكرة للاختبار',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        archived: false
+      }
+    ],
+    events: [],
+    taskCycles: [],
+    projectProgress: [],
+    projectTracking: [
+      {
+        projectId: 'p',
+        since: '2026-10-17T01:37:08.411Z',
+        origin: 'existing',
+        lastOrder: 0,
+        initialPercent: 0
+      }
+    ],
+    projectPlans: [
+      {
+        projectId: 'p',
+        since: '2026-10-17T01:37:08.411Z',
+        revision: 0,
+        workOrder: 0,
+        pauses: []
+      }
+    ],
+    stepWork: [],
+    recommendations: [],
+    paceSettings: [
+      {
+        id: 'pace',
+        activeLimit: 3,
+        restHistory: [
+          {
+            since: '2026-10-21T10:00:00.000Z',
+            days: [Array],
+            timeZone: 'Asia/Riyadh'
+          }
+        ]
+      }
+    ],
+    habitPaths: [
+      {
+        id: 'culture',
+        title: 'المسار الثقافي',
+        order: 0,
+        createdAt: '2026-10-01T00:00:00.000Z',
+        updatedAt: '2026-10-01T00:00:00.000Z',
+        pauses: []
+      }
+    ],
+    habits: [
+      {
+        id: 'bed',
+        title: 'ترتيب السرير',
+        kind: 'simple',
+        pathId: null,
+        timeZone: 'Asia/Riyadh',
+        createdAt: '2026-10-01T00:00:00.000Z',
+        updatedAt: '2026-10-01T00:00:00.000Z',
+        archived: false,
+        pauses: []
+      },
+      {
+        id: 'reading',
+        title: 'قراءة',
+        kind: 'graded',
+        pathId: 'culture',
+        timeZone: 'Asia/Riyadh',
+        createdAt: '2026-10-01T00:00:00.000Z',
+        updatedAt: '2026-10-01T00:00:00.000Z',
+        archived: false,
+        pauses: []
+      }
+    ],
+    habitPlans: [
+      {
+        id: 'bp1',
+        habitId: 'bed',
+        revision: 1,
+        createdAt: '2026-10-01T00:00:00.000Z',
+        effectiveDate: '2026-10-01',
+        timeZone: 'Asia/Riyadh',
+        pathId: null,
+        schedule: { repeat: 'weekly', weekdays: [ 0, 1, 2, 3, 4 ] },
+        phases: []
+      },
+      {
+        id: 'hp1',
+        habitId: 'reading',
+        revision: 1,
+        createdAt: '2026-10-01T00:00:00.000Z',
+        effectiveDate: '2026-10-01',
+        timeZone: 'Asia/Riyadh',
+        pathId: 'culture',
+        schedule: { repeat: 'daily' },
+        phases: [
+          {
+            key: 'pages',
+            label: 'قراءة يومية',
+            unit: 'صفحات',
+            start: 1,
+            target: 20,
+            step: 1
+          }
+        ],
+        baseline: { phaseKey: 'pages', target: 1 },
+        current: { phaseKey: 'pages', target: 1 }
+      },
+      {
+        id: 'hp2',
+        habitId: 'reading',
+        revision: 2,
+        createdAt: '2026-10-09T10:00:00.000Z',
+        effectiveDate: '2026-10-10',
+        timeZone: 'Asia/Riyadh',
+        pathId: 'culture',
+        schedule: { repeat: 'daily' },
+        phases: [
+          {
+            key: 'pages',
+            label: 'قراءة يومية',
+            unit: 'صفحات',
+            start: 1,
+            target: 20,
+            step: 1
+          }
+        ],
+        baseline: { phaseKey: 'pages', target: 1 },
+        current: { phaseKey: 'pages', target: 2 }
+      }
+    ],
+    habitEntries: [
+      {
+        id: 'bed1',
+        habitId: 'bed',
+        planId: 'bp1',
+        localDate: '2026-10-05',
+        dayStart: '2026-10-04T21:00:00.000Z',
+        dayEnd: '2026-10-05T21:00:00.000Z',
+        timeZone: 'Asia/Riyadh',
+        recordedAt: '2026-10-05T18:00:00.000Z',
+        updatedAt: '2026-10-05T18:00:00.000Z',
+        result: { kind: 'simple', done: true }
+      },
+      {
+        id: 'c690e4d2-c49d-4f1a-bfe8-7ad093a6297d',
+        habitId: 'bed',
+        planId: 'bp1',
+        localDate: '2026-10-21',
+        dayStart: '2026-10-20T21:00:00.000Z',
+        dayEnd: '2026-10-21T21:00:00.000Z',
+        timeZone: 'Asia/Riyadh',
+        recordedAt: '2026-10-21T10:00:00.000Z',
+        updatedAt: '2026-10-21T10:00:00.000Z',
+        result: { kind: 'simple', done: true }
+      },
+      {
+        id: 'read1',
+        habitId: 'reading',
+        planId: 'hp1',
+        localDate: '2026-10-05',
+        dayStart: '2026-10-04T21:00:00.000Z',
+        dayEnd: '2026-10-05T21:00:00.000Z',
+        timeZone: 'Asia/Riyadh',
+        recordedAt: '2026-10-05T18:00:00.000Z',
+        updatedAt: '2026-10-06T18:00:00.000Z',
+        result: {
+          kind: 'graded',
+          phaseKey: 'pages',
+          unit: 'صفحات',
+          threshold: 1,
+          amount: 1
+        },
+        difficulty: 'easy'
+      },
+      {
+        id: 'read2',
+        habitId: 'reading',
+        planId: 'hp2',
+        localDate: '2026-10-11',
+        dayStart: '2026-10-10T21:00:00.000Z',
+        dayEnd: '2026-10-11T21:00:00.000Z',
+        timeZone: 'Asia/Riyadh',
+        recordedAt: '2026-10-11T18:00:00.000Z',
+        updatedAt: '2026-10-11T18:00:00.000Z',
+        result: {
+          kind: 'graded',
+          phaseKey: 'pages',
+          unit: 'صفحات',
+          threshold: 2,
+          amount: 3
+        }
+      }
+    ],
+    habitSuggestions: [
+      {
+        id: '15586e35-f799-4ab1-ac74-c4eb923c5840',
+        habitId: 'reading',
+        planId: 'hp2',
+        type: 'maintain',
+        reason: 'الاستمرار مناسب حاليًا: 0/7 أيام تحقيق. يلزم الأداء المسجل في يومه على3 أيام منفصلة، ولا تكفي تعبئة أيام قديمة دفعة واحدة لاقتراح تطوير.',
+        effect: 'يبقى المستوى والجدول كما هما. لا خفض أو تصفير بسبب الانقطاع.',
+        basisHash: 'b554592a5df19cc6d32fa40b3decdbc24080b6c3cbc91c51206238f6daabcb1e',
+        createdAt: '2026-10-21T10:00:00.000Z',
+        status: 'new'
+      },
+      {
+        id: 'accepted',
+        habitId: 'reading',
+        planId: 'hp1',
+        type: 'increase',
+        reason: 'ستة أيام تحقيق من سبعة',
+        effect: 'زيادتك إلى صفحتين',
+        basisHash: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        createdAt: '2026-10-08T10:00:00.000Z',
+        status: 'accepted',
+        decidedAt: '2026-10-09T10:00:00.000Z',
+        change: { phaseKey: 'pages', target: 2 },
+        appliedPlanId: 'hp2'
+      },
+      {
+        id: 'rejected',
+        habitId: 'reading',
+        planId: 'hp2',
+        type: 'ease',
+        reason: 'إرهاق اختياري مسجل',
+        effect: 'صفحة واحدة',
+        basisHash: 'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc',
+        createdAt: '2026-10-13T10:00:00.000Z',
+        status: 'rejected',
+        decidedAt: '2026-10-14T10:00:00.000Z',
+        change: { phaseKey: 'pages', target: 1 }
+      }
+    ],
+    reminders: [
+      {
+        id: 'book',
+        title: 'كتاب للمراجعة',
+        category: 'book',
+        createdAt: '2026-10-01T00:00:00.000Z',
+        updatedAt: '2026-10-01T00:00:00.000Z'
+      }
+    ],
+    habitImportReceipts: [
+      {
+        id: 'receipt',
+        kind: 'path',
+        digest: '1111111111111111111111111111111111111111111111111111111111111111',
+        createdAt: '2026-10-01T00:00:00.000Z',
+        outputs: {
+          habitPaths: [ 'culture' ],
+          habits: [ 'reading' ],
+          habitPlans: [ 'hp1' ]
+        }
+      }
+    ]
+  },
+  expected: {
+    projects: [
+      {
+        id: 'p',
+        title: 'مشروع 3 خطوة',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'active',
+        archived: false
+      }
+    ],
+    steps: [
+      {
+        id: 's0',
+        title: 'خطوة 0',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        projectId: 'p',
+        parentId: 'stage',
+        kind: 'step',
+        order: 0,
+        status: 'todo'
+      },
+      {
+        id: 's1',
+        title: 'خطوة 1',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        projectId: 'p',
+        parentId: 'stage',
+        kind: 'step',
+        order: 1,
+        status: 'todo'
+      },
+      {
+        id: 's2',
+        title: 'خطوة 2',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        projectId: 'p',
+        parentId: 'stage',
+        kind: 'step',
+        order: 2,
+        status: 'todo'
+      },
+      {
+        id: 'stage',
+        title: 'مرحلة الاختبار',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        projectId: 'p',
+        parentId: null,
+        kind: 'stage',
+        order: 0,
+        status: 'todo'
+      }
+    ],
+    tasks: [
+      {
+        id: 't0',
+        title: 'مهمة 0',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't1',
+        title: 'مهمة 1',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't2',
+        title: 'مهمة 2',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't3',
+        title: 'مهمة 3',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't4',
+        title: 'مهمة 4',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't5',
+        title: 'مهمة 5',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't6',
+        title: 'مهمة 6',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't7',
+        title: 'مهمة 7',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't8',
+        title: 'مهمة 8',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      },
+      {
+        id: 't9',
+        title: 'مهمة 9',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        status: 'todo'
+      }
+    ],
+    ideas: [
+      {
+        id: 'idea',
+        title: 'فكرة للاختبار',
+        notes: '',
+        createdAt: '2026-10-17T01:37:08.411Z',
+        updatedAt: '2026-10-17T01:37:08.411Z',
+        archived: false
+      }
+    ],
+    events: [],
+    taskCycles: [],
+    projectProgress: [],
+    projectTracking: [
+      {
+        projectId: 'p',
+        since: '2026-10-17T01:37:08.411Z',
+        origin: 'existing',
+        lastOrder: 0,
+        initialPercent: 0
+      }
+    ],
+    projectPlans: [
+      {
+        projectId: 'p',
+        since: '2026-10-17T01:37:08.411Z',
+        revision: 0,
+        workOrder: 0,
+        pauses: []
+      }
+    ],
+    stepWork: [],
+    recommendations: [],
+    paceSettings: [
+      {
+        id: 'pace',
+        activeLimit: 3,
+        restHistory: [
+          {
+            since: '2026-10-21T10:00:00.000Z',
+            days: [Array],
+            timeZone: 'Asia/Riyadh'
+          }
+        ]
+      }
+    ],
+    habitPaths: [
+      {
+        id: 'culture',
+        title: 'المسار الثقافي',
+        order: 0,
+        createdAt: '2026-10-01T00:00:00.000Z',
+        updatedAt: '2026-10-01T00:00:00.000Z',
+        pauses: []
+      }
+    ],
+    habits: [
+      {
+        id: 'bed',
+        title: 'ترتيب السرير',
+        kind: 'simple',
+        pathId: null,
+        timeZone: 'Asia/Riyadh',
+        createdAt: '2026-10-01T00:00:00.000Z',
+        updatedAt: '2026-10-01T00:00:00.000Z',
+        archived: false,
+        pauses: []
+      },
+      {
+        id: 'reading',
+        title: 'قراءة',
+        kind: 'graded',
+        pathId: 'culture',
+        timeZone: 'Asia/Riyadh',
+        createdAt: '2026-10-01T00:00:00.000Z',
+        updatedAt: '2026-10-01T00:00:00.000Z',
+        archived: false,
+        pauses: []
+      }
+    ],
+    habitPlans: [
+      {
+        id: 'bp1',
+        habitId: 'bed',
+        revision: 1,
+        createdAt: '2026-10-01T00:00:00.000Z',
+        effectiveDate: '2026-10-01',
+        timeZone: 'Asia/Riyadh',
+        pathId: null,
+        schedule: { repeat: 'weekly', weekdays: [ 0, 1, 2, 3, 4 ] },
+        phases: []
+      },
+      {
+        id: 'hp1',
+        habitId: 'reading',
+        revision: 1,
+        createdAt: '2026-10-01T00:00:00.000Z',
+        effectiveDate: '2026-10-01',
+        timeZone: 'Asia/Riyadh',
+        pathId: 'culture',
+        schedule: { repeat: 'daily' },
+        phases: [
+          {
+            key: 'pages',
+            label: 'قراءة يومية',
+            unit: 'صفحات',
+            start: 1,
+            target: 20,
+            step: 1
+          }
+        ],
+        baseline: { phaseKey: 'pages', target: 1 },
+        current: { phaseKey: 'pages', target: 1 }
+      },
+      {
+        id: 'hp2',
+        habitId: 'reading',
+        revision: 2,
+        createdAt: '2026-10-09T10:00:00.000Z',
+        effectiveDate: '2026-10-10',
+        timeZone: 'Asia/Riyadh',
+        pathId: 'culture',
+        schedule: { repeat: 'daily' },
+        phases: [
+          {
+            key: 'pages',
+            label: 'قراءة يومية',
+            unit: 'صفحات',
+            start: 1,
+            target: 20,
+            step: 1
+          }
+        ],
+        baseline: { phaseKey: 'pages', target: 1 },
+        current: { phaseKey: 'pages', target: 2 }
+      }
+    ],
+    habitEntries: [
+      {
+        id: 'bed1',
+        habitId: 'bed',
+        planId: 'bp1',
+        localDate: '2026-10-05',
+        dayStart: '2026-10-04T21:00:00.000Z',
+        dayEnd: '2026-10-05T21:00:00.000Z',
+        timeZone: 'Asia/Riyadh',
+        recordedAt: '2026-10-05T18:00:00.000Z',
+        updatedAt: '2026-10-05T18:00:00.000Z',
+        result: { kind: 'simple', done: true }
+      },
+      {
+        id: 'c690e4d2-c49d-4f1a-bfe8-7ad093a6297d',
+        habitId: 'bed',
+        planId: 'bp1',
+        localDate: '2026-10-21',
+        dayStart: '2026-10-20T21:00:00.000Z',
+        dayEnd: '2026-10-21T21:00:00.000Z',
+        timeZone: 'Asia/Riyadh',
+        recordedAt: '2026-10-21T10:00:00.000Z',
+        updatedAt: '2026-10-21T10:00:00.000Z',
+        result: { kind: 'simple', done: true }
+      },
+      {
+        id: 'read1',
+        habitId: 'reading',
+        planId: 'hp1',
+        localDate: '2026-10-05',
+        dayStart: '2026-10-04T21:00:00.000Z',
+        dayEnd: '2026-10-05T21:00:00.000Z',
+        timeZone: 'Asia/Riyadh',
+        recordedAt: '2026-10-05T18:00:00.000Z',
+        updatedAt: '2026-10-06T18:00:00.000Z',
+        result: {
+          kind: 'graded',
+          phaseKey: 'pages',
+          unit: 'صفحات',
+          threshold: 1,
+          amount: 1
+        },
+        difficulty: 'easy'
+      },
+      {
+        id: 'read2',
+        habitId: 'reading',
+        planId: 'hp2',
+        localDate: '2026-10-11',
+        dayStart: '2026-10-10T21:00:00.000Z',
+        dayEnd: '2026-10-11T21:00:00.000Z',
+        timeZone: 'Asia/Riyadh',
+        recordedAt: '2026-10-11T18:00:00.000Z',
+        updatedAt: '2026-10-11T18:00:00.000Z',
+        result: {
+          kind: 'graded',
+          phaseKey: 'pages',
+          unit: 'صفحات',
+          threshold: 2,
+          amount: 3
+        }
+      }
+    ],
+    habitSuggestions: [
+      {
+        id: 'accepted',
+        habitId: 'reading',
+        planId: 'hp1',
+        type: 'increase',
+        reason: 'ستة أيام تحقيق من سبعة',
+        effect: 'زيادتك إلى صفحتين',
+        basisHash: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        createdAt: '2026-10-08T10:00:00.000Z',
+        status: 'accepted',
+        decidedAt: '2026-10-09T10:00:00.000Z',
+        change: { phaseKey: 'pages', target: 2 },
+        appliedPlanId: 'hp2'
+      },
+      {
+        id: 'rejected',
+        habitId: 'reading',
+        planId: 'hp2',
+        type: 'ease',
+        reason: 'إرهاق اختياري مسجل',
+        effect: 'صفحة واحدة',
+        basisHash: 'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc',
+        createdAt: '2026-10-13T10:00:00.000Z',
+        status: 'rejected',
+        decidedAt: '2026-10-14T10:00:00.000Z',
+        change: { phaseKey: 'pages', target: 1 }
+      }
+    ],
+    reminders: [
+      {
+        id: 'book',
+        title: 'كتاب للمراجعة',
+        category: 'book',
+        createdAt: '2026-10-01T00:00:00.000Z',
+        updatedAt: '2026-10-01T00:00:00.000Z'
+      }
+    ],
+    habitImportReceipts: [
+      {
+        id: 'receipt',
+        kind: 'path',
+        digest: '1111111111111111111111111111111111111111111111111111111111111111',
+        createdAt: '2026-10-01T00:00:00.000Z',
+        outputs: {
+          habitPaths: [ 'culture' ],
+          habits: [ 'reading' ],
+          habitPlans: [ 'hp1' ]
+        }
+      }
+    ]
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

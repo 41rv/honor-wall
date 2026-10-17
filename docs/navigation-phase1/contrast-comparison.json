@@ -1,0 +1,140 @@
+[
+  {
+    "stage": "before",
+    "width": 320,
+    "theme": "dark",
+    "label": "· الفترة الحالية جزئية.",
+    "rgb": [
+      194,
+      208,
+      201
+    ],
+    "alpha": 1,
+    "rect": [
+      41.640625,
+      132.78125,
+      152.53125,
+      145.78125
+    ],
+    "required": 4.5,
+    "occluded": [],
+    "sampled_points": 35,
+    "minimum_ratio": 4.032,
+    "passes": false
+  },
+  {
+    "stage": "after",
+    "width": 320,
+    "theme": "dark",
+    "label": "· الفترة الحالية جزئية.",
+    "rgb": [
+      230,
+      237,
+      229
+    ],
+    "alpha": 1,
+    "rect": [
+      41.640625,
+      132.78125,
+      152.53125,
+      145.78125
+    ],
+    "required": 4.5,
+    "occluded": [],
+    "sampled_points": 35,
+    "minimum_ratio": 5.396,
+    "passes": true
+  },
+  {
+    "stage": "before",
+    "width": 390,
+    "theme": "dark",
+    "label": "· الفترة الحالية جزئية.",
+    "rgb": [
+      194,
+      208,
+      201
+    ],
+    "alpha": 1,
+    "rect": [
+      111.640625,
+      132.78125,
+      222.53125,
+      145.78125
+    ],
+    "required": 4.5,
+    "occluded": [],
+    "sampled_points": 35,
+    "minimum_ratio": 4.032,
+    "passes": false
+  },
+  {
+    "stage": "after",
+    "width": 390,
+    "theme": "dark",
+    "label": "· الفترة الحالية جزئية.",
+    "rgb": [
+      230,
+      237,
+      229
+    ],
+    "alpha": 1,
+    "rect": [
+      111.640625,
+      132.78125,
+      222.53125,
+      145.78125
+    ],
+    "required": 4.5,
+    "occluded": [],
+    "sampled_points": 35,
+    "minimum_ratio": 5.396,
+    "passes": true
+  },
+  {
+    "stage": "before",
+    "width": 390,
+    "theme": "light",
+    "label": "· الفترة الحالية جزئية.",
+    "rgb": [
+      60,
+      84,
+      75
+    ],
+    "alpha": 1,
+    "rect": [
+      111.640625,
+      132.78125,
+      222.53125,
+      145.78125
+    ],
+    "required": 4.5,
+    "occluded": [],
+    "sampled_points": 35,
+    "minimum_ratio": 5.323,
+    "passes": true
+  },
+  {
+    "stage": "after",
+    "width": 390,
+    "theme": "light",
+    "label": "· الفترة الحالية جزئية.",
+    "rgb": [
+      37,
+      62,
+      54
+    ],
+    "alpha": 1,
+    "rect": [
+      111.640625,
+      132.78125,
+      222.53125,
+      145.78125
+    ],
+    "required": 4.5,
+    "occluded": [],
+    "sampled_points": 35,
+    "minimum_ratio": 7.489,
+    "passes": true
+  }
+]

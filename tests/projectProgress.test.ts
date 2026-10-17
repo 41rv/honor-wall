@@ -122,7 +122,7 @@ it("النسخة الجديدة تحفظ السجل وتمنع السلسلة ا
     const { steps } = await fixture();
     await setBranchCompletion(steps[0], true);
     const old = await snapshot();
-    expect(old.version).toBe(4);
+    expect(old.version).toBe(5);
     await importBackup(JSON.parse(JSON.stringify(old)));
     expect((await snapshot()).projectProgress).toEqual(old.projectProgress);
     for (const mutate of [
@@ -166,7 +166,7 @@ it("استعادة v2 تسجل نقطة الحالة الحالية فقط دو�
         since: "2026-10-19T09:00:00.000Z",
     });
 });
-it("ترحيل Dexie2 إلى6 يحافظ على الحقول والدورات ويبدأ التتبع من اليوم", async () => {
+it("ترحيل Dexie2 إلى7 يحافظ على الحقول والدورات ويبدأ التتبع من اليوم", async () => {
     const data = await fixture();
     const before = await snapshot(),
         name = "history-migration-" + crypto.randomUUID(),
@@ -194,7 +194,7 @@ it("ترحيل Dexie2 إلى6 يحافظ على الحقول والدورات و
             initialPercent: 0,
             lastOrder: 0,
         });
-        expect(next.verno).toBe(6);
+        expect(next.verno).toBe(7);
     } finally {
         await next.delete();
     }

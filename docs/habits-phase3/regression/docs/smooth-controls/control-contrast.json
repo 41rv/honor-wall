@@ -1,0 +1,2802 @@
+[
+  {
+    "theme": "light",
+    "hour": 6,
+    "route": "home",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.336,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.68,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.0800018310547,
+          790.8300170898438,
+          205.9199981689453,
+          812.6699829101562
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.054,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          174.1875,
+          818.25,
+          215.8125,
+          834.75
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.366,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.5,
+          792.25,
+          79.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.336,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          47.21875,
+          818.25,
+          90.796875,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.68,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 5.505,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "hour": 6,
+    "route": "tasks",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.614,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.618,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.5,
+          792.25,
+          205.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 6.89,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          175.59375,
+          818.25,
+          214.40625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.267,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.08000183105469,
+          790.8300170898438,
+          79.91999816894531,
+          812.6699829101562
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.306,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          45.921875,
+          818.25,
+          92.078125,
+          834.75
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 6.476,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.592,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "hour": 9,
+    "route": "home",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.336,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.68,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.0800018310547,
+          790.8300170898438,
+          205.9199981689453,
+          812.6699829101562
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.098,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          174.1875,
+          818.25,
+          215.8125,
+          834.75
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.366,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.5,
+          792.25,
+          79.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.336,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          47.21875,
+          818.25,
+          90.796875,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.68,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 5.547,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "hour": 9,
+    "route": "tasks",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.618,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.618,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.5,
+          792.25,
+          205.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 6.89,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          175.59375,
+          818.25,
+          214.40625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.272,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.08000183105469,
+          790.8300170898438,
+          79.91999816894531,
+          812.6699829101562
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.352,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          45.921875,
+          818.25,
+          92.078125,
+          834.75
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 6.476,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.63,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "hour": 13,
+    "route": "home",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.336,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.68,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.0800018310547,
+          790.8300170898438,
+          205.9199981689453,
+          812.6699829101562
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.098,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          174.1875,
+          818.25,
+          215.8125,
+          834.75
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.366,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.5,
+          792.25,
+          79.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.336,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          47.21875,
+          818.25,
+          90.796875,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.68,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 5.547,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "hour": 13,
+    "route": "tasks",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.614,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.618,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.5,
+          792.25,
+          205.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 6.89,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          175.59375,
+          818.25,
+          214.40625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.272,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.08000183105469,
+          790.8300170898438,
+          79.91999816894531,
+          812.6699829101562
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.352,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          45.921875,
+          818.25,
+          92.078125,
+          834.75
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 6.476,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.63,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "hour": 17,
+    "route": "home",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.336,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.68,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.0800018310547,
+          790.8300170898438,
+          205.9199981689453,
+          812.6699829101562
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.049,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          174.1875,
+          818.25,
+          215.8125,
+          834.75
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.366,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.5,
+          792.25,
+          79.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.336,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          47.21875,
+          818.25,
+          90.796875,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.68,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 5.505,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "hour": 17,
+    "route": "tasks",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.614,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.618,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.5,
+          792.25,
+          205.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 6.89,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          175.59375,
+          818.25,
+          214.40625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.267,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.08000183105469,
+          790.8300170898438,
+          79.91999816894531,
+          812.6699829101562
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.306,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          45.921875,
+          818.25,
+          92.078125,
+          834.75
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 6.476,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.588,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "hour": 23,
+    "route": "home",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.29,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.68,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.0800018310547,
+          790.8300170898438,
+          205.9199981689453,
+          812.6699829101562
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.049,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          174.1875,
+          818.25,
+          215.8125,
+          834.75
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.366,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.5,
+          792.25,
+          79.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.29,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          47.21875,
+          818.25,
+          90.796875,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.68,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 5.494,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "hour": 23,
+    "route": "tasks",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.614,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.618,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.5,
+          792.25,
+          205.5,
+          813.25
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 6.89,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          175.59375,
+          818.25,
+          214.40625,
+          834.75
+        ],
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 7.221,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.08000183105469,
+          790.8300170898438,
+          79.91999816894531,
+          812.6699829101562
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.306,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          45.921875,
+          818.25,
+          92.078125,
+          834.75
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 6.476,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          24,
+          92,
+          75
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 7.513,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "hour": 6,
+    "route": "home",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.241,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.947,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.0800018310547,
+          790.8300170898438,
+          205.9199981689453,
+          812.6699829101562
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.045,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          174.1875,
+          818.25,
+          215.8125,
+          834.75
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.628,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.5,
+          792.25,
+          79.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.475,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          47.21875,
+          818.25,
+          90.796875,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.819,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 6.543,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "hour": 6,
+    "route": "tasks",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.377,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.731,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.5,
+          792.25,
+          205.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 8.769,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          175.59375,
+          818.25,
+          214.40625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.002,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.08000183105469,
+          790.8300170898438,
+          79.91999816894531,
+          812.6699829101562
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 9.949,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          45.921875,
+          818.25,
+          92.078125,
+          834.75
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 8.692,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 8.639,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "hour": 9,
+    "route": "home",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.241,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.947,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.0800018310547,
+          790.8300170898438,
+          205.9199981689453,
+          812.6699829101562
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.045,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          174.1875,
+          818.25,
+          215.8125,
+          834.75
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.644,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.5,
+          792.25,
+          79.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.475,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          47.21875,
+          818.25,
+          90.796875,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.819,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 6.56,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "hour": 9,
+    "route": "tasks",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.377,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.731,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.5,
+          792.25,
+          205.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 8.79,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          175.59375,
+          818.25,
+          214.40625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.002,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.08000183105469,
+          790.8300170898438,
+          79.91999816894531,
+          812.6699829101562
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 9.949,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          45.921875,
+          818.25,
+          92.078125,
+          834.75
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 8.692,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 8.766,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "hour": 13,
+    "route": "home",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.241,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 11.032,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.0800018310547,
+          790.8300170898438,
+          205.9199981689453,
+          812.6699829101562
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.045,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          174.1875,
+          818.25,
+          215.8125,
+          834.75
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.644,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.5,
+          792.25,
+          79.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.475,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          47.21875,
+          818.25,
+          90.796875,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.819,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 6.56,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "hour": 13,
+    "route": "tasks",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.377,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.731,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.5,
+          792.25,
+          205.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 8.79,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          175.59375,
+          818.25,
+          214.40625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.002,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.08000183105469,
+          790.8300170898438,
+          79.91999816894531,
+          812.6699829101562
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 9.949,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          45.921875,
+          818.25,
+          92.078125,
+          834.75
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 8.692,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 8.766,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "hour": 17,
+    "route": "home",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.241,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.947,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.0800018310547,
+          790.8300170898438,
+          205.9199981689453,
+          812.6699829101562
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.045,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          174.1875,
+          818.25,
+          215.8125,
+          834.75
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.628,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.5,
+          792.25,
+          79.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.475,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          47.21875,
+          818.25,
+          90.796875,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.819,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 6.55,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "hour": 17,
+    "route": "tasks",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.377,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.731,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.5,
+          792.25,
+          205.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 8.769,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          175.59375,
+          818.25,
+          214.40625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.002,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.08000183105469,
+          790.8300170898438,
+          79.91999816894531,
+          812.6699829101562
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 9.949,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          45.921875,
+          818.25,
+          92.078125,
+          834.75
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 8.692,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 8.639,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "hour": 23,
+    "route": "home",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.35,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 11.032,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.0800018310547,
+          790.8300170898438,
+          205.9199981689453,
+          812.6699829101562
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.045,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          174.1875,
+          818.25,
+          215.8125,
+          834.75
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.644,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.5,
+          792.25,
+          79.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.493,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          47.21875,
+          818.25,
+          90.796875,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.819,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 6.644,
+        "passes": true
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "hour": 23,
+    "route": "tasks",
+    "rows": [
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          310.5,
+          792.25,
+          331.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.467,
+        "passes": true
+      },
+      {
+        "label": "العادات",
+        "rect": [
+          303.609375,
+          818.25,
+          338.390625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.731,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          184.5,
+          792.25,
+          205.5,
+          813.25
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 8.79,
+        "passes": true
+      },
+      {
+        "label": "الرئيسية",
+        "rect": [
+          175.59375,
+          818.25,
+          214.40625,
+          834.75
+        ],
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 10.021,
+        "passes": true
+      },
+      {
+        "label": "أيقونة تنقل",
+        "rect": [
+          58.08000183105469,
+          790.8300170898438,
+          79.91999816894531,
+          812.6699829101562
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 10.037,
+        "passes": true
+      },
+      {
+        "label": "المشاريع",
+        "rect": [
+          45.921875,
+          818.25,
+          92.078125,
+          834.75
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 4.5,
+        "sampled_points": 35,
+        "minimum_ratio": 8.692,
+        "passes": true
+      },
+      {
+        "label": "إضافة سريعة",
+        "rect": [
+          338,
+          718,
+          362,
+          742
+        ],
+        "rgb": [
+          167,
+          212,
+          189
+        ],
+        "alpha": 1,
+        "required": 3,
+        "sampled_points": 35,
+        "minimum_ratio": 8.884,
+        "passes": true
+      }
+    ]
+  }
+]

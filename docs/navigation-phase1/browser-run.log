@@ -1,0 +1,464 @@
+[WebServer] (node:598218) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:598231) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 243 tests using 1 worker
+
+(node:598255) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/243] tests/browser/app.spec.ts:98:1 › واجهة المشروع: الإنشاء، الترتيب، الملاحظات، النسب والإغلاق
+[2/243] tests/browser/app.spec.ts:175:1 › المهام والأفكار: إنشاء وبدء وإنجاز وإعادة فتح وتحويل وتراجع
+[3/243] tests/browser/app.spec.ts:255:1 › إنشاء مشروع ومرحلة وخطوة فرعية وتعديل وأرشفة
+[4/243] tests/browser/app.spec.ts:283:1 › تصدير واستيراد كامل، رفض نسخة مكسورة دون فقد البيانات
+[5/243] tests/browser/app.spec.ts:313:1 › شاشة 320 بكسل، الوضعان وغياب التمرير الأفقي
+[6/243] tests/browser/app.spec.ts:347:1 › PWA: الأصول والبيانات متاحة دون إنترنت بعد إعادة التشغيل
+[7/243] tests/browser/app.spec.ts:384:1 › مشروع طويل: استكمال آخر خطوة، حفظ موضع العودة، والتفرع العميق
+[8/243] tests/browser/app.spec.ts:448:1 › فشل حفظ الملاحظات يستعيد المسودة بعد إعادة التحميل ويمكن إعادة حفظها
+[9/243] tests/browser/buttons.spec.ts:31:1 › أزرار الإضافة والإلغاء والإغلاق والبحث والتنقل والضغط المتكرر
+  1) tests/browser/buttons.spec.ts:31:1 › أزرار الإضافة والإلغاء والإغلاق والبحث والتنقل والضغط المتكرر 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('لم نجد نتيجة')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('لم نجد نتيجة') with timeout 5000ms
+      - waiting for getByText('لم نجد نتيجة')
+
+
+      86 |     await expect(page).toHaveURL(/#project/);
+      87 |     await page.getByLabel("بحث شامل").fill("لن أجده");
+    > 88 |     await expect(page.getByText("لم نجد نتيجة")).toBeVisible();
+         |                                                  ^
+      89 |     await page.getByRole("button", { name: "مسح البحث" }).click();
+      90 |     await expect(page.getByLabel("ملاحظات العنصر")).toBeVisible();
+      91 |     for (const name of [
+        at /workspace/honor-wall/tests/browser/buttons.spec.ts:88:50
+
+    Error Context: test-results/buttons-أزرار-الإضافة-والإ-2a2aa-لبحث-والتنقل-والضغط-المتكرر/error-context.md
+
+
+(node:598698) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[10/243] tests/browser/buttons.spec.ts:110:1 › كل أزرار المراحل والخطوات: إضافة وتفاصيل وترتيب وطي وحالات وحذف وتراجع
+[11/243] tests/browser/buttons.spec.ts:220:5 › محاكاة هاتف ولمس › الصح باللمس وإعادة الفتح وتفاصيل المهمة وحالاتها والإلغاء والتراجع
+[12/243] tests/browser/buttons.spec.ts:288:5 › محاكاة هاتف ولمس › الأفكار: إضافة سريعة وتعديل وبحث وأرشفة واستعادة وتحويل وإلغاء التحويل
+[13/243] tests/browser/buttons.spec.ts:339:1 › تصدير الملاحظات فور الكتابة والتحقق وإلغاء الاستيراد والتثبيت المتاح
+[14/243] tests/browser/buttons.spec.ts:397:1 › فشل إتمام المهمة يعيد علامتها لحالتها السابقة ولا يسجل إنجازًا زائفًا
+[15/243] tests/browser/buttons.spec.ts:424:1 › الكتابة السريعة تدمج الحفظ وتبقى الملاحظات بعد رجوع فوري
+[16/243] tests/browser/buttons.spec.ts:461:1 › روابط الرئيسية والإنجازات تفتح المشروع والمهمة والخطوة في مكانها
+[17/243] tests/browser/buttons.spec.ts:514:1 › رسالة فشل فتح التخزين وزر إعادة المحاولة يستعيدان التطبيق دون حذف البيانات
+[18/243] tests/browser/completion-capture.spec.ts:30:1 › التقاط الفكرة في صفحة الأفكار يحفظ باللمس والإدخال والتفاصيل دون فقد
+[19/243] tests/browser/completion-capture.spec.ts:67:1 › إتمام الخطوة والمرحلة من الشجرة وتحديث الأرقام والسجل ثم إعادة فتحهما
+[20/243] tests/browser/completion-capture.spec.ts:131:1 › المشروع له زر إتمام في البطاقة والتفاصيل وإتمامه لا يغيّر خطواته
+[21/243] tests/browser/completion-capture.spec.ts:173:1 › آخر مرحلة تُتمّ المشروع تلقائيًا عند ١٠٠٪ ويبقى الإتمام اليدوي متاحًا عند ٥٠٪
+[22/243] tests/browser/completion-capture.spec.ts:238:1 › فشل الإتمام الجماعي لا يترك علامة صح أو حالات جزئية
+[23/243] tests/browser/completion-capture.spec.ts:274:1 › فشل حفظ الفكرة يبقي مسودتها ولا ينشئ نسخًا مكررة
+[24/243] tests/browser/dark-audit-extended.spec.ts:41:5 › بداية تتبع النظام دون React والتخزين فارغ
+[25/243] tests/browser/dark-audit-extended.spec.ts:41:5 › بداية تتبع النظام دون React والتخزين محجوب
+[26/243] tests/browser/dark-audit-extended.spec.ts:79:5 › ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 320
+[27/243] tests/browser/dark-audit-extended.spec.ts:79:5 › ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 390
+[28/243] tests/browser/dark-audit-extended.spec.ts:79:5 › ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 768
+[29/243] tests/browser/dark-audit-extended.spec.ts:79:5 › ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 1366
+[30/243] tests/browser/dark-audit-extended.spec.ts:213:1 › PWA: لون بدء ثابت غير أبيض وهوية ومسار التثبيت محفوظان
+[31/243] tests/browser/dark-audit-extended.spec.ts:225:1 › المساحة الآمنة السفلية ذات ٢٤ بكسل مغطاة بخلفية داكنة والزر لا يحجب التنقل
+[32/243] tests/browser/dark-audit-extended.spec.ts:261:1 › تكرار التنقل والثيم لا يسرب المستمعين والتبويبات المستقرة لا تعيد قراءات التخزين
+[33/243] tests/browser/dark-audit-extended.spec.ts:356:1 › الرئيسية تتحدث بعد تعديل الموعد والأولوية وتحفظ العدد والمعرف والملاحظات
+[34/243] tests/browser/dark-audit-extended.spec.ts:423:1 › منتصف الليل والسنة: الأسبوع السبت-الجمعة والاختيارات والتكرار دون دورة خاطئة
+[35/243] tests/browser/dark-audit-extended.spec.ts:526:1 › بيانات استخدام مختلطة وسجل طويل: تصفية وترقيم صفحات ونسخ واستعادة مرتان بلا ازدواج
+[36/243] tests/browser/dark-audit.spec.ts:13:9 › قبل React وCSS: الثيم المحفوظ green/light يحدد خلفية البداية وألوان النظام
+[37/243] tests/browser/dark-audit.spec.ts:13:9 › قبل React وCSS: الثيم المحفوظ green/dark يحدد خلفية البداية وألوان النظام
+[38/243] tests/browser/dark-audit.spec.ts:13:9 › قبل React وCSS: الثيم المحفوظ mono/light يحدد خلفية البداية وألوان النظام
+[39/243] tests/browser/dark-audit.spec.ts:13:9 › قبل React وCSS: الثيم المحفوظ mono/dark يحدد خلفية البداية وألوان النظام
+[40/243] tests/browser/dark-audit.spec.ts:70:1 › التنقل بالرجوع يغلق قائمة الإضافة ولا يترك نافذة على صفحة أخرى
+[41/243] tests/browser/ideas-speed.spec.ts:4:1 › قياس حفظ فكرة مع ألفي فكرة موجودة ومعالج أبطأ
+tests/browser/ideas-speed.spec.ts:4:1 › قياس حفظ فكرة مع ألفي فكرة موجودة ومعالج أبطأ
+IDEA_SAVE_MS 753
+
+[42/243] tests/browser/interactions.spec.ts:4:1 › علامة الإتمام تعمل حتى إذا حدث تحديث للواجهة أثناء الضغط
+[43/243] tests/browser/interactions.spec.ts:41:1 › قياس سرعة الإضافة والتعديل والإتمام بقاعدة كبيرة ومعالج أبطأ
+tests/browser/interactions.spec.ts:41:1 › قياس سرعة الإضافة والتعديل والإتمام بقاعدة كبيرة ومعالج أبطأ
+PERFORMANCE_MS {"project":622,"stage":583,"notes":1768,"complete":1021}
+
+[44/243] tests/browser/interface-organization.spec.ts:8:1 › الرئيسية: أول ثلاث مهام بالترتيب نفسه دون تغيير الأولويات وإنجاز وتراجع
+[45/243] tests/browser/interface-organization.spec.ts:69:1 › الرئيسية الفارغة مختصرة والاستكمال لا يكرر خطوته في بطاقات المشاريع
+[46/243] tests/browser/interface-organization.spec.ts:104:1 › زر إضافة واحد في الصفحات الخمس: النماذج الأصلية ولوحة المفاتيح والإغلاق
+[47/243] tests/browser/interface-organization.spec.ts:148:1 › بطاقة المشروع تحتفظ بالمعلومات ورقم المرحلة والنصوص الأصلية
+[48/243] tests/browser/interface-organization.spec.ts:240:1 › تبويبات التقدم تحفظ الفترة والسجل الصحيح والتراجع والرؤى دون ازدواج
+[49/243] tests/browser/interface-organization.spec.ts:345:5 › التصميم بعرض 320: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول
+[50/243] tests/browser/interface-organization.spec.ts:345:5 › التصميم بعرض 390: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول
+[51/243] tests/browser/interface-organization.spec.ts:345:5 › التصميم بعرض 768: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول
+[52/243] tests/browser/interface-organization.spec.ts:345:5 › التصميم بعرض 1366: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول
+[53/243] tests/browser/interface-organization.spec.ts:479:1 › التبويبات تحفظ المشروع وفلاتر السجل ولا تعدل الجداول الثمانية
+[54/243] tests/browser/internal-controls.spec.ts:86:9 › visual inventory 320 light
+[55/243] tests/browser/internal-controls.spec.ts:86:9 › visual inventory 320 dark
+[56/243] tests/browser/internal-controls.spec.ts:86:9 › visual inventory 390 light
+[57/243] tests/browser/internal-controls.spec.ts:86:9 › visual inventory 390 dark
+[58/243] tests/browser/internal-controls.spec.ts:181:1 › internal controls retain selection, keyboard semantics and task data
+[59/243] tests/browser/internal-controls.spec.ts:233:5 › shared indicator follows selection, wrapping and RTL scrolling 320
+[60/243] tests/browser/internal-controls.spec.ts:233:5 › shared indicator follows selection, wrapping and RTL scrolling 390
+[61/243] tests/browser/internal-controls.spec.ts:233:5 › shared indicator follows selection, wrapping and RTL scrolling 768
+[62/243] tests/browser/internal-controls.spec.ts:233:5 › shared indicator follows selection, wrapping and RTL scrolling 1366
+[63/243] tests/browser/internal-controls.spec.ts:269:1 › rapid filters keep a single selected option without editing records or leaking observers
+[64/243] tests/browser/internal-controls.spec.ts:322:1 › reduced motion and forced colors retain readable selection
+[65/243] tests/browser/internal-controls.spec.ts:345:1 › painted contrast of internal controls in five skies and both themes
+[66/243] tests/browser/living-glass.spec.ts:83:1 › مقارنة ست لقطات جوال بنفس البيانات والوقت والقياسات
+[67/243] tests/browser/living-glass.spec.ts:155:1 › قياس تمرير البطاقات واستجابة الزر على نفس Chromium عند خفض CPU أربع مرات
+[68/243] tests/browser/living-glass.spec.ts:228:1 › الخامة لا تغير التفاعل ولا تضيف مرشحات إلى النصوص والأزرار
+[69/243] tests/browser/living-glass.spec.ts:288:5 › الانكسار يغير بكسلات الإطار فقط، ووسط النص يبقى مطابقًا
+[70/243] tests/browser/living-glass.spec.ts:353:5 › البديل البسيط والألوان القسرية وتقليل الحركة لا يعطلان البطاقات
+[71/243] tests/browser/living-sky-search.spec.ts:7:1 › بحث500 نتيجة: التمرير والوصول إلى آخر زر دون تجمد أو حجب
+[72/243] tests/browser/living-sky-shell.spec.ts:112:9 › صور الصفحات الخمس والتفاعل 320 light
+[73/243] tests/browser/living-sky-shell.spec.ts:112:9 › صور الصفحات الخمس والتفاعل 320 dark
+[74/243] tests/browser/living-sky-shell.spec.ts:112:9 › صور الصفحات الخمس والتفاعل 390 light
+[75/243] tests/browser/living-sky-shell.spec.ts:112:9 › صور الصفحات الخمس والتفاعل 390 dark
+[76/243] tests/browser/living-sky-shell.spec.ts:163:5 › تباين النص الفعلي في الصفحات والأشرطة عبر أوقات السماء والتمرير
+  2) tests/browser/living-sky-shell.spec.ts:163:5 › تباين النص الفعلي في الصفحات والأشرطة عبر أوقات السماء والتمرير 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -   1
+    + Received  + 107
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "failure": Object {
+    +       "alpha": 1,
+    +       "label": "· الفترة الحالية جزئية.",
+    +       "minimum_ratio": 4.032,
+    +       "occluded": Array [
+    +         Array [
+    +           256,
+    +           706,
+    +           304,
+    +           754,
+    +         ],
+    +       ],
+    +       "passes": false,
+    +       "rect": Array [
+    +         41.640625,
+    +         132.78125,
+    +         152.53125,
+    +         145.78125,
+    +       ],
+    +       "required": 4.5,
+    +       "rgb": Array [
+    +         194,
+    +         208,
+    +         201,
+    +       ],
+    +       "sampled_points": 35,
+    +     },
+    +     "hour": 23,
+    +     "route": "progress",
+    +     "rows": undefined,
+    +     "scroll": 0,
+    +     "theme": "dark",
+    +     "width": 320,
+    +   },
+    +   Object {
+    +     "failure": Object {
+    +       "alpha": 1,
+    +       "label": "· الفترة الحالية جزئية.",
+    +       "minimum_ratio": 4.032,
+    +       "occluded": Array [
+    +         Array [
+    +           256,
+    +           706,
+    +           304,
+    +           754,
+    +         ],
+    +       ],
+    +       "passes": false,
+    +       "rect": Array [
+    +         41.640625,
+    +         132.78125,
+    +         152.53125,
+    +         145.78125,
+    +       ],
+    +       "required": 4.5,
+    +       "rgb": Array [
+    +         194,
+    +         208,
+    +         201,
+    +       ],
+    +       "sampled_points": 35,
+    +     },
+    +     "hour": 23,
+    +     "route": "progress",
+    +     "rows": undefined,
+    +     "scroll": 360,
+    +     "theme": "dark",
+    +     "width": 320,
+    +   },
+    +   Object {
+    +     "failure": Object {
+    +       "alpha": 1,
+    +       "label": "· الفترة الحالية جزئية.",
+    +       "minimum_ratio": 4.032,
+    +       "occluded": Array [
+    +         Array [
+    +           326,
+    +           706,
+    +           374,
+    +           754,
+    +         ],
+    +       ],
+    +       "passes": false,
+    +       "rect": Array [
+    +         111.640625,
+    +         132.78125,
+    +         222.53125,
+    +         145.78125,
+    +       ],
+    +       "required": 4.5,
+    +       "rgb": Array [
+    +         194,
+    +         208,
+    +         201,
+    +       ],
+    +       "sampled_points": 35,
+    +     },
+    +     "hour": 23,
+    +     "route": "progress",
+    +     "rows": undefined,
+    +     "scroll": 360,
+    +     "theme": "dark",
+    +     "width": 390,
+    +   },
+    + ]
+
+      376 |                 .map((r: object) => ({ ...c, rows: undefined, failure: r })),
+      377 |         );
+    > 378 |         expect(failures).toEqual([]);
+          |                          ^
+      379 |     });
+      380 |
+      381 |     test("قائمة500 مهمة: تمرير فعلي دون مرشحات ضخمة وباستجابة سريعة", async ({
+        at /workspace/honor-wall/tests/browser/living-sky-shell.spec.ts:378:26
+
+    Error Context: test-results/living-sky-shell-تباين-الن-ca79e-ة-عبر-أوقات-السماء-والتمرير/error-context.md
+
+
+(node:603956) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[77/243] tests/browser/living-sky-shell.spec.ts:381:5 › قائمة500 مهمة: تمرير فعلي دون مرشحات ضخمة وباستجابة سريعة
+[78/243] tests/browser/living-sky-shell.spec.ts:504:5 › المشهد نفسه يبقى مركبًا عبر ثلاثين انتقالًا دون تغيير الزمن أو الضبابية
+[79/243] tests/browser/living-sky-shell.spec.ts:553:5 › زر عائم دون شريط أو اعتراض اللمس مع Safe Area24 وبدونها
+[80/243] tests/browser/living-sky-shell.spec.ts:597:5 › إعداد واحد يؤثر على الصفحات كلها ويحفظ بعد إعادة الفتح دون اتصال
+[81/243] tests/browser/living-sky-shell.spec.ts:634:5 › التفاعل الفعلي لا يتغير: المهمة والفكرة والمشروع والنوافذ القصيرة
+[82/243] tests/browser/living-sky-shell.spec.ts:709:5 › إمكانية الوصول للصفحات الخمس في الثيمين والمقاسين
+[83/243] tests/browser/living-sky.spec.ts:132:5 › صور الفترات الخمس والضبابية0و12و30 في الوضعlight
+[84/243] tests/browser/living-sky.spec.ts:132:5 › صور الفترات الخمس والضبابية0و12و30 في الوضعdark
+[85/243] tests/browser/living-sky.spec.ts:162:1 › إعداد واحد فقط؛ كل درجات الضبابية فورية ومحفوظة والتحكم بلوحة المفاتيح
+[86/243] tests/browser/living-sky.spec.ts:196:1 › الحدود ومنتصف الليل والوقت المحلي والعودة من الخلفية دون تغيير الثيم
+[87/243] tests/browser/living-sky.spec.ts:238:1 › لا يوجد تحديث إطار مستمر، والتحديث بالدقيقة مستقل عن بيانات المهام
+[88/243] tests/browser/living-sky.spec.ts:293:1 › تقليل الحركة يعرض الوقت الحالي دون انتقالات ويستجيب لتغييره أثناء التشغيل
+[89/243] tests/browser/living-sky.spec.ts:317:1 › القيم التالفة والتخزين المحجوب لا يعطلان التطبيق أو بقية إعدادات المظهر
+[90/243] tests/browser/living-sky.spec.ts:351:1 › المشهد لا يحجب النقر والإنجاز والتراجع والمشروع والقائمة والنوافذ والتمرير
+[91/243] tests/browser/living-sky.spec.ts:417:5 › RTL والثيمات الحالية والنوافذ والتمرير بعرض320
+[92/243] tests/browser/living-sky.spec.ts:417:5 › RTL والثيمات الحالية والنوافذ والتمرير بعرض390
+[93/243] tests/browser/living-sky.spec.ts:417:5 › RTL والثيمات الحالية والنوافذ والتمرير بعرض768
+[94/243] tests/browser/living-sky.spec.ts:417:5 › RTL والثيمات الحالية والنوافذ والتمرير بعرض1366
+[95/243] tests/browser/living-sky.spec.ts:472:1 › فحص إمكانية الوصول للفترات الخمس والثيمين والنموذج
+[96/243] tests/browser/living-sky.spec.ts:506:1 › حفظ إعداد الضبابية والثيم دون اتصال وبعد إعادة فتح الصفحة
+[97/243] tests/browser/living-sky.spec.ts:540:1 › قياس تباين النص فوق خلفية السماء الفعلية وليس التخمين من التدرج
+[98/243] tests/browser/living-sky.spec.ts:688:1 › الخامة الاحتياطية تبقى مقروءة دون مرشح الخلفية — محاكاة قاعدة CSS البديلة
+[99/243] tests/browser/living-sky.spec.ts:728:1 › فحص أداء التحكم بالضبابية وعدم تسرب مستمعي المشهد أو كتابة بيانات المهام
+[100/243] tests/browser/navigation-phase1.spec.ts:43:9 › navigation screenshots 320 light
+[101/243] tests/browser/navigation-phase1.spec.ts:43:9 › navigation screenshots 320 dark
+[102/243] tests/browser/navigation-phase1.spec.ts:43:9 › navigation screenshots 390 light
+[103/243] tests/browser/navigation-phase1.spec.ts:43:9 › navigation screenshots 390 dark
+[104/243] tests/browser/navigation-phase1.spec.ts:72:5 › three primary sections and reachable gateway 320
+[105/243] tests/browser/navigation-phase1.spec.ts:72:5 › three primary sections and reachable gateway 390
+[106/243] tests/browser/navigation-phase1.spec.ts:72:5 › three primary sections and reachable gateway 768
+[107/243] tests/browser/navigation-phase1.spec.ts:72:5 › three primary sections and reachable gateway 1366
+[108/243] tests/browser/navigation-phase1.spec.ts:143:1 › task shortcut is one click from every current page and habits is storage-neutral
+[109/243] tests/browser/navigation-phase1.spec.ts:188:1 › back and forward preserve gateway origin, reload and safe direct-link fallbacks
+[110/243] tests/browser/navigation-phase1.spec.ts:222:1 › task-list and project-tree scroll positions survive section navigation
+[111/243] tests/browser/navigation-phase1.spec.ts:258:1 › legacy creation, completion and accessible light/dark shell remain available
+[112/243] tests/browser/planning.spec.ts:31:1 › مهامي اليوم: الاختيار والإزالة والإنجاز والتراجع وعبور اليوم دون فقد
+[113/243] tests/browser/planning.spec.ts:78:1 › التقويم: سبعة أيام وتنقل وعودة وإنجاز وتراجع وتعديل دون إنشاء المستقبل
+[114/243] tests/browser/planning.spec.ts:130:1 › مواعيد التكرار المستقبلية غير قابلة للإنجاز ولا تحفظ كدورات عند التنقل
+[115/243] tests/browser/planning.spec.ts:170:1 › الداشبورد يبدل الفترات ويحدث الإنجاز بعد التراجع ويعرض نقص البيانات
+[116/243] tests/browser/planning.spec.ts:222:1 › رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل وتراجع ونسخة كاملة v3
+[117/243] tests/browser/planning.spec.ts:357:5 › التنظيم والتقويم والرؤى: RTL والثيمات الأربعة بعرض 390
+[118/243] tests/browser/planning.spec.ts:357:5 › التنظيم والتقويم والرؤى: RTL والثيمات الأربعة بعرض 1366
+[119/243] tests/browser/planning.spec.ts:405:1 › دورة السبت المفتوحة تظهر الأحد في قسم متاح وتنجز دون تأخير
+[120/243] tests/browser/planning.spec.ts:446:1 › موعد الساعة المنقضي اليوم يُفصل عن المستحقة ويتيح الإنجاز والتراجع
+[121/243] tests/browser/planning.spec.ts:483:1 › إحصاء إتمام المشروع يتحدث داخل الداشبورد دون انتظار نبضة الدقيقة
+[122/243] tests/browser/project-import-open.spec.ts:20:5 › فتح الاستيراد على شاشة أندرويد محاكاة › الفتح والإغلاق المتكرر مستقلان عن البيانات والملفات والمنتقي الأصلي
+[123/243] tests/browser/project-import-open.spec.ts:116:5 › فتح الاستيراد على شاشة أندرويد محاكاة › المنتقي يُفتح بطلب منفصل مرة واحدة ويعمل إلغاؤه وإعادة فتحه ثم المعاينة والحفظ
+[124/243] tests/browser/project-import-open.spec.ts:170:5 › فتح الاستيراد على شاشة أندرويد محاكاة › فشل JSON في واجهة الفتح يتيح إعادة الاختيار ولا يحفظ بيانات
+[125/243] tests/browser/project-import-open.spec.ts:207:5 › فتح الاستيراد على شاشة أندرويد محاكاة › عودة التركيز تعيد إتاحة المنتقي للمتصفحات التي لا ترسل cancel
+[126/243] tests/browser/project-import.spec.ts:15:1 › معاينة وإلغاء ثم حفظ مرة واحدة بالضغط المتكرر مع الحفاظ على البيانات والتقدم
+[127/243] tests/browser/project-import.spec.ts:105:1 › ملفات خاطئة بأخطاء واضحة وإعادة اختيار الملف نفسه دون حفظ
+[128/243] tests/browser/project-import.spec.ts:153:1 › فشل التخزين لا يترك مشروعًا ناقصًا ويتيح تأكيد المعاينة مجددًا
+[129/243] tests/browser/project-import.spec.ts:179:5 › المعاينة والأخطاء ولوحة المفاتيح في الثيمات الأربعة بعرض 390
+[130/243] tests/browser/project-import.spec.ts:179:5 › المعاينة والأخطاء ولوحة المفاتيح في الثيمات الأربعة بعرض 1366
+[131/243] tests/browser/project-import.spec.ts:241:1 › معاينة محدودة لمشروع كبير تستورد كل العناصر وترقيم التداخل حتى الحد المعتمد
+[132/243] tests/browser/project-pace.spec.ts:137:1 › 40/20 من الواجهة: هدف ووتيرة وإنجاز من الرئيسية وتراجع دون خلط المهام
+[133/243] tests/browser/project-pace.spec.ts:193:1 › تسريع افتراضي: معاينة دون تعديل ثم اعتماد مؤكد وسجل قرار
+[134/243] tests/browser/project-pace.spec.ts:226:1 › توصية شخصية: الرئيسية تعرض واحدة والرفض لا يغير الخطة ولا يعود غدًا
+[135/243] tests/browser/project-pace.spec.ts:250:1 › اعتماد توصية شخصية وتحديث مؤشرات المشروع والتراجع عن الخطة من إعداد الهدف
+[136/243] tests/browser/project-pace.spec.ts:272:1 › الإيقاف والاستئناف يجمدان20يومًا والموعد الإلزامي لا يتحرك
+[137/243] tests/browser/project-pace.spec.ts:327:1 › الحد النشط: الرابع يحتاج قرارًا صريحًا مع حفظ مسودة الإنشاء
+[138/243] tests/browser/project-pace.spec.ts:366:1 › الدمج عبر الواجهة يحفظ الأصل ويمنع تكرار الملف ويستعيد الحقول الجديدة
+[139/243] tests/browser/project-pace.spec.ts:392:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 320
+[140/243] tests/browser/project-pace.spec.ts:392:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 390
+[141/243] tests/browser/project-pace.spec.ts:392:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 768
+[142/243] tests/browser/project-pace.spec.ts:392:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 1366
+[143/243] tests/browser/project-pace.spec.ts:467:1 › إلغاء تجاوز الحد لا ينشئ شيئًا، وإيقاف مشروع بديل قرار منفصل عن الإضافة
+[144/243] tests/browser/project-pace.spec.ts:507:1 › استيراد masar.project1 عند الحد يحفظ المعاينة ثم يستورد مرة واحدة بعد القرار
+[145/243] tests/browser/project-pace.spec.ts:544:1 › إتمام آخر خطوة من الرئيسية ثم التراجع يعيد المشروع والخطوة والمؤشرات ذريًا
+[146/243] tests/browser/project-pace.spec.ts:569:1 › الداشبورد والرؤى لا يعدّان الإيقاف تعثرًا ويستعيدان العدد بعد الاستئناف
+[147/243] tests/browser/project-pace.spec.ts:612:1 › النافذة فوق مشروع كبير: حصر التركيز وARIA وEscape والرجوع والنقر الخارجي والتنظيف
+[148/243] tests/browser/project-pace.spec.ts:701:1 › المتصفح بلا CloseWatcher يحتفظ بالنافذة الأصلية وسلوك Escape
+[149/243] tests/browser/project-rest-boundaries.spec.ts:72:1 › توصية موجودة تختفي بهدوء عند منتصف ليل الرياض وتبقى في التقدم دون إجراءات ملحة
+[150/243] tests/browser/project-rest-boundaries.spec.ts:115:1 › حدود اليوم المحلي: تبدأ الراحة وتستحق المهمة وتتعاقب دوراتها دون تغيير قواعدها
+[151/243] tests/browser/project-rest.spec.ts:69:1 › افتراضي الراحة والتعديل وحفظ السجل وإعادة التحميل وإلغاء جميع الأيام
+[152/243] tests/browser/project-rest.spec.ts:115:1 › 40/20 =14 يوم عمل: الهدف ثابت والتوزيع يتحدث عند تغيير الراحة
+[153/243] tests/browser/project-rest.spec.ts:140:1 › كل الأسبوع راحة: تحذير وحفظ وغياب الاقتراحات دون إيقاف أو تمديد
+[154/243] tests/browser/project-rest.spec.ts:173:1 › الجمعة: المهمة والمتكررة تعملان والإنجاز اليدوي للمشروع يُحفظ دون مطالبة يومية
+[155/243] tests/browser/project-rest.spec.ts:229:1 › النسخ الجديدة والقديمة: تنزيل واستعادة الجدول والدمج دون تبديل إعداد الجهاز
+[156/243] tests/browser/project-rest.spec.ts:295:5 › إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض320
+[157/243] tests/browser/project-rest.spec.ts:295:5 › إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض390
+[158/243] tests/browser/project-rest.spec.ts:295:5 › إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض768
+[159/243] tests/browser/project-rest.spec.ts:295:5 › إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض1366
+[160/243] tests/browser/qa-accessibility.spec.ts:5:1 › لوحة المفاتيح: النافذة تحصر التركيز وتعيده، وعلامة المهمة تحتفظ به عند انتقالها للمنجزة
+[161/243] tests/browser/qa-accessibility.spec.ts:66:1 › نافذة في مساحة هاتف قصيرة: الحقول والإضافة متاحة دون حجب، وتقليل الحركة محترم
+[162/243] tests/browser/qa-functional.spec.ts:3:1 › نسخة بمعرّفات نصية خاصة وroot تفتح عناصرها وتحفظ العلاقات والإتمام
+[163/243] tests/browser/qa-functional.spec.ts:46:1 › العودة لمشروع طويل ذي عناوين ملتفة تستعيد الخطوة الظاهرة نفسها
+[164/243] tests/browser/qa-functional.spec.ts:64:1 › فشل التخزين برسالة المتصفح الأصلية يعرض سببًا عربيًا ويحافظ على الحالة ثم يعاود الحفظ
+[165/243] tests/browser/qa-functional.spec.ts:103:1 › الاسم المعدّل يُحفظ عند التنقل دون مغادرة حقل الاسم أولًا
+[166/243] tests/browser/qa-functional.spec.ts:128:1 › التراجع المتكرر عن الحذف لا يكرر الاستعادة أو سجل الأحداث
+[167/243] tests/browser/qa-functional.spec.ts:162:1 › العناوين المكررة والملاحظات الطويلة تبقى مستقلة ويجد البحث النص المختلط
+[168/243] tests/browser/qa-functional.spec.ts:186:1 › ملف استيراد أكبر من الحد لا يستبدل البيانات وتواريخ المنطقة الزمنية صحيحة
+[169/243] tests/browser/qa-rapid.spec.ts:17:13 › تبديل سريع على الكمبيوتر › عشرة تبديلات للمهمة والخطوة تحفظ آخر طلب وتطابق الأعداد والنسب بعد إعادة الفتح
+[170/243] tests/browser/qa-rapid.spec.ts:17:13 › تبديل سريع باللمس › عشرة تبديلات للمهمة والخطوة تحفظ آخر طلب وتطابق الأعداد والنسب بعد إعادة الفتح
+[171/243] tests/browser/qa-rapid.spec.ts:179:1 › تبديل عدة مهام أثناء تغيير الصفحة يحفظ النتيجة لكل عنصر
+[172/243] tests/browser/smooth-controls.spec.ts:113:9 › صور الخامة والقوائم light 320
+[173/243] tests/browser/smooth-controls.spec.ts:113:9 › صور الخامة والقوائم dark 320
+[174/243] tests/browser/smooth-controls.spec.ts:113:9 › صور الخامة والقوائم light 390
+[175/243] tests/browser/smooth-controls.spec.ts:113:9 › صور الخامة والقوائم dark 390
+[176/243] tests/browser/smooth-controls.spec.ts:113:9 › صور الخامة والقوائم light 768
+[177/243] tests/browser/smooth-controls.spec.ts:113:9 › صور الخامة والقوائم dark 768
+[178/243] tests/browser/smooth-controls.spec.ts:113:9 › صور الخامة والقوائم light 1366
+[179/243] tests/browser/smooth-controls.spec.ts:113:9 › صور الخامة والقوائم dark 1366
+[180/243] tests/browser/smooth-controls.spec.ts:140:1 › قياس التنقل والتمرير مع500 مهمة وCPU أبطأ أربع مرات
+[181/243] tests/browser/smooth-controls.spec.ts:233:9 › منع الإغلاق أثناء الحفظ وقبوله بعد انتهاء القفل 24
+[182/243] tests/browser/smooth-controls.spec.ts:233:9 › منع الإغلاق أثناء الحفظ وقبوله بعد انتهاء القفل 500
+[183/243] tests/browser/smooth-controls.spec.ts:345:9 › التنقل في الاتجاهين والرجوع والسياق الزجاجي 320
+[184/243] tests/browser/smooth-controls.spec.ts:345:9 › التنقل في الاتجاهين والرجوع والسياق الزجاجي 390
+[185/243] tests/browser/smooth-controls.spec.ts:345:9 › التنقل في الاتجاهين والرجوع والسياق الزجاجي 768
+[186/243] tests/browser/smooth-controls.spec.ts:345:9 › التنقل في الاتجاهين والرجوع والسياق الزجاجي 1366
+[187/243] tests/browser/smooth-controls.spec.ts:459:5 › النقر السريع يلغي الحركة السابقة ولا ينسخ المحتوى أو السماء
+[188/243] tests/browser/smooth-controls.spec.ts:516:5 › موضع التمرير محفوظ عند العودة إلى القائمة الطويلة
+[189/243] tests/browser/smooth-controls.spec.ts:542:9 › النوافذ وEscape وحصر التركيز وإعادته 24
+[190/243] tests/browser/smooth-controls.spec.ts:542:9 › النوافذ وEscape وحصر التركيز وإعادته 500
+[191/243] tests/browser/smooth-controls.spec.ts:634:5 › تقليل الحركة منذ البداية وعند تغييره أثناء الانتقال
+[192/243] tests/browser/smooth-controls.spec.ts:680:5 › الزر عائم فعليًا والضغط .94 والمساحة الآمنة والأطراف لا تعترض اللمس
+[193/243] tests/browser/smooth-controls.spec.ts:742:5 › تباين الأيقونات والنصوص الزجاجية في المشاهد الخمسة والثيمين
+[194/243] tests/browser/smooth-controls.spec.ts:835:5 › Axe للثيمين والمقاسات الأربعة وحوار الإضافة
+[195/243] tests/browser/smooth-controls.spec.ts:878:5 › حفظ الإنجاز والبيانات وإعادة الفتح دون اتصال مع التحكم المتحرك
+[196/243] tests/browser/task-scheduling.spec.ts:45:1 › إنشاء عامة وإتمام وتراجع وتعديل وحذف دون موعد أو أولوية
+[197/243] tests/browser/task-scheduling.spec.ts:76:1 › تاريخ فقط ثم وقت وتغيير وإلغاء الموعد مع حفظ المعرف والملاحظات
+[198/243] tests/browser/task-scheduling.spec.ts:119:5 › فترة الاقتراب 0 أيام وحالة اليوم والتأخر بعد منتصف الليل
+[199/243] tests/browser/task-scheduling.spec.ts:119:5 › فترة الاقتراب 1 أيام وحالة اليوم والتأخر بعد منتصف الليل
+[200/243] tests/browser/task-scheduling.spec.ts:119:5 › فترة الاقتراب 3 أيام وحالة اليوم والتأخر بعد منتصف الليل
+[201/243] tests/browser/task-scheduling.spec.ts:119:5 › فترة الاقتراب 7 أيام وحالة اليوم والتأخر بعد منتصف الليل
+[202/243] tests/browser/task-scheduling.spec.ts:141:5 › مهمة السبت تنجز طبيعيًا عند 2026-10-17T09:00:00Z وتعود دورة جديدة السبت التالي
+[203/243] tests/browser/task-scheduling.spec.ts:141:5 › مهمة السبت تنجز طبيعيًا عند 2026-10-18T09:00:00Z وتعود دورة جديدة السبت التالي
+[204/243] tests/browser/task-scheduling.spec.ts:141:5 › مهمة السبت تنجز طبيعيًا عند 2026-10-23T09:00:00Z وتعود دورة جديدة السبت التالي
+[205/243] tests/browser/task-scheduling.spec.ts:180:1 › أسبوعية بعدة أيام ووقت: فوت الدورة لا يكرر المهمة والسجل محفوظ
+[206/243] tests/browser/task-scheduling.spec.ts:207:1 › يومية: إتمام قبل نهاية اليوم، تراجع سريع، دورة فائتة، ومراجعة السجل
+[207/243] tests/browser/task-scheduling.spec.ts:249:1 › شهرية ٣١ تعبر السنة وفبراير وتغيير التكرار يحفظ التاريخ
+[208/243] tests/browser/task-scheduling.spec.ts:290:1 › الأولويات الأربعة بألوانها ثم الإزالة، مع الاسم في التفاصيل فقط
+[209/243] tests/browser/task-scheduling.spec.ts:322:1 › نسخة جديدة تحفظ الدورات والأولوية، واستيراد مشروع مستقل لا يؤثر عليها
+[210/243] tests/browser/task-scheduling.spec.ts:367:5 › النموذج والتصنيف وRTL والثيمات الأربعة بعرض 390
+[211/243] tests/browser/task-scheduling.spec.ts:367:5 › النموذج والتصنيف وRTL والثيمات الأربعة بعرض 1366
+[212/243] tests/browser/task-scheduling.spec.ts:443:1 › تحويل عامة إلى متكررة ثم عامة يحفظ المعرف والملاحظات وسجل الإنجاز
+[213/243] tests/browser/task-scheduling.spec.ts:477:1 › الرئيسية والقوائم تميز العامة والقريبة واليوم والمتأخرة والمتكررة والقادمة
+[214/243] tests/browser/task-scheduling.spec.ts:525:1 › إعداد أسبوعي بلا أيام يُرفض ولا يضيف مهمة ناقصة
+[215/243] tests/browser/task-scheduling.spec.ts:535:5 › توقيت نيويورك › تاريخ محلي مختلف عن UTC ودورة ٢٥ ساعة دون نسخ بسبب تكرار الساعة
+[216/243] tests/browser/task-scheduling.spec.ts:577:1 › أزرار الحالة وعلامة الإنجاز تتشارك آخر طلب للدورة وتحفظ تاريخ البدء
+[217/243] tests/browser/task-scheduling.spec.ts:615:1 › الموعد الأسبوعي المستقبلي يمنع الإنجاز حتى يبدأ ثم يتاح في وقته
+[218/243] tests/browser/task-scheduling.spec.ts:655:1 › النسخة ذات إنجاز على نهاية الدورة تُرفض في الواجهة وتبقى الجداول الستة سليمة
+[219/243] tests/browser/task-scheduling.spec.ts:704:1 › حذف المتكررة والتراجع وإعادة التحميل يحفظان الدورات والملاحظات والإنجاز
+[220/243] tests/browser/task-scheduling.spec.ts:769:1 › قائمة ٥٠٠ مهمة: الوصول إلى الصفوف خارج الشاشة والإنجاز والتراجع على الجوال
+[221/243] tests/browser/today-experience.spec.ts:70:1 › القائمة الأصلية للإجراءات تعرض الإضافة والإزالة وتحافظ على خصائص المهمة
+[222/243] tests/browser/today-experience.spec.ts:117:1 › المكتمل ينتقل للأسفل ويبقى بعد إعادة التحميل والتراجع يعيد ترتيب الأولويات والمواعيد
+[223/243] tests/browser/today-experience.spec.ts:179:1 › المختصر لا يزاحم المفتوح بالمكتمل والعرض الموسع يتيح التراجع
+[224/243] tests/browser/today-experience.spec.ts:201:5 › دورة daily: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار
+[225/243] tests/browser/today-experience.spec.ts:201:5 › دورة weekly: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار
+[226/243] tests/browser/today-experience.spec.ts:201:5 › دورة monthly: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار
+[227/243] tests/browser/today-experience.spec.ts:262:1 › فترة السماح والمتأخرة وإنجاز اليوم المحلي لا يحمل إنجاز الأمس
+[228/243] tests/browser/today-experience.spec.ts:302:1 › الحفظ وإعادة فتح المتصفح والعمل دون اتصال يحتفظان بإنجاز اليوم
+[229/243] tests/browser/today-experience.spec.ts:344:5 › العرض 320: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات
+[230/243] tests/browser/today-experience.spec.ts:344:5 › العرض 390: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات
+[231/243] tests/browser/today-experience.spec.ts:344:5 › العرض 768: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات
+[232/243] tests/browser/today-experience.spec.ts:344:5 › العرض 1366: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات
+[233/243] tests/browser/ux.spec.ts:11:1 › طلب إلغاء الإتمام يبقى بعد تحديث فوري مع تأخر إشعار معاملة التخزين
+[234/243] tests/browser/ux.spec.ts:57:1 › كثرة المشاريع والنصوص الطويلة تعرض خطوة واحدة لكل مشروع وتتيح عرض المزيد دون تكرار الإحصائيات
+[235/243] tests/browser/ux.spec.ts:137:13 › تجربة التنفيذ بالماوس › إتمام البطاقة والرئيسية ثم إلغاء الإتمام والتبديل السريع يطابق التخزين والتقدم
+[236/243] tests/browser/ux.spec.ts:251:13 › تجربة التنفيذ بالماوس › الاستكمال يبقى بعد إعادة الفتح ويتعامل مع الحذف والأرشفة والإكمال
+[237/243] tests/browser/ux.spec.ts:137:13 › تجربة التنفيذ باللمس › إتمام البطاقة والرئيسية ثم إلغاء الإتمام والتبديل السريع يطابق التخزين والتقدم
+[238/243] tests/browser/ux.spec.ts:251:13 › تجربة التنفيذ باللمس › الاستكمال يبقى بعد إعادة الفتح ويتعامل مع الحذف والأرشفة والإكمال
+[239/243] tests/browser/ux.spec.ts:321:1 › إكمال آخر خطوة وحفظها ثم التراجع من السجل والتفاصيل والمشروع الفارغ
+[240/243] tests/browser/ux.spec.ts:383:1 › الهوية مستقلة عن الوضع وتبقى الثيمات الأربعة واتباع النظام بعد إعادة الفتح
+[241/243] tests/browser/ux.spec.ts:437:1 › زر الإجراءات ولوحة المفاتيح والقائمة تحترم التأكيد والتراجع والتعديل والتحويل
+[242/243] tests/browser/ux.spec.ts:495:1 › الضغط المطول بالماوس يفتح قائمة واحدة ويمنع التنقل ثم يلغى بالحركة
+  3) tests/browser/ux.spec.ts:495:1 › الضغط المطول بالماوس يفتح قائمة واحدة ويمنع التنقل ثم يلغى بالحركة 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog') with timeout 5000ms
+      - waiting for getByRole('dialog')
+
+
+      502 |     await page.mouse.move(box.x + 20, box.y + 20);
+      503 |     await page.mouse.down();
+    > 504 |     await expect(page.getByRole("dialog")).toBeVisible();
+          |                                            ^
+      505 |     await page.mouse.up();
+      506 |     await expect(page).toHaveURL(/#projects$/);
+      507 |     await expect(page.getByRole("dialog")).toHaveCount(1);
+        at /workspace/honor-wall/tests/browser/ux.spec.ts:504:44
+
+    Error Context: test-results/ux-الضغط-المطول-بالماوس-يف-f06f9-يمنع-التنقل-ثم-يلغى-بالحركة/error-context.md
+
+
+(node:612381) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[243/243] tests/browser/ux.spec.ts:522:5 › ضغط مطول باللمس وتمرير طبيعي › إلغاء القائمة بالحركة والتمرير، وفتحها بعد ثبات الإصبع دون نقرة تسرب
+  3 failed
+    tests/browser/buttons.spec.ts:31:1 › أزرار الإضافة والإلغاء والإغلاق والبحث والتنقل والضغط المتكرر 
+    tests/browser/living-sky-shell.spec.ts:163:5 › تباين النص الفعلي في الصفحات والأشرطة عبر أوقات السماء والتمرير 
+    tests/browser/ux.spec.ts:495:1 › الضغط المطول بالماوس يفتح قائمة واحدة ويمنع التنقل ثم يلغى بالحركة 
+  240 passed (16.4m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { test, expect } from "@playwright/test";
 import { openCreate, readStore, importData, sizedFixture } from "./helpers";
 import AxeBuilder from "@axe-core/playwright";
@@ -8,7 +9,7 @@ test.beforeEach(async ({ page }) => {
 test("الرئيسية: أول ثلاث مهام بالترتيب نفسه دون تغيير الأولويات وإنجاز وتراجع", async ({
     page,
 }) => {
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     for (const [title, priority, time] of [
         ["غير مصنفة", "", ""],
         ["منخفضة", "low", ""],
@@ -28,7 +29,7 @@ test("الرئيسية: أول ثلاث مهام بالترتيب نفسه دو�
         await f.getByRole("button", { name: "إضافة", exact: true }).click();
         await expect(f).not.toBeVisible();
     }
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     const home = page.getByRole("region", { name: "مهامي اليوم", exact: true });
     await expect(home.locator(".task-main strong")).toHaveText([
         "أهم مهمة",
@@ -69,7 +70,7 @@ test("الرئيسية: أول ثلاث مهام بالترتيب نفسه دو�
 test("الرئيسية الفارغة مختصرة والاستكمال لا يكرر خطوته في بطاقات المشاريع", async ({
     page,
 }) => {
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(
         page.getByRole("link", { name: "اختر مهامك لليوم", exact: true }),
     ).toBeVisible();
@@ -79,13 +80,13 @@ test("الرئيسية الفارغة مختصرة والاستكمال لا ي�
     await f.getByRole("button", { name: "إضافة", exact: true }).click();
     await expect(f).not.toBeVisible();
     const p = (await readStore(page, "projects"))[0];
-    await page.goto("/#project/" + p.id);
+    await page.goto(appUrl("/#project/" + p.id));
     await page.getByRole("button", { name: "خطوة", exact: true }).click();
     f = page.getByRole("dialog");
     await f.getByLabel("الاسم", { exact: true }).fill("خطوتي الوحيدة");
     await f.getByRole("button", { name: "إضافة", exact: true }).click();
     await expect(f).not.toBeVisible();
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(
         page.getByRole("region", { name: "اختصار الاستكمال" }),
     ).toContainText("خطوتي الوحيدة");
@@ -105,7 +106,7 @@ test("زر إضافة واحد في الصفحات الخمس: النماذج ا
     page,
 }) => {
     for (const route of ["home", "projects", "tasks", "ideas", "progress"]) {
-        await page.goto("/#" + route);
+        await page.goto(appUrl("/#" + route));
         const fab = page.getByRole("button", {
             name: "إضافة سريعة",
             exact: true,
@@ -212,7 +213,7 @@ test("بطاقة المشروع تحتفظ بالمعلومات ورقم الم�
         ideas: [],
         events: [],
     });
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     const card = page.locator(".project-card");
     await expect(card).toContainText("نشط");
     await expect(card).toContainText("1 من 2 خطوات مكتملة");
@@ -240,7 +241,7 @@ test("بطاقة المشروع تحتفظ بالمعلومات ورقم الم�
 test("تبويبات التقدم تحفظ الفترة والسجل الصحيح والتراجع والرؤى دون ازدواج", async ({
     page,
 }) => {
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     for (const [title, repeat] of [
         ["مهمة للسجل", false],
         ["دورة للسجل", true],
@@ -254,7 +255,7 @@ test("تبويبات التقدم تحفظ الفترة والسجل الصحي�
                 .selectOption("daily");
         await f.getByRole("button", { name: "إضافة", exact: true }).click();
         await expect(f).not.toBeVisible();
-        await page.goto("/#tasks");
+        await page.goto(appUrl("/#tasks"));
         await page
             .getByRole("button", { name: "إكمال " + title, exact: true })
             .click();
@@ -265,7 +266,7 @@ test("تبويبات التقدم تحفظ الفترة والسجل الصحي�
     await f.getByRole("button", { name: "إضافة", exact: true }).click();
     await expect(f).not.toBeVisible();
     const p = (await readStore(page, "projects"))[0];
-    await page.goto("/#project/" + p.id);
+    await page.goto(appUrl("/#project/" + p.id));
     for (const title of ["عمل أول", "عمل ثان"]) {
         await page.getByRole("button", { name: "خطوة", exact: true }).click();
         f = page.getByRole("dialog");
@@ -282,7 +283,7 @@ test("تبويبات التقدم تحفظ الفترة والسجل الصحي�
             exact: true,
         })
         .click();
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await expect(
         page.getByRole("tab", { name: "نظرة عامة", exact: true }),
     ).toHaveAttribute("aria-selected", "true");
@@ -370,7 +371,7 @@ for (const width of [320, 390, 768, 1366])
                     "ideas",
                     "progress",
                 ]) {
-                    await page.goto("/#" + route);
+                    await page.goto(appUrl("/#" + route));
                     await expect(page.locator("html")).toHaveAttribute(
                         "dir",
                         "rtl",
@@ -428,7 +429,7 @@ for (const width of [320, 390, 768, 1366])
                             ).toBe(true);
                         }
                 }
-                await page.goto("/#tasks");
+                await page.goto(appUrl("/#tasks"));
                 await page
                     .getByRole("button", { name: "إضافة سريعة", exact: true })
                     .click();
@@ -447,7 +448,7 @@ for (const width of [320, 390, 768, 1366])
                 ).toEqual([]);
                 await page.keyboard.press("Escape");
             }
-        await page.goto("/#tasks");
+        await page.goto(appUrl("/#tasks"));
         const filters = page.getByRole("group", {
             name: "عرض المهام بحسب موعدها",
         });
@@ -486,7 +487,7 @@ test("التبويبات تحفظ المشروع وفلاتر السجل ولا 
         title: "مشروع آخر",
     });
     await importData(page, data);
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     const stores = [
         "projects",
         "steps",

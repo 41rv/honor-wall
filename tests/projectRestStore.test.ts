@@ -220,7 +220,7 @@ it("الدمج يحفظ التقويم التاريخي للمصدر والإع�
     await importBackup(b);
     expect((await snapshot()).projectPlans).toEqual(b.projectPlans);
 });
-it("ترحيل5→6 يحفظ الجداول11 والإعدادات ويضيف الجدول الافتراضي فقط", async () => {
+it("ترحيل5→7 يحفظ الجداول11 والإعدادات ويضيف الجدول الافتراضي فقط", async () => {
     const { ids } = await project();
     await setBranchCompletion(ids[0], true);
     const b = await snapshot();
@@ -254,7 +254,7 @@ it("ترحيل5→6 يحفظ الجداول11 والإعدادات ويضيف ا
     const next = new Database(name);
     try {
         await next.open();
-        expect(next.verno).toBe(6);
+        expect(next.verno).toBe(7);
         for (const t of next.tables)
             if (t.name !== "paceSettings")
                 expect(await t.toArray()).toEqual(b[t.name as keyof typeof b]);

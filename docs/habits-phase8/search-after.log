@@ -1,0 +1,40 @@
+[WebServer] (node:741095) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:741108) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 5 tests using 1 worker
+
+(node:741132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/5] tests/browser/habits-phase47-edge.spec.ts:181:1 › local search locates habits paths and reminders without legacy entity mutations
+(node:741261) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[2/5] tests/browser/habits-phase47-edge.spec.ts:181:1 › local search locates habits paths and reminders without legacy entity mutations
+(node:741390) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[3/5] tests/browser/habits-phase47-edge.spec.ts:181:1 › local search locates habits paths and reminders without legacy entity mutations
+(node:741524) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[4/5] tests/browser/habits-phase47-edge.spec.ts:181:1 › local search locates habits paths and reminders without legacy entity mutations
+(node:741655) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[5/5] tests/browser/habits-phase47-edge.spec.ts:181:1 › local search locates habits paths and reminders without legacy entity mutations
+  5 passed (11.6s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

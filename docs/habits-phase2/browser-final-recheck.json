@@ -1,0 +1,1496 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/habits-phase2.spec.ts",
+      "tests/browser/navigation-phase1.spec.ts",
+      "tests/browser/today-experience.spec.ts",
+      "--reporter=line,json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "habits-phase2.spec.ts",
+      "file": "habits-phase2.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "قاعدة جديدة ومداخل المرحلة الأولى:19 مخزنًا دون بيانات عادات افتراضية",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1517,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:23.660Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-3856a346fb721978abef",
+          "file": "habits-phase2.spec.ts",
+          "line": 82,
+          "column": 1
+        },
+        {
+          "title": "Snapshot5:معاينة وحفظ وتصدير مطابق وإعادة فتح دون سجلات إضافية",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1257,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:25.524Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-994ca67d1172a1a2d84b",
+          "file": "habits-phase2.spec.ts",
+          "line": 100,
+          "column": 1
+        },
+        {
+          "title": "نسخة1:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1234,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:26.807Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-4985e5284ceeeafbe745",
+          "file": "habits-phase2.spec.ts",
+          "line": 120,
+          "column": 5
+        },
+        {
+          "title": "نسخة2:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1272,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:28.057Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-809460f8ad2d020863d3",
+          "file": "habits-phase2.spec.ts",
+          "line": 120,
+          "column": 5
+        },
+        {
+          "title": "نسخة3:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1151,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:29.342Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-5b4de29997dc9c07198e",
+          "file": "habits-phase2.spec.ts",
+          "line": 120,
+          "column": 5
+        },
+        {
+          "title": "نسخة4:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1336,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:30.503Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-9d5508c28572a4677205",
+          "file": "habits-phase2.spec.ts",
+          "line": 120,
+          "column": 5
+        },
+        {
+          "title": "الاستبدال الكامل منفصل ويحتاج اختيارًا صريحًا،ونسخة الأمان تستعيد كل المحذوف",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1621,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:31.851Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-0d3b2e50372689cdd4fb",
+          "file": "habits-phase2.spec.ts",
+          "line": 142,
+          "column": 1
+        },
+        {
+          "title": "الدمج السريع وإعادة اختيار الملف لا يكرران،والمستويات والقرارات ترتبط بالمعرفات الجديدة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1382,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:33.487Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-def69bd615c293621e9b",
+          "file": "habits-phase2.spec.ts",
+          "line": 169,
+          "column": 1
+        },
+        {
+          "title": "التحقق يمنع الملفات المكسورة قبل الكتابة ولا توجد واجهة استيراد عادات مبكرة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 897,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:34.881Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-ed00b1ee9c0c07ca6349",
+          "file": "habits-phase2.spec.ts",
+          "line": 213,
+          "column": 1
+        },
+        {
+          "title": "Quota في نسخة الأمان يمنع المسح عبر الواجهة ويتيح المحاولة مجددًا",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1446,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:35.794Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-e6da274780000423d335",
+          "file": "habits-phase2.spec.ts",
+          "line": 236,
+          "column": 1
+        },
+        {
+          "title": "فشل IndexedDB أثناء إدراج التذكيرات يتراجع عن كامل الاستعادة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1440,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:37.252Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-12dc8062df6940fc54e5",
+          "file": "habits-phase2.spec.ts",
+          "line": 272,
+          "column": 1
+        },
+        {
+          "title": "معاينة الاستعادة وRTL والثيم 320 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2077,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:38.704Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-2d90cdc0a7519f9b73c6",
+          "file": "habits-phase2.spec.ts",
+          "line": 300,
+          "column": 9
+        },
+        {
+          "title": "معاينة الاستعادة وRTL والثيم 320 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2050,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:40.792Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-430d075344f30df84f5f",
+          "file": "habits-phase2.spec.ts",
+          "line": 300,
+          "column": 9
+        },
+        {
+          "title": "معاينة الاستعادة وRTL والثيم 390 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2078,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:42.856Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-cd4045743c3e338716f5",
+          "file": "habits-phase2.spec.ts",
+          "line": 300,
+          "column": 9
+        },
+        {
+          "title": "معاينة الاستعادة وRTL والثيم 390 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1939,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:44.948Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-0fbe3568b9aabfb680b4",
+          "file": "habits-phase2.spec.ts",
+          "line": 300,
+          "column": 9
+        },
+        {
+          "title": "الاستعادة لا تعيد تطبيق اختيار قديم معلّق لمهامي اليوم عند إعادة الفتح",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1352,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:46.902Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32d061f826b51f5f2c79-f30fff35de020dd327a2",
+          "file": "habits-phase2.spec.ts",
+          "line": 349,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "navigation-phase1.spec.ts",
+      "file": "navigation-phase1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "navigation screenshots 320 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3047,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:48.280Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-ef5fc923f9c322e01a6a",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        },
+        {
+          "title": "navigation screenshots 320 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3017,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:51.339Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-1cf258578f5c95e88c9b",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        },
+        {
+          "title": "navigation screenshots 390 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2947,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:54.366Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-60fb72e4b88eaa74deca",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        },
+        {
+          "title": "navigation screenshots 390 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3277,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:57.329Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-cff38f0d2928915cbb85",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        },
+        {
+          "title": "three primary sections and reachable gateway 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4578,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:00.622Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-831c71a1934881c81e4b",
+          "file": "navigation-phase1.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "three primary sections and reachable gateway 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3351,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:05.216Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-a8071f477dd0126f2a44",
+          "file": "navigation-phase1.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "three primary sections and reachable gateway 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3563,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:08.584Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-769bb1d076eae4c1e486",
+          "file": "navigation-phase1.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "three primary sections and reachable gateway 1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3206,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:12.165Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-5a86d87b45824ee6b654",
+          "file": "navigation-phase1.spec.ts",
+          "line": 72,
+          "column": 5
+        },
+        {
+          "title": "task shortcut is one click from every current page and habits is storage-neutral",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1958,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:15.382Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-d49e57d93e0b739c8909",
+          "file": "navigation-phase1.spec.ts",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3263,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:17.349Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-d60a66362351bc30ec5a",
+          "file": "navigation-phase1.spec.ts",
+          "line": 194,
+          "column": 1
+        },
+        {
+          "title": "task-list and project-tree scroll positions survive section navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1435,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:20.633Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-8163bb121760cc29d999",
+          "file": "navigation-phase1.spec.ts",
+          "line": 228,
+          "column": 1
+        },
+        {
+          "title": "legacy creation, completion and accessible light/dark shell remain available",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11907,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:22.080Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7279ef776062541642-755f1a085226475b9e75",
+          "file": "navigation-phase1.spec.ts",
+          "line": 264,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "today-experience.spec.ts",
+      "file": "today-experience.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "القائمة الأصلية للإجراءات تعرض الإضافة والإزالة وتحافظ على خصائص المهمة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2748,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:34.012Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-97eacaf47fa71eb993b7",
+          "file": "today-experience.spec.ts",
+          "line": 70,
+          "column": 1
+        },
+        {
+          "title": "المكتمل ينتقل للأسفل ويبقى بعد إعادة التحميل والتراجع يعيد ترتيب الأولويات والمواعيد",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1380,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:36.775Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-3e5855c2b3ea1c3e8532",
+          "file": "today-experience.spec.ts",
+          "line": 117,
+          "column": 1
+        },
+        {
+          "title": "المختصر لا يزاحم المفتوح بالمكتمل والعرض الموسع يتيح التراجع",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1254,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:38.167Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-313e3ad44e68297a0eb6",
+          "file": "today-experience.spec.ts",
+          "line": 179,
+          "column": 1
+        },
+        {
+          "title": "دورة daily: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1581,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:39.431Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-d3aba2693d95b33d2a3b",
+          "file": "today-experience.spec.ts",
+          "line": 201,
+          "column": 5
+        },
+        {
+          "title": "دورة weekly: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1514,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:41.020Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-2348419d93cec42e51ae",
+          "file": "today-experience.spec.ts",
+          "line": 201,
+          "column": 5
+        },
+        {
+          "title": "دورة monthly: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1547,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:42.546Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-8d712308693e2ac7f9cf",
+          "file": "today-experience.spec.ts",
+          "line": 201,
+          "column": 5
+        },
+        {
+          "title": "فترة السماح والمتأخرة وإنجاز اليوم المحلي لا يحمل إنجاز الأمس",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1252,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:44.110Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-1fab85cc55bff4588371",
+          "file": "today-experience.spec.ts",
+          "line": 262,
+          "column": 1
+        },
+        {
+          "title": "الحفظ وإعادة فتح المتصفح والعمل دون اتصال يحتفظان بإنجاز اليوم",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1716,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:45.376Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-b599c4b88a09b1619d2f",
+          "file": "today-experience.spec.ts",
+          "line": 302,
+          "column": 1
+        },
+        {
+          "title": "العرض 320: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1503,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:47.104Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-ea100317731815451ba4",
+          "file": "today-experience.spec.ts",
+          "line": 344,
+          "column": 5
+        },
+        {
+          "title": "العرض 390: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1653,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:48.617Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-d242ea976d2d3c2b322b",
+          "file": "today-experience.spec.ts",
+          "line": 344,
+          "column": 5
+        },
+        {
+          "title": "العرض 768: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1837,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:50.282Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-bee37f10bd019ec43def",
+          "file": "today-experience.spec.ts",
+          "line": 344,
+          "column": 5
+        },
+        {
+          "title": "العرض 1366: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2165,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:52.133Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b151034913eae5591f9a-b6355c91b43a209a4b28",
+          "file": "today-experience.spec.ts",
+          "line": 344,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T00:19:21.905Z",
+    "duration": 92511.08399999999,
+    "expected": 40,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

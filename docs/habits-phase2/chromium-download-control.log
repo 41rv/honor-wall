@@ -1,0 +1,2 @@
+0 PASS {"control":true}
+1 FAIL download.saveAs: Target page, context or browser has been closed

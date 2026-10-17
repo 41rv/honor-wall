@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { openCreate, chooseTaskToday } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import { readStore } from "./helpers";
@@ -13,7 +14,7 @@ async function add(
     scheduled = false,
     priority = "",
 ) {
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await openCreate(page, "task");
     const form = page.getByRole("dialog");
     await form.getByLabel("الاسم", { exact: true }).fill(title);
@@ -34,7 +35,7 @@ test("مهامي اليوم: الاختيار والإزالة والإنجاز 
     await add(page, "عامة لليوم");
     await add(page, "موعد اليوم", true);
     await chooseTaskToday(page, "عامة لليوم");
-    await page.goto("/#today");
+    await page.goto(appUrl("/#today"));
     await expect(
         page.getByRole("region", { name: "مستحقة اليوم" }),
     ).toContainText("موعد اليوم");
@@ -50,9 +51,9 @@ test("مهامي اليوم: الاختيار والإزالة والإنجاز 
         .getByRole("button", { name: "إعادة فتح عامة لليوم", exact: true })
         .click();
     await chooseTaskToday(page, "عامة لليوم", false);
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await chooseTaskToday(page, "عامة لليوم");
-    await page.goto("/#today");
+    await page.goto(appUrl("/#today"));
     await page.reload();
     await expect(
         page.getByRole("button", { name: "إكمال عامة لليوم", exact: true }),
@@ -69,7 +70,7 @@ test("مهامي اليوم: الاختيار والإزالة والإنجاز 
     )!;
     expect(task.status).toBe("todo");
     expect(task.schedule).toBeUndefined();
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await expect(
         page.getByRole("button", { name: "إكمال عامة لليوم", exact: true }),
     ).toBeVisible();
@@ -79,7 +80,7 @@ test("التقويم: سبعة أيام وتنقل وعودة وإنجاز وت�
     page,
 }) => {
     await add(page, "موعد للتقويم", true);
-    await page.goto("/#calendar");
+    await page.goto(appUrl("/#calendar"));
     await expect(page.locator(".calendar-day")).toHaveCount(7);
     const day = page.getByRole("region", { name: "2026-10-18", exact: true });
     await day
@@ -105,7 +106,7 @@ test("التقويم: سبعة أيام وتنقل وعودة وإنجاز وت�
     await page
         .getByRole("button", { name: "حفظ الإعدادات", exact: true })
         .click();
-    await page.goto("/#calendar");
+    await page.goto(appUrl("/#calendar"));
     await expect(
         page.getByRole("link", { name: "موعد للتقويم", exact: true }),
     ).toHaveCount(0);
@@ -130,7 +131,7 @@ test("التقويم: سبعة أيام وتنقل وعودة وإنجاز وت�
 test("مواعيد التكرار المستقبلية غير قابلة للإنجاز ولا تحفظ كدورات عند التنقل", async ({
     page,
 }) => {
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await openCreate(page, "task");
     const f = page.getByRole("dialog");
     await f.getByLabel("الاسم", { exact: true }).fill("يومية التقويم");
@@ -138,7 +139,7 @@ test("مواعيد التكرار المستقبلية غير قابلة للإ�
     await f.getByRole("button", { name: "إضافة", exact: true }).click();
     await expect(f).not.toBeVisible();
     const before = await readStore(page, "taskCycles");
-    await page.goto("/#calendar");
+    await page.goto(appUrl("/#calendar"));
     await page
         .getByRole("button", { name: "الأسبوع القادم", exact: true })
         .click();
@@ -174,7 +175,7 @@ test("الداشبورد يبدل الفترات ويحدث الإنجاز بع�
     await page
         .getByRole("button", { name: "إكمال إنجاز عام", exact: true })
         .click();
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     const dashboard = page.getByRole("region", {
         name: "إحصائيات الفترة",
         exact: true,
@@ -201,7 +202,7 @@ test("الداشبورد يبدل الفترات ويحدث الإنجاز بع�
             dashboard.getByRole("button", { name: label, exact: true }),
         ).toHaveAttribute("aria-pressed", "true");
     }
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     if ((await page.locator(".completed-list").getAttribute("open")) === null)
         await page
             .locator("summary")
@@ -210,7 +211,7 @@ test("الداشبورد يبدل الفترات ويحدث الإنجاز بع�
     await page
         .getByRole("button", { name: "إعادة فتح إنجاز عام", exact: true })
         .click();
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await expect(
         dashboard
             .locator(".period-metric")
@@ -222,14 +223,14 @@ test("الداشبورد يبدل الفترات ويحدث الإنجاز بع�
 test("رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل وتراجع ونسخة كاملة v3", async ({
     page,
 }) => {
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await openCreate(page, "project");
     let form = page.getByRole("dialog");
     await form.getByLabel("الاسم", { exact: true }).fill("مشروع الرؤى");
     await form.getByRole("button", { name: "إضافة", exact: true }).click();
     await expect(form).not.toBeVisible();
     const p = (await readStore(page, "projects"))[0];
-    await page.goto("/#project/" + p.id);
+    await page.goto(appUrl("/#project/" + p.id));
     for (let i = 0; i < 4; i++) {
         await page.getByRole("button", { name: "خطوة", exact: true }).click();
         form = page.getByRole("dialog");
@@ -256,7 +257,7 @@ test("رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل 
                 ).length,
         )
         .toBe(2);
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await page.getByRole("tab", { name: "رؤى مسار", exact: true }).click();
     const insights = page.getByRole("region", {
         name: "رؤى مسار",
@@ -288,13 +289,13 @@ test("رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل 
     await expect(insights.locator("tbody tr")).toHaveCount(3);
     await page.reload();
     expect(await readStore(page, "projectProgress")).toHaveLength(3);
-    await page.goto("/#backup");
+    await page.goto(appUrl("/#backup"));
     const download = page.waitForEvent("download");
     await page.getByRole("button", { name: "تصدير JSON", exact: true }).click();
     const backup = JSON.parse(
         readFileSync((await (await download).path())!, "utf8"),
     );
-    expect(backup.version).toBe(4);
+    expect(backup.version).toBe(5);
     expect(backup.projectProgress).toHaveLength(3);
     expect(backup.projectTracking).toHaveLength(1);
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
@@ -312,7 +313,7 @@ test("رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل 
     expect(await readStore(page, "projectTracking")).toEqual(
         backup.projectTracking,
     );
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await page.getByLabel("استيراد مشروع", { exact: true }).setInputFiles({
         name: "project.json",
         mimeType: "application/json",
@@ -337,11 +338,11 @@ test("رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل 
             (t) => t.origin === "new",
         ),
     ).toHaveLength(2);
-    await page.goto("/#project/" + p.id);
+    await page.goto(appUrl("/#project/" + p.id));
     await page
         .getByRole("button", { name: "إعادة فتح الخطوة «عمل 1»", exact: true })
         .click();
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await page.getByRole("tab", { name: "رؤى مسار", exact: true }).click();
     await expect(insights).toContainText("نقطة مئوية");
     await expect
@@ -370,7 +371,7 @@ for (const width of [390, 1366])
                 );
                 await page.reload();
                 for (const route of ["today", "calendar", "progress"]) {
-                    await page.goto("/#" + route);
+                    await page.goto(appUrl("/#" + route));
                     await expect(page.locator("html")).toHaveAttribute(
                         "dir",
                         "rtl",
@@ -406,7 +407,7 @@ test("دورة السبت المفتوحة تظهر الأحد في قسم مت�
     page,
 }) => {
     await page.clock.setSystemTime(new Date("2026-10-16T09:00:00Z"));
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await openCreate(page, "task");
     const f = page.getByRole("dialog");
     await f.getByLabel("الاسم", { exact: true }).fill("سبت مرن");
@@ -417,7 +418,7 @@ test("دورة السبت المفتوحة تظهر الأحد في قسم مت�
     await expect(f).not.toBeVisible();
     await page.clock.setSystemTime(new Date("2026-10-18T09:00:00Z"));
     await page.evaluate(() => window.dispatchEvent(new Event("focus")));
-    await page.goto("/#today");
+    await page.goto(appUrl("/#today"));
     const available = page.getByRole("region", {
         name: "دورات سابقة ما زالت متاحة",
         exact: true,
@@ -460,7 +461,7 @@ test("موعد الساعة المنقضي اليوم يُفصل عن المست
     await page
         .getByRole("button", { name: "حفظ الإعدادات", exact: true })
         .click();
-    await page.goto("/#today");
+    await page.goto(appUrl("/#today"));
     const overdue = page.getByRole("region", {
         name: "مهام تجاوزت موعدها",
         exact: true,
@@ -483,13 +484,13 @@ test("موعد الساعة المنقضي اليوم يُفصل عن المست
 test("إحصاء إتمام المشروع يتحدث داخل الداشبورد دون انتظار نبضة الدقيقة", async ({
     page,
 }) => {
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await openCreate(page, "project");
     const form = page.getByRole("dialog");
     await form.getByLabel("الاسم", { exact: true }).fill("إتمام الآن");
     await form.getByRole("button", { name: "إضافة", exact: true }).click();
     await expect(form).not.toBeVisible();
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await page.locator(".progress-legacy > summary").click();
     const metric = page
         .locator(".period-metric")

@@ -1,0 +1,713 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "-c",
+      "docs/habits-phase4-7/supplemental.config.mjs",
+      "tests/browser/internal-controls.spec.ts",
+      "tests/browser/living-glass.spec.ts",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/docs/habits-phase4-7/supplemental.config.mjs",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/masar-phase47-edge-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "habits-phase4-7.spec.ts",
+          "habits-phase47-edge.spec.ts",
+          "internal-controls.spec.ts",
+          "living-glass.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/tmp/masar-phase47-edge-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "habits-phase4-7.spec.ts",
+          "habits-phase47-edge.spec.ts",
+          "internal-controls.spec.ts",
+          "living-glass.spec.ts"
+        ],
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4195",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "python3 -m http.server 4195 --bind 127.0.0.1 --directory /tmp/masar-phase47-final-root",
+      "url": "http://127.0.0.1:4195",
+      "cwd": "/workspace/honor-wall",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "internal-controls.spec.ts",
+      "file": "internal-controls.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "visual inventory 320 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10999,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:04.202Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-e4d65f4ca8f0aee39975",
+          "file": "internal-controls.spec.ts",
+          "line": 86,
+          "column": 9
+        },
+        {
+          "title": "visual inventory 320 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11202,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:15.483Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-402f04673938408b9ee0",
+          "file": "internal-controls.spec.ts",
+          "line": 86,
+          "column": 9
+        },
+        {
+          "title": "visual inventory 390 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11735,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:26.697Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-8925cb1559a2c61c7b2b",
+          "file": "internal-controls.spec.ts",
+          "line": 86,
+          "column": 9
+        },
+        {
+          "title": "visual inventory 390 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14294,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:38.448Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-eb22f830746f141d0407",
+          "file": "internal-controls.spec.ts",
+          "line": 86,
+          "column": 9
+        },
+        {
+          "title": "internal controls retain selection, keyboard semantics and task data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1336,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:52.763Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-c304fdb9c779519a3310",
+          "file": "internal-controls.spec.ts",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "shared indicator follows selection, wrapping and RTL scrolling 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4126,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:54.119Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-8efc55826fbf3d636e69",
+          "file": "internal-controls.spec.ts",
+          "line": 233,
+          "column": 5
+        },
+        {
+          "title": "shared indicator follows selection, wrapping and RTL scrolling 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3967,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:58.258Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-e6c6f57b21317ca2bb92",
+          "file": "internal-controls.spec.ts",
+          "line": 233,
+          "column": 5
+        },
+        {
+          "title": "shared indicator follows selection, wrapping and RTL scrolling 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3870,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:02.237Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-1a38205a46bc2028367d",
+          "file": "internal-controls.spec.ts",
+          "line": 233,
+          "column": 5
+        },
+        {
+          "title": "shared indicator follows selection, wrapping and RTL scrolling 1366",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3839,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:06.119Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-cb3317abe4f8d662b79a",
+          "file": "internal-controls.spec.ts",
+          "line": 233,
+          "column": 5
+        },
+        {
+          "title": "rapid filters keep a single selected option without editing records or leaking observers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5682,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:09.972Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-96176efe7ffbdf2c9e29",
+          "file": "internal-controls.spec.ts",
+          "line": 269,
+          "column": 1
+        },
+        {
+          "title": "reduced motion and forced colors retain readable selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1161,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:15.662Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-1b5c66e02c8983909f24",
+          "file": "internal-controls.spec.ts",
+          "line": 350,
+          "column": 1
+        },
+        {
+          "title": "painted contrast of internal controls in five skies and both themes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6428,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:16.841Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb4e9311666a6974fa1e-e72a6f17cc2d8375e3b6",
+          "file": "internal-controls.spec.ts",
+          "line": 373,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "living-glass.spec.ts",
+      "file": "living-glass.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "مقارنة ست لقطات جوال بنفس البيانات والوقت والقياسات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26359,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:23.320Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0d119acc4431902119cc-ee9efbeb95a3bd9b2dc2",
+          "file": "living-glass.spec.ts",
+          "line": 83,
+          "column": 1
+        },
+        {
+          "title": "قياس تمرير البطاقات واستجابة الزر على نفس Chromium عند خفض CPU أربع مرات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5435,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:49.696Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0d119acc4431902119cc-23c26cadce9fb033fe88",
+          "file": "living-glass.spec.ts",
+          "line": 221,
+          "column": 1
+        },
+        {
+          "title": "الخامة لا تغير التفاعل ولا تضيف مرشحات إلى النصوص والأزرار",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1621,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:55.162Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0d119acc4431902119cc-3cd08ffb3e13058e8736",
+          "file": "living-glass.spec.ts",
+          "line": 294,
+          "column": 1
+        },
+        {
+          "title": "الانكسار يغير بكسلات الإطار فقط، ووسط النص يبقى مطابقًا",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1359,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:56.809Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0d119acc4431902119cc-f584bded0da4510ab325",
+          "file": "living-glass.spec.ts",
+          "line": 354,
+          "column": 5
+        },
+        {
+          "title": "البديل البسيط والألوان القسرية وتقليل الحركة لا يعطلان البطاقات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1397,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:58.178Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0d119acc4431902119cc-9efa766abf1181cc3a46",
+          "file": "living-glass.spec.ts",
+          "line": 419,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T01:48:03.407Z",
+    "duration": 116293.394,
+    "expected": 17,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,15 @@
+--- a/app/BackupRestore.tsx
++++ b/app/BackupRestore.tsx
+@@ -72,7 +72,11 @@
+         }
+     };
+     return (
+-        <Dialog title="معاينة النسخة الاحتياطية" onClose={onClose}>
++        <Dialog
++            title="معاينة النسخة الاحتياطية"
++            onClose={onClose}
++            canClose={() => !acting.current}
++        >
+             <p className="dialog-text">
+                 النسخة بتاريخ {date(data.exportedAt)}، بالإصدار{data.version}،
+                 تحتوي على {data.projects.length} مشاريع و{data.steps.length}{" "}

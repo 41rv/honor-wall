@@ -1,10 +1,11 @@
+import { appUrl } from "./url";
 import { openCreate } from "./helpers";
 import { test, expect } from "@playwright/test";
 import { largeFixture, importData } from "./helpers";
 test("علامة الإتمام تعمل حتى إذا حدث تحديث للواجهة أثناء الضغط", async ({
     page,
 }) => {
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await openCreate(page, "task");
     await page
         .getByRole("dialog")
@@ -45,7 +46,7 @@ test("قياس سرعة الإضافة والتعديل والإتمام بقا�
     await importData(page, largeFixture());
     // This performance scenario adds another active project to a legacy set.
     // Raise capacity explicitly outside the measured operation.
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await page.getByText("إعداد المشاريع النشطة", { exact: true }).click();
     await page.getByLabel("الحد الأقصى للمشاريع النشطة").fill("30");
     await page
@@ -54,7 +55,7 @@ test("قياس سرعة الإضافة والتعديل والإتمام بقا�
     const session = await page.context().newCDPSession(page);
     await session.send("Emulation.setCPUThrottlingRate", { rate: 4 });
     const times: Record<string, number> = {};
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await openCreate(page, "project");
     await page
         .getByRole("dialog")
@@ -70,7 +71,7 @@ test("قياس سرعة الإضافة والتعديل والإتمام بقا�
         .getByRole("button", { name: "مشروع اختبار السرعة", exact: true })
         .waitFor();
     times.project = Date.now() - started;
-    await page.goto("/#project/p0");
+    await page.goto(appUrl("/#project/p0"));
     await page.getByRole("button", { name: "مرحلة", exact: true }).click();
     await page
         .getByRole("dialog")
@@ -90,7 +91,7 @@ test("قياس سرعة الإضافة والتعديل والإتمام بقا�
     await expect(page.getByText("محفوظ تلقائيًا")).toBeVisible();
     times.notes = Date.now() - started;
 
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     started = Date.now();
     await page
         .getByRole("button", { name: "إكمال مهمة 0", exact: true })

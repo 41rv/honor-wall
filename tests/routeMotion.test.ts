@@ -18,7 +18,7 @@ describe("اتجاه حركة تبويبات مسار", () => {
         expect(routeOffset("tasks", "tasks")).toBe(0);
     });
     it("لا يخمن اتجاه التفاصيل والروابط المجهولة", () => {
-        for (const route of ["task/abc", "project", "calendar", "backup", ""]) {
+        for (const route of ["unknown/abc", "backup", ""]) {
             expect(routeOffset(route, "home")).toBe(0);
             expect(routeOffset("home", route)).toBe(0);
         }

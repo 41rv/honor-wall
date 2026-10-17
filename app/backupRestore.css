@@ -1,0 +1,33 @@
+/* Only the restore preview: do not alter existing dialog actions elsewhere. */
+.backup-restore-actions.dialog-buttons {
+    position: static;
+    flex-wrap: wrap;
+    background: transparent;
+}
+.backup-restore-actions > .btn {
+    flex: 1 1 140px;
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+}
+.backup-restore-confirm {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    margin-block: 16px;
+    line-height: 1.8;
+    cursor: pointer;
+}
+.backup-restore-confirm input[type="checkbox"] {
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    min-height: 20px;
+    padding: 0;
+    margin: 0;
+    accent-color: var(--primary);
+}
+.backup-restore-confirm span {
+    min-width: 0;
+}

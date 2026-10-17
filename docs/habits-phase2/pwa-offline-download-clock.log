@@ -1,0 +1,10 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+download.saveAs: Target page, context or browser has been closed
+    at /workspace/honor-wall/docs/habits-phase2/pwa-check.mjs:469:95 {
+  log: []
+}
+
+Node.js v24.19.0

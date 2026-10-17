@@ -1,0 +1,187 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "-c",
+      "docs/habits-phase4-7/supplemental.config.mjs",
+      "-g",
+      "simultaneous timestamp",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/docs/habits-phase4-7/supplemental.config.mjs",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/masar-phase47-edge-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "habits-phase4-7.spec.ts",
+          "habits-phase47-edge.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/tmp/masar-phase47-edge-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "habits-phase4-7.spec.ts",
+          "habits-phase47-edge.spec.ts"
+        ],
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4195",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "python3 -m http.server 4195 --bind 127.0.0.1 --directory /tmp/masar-phase47-final-root",
+      "url": "http://127.0.0.1:4195",
+      "cwd": "/workspace/honor-wall",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "habits-phase47-edge.spec.ts",
+      "file": "habits-phase47-edge.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "simultaneous timestamp recording from a second tab updates the first quantity without duplicate rows",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7031,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.habit-detail > .habit-row').getByRole('spinbutton', { name: 'كمية «قراءة»', exact: true })\nExpected: \u001b[32m\"7\"\u001b[39m\nReceived: \u001b[31m\"2\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" locator('.habit-detail > .habit-row').getByRole('spinbutton', { name: 'كمية «قراءة»', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.habit-detail > .habit-row').getByRole('spinbutton', { name: 'كمية «قراءة»', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input min=\"0\" value=\"2\" step=\"0.001\" type=\"number\" max=\"1000000000\" inputmode=\"decimal\" aria-label=\"كمية «قراءة»\"/>\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.habit-detail > .habit-row').getByRole('spinbutton', { name: 'كمية «قراءة»', exact: true })\nExpected: \u001b[32m\"7\"\u001b[39m\nReceived: \u001b[31m\"2\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" locator('.habit-detail > .habit-row').getByRole('spinbutton', { name: 'كمية «قراءة»', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.habit-detail > .habit-row').getByRole('spinbutton', { name: 'كمية «قراءة»', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input min=\"0\" value=\"2\" step=\"0.001\" type=\"number\" max=\"1000000000\" inputmode=\"decimal\" aria-label=\"كمية «قراءة»\"/>\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/habits-phase47-edge.spec.ts:332:7",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/habits-phase47-edge.spec.ts",
+                      "column": 7,
+                      "line": 332
+                    },
+                    "snippet": "  330 |     await expect(\n  331 |         first.getByRole(\"spinbutton\", { name: \"كمية «قراءة»\", exact: true }),\n> 332 |     ).toHaveValue(\"7\");\n      |       ^\n  333 |     expect(\n  334 |         (await readStore(page, \"habitEntries\")).filter(\n  335 |             (e) => e.habitId === \"reading\" && e.localDate === \"2026-10-21\","
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/habits-phase47-edge.spec.ts",
+                        "column": 7,
+                        "line": 332
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.habit-detail > .habit-row').getByRole('spinbutton', { name: 'كمية «قراءة»', exact: true })\nExpected: \u001b[32m\"7\"\u001b[39m\nReceived: \u001b[31m\"2\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" locator('.habit-detail > .habit-row').getByRole('spinbutton', { name: 'كمية «قراءة»', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.habit-detail > .habit-row').getByRole('spinbutton', { name: 'كمية «قراءة»', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to <input min=\"0\" value=\"2\" step=\"0.001\" type=\"number\" max=\"1000000000\" inputmode=\"decimal\" aria-label=\"كمية «قراءة»\"/>\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  330 |     await expect(\n  331 |         first.getByRole(\"spinbutton\", { name: \"كمية «قراءة»\", exact: true }),\n> 332 |     ).toHaveValue(\"7\");\n      |       ^\n  333 |     expect(\n  334 |         (await readStore(page, \"habitEntries\")).filter(\n  335 |             (e) => e.habitId === \"reading\" && e.localDate === \"2026-10-21\",\n    at /workspace/honor-wall/tests/browser/habits-phase47-edge.spec.ts:332:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:42:29.797Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/tmp/masar-phase47-edge-results/habits-phase47-edge-simult-454c0-tity-without-duplicate-rows/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/habits-phase47-edge.spec.ts",
+                    "column": 7,
+                    "line": 332
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "86b0318743f1e45a4769-5d41268b7c6deb566c6b",
+          "file": "habits-phase47-edge.spec.ts",
+          "line": 291,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T01:42:29.065Z",
+    "duration": 8068.141,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

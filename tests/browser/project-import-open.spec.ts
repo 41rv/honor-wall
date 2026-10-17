@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFileSync } from "node:fs";
@@ -24,7 +25,7 @@ test.describe("فتح الاستيراد على شاشة أندرويد محاك
         // task-cycle reconciliation. The test timeout cannot reach this tick.
         await page.clock.install({ time: new Date("2026-10-14T12:00:00Z") });
         await importData(page, largeFixture());
-        await page.goto("/#projects");
+        await page.goto(appUrl("/#projects"));
         await expect(page.locator(".project-card")).toHaveCount(20);
         await page.evaluate(async () => await navigator.serviceWorker.ready);
         await page.evaluate(() => {
@@ -116,7 +117,7 @@ test.describe("فتح الاستيراد على شاشة أندرويد محاك
     test("المنتقي يُفتح بطلب منفصل مرة واحدة ويعمل إلغاؤه وإعادة فتحه ثم المعاينة والحفظ", async ({
         page,
     }) => {
-        await page.goto("/#projects");
+        await page.goto(appUrl("/#projects"));
         let requests = 0;
         page.on("filechooser", () => requests++);
         await page
@@ -170,7 +171,7 @@ test.describe("فتح الاستيراد على شاشة أندرويد محاك
     test("فشل JSON في واجهة الفتح يتيح إعادة الاختيار ولا يحفظ بيانات", async ({
         page,
     }) => {
-        await page.goto("/#projects");
+        await page.goto(appUrl("/#projects"));
         await page
             .getByRole("button", { name: "استيراد مشروع", exact: true })
             .tap();
@@ -207,7 +208,7 @@ test.describe("فتح الاستيراد على شاشة أندرويد محاك
     test("عودة التركيز تعيد إتاحة المنتقي للمتصفحات التي لا ترسل cancel", async ({
         page,
     }) => {
-        await page.goto("/#projects");
+        await page.goto(appUrl("/#projects"));
         await page
             .getByRole("button", { name: "استيراد مشروع", exact: true })
             .tap();

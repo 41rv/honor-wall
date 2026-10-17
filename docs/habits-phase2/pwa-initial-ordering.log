@@ -1,0 +1,96 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  [
+    {
+      archived: false,
+      createdAt: '2026-10-01T00:00:00.000Z',
++     id: 'bed',
++     kind: 'simple',
++     pathId: null,
+-     id: 'reading',
+-     kind: 'graded',
+-     pathId: 'culture',
+      pauses: [],
+      timeZone: 'Asia/Riyadh',
++     title: 'ترتيب السرير',
+-     title: 'قراءة',
+      updatedAt: '2026-10-01T00:00:00.000Z'
+    },
+    {
+      archived: false,
+      createdAt: '2026-10-01T00:00:00.000Z',
++     id: 'reading',
++     kind: 'graded',
++     pathId: 'culture',
+-     id: 'bed',
+-     kind: 'simple',
+-     pathId: null,
+      pauses: [],
+      timeZone: 'Asia/Riyadh',
++     title: 'قراءة',
+-     title: 'ترتيب السرير',
+      updatedAt: '2026-10-01T00:00:00.000Z'
+    }
+  ]
+
+    at file:///workspace/honor-wall/docs/habits-phase2/pwa-check.mjs:335:43 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    {
+      id: 'bed',
+      title: 'ترتيب السرير',
+      kind: 'simple',
+      pathId: null,
+      timeZone: 'Asia/Riyadh',
+      createdAt: '2026-10-01T00:00:00.000Z',
+      updatedAt: '2026-10-01T00:00:00.000Z',
+      archived: false,
+      pauses: []
+    },
+    {
+      id: 'reading',
+      title: 'قراءة',
+      kind: 'graded',
+      pathId: 'culture',
+      timeZone: 'Asia/Riyadh',
+      createdAt: '2026-10-01T00:00:00.000Z',
+      updatedAt: '2026-10-01T00:00:00.000Z',
+      archived: false,
+      pauses: []
+    }
+  ],
+  expected: [
+    {
+      id: 'reading',
+      title: 'قراءة',
+      kind: 'graded',
+      pathId: 'culture',
+      timeZone: 'Asia/Riyadh',
+      createdAt: '2026-10-01T00:00:00.000Z',
+      updatedAt: '2026-10-01T00:00:00.000Z',
+      archived: false,
+      pauses: []
+    },
+    {
+      id: 'bed',
+      title: 'ترتيب السرير',
+      kind: 'simple',
+      pathId: null,
+      timeZone: 'Asia/Riyadh',
+      createdAt: '2026-10-01T00:00:00.000Z',
+      updatedAt: '2026-10-01T00:00:00.000Z',
+      archived: false,
+      pauses: []
+    }
+  ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

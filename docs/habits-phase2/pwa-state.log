@@ -1,0 +1,1 @@
+PASS PWA storage/update checks (native offline save remains blocked) 22 checks; all 12 old stores unchanged across migration; all 19 stores and safety copy survive offline restart

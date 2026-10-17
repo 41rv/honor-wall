@@ -1,3 +1,5 @@
+import { appUrl } from "./url";
+import { navigateView } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import { importData, sizedFixture, readStore, openCreate } from "./helpers";
 import fs from "node:fs";
@@ -10,6 +12,7 @@ const output = "docs/smooth-controls";
 const before = process.env.MASAR_CONTROLS_STAGE === "before";
 const guardBaseline = process.env.MASAR_CONTROLS_GUARD_BASELINE === "1";
 const routes = ["home", "projects", "tasks", "ideas", "progress"];
+const primaryRoutes = ["habits", "home", "projects"];
 fs.mkdirSync(output, { recursive: true });
 test.use({
     timezoneId: "Asia/Riyadh",
@@ -36,7 +39,7 @@ async function setup(page: Page, theme = "light", count = 24) {
         ...(i < 3 ? { today: { date: now, timeZone: "Asia/Riyadh" } } : {}),
     }));
     await importData(page, data);
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await page.evaluate(() => document.fonts.ready);
     const close = page.getByRole("button", {
         name: "إخفاء الرسالة",
@@ -191,11 +194,7 @@ test("قياس التنقل والتمرير مع500 مهمة وCPU أبطأ أ�
             nav.push(performance.now() - start);
             await new Promise((resolve) => setTimeout(resolve, 280));
         }
-        (
-            document.querySelector(
-                '.navigation a[href="#tasks"]',
-            ) as HTMLElement
-        ).click();
+        (document.querySelector(".task-shortcut") as HTMLElement).click();
         await new Promise((resolve) => setTimeout(resolve, 350));
         for (let i = 0; i < 30; i++) {
             window.scrollBy(0, 240);
@@ -216,7 +215,7 @@ test("قياس التنقل والتمرير مع500 مهمة وCPU أبطأ أ�
             frames_over_50ms: frames.filter((x) => x > 50).length,
             long_tasks_ms: longs,
         };
-    }, routes);
+    }, primaryRoutes);
     await cdp.send("Emulation.setCPUThrottlingRate", { rate: 1 });
     expect(await page.locator(".task-row").count()).toBe(500);
     fs.writeFileSync(
@@ -237,7 +236,7 @@ if (!before) {
         }) => {
             await page.setViewportSize({ width: 390, height: 844 });
             await setup(page, "dark", count);
-            await page.locator('.navigation a[href="#tasks"]').click();
+            await navigateView(page, "tasks");
             await settled(page);
             await page.evaluate(() => {
                 const w = window as unknown as {
@@ -375,11 +374,18 @@ if (!before) {
                     return animate(frames, options);
                 }) as typeof main.animate;
             });
+            await navigateView(page, "habits");
+            await settled(page);
+            await page.evaluate(() => {
+                (
+                    window as unknown as { routeMotions: unknown[] }
+                ).routeMotions = [];
+            });
             for (const route of [
-                ...routes.slice(1),
-                ...routes.slice(0, -1).reverse(),
+                ...primaryRoutes.slice(1),
+                ...primaryRoutes.slice(0, -1).reverse(),
             ]) {
-                await page.locator(`.navigation a[href="#${route}"]`).click();
+                await navigateView(page, route);
                 await expect(page.locator("main")).toHaveAttribute(
                     "data-route",
                     route,
@@ -432,20 +438,20 @@ if (!before) {
                         }
                     ).routeMotions,
             );
-            expect(motions.map((m) => m.duration)).toEqual(Array(8).fill(240));
+            expect(motions.map((m) => m.duration)).toEqual(Array(4).fill(240));
             expect(motions.map((m) => m.offset)).toEqual([
-                ...Array(4).fill("translateX(-10px)"),
-                ...Array(4).fill("translateX(10px)"),
+                ...Array(2).fill("translateX(-10px)"),
+                ...Array(2).fill("translateX(10px)"),
             ]);
             await page.goBack();
             await expect(page.locator("main")).toHaveAttribute(
                 "data-route",
-                "projects",
+                "home",
             );
             await page.goForward();
             await expect(page.locator("main")).toHaveAttribute(
                 "data-route",
-                "home",
+                "habits",
             );
             expect(await readStore(page, "tasks")).toEqual(originalTasks);
         });
@@ -463,7 +469,7 @@ if (!before) {
             for (let i = 0; i < 40; i++) {
                 (
                     document.querySelector(
-                        `.navigation a[href="#${routes[(i + 1) % 5]}"]`,
+                        `.navigation a[href="#${routes[(i + 1) % routes.length]}"]`,
                     ) as HTMLElement
                 ).click();
                 await new Promise((resolve) => setTimeout(resolve, 12));
@@ -483,7 +489,7 @@ if (!before) {
                     throw Error("Duplicated page or remounted sky");
             }
             return { maxAnimations, minOpacity };
-        }, routes);
+        }, primaryRoutes);
         expect(result.maxAnimations).toBeLessThanOrEqual(1);
         expect(result.minOpacity).toBeGreaterThanOrEqual(0.91);
         await expect(page.locator("main")).toHaveAttribute(
@@ -501,7 +507,7 @@ if (!before) {
         ).toHaveCount(1);
         await expect(page.locator(".home-today")).toHaveCount(1);
         for (const route of ["tasks", "ideas", "home"])
-            await page.locator(`.navigation a[href="#${route}"]`).tap();
+            await navigateView(page, route, true);
         await expect(page.locator("main")).toHaveAttribute(
             "data-route",
             "home",
@@ -513,20 +519,20 @@ if (!before) {
     }) => {
         await page.setViewportSize({ width: 390, height: 844 });
         await setup(page, "dark", 500);
-        await page.locator('.navigation a[href="#tasks"]').click();
+        await navigateView(page, "tasks");
         await settled(page);
         await page.evaluate(() => window.scrollTo(0, 1200));
         await expect
             .poll(() => page.evaluate(() => scrollY))
             .toBeGreaterThan(1100);
         const y = await page.evaluate(() => scrollY);
-        await page.locator('.navigation a[href="#ideas"]').click();
+        await navigateView(page, "ideas");
         await expect(page.locator("main")).toHaveAttribute(
             "data-route",
             "ideas",
         );
         await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
-        await page.locator('.navigation a[href="#tasks"]').click();
+        await navigateView(page, "tasks");
         await settled(page);
         await expect
             .poll(() => page.evaluate((saved) => Math.abs(scrollY - saved), y))
@@ -539,7 +545,7 @@ if (!before) {
         }) => {
             await page.setViewportSize({ width: 390, height: 844 });
             await setup(page, "dark", count);
-            await page.locator('.navigation a[href="#tasks"]').click();
+            await navigateView(page, "tasks");
             await settled(page);
             for (let i = 0; i < 3; i++) {
                 await page.locator(".mobile-fab").click();
@@ -633,7 +639,7 @@ if (!before) {
         await page.emulateMedia({ reducedMotion: "reduce" });
         await setup(page);
         for (const route of routes.slice(1)) {
-            await page.locator(`.navigation a[href="#${route}"]`).click();
+            await navigateView(page, route);
             await expect(page.locator("main")).toHaveAttribute(
                 "data-route",
                 route,
@@ -656,7 +662,7 @@ if (!before) {
         await page.keyboard.press("Escape");
         await expect(page.getByRole("dialog")).not.toBeVisible();
         await page.emulateMedia({ reducedMotion: "no-preference" });
-        await page.locator('.navigation a[href="#tasks"]').click();
+        await navigateView(page, "tasks");
         await page.evaluate(() =>
             document
                 .querySelector("main")!
@@ -684,7 +690,7 @@ if (!before) {
                 insets: { bottom },
             });
             for (const route of routes) {
-                await page.locator(`.navigation a[href="#${route}"]`).click();
+                await navigateView(page, route);
                 await settled(page);
                 const nav = await page.locator(".sidebar").boundingBox();
                 const fab = await page.locator(".mobile-fab").boundingBox();
@@ -761,9 +767,7 @@ if (!before) {
                     window.dispatchEvent(new Event("focus")),
                 );
                 for (const route of ["home", "tasks"]) {
-                    await page
-                        .locator(`.navigation a[href="#${route}"]`)
-                        .click();
+                    await navigateView(page, route);
                     const rows = await page.evaluate(() =>
                         [
                             ...document.querySelectorAll<HTMLElement>(
@@ -885,7 +889,7 @@ if (!before) {
                 page.evaluate(() => !!navigator.serviceWorker.controller),
             )
             .toBe(true);
-        await page.locator('.navigation a[href="#tasks"]').click();
+        await navigateView(page, "tasks");
         await page
             .getByRole("button", { name: "إكمال قراءة عشر صفحات", exact: true })
             .click();
@@ -901,7 +905,7 @@ if (!before) {
         await context.setOffline(true);
         await page.reload();
         for (const route of routes) {
-            await page.locator(`.navigation a[href="#${route}"]`).click();
+            await navigateView(page, route);
             await expect(page.locator("main")).toHaveAttribute(
                 "data-route",
                 route,

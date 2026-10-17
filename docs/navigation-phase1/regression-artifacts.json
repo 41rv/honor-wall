@@ -1,0 +1,1202 @@
+{
+  "historical_files_preserved": 1812,
+  "archived_test_outputs": [
+    {
+      "source": "docs/dark-mode-audit/home-green-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/dark-mode-audit/home-green-light-390.png",
+      "sha256": "e25aefb81ad33f7b81575a7fbd5ad1654136d3c3b8abc8b721eea68719592ec8"
+    },
+    {
+      "source": "docs/dark-mode-audit/home-mono-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/dark-mode-audit/home-mono-dark-390.png",
+      "sha256": "133fe8cf68de7feed703775283649a4b7e51bb6bdffd6d227b430718c6d1dfe0"
+    },
+    {
+      "source": "docs/dark-mode-audit/listeners-and-tabs.json",
+      "archive": "docs/navigation-phase1/regression/docs/dark-mode-audit/listeners-and-tabs.json",
+      "sha256": "3c280515dfba1f93bf7c848005fa1031c744b49617290fe50cc581cbb64a5aac"
+    },
+    {
+      "source": "docs/dark-mode-audit/safe-area-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/dark-mode-audit/safe-area-dark-390.png",
+      "sha256": "df788f6518fbb6213981149e3bf4ba11965311c06bd912da46cc979bc4a0e885"
+    },
+    {
+      "source": "docs/dark-mode-audit/home-mono-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/dark-mode-audit/home-mono-light-390.png",
+      "sha256": "5e253e288de12170768961da51e80314dd53988ea2545f019d5bf088142bd6c7"
+    },
+    {
+      "source": "docs/dark-mode-audit/home-green-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/dark-mode-audit/home-green-dark-390.png",
+      "sha256": "9e2252baafab46f382a3908555ac8a0b88d93e4f762ffda79aa796c09e7931b6"
+    },
+    {
+      "source": "docs/internal-controls/after-history-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-history-light-390.png",
+      "sha256": "788039b1e8f524d92591713715fec06473ade9bd39374daffe7557c9e84fc26c"
+    },
+    {
+      "source": "docs/internal-controls/after-task-options-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-task-options-dark-320.png",
+      "sha256": "698cdb3cb6fafd4339b18b1be08f0fc1350775d1b499c5e28e75584a86e8c87c"
+    },
+    {
+      "source": "docs/internal-controls/after-idea-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-idea-light-320.png",
+      "sha256": "77cadc0256a7d387e29626f46dd41eafe943dde68b6aff85eb27a1a29977afe6"
+    },
+    {
+      "source": "docs/internal-controls/after-history-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-history-dark-390.png",
+      "sha256": "34c243ef81bf7117131ed1bba485437dfe276a89e3e4612cbb7a6cb3fb8ec20a"
+    },
+    {
+      "source": "docs/internal-controls/after-ideas-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-ideas-light-390.png",
+      "sha256": "8a807d143ad56f2a9fde255d8b48836af1ee044bf391531d7b8aaaeafed36802"
+    },
+    {
+      "source": "docs/internal-controls/after-rest-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-rest-light-390.png",
+      "sha256": "225576872fd4ef550a7e0400888e763fc9a2e19a25d2c0e08b8090d873def86b"
+    },
+    {
+      "source": "docs/internal-controls/after-idea-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-idea-dark-390.png",
+      "sha256": "dd695c47b3f223e68f14726f5356ce4a17a731250aca74c44d97419140af0b70"
+    },
+    {
+      "source": "docs/internal-controls/after-projects-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-projects-dark-390.png",
+      "sha256": "5e4918a16cdabe0c8b3320ed9c09ad2863f983a962ddf928d0413968230703b0"
+    },
+    {
+      "source": "docs/internal-controls/after-step-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-step-light-390.png",
+      "sha256": "9c9626167ffbf2ced758a45c0897d725519eee4a9f0e2821474db0b7a1dd2354"
+    },
+    {
+      "source": "docs/internal-controls/after-rest-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-rest-dark-320.png",
+      "sha256": "64295fb3e0b3fa610e634077068981f32b35c829732e90dca5a74078451393e8"
+    },
+    {
+      "source": "docs/internal-controls/after-filters-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-filters-dark-320.png",
+      "sha256": "76e5c39bac72fd8e0d417bafb4591a65064fc26e6eefb6e361afb3e1a1781f3a"
+    },
+    {
+      "source": "docs/internal-controls/after-appearance-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-appearance-dark-390.png",
+      "sha256": "6b5af510d7084fbd44a641089dd0c8469da549e6b43a2a4f34efd0978997de8b"
+    },
+    {
+      "source": "docs/internal-controls/after-step-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-step-light-320.png",
+      "sha256": "ace74adbafed616e0532ef244a78c080b2e8f4a8be86022a4d684aa7bd32462e"
+    },
+    {
+      "source": "docs/internal-controls/after-idea-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-idea-dark-320.png",
+      "sha256": "4c6b166b92373a8de14e7f6e2ea4089674498800083f923f3bb8baa6bc83d4d7"
+    },
+    {
+      "source": "docs/internal-controls/after-filters-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-filters-dark-390.png",
+      "sha256": "a1810f9e31a7df2a627f8dc007664c0aeef3162d00478eb584b9f1fe7c53da07"
+    },
+    {
+      "source": "docs/internal-controls/after-project-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-project-dark-320.png",
+      "sha256": "239a6e49a99d8c06cd4d18238405eee52cd79beb29304581cc5ee1ed4a6f5310"
+    },
+    {
+      "source": "docs/internal-controls/after-progress-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-progress-light-320.png",
+      "sha256": "9e9259761fa5a64b5c118b422484f2d06eea39f25dc14e75453c1abcaf135f33"
+    },
+    {
+      "source": "docs/internal-controls/after-rest-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-rest-dark-390.png",
+      "sha256": "143be3d1e9f678b5893e0009f261dd8c96b0bdf96585fe85464ce2b7d6d0490c"
+    },
+    {
+      "source": "docs/internal-controls/after-menu-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-menu-dark-320.png",
+      "sha256": "24200417dcdc2318440f321e6447e82ce1af28bb0a83d2690e66241b2d9c06fb"
+    },
+    {
+      "source": "docs/internal-controls/after-task-options-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-task-options-dark-390.png",
+      "sha256": "0c26965236f71042de101ec52ee1c2d4138d46abf26d5a19346968b5a56abec6"
+    },
+    {
+      "source": "docs/internal-controls/after-project-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-project-dark-390.png",
+      "sha256": "5dc16636e7a2a310b41218c5f3b2787df8c6856473a0a6e92dff4244a6065b83"
+    },
+    {
+      "source": "docs/internal-controls/after-projects-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-projects-light-320.png",
+      "sha256": "20c7153ad601dfac68992830173ea64ab26e90406857834441994c9e7ba747dd"
+    },
+    {
+      "source": "docs/internal-controls/after-project-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-project-light-320.png",
+      "sha256": "ead2b2c7da639da698872bc67c89ea2dc7fc67fd256a727759095bf89393d00a"
+    },
+    {
+      "source": "docs/internal-controls/after-insights-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-insights-light-390.png",
+      "sha256": "eea8c3164fcd15e0a8818b583c335fb760c8521f3c02aef25ec68bf32f5563c3"
+    },
+    {
+      "source": "docs/internal-controls/after-projects-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-projects-light-390.png",
+      "sha256": "3ecdca10d94bc9caa98232243c8fc5e32904c9be93f4feff1de14c69b96477d2"
+    },
+    {
+      "source": "docs/internal-controls/after-appearance-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-appearance-dark-320.png",
+      "sha256": "4a02b036d425a1d434aa3d869bc40a2c1a7412d21b8c6df1dc87baee82f0a60e"
+    },
+    {
+      "source": "docs/internal-controls/after-history-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-history-light-320.png",
+      "sha256": "78e7d5799773875cf94689e7d4dfe45f6152a2f6db0a5ca6885c518d017c1275"
+    },
+    {
+      "source": "docs/internal-controls/after-insights-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-insights-light-320.png",
+      "sha256": "d278d13d1bfcf6c3ddd5c703272c791da86fb0ce5d4d04413fbbbc64556c398a"
+    },
+    {
+      "source": "docs/internal-controls/after-appearance-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-appearance-light-390.png",
+      "sha256": "d115b3856724d15421659b34e4e3d8d5f1978e7fd57516bb79bcb830ca6c7da4"
+    },
+    {
+      "source": "docs/internal-controls/after-idea-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-idea-light-390.png",
+      "sha256": "307ee16d847fb360c06bed6af9cec69329d4bdcbea075d03f42e1e0c5b4b8d8a"
+    },
+    {
+      "source": "docs/internal-controls/after-insights-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-insights-dark-320.png",
+      "sha256": "8e4a46ac6a33db3341c0d3b0dc004670fa41ed78ad9d75c412a6107d982bd885"
+    },
+    {
+      "source": "docs/internal-controls/after-progress-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-progress-dark-320.png",
+      "sha256": "2c5118842ed30ddb3f04a1d69f233ecf6aede9fea4035cbf33bdd8cf855a4dc9"
+    },
+    {
+      "source": "docs/internal-controls/after-ideas-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-ideas-dark-390.png",
+      "sha256": "6f159d77d8dc6109a272efbbbc93fd847df798f0662ab45ff5ef66b670b0aaf8"
+    },
+    {
+      "source": "docs/internal-controls/after-menu-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-menu-dark-390.png",
+      "sha256": "3712e09046d50ec9705a5b5a9bd686b02d5bb69cecc854752da6601dbadc99b2"
+    },
+    {
+      "source": "docs/internal-controls/after-step-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-step-dark-390.png",
+      "sha256": "b27991c1b20c9c011906cf68aeb67121c99f48de7dff2ec1dd0bd7c9eb01893c"
+    },
+    {
+      "source": "docs/internal-controls/after-backup-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-backup-dark-390.png",
+      "sha256": "7a430079c628a6b1c8a135a5f6a23e096d5234a4311c518c78ec515a0fd1e4b1"
+    },
+    {
+      "source": "docs/internal-controls/after-task-options-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-task-options-light-390.png",
+      "sha256": "e66eb17db92a34e8dedf3e003d767aad0a8b0df7109b6e43ef00a1ddb38b8643"
+    },
+    {
+      "source": "docs/internal-controls/after-step-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-step-dark-320.png",
+      "sha256": "28d59049518f94b47d776f21a42f84a9c56c44a89b763d73a1f56de861d42f38"
+    },
+    {
+      "source": "docs/internal-controls/after-progress-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-progress-dark-390.png",
+      "sha256": "07b1e1c3dd869d800bf613ea6940c5094a07fa0ff2e5990debf14ecef08eafa8"
+    },
+    {
+      "source": "docs/internal-controls/after-backup-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-backup-dark-320.png",
+      "sha256": "80af5b3a09024310f919cf4b72ec6fc04e4b55346970ef9274504b82e0161d52"
+    },
+    {
+      "source": "docs/internal-controls/after-rest-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-rest-light-320.png",
+      "sha256": "db4f8b67fbfbb8a628985d0bab1257e3cfe6f66eacbed70a327c93f1a6eb882f"
+    },
+    {
+      "source": "docs/internal-controls/after-ideas-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-ideas-light-320.png",
+      "sha256": "1c5a642c517c084b4287c4a49685bcb696a00fc0c8e2ae10fcee1d66b34e4ad5"
+    },
+    {
+      "source": "docs/internal-controls/after-task-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-task-dark-390.png",
+      "sha256": "3c4b194e81a2053c26cb55291d43e40dba26a0c505220d699dd9339953e7d86e"
+    },
+    {
+      "source": "docs/internal-controls/after-progress-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-progress-light-390.png",
+      "sha256": "018a700fdc48263948bca3e9e4830f4d72bcee0e44ad353c0e097c5acdd65075"
+    },
+    {
+      "source": "docs/internal-controls/after-menu-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-menu-light-320.png",
+      "sha256": "5e39df74ba2feed59753d1421cc817853548ac99829a036fd91d9b97d0e11d01"
+    },
+    {
+      "source": "docs/internal-controls/after-filters-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-filters-light-390.png",
+      "sha256": "907385979a89833de158913745e79785185500db5cc98917f51715e45e79dc83"
+    },
+    {
+      "source": "docs/internal-controls/after-appearance-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-appearance-light-320.png",
+      "sha256": "b7230cf91b67135745eda31408d7db207ef6e8b243af9dfb54f0c946022adcc3"
+    },
+    {
+      "source": "docs/internal-controls/after-insights-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-insights-dark-390.png",
+      "sha256": "4e00c7a0433652301c48ad81cf6a5033664838cffd1e14301bb98cb6a57aa898"
+    },
+    {
+      "source": "docs/internal-controls/after-task-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-task-light-390.png",
+      "sha256": "2b6a2c755c5283ec9c2c3fca58cafbbfb06733915a3ab45e4222bfdb3107260b"
+    },
+    {
+      "source": "docs/internal-controls/after-projects-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-projects-dark-320.png",
+      "sha256": "2f5d71c85fc82a2b964401090d6ad698dc1e0d61647cc5f82d8950fc0d6c96fc"
+    },
+    {
+      "source": "docs/internal-controls/after-filters-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-filters-light-320.png",
+      "sha256": "a6f3d6df7c18b1bb5ea2822c497f740cff97cac10602ca03a3b4b9c520a36a50"
+    },
+    {
+      "source": "docs/internal-controls/after-menu-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-menu-light-390.png",
+      "sha256": "bb09ec13db59c5d5957f89787a94c04af215f7910f51c1f3fe9888bcce3cd669"
+    },
+    {
+      "source": "docs/internal-controls/after-task-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-task-dark-320.png",
+      "sha256": "7300cf210633ba0bc0e9fb6fe1b2798b18e379e74968665f28f1a77b85c5ddea"
+    },
+    {
+      "source": "docs/internal-controls/after-task-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-task-light-320.png",
+      "sha256": "4fa36a153dbeb05297b40e1fe920a5ad685ba43600c234ebc10b2839e888d4bb"
+    },
+    {
+      "source": "docs/internal-controls/after-ideas-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-ideas-dark-320.png",
+      "sha256": "face06cecade17bdc641d951ca6eddbc1ba3e0eba585f91d2367c2b241c9c2e7"
+    },
+    {
+      "source": "docs/internal-controls/after-project-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-project-light-390.png",
+      "sha256": "d832953f2c716d14ab072c90c92ef83eb7d8a7c52b792496f9dae0c990d0a1c9"
+    },
+    {
+      "source": "docs/internal-controls/after-history-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-history-dark-320.png",
+      "sha256": "b50ab43d41dd9c6e9ad47ad91fb2bce36ffb065b01dc97be103f7e44be7cd2b1"
+    },
+    {
+      "source": "docs/internal-controls/after-backup-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-backup-light-390.png",
+      "sha256": "b6796e535ede05ef0db976e42b713d23136d6a7851cc33fda477933258326af6"
+    },
+    {
+      "source": "docs/internal-controls/after-backup-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-backup-light-320.png",
+      "sha256": "fa5356293d67975060ba91cd63fb7705caed4cdcb7b2ca6012b49c9d8e6e7707"
+    },
+    {
+      "source": "docs/internal-controls/contrast.json",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/contrast.json",
+      "sha256": "c33a46e01e816328ce7617a7f63a23a18f5a9f04b29bcb09ece3b9edd97fac94"
+    },
+    {
+      "source": "docs/internal-controls/after-task-options-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/internal-controls/after-task-options-light-320.png",
+      "sha256": "dab4df669991d84ad244b1967a12d5b608f89079c68c20c81fc800c499792c9a"
+    },
+    {
+      "source": "docs/living-sky-shell/tasks-500-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/tasks-500-dark-390.png",
+      "sha256": "4ee3a13bf0c4105afe93334412dbf6897e498c8153886b0d8d5c70144d363681"
+    },
+    {
+      "source": "docs/living-sky-shell/after-tasks-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-tasks-light-320.png",
+      "sha256": "666b5200b8d6dba810b041219cc40fd3cb968199e7b773ff13ff171bf1f75c64"
+    },
+    {
+      "source": "docs/living-sky-shell/after-ideas-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-ideas-light-390.png",
+      "sha256": "ccffb30d60b1b2bed934d6c70b123156ecd43617b607e48f1b8305dc65793f34"
+    },
+    {
+      "source": "docs/living-sky-shell/after-projects-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-projects-dark-390.png",
+      "sha256": "b1f182a136ced08954f8aaf1c1b6b60bddb37b973cb44f3069e5ea0878690432"
+    },
+    {
+      "source": "docs/living-sky-shell/after-home-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-home-dark-320.png",
+      "sha256": "e1a56bb242d007c6bf88fac163f6472916c81f5ba24d199b7dd2fff26d32700a"
+    },
+    {
+      "source": "docs/living-sky-shell/rendered-contrast.json",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/rendered-contrast.json",
+      "sha256": "51b393f478f21d80188b3cb5b834637c61f94051af5f0b9df5a67ad8cbd780ba"
+    },
+    {
+      "source": "docs/living-sky-shell/after-progress-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-progress-light-320.png",
+      "sha256": "ede6fb8aa854bd0159e4f2290ba059c6cdcd88aa372fca28152791ac54ffea3f"
+    },
+    {
+      "source": "docs/living-sky-shell/after-tasks-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-tasks-dark-390.png",
+      "sha256": "9075ec06b0c2eadac785d00bf1e05f4b784f6faebfbcd26f4b7a9d82023be31d"
+    },
+    {
+      "source": "docs/living-sky-shell/after-projects-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-projects-light-320.png",
+      "sha256": "394a2a104f160a776a16e07331d6ce12ce50746c2aac7803da1f79de671a745e"
+    },
+    {
+      "source": "docs/living-sky-shell/search-performance.json",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/search-performance.json",
+      "sha256": "9198720a263017554ee9ff9ff9035130133a59dca965a5bcb00b41e9b7b52237"
+    },
+    {
+      "source": "docs/living-sky-shell/after-tasks-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-tasks-light-390.png",
+      "sha256": "87553b89ac551bebd9b325a8ff568ebf90b332f6744579b768b6b1b146ab9872"
+    },
+    {
+      "source": "docs/living-sky-shell/after-projects-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-projects-light-390.png",
+      "sha256": "5d44b7614101dad44889eaee93db8f6986c2ba4c9f122ba4b36d4cc3ce7b7513"
+    },
+    {
+      "source": "docs/living-sky-shell/after-progress-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-progress-dark-320.png",
+      "sha256": "4c49619911b52c7407664b1bc1e981f0c1362b100a7d4f88ae52fba4587bc143"
+    },
+    {
+      "source": "docs/living-sky-shell/after-ideas-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-ideas-dark-390.png",
+      "sha256": "3c41409a082ddbffa45309ff21c356ffe4f5fb1b7c47ca5221b80f51bf047f0d"
+    },
+    {
+      "source": "docs/living-sky-shell/after-home-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-home-light-390.png",
+      "sha256": "c7f883bea3fc67a5586a38f1c5dd63b23c98554d0e2dd6290c81fb845baa9528"
+    },
+    {
+      "source": "docs/living-sky-shell/after-tasks-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-tasks-dark-320.png",
+      "sha256": "934ac63fedc859d61e8521c99e69fd1ecded32846cb7e8eca47e9a78598e4a0b"
+    },
+    {
+      "source": "docs/living-sky-shell/after-progress-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-progress-dark-390.png",
+      "sha256": "ad1c04053cc8d310736dd278909fed9cd217655fe9ad2aa54e5c0f4c52408418"
+    },
+    {
+      "source": "docs/living-sky-shell/search-500-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/search-500-dark-390.png",
+      "sha256": "be28062377f2ed07b401b456bb130066b3933b71f9bfc42a41e8f3ff18c0b119"
+    },
+    {
+      "source": "docs/living-sky-shell/performance.json",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/performance.json",
+      "sha256": "5ab5bd3aed5f6cc866a8a2e4cd0522520f362c070eb940e45dfae249bbbe80af"
+    },
+    {
+      "source": "docs/living-sky-shell/after-ideas-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-ideas-light-320.png",
+      "sha256": "d589d66bd39f608d0422e6960f5020d1efead27ec4fc630d105dbed66ff3c965"
+    },
+    {
+      "source": "docs/living-sky-shell/after-progress-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-progress-light-390.png",
+      "sha256": "8930a7fa5b60eac04e1080f7373b1f5ac2310a90c991aefbb3922a2cba1d60a2"
+    },
+    {
+      "source": "docs/living-sky-shell/after-projects-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-projects-dark-320.png",
+      "sha256": "6867dcb8c9ecdeeaa1b83b3f41c300e4380a599d243e1c5c0a109ae306074f13"
+    },
+    {
+      "source": "docs/living-sky-shell/after-ideas-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-ideas-dark-320.png",
+      "sha256": "bd6b6cf019935672d1667045897e6c91084f1a0c507adc443fff25b948e2ee6d"
+    },
+    {
+      "source": "docs/living-sky-shell/after-home-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-home-dark-390.png",
+      "sha256": "8ec9e481013e09cbaed87e00dd6b149c4675216e87a5a91164225b1ec12946a1"
+    },
+    {
+      "source": "docs/living-sky-shell/after-home-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky-shell/after-home-light-320.png",
+      "sha256": "cf5016fd418572259259f102a8b96333c0a3dc444cc02ddc1fcb9f64ae58fa16"
+    },
+    {
+      "source": "docs/tasks/task-form-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/task-form-390.png",
+      "sha256": "a1ecd35ec2bd6cfa07a40460aaf50126e88b16195c6c5a6b77b48199a580a6d7"
+    },
+    {
+      "source": "docs/tasks/priority-390-green-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/priority-390-green-dark.png",
+      "sha256": "9044df122db92c10fbe39228356147cf381d533026949c12c92461c9320cc53b"
+    },
+    {
+      "source": "docs/tasks/priority-1366-mono-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/priority-1366-mono-dark.png",
+      "sha256": "e4a3142ccb39e106a70c306a9c43c7a4a563158b61ee74517cf99684e9054bd9"
+    },
+    {
+      "source": "docs/tasks/priority-390-mono-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/priority-390-mono-dark.png",
+      "sha256": "5463da9cedb5bd6696750d6fbc4ca5e13f193f157aab913f2b29e67e1ddf8474"
+    },
+    {
+      "source": "docs/tasks/priority-390-mono-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/priority-390-mono-light.png",
+      "sha256": "8f983226f6fdc187121402fd759ee155ec4b4b518614f58df9ab674a3f99b16c"
+    },
+    {
+      "source": "docs/tasks/priority-390-green-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/priority-390-green-light.png",
+      "sha256": "253f81b7030981e2d79355f77108e906a3a82582dcd3871f64d91036d04c68ca"
+    },
+    {
+      "source": "docs/tasks/priority-1366-green-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/priority-1366-green-dark.png",
+      "sha256": "7b2b08ba23d5725bf8aceb22ff968c19abb5d3ce377226dae3459d5a463d62f3"
+    },
+    {
+      "source": "docs/tasks/priority-1366-mono-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/priority-1366-mono-light.png",
+      "sha256": "8f09a81b2fcd73dfd425025bf48de24fe53880063d9b5e1595310e180735f4b4"
+    },
+    {
+      "source": "docs/tasks/priority-1366-green-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/priority-1366-green-light.png",
+      "sha256": "7b9c9c877ca36dfb8f9aa393977ac1f0fbf705f099d6713e4ac5fdf517300ef1"
+    },
+    {
+      "source": "docs/tasks/task-form-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/task-form-1366.png",
+      "sha256": "8cc2bc20ed231c9fec5f1fc087cb870dd8de0b4ee1fc8e8b326a93739f70fda1"
+    },
+    {
+      "source": "docs/project-import-open/initial-dialog-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-import-open/initial-dialog-390.png",
+      "sha256": "67fc7c07899dfca79a6ccf1eee3a797e0ad9c4b6e84f89d00e1ed2d5373e6e69"
+    },
+    {
+      "source": "docs/today-experience/1366-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/today-experience/1366-dark.png",
+      "sha256": "ea813ab0102d61588122c628b6fca6be3fafc38d41d1b9042fed5371b3f214dd"
+    },
+    {
+      "source": "docs/today-experience/320-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/today-experience/320-dark.png",
+      "sha256": "840700893b1fc5eff4d30af1487f1151c5123580ce1df538bade30043947c6eb"
+    },
+    {
+      "source": "docs/today-experience/task-menu-390-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/today-experience/task-menu-390-dark.png",
+      "sha256": "80597d70c854e84bf7930a0ac47288c9cb85a1215dcb9d3d7737652ce2457332"
+    },
+    {
+      "source": "docs/today-experience/390-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/today-experience/390-dark.png",
+      "sha256": "3b42b64b01f756a6ff0b1b60d82726f923dab608c6af27a199ed3b9d07f0cb5f"
+    },
+    {
+      "source": "docs/today-experience/768-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/today-experience/768-light.png",
+      "sha256": "7604731bfe81810630c7fdad280fea70cd4130454745f6f761d60466b887f7d7"
+    },
+    {
+      "source": "docs/today-experience/390-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/today-experience/390-light.png",
+      "sha256": "e28d4101b7d8e57c509ccd9bb9a267354bb325558ef3f8e6a4b3130d2c556f5c"
+    },
+    {
+      "source": "docs/today-experience/768-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/today-experience/768-dark.png",
+      "sha256": "a43e9b5591fe9be7670bd2fe089bf7d7b2c569e93b06a7d6728260d35d72d75e"
+    },
+    {
+      "source": "docs/today-experience/320-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/today-experience/320-light.png",
+      "sha256": "a812e69a9c2ab4fac1d4d85248095fe6e3e9ec5316a2b655699df1cbb5e37939"
+    },
+    {
+      "source": "docs/today-experience/1366-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/today-experience/1366-light.png",
+      "sha256": "76653767c0b800d83ae93dba1658f95fdc195def681ec66f9cc14525ec297559"
+    },
+    {
+      "source": "docs/smooth-controls/scene-17-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/scene-17-light-390.png",
+      "sha256": "5fadfb470a39e6f3e11cbfb62fd484c242313f2f6998b06809659295a4fc7d7d"
+    },
+    {
+      "source": "docs/smooth-controls/after-menu-dark-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-menu-dark-768.png",
+      "sha256": "3b5d5c55b38b8da9c827dd6101ccd255ba94e18a8cb91e4d9b5e710a797ef540"
+    },
+    {
+      "source": "docs/smooth-controls/after-dark-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-dark-768.png",
+      "sha256": "8b69cbfdfd149639e15a8d6499d6479c658edc87f03996bdb686d00fab09f044"
+    },
+    {
+      "source": "docs/smooth-controls/after-menu-light-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-menu-light-768.png",
+      "sha256": "f98e77686c1fdee43123844eca09bd8d2fbdd9cb303622b9b89b7813b2a532d8"
+    },
+    {
+      "source": "docs/smooth-controls/scene-23-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/scene-23-dark-390.png",
+      "sha256": "fe544d995c7d717bc378cc36d65e3f0ccf662bb051a6f600561ea4f7795f7d3e"
+    },
+    {
+      "source": "docs/smooth-controls/after-menu-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-menu-dark-320.png",
+      "sha256": "fb2ea6607e13c938be3d3f55e37f171209eae381684a166d6bdedbcf78cf1a80"
+    },
+    {
+      "source": "docs/smooth-controls/after-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-light-390.png",
+      "sha256": "47f7d8e0f8cfeb9a63fac1be4b762182b43fdf49f7af95645ef3b0b99e340ef0"
+    },
+    {
+      "source": "docs/smooth-controls/after-menu-light-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-menu-light-1366.png",
+      "sha256": "10cef445df54045197c84e7d85cab50ae94a36f70c7a2862abddb52e667ceae9"
+    },
+    {
+      "source": "docs/smooth-controls/control-contrast.json",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/control-contrast.json",
+      "sha256": "d6e6d99eb2c40e458d8a0c82cbc1a907ce39b0952114f8f1c08cf1f4c1acbd95"
+    },
+    {
+      "source": "docs/smooth-controls/scene-23-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/scene-23-light-390.png",
+      "sha256": "2dfcb352e1209f2623408d7ef4691fc40ec78c21b193826c878172078315ce99"
+    },
+    {
+      "source": "docs/smooth-controls/after-dark-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-dark-1366.png",
+      "sha256": "8b18fbec16bc131954de953d9a08a7156f84952b7a9806affee7260e70655e77"
+    },
+    {
+      "source": "docs/smooth-controls/scene-17-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/scene-17-dark-390.png",
+      "sha256": "90e06f5f0d535efa977423c3d5dbb6428e9f8b2df87920648e7b4c3c871fa10b"
+    },
+    {
+      "source": "docs/smooth-controls/after-light-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-light-1366.png",
+      "sha256": "710e77476c81030dcf5cf11dd1dcbbbc6256fa3de7851211ebefd89a8bc81d98"
+    },
+    {
+      "source": "docs/smooth-controls/after-menu-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-menu-dark-390.png",
+      "sha256": "232e3847f183493c7fd61aa809a12e146f49703f1d8072c29fe17145cdc4b076"
+    },
+    {
+      "source": "docs/smooth-controls/after-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-dark-320.png",
+      "sha256": "e06f9f4ce3544cfb0e5da8b25f65f37a6e8108da951c09662ffd76b91dca034b"
+    },
+    {
+      "source": "docs/smooth-controls/after-menu-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-menu-light-320.png",
+      "sha256": "00741643c4c4cce5c683edd0a0799d9e1ac5a3179b2d858b3d29d68dd7204cf0"
+    },
+    {
+      "source": "docs/smooth-controls/after-menu-dark-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-menu-dark-1366.png",
+      "sha256": "a4f7bcd322d0722cea8aa9f3f5d34eb1e00a6a5311322f6136e0e1a6338d8cae"
+    },
+    {
+      "source": "docs/smooth-controls/scene-13-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/scene-13-light-390.png",
+      "sha256": "47f7d8e0f8cfeb9a63fac1be4b762182b43fdf49f7af95645ef3b0b99e340ef0"
+    },
+    {
+      "source": "docs/smooth-controls/after-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-light-320.png",
+      "sha256": "ab0407fbce2f0ddda28b9e9c82ef9610275e861e62ae78003f631f1101282309"
+    },
+    {
+      "source": "docs/smooth-controls/scene-13-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/scene-13-dark-390.png",
+      "sha256": "ccac43aee09fb1b34c758c5b62303d99f344b1f390888d3a359d9e4a3ab63ced"
+    },
+    {
+      "source": "docs/smooth-controls/after-menu-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-menu-light-390.png",
+      "sha256": "206251642a4c073bdd3a9751cb26a91fad0678939237a363450d7d79e314a2fa"
+    },
+    {
+      "source": "docs/smooth-controls/after-light-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-light-768.png",
+      "sha256": "4fa8eab37dc4d54b00bbeeb5c890a122b144d5217e78b6008b5c0b128d5892a3"
+    },
+    {
+      "source": "docs/smooth-controls/after-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-dark-390.png",
+      "sha256": "ccac43aee09fb1b34c758c5b62303d99f344b1f390888d3a359d9e4a3ab63ced"
+    },
+    {
+      "source": "docs/smooth-controls/after-performance.json",
+      "archive": "docs/navigation-phase1/regression/docs/smooth-controls/after-performance.json",
+      "sha256": "7e34fcaa0b6f0ac0851464329c08632315245ff94f8685954c4330aa34d85d5f"
+    },
+    {
+      "source": "docs/project-pace/pace-panel-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-pace/pace-panel-dark-390.png",
+      "sha256": "cbf6e6a077332596143662580a77f45db0da1572a2f7fd7dca5af735a7b06d2b"
+    },
+    {
+      "source": "docs/project-pace/home-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-pace/home-768.png",
+      "sha256": "e0dd595601559185b5ae76b712d7e41e3d1ca8224ce910f6e87dd1a41af16b12"
+    },
+    {
+      "source": "docs/project-pace/home-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-pace/home-1366.png",
+      "sha256": "b28b547bb5a939cdbbfd0e0cc836c25f4ee6d3e567d8c5d66ca9fa403779c048"
+    },
+    {
+      "source": "docs/project-pace/home-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-pace/home-320.png",
+      "sha256": "45f8172eeef1d4f6a41013b69afad40160ccb658742dc8301ec6e3df685450ef"
+    },
+    {
+      "source": "docs/project-pace/home-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-pace/home-390.png",
+      "sha256": "f0b893432d080c4ac828abb163526f1a545cb22e29dac57ad7b03b63ec3a2c60"
+    },
+    {
+      "source": "docs/project-pace/project-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-pace/project-dark-390.png",
+      "sha256": "c9947c002b2b641998a7128e4d9675dad2b0a579f7c0ba3fe7885009359bbac4"
+    },
+    {
+      "source": "docs/project-rest/settings-light-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-rest/settings-light-1366.png",
+      "sha256": "e6f6bdd3672ede937579cb9396be545f9943d8656a65a6c6b525cb640ce23363"
+    },
+    {
+      "source": "docs/project-rest/settings-light-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-rest/settings-light-320.png",
+      "sha256": "124c0141a0c4477283f39604135ef0e67db7282ef8abdeef5dd43d8ee0784673"
+    },
+    {
+      "source": "docs/project-rest/settings-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-rest/settings-light-390.png",
+      "sha256": "490b3af31ea933b466f438e919f6dac7aacda006fe539f0f5b671ac4349bcd6d"
+    },
+    {
+      "source": "docs/project-rest/settings-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-rest/settings-dark-390.png",
+      "sha256": "0f96a175960a949b0c3ebc3ecb442abb4411d8efc85ca86e74bf51f10c4ba5e5"
+    },
+    {
+      "source": "docs/project-rest/settings-light-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-rest/settings-light-768.png",
+      "sha256": "11beefac8ae7be422b6efbc6ca63f4dac795b4c212104a51d3f858ed94c3243f"
+    },
+    {
+      "source": "docs/project-rest/settings-dark-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-rest/settings-dark-320.png",
+      "sha256": "827170d5a580d67efa980351a69f5e85e24bcde4421bce89053384fab5660dea"
+    },
+    {
+      "source": "docs/project-rest/settings-dark-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-rest/settings-dark-1366.png",
+      "sha256": "38a8d182f0c6ce3799e776ec58e514de33dc4eb739b7a77ce29990494f243a14"
+    },
+    {
+      "source": "docs/project-rest/settings-dark-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/project-rest/settings-dark-768.png",
+      "sha256": "024c512b46aff23e7153d96fbbaa59117c6e0581e59667a8d213b6b6c7503771"
+    },
+    {
+      "source": "docs/living-sky/noon-light-blur-30-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/noon-light-blur-30-390.png",
+      "sha256": "c37b002f4532712372279bb38fa1eefed04e5de4cc16d9e11d73a73390ea77a2"
+    },
+    {
+      "source": "docs/living-sky/empty-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/empty-dark-390.png",
+      "sha256": "155129e82fde74c0fb48a04c4b5c203276a4d3f18d7ab3c97bbbc0ded5483db2"
+    },
+    {
+      "source": "docs/living-sky/dawn-dark-blur-12-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/dawn-dark-blur-12-390.png",
+      "sha256": "b0b5292d1dd85ddbb4de632bd08cee07e9d7ba81076fc9ba29fc5e6375288171"
+    },
+    {
+      "source": "docs/living-sky/sunset-light-blur-30-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/sunset-light-blur-30-390.png",
+      "sha256": "d9cc25e8795bcdb8dd2d0fa5d8d4a7dd84f281e7e56e40396c869a719fdce8d4"
+    },
+    {
+      "source": "docs/living-sky/dawn-dark-blur-30-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/dawn-dark-blur-30-390.png",
+      "sha256": "6372d8e9e4a18a34c8e95db8a7806274fb2b83c8a6ce3b3fba57370aadbb7f5d"
+    },
+    {
+      "source": "docs/living-sky/night-light-blur-12-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/night-light-blur-12-390.png",
+      "sha256": "0d4003825dc330da2684a4e139d3d7f514af44c054e5ae3279b47386ce3ddc44"
+    },
+    {
+      "source": "docs/living-sky/responsive-768-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/responsive-768-dark.png",
+      "sha256": "fcbe2483c7702545be06b1ae033d9e7a19fa17d8b2f644c111d30a51beec7702"
+    },
+    {
+      "source": "docs/living-sky/empty-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/empty-light-390.png",
+      "sha256": "66136a49b48228b49c758e4a276cba82810435a9490227a6acf73870af66e623"
+    },
+    {
+      "source": "docs/living-sky/responsive-390-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/responsive-390-dark.png",
+      "sha256": "00de6c4e064fb776be5e19275993657326097c4b143d099544a4d3bb704c7e1e"
+    },
+    {
+      "source": "docs/living-sky/night-light-blur-30-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/night-light-blur-30-390.png",
+      "sha256": "632eee1595dcd996b051167ed49eee3093129c2a5c30459af462dc463d92be6e"
+    },
+    {
+      "source": "docs/living-sky/night-dark-blur-30-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/night-dark-blur-30-390.png",
+      "sha256": "604c0cfab1bff1488dbf28d498abe379803402e8534a077b16abd53293ddd433"
+    },
+    {
+      "source": "docs/living-sky/noon-light-blur-12-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/noon-light-blur-12-390.png",
+      "sha256": "6d5c23cf1b03e7e8ff22ffdbcd2ef33e5deb7319e4f496f1d2f4a46b8673f33c"
+    },
+    {
+      "source": "docs/living-sky/rendered-contrast.json",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/rendered-contrast.json",
+      "sha256": "793459dce094627bec2030e304bcb69c37b759643d7fe736cf17fff6851a5b24"
+    },
+    {
+      "source": "docs/living-sky/sunset-light-blur-0-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/sunset-light-blur-0-390.png",
+      "sha256": "c41a884615124506aad1729ab798c54fffb83a2612f1416438a8b876281b7a18"
+    },
+    {
+      "source": "docs/living-sky/dawn-light-blur-0-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/dawn-light-blur-0-390.png",
+      "sha256": "bd210979285257793f98bc38c38abe4864bd5f0e860f8309c341a1c88571bef5"
+    },
+    {
+      "source": "docs/living-sky/morning-dark-blur-0-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/morning-dark-blur-0-390.png",
+      "sha256": "6941eb5640ec9a329be99352af633264b1fcc08f2302a8e3c36d0733e842bccf"
+    },
+    {
+      "source": "docs/living-sky/dawn-light-blur-30-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/dawn-light-blur-30-390.png",
+      "sha256": "4422ced1e3c7c134cd169df29ce9cb517b505b91c6147f614477ae0615deffe3"
+    },
+    {
+      "source": "docs/living-sky/morning-dark-blur-12-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/morning-dark-blur-12-390.png",
+      "sha256": "59f623dfc69a2b20856c79dd3c8401e0fed6907d491c5ad3a9b979b816c5ae42"
+    },
+    {
+      "source": "docs/living-sky/noon-dark-blur-0-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/noon-dark-blur-0-390.png",
+      "sha256": "3025020355ec031ee77a729e1095e366b3d8b18ee4f3a5504c39e771ea1011df"
+    },
+    {
+      "source": "docs/living-sky/sunset-dark-blur-12-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/sunset-dark-blur-12-390.png",
+      "sha256": "883b32b7364b72499db6dd820c0ff44e6e13d305a9a7c466fb85fd0dd49a0cd1"
+    },
+    {
+      "source": "docs/living-sky/sunset-dark-blur-0-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/sunset-dark-blur-0-390.png",
+      "sha256": "0447781ba9f4c390ae63cf64881978f2e9df59d0ad5344331119fed4b6cb0b6f"
+    },
+    {
+      "source": "docs/living-sky/sunset-dark-blur-30-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/sunset-dark-blur-30-390.png",
+      "sha256": "ee0e9b9578240eabd3430ca6fcb554401a71200bffdd6b424d7e1cd90da00ab4"
+    },
+    {
+      "source": "docs/living-sky/sunset-light-blur-12-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/sunset-light-blur-12-390.png",
+      "sha256": "fac4fd16b8a1c98f6323da75f60abc60137261d90c3d92893338d5a7db105880"
+    },
+    {
+      "source": "docs/living-sky/dawn-light-blur-12-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/dawn-light-blur-12-390.png",
+      "sha256": "481b386bb2295bcbff92c04fb1133246628100ad2b0d19937a4b4737604e8b76"
+    },
+    {
+      "source": "docs/living-sky/morning-light-blur-0-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/morning-light-blur-0-390.png",
+      "sha256": "ef15ae79956d2b5dafec5f733f3fe95951f3dba4f95412e577b73cb822742b0c"
+    },
+    {
+      "source": "docs/living-sky/responsive-320-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/responsive-320-light.png",
+      "sha256": "73e93026b48cf07bdac89ca7c580e3a9603bbac31512091759082048f8731830"
+    },
+    {
+      "source": "docs/living-sky/morning-dark-blur-30-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/morning-dark-blur-30-390.png",
+      "sha256": "5c16fc5df4b85d7edf6ba2049810f4155c2cbd749fd7f01ab4c8adcc04ce2c6b"
+    },
+    {
+      "source": "docs/living-sky/morning-light-blur-30-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/morning-light-blur-30-390.png",
+      "sha256": "46f3aae3d010d5299f118e2f0dbb93126aeb702111fbe139fd1bd8c1dddfb48f"
+    },
+    {
+      "source": "docs/living-sky/responsive-320-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/responsive-320-dark.png",
+      "sha256": "e9c4093f5d00450f61acc30f0b357209483b84f9ea2d27f6c2a8b8674b215b17"
+    },
+    {
+      "source": "docs/living-sky/responsive-1366-dark.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/responsive-1366-dark.png",
+      "sha256": "4f8fb9f19b6ae150e3bffaf74baefc150ac2eaa026c39ad33d37a64d729147b4"
+    },
+    {
+      "source": "docs/living-sky/night-dark-blur-0-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/night-dark-blur-0-390.png",
+      "sha256": "4c445af1e0ced7a6a89b58f06ba00ac8a16c28bf54a3df3fd1011f19f8617bbd"
+    },
+    {
+      "source": "docs/living-sky/noon-light-blur-0-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/noon-light-blur-0-390.png",
+      "sha256": "9caec0b369f43ee057901fec6ca73304ee3c88b9f5ded774c54806ba5b74c437"
+    },
+    {
+      "source": "docs/living-sky/dawn-dark-blur-0-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/dawn-dark-blur-0-390.png",
+      "sha256": "636e1fb20ac9c4e42c33bca13bc4718125565ff14914a055fc6ed25624d45205"
+    },
+    {
+      "source": "docs/living-sky/morning-light-blur-12-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/morning-light-blur-12-390.png",
+      "sha256": "9979dfdbea2203e867efe1c5f8dd57c5932747b9f171fa31af5d214f1548bebf"
+    },
+    {
+      "source": "docs/living-sky/appearance-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/appearance-390.png",
+      "sha256": "8579381831864af255ff3744522f98ac5c28e7d4d3d9fe2cba5d2e180bb9bf31"
+    },
+    {
+      "source": "docs/living-sky/noon-dark-blur-30-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/noon-dark-blur-30-390.png",
+      "sha256": "b5c64c159ecc1b18962643380db7446cdd3ea242b8412b2295fe4c595e6dcc47"
+    },
+    {
+      "source": "docs/living-sky/night-light-blur-0-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/night-light-blur-0-390.png",
+      "sha256": "0c21e84dbef3cec0215768d94af8df3772f8b7cc4c467f9a8ea393868d32c851"
+    },
+    {
+      "source": "docs/living-sky/performance.json",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/performance.json",
+      "sha256": "41818b862c8a7a994d85178fc3435a0a1b5950a3e9b39b93e599416551e6090d"
+    },
+    {
+      "source": "docs/living-sky/responsive-1366-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/responsive-1366-light.png",
+      "sha256": "b96fc0a20873b47b5ae9eb832b5d20d248a6170416f0a708395141f3c44f5683"
+    },
+    {
+      "source": "docs/living-sky/night-dark-blur-12-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/night-dark-blur-12-390.png",
+      "sha256": "9a3bcf5e633d9caf94770d3f8f34f5364ad545fdde35b13b20b642233ec011b8"
+    },
+    {
+      "source": "docs/living-sky/noon-dark-blur-12-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/noon-dark-blur-12-390.png",
+      "sha256": "70f9a12780baa0a2d3189ab476d1c1bfaa1c8dd51bed0174d479761d52da2dbb"
+    },
+    {
+      "source": "docs/living-sky/responsive-768-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/responsive-768-light.png",
+      "sha256": "ed8340ddcb6c184f470befd0ef23b58368387a500c7d1408e21d135900bfc845"
+    },
+    {
+      "source": "docs/living-sky/responsive-390-light.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/responsive-390-light.png",
+      "sha256": "c0b10bee4aee0fe6123880a6e6a03ec1e087a01481a6d7bb0ec6c5868c7b9dae"
+    },
+    {
+      "source": "docs/planning/screenshots/calendar-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/planning/screenshots/calendar-390.png",
+      "sha256": "1d4e3a9769136e3b56c1c4addd31d4391cc39e52f552a08869b3b217597da38d"
+    },
+    {
+      "source": "docs/planning/screenshots/today-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/planning/screenshots/today-390.png",
+      "sha256": "0fde6d0c9b04c8d856d83c9f512db7e798e18a536193d20a060b8f4cc5922a97"
+    },
+    {
+      "source": "docs/planning/screenshots/project-insights.png",
+      "archive": "docs/navigation-phase1/regression/docs/planning/screenshots/project-insights.png",
+      "sha256": "7ec536b42ff23048a5f00575c9450fbd48b2ec59e17670ac28df370bc94cf747"
+    },
+    {
+      "source": "docs/planning/screenshots/progress-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/planning/screenshots/progress-1366.png",
+      "sha256": "a3ae39164be427f7f4957a74d1183102ce75a5eaed59f41349f15cf5c27d3c7b"
+    },
+    {
+      "source": "docs/planning/screenshots/progress-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/planning/screenshots/progress-390.png",
+      "sha256": "63e1afa633fa4e895e3e0b855d7d9c55680abe087a826d069d533eb108228354"
+    },
+    {
+      "source": "docs/planning/screenshots/today-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/planning/screenshots/today-1366.png",
+      "sha256": "a81d1355b7f7d91cdc97cc1d96b5ac30aa48275452d44eff3ba0d2e65915ed09"
+    },
+    {
+      "source": "docs/planning/screenshots/calendar-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/planning/screenshots/calendar-1366.png",
+      "sha256": "cfdb60a4590751daa7d4ddb536eede88519acc1a80f26691bc61afe7ba027b8b"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/projects-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/projects-1366.png",
+      "sha256": "fc94f1a2bed85ad45ca86de52b260095ca3b14f9e2384baabef76f5a40dcaf4c"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/projects-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/projects-390.png",
+      "sha256": "95bc5bb5662d5aced31f2382db5e798f1b7e764597d1dfdfddb7515316cc9ca9"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/ideas-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/ideas-1366.png",
+      "sha256": "68bd772cd180976cde045788bf0cad75117d9d1af4b10a020d2979ac22bef8da"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/ideas-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/ideas-390.png",
+      "sha256": "8c8ef4af29c6cef6b75be7043bfef3503a5533d8c2691c899ee99b5134c7b605"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/progress-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/progress-1366.png",
+      "sha256": "e6d0ded549b078246148d19daecb3ee4cf0650fa6a0266e6acb83cb13b93150f"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/home-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/home-1366.png",
+      "sha256": "7e6fc876e25fd478a6a815e2fd9b03740661703ba4cbf013a6743196e56c3752"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/progress-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/progress-390.png",
+      "sha256": "3b762af01b16e67a11339c3f7f25559f438b1f1fe37eb4ecdd657e9bcfb3ce6c"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/ideas-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/ideas-320.png",
+      "sha256": "16444b6a46a976e22c4bdc9dbfd615a610d70ff50c5ba0a5b022ff3d88fbd329"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/tasks-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/tasks-390.png",
+      "sha256": "b7b0f8158da98dc2d0be8f70719dafa3f1fc09516f715605d5e34ea3e9b1b1f2"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/progress-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/progress-320.png",
+      "sha256": "9e7a7f15dc24130ac0b884e26675bce5de5a08c17f8f509ec30ececc560913dc"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/home-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/home-320.png",
+      "sha256": "f4dfacfe6cd85c6e0d1e783ecfa6e51894763faaf89dbbb39c22738e3f7d4ad9"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/tasks-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/tasks-320.png",
+      "sha256": "e428099435e6b0fc3206a2c6970e1d4b506b3cb90833ce53359084a2ea7c170f"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/home-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/home-390.png",
+      "sha256": "5e67d6faebc5b311597be3e5cf12a9327bbfef412f38d8008273dacd36d472f9"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/tasks-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/tasks-1366.png",
+      "sha256": "2a62fdb3d6f8ecc008493c5f7fa4b21aca499d90d335fd6ba4d195e10aa43cac"
+    },
+    {
+      "source": "docs/interface-organization/screenshots/projects-320.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/projects-320.png",
+      "sha256": "57f1522db2eee8ec903750bbf56bf7af43f117c1db2f3d80406f4626d43c2bd7"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-sunset-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-sunset-light-390.png",
+      "sha256": "f1c80c0656d8af48c0331b4ea026c0826f029492c3c2c828c3b6dda1cc90596f"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/fallback-css-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/fallback-css-dark-390.png",
+      "sha256": "d8fb9fba86847c59e4f38f6a4b2b4505cc96d8dde0de2eb5a880e47c4e6ea4f9"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-day-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-day-light-390.png",
+      "sha256": "8ec2b139a1e6afa3307bed214503c01ce210a0c9350f8541d617237cad2cfeb5"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-sunset-light-card.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-sunset-light-card.png",
+      "sha256": "2930c99a29c5c377088121202bd246a57a64d85f30a011d6016bfe811aa0a719"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-night-light-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-night-light-390.png",
+      "sha256": "b898eeb374f609fae5a7c9456118da730cc29d36c35fa0d4c373d5e2a1f2da23"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-day-light-card.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-day-light-card.png",
+      "sha256": "10db3e118dc80df2b54047a2c6ab1a27375bc85d34ddc15adb0e4ebb320829b2"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-day-dark-card.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-day-dark-card.png",
+      "sha256": "dc993e29b94dbf68acbb3769521c6d4b82c27801573943e2f895e940fe03b3b6"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-sunset-dark-card.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-sunset-dark-card.png",
+      "sha256": "e60049ab76224630385f547f1759602f09fc317ed12582ecf1b16f87692c4ac3"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/diagnostic-rim-off.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/diagnostic-rim-off.png",
+      "sha256": "fd953783a9798f3ba12270f3787ba64394d3cf31d16693556f9b146d49238639"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-sunset-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-sunset-dark-390.png",
+      "sha256": "ff73524a05ff920be382dcb5ef606c58054817b0f3d85eab7ccc4cfbaa96ecdc"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-night-dark-card.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-night-dark-card.png",
+      "sha256": "ae8485975b0157fd59f8372af74130335ac9297205f1e1490e15b6761db7ad09"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-day-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-day-dark-390.png",
+      "sha256": "e7454b516575867c4d95393500871dd0ccd99dcda0f117713088e5cca3ee6f0f"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-night-light-card.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-night-light-card.png",
+      "sha256": "7b83c669e6033a177acac2c50be51aa443b313056ee10e8359789276335118e6"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/diagnostic-rim-on.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/diagnostic-rim-on.png",
+      "sha256": "8ab495b7e8de573395c5ce33a0c258e59cb05e01b8e9df5086913a59c81cd3e4"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-night-dark-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-night-dark-390.png",
+      "sha256": "4224019dc68b3be149e45e10c4842b1d521ee222ac19562166a9b3ac438f7ff9"
+    },
+    {
+      "source": "docs/living-sky/liquid-glass/after-performance.json",
+      "archive": "docs/navigation-phase1/regression/docs/living-sky/liquid-glass/after-performance.json",
+      "sha256": "68cd639743a4559ab445123c6f60a6a7b6832f7659330650dded67a656058f63"
+    },
+    {
+      "source": "docs/tasks/import-preview-1366.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/import-preview-1366.png",
+      "sha256": "7c3cd4147d36a388a8eee49743ef8427a1e76ea0b774f62d3b6f8b3ae4bec402",
+      "new": true
+    },
+    {
+      "source": "docs/tasks/import-preview-390.png",
+      "archive": "docs/navigation-phase1/regression/docs/tasks/import-preview-390.png",
+      "sha256": "a69fad942cd1142763b9074032301ec84543446294bf6c960cb2321380e206ec",
+      "new": true
+    },
+    {
+      "source": "docs/interface-organization/screenshots/progress-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/progress-768.png",
+      "sha256": "31ca27e41d04114b837914dadf06590fade1fe1b9d1ca4cf90d273044732fc5c",
+      "new": true
+    },
+    {
+      "source": "docs/interface-organization/screenshots/home-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/home-768.png",
+      "sha256": "26d920746072ba099c43ca079c45a6eca9ef9b0a72532eadf81f997c1072ef47",
+      "new": true
+    },
+    {
+      "source": "docs/interface-organization/screenshots/ideas-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/ideas-768.png",
+      "sha256": "d491201beef03338c13e91e39c1117a7e4803800d6049f6984e305ae4f2efbaa",
+      "new": true
+    },
+    {
+      "source": "docs/interface-organization/screenshots/tasks-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/tasks-768.png",
+      "sha256": "0968952b6cc3db448125458f9c947420211908f0dd2d4214f26faca9ecf08c4a",
+      "new": true
+    },
+    {
+      "source": "docs/interface-organization/screenshots/projects-768.png",
+      "archive": "docs/navigation-phase1/regression/docs/interface-organization/screenshots/projects-768.png",
+      "sha256": "5fe27c4fd5121649d3ea48ecc8559f92c047edbec95d5fce614dea664ce06af9",
+      "new": true
+    }
+  ]
+}

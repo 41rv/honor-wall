@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { test, expect, type Page } from "@playwright/test";
 import { importData, sizedFixture, readStore } from "./helpers";
 import fs from "node:fs";
@@ -75,7 +76,7 @@ async function setup(page: Page, clock = true) {
         localStorage.setItem("masar-sky-blur", "12");
     });
     await importData(page, validateBackup(fixture()));
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator(".living-sky")).toBeAttached();
 }
@@ -85,7 +86,18 @@ test("مقارنة ست لقطات جوال بنفس البيانات والوق
 }) => {
     test.setTimeout(60000);
     await setup(page);
-    const measurements: object[] = [];
+    type Measurement = {
+        theme: string;
+        name: string;
+        boxes: {
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+            text: string | null;
+        }[];
+    };
+    const measurements: Measurement[] = [];
     for (const theme of ["light", "dark"]) {
         for (const [name, hour] of [
             ["day", 13],
@@ -133,11 +145,33 @@ test("مقارنة ست لقطات جوال بنفس البيانات والوق
                 theme,
                 name,
                 boxes: await page.locator(glass).evaluateAll((nodes) =>
-                    nodes.map((n) => {
-                        const { x, y, width, height } =
-                            n.getBoundingClientRect();
-                        return { x, y, width, height, text: n.textContent };
-                    }),
+                    nodes
+                        .filter(
+                            (n) => !n.closest(".home-habits,.home-summaries"),
+                        )
+                        .map((n) => {
+                            const { x, y, width, height } =
+                                n.getBoundingClientRect();
+                            const count =
+                                document.querySelector(".home-today-count");
+                            const addedSummaryHeight =
+                                count && n.closest(".home-today")
+                                    ? count.getBoundingClientRect().height +
+                                      parseFloat(
+                                          getComputedStyle(count).marginTop,
+                                      ) +
+                                      parseFloat(
+                                          getComputedStyle(count).marginBottom,
+                                      )
+                                    : 0;
+                            return {
+                                x,
+                                y: y - addedSummaryHeight,
+                                width,
+                                height,
+                                text: n.textContent,
+                            };
+                        }),
                 ),
             });
         }
@@ -146,10 +180,43 @@ test("مقارنة ست لقطات جوال بنفس البيانات والوق
         `${root}/${stage}-geometry.json`,
         JSON.stringify(measurements, null, 2),
     );
-    if (stage === "after")
-        expect(measurements).toEqual(
-            JSON.parse(fs.readFileSync(`${root}/before-geometry.json`, "utf8")),
+    if (stage === "after") {
+        // Phase3 inserts habits; phase7 adds the visible completion count and
+        // three independent summary cards. Keep the original golden intact;
+        // account only for that measured count height and assert the additions.
+        await expect(page.locator(".home-today-count")).toContainText(
+            "منجزة من",
         );
+        for (const name of [
+            "ملخص المسارات النشطة",
+            "ملخص الأفكار والتذكيرات",
+            "ملخص التقدم العام",
+        ])
+            await expect(
+                page.getByRole("region", { name, exact: true }),
+            ).toBeVisible();
+        // Legacy cards retain all their internal geometry and content.
+        // Keep the original golden unchanged. Compare task geometry exactly,
+        // and all legacy project geometry relative to its first card; widths,
+        // heights, contents, order and internal spacing remain strict.
+        const relativeProjects = (rows: Measurement[]) =>
+            rows.map((row) => ({
+                ...row,
+                boxes: row.boxes.map((box, i) =>
+                    i === 0 ? box : { ...box, y: box.y - row.boxes[1].y },
+                ),
+            }));
+        expect(relativeProjects(measurements)).toEqual(
+            relativeProjects(
+                JSON.parse(
+                    fs.readFileSync(`${root}/before-geometry.json`, "utf8"),
+                ),
+            ),
+        );
+        await expect(
+            page.getByRole("region", { name: "عاداتي اليوم", exact: true }),
+        ).toBeVisible();
+    }
 });
 
 test("قياس تمرير البطاقات واستجابة الزر على نفس Chromium عند خفض CPU أربع مرات", async ({

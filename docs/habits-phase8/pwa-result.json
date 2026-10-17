@@ -1,0 +1,827 @@
+{
+  "testedBuild": {
+    "icon-192.png": "3dad4c5dd200f0ac2d94145c9a53029e8b69a82147390283ebf45ef42ea3f9e7",
+    "icon-512.png": "bb74d2bddcac6d0d98d1320838ce808fe08133c8dafd529f9f541fec883b601e",
+    "icon.svg": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+    "index.html": "646f148e90ab98858767f4632ee93ec9d1a9f733bd78e4d6ba97596d2b6f89dc",
+    "manifest.webmanifest": "aea3006c3f486ea0bbc5074c318b4d1f6eaa86cad71c6c01f175de9ff7b7db85",
+    "sw.js": "39b3bca10959c53cf471679aef7169d354f91bcfade7ca628eacc8771f6d8fcf",
+    "workbox-9c191d2f.js": "04b086f1b2f4215ee4b659a7bc9c76162894abdb43fa876247bc7c0bd6fd1c37",
+    "assets/calendar-Dneqhncv.js": "0c06ca30dfcb03b9f3721ca60fe0d25dd2ee43a31d7002438bcb74c3358d171b",
+    "assets/index-D2qx-eDy.js": "ff15db109f172a3e9b999fdc76d71dd6283f0deb4bf7f1d6af8b06f7d218e73b",
+    "assets/index-De-bvpUr.css": "94afa65ab754e5f1a1aed75be055e52e543460ed705fecb83e0cf432e8867e02",
+    "assets/rolldown-runtime-CbXtAM7H.js": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a",
+    "assets/tajawal-arabic-400-normal-CyCXRvzh.woff2": "6c9081fd00db08800850fa7d214593aa94992be5159e97557aa60197252cb95a",
+    "assets/tajawal-arabic-400-normal-DCQxawbB.woff": "011a34e9bce80078231d12f8603721d0f99963b7104df560970fb754306ac359",
+    "assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2": "4255019c1cd986f7cda7869df69baf72730d61304ae14baba4acfeb13085da54",
+    "assets/tajawal-arabic-500-normal-CbVEaYEW.woff": "9f0beece3bd5a2bda53edfdb5f8c27f80bd9e2d65fb53eb2c7f8ca4b481d6f18",
+    "assets/tajawal-arabic-700-normal-9L7Zusdl.woff": "cd644505aa492ff2d5664dfa384ab52e0df757b7b927a7ab59b836c1713c077f",
+    "assets/tajawal-arabic-700-normal-D2-eand5.woff2": "fa5e72326681abee3a4952be582e1c2c2abb27932ef262610c078ce89541f919",
+    "assets/workbox-window.prod.es5-Bd17z0YL.js": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
+    "fonts/Tajawal-LICENSE.txt": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3"
+  },
+  "at": "2026-10-17T02:38:41.174Z",
+  "checks": [
+    "actual_published_1_4_3_bytes_seeded_all_12_legacy_stores_and_unknown_field",
+    "schema6_to_7_all_12_rows_and_indexes_identical_new_7_stores_empty",
+    "native_indexeddb_migrates_60_to_70_without_database_recreation",
+    "second_open_preserves_legacy_data_and_unknown_field_without_repeat_migration",
+    "manifest_identity_and_start_url_scope_unchanged",
+    "new_simple_recording_writes_only_habit_entries",
+    "home_card_reads_same_habit_record",
+    "automatic_advice_adds_only_explainable_proposals_keeps_old_decisions_and_plans",
+    "native_chromium_download_snapshot5_matches_all_19_upgraded_stores",
+    "downloaded_file_reopens_in_restore_preview_without_mutating_data",
+    "service_worker_controls_page_and_caches_only_current_assets",
+    "full_browser_restart_offline_preserves_all_19_stores_and_recording",
+    "offline_home_undo_uses_original_entry_without_duplication",
+    "offline_detail_can_complete_again",
+    "offline_habits_paths_and_existing_routes_work",
+    "no_duplicate_entries_or_automatic_plan_changes_or_reminders",
+    "offline_graded_record_edit_undo_preserves_historical_entries",
+    "offline_masar_habits_import_preview_and_atomic_commit",
+    "offline_reminder_create_review_and_reload",
+    "phase8_offline_actions_leave_all_12_legacy_stores_unchanged"
+  ],
+  "passed": 20,
+  "errors": [],
+  "schemaBefore": 60,
+  "schemaAfter": 70,
+  "isolatedProfile": true,
+  "fullOfflineRestart": true,
+  "serverUnavailableDuringOfflineRestart": true,
+  "physicalAndroidTested": false,
+  "nativeAndroidBackupDownloadVerified": false,
+  "androidBackupDownloadRequiredBeforePublication": true,
+  "published": false,
+  "source": "actual public 1.4.3 bytes downloaded with verified TLS; isolated localhost origin",
+  "indexesBefore": {
+    "events": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "action",
+          "keyPath": "action",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "at",
+          "keyPath": "at",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "entityId",
+          "keyPath": "entityId",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "ideas": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "archived",
+          "keyPath": "archived",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "updatedAt",
+          "keyPath": "updatedAt",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "paceSettings": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": []
+    },
+    "projectPlans": {
+      "keyPath": "projectId",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "since",
+          "keyPath": "since",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "projectProgress": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "[projectId+order]",
+          "keyPath": [
+            "projectId",
+            "order"
+          ],
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "at",
+          "keyPath": "at",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "projectId",
+          "keyPath": "projectId",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "reason",
+          "keyPath": "reason",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "projectTracking": {
+      "keyPath": "projectId",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "since",
+          "keyPath": "since",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "projects": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "archived",
+          "keyPath": "archived",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "status",
+          "keyPath": "status",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "updatedAt",
+          "keyPath": "updatedAt",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "recommendations": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "createdAt",
+          "keyPath": "createdAt",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "key",
+          "keyPath": "key",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "projectIds",
+          "keyPath": "projectIds",
+          "unique": false,
+          "multiEntry": true
+        },
+        {
+          "name": "status",
+          "keyPath": "status",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "stepWork": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "[projectId+at]",
+          "keyPath": [
+            "projectId",
+            "at"
+          ],
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "at",
+          "keyPath": "at",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "projectId",
+          "keyPath": "projectId",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "stepId",
+          "keyPath": "stepId",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "steps": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "order",
+          "keyPath": "order",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "parentId",
+          "keyPath": "parentId",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "projectId",
+          "keyPath": "projectId",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "status",
+          "keyPath": "status",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "taskCycles": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "[status+end]",
+          "keyPath": [
+            "status",
+            "end"
+          ],
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "[taskId+revision+start]",
+          "keyPath": [
+            "taskId",
+            "revision",
+            "start"
+          ],
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "completedAt",
+          "keyPath": "completedAt",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "end",
+          "keyPath": "end",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "scheduledAt",
+          "keyPath": "scheduledAt",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "status",
+          "keyPath": "status",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "taskId",
+          "keyPath": "taskId",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "tasks": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "completedAt",
+          "keyPath": "completedAt",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "schedule.repeat",
+          "keyPath": "schedule.repeat",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "status",
+          "keyPath": "status",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    }
+  },
+  "indexesAfter": {
+    "events": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "action",
+          "keyPath": "action",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "at",
+          "keyPath": "at",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "entityId",
+          "keyPath": "entityId",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "habitEntries": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "[habitId+localDate]",
+          "keyPath": [
+            "habitId",
+            "localDate"
+          ],
+          "unique": true,
+          "multiEntry": false
+        },
+        {
+          "name": "habitId",
+          "keyPath": "habitId",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "localDate",
+          "keyPath": "localDate",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "planId",
+          "keyPath": "planId",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "habitImportReceipts": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "digest",
+          "keyPath": "digest",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "habitPaths": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "updatedAt",
+          "keyPath": "updatedAt",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "habitPlans": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "[habitId+effectiveDate]",
+          "keyPath": [
+            "habitId",
+            "effectiveDate"
+          ],
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "[habitId+revision]",
+          "keyPath": [
+            "habitId",
+            "revision"
+          ],
+          "unique": true,
+          "multiEntry": false
+        },
+        {
+          "name": "habitId",
+          "keyPath": "habitId",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "habitSuggestions": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "[habitId+status]",
+          "keyPath": [
+            "habitId",
+            "status"
+          ],
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "basisHash",
+          "keyPath": "basisHash",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "habitId",
+          "keyPath": "habitId",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "habits": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "pathId",
+          "keyPath": "pathId",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "updatedAt",
+          "keyPath": "updatedAt",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "ideas": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "archived",
+          "keyPath": "archived",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "updatedAt",
+          "keyPath": "updatedAt",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "paceSettings": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": []
+    },
+    "projectPlans": {
+      "keyPath": "projectId",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "since",
+          "keyPath": "since",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "projectProgress": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "[projectId+order]",
+          "keyPath": [
+            "projectId",
+            "order"
+          ],
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "at",
+          "keyPath": "at",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "projectId",
+          "keyPath": "projectId",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "reason",
+          "keyPath": "reason",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "projectTracking": {
+      "keyPath": "projectId",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "since",
+          "keyPath": "since",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "projects": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "archived",
+          "keyPath": "archived",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "status",
+          "keyPath": "status",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "updatedAt",
+          "keyPath": "updatedAt",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "recommendations": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "createdAt",
+          "keyPath": "createdAt",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "key",
+          "keyPath": "key",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "projectIds",
+          "keyPath": "projectIds",
+          "unique": false,
+          "multiEntry": true
+        },
+        {
+          "name": "status",
+          "keyPath": "status",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "reminders": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "createdAt",
+          "keyPath": "createdAt",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "reviewedAt",
+          "keyPath": "reviewedAt",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "stepWork": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "[projectId+at]",
+          "keyPath": [
+            "projectId",
+            "at"
+          ],
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "at",
+          "keyPath": "at",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "projectId",
+          "keyPath": "projectId",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "stepId",
+          "keyPath": "stepId",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "steps": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "order",
+          "keyPath": "order",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "parentId",
+          "keyPath": "parentId",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "projectId",
+          "keyPath": "projectId",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "status",
+          "keyPath": "status",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "taskCycles": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "[status+end]",
+          "keyPath": [
+            "status",
+            "end"
+          ],
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "[taskId+revision+start]",
+          "keyPath": [
+            "taskId",
+            "revision",
+            "start"
+          ],
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "completedAt",
+          "keyPath": "completedAt",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "end",
+          "keyPath": "end",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "scheduledAt",
+          "keyPath": "scheduledAt",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "status",
+          "keyPath": "status",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "taskId",
+          "keyPath": "taskId",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    },
+    "tasks": {
+      "keyPath": "id",
+      "autoIncrement": false,
+      "indexes": [
+        {
+          "name": "completedAt",
+          "keyPath": "completedAt",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "schedule.repeat",
+          "keyPath": "schedule.repeat",
+          "unique": false,
+          "multiEntry": false
+        },
+        {
+          "name": "status",
+          "keyPath": "status",
+          "unique": false,
+          "multiEntry": false
+        }
+      ]
+    }
+  },
+  "legacyCounts": {
+    "projects": 1,
+    "steps": 2,
+    "tasks": 1,
+    "ideas": 1,
+    "events": 7,
+    "taskCycles": 1,
+    "projectProgress": 2,
+    "projectTracking": 1,
+    "projectPlans": 1,
+    "stepWork": 1,
+    "recommendations": 1,
+    "paceSettings": 1
+  },
+  "personalUserDataAccessed": false
+}

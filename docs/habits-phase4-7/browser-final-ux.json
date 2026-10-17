@@ -1,0 +1,528 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "-c",
+      "docs/habits-phase4-7/supplemental.config.mjs",
+      "tests/browser/ux.spec.ts",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/docs/habits-phase4-7/supplemental.config.mjs",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/masar-phase47-edge-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "habits-phase4-7.spec.ts",
+          "habits-phase47-edge.spec.ts",
+          "internal-controls.spec.ts",
+          "living-glass.spec.ts",
+          "ux.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/tmp/masar-phase47-edge-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "habits-phase4-7.spec.ts",
+          "habits-phase47-edge.spec.ts",
+          "internal-controls.spec.ts",
+          "living-glass.spec.ts",
+          "ux.spec.ts"
+        ],
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4195",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "python3 -m http.server 4195 --bind 127.0.0.1 --directory /tmp/masar-phase47-final-root",
+      "url": "http://127.0.0.1:4195",
+      "cwd": "/workspace/honor-wall",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "ux.spec.ts",
+      "file": "ux.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "طلب إلغاء الإتمام يبقى بعد تحديث فوري مع تأخر إشعار معاملة التخزين",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1318,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:56:10.588Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-96b172ac7f182f92800c",
+          "file": "ux.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "كثرة المشاريع والنصوص الطويلة تعرض خطوة واحدة لكل مشروع وتتيح عرض المزيد دون تكرار الإحصائيات",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1058,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:56:12.123Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-f5b4ea1c8bd596ca21b7",
+          "file": "ux.spec.ts",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "إكمال آخر خطوة وحفظها ثم التراجع من السجل والتفاصيل والمشروع الفارغ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2923,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:56:27.518Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-da020a9c8d6ede6f1ce3",
+          "file": "ux.spec.ts",
+          "line": 330,
+          "column": 1
+        },
+        {
+          "title": "الهوية مستقلة عن الوضع وتبقى الثيمات الأربعة واتباع النظام بعد إعادة الفتح",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3545,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:56:30.454Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-50074d0e16199a423162",
+          "file": "ux.spec.ts",
+          "line": 392,
+          "column": 1
+        },
+        {
+          "title": "زر الإجراءات ولوحة المفاتيح والقائمة تحترم التأكيد والتراجع والتعديل والتحويل",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4114,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:56:34.009Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-aded973cb650b006b27b",
+          "file": "ux.spec.ts",
+          "line": 446,
+          "column": 1
+        },
+        {
+          "title": "الضغط المطول بالماوس يفتح قائمة واحدة ويمنع التنقل ثم يلغى بالحركة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2478,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:56:38.146Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99cce085edeae8edda86-ff0c9c96da456c2f8dcc",
+          "file": "ux.spec.ts",
+          "line": 504,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "تجربة التنفيذ بالماوس",
+          "file": "ux.spec.ts",
+          "line": 138,
+          "column": 10,
+          "specs": [
+            {
+              "title": "إتمام البطاقة والرئيسية ثم إلغاء الإتمام والتبديل السريع يطابق التخزين والتقدم",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3933,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T01:56:13.198Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "99cce085edeae8edda86-efb2f8e956a5c7617aba",
+              "file": "ux.spec.ts",
+              "line": 146,
+              "column": 13
+            },
+            {
+              "title": "الاستكمال يبقى بعد إعادة الفتح ويتعامل مع الحذف والأرشفة والإكمال",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3925,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T01:56:17.151Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "99cce085edeae8edda86-b11608acfe42bd866646",
+              "file": "ux.spec.ts",
+              "line": 260,
+              "column": 13
+            }
+          ]
+        },
+        {
+          "title": "تجربة التنفيذ باللمس",
+          "file": "ux.spec.ts",
+          "line": 138,
+          "column": 10,
+          "specs": [
+            {
+              "title": "إتمام البطاقة والرئيسية ثم إلغاء الإتمام والتبديل السريع يطابق التخزين والتقدم",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3505,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T01:56:21.100Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "99cce085edeae8edda86-329519819cab5a212be2",
+              "file": "ux.spec.ts",
+              "line": 146,
+              "column": 13
+            },
+            {
+              "title": "الاستكمال يبقى بعد إعادة الفتح ويتعامل مع الحذف والأرشفة والإكمال",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2890,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T01:56:24.616Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "99cce085edeae8edda86-a29677c8d7c89d9def4d",
+              "file": "ux.spec.ts",
+              "line": 260,
+              "column": 13
+            }
+          ]
+        },
+        {
+          "title": "ضغط مطول باللمس وتمرير طبيعي",
+          "file": "ux.spec.ts",
+          "line": 528,
+          "column": 6,
+          "specs": [
+            {
+              "title": "إلغاء القائمة بالحركة والتمرير، وفتحها بعد ثبات الإصبع دون نقرة تسرب",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2847,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T01:56:40.636Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "99cce085edeae8edda86-b136616c37d9c01c5750",
+              "file": "ux.spec.ts",
+              "line": 534,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T01:56:09.954Z",
+    "duration": 33621.62,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

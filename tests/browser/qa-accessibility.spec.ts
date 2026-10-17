@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { openCreate } from "./helpers";
 import { test, expect } from "@playwright/test";
 import { sizedFixture, importData, readStore } from "./helpers";
@@ -6,7 +7,7 @@ test("لوحة المفاتيح: النافذة تحصر التركيز وتعي
     page,
 }) => {
     await importData(page, sizedFixture(10));
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     const add = page.getByRole("button", { name: "إضافة سريعة", exact: true });
     await add.focus();
     await page.keyboard.press("Enter");
@@ -74,7 +75,7 @@ test("نافذة في مساحة هاتف قصيرة: الحقول والإضا�
     });
     const page = await context.newPage();
     await importData(page, sizedFixture(10));
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await openCreate(page, "task", true);
     await page
         .getByRole("dialog")
@@ -97,7 +98,7 @@ test("نافذة في مساحة هاتف قصيرة: الحقول والإضا�
     ).toBe(true);
     await submit.tap();
     await expect(page.getByRole("dialog")).not.toBeVisible();
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     expect(
         await page
             .locator(".track > span")

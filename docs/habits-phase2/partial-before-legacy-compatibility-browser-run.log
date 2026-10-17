@@ -1,0 +1,62 @@
+[WebServer] (node:618939) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:618952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 258 tests using 1 worker
+
+(node:618976) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/258] tests/browser/app.spec.ts:98:1 › واجهة المشروع: الإنشاء، الترتيب، الملاحظات، النسب والإغلاق
+[2/258] tests/browser/app.spec.ts:175:1 › المهام والأفكار: إنشاء وبدء وإنجاز وإعادة فتح وتحويل وتراجع
+[3/258] tests/browser/app.spec.ts:255:1 › إنشاء مشروع ومرحلة وخطوة فرعية وتعديل وأرشفة
+[4/258] tests/browser/app.spec.ts:283:1 › تصدير واستيراد كامل، رفض نسخة مكسورة دون فقد البيانات
+[5/258] tests/browser/app.spec.ts:313:1 › شاشة 320 بكسل، الوضعان وغياب التمرير الأفقي
+[6/258] tests/browser/app.spec.ts:347:1 › PWA: الأصول والبيانات متاحة دون إنترنت بعد إعادة التشغيل
+[7/258] tests/browser/app.spec.ts:384:1 › مشروع طويل: استكمال آخر خطوة، حفظ موضع العودة، والتفرع العميق
+[8/258] tests/browser/app.spec.ts:448:1 › فشل حفظ الملاحظات يستعيد المسودة بعد إعادة التحميل ويمكن إعادة حفظها
+[9/258] tests/browser/buttons.spec.ts:31:1 › أزرار الإضافة والإلغاء والإغلاق والبحث والتنقل والضغط المتكرر
+[10/258] tests/browser/buttons.spec.ts:104:1 › كل أزرار المراحل والخطوات: إضافة وتفاصيل وترتيب وطي وحالات وحذف وتراجع
+[11/258] tests/browser/buttons.spec.ts:214:5 › محاكاة هاتف ولمس › الصح باللمس وإعادة الفتح وتفاصيل المهمة وحالاتها والإلغاء والتراجع
+[12/258] tests/browser/buttons.spec.ts:282:5 › محاكاة هاتف ولمس › الأفكار: إضافة سريعة وتعديل وبحث وأرشفة واستعادة وتحويل وإلغاء التحويل
+[13/258] tests/browser/buttons.spec.ts:333:1 › تصدير الملاحظات فور الكتابة والتحقق وإلغاء الاستيراد والتثبيت المتاح
+[14/258] tests/browser/buttons.spec.ts:391:1 › فشل إتمام المهمة يعيد علامتها لحالتها السابقة ولا يسجل إنجازًا زائفًا
+[15/258] tests/browser/buttons.spec.ts:418:1 › الكتابة السريعة تدمج الحفظ وتبقى الملاحظات بعد رجوع فوري
+[16/258] tests/browser/buttons.spec.ts:455:1 › روابط الرئيسية والإنجازات تفتح المشروع والمهمة والخطوة في مكانها
+  1) tests/browser/buttons.spec.ts:455:1 › روابط الرئيسية والإنجازات تفتح المشروع والمهمة والخطوة في مكانها 
+
+    Test was interrupted.
+
+    Error: page.goto: Test ended.
+    Call log:
+      - navigating to "http://127.0.0.1:4173/#progress", waiting until "load"
+
+
+       at helpers.ts:44
+
+      42 | }
+      43 | export async function showLegacy(page: Page) {
+    > 44 |     await page.goto("/#progress");
+         |                ^
+      45 |     await page.getByRole("tab", { name: "نظرة عامة", exact: true }).click();
+      46 |     const details = page.locator(".progress-legacy");
+      47 |     if ((await details.getAttribute("open")) === null)
+        at showLegacy (/workspace/honor-wall/tests/browser/helpers.ts:44:16)
+        at /workspace/honor-wall/tests/browser/buttons.spec.ts:499:11
+
+    Error Context: test-results/buttons-روابط-الرئيسية-وال-997b8-ع-والمهمة-والخطوة-في-مكانها/error-context.md
+
+
+  1 interrupted
+    tests/browser/buttons.spec.ts:455:1 › روابط الرئيسية والإنجازات تفتح المشروع والمهمة والخطوة في مكانها 
+  242 did not run
+  15 passed (48.9s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

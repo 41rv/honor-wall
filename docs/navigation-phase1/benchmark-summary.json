@@ -1,0 +1,19 @@
+{
+  "method": "Three independent current-candidate contexts, CPU4x, 500 tasks and 500 steps, 54 main-tab transitions; native browser clock/rAF; local scene13:00. No before/after performance claim.",
+  "after": {
+    "samples": 3,
+    "navigation_p95_median_ms": 132.89999997615814,
+    "navigation_p95_range_ms": [
+      116.09999996423721,
+      142.89999997615814
+    ],
+    "commit_p95_median_ms": 74,
+    "scroll_frame_p95_median_ms": 33.399999999999636,
+    "scroll_frames_over50": [
+      0,
+      1,
+      0
+    ],
+    "navigation_frame_p95_median_ms": 33.30000000000018
+  }
+}

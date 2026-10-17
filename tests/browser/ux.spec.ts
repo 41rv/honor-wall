@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { test, expect, type Page } from "@playwright/test";
 import { sizedFixture, importData, readStore } from "./helpers";
 
@@ -13,7 +14,7 @@ test("طلب إلغاء الإتمام يبقى بعد تحديث فوري مع 
 }) => {
     await importData(page, fixture());
     // Keep the completed row available while exercising the delayed-write recovery.
-    await page.goto("/#today");
+    await page.goto(appUrl("/#today"));
     await page.evaluate(() => {
         const descriptor = Object.getOwnPropertyDescriptor(
             IDBTransaction.prototype,
@@ -75,11 +76,20 @@ test("كثرة المشاريع والنصوص الطويلة تعرض خطوة 
         })),
     );
     await importData(page, data);
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     const home = page.getByRole("region", { name: "خطوات مشاريعك القادمة" });
+    // Phase7 keeps home brief: two projects, expanding two at a time.
+    await expect(home.locator(".project-card")).toHaveCount(2);
+    await expect(home.locator(".daily-project-step")).toHaveCount(1);
+    await home.getByRole("button", { name: /عرض المزيد من المشاريع/ }).click();
     await expect(home.locator(".project-card")).toHaveCount(4);
     await expect(home.locator(".daily-project-step")).toHaveCount(3);
-    await home.getByRole("button", { name: /عرض المزيد من المشاريع/ }).click();
+    for (const count of [6, 8]) {
+        await home
+            .getByRole("button", { name: /عرض المزيد من المشاريع/ })
+            .click();
+        await expect(home.locator(".project-card")).toHaveCount(count);
+    }
     await expect(home.locator(".project-card")).toHaveCount(8);
     await expect(home.locator(".daily-project-step")).toHaveCount(7);
     await expect(page.locator(".stat-card")).toHaveCount(0);
@@ -138,7 +148,7 @@ for (const mobile of [false, true]) {
                 page,
             }) => {
                 await importData(page, fixture());
-                await page.goto("/#projects");
+                await page.goto(appUrl("/#projects"));
                 const card = page.locator('[data-project-id="p"]');
                 await expect(
                     card.locator(".execution-current"),
@@ -160,7 +170,7 @@ for (const mobile of [false, true]) {
                     "data-completed-id",
                     "s0",
                 );
-                await page.goto("/#projects");
+                await page.goto(appUrl("/#projects"));
                 const home = page.locator('[data-project-id="p"]');
                 await expect(home.locator(".execution-current")).toHaveCount(1);
                 await home.locator('[data-completion-key="step/s0"]').click();
@@ -197,7 +207,7 @@ for (const mobile of [false, true]) {
                     home.locator(".execution-current"),
                 ).toHaveAttribute("data-execution-id", "s1");
                 await home.locator('[data-completion-key="step/s0"]').click();
-                await page.goto("/#project/p");
+                await page.goto(appUrl("/#project/p"));
                 await expect(page.getByRole("progressbar")).toHaveAttribute(
                     "aria-valuenow",
                     "0",
@@ -207,7 +217,7 @@ for (const mobile of [false, true]) {
                         '[data-step-id="s0"] [data-completion-key="step/s0"]',
                     )
                     .click();
-                await page.goto("/#projects");
+                await page.goto(appUrl("/#projects"));
                 await expect(home.getByRole("progressbar")).toHaveAttribute(
                     "aria-valuenow",
                     "25",
@@ -223,7 +233,7 @@ for (const mobile of [false, true]) {
                     "aria-valuenow",
                     "50",
                 );
-                await page.goto("/#today");
+                await page.goto(appUrl("/#today"));
                 const tasks = page.getByRole("region", {
                     name: "مهامي اليوم",
                     exact: true,
@@ -256,14 +266,14 @@ for (const mobile of [false, true]) {
                 data.steps.find((s) => s.id === "s2")!.startedAt =
                     data.exportedAt;
                 await importData(page, data);
-                await page.goto("/#step/s3");
+                await page.goto(appUrl("/#step/s3"));
                 await expect(page.getByLabel("تعديل الاسم")).toHaveValue(
                     "خطوة 3",
                 );
                 await page
                     .getByLabel("ملاحظات العنصر")
                     .fill("مكان العودة المحفوظ");
-                await page.goto("/#home");
+                await page.goto(appUrl("/#home"));
                 const resume = page.getByRole("region", {
                     name: "اختصار الاستكمال",
                 });
@@ -283,7 +293,7 @@ for (const mobile of [false, true]) {
                 await page
                     .getByRole("button", { name: "تأكيد", exact: true })
                     .click();
-                await page.goto("/#home");
+                await page.goto(appUrl("/#home"));
                 await expect(resume).toContainText("خطوة 2");
                 await page
                     .getByRole("button", {
@@ -296,7 +306,7 @@ for (const mobile of [false, true]) {
                     .click();
                 await expect(resume).toContainText("خطوتك التالية تبدأ هنا");
                 await expect(resume.getByRole("button")).toHaveCount(0);
-                await page.goto("/#projects");
+                await page.goto(appUrl("/#projects"));
                 await page.getByRole("button", { name: /المؤرشفة/ }).click();
                 await page
                     .getByRole("button", {
@@ -307,7 +317,7 @@ for (const mobile of [false, true]) {
                     .getByRole("dialog")
                     .getByRole("button", { name: "إلغاء الأرشفة" })
                     .click();
-                await page.goto("/#home");
+                await page.goto(appUrl("/#home"));
                 await expect(resume).toContainText("خطوة 2");
                 await page
                     .getByRole("region", { name: "اختصار الاستكمال" })
@@ -328,7 +338,7 @@ test("إكمال آخر خطوة وحفظها ثم التراجع من السج�
             timeZone: "UTC",
         };
     await importData(page, data);
-    await page.goto("/#today");
+    await page.goto(appUrl("/#today"));
     const task = page.locator('[data-completion-key="task/t0"]');
     await task.focus();
     await task.press("Enter");
@@ -361,7 +371,7 @@ test("إكمال آخر خطوة وحفظها ثم التراجع من السج�
         page.locator('[data-completion-key="step/s0"]'),
     ).toHaveAttribute("aria-pressed", "false");
     await expect.poll(() => state(page, "steps", "s0")).toBe("todo");
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await expect(page.getByRole("progressbar")).toHaveAttribute(
         "aria-valuenow",
         "0",
@@ -369,12 +379,12 @@ test("إكمال آخر خطوة وحفظها ثم التراجع من السج�
     await page
         .getByRole("button", { name: "إعادة فتح المشروع", exact: true })
         .click();
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(
         page.getByRole("region", { name: "اختصار الاستكمال" }),
     ).toContainText("خطوة 0");
     await importData(page, sizedFixture(0));
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(
         page.getByRole("region", { name: "خطوات مشاريعك القادمة" }),
     ).toContainText("لم تُضف خطوات بعد");
@@ -403,7 +413,7 @@ test("الهوية مستقلة عن الوضع وتبقى الثيمات الأ
                 "data-theme",
                 mode,
             );
-            await page.goto("/#project/p");
+            await page.goto(appUrl("/#project/p"));
             await expect(page.getByRole("progressbar")).toHaveAttribute(
                 "aria-valuenow",
                 "0",
@@ -438,7 +448,7 @@ test("زر الإجراءات ولوحة المفاتيح والقائمة تح�
     page,
 }) => {
     await importData(page, fixture());
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     const trigger = page.getByRole("button", {
         name: "إجراءات المهمة «مهمة 0»",
     });
@@ -456,7 +466,7 @@ test("زر الإجراءات ولوحة المفاتيح والقائمة تح�
         .click();
     await expect(page).toHaveURL(/#task\/t0/);
     await expect(page.getByLabel("تعديل الاسم")).toBeFocused();
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await trigger.click();
     await dialog.getByRole("button", { name: "حذف", exact: true }).click();
     await expect(dialog).toContainText("يمكنك التراجع");
@@ -467,14 +477,14 @@ test("زر الإجراءات ولوحة المفاتيح والقائمة تح�
     await dialog.getByRole("button", { name: "تأكيد", exact: true }).click();
     await page.getByRole("button", { name: "تراجع", exact: true }).click();
     await expect.poll(() => state(page, "tasks", "t0")).toBe("todo");
-    await page.goto("/#ideas");
+    await page.goto(appUrl("/#ideas"));
     await page
         .getByRole("button", { name: "إجراءات الفكرة «فكرة للاختبار»" })
         .click();
     await dialog.getByRole("button", { name: "تحويل إلى مهمة" }).click();
     await dialog.getByRole("button", { name: "تأكيد", exact: true }).click();
     await expect(page.getByLabel("تعديل الاسم")).toHaveValue("فكرة للاختبار");
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await page
         .getByRole("button", {
             name: "إجراءات الخطوة أو المرحلة «مرحلة الاختبار»",
@@ -496,8 +506,11 @@ test("الضغط المطول بالماوس يفتح قائمة واحدة وي
     page,
 }) => {
     await importData(page, fixture());
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     const title = page.locator('[data-project-id="p"] > .title-link');
+    // The project list follows the new gateway; a raw mouse coordinate must
+    // be measured after the real card is brought into the viewport.
+    await title.scrollIntoViewIfNeeded();
     const box = (await title.boundingBox())!;
     await page.mouse.move(box.x + 20, box.y + 20);
     await page.mouse.down();
@@ -524,7 +537,7 @@ test.describe("ضغط مطول باللمس وتمرير طبيعي", () => {
         context,
     }) => {
         await importData(page, fixture());
-        await page.goto("/#tasks");
+        await page.goto(appUrl("/#tasks"));
         const target = page.locator('[data-task-id="t0"] .task-main');
         await target.scrollIntoViewIfNeeded();
         const box = (await target.boundingBox())!;

@@ -1,0 +1,10 @@
+{
+  "pending_after_restore": true,
+  "today_before_reload": null,
+  "today_after_reload": {
+    "date": "2026-10-21",
+    "timeZone": "Asia/Riyadh"
+  },
+  "unexpected_replay": true,
+  "source": "pending-intent.log"
+}

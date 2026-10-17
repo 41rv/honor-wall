@@ -1,0 +1,43 @@
+{
+  "cpu_throttle": 4,
+  "blur_input_through_two_frames_ms": [
+    99,
+    82,
+    63,
+    47,
+    48,
+    49,
+    63,
+    48,
+    65
+  ],
+  "maximum_ms": 99,
+  "listener_counts_before": {
+    "window/test": 0,
+    "window/x-storagemutated-1": 1,
+    "window/pagehide": 1,
+    "window/pageshow": 2,
+    "document/selectionchange": 1,
+    "window/focus": 4,
+    "document/visibilitychange": 4,
+    "window/hashchange": 1,
+    "window/beforeinstallprompt": 1,
+    "window/online": 1,
+    "window/offline": 1
+  },
+  "listener_counts_after": {
+    "window/test": 0,
+    "window/x-storagemutated-1": 1,
+    "window/pagehide": 1,
+    "window/pageshow": 2,
+    "document/selectionchange": 1,
+    "window/focus": 4,
+    "document/visibilitychange": 4,
+    "window/hashchange": 1,
+    "window/beforeinstallprompt": 1,
+    "window/online": 1,
+    "window/offline": 1
+  },
+  "route_roundtrips": 10,
+  "task_and_step_data_unchanged": true
+}

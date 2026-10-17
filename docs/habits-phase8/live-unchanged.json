@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-17T02:49:42.792350+00:00",
+  "tlsVerified": true,
+  "files": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "92332472b5b70ec76285c3423de26fff063f6db2e207873e04ae63aa18895d42",
+      "unchanged": true
+    },
+    {
+      "path": "sw.js",
+      "status": 200,
+      "sha256": "14ba57a40512107bee076d84972f5f1547ac5d64546ac8742e088dbeef0fbfbf",
+      "unchanged": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "status": 200,
+      "sha256": "aea3006c3f486ea0bbc5074c318b4d1f6eaa86cad71c6c01f175de9ff7b7db85",
+      "unchanged": true
+    }
+  ],
+  "publishedByThisWork": false
+}

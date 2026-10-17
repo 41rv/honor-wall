@@ -1,0 +1,846 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/habits-phase3.spec.ts",
+      "--reporter=line,json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "habits-phase3.spec.ts",
+      "file": "habits-phase3.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "حساب جديد:لا بياناتافتراضية،إنشاءمساروعادةمستقلةوأسبوعيةوتعديلها",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3432,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:40:32.051Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-9b58c981c3903e22da85",
+          "file": "habits-phase3.spec.ts",
+          "line": 117,
+          "column": 1
+        },
+        {
+          "title": "الرئيسيةتسجلوترجعفورًاوالتسجيلوالإحصاءاتمنفصلةعنالمهاموالمشاريع",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1891,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:40:35.676Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-8ef4fa3ab3af9a93ecd9",
+          "file": "habits-phase3.spec.ts",
+          "line": 174,
+          "column": 1
+        },
+        {
+          "title": "التسجيلالمتزامنمننافذتينلاينشئسجلينيوميين",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6489,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.habit-detail > .habit-row').getByRole('button')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.habit-detail > .habit-row').getByRole('button') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.habit-detail > .habit-row').getByRole('button')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" aria-busy=\"true\" class=\"task-check \" aria-pressed=\"false\" aria-label=\"تسجيل عادة «ترتيب السرير»\"></button>\u001b[22m\n\u001b[2m    13 × unexpected value \"false\"\u001b[22m\n\u001b[2m       - locator resolved to <button type=\"button\" aria-busy=\"false\" class=\"task-check \" aria-pressed=\"false\" aria-label=\"تسجيل عادة «ترتيب السرير»\"></button>\u001b[22m\n\u001b[2m    - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.habit-detail > .habit-row').getByRole('button')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.habit-detail > .habit-row').getByRole('button') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.habit-detail > .habit-row').getByRole('button')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" aria-busy=\"true\" class=\"task-check \" aria-pressed=\"false\" aria-label=\"تسجيل عادة «ترتيب السرير»\"></button>\u001b[22m\n\u001b[2m    13 × unexpected value \"false\"\u001b[22m\n\u001b[2m       - locator resolved to <button type=\"button\" aria-busy=\"false\" class=\"task-check \" aria-pressed=\"false\" aria-label=\"تسجيل عادة «ترتيب السرير»\"></button>\u001b[22m\n\u001b[2m    - unexpected value \"false\"\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/habits-phase3.spec.ts:233:55",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/habits-phase3.spec.ts",
+                      "column": 55,
+                      "line": 233
+                    },
+                    "snippet": "  231 |         \"true\",\n  232 |     );\n> 233 |     await expect(current(second).getByRole(\"button\")).toHaveAttribute(\n      |                                                       ^\n  234 |         \"aria-pressed\",\n  235 |         \"true\",\n  236 |     );"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/habits-phase3.spec.ts",
+                        "column": 55,
+                        "line": 233
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.habit-detail > .habit-row').getByRole('button')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.habit-detail > .habit-row').getByRole('button') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.habit-detail > .habit-row').getByRole('button')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" aria-busy=\"true\" class=\"task-check \" aria-pressed=\"false\" aria-label=\"تسجيل عادة «ترتيب السرير»\"></button>\u001b[22m\n\u001b[2m    13 × unexpected value \"false\"\u001b[22m\n\u001b[2m       - locator resolved to <button type=\"button\" aria-busy=\"false\" class=\"task-check \" aria-pressed=\"false\" aria-label=\"تسجيل عادة «ترتيب السرير»\"></button>\u001b[22m\n\u001b[2m    - unexpected value \"false\"\u001b[22m\n\n\n  231 |         \"true\",\n  232 |     );\n> 233 |     await expect(current(second).getByRole(\"button\")).toHaveAttribute(\n      |                                                       ^\n  234 |         \"aria-pressed\",\n  235 |         \"true\",\n  236 |     );\n    at /workspace/honor-wall/tests/browser/habits-phase3.spec.ts:233:55"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:40:37.577Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/habits-phase3-التسجيلالمتزامنمننافذتينلاينشئسجلينيوميين/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/habits-phase3.spec.ts",
+                    "column": 55,
+                    "line": 233
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-e10a0a88e7421dc87337",
+          "file": "habits-phase3.spec.ts",
+          "line": 217,
+          "column": 1
+        },
+        {
+          "title": "تصحيحتسجيلقديموخارجالشهرالظاهرلاينسخالسجلويحفظوقتإدخاله",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1349,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:40:44.533Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-d643b3f412436d12de0f",
+          "file": "habits-phase3.spec.ts",
+          "line": 244,
+          "column": 1
+        },
+        {
+          "title": "نقلالعادةبينالمساراتوفصلهايحفظالسجلويظهرالسريانغدًا",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3214,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:40:46.085Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-282aabda7dd2ba6cda94",
+          "file": "habits-phase3.spec.ts",
+          "line": 288,
+          "column": 1
+        },
+        {
+          "title": "الإيقافالمتداخلوالاستئنافلايغيرالسجلولايلغيتوقفالعادة",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 45026,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/habits-phase3.spec.ts",
+                        "column": 10,
+                        "line": 114
+                      },
+                      "message": "Error: locator.click: Test timeout of 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByRole('button', { name: 'استئناف', exact: true })\u001b[22m\n\n\n  112 |         .getByRole(\"dialog\")\n  113 |         .getByRole(\"button\", { name: action, exact: true })\n> 114 |         .click();\n      |          ^\n  115 | }\n  116 | const current = (page: Page) => page.locator(\".habit-detail > .habit-row\");\n  117 | test(\"حساب جديد:لا بياناتافتراضية،إنشاءمساروعادةمستقلةوأسبوعيةوتعديلها\", async ({\n    at menu (/workspace/honor-wall/tests/browser/habits-phase3.spec.ts:114:10)\n    at /workspace/honor-wall/tests/browser/habits-phase3.spec.ts:320:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:40:49.315Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/habits-phase3-الإيقافالمتد-76349-ايغيرالسجلولايلغيتوقفالعادة/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-71697afe8093ac6bb82b",
+          "file": "habits-phase3.spec.ts",
+          "line": 312,
+          "column": 1
+        },
+        {
+          "title": "أرشفةواستعادةالمساروالعادةمحافظتانوتتطلبالأرشفةتأكيدًا",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8169,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('موقوفة مؤقتًا', { exact: true }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('موقوفة مؤقتًا', { exact: true }).first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('موقوفة مؤقتًا', { exact: true }).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('موقوفة مؤقتًا', { exact: true }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('موقوفة مؤقتًا', { exact: true }).first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('موقوفة مؤقتًا', { exact: true }).first()\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/habits-phase3.spec.ts:373:7",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/habits-phase3.spec.ts",
+                      "column": 7,
+                      "line": 373
+                    },
+                    "snippet": "  371 |     await expect(\n  372 |         page.getByText(\"موقوفة مؤقتًا\", { exact: true }).first(),\n> 373 |     ).toBeVisible();\n      |       ^\n  374 | });\n  375 | test(\"منتصفالليلودورةاليومالجديدوالأسبوعلايرحلانالتسجيل\", async ({ page }) => {\n  376 |     await seed(page);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/habits-phase3.spec.ts",
+                        "column": 7,
+                        "line": 373
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('موقوفة مؤقتًا', { exact: true }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('موقوفة مؤقتًا', { exact: true }).first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('موقوفة مؤقتًا', { exact: true }).first()\u001b[22m\n\n\n  371 |     await expect(\n  372 |         page.getByText(\"موقوفة مؤقتًا\", { exact: true }).first(),\n> 373 |     ).toBeVisible();\n      |       ^\n  374 | });\n  375 | test(\"منتصفالليلودورةاليومالجديدوالأسبوعلايرحلانالتسجيل\", async ({ page }) => {\n  376 |     await seed(page);\n    at /workspace/honor-wall/tests/browser/habits-phase3.spec.ts:373:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:41:34.793Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/habits-phase3-أرشفةواستعاد-d6da6-حافظتانوتتطلبالأرشفةتأكيدًا/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/habits-phase3.spec.ts",
+                    "column": 7,
+                    "line": 373
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-939215ede6b60eb9aaa4",
+          "file": "habits-phase3.spec.ts",
+          "line": 339,
+          "column": 1
+        },
+        {
+          "title": "منتصفالليلودورةاليومالجديدوالأسبوعلايرحلانالتسجيل",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1770,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:41:43.604Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-2e49b01247bbccde0cf0",
+          "file": "habits-phase3.spec.ts",
+          "line": 375,
+          "column": 1
+        },
+        {
+          "title": "الروابطالمباشرةوالرجوعوالتمريروEscapeوالإضافةالعائمةتبقىسليمة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2396,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:41:45.581Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-c2d9937a9c218a2042ab",
+          "file": "habits-phase3.spec.ts",
+          "line": 401,
+          "column": 1
+        },
+        {
+          "title": "النسخوالاستعادةتحفظالإنجازوالإيقافاتالجديدةمعالجداولالقديمة",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2064,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:41:47.996Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-17bc6293078f6c1eee85",
+          "file": "habits-phase3.spec.ts",
+          "line": 432,
+          "column": 1
+        },
+        {
+          "title": "العرضوالصورRTL 320 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3701,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:41:50.074Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-6aca01f076b3a6fc9578",
+          "file": "habits-phase3.spec.ts",
+          "line": 455,
+          "column": 9
+        },
+        {
+          "title": "العرضوالصورRTL 320 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3363,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:41:53.790Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-070a1ad22ef1d2475cfe",
+          "file": "habits-phase3.spec.ts",
+          "line": 455,
+          "column": 9
+        },
+        {
+          "title": "العرضوالصورRTL 390 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3739,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:41:57.164Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-61ec7250b4e1b9855316",
+          "file": "habits-phase3.spec.ts",
+          "line": 455,
+          "column": 9
+        },
+        {
+          "title": "العرضوالصورRTL 390 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3864,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:42:00.914Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-070c93c061b00b8c049c",
+          "file": "habits-phase3.spec.ts",
+          "line": 455,
+          "column": 9
+        },
+        {
+          "title": "العرضوالصورRTL 768 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3702,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:42:04.796Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-06567dd8401a1d1a0d71",
+          "file": "habits-phase3.spec.ts",
+          "line": 455,
+          "column": 9
+        },
+        {
+          "title": "العرضوالصورRTL 768 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3748,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:42:08.513Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-3d24a46c409c3e1f381d",
+          "file": "habits-phase3.spec.ts",
+          "line": 455,
+          "column": 9
+        },
+        {
+          "title": "العرضوالصورRTL 1366 light",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3980,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:42:12.273Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-62d151d3d3dd6b55e19e",
+          "file": "habits-phase3.spec.ts",
+          "line": 455,
+          "column": 9
+        },
+        {
+          "title": "العرضوالصورRTL 1366 dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4520,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:42:16.264Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-3d6158e51610c4303011",
+          "file": "habits-phase3.spec.ts",
+          "line": 455,
+          "column": 9
+        },
+        {
+          "title": "فتحوتسجيلسريعانمعقائمةطويلةوإبطاءCPUدونحسابالتاريخكله",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2612,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:42:20.807Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d00248c7a5c68fdbd1a4-5d8eb0a80460d209a7b8",
+          "file": "habits-phase3.spec.ts",
+          "line": 500,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T00:40:30.588Z",
+    "duration": 112929.36,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

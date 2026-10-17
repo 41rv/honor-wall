@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { test, expect } from "@playwright/test";
 import { sizedFixture, importData, readStore } from "./helpers";
 
@@ -20,7 +21,7 @@ for (const mobile of [false, true]) {
                 const errors: string[] = [];
                 page.on("pageerror", (error) => errors.push(error.message));
                 await importData(page, sizedFixture(10));
-                await page.goto("/#tasks");
+                await page.goto(appUrl("/#tasks"));
                 const task = page.getByRole("button", {
                     name: "إكمال مهمة 0",
                     exact: true,
@@ -57,7 +58,7 @@ for (const mobile of [false, true]) {
                             )?.status,
                     )
                     .toBe("done");
-                await page.goto("/#project/p");
+                await page.goto(appUrl("/#project/p"));
                 const leaf = page.getByRole("button", {
                     name: "إتمام الخطوة «خطوة 0»",
                     exact: true,
@@ -108,7 +109,7 @@ for (const mobile of [false, true]) {
                     "aria-valuenow",
                     "0",
                 );
-                await page.goto("/#tasks");
+                await page.goto(appUrl("/#tasks"));
                 await page
                     .getByRole("button", {
                         name: "إعادة فتح مهمة 0",
@@ -146,7 +147,7 @@ for (const mobile of [false, true]) {
                         .locator("strong"),
                 ).toHaveText("0");
                 const second = await page.context().newPage();
-                await second.goto("/#project/p");
+                await second.goto(appUrl("/#project/p"));
                 await expect(second.getByRole("progressbar")).toHaveAttribute(
                     "aria-valuenow",
                     "0",
@@ -180,7 +181,7 @@ test("تبديل عدة مهام أثناء تغيير الصفحة يحفظ ا�
     page,
 }) => {
     await importData(page, sizedFixture(100));
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await page.evaluate(() => {
         for (const title of ["مهمة 0", "مهمة 1", "مهمة 2"]) {
             const button = document.querySelector(

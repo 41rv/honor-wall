@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { openCreate } from "./helpers";
 import { test, expect } from "@playwright/test";
 import { largeFixture, importData } from "./helpers";
@@ -16,7 +17,7 @@ test("قياس حفظ فكرة مع ألفي فكرة موجودة ومعالج 
     await importData(page, data);
     const client = await page.context().newCDPSession(page);
     await client.send("Emulation.setCPUThrottlingRate", { rate: 4 });
-    await page.goto("/#ideas");
+    await page.goto(appUrl("/#ideas"));
     await page.getByRole("button", { name: "الأرشيف", exact: true }).click();
     await page.getByLabel("بحث شامل").fill("بحث لا يطابق الفكرة الجديدة");
     await expect(page.getByText("لم نجد نتيجة")).toBeVisible();

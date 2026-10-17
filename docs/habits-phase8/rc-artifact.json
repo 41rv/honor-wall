@@ -1,0 +1,12 @@
+{
+  "label": "habits-rc1",
+  "packageVersion": "1.4.3",
+  "base": "/honor-wall/",
+  "files": 19,
+  "bytes": 333086,
+  "sha256": "42b63590482c3b642b3b99fdfacf03392cd50e61789323defe34aa655f18fcd9",
+  "buildMatchesFrozenManifest": true,
+  "containsUserOrTestData": false,
+  "published": false,
+  "androidGate": "pending"
+}

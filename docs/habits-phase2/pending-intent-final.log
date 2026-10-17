@@ -1,0 +1,6 @@
+{
+  pending_after_restore: false,
+  today_before_reload: null,
+  today_after_reload: null,
+  unexpected_replay: false
+}

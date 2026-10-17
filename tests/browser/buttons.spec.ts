@@ -1,3 +1,5 @@
+import { appUrl } from "./url";
+import { navigateView } from "./helpers";
 import { showLegacy } from "./helpers";
 import { openCreate } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
@@ -22,7 +24,7 @@ test.beforeEach(async ({ page }) => {
     const list: string[] = [];
     errors.set(page, list);
     page.on("pageerror", (e) => list.push(e.message));
-    await page.goto("/");
+    await page.goto(appUrl("/"));
 });
 test.afterEach(async ({ page }) => {
     expect(errors.get(page)).toEqual([]);
@@ -83,21 +85,15 @@ test("أزرار الإضافة والإلغاء والإغلاق والبحث �
     await page.getByLabel("بحث شامل").fill("إضافة واحدة");
     await page.locator(".search-result").click();
     await expect(page).toHaveURL(/#project/);
+    // Wait for the detail screen and its existing route-search reset;
+    // changing the hash alone is not a React render-completion signal.
+    await expect(page.getByLabel("ملاحظات العنصر")).toBeVisible();
     await page.getByLabel("بحث شامل").fill("لن أجده");
     await expect(page.getByText("لم نجد نتيجة")).toBeVisible();
     await page.getByRole("button", { name: "مسح البحث" }).click();
     await expect(page.getByLabel("ملاحظات العنصر")).toBeVisible();
-    for (const name of [
-        "الرئيسية",
-        "المشاريع",
-        "المهام",
-        "الأفكار",
-        "التقدم",
-    ]) {
-        await page
-            .locator(".navigation")
-            .getByRole("link", { name, exact: true })
-            .click();
+    for (const route of ["home", "projects", "tasks", "ideas", "progress"]) {
+        await navigateView(page, route);
         await expect(page.locator("h1")).toBeVisible();
     }
     await page.locator(".brand").click();
@@ -109,7 +105,7 @@ test("أزرار الإضافة والإلغاء والإغلاق والبحث �
 test("كل أزرار المراحل والخطوات: إضافة وتفاصيل وترتيب وطي وحالات وحذف وتراجع", async ({
     page,
 }) => {
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await add(page, "مشروع جديد", "جولة الأزرار");
     await page
         .getByRole("button", { name: "جولة الأزرار", exact: true })
@@ -323,10 +319,7 @@ test.describe("محاكاة هاتف ولمس", () => {
         await expect(page.getByLabel("ملاحظات العنصر")).toHaveValue(
             "وصف الفكرة على الهاتف",
         );
-        await page
-            .locator(".navigation")
-            .getByRole("link", { name: "الأفكار", exact: true })
-            .tap();
+        await navigateView(page, "ideas", true);
         await page.getByRole("button", { name: "الأرشيف", exact: true }).tap();
         await expect(
             page.getByRole("button", { name: "فكرة معدلة", exact: true }),
@@ -341,7 +334,7 @@ test.describe("محاكاة هاتف ولمس", () => {
 test("تصدير الملاحظات فور الكتابة والتحقق وإلغاء الاستيراد والتثبيت المتاح", async ({
     page,
 }) => {
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await add(page, "مشروع جديد", "بياناتي");
     await page.getByRole("button", { name: "بياناتي", exact: true }).click();
     await page.getByLabel("ملاحظات العنصر").fill("آخر نص قبل التنقل السريع");
@@ -399,7 +392,7 @@ test("تصدير الملاحظات فور الكتابة والتحقق وإل�
 test("فشل إتمام المهمة يعيد علامتها لحالتها السابقة ولا يسجل إنجازًا زائفًا", async ({
     page,
 }) => {
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await add(page, "مهمة جديدة", "فشل الإتمام");
     await page.evaluate(() => {
         const put = IDBObjectStore.prototype.put;
@@ -426,7 +419,7 @@ test("فشل إتمام المهمة يعيد علامتها لحالتها ال
 test("الكتابة السريعة تدمج الحفظ وتبقى الملاحظات بعد رجوع فوري", async ({
     page,
 }) => {
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await add(page, "مشروع جديد", "كتابة سريعة");
     await page
         .getByRole("button", { name: "كتابة سريعة", exact: true })
@@ -469,23 +462,20 @@ test("روابط الرئيسية والإنجازات تفتح المشروع �
     data.tasks = data.tasks.slice(0, 1);
     data.events = [];
     await importData(page, data);
-    await page.goto("/#step/step0-0-0");
+    await page.goto(appUrl("/#step/step0-0-0"));
     await page.getByRole("button", { name: "لم تبدأ", exact: true }).click();
     await page.getByRole("button", { name: "جارٍ العمل", exact: true }).click();
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await page.getByRole("button", { name: "أكمل من حيث توقفت" }).click();
     await expect(page).toHaveURL(/#step\/step0-0-0/);
     await page.getByRole("button", { name: "مكتملة", exact: true }).click();
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await page
         .getByRole("button", { name: "كل المشاريع", exact: true })
         .click();
     await expect(page).toHaveURL(/#projects/);
-    await page.goto("/#home");
-    await page
-        .locator(".navigation")
-        .getByRole("link", { name: /^المهام/ })
-        .click();
+    await page.goto(appUrl("/#home"));
+    await navigateView(page, "tasks");
     await page
         .getByRole("button", { name: "إكمال مهمة 0", exact: true })
         .click();

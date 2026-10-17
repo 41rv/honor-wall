@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-10-14T22:07:25.289002+00:00",
+  "chromium_reference": "e47056e273a5d2bf4bebdf47c5be9e52643c6fb5",
+  "matching_fix": {
+    "sha": "0a6ab4f0e2ce17e572b05400ae6eacd7fc5389f0",
+    "date": "2026-08-06T07:47:32Z",
+    "message": "Color installed web app navigation bar with the theme color\n\nInstalled web apps colored the status bar from the manifest theme color\nbut left the Android navigation bar at the platform default, so reuse\nthe theme color for the navigation bar and hoist the update into\nBaseCustomTabActivity so it also runs for webapp/WebAPK activities,\nbehind the default-on WebAppNavigationBarThemeColor killswitch.\n\nNO_IFTTT=ChromeFeatureList.java change is already reflected in\nchrome_feature_list.cc.\n\nFixed: 40759522\nChange-Id: I4efa5c01688343e1fd9c62393e01a9fbe5e548c8\nReviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/8077818\nReviewed-by: Peter Conn <peconn@chromium.org>\nCommit-Queue: Helmut Januschka <helmut@januschka.com>\nCr-Commit-Position: refs/heads/main@{#1674771}",
+    "url": "https://github.com/chromium/chromium/commit/0a6ab4f0e2ce17e572b05400ae6eacd7fc5389f0",
+    "VERSION_at_commit": "MAJOR=153\nMINOR=0\nBUILD=7994\nPATCH=0\n"
+  },
+  "sources": [
+    {
+      "path": "chrome/android/java/src/org/chromium/chrome/browser/customtabs/BaseCustomTabActivity.java",
+      "url": "https://github.com/chromium/chromium/blob/e47056e273a5d2bf4bebdf47c5be9e52643c6fb5/chrome/android/java/src/org/chromium/chrome/browser/customtabs/BaseCustomTabActivity.java",
+      "sha256": "5b65d9a92bcf91d82513b6229bc6a6a1f91839bf8cf1bb0c98ef726d008addb0"
+    },
+    {
+      "path": "chrome/android/java/src/org/chromium/chrome/browser/webapps/WebappIntentDataProvider.java",
+      "url": "https://github.com/chromium/chromium/blob/e47056e273a5d2bf4bebdf47c5be9e52643c6fb5/chrome/android/java/src/org/chromium/chrome/browser/webapps/WebappIntentDataProvider.java",
+      "sha256": "099646f4140d7fff6b0c0f0425d9b3839b696e4f795ccdc2f06a4809c65669c8"
+    },
+    {
+      "path": "chrome/android/java/src/org/chromium/chrome/browser/webapps/WebApkUpdateManager.java",
+      "url": "https://github.com/chromium/chromium/blob/e47056e273a5d2bf4bebdf47c5be9e52643c6fb5/chrome/android/java/src/org/chromium/chrome/browser/webapps/WebApkUpdateManager.java",
+      "sha256": "f23320653fcbf1d9b92fb74d185b64b1d639b177263a6df4db816ad346cd49a9"
+    },
+    {
+      "path": "chrome/android/java/src/org/chromium/chrome/browser/webapps/WebappDataStorage.java",
+      "url": "https://github.com/chromium/chromium/blob/e47056e273a5d2bf4bebdf47c5be9e52643c6fb5/chrome/android/java/src/org/chromium/chrome/browser/webapps/WebappDataStorage.java",
+      "sha256": "8777565b6d302594f83ab5e94c3c0d0bc3b11cfb6d2d49f8ac7da780845ef257"
+    },
+    {
+      "path": "chrome/browser/resources/webapks/about_webapks.ts",
+      "url": "https://github.com/chromium/chromium/blob/e47056e273a5d2bf4bebdf47c5be9e52643c6fb5/chrome/browser/resources/webapks/about_webapks.ts",
+      "sha256": "a4bd6349a77f3f3351b53849f298350e862a46f89c1f5f790371a00222d03f4e"
+    },
+    {
+      "path": "chrome/android/java/src/org/chromium/chrome/browser/ShortcutHelper.java",
+      "url": "https://github.com/chromium/chromium/blob/e47056e273a5d2bf4bebdf47c5be9e52643c6fb5/chrome/android/java/src/org/chromium/chrome/browser/ShortcutHelper.java",
+      "sha256": "2167d367bf9170032c8d370987d73fb4de81874469a048f96d583db8be8feccd"
+    }
+  ],
+  "website": "https://41rv.github.io/honor-wall/",
+  "application_changed": false,
+  "published": false,
+  "native_android_tested": false,
+  "native_webapk_tested": false
+}

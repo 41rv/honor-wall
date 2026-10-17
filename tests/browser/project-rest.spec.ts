@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { importData, sizedFixture, readStore, openCreate } from "./helpers";
@@ -16,7 +17,7 @@ test.beforeEach(async ({ page }) => {
 });
 test.afterEach(async ({ page }) => expect(errors.get(page)).toEqual([]));
 async function settings(page: Page) {
-    await page.goto("/#backup");
+    await page.goto(appUrl("/#backup"));
     const section = page.locator(".project-rest-settings");
     if ((await section.getAttribute("open")) === null)
         await section.locator("summary").click();
@@ -48,7 +49,7 @@ async function setup(page: Page, count = 40) {
             x.updatedAt = clock;
         }
     await importData(page, data);
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await page
         .getByRole("button", { name: "إعداد الهدف الزمني", exact: true })
         .click();
@@ -102,7 +103,7 @@ test("افتراضي الراحة والتعديل وحفظ السجل وإعا�
         section.getByRole("checkbox", { name: "الأربعاء", exact: true }),
     ).toBeChecked();
     await selectDays(page, []);
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(page.locator(".project-rest-notice")).toHaveCount(0);
     expect(
         (
@@ -127,7 +128,7 @@ test("40/20 =14 يوم عمل: الهدف ثابت والتوزيع يتحدث �
         }
     ).targetDate;
     await selectDays(page, []);
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await expect(panel).toContainText("2 خطوة / يوم عمل");
     expect(
         (
@@ -154,7 +155,7 @@ test("كل الأسبوع راحة: تحذير وحفظ وغياب الاقتر�
     await expect(page.locator(".project-rest-settings")).toContainText(
         "كل الأيام راحة",
     );
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(page.locator(".project-rest-notice")).toContainText(
         "اليوم راحة من المشاريع",
     );
@@ -163,7 +164,7 @@ test("كل الأسبوع راحة: تحذير وحفظ وغياب الاقتر�
         page.getByRole("button", { name: "معاينة الاقتراح", exact: true }),
     ).toHaveCount(0);
     expect(await readStore(page, "projectPlans")).toEqual(before);
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await expect(
         page.getByLabel("وتيرة المشروع", { exact: true }),
     ).toContainText("لا توجد أيام عمل متبقية");
@@ -179,7 +180,7 @@ test("الجمعة: المهمة والمتكررة تعملان والإنجا�
         ["موعد الجمعة", "none"],
         ["دورة الجمعة", "daily"],
     ]) {
-        await page.goto("/#tasks");
+        await page.goto(appUrl("/#tasks"));
         await openCreate(page, "task");
         const d = page.getByRole("dialog");
         await d.getByLabel("الاسم", { exact: true }).fill(title);
@@ -191,7 +192,7 @@ test("الجمعة: المهمة والمتكررة تعملان والإنجا�
         await d.getByRole("button", { name: "إضافة", exact: true }).click();
         await expect(d).not.toBeVisible();
     }
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(page.locator(".home-today")).toContainText("موعد الجمعة");
     await expect(page.locator(".home-today")).toContainText("دورة الجمعة");
     await expect(page.locator(".project-rest-notice")).toBeVisible();
@@ -208,7 +209,7 @@ test("الجمعة: المهمة والمتكررة تعملان والإنجا�
     const tasks = await readStore(page, "tasks"),
         cycles = await readStore(page, "taskCycles"),
         schedule = await readStore(page, "paceSettings");
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await page
         .getByRole("button", { name: "إتمام الخطوة «خطوة 0»", exact: true })
         .click();
@@ -222,7 +223,7 @@ test("الجمعة: المهمة والمتكررة تعملان والإنجا�
     expect(await readStore(page, "taskCycles")).toEqual(cycles);
     expect(await readStore(page, "paceSettings")).toEqual(schedule);
     await jump(page, "2026-10-04T09:00:00.000Z");
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(page.locator(".project-rest-notice")).toHaveCount(0);
     await expect(page.locator(".daily-project-step").first()).toBeVisible();
 });
@@ -236,7 +237,7 @@ test("النسخ الجديدة والقديمة: تنزيل واستعادة ا
     const backup = JSON.parse(
         fs.readFileSync((await (await download).path())!, "utf8"),
     );
-    expect(backup.version).toBe(4);
+    expect(backup.version).toBe(5);
     expect(backup.paceSettings[0].restHistory.at(-1).days).toEqual([0]);
     await selectDays(page, []);
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
@@ -299,7 +300,7 @@ for (const width of [320, 390, 768, 1366])
         await setup(page, 2);
         await jump(page, "2026-10-02T09:00:00.000Z");
         for (const theme of ["light", "dark"]) {
-            await page.goto("/#home");
+            await page.goto(appUrl("/#home"));
             if (theme === "dark")
                 await page
                     .getByRole("button", { name: "الوضع الداكن", exact: true })

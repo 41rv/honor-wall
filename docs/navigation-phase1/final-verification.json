@@ -1,0 +1,1497 @@
+{
+  "base_commit": "8d03d7401e8452f629db895b827bcf295557fcc4",
+  "source_release": "1.4.3",
+  "authorized_phase": 1,
+  "database_version": 60,
+  "dexie_schema": 6,
+  "new_stores": 0,
+  "habits_implemented": false,
+  "published": false,
+  "pushed": false,
+  "new_commits": 0,
+  "unit_integration": {
+    "passed": 386,
+    "failed": 0,
+    "skipped": 0,
+    "new": 22
+  },
+  "browser": {
+    "initial_full_run": {
+      "startTime": "2026-10-16T23:21:54.433Z",
+      "duration": 981387.5850000001,
+      "expected": 240,
+      "skipped": 0,
+      "unexpected": 3,
+      "flaky": 0
+    },
+    "post_correction_run": {
+      "startTime": "2026-10-16T23:38:59.357Z",
+      "duration": 99464.913,
+      "expected": 15,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "unique_verified_cases": 243,
+    "unresolved_failed_cases": 0,
+    "new_cases": 12,
+    "method": "Full run plus affected rechecks; not a claim of one clean full run.",
+    "cases": [
+      {
+        "file": "app.spec.ts",
+        "title": "واجهة المشروع: الإنشاء، الترتيب، الملاحظات، النسب والإغلاق",
+        "status": "passed"
+      },
+      {
+        "file": "app.spec.ts",
+        "title": "المهام والأفكار: إنشاء وبدء وإنجاز وإعادة فتح وتحويل وتراجع",
+        "status": "passed"
+      },
+      {
+        "file": "app.spec.ts",
+        "title": "إنشاء مشروع ومرحلة وخطوة فرعية وتعديل وأرشفة",
+        "status": "passed"
+      },
+      {
+        "file": "app.spec.ts",
+        "title": "تصدير واستيراد كامل، رفض نسخة مكسورة دون فقد البيانات",
+        "status": "passed"
+      },
+      {
+        "file": "app.spec.ts",
+        "title": "شاشة 320 بكسل، الوضعان وغياب التمرير الأفقي",
+        "status": "passed"
+      },
+      {
+        "file": "app.spec.ts",
+        "title": "PWA: الأصول والبيانات متاحة دون إنترنت بعد إعادة التشغيل",
+        "status": "passed"
+      },
+      {
+        "file": "app.spec.ts",
+        "title": "مشروع طويل: استكمال آخر خطوة، حفظ موضع العودة، والتفرع العميق",
+        "status": "passed"
+      },
+      {
+        "file": "app.spec.ts",
+        "title": "فشل حفظ الملاحظات يستعيد المسودة بعد إعادة التحميل ويمكن إعادة حفظها",
+        "status": "passed"
+      },
+      {
+        "file": "buttons.spec.ts",
+        "title": "أزرار الإضافة والإلغاء والإغلاق والبحث والتنقل والضغط المتكرر",
+        "status": "passed"
+      },
+      {
+        "file": "buttons.spec.ts",
+        "title": "كل أزرار المراحل والخطوات: إضافة وتفاصيل وترتيب وطي وحالات وحذف وتراجع",
+        "status": "passed"
+      },
+      {
+        "file": "buttons.spec.ts",
+        "title": "تصدير الملاحظات فور الكتابة والتحقق وإلغاء الاستيراد والتثبيت المتاح",
+        "status": "passed"
+      },
+      {
+        "file": "buttons.spec.ts",
+        "title": "فشل إتمام المهمة يعيد علامتها لحالتها السابقة ولا يسجل إنجازًا زائفًا",
+        "status": "passed"
+      },
+      {
+        "file": "buttons.spec.ts",
+        "title": "الكتابة السريعة تدمج الحفظ وتبقى الملاحظات بعد رجوع فوري",
+        "status": "passed"
+      },
+      {
+        "file": "buttons.spec.ts",
+        "title": "روابط الرئيسية والإنجازات تفتح المشروع والمهمة والخطوة في مكانها",
+        "status": "passed"
+      },
+      {
+        "file": "buttons.spec.ts",
+        "title": "رسالة فشل فتح التخزين وزر إعادة المحاولة يستعيدان التطبيق دون حذف البيانات",
+        "status": "passed"
+      },
+      {
+        "file": "buttons.spec.ts",
+        "title": "الصح باللمس وإعادة الفتح وتفاصيل المهمة وحالاتها والإلغاء والتراجع",
+        "status": "passed"
+      },
+      {
+        "file": "buttons.spec.ts",
+        "title": "الأفكار: إضافة سريعة وتعديل وبحث وأرشفة واستعادة وتحويل وإلغاء التحويل",
+        "status": "passed"
+      },
+      {
+        "file": "completion-capture.spec.ts",
+        "title": "التقاط الفكرة في صفحة الأفكار يحفظ باللمس والإدخال والتفاصيل دون فقد",
+        "status": "passed"
+      },
+      {
+        "file": "completion-capture.spec.ts",
+        "title": "إتمام الخطوة والمرحلة من الشجرة وتحديث الأرقام والسجل ثم إعادة فتحهما",
+        "status": "passed"
+      },
+      {
+        "file": "completion-capture.spec.ts",
+        "title": "المشروع له زر إتمام في البطاقة والتفاصيل وإتمامه لا يغيّر خطواته",
+        "status": "passed"
+      },
+      {
+        "file": "completion-capture.spec.ts",
+        "title": "آخر مرحلة تُتمّ المشروع تلقائيًا عند ١٠٠٪ ويبقى الإتمام اليدوي متاحًا عند ٥٠٪",
+        "status": "passed"
+      },
+      {
+        "file": "completion-capture.spec.ts",
+        "title": "فشل الإتمام الجماعي لا يترك علامة صح أو حالات جزئية",
+        "status": "passed"
+      },
+      {
+        "file": "completion-capture.spec.ts",
+        "title": "فشل حفظ الفكرة يبقي مسودتها ولا ينشئ نسخًا مكررة",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "بداية تتبع النظام دون React والتخزين فارغ",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "بداية تتبع النظام دون React والتخزين محجوب",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 320",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 390",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 768",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 1366",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "PWA: لون بدء ثابت غير أبيض وهوية ومسار التثبيت محفوظان",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "المساحة الآمنة السفلية ذات ٢٤ بكسل مغطاة بخلفية داكنة والزر لا يحجب التنقل",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "تكرار التنقل والثيم لا يسرب المستمعين والتبويبات المستقرة لا تعيد قراءات التخزين",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "الرئيسية تتحدث بعد تعديل الموعد والأولوية وتحفظ العدد والمعرف والملاحظات",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "منتصف الليل والسنة: الأسبوع السبت-الجمعة والاختيارات والتكرار دون دورة خاطئة",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit-extended.spec.ts",
+        "title": "بيانات استخدام مختلطة وسجل طويل: تصفية وترقيم صفحات ونسخ واستعادة مرتان بلا ازدواج",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit.spec.ts",
+        "title": "قبل React وCSS: الثيم المحفوظ green/light يحدد خلفية البداية وألوان النظام",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit.spec.ts",
+        "title": "قبل React وCSS: الثيم المحفوظ green/dark يحدد خلفية البداية وألوان النظام",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit.spec.ts",
+        "title": "قبل React وCSS: الثيم المحفوظ mono/light يحدد خلفية البداية وألوان النظام",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit.spec.ts",
+        "title": "قبل React وCSS: الثيم المحفوظ mono/dark يحدد خلفية البداية وألوان النظام",
+        "status": "passed"
+      },
+      {
+        "file": "dark-audit.spec.ts",
+        "title": "التنقل بالرجوع يغلق قائمة الإضافة ولا يترك نافذة على صفحة أخرى",
+        "status": "passed"
+      },
+      {
+        "file": "ideas-speed.spec.ts",
+        "title": "قياس حفظ فكرة مع ألفي فكرة موجودة ومعالج أبطأ",
+        "status": "passed"
+      },
+      {
+        "file": "interactions.spec.ts",
+        "title": "علامة الإتمام تعمل حتى إذا حدث تحديث للواجهة أثناء الضغط",
+        "status": "passed"
+      },
+      {
+        "file": "interactions.spec.ts",
+        "title": "قياس سرعة الإضافة والتعديل والإتمام بقاعدة كبيرة ومعالج أبطأ",
+        "status": "passed"
+      },
+      {
+        "file": "interface-organization.spec.ts",
+        "title": "الرئيسية: أول ثلاث مهام بالترتيب نفسه دون تغيير الأولويات وإنجاز وتراجع",
+        "status": "passed"
+      },
+      {
+        "file": "interface-organization.spec.ts",
+        "title": "الرئيسية الفارغة مختصرة والاستكمال لا يكرر خطوته في بطاقات المشاريع",
+        "status": "passed"
+      },
+      {
+        "file": "interface-organization.spec.ts",
+        "title": "زر إضافة واحد في الصفحات الخمس: النماذج الأصلية ولوحة المفاتيح والإغلاق",
+        "status": "passed"
+      },
+      {
+        "file": "interface-organization.spec.ts",
+        "title": "بطاقة المشروع تحتفظ بالمعلومات ورقم المرحلة والنصوص الأصلية",
+        "status": "passed"
+      },
+      {
+        "file": "interface-organization.spec.ts",
+        "title": "تبويبات التقدم تحفظ الفترة والسجل الصحيح والتراجع والرؤى دون ازدواج",
+        "status": "passed"
+      },
+      {
+        "file": "interface-organization.spec.ts",
+        "title": "التصميم بعرض 320: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول",
+        "status": "passed"
+      },
+      {
+        "file": "interface-organization.spec.ts",
+        "title": "التصميم بعرض 390: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول",
+        "status": "passed"
+      },
+      {
+        "file": "interface-organization.spec.ts",
+        "title": "التصميم بعرض 768: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول",
+        "status": "passed"
+      },
+      {
+        "file": "interface-organization.spec.ts",
+        "title": "التصميم بعرض 1366: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول",
+        "status": "passed"
+      },
+      {
+        "file": "interface-organization.spec.ts",
+        "title": "التبويبات تحفظ المشروع وفلاتر السجل ولا تعدل الجداول الثمانية",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "visual inventory 320 light",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "visual inventory 320 dark",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "visual inventory 390 light",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "visual inventory 390 dark",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "internal controls retain selection, keyboard semantics and task data",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "shared indicator follows selection, wrapping and RTL scrolling 320",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "shared indicator follows selection, wrapping and RTL scrolling 390",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "shared indicator follows selection, wrapping and RTL scrolling 768",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "shared indicator follows selection, wrapping and RTL scrolling 1366",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "rapid filters keep a single selected option without editing records or leaking observers",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "reduced motion and forced colors retain readable selection",
+        "status": "passed"
+      },
+      {
+        "file": "internal-controls.spec.ts",
+        "title": "painted contrast of internal controls in five skies and both themes",
+        "status": "passed"
+      },
+      {
+        "file": "living-glass.spec.ts",
+        "title": "مقارنة ست لقطات جوال بنفس البيانات والوقت والقياسات",
+        "status": "passed"
+      },
+      {
+        "file": "living-glass.spec.ts",
+        "title": "قياس تمرير البطاقات واستجابة الزر على نفس Chromium عند خفض CPU أربع مرات",
+        "status": "passed"
+      },
+      {
+        "file": "living-glass.spec.ts",
+        "title": "الخامة لا تغير التفاعل ولا تضيف مرشحات إلى النصوص والأزرار",
+        "status": "passed"
+      },
+      {
+        "file": "living-glass.spec.ts",
+        "title": "الانكسار يغير بكسلات الإطار فقط، ووسط النص يبقى مطابقًا",
+        "status": "passed"
+      },
+      {
+        "file": "living-glass.spec.ts",
+        "title": "البديل البسيط والألوان القسرية وتقليل الحركة لا يعطلان البطاقات",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-search.spec.ts",
+        "title": "بحث500 نتيجة: التمرير والوصول إلى آخر زر دون تجمد أو حجب",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-shell.spec.ts",
+        "title": "صور الصفحات الخمس والتفاعل 320 light",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-shell.spec.ts",
+        "title": "صور الصفحات الخمس والتفاعل 320 dark",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-shell.spec.ts",
+        "title": "صور الصفحات الخمس والتفاعل 390 light",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-shell.spec.ts",
+        "title": "صور الصفحات الخمس والتفاعل 390 dark",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-shell.spec.ts",
+        "title": "تباين النص الفعلي في الصفحات والأشرطة عبر أوقات السماء والتمرير",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-shell.spec.ts",
+        "title": "قائمة500 مهمة: تمرير فعلي دون مرشحات ضخمة وباستجابة سريعة",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-shell.spec.ts",
+        "title": "المشهد نفسه يبقى مركبًا عبر ثلاثين انتقالًا دون تغيير الزمن أو الضبابية",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-shell.spec.ts",
+        "title": "زر عائم دون شريط أو اعتراض اللمس مع Safe Area24 وبدونها",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-shell.spec.ts",
+        "title": "إعداد واحد يؤثر على الصفحات كلها ويحفظ بعد إعادة الفتح دون اتصال",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-shell.spec.ts",
+        "title": "التفاعل الفعلي لا يتغير: المهمة والفكرة والمشروع والنوافذ القصيرة",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky-shell.spec.ts",
+        "title": "إمكانية الوصول للصفحات الخمس في الثيمين والمقاسين",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "صور الفترات الخمس والضبابية0و12و30 في الوضعlight",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "صور الفترات الخمس والضبابية0و12و30 في الوضعdark",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "إعداد واحد فقط؛ كل درجات الضبابية فورية ومحفوظة والتحكم بلوحة المفاتيح",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "الحدود ومنتصف الليل والوقت المحلي والعودة من الخلفية دون تغيير الثيم",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "لا يوجد تحديث إطار مستمر، والتحديث بالدقيقة مستقل عن بيانات المهام",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "تقليل الحركة يعرض الوقت الحالي دون انتقالات ويستجيب لتغييره أثناء التشغيل",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "القيم التالفة والتخزين المحجوب لا يعطلان التطبيق أو بقية إعدادات المظهر",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "المشهد لا يحجب النقر والإنجاز والتراجع والمشروع والقائمة والنوافذ والتمرير",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "RTL والثيمات الحالية والنوافذ والتمرير بعرض320",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "RTL والثيمات الحالية والنوافذ والتمرير بعرض390",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "RTL والثيمات الحالية والنوافذ والتمرير بعرض768",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "RTL والثيمات الحالية والنوافذ والتمرير بعرض1366",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "فحص إمكانية الوصول للفترات الخمس والثيمين والنموذج",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "حفظ إعداد الضبابية والثيم دون اتصال وبعد إعادة فتح الصفحة",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "قياس تباين النص فوق خلفية السماء الفعلية وليس التخمين من التدرج",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "الخامة الاحتياطية تبقى مقروءة دون مرشح الخلفية — محاكاة قاعدة CSS البديلة",
+        "status": "passed"
+      },
+      {
+        "file": "living-sky.spec.ts",
+        "title": "فحص أداء التحكم بالضبابية وعدم تسرب مستمعي المشهد أو كتابة بيانات المهام",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "navigation screenshots 320 light",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "navigation screenshots 320 dark",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "navigation screenshots 390 light",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "navigation screenshots 390 dark",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "three primary sections and reachable gateway 320",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "three primary sections and reachable gateway 390",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "three primary sections and reachable gateway 768",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "three primary sections and reachable gateway 1366",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "task shortcut is one click from every current page and habits is storage-neutral",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "back and forward preserve gateway origin, reload and safe direct-link fallbacks",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "task-list and project-tree scroll positions survive section navigation",
+        "status": "passed"
+      },
+      {
+        "file": "navigation-phase1.spec.ts",
+        "title": "legacy creation, completion and accessible light/dark shell remain available",
+        "status": "passed"
+      },
+      {
+        "file": "planning.spec.ts",
+        "title": "مهامي اليوم: الاختيار والإزالة والإنجاز والتراجع وعبور اليوم دون فقد",
+        "status": "passed"
+      },
+      {
+        "file": "planning.spec.ts",
+        "title": "التقويم: سبعة أيام وتنقل وعودة وإنجاز وتراجع وتعديل دون إنشاء المستقبل",
+        "status": "passed"
+      },
+      {
+        "file": "planning.spec.ts",
+        "title": "مواعيد التكرار المستقبلية غير قابلة للإنجاز ولا تحفظ كدورات عند التنقل",
+        "status": "passed"
+      },
+      {
+        "file": "planning.spec.ts",
+        "title": "الداشبورد يبدل الفترات ويحدث الإنجاز بعد التراجع ويعرض نقص البيانات",
+        "status": "passed"
+      },
+      {
+        "file": "planning.spec.ts",
+        "title": "رؤى مشروع جديد: بلوغ ٥٠٪ بعد ١٢ ساعة وسجل وتراجع ونسخة كاملة v3",
+        "status": "passed"
+      },
+      {
+        "file": "planning.spec.ts",
+        "title": "التنظيم والتقويم والرؤى: RTL والثيمات الأربعة بعرض 390",
+        "status": "passed"
+      },
+      {
+        "file": "planning.spec.ts",
+        "title": "التنظيم والتقويم والرؤى: RTL والثيمات الأربعة بعرض 1366",
+        "status": "passed"
+      },
+      {
+        "file": "planning.spec.ts",
+        "title": "دورة السبت المفتوحة تظهر الأحد في قسم متاح وتنجز دون تأخير",
+        "status": "passed"
+      },
+      {
+        "file": "planning.spec.ts",
+        "title": "موعد الساعة المنقضي اليوم يُفصل عن المستحقة ويتيح الإنجاز والتراجع",
+        "status": "passed"
+      },
+      {
+        "file": "planning.spec.ts",
+        "title": "إحصاء إتمام المشروع يتحدث داخل الداشبورد دون انتظار نبضة الدقيقة",
+        "status": "passed"
+      },
+      {
+        "file": "project-import-open.spec.ts",
+        "title": "الفتح والإغلاق المتكرر مستقلان عن البيانات والملفات والمنتقي الأصلي",
+        "status": "passed"
+      },
+      {
+        "file": "project-import-open.spec.ts",
+        "title": "المنتقي يُفتح بطلب منفصل مرة واحدة ويعمل إلغاؤه وإعادة فتحه ثم المعاينة والحفظ",
+        "status": "passed"
+      },
+      {
+        "file": "project-import-open.spec.ts",
+        "title": "فشل JSON في واجهة الفتح يتيح إعادة الاختيار ولا يحفظ بيانات",
+        "status": "passed"
+      },
+      {
+        "file": "project-import-open.spec.ts",
+        "title": "عودة التركيز تعيد إتاحة المنتقي للمتصفحات التي لا ترسل cancel",
+        "status": "passed"
+      },
+      {
+        "file": "project-import.spec.ts",
+        "title": "معاينة وإلغاء ثم حفظ مرة واحدة بالضغط المتكرر مع الحفاظ على البيانات والتقدم",
+        "status": "passed"
+      },
+      {
+        "file": "project-import.spec.ts",
+        "title": "ملفات خاطئة بأخطاء واضحة وإعادة اختيار الملف نفسه دون حفظ",
+        "status": "passed"
+      },
+      {
+        "file": "project-import.spec.ts",
+        "title": "فشل التخزين لا يترك مشروعًا ناقصًا ويتيح تأكيد المعاينة مجددًا",
+        "status": "passed"
+      },
+      {
+        "file": "project-import.spec.ts",
+        "title": "المعاينة والأخطاء ولوحة المفاتيح في الثيمات الأربعة بعرض 390",
+        "status": "passed"
+      },
+      {
+        "file": "project-import.spec.ts",
+        "title": "المعاينة والأخطاء ولوحة المفاتيح في الثيمات الأربعة بعرض 1366",
+        "status": "passed"
+      },
+      {
+        "file": "project-import.spec.ts",
+        "title": "معاينة محدودة لمشروع كبير تستورد كل العناصر وترقيم التداخل حتى الحد المعتمد",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "40/20 من الواجهة: هدف ووتيرة وإنجاز من الرئيسية وتراجع دون خلط المهام",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "تسريع افتراضي: معاينة دون تعديل ثم اعتماد مؤكد وسجل قرار",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "توصية شخصية: الرئيسية تعرض واحدة والرفض لا يغير الخطة ولا يعود غدًا",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "اعتماد توصية شخصية وتحديث مؤشرات المشروع والتراجع عن الخطة من إعداد الهدف",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "الإيقاف والاستئناف يجمدان20يومًا والموعد الإلزامي لا يتحرك",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "الحد النشط: الرابع يحتاج قرارًا صريحًا مع حفظ مسودة الإنشاء",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "الدمج عبر الواجهة يحفظ الأصل ويمنع تكرار الملف ويستعيد الحقول الجديدة",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 320",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 390",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 768",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 1366",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "إلغاء تجاوز الحد لا ينشئ شيئًا، وإيقاف مشروع بديل قرار منفصل عن الإضافة",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "استيراد masar.project1 عند الحد يحفظ المعاينة ثم يستورد مرة واحدة بعد القرار",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "إتمام آخر خطوة من الرئيسية ثم التراجع يعيد المشروع والخطوة والمؤشرات ذريًا",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "الداشبورد والرؤى لا يعدّان الإيقاف تعثرًا ويستعيدان العدد بعد الاستئناف",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "النافذة فوق مشروع كبير: حصر التركيز وARIA وEscape والرجوع والنقر الخارجي والتنظيف",
+        "status": "passed"
+      },
+      {
+        "file": "project-pace.spec.ts",
+        "title": "المتصفح بلا CloseWatcher يحتفظ بالنافذة الأصلية وسلوك Escape",
+        "status": "passed"
+      },
+      {
+        "file": "project-rest-boundaries.spec.ts",
+        "title": "توصية موجودة تختفي بهدوء عند منتصف ليل الرياض وتبقى في التقدم دون إجراءات ملحة",
+        "status": "passed"
+      },
+      {
+        "file": "project-rest-boundaries.spec.ts",
+        "title": "حدود اليوم المحلي: تبدأ الراحة وتستحق المهمة وتتعاقب دوراتها دون تغيير قواعدها",
+        "status": "passed"
+      },
+      {
+        "file": "project-rest.spec.ts",
+        "title": "افتراضي الراحة والتعديل وحفظ السجل وإعادة التحميل وإلغاء جميع الأيام",
+        "status": "passed"
+      },
+      {
+        "file": "project-rest.spec.ts",
+        "title": "40/20 =14 يوم عمل: الهدف ثابت والتوزيع يتحدث عند تغيير الراحة",
+        "status": "passed"
+      },
+      {
+        "file": "project-rest.spec.ts",
+        "title": "كل الأسبوع راحة: تحذير وحفظ وغياب الاقتراحات دون إيقاف أو تمديد",
+        "status": "passed"
+      },
+      {
+        "file": "project-rest.spec.ts",
+        "title": "الجمعة: المهمة والمتكررة تعملان والإنجاز اليدوي للمشروع يُحفظ دون مطالبة يومية",
+        "status": "passed"
+      },
+      {
+        "file": "project-rest.spec.ts",
+        "title": "النسخ الجديدة والقديمة: تنزيل واستعادة الجدول والدمج دون تبديل إعداد الجهاز",
+        "status": "passed"
+      },
+      {
+        "file": "project-rest.spec.ts",
+        "title": "إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض320",
+        "status": "passed"
+      },
+      {
+        "file": "project-rest.spec.ts",
+        "title": "إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض390",
+        "status": "passed"
+      },
+      {
+        "file": "project-rest.spec.ts",
+        "title": "إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض768",
+        "status": "passed"
+      },
+      {
+        "file": "project-rest.spec.ts",
+        "title": "إعدادات الراحة وRTL والثيمان وإمكانية الوصول بعرض1366",
+        "status": "passed"
+      },
+      {
+        "file": "qa-accessibility.spec.ts",
+        "title": "لوحة المفاتيح: النافذة تحصر التركيز وتعيده، وعلامة المهمة تحتفظ به عند انتقالها للمنجزة",
+        "status": "passed"
+      },
+      {
+        "file": "qa-accessibility.spec.ts",
+        "title": "نافذة في مساحة هاتف قصيرة: الحقول والإضافة متاحة دون حجب، وتقليل الحركة محترم",
+        "status": "passed"
+      },
+      {
+        "file": "qa-functional.spec.ts",
+        "title": "نسخة بمعرّفات نصية خاصة وroot تفتح عناصرها وتحفظ العلاقات والإتمام",
+        "status": "passed"
+      },
+      {
+        "file": "qa-functional.spec.ts",
+        "title": "العودة لمشروع طويل ذي عناوين ملتفة تستعيد الخطوة الظاهرة نفسها",
+        "status": "passed"
+      },
+      {
+        "file": "qa-functional.spec.ts",
+        "title": "فشل التخزين برسالة المتصفح الأصلية يعرض سببًا عربيًا ويحافظ على الحالة ثم يعاود الحفظ",
+        "status": "passed"
+      },
+      {
+        "file": "qa-functional.spec.ts",
+        "title": "الاسم المعدّل يُحفظ عند التنقل دون مغادرة حقل الاسم أولًا",
+        "status": "passed"
+      },
+      {
+        "file": "qa-functional.spec.ts",
+        "title": "التراجع المتكرر عن الحذف لا يكرر الاستعادة أو سجل الأحداث",
+        "status": "passed"
+      },
+      {
+        "file": "qa-functional.spec.ts",
+        "title": "العناوين المكررة والملاحظات الطويلة تبقى مستقلة ويجد البحث النص المختلط",
+        "status": "passed"
+      },
+      {
+        "file": "qa-functional.spec.ts",
+        "title": "ملف استيراد أكبر من الحد لا يستبدل البيانات وتواريخ المنطقة الزمنية صحيحة",
+        "status": "passed"
+      },
+      {
+        "file": "qa-rapid.spec.ts",
+        "title": "تبديل عدة مهام أثناء تغيير الصفحة يحفظ النتيجة لكل عنصر",
+        "status": "passed"
+      },
+      {
+        "file": "qa-rapid.spec.ts",
+        "title": "عشرة تبديلات للمهمة والخطوة تحفظ آخر طلب وتطابق الأعداد والنسب بعد إعادة الفتح",
+        "status": "passed"
+      },
+      {
+        "file": "qa-rapid.spec.ts",
+        "title": "عشرة تبديلات للمهمة والخطوة تحفظ آخر طلب وتطابق الأعداد والنسب بعد إعادة الفتح",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "صور الخامة والقوائم light 320",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "صور الخامة والقوائم dark 320",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "صور الخامة والقوائم light 390",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "صور الخامة والقوائم dark 390",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "صور الخامة والقوائم light 768",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "صور الخامة والقوائم dark 768",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "صور الخامة والقوائم light 1366",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "صور الخامة والقوائم dark 1366",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "قياس التنقل والتمرير مع500 مهمة وCPU أبطأ أربع مرات",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "منع الإغلاق أثناء الحفظ وقبوله بعد انتهاء القفل 24",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "منع الإغلاق أثناء الحفظ وقبوله بعد انتهاء القفل 500",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "التنقل في الاتجاهين والرجوع والسياق الزجاجي 320",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "التنقل في الاتجاهين والرجوع والسياق الزجاجي 390",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "التنقل في الاتجاهين والرجوع والسياق الزجاجي 768",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "التنقل في الاتجاهين والرجوع والسياق الزجاجي 1366",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "النقر السريع يلغي الحركة السابقة ولا ينسخ المحتوى أو السماء",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "موضع التمرير محفوظ عند العودة إلى القائمة الطويلة",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "النوافذ وEscape وحصر التركيز وإعادته 24",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "النوافذ وEscape وحصر التركيز وإعادته 500",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "تقليل الحركة منذ البداية وعند تغييره أثناء الانتقال",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "الزر عائم فعليًا والضغط .94 والمساحة الآمنة والأطراف لا تعترض اللمس",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "تباين الأيقونات والنصوص الزجاجية في المشاهد الخمسة والثيمين",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "Axe للثيمين والمقاسات الأربعة وحوار الإضافة",
+        "status": "passed"
+      },
+      {
+        "file": "smooth-controls.spec.ts",
+        "title": "حفظ الإنجاز والبيانات وإعادة الفتح دون اتصال مع التحكم المتحرك",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "إنشاء عامة وإتمام وتراجع وتعديل وحذف دون موعد أو أولوية",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "تاريخ فقط ثم وقت وتغيير وإلغاء الموعد مع حفظ المعرف والملاحظات",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "فترة الاقتراب 0 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "فترة الاقتراب 1 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "فترة الاقتراب 3 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "فترة الاقتراب 7 أيام وحالة اليوم والتأخر بعد منتصف الليل",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "مهمة السبت تنجز طبيعيًا عند 2026-10-17T09:00:00Z وتعود دورة جديدة السبت التالي",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "مهمة السبت تنجز طبيعيًا عند 2026-10-18T09:00:00Z وتعود دورة جديدة السبت التالي",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "مهمة السبت تنجز طبيعيًا عند 2026-10-23T09:00:00Z وتعود دورة جديدة السبت التالي",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "أسبوعية بعدة أيام ووقت: فوت الدورة لا يكرر المهمة والسجل محفوظ",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "يومية: إتمام قبل نهاية اليوم، تراجع سريع، دورة فائتة، ومراجعة السجل",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "شهرية ٣١ تعبر السنة وفبراير وتغيير التكرار يحفظ التاريخ",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "الأولويات الأربعة بألوانها ثم الإزالة، مع الاسم في التفاصيل فقط",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "نسخة جديدة تحفظ الدورات والأولوية، واستيراد مشروع مستقل لا يؤثر عليها",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "النموذج والتصنيف وRTL والثيمات الأربعة بعرض 390",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "النموذج والتصنيف وRTL والثيمات الأربعة بعرض 1366",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "تحويل عامة إلى متكررة ثم عامة يحفظ المعرف والملاحظات وسجل الإنجاز",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "الرئيسية والقوائم تميز العامة والقريبة واليوم والمتأخرة والمتكررة والقادمة",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "إعداد أسبوعي بلا أيام يُرفض ولا يضيف مهمة ناقصة",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "أزرار الحالة وعلامة الإنجاز تتشارك آخر طلب للدورة وتحفظ تاريخ البدء",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "الموعد الأسبوعي المستقبلي يمنع الإنجاز حتى يبدأ ثم يتاح في وقته",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "النسخة ذات إنجاز على نهاية الدورة تُرفض في الواجهة وتبقى الجداول الستة سليمة",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "حذف المتكررة والتراجع وإعادة التحميل يحفظان الدورات والملاحظات والإنجاز",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "قائمة ٥٠٠ مهمة: الوصول إلى الصفوف خارج الشاشة والإنجاز والتراجع على الجوال",
+        "status": "passed"
+      },
+      {
+        "file": "task-scheduling.spec.ts",
+        "title": "تاريخ محلي مختلف عن UTC ودورة ٢٥ ساعة دون نسخ بسبب تكرار الساعة",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "القائمة الأصلية للإجراءات تعرض الإضافة والإزالة وتحافظ على خصائص المهمة",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "المكتمل ينتقل للأسفل ويبقى بعد إعادة التحميل والتراجع يعيد ترتيب الأولويات والمواعيد",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "المختصر لا يزاحم المفتوح بالمكتمل والعرض الموسع يتيح التراجع",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "دورة daily: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "دورة weekly: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "دورة monthly: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "فترة السماح والمتأخرة وإنجاز اليوم المحلي لا يحمل إنجاز الأمس",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "الحفظ وإعادة فتح المتصفح والعمل دون اتصال يحتفظان بإنجاز اليوم",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "العرض 320: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "العرض 390: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "العرض 768: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+        "status": "passed"
+      },
+      {
+        "file": "today-experience.spec.ts",
+        "title": "العرض 1366: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات",
+        "status": "passed"
+      },
+      {
+        "file": "ux.spec.ts",
+        "title": "طلب إلغاء الإتمام يبقى بعد تحديث فوري مع تأخر إشعار معاملة التخزين",
+        "status": "passed"
+      },
+      {
+        "file": "ux.spec.ts",
+        "title": "كثرة المشاريع والنصوص الطويلة تعرض خطوة واحدة لكل مشروع وتتيح عرض المزيد دون تكرار الإحصائيات",
+        "status": "passed"
+      },
+      {
+        "file": "ux.spec.ts",
+        "title": "إكمال آخر خطوة وحفظها ثم التراجع من السجل والتفاصيل والمشروع الفارغ",
+        "status": "passed"
+      },
+      {
+        "file": "ux.spec.ts",
+        "title": "الهوية مستقلة عن الوضع وتبقى الثيمات الأربعة واتباع النظام بعد إعادة الفتح",
+        "status": "passed"
+      },
+      {
+        "file": "ux.spec.ts",
+        "title": "زر الإجراءات ولوحة المفاتيح والقائمة تحترم التأكيد والتراجع والتعديل والتحويل",
+        "status": "passed"
+      },
+      {
+        "file": "ux.spec.ts",
+        "title": "الضغط المطول بالماوس يفتح قائمة واحدة ويمنع التنقل ثم يلغى بالحركة",
+        "status": "passed"
+      },
+      {
+        "file": "ux.spec.ts",
+        "title": "إتمام البطاقة والرئيسية ثم إلغاء الإتمام والتبديل السريع يطابق التخزين والتقدم",
+        "status": "passed"
+      },
+      {
+        "file": "ux.spec.ts",
+        "title": "الاستكمال يبقى بعد إعادة الفتح ويتعامل مع الحذف والأرشفة والإكمال",
+        "status": "passed"
+      },
+      {
+        "file": "ux.spec.ts",
+        "title": "إتمام البطاقة والرئيسية ثم إلغاء الإتمام والتبديل السريع يطابق التخزين والتقدم",
+        "status": "passed"
+      },
+      {
+        "file": "ux.spec.ts",
+        "title": "الاستكمال يبقى بعد إعادة الفتح ويتعامل مع الحذف والأرشفة والإكمال",
+        "status": "passed"
+      },
+      {
+        "file": "ux.spec.ts",
+        "title": "إلغاء القائمة بالحركة والتمرير، وفتحها بعد ثبات الإصبع دون نقرة تسرب",
+        "status": "passed"
+      }
+    ]
+  },
+  "rendered_contrast": {
+    "combinations": 200,
+    "failed": 0,
+    "independent_before_after": [
+      {
+        "stage": "before",
+        "width": 320,
+        "theme": "dark",
+        "label": "· الفترة الحالية جزئية.",
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "rect": [
+          41.640625,
+          132.78125,
+          152.53125,
+          145.78125
+        ],
+        "required": 4.5,
+        "occluded": [],
+        "sampled_points": 35,
+        "minimum_ratio": 4.032,
+        "passes": false
+      },
+      {
+        "stage": "after",
+        "width": 320,
+        "theme": "dark",
+        "label": "· الفترة الحالية جزئية.",
+        "rgb": [
+          230,
+          237,
+          229
+        ],
+        "alpha": 1,
+        "rect": [
+          41.640625,
+          132.78125,
+          152.53125,
+          145.78125
+        ],
+        "required": 4.5,
+        "occluded": [],
+        "sampled_points": 35,
+        "minimum_ratio": 5.396,
+        "passes": true
+      },
+      {
+        "stage": "before",
+        "width": 390,
+        "theme": "dark",
+        "label": "· الفترة الحالية جزئية.",
+        "rgb": [
+          194,
+          208,
+          201
+        ],
+        "alpha": 1,
+        "rect": [
+          111.640625,
+          132.78125,
+          222.53125,
+          145.78125
+        ],
+        "required": 4.5,
+        "occluded": [],
+        "sampled_points": 35,
+        "minimum_ratio": 4.032,
+        "passes": false
+      },
+      {
+        "stage": "after",
+        "width": 390,
+        "theme": "dark",
+        "label": "· الفترة الحالية جزئية.",
+        "rgb": [
+          230,
+          237,
+          229
+        ],
+        "alpha": 1,
+        "rect": [
+          111.640625,
+          132.78125,
+          222.53125,
+          145.78125
+        ],
+        "required": 4.5,
+        "occluded": [],
+        "sampled_points": 35,
+        "minimum_ratio": 5.396,
+        "passes": true
+      },
+      {
+        "stage": "before",
+        "width": 390,
+        "theme": "light",
+        "label": "· الفترة الحالية جزئية.",
+        "rgb": [
+          60,
+          84,
+          75
+        ],
+        "alpha": 1,
+        "rect": [
+          111.640625,
+          132.78125,
+          222.53125,
+          145.78125
+        ],
+        "required": 4.5,
+        "occluded": [],
+        "sampled_points": 35,
+        "minimum_ratio": 5.323,
+        "passes": true
+      },
+      {
+        "stage": "after",
+        "width": 390,
+        "theme": "light",
+        "label": "· الفترة الحالية جزئية.",
+        "rgb": [
+          37,
+          62,
+          54
+        ],
+        "alpha": 1,
+        "rect": [
+          111.640625,
+          132.78125,
+          222.53125,
+          145.78125
+        ],
+        "required": 4.5,
+        "occluded": [],
+        "sampled_points": 35,
+        "minimum_ratio": 7.489,
+        "passes": true
+      }
+    ]
+  },
+  "pwa_checks_passed": 15,
+  "all_12_stores_exactly_preserved": true,
+  "physical_android_tested": false,
+  "production_sources_changed_after_full_run": [
+    "app/navigation.css"
+  ],
+  "full_run_source_snapshot": "source-under-test.json",
+  "final_source_hashes": {
+    "app/AchievementLog.tsx": "4f8715d07c5c064bcb7ca78922a68faf76216433411eced434e16c6bc14a854e",
+    "app/ActionButton.tsx": "ee6676368254ad8af207d184b414041f2f3c1e58d86e45028d4d44c5e5018c24",
+    "app/App.tsx": "984a81b0f446eeb13d5f503f9bcf69b173a28e0656cceec8d9f6529e85e7ab9c",
+    "app/CompletionButton.tsx": "c2ea3b05a6613ab5292202238f69dfd088348e15935311f7adcca6e2ad363240",
+    "app/Dialog.tsx": "cff1efedfae856d73aa3ee1a1ea73eb5c9ae03c72e1b57bf7a5f045417d99364",
+    "app/ErrorBoundary.tsx": "66227f6ae97b51e351774cc11062d1b8daa1d44451e3ad1a3c54f2ca8aac23ba",
+    "app/ExecutionSummary.tsx": "8cb7f1ff08be1067a8b4d61813f1f60061ac154972c848df835f7ae6f4c28a72",
+    "app/GlassChoices.tsx": "bfaef2a705f40ef3dab218510c716a27ea2f1b83cc94eccbbda581f5d71df31f",
+    "app/GlassOptics.tsx": "3cde0e40aee115ea5b1c3ed47dc462c5dea32efa9bf2b580c1028ff472db030b",
+    "app/HomeExecution.tsx": "5534ea695c94b67fa32addc17ce321d2a009c742ea424fcdcb02151d9362f5f1",
+    "app/LivingSky.tsx": "0d8c2eee6db55e356b5e32bca495d5c0bcefb6ae642a002bb24cf234c3c9efd8",
+    "app/MasarInsights.tsx": "f8bbe4d0cbdf82c0bb5dde235f2ddc3d18688a3b0058eb43fc07870162b3f628",
+    "app/PaceRecommendations.tsx": "4084667c6ad2f7dac82dad013083b8d110684a7d8d25876487594d38aecd39d5",
+    "app/PeriodDashboard.tsx": "5e19281c4a6efe67e7057e5531ae362e1dbf139efe907f98a2b70b2441323e38",
+    "app/ProjectCapacity.tsx": "ff21a7f2e977a370a2e5f5a267e0c6393c64c1aba9b5133ad2846985669c5af8",
+    "app/ProjectImport.tsx": "1754aaacaa8dbf443ed30346694c323df254ae387c997680f556f2fe3c902987",
+    "app/ProjectPacePanel.tsx": "12a70b65545caa11e15c5e1b64dbdf0b85c5b04411f9e3de639d0c5db2fbf118",
+    "app/ProjectRestSettings.tsx": "2bda0a086af06d5b379fa786c384249a4cbe33800c06c92817c4fdff6240ed1f",
+    "app/QuickIdeaCapture.tsx": "1ed1cd9f9c55a49932dd0ede30ee3f7c6685df48a917b79cb54df6132c3c3b51",
+    "app/TaskDetails.tsx": "7c7b676fdf68fe9258f72647832df24b49b694479c520208988e223819794f79",
+    "app/TaskFields.tsx": "32461bdae7b214bb18e7c35e2d91ba3ec399a864a7be56179c0882ae721212cd",
+    "app/TaskStatusControls.tsx": "0a9f0965e3fd58b39dae887eae502f154f5ed8a53ee0e0c4e49dd37d5e386dda",
+    "app/TodayTasks.tsx": "66631e91468f6dba62890c7a88a680aa264c4a0a54a4e8cbab872863f3e5c7c1",
+    "app/WeekCalendar.tsx": "d107765835e753f7db0c1feb40f4f95e1f31dece655ee386eed24e4daf6dd2c8",
+    "app/WorkspaceNavigation.tsx": "84675c95177b1fd162124e9c97d04d7ffa3b44e5dd8f82648b1d9af2ce8360c3",
+    "app/achievementRecords.ts": "cbc7c4843bf6ebd34100e42a11d9d334ea0aaffe08652424b616055a4f8c1142",
+    "app/analytics.ts": "ad9353134548f0e3c263a9709534df191420e0073851268344703147324c19d3",
+    "app/completionQueue.ts": "b3366ba747a99c908ef5a71d705e673ad7deb0871660b9e83b21f403bc272e46",
+    "app/completionRecovery.ts": "198fe7a17d9f9b9179fe51a1699c72d71d4252380c8936932b51c42abb84f053",
+    "app/controls.css": "1fddc3626a6937af370f9fefb8711891cca3b7d4740731e2b531c170739dfea7",
+    "app/dailyPlanning.ts": "32a26e50159c79fbe6d768ee0b8acd9b417147331172e91f3dff8c80b079725e",
+    "app/dateKey.ts": "dd4ab5a98f0c497ac76575fe9f2f80fb24e7237f49354c3f69cc96f986c66404",
+    "app/db.ts": "76373d3e50bf484845f96fa76892bbc84d546a98957addc04802a3c450c81b14",
+    "app/execution.ts": "41597f983d8e36f2f69e23b0b1c5e2e973f87fb30bf724deb6415aef7411dbd2",
+    "app/hierarchy.ts": "cada379b4015fbcb1b4dc737193617e3857ce1e8fa077dbfa3c58d1a3e292deb",
+    "app/internalControls.css": "ba236a09457cca4ad12db2c7d016c594fcf5364fe0c066f9e74d400b32c26c62",
+    "app/livingSky.css": "f2dc3ef2e5b2377192dfac5df6854da1e9c041abdef07aa6b08b68daaf51bac7",
+    "app/livingSky.ts": "06df87afca8b20416c7b9cdf6ff0061aa001060013929d3bec338620aa7dbd35",
+    "app/main.tsx": "5d8cfd213ed2102b93bba1a6fe1e9f2273ce50db9b3c7c7e8b81ee9c755461c9",
+    "app/model.ts": "73008e2c7249a9e13de894b586eed7b1c619c31ef573b9242c155c66232dc5f2",
+    "app/navigation.css": "fce26eee1975e57b9f25c3c4a8f4fc6342f9df9b611b66f22d8f3806ad688031",
+    "app/navigation.ts": "1bac489aaaa5dde989b465144de7775b6a975b2cee6ff56daf27fbf1b26b0cc4",
+    "app/paceTypes.ts": "505d309c503a236abd74feedb357a565c816348c93a20291337edca18c9f5e81",
+    "app/paceValidation.ts": "e671106f6877dbc1e9f8c35516352e9b8bb97584380566c370c11f91e73e4804",
+    "app/projectImport.ts": "9fd44dc6540068f06122340700d85a654ab7406defbafbe3be5588b375de48ad",
+    "app/projectInsights.ts": "10c9e07711860cf1dcf8b2c2ed6e9e0a752a3f9aedbdb6f281fc1bdac6909ebc",
+    "app/projectPace.ts": "3ffaa78833f34e3fe9b67feb91cd791db38d716fc2b4f94dec0666fb53a867bd",
+    "app/projectPaceStore.ts": "e499a314e17c6cfd17b32a0a2af3e31664c8b86e27e7921b2671788128eefcf7",
+    "app/projectProgressTypes.ts": "4789d47e2878984a317b07b3850c2bddcfd938e222365aa85a14273db8bca7e1",
+    "app/projectRest.ts": "831ae0b7b7f8b3c47d5614e927878155e5b41b97fa3e3539fc9d4b53f7b78cf6",
+    "app/saveQueue.ts": "a8f51ffe43840e81017f5ac211067c6db58f44c911e3d7062f1d0892d6598e09",
+    "app/skySettings.ts": "2a666a28eff6602d1945286b4b9aaa6962afbe87b82a049459f705c5582aea34",
+    "app/styles.css": "92e2d38147beac65ab47ae5ecfe2d8dd48c187d6f0b185ac9323c9130087b92f",
+    "app/taskSchedule.ts": "35ab52cbb5c2ca961eada845cb30dd531ef68ae72838401b701e08bb8345e792",
+    "app/taskTypes.ts": "cabbbd53f701ae04eb8cda39ecbe008fea265bf84e21ab37cfa36552198f89a1",
+    "app/useAppData.ts": "9ac538dc43464a2e3a52af23598471b29a2b6043de0f59128cc0fa8ce6404fe6",
+    "app/useCompletion.ts": "3ad7178c9e3e80fd601162f7fd0c7df3d8654fcd67cb845118f0749f2561dca7",
+    "app/useLongPress.ts": "bd64a374ddf0ff10b3fc6e14c6894a6919f5ff02887ff46c8a4e8ef76454c345",
+    "app/usePaceData.ts": "a8651e6802f99624a80ceed5d17fb7bda3281216f282afbc293e586bf63d9791",
+    "app/useRouteMotion.ts": "569871e96b4ea5920e49523a3358183c2be42b9278564354c3a926f5f39f8b9a",
+    "app/useTheme.ts": "32f7e533b7d48356714338d8a7798af4d853c2db64849229050de304d25d7620",
+    "app/useWallClock.ts": "6900c8a15d6e887595aed92547f8e5d41e3f029a9f03015d675589353efbba84",
+    "app/userError.ts": "d756b9566c0d860ba64ee8d8b60a1718b49bc35b965332580dbe94bbf52a74a1",
+    "app/vite-env.d.ts": "63402eb45931ed925cec4f2a9bc8bda714753d3fb9aef48bb09ea05493fe8fa8",
+    "app/weekCalendar.ts": "1593089fc910ccf644cc86bbbd162e1734a38d107e293431c8243635e1b96d1c"
+  },
+  "production_files": {
+    "assets/calendar-Dneqhncv.js": "0c06ca30dfcb03b9f3721ca60fe0d25dd2ee43a31d7002438bcb74c3358d171b",
+    "assets/index-CwR9jcmt.css": "baa2ab24e0e7075e6642e138e16ffbb34e1daa5398c0e812181937217b596608",
+    "assets/index-DRt7wNoN.js": "f96b2c9a087644c1509d7deba48dc668d876129ba1a7f346e41a3cc8bc392b95",
+    "assets/rolldown-runtime-CbXtAM7H.js": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a",
+    "assets/tajawal-arabic-400-normal-CyCXRvzh.woff2": "6c9081fd00db08800850fa7d214593aa94992be5159e97557aa60197252cb95a",
+    "assets/tajawal-arabic-400-normal-DCQxawbB.woff": "011a34e9bce80078231d12f8603721d0f99963b7104df560970fb754306ac359",
+    "assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2": "4255019c1cd986f7cda7869df69baf72730d61304ae14baba4acfeb13085da54",
+    "assets/tajawal-arabic-500-normal-CbVEaYEW.woff": "9f0beece3bd5a2bda53edfdb5f8c27f80bd9e2d65fb53eb2c7f8ca4b481d6f18",
+    "assets/tajawal-arabic-700-normal-9L7Zusdl.woff": "cd644505aa492ff2d5664dfa384ab52e0df757b7b927a7ab59b836c1713c077f",
+    "assets/tajawal-arabic-700-normal-D2-eand5.woff2": "fa5e72326681abee3a4952be582e1c2c2abb27932ef262610c078ce89541f919",
+    "assets/workbox-window.prod.es5-Bd17z0YL.js": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
+    "fonts/Tajawal-LICENSE.txt": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3",
+    "icon-192.png": "3dad4c5dd200f0ac2d94145c9a53029e8b69a82147390283ebf45ef42ea3f9e7",
+    "icon-512.png": "bb74d2bddcac6d0d98d1320838ce808fe08133c8dafd529f9f541fec883b601e",
+    "icon.svg": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+    "index.html": "c089d7093f688d2d2156bcb8e37c84471486015c5fc25572b519d443637f4d24",
+    "manifest.webmanifest": "aea3006c3f486ea0bbc5074c318b4d1f6eaa86cad71c6c01f175de9ff7b7db85",
+    "sw.js": "feaf54da27d2e1930fbf783f573c2ba26379724d3c3b5ca1c15c36907a2e03ce",
+    "workbox-9c191d2f.js": "04b086f1b2f4215ee4b659a7bc9c76162894abdb43fa876247bc7c0bd6fd1c37"
+  },
+  "historical_docs_unchanged": 1812
+}

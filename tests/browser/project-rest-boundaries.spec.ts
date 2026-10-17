@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { test, expect, type Page } from "@playwright/test";
 import { importData, sizedFixture, readStore, openCreate } from "./helpers";
 import type { Snapshot } from "../../app/model";
@@ -76,7 +77,7 @@ test("توصية موجودة تختفي بهدوء عند منتصف ليل ا�
     page.on("pageerror", (e) => errors.push(e.message));
     await page.clock.install({ time: new Date("2026-10-15T09:00:00Z") });
     await importData(page, observed());
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(
         page.getByRole("button", { name: "معاينة الاقتراح", exact: true }),
     ).toBeVisible();
@@ -89,7 +90,7 @@ test("توصية موجودة تختفي بهدوء عند منتصف ليل ا�
         page.getByLabel("التوصية الأبرز", { exact: true }),
     ).toHaveCount(0);
     await expect(page.locator(".daily-project-step")).toHaveCount(0);
-    await page.goto("/#progress/recommendations");
+    await page.goto(appUrl("/#progress/recommendations"));
     await expect(
         page.getByLabel("سجل توصيات مسار", { exact: true }),
     ).toContainText("محفوظة للمراجعة بعد الراحة");
@@ -99,7 +100,7 @@ test("توصية موجودة تختفي بهدوء عند منتصف ليل ا�
     expect(await readStore(page, "projectPlans")).toEqual(plans);
     expect(await readStore(page, "recommendations")).toEqual(recs);
     await time(page, "2026-10-17T21:00:00Z");
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(page.locator(".project-rest-notice")).toHaveCount(0);
     await expect(page.locator(".daily-project-steps")).toContainText(
         "اقتراح مرن لليوم: 1 خطوة",
@@ -116,7 +117,7 @@ test("حدود اليوم المحلي: تبدأ الراحة وتستحق ال�
     page,
 }) => {
     await page.clock.install({ time: new Date("2026-10-15T20:59:50Z") });
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await openCreate(page, "task");
     const d = page.getByRole("dialog");
     await d.getByLabel("الاسم", { exact: true }).fill("دورة الجمعة المحلية");
@@ -127,7 +128,7 @@ test("حدود اليوم المحلي: تبدأ الراحة وتستحق ال�
         .selectOption("important-urgent");
     await d.getByRole("button", { name: "إضافة", exact: true }).click();
     await expect(d).not.toBeVisible();
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(page.locator(".project-rest-notice")).toHaveCount(0);
     await time(page, "2026-10-15T21:00:00Z");
     await expect(page.locator(".project-rest-notice")).toBeVisible();

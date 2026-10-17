@@ -1,3 +1,5 @@
+import { appUrl } from "./url";
+import { navigateView } from "./helpers";
 import { test, expect } from "@playwright/test";
 import { openCreate } from "./helpers";
 
@@ -31,7 +33,7 @@ for (const identity of ["green", "mono"] as const)
                     body: "",
                 }),
             );
-            await page.goto("/#home");
+            await page.goto(appUrl("/#home"));
             await expect(page.locator("#root")).toBeEmpty();
             await expect(page.locator("html")).toHaveAttribute(
                 "data-theme",
@@ -69,8 +71,8 @@ for (const identity of ["green", "mono"] as const)
 test("التنقل بالرجوع يغلق قائمة الإضافة ولا يترك نافذة على صفحة أخرى", async ({
     page,
 }) => {
-    await page.goto("/#home");
-    await page.locator('.navigation a[href="#tasks"]').click();
+    await page.goto(appUrl("/#home"));
+    await navigateView(page, "tasks");
     await page
         .getByRole("button", { name: "إضافة سريعة", exact: true })
         .click();

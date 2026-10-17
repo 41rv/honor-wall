@@ -1,0 +1,37 @@
+{
+  "before": [
+    {
+      "x-storagemutated-1": 1,
+      "pagehide": 1,
+      "pageshow": 2,
+      "focus": 6,
+      "hashchange": 1,
+      "beforeinstallprompt": 1,
+      "online": 1,
+      "offline": 1
+    },
+    {
+      "selectionchange": 1,
+      "visibilitychange": 6
+    }
+  ],
+  "after": [
+    {
+      "x-storagemutated-1": 1,
+      "pagehide": 1,
+      "pageshow": 2,
+      "focus": 6,
+      "hashchange": 1,
+      "beforeinstallprompt": 1,
+      "online": 1,
+      "offline": 1
+    },
+    {
+      "selectionchange": 1,
+      "visibilitychange": 6
+    }
+  ],
+  "navigationCycles": 12,
+  "tabChanges": 30,
+  "getAllReads": 0
+}

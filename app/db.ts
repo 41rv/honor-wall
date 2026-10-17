@@ -1,3 +1,20 @@
+import { trackBackupWrite, flushBackupWrites } from "./backupWrites";
+import {
+    mergeHabitGraph,
+    receiptPresent,
+    backupReceipt,
+} from "./habitBackupMerge";
+import { legacyStores, backupStores, type BackupStore } from "./backupTables";
+import { saveRecovery, backupDigest, sha256 } from "./backupRecovery";
+import type {
+    HabitPath,
+    Habit,
+    HabitPlan,
+    HabitEntry,
+    HabitSuggestion,
+    Reminder,
+    HabitImportReceipt,
+} from "./habitTypes";
 import Dexie, { type Table } from "dexie";
 import {
     currentCycle,
@@ -41,6 +58,13 @@ import type {
 import { activeProject } from "./projectPace";
 import { withProjectRestDefaults, projectRestSettings } from "./projectRest";
 export class Database extends Dexie {
+    habitPaths!: Table<HabitPath, string>;
+    habits!: Table<Habit, string>;
+    habitPlans!: Table<HabitPlan, string>;
+    habitEntries!: Table<HabitEntry, string>;
+    habitSuggestions!: Table<HabitSuggestion, string>;
+    reminders!: Table<Reminder, string>;
+    habitImportReceipts!: Table<HabitImportReceipt, string>;
     projectPlans!: Table<ProjectPlan, string>;
     stepWork!: Table<StepWork, string>;
     recommendations!: Table<PaceRecommendation, string>;
@@ -128,6 +152,18 @@ export class Database extends Dexie {
                     withProjectRestDefaults(await table.get("pace")),
                 );
             });
+        // Additive schema only: no upgrade callback, defaults, historical events,
+        // rewrites, deletions, or changes to any of the twelve original stores.
+        this.version(7).stores({
+            habitPaths: "id,updatedAt",
+            habits: "id,pathId,updatedAt",
+            habitPlans:
+                "id,habitId,&[habitId+revision],[habitId+effectiveDate]",
+            habitEntries: "id,&[habitId+localDate],localDate,habitId,planId",
+            habitSuggestions: "id,habitId,[habitId+status],basisHash",
+            reminders: "id,createdAt,reviewedAt",
+            habitImportReceipts: "id,digest",
+        });
     }
 }
 export const db = new Database();
@@ -364,55 +400,33 @@ export async function event(
     });
 }
 export async function snapshot(): Promise<Snapshot> {
+    await flushBackupWrites();
     await reconcileTaskCycles();
     await ensureProjectTracking();
     await ensurePacePlans();
-    return db.transaction("r", db.tables, async () => {
-        const [
-            projects,
-            steps,
-            tasks,
-            ideas,
-            events,
-            taskCycles,
-            projectProgress,
-            projectTracking,
-            projectPlans,
-            stepWork,
-            recommendations,
-            paceSettings,
-        ] = await Promise.all([
-            db.projects.toArray(),
-            db.steps.toArray(),
-            db.tasks.toArray(),
-            db.ideas.toArray(),
-            db.events.toArray(),
-            db.taskCycles.toArray(),
-            db.projectProgress.toArray(),
-            db.projectTracking.toArray(),
-            db.projectPlans.toArray(),
-            db.stepWork.toArray(),
-            db.recommendations.toArray(),
-            db.paceSettings.toArray(),
-        ]);
-        return {
-            version: 4,
-            exportedAt: now(),
-            projects,
-            steps,
-            tasks,
-            ideas,
-            events,
-            taskCycles,
-            projectProgress,
-            projectTracking,
-            projectPlans,
-            stepWork,
-            recommendations,
-            paceSettings,
-        };
-    });
+    return readSnapshot();
 }
+/** Exact read for the safety copy: no reconciliation or generated history. */
+async function readSnapshot(): Promise<Snapshot> {
+    return db.transaction(
+        "r",
+        db.tables,
+        async () =>
+            ({
+                version: 5,
+                exportedAt: now(),
+                ...Object.fromEntries(
+                    await Promise.all(
+                        backupStores.map(async (name) => [
+                            name,
+                            await db.table(name).toArray(),
+                        ]),
+                    ),
+                ),
+            }) as Snapshot,
+    );
+}
+
 export async function create(
     kind: EntityKind,
     title: string,
@@ -983,25 +997,72 @@ export async function undo(data: Deleted) {
         },
     );
 }
-export async function importBackup(input: unknown) {
+export type RestoreMode = "preserve-missing" | "full";
+async function restoreBackupData(
+    input: unknown,
+    options: {
+        mode?: RestoreMode;
+        confirmFull?: boolean;
+        expectedCounts?: Record<BackupStore, number>;
+    } = {},
+) {
     const data = validateBackup(input);
+    const mode = options.mode ?? "preserve-missing";
+    if (
+        !["preserve-missing", "full"].includes(mode) ||
+        (mode === "full" && options.confirmFull !== true)
+    )
+        throw new Error(
+            "الاستبدال الكامل يحتاج موافقة صريحة على حذف الأقسام الغائبة.",
+        );
     await db.transaction("rw", db.tables, async () => {
-        for (const t of db.tables) await t.clear();
-        await db.projects.bulkAdd(data.projects);
-        await db.steps.bulkAdd(data.steps);
-        await db.tasks.bulkAdd(data.tasks);
-        await db.ideas.bulkAdd(data.ideas);
-        await db.events.bulkAdd(data.events);
-        await db.taskCycles.bulkAdd(data.taskCycles ?? []);
-        await db.projectTracking.bulkAdd(data.projectTracking ?? []);
-        await db.projectProgress.bulkAdd(data.projectProgress ?? []);
-        await db.projectPlans.bulkAdd(data.projectPlans ?? []);
-        await db.stepWork.bulkAdd(data.stepWork ?? []);
-        await db.recommendations.bulkAdd(data.recommendations ?? []);
-        await db.paceSettings.bulkAdd(data.paceSettings ?? []);
+        // The all-store lock makes this exact snapshot correspond to the data
+        // actually replaced, even with another tab writing concurrently.
+        // waitFor keeps the IDB transaction alive while the independent safety
+        // database commits. No clear is issued if backup or verification fails.
+        if (options.expectedCounts) {
+            const counts = await restoreImpact();
+            if (
+                backupStores.some(
+                    (name) => counts[name] !== options.expectedCounts![name],
+                )
+            )
+                throw new Error(
+                    "تغيرت البيانات منذ فتح المعاينة؛ راجع الأعداد الجديدة قبل تأكيد الاستعادة.",
+                );
+        }
+        await Dexie.waitFor(saveRecovery(await readSnapshot()));
+        const names =
+            mode === "full" || data.version === 5 ? backupStores : legacyStores;
+        for (const name of names) {
+            await db.table(name).clear();
+            await db.table(name).bulkAdd(data[name] ?? []);
+        }
         await ensurePacePlans();
+        await ensureProjectTracking();
         await completeFinishedProjects();
     });
+}
+export function importBackup(
+    input: unknown,
+    options: Parameters<typeof restoreBackupData>[1] = {},
+) {
+    return trackBackupWrite(() => restoreBackupData(input, options));
+}
+export async function restoreImpact() {
+    return db.transaction(
+        "r",
+        db.tables,
+        async () =>
+            Object.fromEntries(
+                await Promise.all(
+                    backupStores.map(async (name) => [
+                        name,
+                        await db.table(name).count(),
+                    ]),
+                ),
+            ) as Record<(typeof backupStores)[number], number>,
+    );
 }
 // Complete or reopen an entire branch in one atomic operation. Only terminal
 // executable steps count toward progress; empty stages can still have a state.
@@ -1463,19 +1524,37 @@ async function recordStepWork(step: Step, complete: boolean, at: string) {
 }
 // Additive restore remaps the whole imported graph. No incoming ID can overwrite
 // local data; a SHA-256 receipt makes repeated merging of the same file harmless.
-export async function mergeBackup(input: unknown) {
+async function mergeBackupData(input: unknown) {
     const data = validateBackup(input);
-    const bytes = new TextEncoder().encode(
-        JSON.stringify({ ...data, exportedAt: "" }),
-    );
-    const digest = [
-        ...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)),
-    ]
-        .map((b) => b.toString(16).padStart(2, "0"))
-        .join("");
+    const [digest, oldDigest] = await Promise.all([
+        backupDigest(data),
+        sha256(JSON.stringify({ ...data, exportedAt: "" })),
+    ]);
     return db.transaction("rw", db.tables, async () => {
         const settings = await db.paceSettings.get("pace");
-        if (settings?.importDigests?.includes(digest)) return false;
+        const receipts = await db.habitImportReceipts
+            .where("digest")
+            .equals(digest)
+            .filter((r) => r.kind === "backup")
+            .toArray();
+        for (const receipt of receipts)
+            if (await receiptPresent(db, receipt)) return false;
+        // Preserve exact pre-schema7 deduplication markers. New receipts also
+        // verify that output records still exist, allowing recovery after deletion.
+        if (
+            !receipts.length &&
+            settings?.importDigests?.some(
+                (d) => d === digest || d === oldDigest,
+            )
+        )
+            return false;
+        const auxiliary = new Map<string, Map<string, string>>();
+        const auxiliaryId = (store: string, id: string, value?: string) => {
+            let group = auxiliary.get(store);
+            if (!group) auxiliary.set(store, (group = new Map()));
+            if (!group.has(id)) group.set(id, value ?? uid());
+            return group.get(id)!;
+        };
         const mapping = new Map<string, string>();
         for (const x of [
             ...data.projects,
@@ -1508,7 +1587,7 @@ export async function mergeBackup(input: unknown) {
         await db.events.bulkAdd(
             data.events.map((e) => ({
                 ...e,
-                id: uid(),
+                id: auxiliaryId("events", e.id),
                 entityId: map(e.entityId),
             })),
         );
@@ -1516,7 +1595,11 @@ export async function mergeBackup(input: unknown) {
             (data.taskCycles ?? []).map((c) => ({
                 ...c,
                 taskId: map(c.taskId),
-                id: cycleIdForMerge(map(c.taskId), c.revision, c.start),
+                id: auxiliaryId(
+                    "taskCycles",
+                    c.id,
+                    cycleIdForMerge(map(c.taskId), c.revision, c.start),
+                ),
             })),
         );
         await db.projectTracking.bulkAdd(
@@ -1529,7 +1612,11 @@ export async function mergeBackup(input: unknown) {
             (data.projectProgress ?? []).map((p) => ({
                 ...p,
                 projectId: map(p.projectId),
-                id: JSON.stringify([map(p.projectId), p.order]),
+                id: auxiliaryId(
+                    "projectProgress",
+                    p.id,
+                    JSON.stringify([map(p.projectId), p.order]),
+                ),
             })),
         );
         await db.projectPlans.bulkAdd(
@@ -1550,7 +1637,11 @@ export async function mergeBackup(input: unknown) {
                 ...w,
                 projectId: map(w.projectId),
                 stepId: map(w.stepId),
-                id: JSON.stringify([map(w.projectId), w.order]),
+                id: auxiliaryId(
+                    "stepWork",
+                    w.id,
+                    JSON.stringify([map(w.projectId), w.order]),
+                ),
             })),
         );
         await db.recommendations.bulkAdd(
@@ -1559,7 +1650,7 @@ export async function mergeBackup(input: unknown) {
                     ...c,
                     projectId: map(c.projectId),
                 }));
-                const mergedId = uid();
+                const mergedId = auxiliaryId("recommendations", r.id);
                 // Historical decisions remain history. Pending advice is invalidated
                 // because merging changes the workload and project identities.
                 return {
@@ -1575,18 +1666,43 @@ export async function mergeBackup(input: unknown) {
                 };
             }),
         );
+        const legacyId = (store: string, id: string) =>
+            [
+                "projects",
+                "steps",
+                "tasks",
+                "ideas",
+                "projectPlans",
+                "projectTracking",
+            ].includes(store)
+                ? map(id)
+                : auxiliaryId(store, id);
+        const outputs = await mergeHabitGraph(db, data, legacyId);
+        for (const name of legacyStores)
+            if (name !== "paceSettings")
+                outputs[name] = (data[name] ?? []).map((row) =>
+                    legacyId(name, "id" in row ? row.id : row.projectId),
+                );
+        await db.habitImportReceipts.add(backupReceipt(digest, outputs));
         await db.paceSettings.put({
             ...settings,
             id: "pace",
             activeLimit: settings?.activeLimit ?? 3,
             importDigests: [
-                ...new Set([...(settings?.importDigests ?? []), digest]),
+                ...new Set([
+                    ...(settings?.importDigests ?? []),
+                    digest,
+                    oldDigest,
+                ]),
             ],
         });
         await ensurePacePlans();
         await completeFinishedProjects();
         return true;
     });
+}
+export function mergeBackup(input: unknown) {
+    return trackBackupWrite(() => mergeBackupData(input));
 }
 function cycleIdForMerge(taskId: string, revision: number, start: string) {
     return JSON.stringify([taskId, revision, start]);

@@ -1,0 +1,8 @@
+{
+  "habits": 152,
+  "renderedIndependentRows": 151,
+  "cpuSlowdown": 4,
+  "openFormMs": 1250,
+  "recordedFrom": "Initial browser foundation/focused run, measured in test and read before subsequent runs overwrote performance.json",
+  "physicalAndroid": false
+}

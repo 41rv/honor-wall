@@ -1,3 +1,5 @@
+import { appUrl } from "./url";
+import { navigateView } from "./helpers";
 import { test, expect, type Page } from "@playwright/test";
 import { openCreate, importData, readStore, sizedFixture } from "./helpers";
 import AxeBuilder from "@axe-core/playwright";
@@ -59,7 +61,7 @@ for (const unavailable of [false, true])
                 body: "",
             }),
         );
-        await page.goto("/");
+        await page.goto(appUrl("/"));
         await expect(page.locator("html")).toHaveAttribute(
             "data-theme",
             "dark",
@@ -80,7 +82,7 @@ for (const width of [320, 390, 768, 1366])
     }) => {
         test.setTimeout(120000);
         await page.setViewportSize({ width, height: 844 });
-        await page.goto("/#home");
+        await page.goto(appUrl("/#home"));
         const firstLoad = await page.evaluate(() => performance.timeOrigin);
         for (const identity of ["green", "mono"] as const)
             for (const mode of ["dark", "light"] as const) {
@@ -212,12 +214,12 @@ for (const width of [320, 390, 768, 1366])
 test("PWA: لون بدء ثابت غير أبيض وهوية ومسار التثبيت محفوظان", async ({
     request,
 }) => {
-    const manifest = await (await request.get("/manifest.webmanifest")).json();
+    const manifest = await (await request.get(appUrl("/manifest.webmanifest"))).json();
     expect(manifest.background_color).toBe("#185c4b");
     expect(manifest.theme_color).toBe("#185c4b");
-    expect(manifest.start_url).toBe("/");
-    expect(manifest.scope).toBe("/");
-    expect(manifest.id).toBe("/");
+    expect(manifest.start_url).toBe(appUrl("/"));
+    expect(manifest.scope).toBe(appUrl("/"));
+    expect(manifest.id).toBe(appUrl("/"));
     expect(manifest.display).toBe("standalone");
 });
 
@@ -231,7 +233,7 @@ test("المساحة الآمنة السفلية ذات ٢٤ بكسل مغطاة
         insets: { bottom: 24 },
     });
     await page.addInitScript(() => localStorage.setItem("masar-theme", "dark"));
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(page.locator(".sidebar")).toHaveCSS("padding-bottom", "24px");
     await expect(page.locator(".sidebar")).toHaveCSS(
         "background-color",
@@ -264,7 +266,7 @@ test("تكرار التنقل والثيم لا يسرب المستمعين وا
     test.setTimeout(120000);
     await page.clock.install({ time: new Date("2026-10-14T09:00:00Z") });
     await importData(page, auditFixture(30));
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     for (const name of ["رؤى مسار", "سجل الإنجاز", "نظرة عامة"])
         await page.getByRole("tab", { name, exact: true }).click();
     const session = await context.newCDPSession(page);
@@ -360,11 +362,11 @@ test("الرئيسية تتحدث بعد تعديل الموعد والأولو�
     for (let i = 0; i < 5; i++)
         data.tasks[i].today = { date: "2026-10-14", timeZone: "Asia/Riyadh" };
     await importData(page, validateBackup(data));
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     const home = page.getByRole("region", { name: "مهامي اليوم", exact: true });
     await expect(home.locator(".count")).toHaveText("5");
     await expect(home.locator(".task-row")).toHaveCount(3);
-    await page.goto("/#task/t4");
+    await page.goto(appUrl("/#task/t4"));
     await page.getByLabel("تعديل الاسم").fill("تعديل ينعكس فورًا");
     await page.getByLabel("ملاحظات العنصر").fill("ملاحظات لا تضيع عند الجدولة");
     await page
@@ -380,7 +382,7 @@ test("الرئيسية تتحدث بعد تعديل الموعد والأولو�
         .getByRole("button", { name: "حفظ الإعدادات", exact: true })
         .click();
     await expect(form).not.toBeVisible();
-    await page.locator('.navigation a[href="#home"]').click();
+    await navigateView(page, "home");
     await expect(home.locator(".task-main strong").first()).toHaveText(
         "تعديل ينعكس فورًا",
     );
@@ -400,7 +402,7 @@ test("الرئيسية تتحدث بعد تعديل الموعد والأولو�
     expect(task.status).toBe("todo");
     expect(task.priority).toBe("important-urgent");
     await expect(page.locator(".today-ordered .task-row")).toHaveCount(5);
-    await page.goto("/#calendar");
+    await page.goto(appUrl("/#calendar"));
     const day = page.getByRole("region", { name: "2026-10-14", exact: true });
     await expect(
         day.getByRole("link", { name: "تعديل ينعكس فورًا", exact: true }),
@@ -411,7 +413,7 @@ test("الرئيسية تتحدث بعد تعديل الموعد والأولو�
             exact: true,
         })
         .click();
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await page.getByRole("tab", { name: "سجل الإنجاز", exact: true }).click();
     await expect(page.locator(".achievement-record")).toHaveCount(1);
     await expect(page.locator(".achievement-record")).toContainText(
@@ -457,7 +459,7 @@ test("منتصف الليل والسنة: الأسبوع السبت-الجمعة
     }
     data.taskCycles = [];
     await importData(page, validateBackup(data));
-    await page.goto("/#calendar");
+    await page.goto(appUrl("/#calendar"));
     await expect(page.locator(".calendar-day")).toHaveCount(7);
     expect(
         await page
@@ -486,7 +488,7 @@ test("منتصف الليل والسنة: الأسبوع السبت-الجمعة
             exact: true,
         }),
     ).toBeDisabled();
-    await page.goto("/#today");
+    await page.goto(appUrl("/#today"));
     await expect(
         page.getByRole("region", { name: "اخترتها لليوم" }),
     ).toContainText("مهمة 0");
@@ -502,7 +504,7 @@ test("منتصف الليل والسنة: الأسبوع السبت-الجمعة
     )!;
     expect(general.status).toBe("todo");
     expect(general.schedule).toBeUndefined();
-    await page.goto("/#calendar");
+    await page.goto(appUrl("/#calendar"));
     await expect(friday).toHaveAttribute("data-today", "true");
     await friday
         .getByRole("button", { name: "إتمام المهمة «مهمة 2»", exact: true })
@@ -598,7 +600,7 @@ test("بيانات استخدام مختلطة وسجل طويل: تصفية و�
         };
     });
     await importData(page, validateBackup(data));
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await page.getByRole("tab", { name: "سجل الإنجاز", exact: true }).click();
     await page.getByLabel("عرض السجل").selectOption("all");
     await expect(page.locator(".achievement-record")).toHaveCount(40);
@@ -614,7 +616,7 @@ test("بيانات استخدام مختلطة وسجل طويل: تصفية و�
     await expect(page.locator(".achievement-record")).toHaveCount(40);
     await page.getByRole("button", { name: /عرض المزيد من الإنجازات/ }).click();
     await expect(page.locator(".achievement-record")).toHaveCount(45);
-    await page.goto("/#backup");
+    await page.goto(appUrl("/#backup"));
     const download = page.waitForEvent("download");
     await page.getByRole("button", { name: "تصدير JSON", exact: true }).click();
     const backup = JSON.parse(
@@ -624,7 +626,7 @@ test("بيانات استخدام مختلطة وسجل طويل: تصفية و�
             return Buffer.concat(parts).toString();
         }),
     );
-    expect(backup.version).toBe(4);
+    expect(backup.version).toBe(5);
     const stores = [
         "projects",
         "steps",
@@ -643,7 +645,7 @@ test("بيانات استخدام مختلطة وسجل طويل: تصفية و�
     await page.reload();
     for (const store of stores)
         expect(await readStore(page, store)).toEqual(backup[store]);
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await expect(page.locator(".tree-row")).toHaveCount(92);
     await expect(
         page.locator('[data-step-id="nested"] .tree-number'),

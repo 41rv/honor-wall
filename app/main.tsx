@@ -7,6 +7,7 @@ import "./styles.css";
 import "./livingSky.css";
 import "./controls.css";
 import "./internalControls.css";
+import "./navigation.css";
 import App from "./App";
 import { ErrorBoundary } from "./ErrorBoundary";
 createRoot(document.getElementById("root")!).render(

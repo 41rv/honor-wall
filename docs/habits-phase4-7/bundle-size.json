@@ -1,0 +1,13 @@
+{
+  "phase3": {
+    "entry": "index-CjUXv9QI.js",
+    "bytes": 599259,
+    "gzipBytes": 180732
+  },
+  "phase4_7": {
+    "entry": "index-BXzS5fDq.js",
+    "bytes": 645826,
+    "gzipBytes": 192116
+  },
+  "newDependencies": 0
+}

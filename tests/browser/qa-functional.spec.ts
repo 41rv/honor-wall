@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { test, expect } from "@playwright/test";
 import { sizedFixture, importData, readStore } from "./helpers";
 test("نسخة بمعرّفات نصية خاصة وroot تفتح عناصرها وتحفظ العلاقات والإتمام", async ({
@@ -11,7 +12,7 @@ test("نسخة بمعرّفات نصية خاصة وroot تفتح عناصرها
     data.steps[1].parentId = "root";
     for (const step of data.steps) step.projectId = projectId;
     await importData(page, data);
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await page
         .getByRole("button", { name: "مشروع 1 خطوة", exact: true })
         .click();
@@ -50,7 +51,7 @@ test("العودة لمشروع طويل ذي عناوين ملتفة تستعي
     for (const step of data.steps.slice(1))
         step.title = step.id + " " + "عنوان عربي طويل متكرر ".repeat(12);
     await importData(page, data);
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     const row = page.locator('[data-step-id="s90"]');
     await row.scrollIntoViewIfNeeded();
     await row.locator(".tree-title").click();
@@ -65,7 +66,7 @@ test("فشل التخزين برسالة المتصفح الأصلية يعرض 
     page,
 }) => {
     await importData(page, sizedFixture(10));
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await page.evaluate(() => {
         const put = IDBObjectStore.prototype.put;
         IDBObjectStore.prototype.put = function (value, key) {
@@ -104,7 +105,7 @@ test("الاسم المعدّل يُحفظ عند التنقل دون مغادر
     page,
 }) => {
     await importData(page, sizedFixture(10));
-    await page.goto("/#task/t0");
+    await page.goto(appUrl("/#task/t0"));
     await page.getByLabel("تعديل الاسم").fill("اسم محفوظ مع الرجوع السريع");
     await page.evaluate(() => {
         location.hash = "#backup";
@@ -120,7 +121,7 @@ test("الاسم المعدّل يُحفظ عند التنقل دون مغادر
         )
         .toBe("اسم محفوظ مع الرجوع السريع");
     await page.reload();
-    await page.goto("/#task/t0");
+    await page.goto(appUrl("/#task/t0"));
     await expect(page.getByLabel("تعديل الاسم")).toHaveValue(
         "اسم محفوظ مع الرجوع السريع",
     );
@@ -129,7 +130,7 @@ test("التراجع المتكرر عن الحذف لا يكرر الاستعا
     page,
 }) => {
     await importData(page, sizedFixture(10));
-    await page.goto("/#task/t0");
+    await page.goto(appUrl("/#task/t0"));
     await page.getByLabel("ملاحظات العنصر").fill("لا تضيع عند الحذف");
     await page.getByRole("button", { name: "حذف", exact: true }).click();
     await page.getByRole("button", { name: "تأكيد", exact: true }).click();
@@ -154,7 +155,7 @@ test("التراجع المتكرر عن الحذف لا يكرر الاستعا
                 ).length,
         )
         .toBe(1);
-    await page.goto("/#task/t0");
+    await page.goto(appUrl("/#task/t0"));
     await expect(page.getByLabel("ملاحظات العنصر")).toHaveValue(
         "لا تضيع عند الحذف",
     );
@@ -168,7 +169,7 @@ test("العناوين المكررة والملاحظات الطويلة تبق
         "تفاصيل عربية English URL https://example.com " +
         "نص طويل ".repeat(1500);
     await importData(page, data);
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await expect(
         page.getByRole("button", { name: "إكمال عنوان مكرر", exact: true }),
     ).toHaveCount(2);
@@ -194,7 +195,7 @@ test("ملف استيراد أكبر من الحد لا يستبدل البيا�
         "2026-10-12T00:01:00.000Z";
     data.tasks[0].status = "done";
     await importData(page, data);
-    await page.goto("/#task/t0");
+    await page.goto(appUrl("/#task/t0"));
     await expect(page.locator(".elapsed")).toContainText("أقل من يوم منقضٍ");
     const expected = await page.evaluate(
         (value) =>
@@ -205,7 +206,7 @@ test("ملف استيراد أكبر من الحد لا يستبدل البيا�
         data.tasks[0].createdAt,
     );
     await expect(page.locator(".timeline dd").first()).toHaveText(expected);
-    await page.goto("/#backup");
+    await page.goto(appUrl("/#backup"));
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
         name: "too-large.json",
         mimeType: "application/json",

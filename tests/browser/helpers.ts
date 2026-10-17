@@ -1,4 +1,20 @@
+import { appUrl } from "./url.ts";
+import type { BackupStore } from "../../app/backupTables";
 import { expect, type Page } from "@playwright/test";
+/** Exercise visible navigation after the three-section reorganization.
+ * This also supports the original five-tab build for baseline captures. */
+export async function navigateView(page: Page, route: string, touch = false) {
+    const activate = async (link: ReturnType<Page["locator"]>) =>
+        touch ? link.tap() : link.click();
+    const primary = page.locator(`.navigation a[href="#${route}"]`);
+    if (await primary.count()) await activate(primary);
+    else if (route === "tasks") await activate(page.locator(".task-shortcut"));
+    else {
+        await activate(page.locator('.navigation a[href="#projects"]'));
+        await activate(page.locator(`.project-gateway a[href="#${route}"]`));
+    }
+    await expect(page.locator("main")).toHaveAttribute("data-route", route);
+}
 export async function openCreate(
     page: Page,
     kind: "project" | "task" | "idea",
@@ -20,13 +36,13 @@ export async function openCreate(
     await expect(page.getByRole("dialog")).toBeVisible();
 }
 export async function openQuickIdeas(page: Page) {
-    await page.goto("/#ideas");
+    await page.goto(appUrl("/#ideas"));
     const details = page.locator(".idea-capture-details");
     if ((await details.getAttribute("open")) === null)
         await details.locator("summary").click();
 }
 export async function showLegacy(page: Page) {
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await page.getByRole("tab", { name: "نظرة عامة", exact: true }).click();
     const details = page.locator(".progress-legacy");
     if ((await details.getAttribute("open")) === null)
@@ -92,7 +108,7 @@ export function largeFixture(): Snapshot {
     };
 }
 export async function importData(page: Page, data: Snapshot) {
-    await page.goto("/#backup");
+    await page.goto(appUrl("/#backup"));
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
         name: "stress.json",
         mimeType: "application/json",
@@ -101,22 +117,7 @@ export async function importData(page: Page, data: Snapshot) {
     await page.getByRole("button", { name: "تأكيد استبدال البيانات" }).click();
     await expect(page.getByRole("dialog")).not.toBeVisible();
 }
-export async function readStore(
-    page: Page,
-    name:
-        | "projects"
-        | "steps"
-        | "tasks"
-        | "ideas"
-        | "events"
-        | "taskCycles"
-        | "projectProgress"
-        | "projectTracking"
-        | "projectPlans"
-        | "stepWork"
-        | "recommendations"
-        | "paceSettings",
-) {
+export async function readStore(page: Page, name: BackupStore) {
     return page.evaluate(async (store) => {
         const database = await new Promise<IDBDatabase>((resolve, reject) => {
             const request = indexedDB.open("masar-v1");

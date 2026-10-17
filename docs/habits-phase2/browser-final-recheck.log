@@ -1,0 +1,59 @@
+[WebServer] (node:637825) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:637838) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 40 tests using 1 worker
+
+(node:637897) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/40] tests/browser/habits-phase2.spec.ts:82:1 › قاعدة جديدة ومداخل المرحلة الأولى:19 مخزنًا دون بيانات عادات افتراضية
+[2/40] tests/browser/habits-phase2.spec.ts:100:1 › Snapshot5:معاينة وحفظ وتصدير مطابق وإعادة فتح دون سجلات إضافية
+[3/40] tests/browser/habits-phase2.spec.ts:120:5 › نسخة1:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[4/40] tests/browser/habits-phase2.spec.ts:120:5 › نسخة2:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[5/40] tests/browser/habits-phase2.spec.ts:120:5 › نسخة3:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[6/40] tests/browser/habits-phase2.spec.ts:120:5 › نسخة4:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[7/40] tests/browser/habits-phase2.spec.ts:142:1 › الاستبدال الكامل منفصل ويحتاج اختيارًا صريحًا،ونسخة الأمان تستعيد كل المحذوف
+[8/40] tests/browser/habits-phase2.spec.ts:169:1 › الدمج السريع وإعادة اختيار الملف لا يكرران،والمستويات والقرارات ترتبط بالمعرفات الجديدة
+[9/40] tests/browser/habits-phase2.spec.ts:213:1 › التحقق يمنع الملفات المكسورة قبل الكتابة ولا توجد واجهة استيراد عادات مبكرة
+[10/40] tests/browser/habits-phase2.spec.ts:236:1 › Quota في نسخة الأمان يمنع المسح عبر الواجهة ويتيح المحاولة مجددًا
+[11/40] tests/browser/habits-phase2.spec.ts:272:1 › فشل IndexedDB أثناء إدراج التذكيرات يتراجع عن كامل الاستعادة
+[12/40] tests/browser/habits-phase2.spec.ts:300:9 › معاينة الاستعادة وRTL والثيم 320 light
+[13/40] tests/browser/habits-phase2.spec.ts:300:9 › معاينة الاستعادة وRTL والثيم 320 dark
+[14/40] tests/browser/habits-phase2.spec.ts:300:9 › معاينة الاستعادة وRTL والثيم 390 light
+[15/40] tests/browser/habits-phase2.spec.ts:300:9 › معاينة الاستعادة وRTL والثيم 390 dark
+[16/40] tests/browser/habits-phase2.spec.ts:349:1 › الاستعادة لا تعيد تطبيق اختيار قديم معلّق لمهامي اليوم عند إعادة الفتح
+[17/40] tests/browser/navigation-phase1.spec.ts:43:9 › navigation screenshots 320 light
+[18/40] tests/browser/navigation-phase1.spec.ts:43:9 › navigation screenshots 320 dark
+[19/40] tests/browser/navigation-phase1.spec.ts:43:9 › navigation screenshots 390 light
+[20/40] tests/browser/navigation-phase1.spec.ts:43:9 › navigation screenshots 390 dark
+[21/40] tests/browser/navigation-phase1.spec.ts:72:5 › three primary sections and reachable gateway 320
+[22/40] tests/browser/navigation-phase1.spec.ts:72:5 › three primary sections and reachable gateway 390
+[23/40] tests/browser/navigation-phase1.spec.ts:72:5 › three primary sections and reachable gateway 768
+[24/40] tests/browser/navigation-phase1.spec.ts:72:5 › three primary sections and reachable gateway 1366
+[25/40] tests/browser/navigation-phase1.spec.ts:143:1 › task shortcut is one click from every current page and habits is storage-neutral
+[26/40] tests/browser/navigation-phase1.spec.ts:194:1 › back and forward preserve gateway origin, reload and safe direct-link fallbacks
+[27/40] tests/browser/navigation-phase1.spec.ts:228:1 › task-list and project-tree scroll positions survive section navigation
+[28/40] tests/browser/navigation-phase1.spec.ts:264:1 › legacy creation, completion and accessible light/dark shell remain available
+[29/40] tests/browser/today-experience.spec.ts:70:1 › القائمة الأصلية للإجراءات تعرض الإضافة والإزالة وتحافظ على خصائص المهمة
+[30/40] tests/browser/today-experience.spec.ts:117:1 › المكتمل ينتقل للأسفل ويبقى بعد إعادة التحميل والتراجع يعيد ترتيب الأولويات والمواعيد
+[31/40] tests/browser/today-experience.spec.ts:179:1 › المختصر لا يزاحم المفتوح بالمكتمل والعرض الموسع يتيح التراجع
+[32/40] tests/browser/today-experience.spec.ts:201:5 › دورة daily: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار
+[33/40] tests/browser/today-experience.spec.ts:201:5 › دورة weekly: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار
+[34/40] tests/browser/today-experience.spec.ts:201:5 › دورة monthly: إنجاز وتراجع وضغط متكرر وحدود اليوم دون تكرار
+[35/40] tests/browser/today-experience.spec.ts:262:1 › فترة السماح والمتأخرة وإنجاز اليوم المحلي لا يحمل إنجاز الأمس
+[36/40] tests/browser/today-experience.spec.ts:302:1 › الحفظ وإعادة فتح المتصفح والعمل دون اتصال يحتفظان بإنجاز اليوم
+[37/40] tests/browser/today-experience.spec.ts:344:5 › العرض 320: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات
+[38/40] tests/browser/today-experience.spec.ts:344:5 › العرض 390: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات
+[39/40] tests/browser/today-experience.spec.ts:344:5 › العرض 768: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات
+[40/40] tests/browser/today-experience.spec.ts:344:5 › العرض 1366: RTL والثيمان ومحتوى مكتمل وقائمة الإجراءات
+  40 passed (1.5m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

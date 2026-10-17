@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-17T02:00:44.695Z",
+  "checks": [
+    "isolated_phase3_snapshot5_seeded_with_historical_habits_and_legacy_data",
+    "pwa_update_preserves_all_19_stores_byte_for_byte",
+    "no_new_schema_migration_70_to_70",
+    "manifest_identity_and_start_url_scope_unchanged",
+    "new_simple_recording_writes_only_habit_entries",
+    "home_card_reads_same_habit_record",
+    "automatic_advice_adds_only_explainable_proposals_keeps_old_decisions_and_plans",
+    "service_worker_controls_page_and_caches_only_current_assets",
+    "full_browser_restart_offline_preserves_all_19_stores_and_recording",
+    "offline_home_undo_uses_original_entry_without_duplication",
+    "offline_detail_can_complete_again",
+    "offline_habits_paths_and_existing_routes_work",
+    "no_duplicate_entries_or_automatic_plan_changes_or_reminders",
+    "offline_graded_record_edit_undo_preserves_historical_entries",
+    "offline_masar_habits_import_preview_and_atomic_commit",
+    "offline_reminder_create_review_and_reload",
+    "phase4_7_offline_actions_leave_all_12_legacy_stores_unchanged"
+  ],
+  "passed": 17,
+  "errors": [],
+  "schemaBefore": 70,
+  "schemaAfter": 70,
+  "isolatedProfile": true,
+  "fullOfflineRestart": true,
+  "physicalAndroidTested": false,
+  "nativeAndroidBackupDownloadVerified": false,
+  "androidBackupDownloadRequiredBeforePublication": true,
+  "published": false,
+  "personalUserDataAccessed": false
+}

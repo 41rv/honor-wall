@@ -1,0 +1,14 @@
+
+ RUN  v5.0.4 /workspace/honor-wall
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  02:17:20
+   Duration  276ms (import 39%, tests 34%, transform 25%, worker 2%)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

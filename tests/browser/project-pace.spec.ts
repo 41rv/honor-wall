@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import {
@@ -149,21 +150,22 @@ test("40/20 من الواجهة: هدف ووتيرة وإنجاز من الرئ�
             x.updatedAt = since;
         }
     await importData(page, fixture);
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await goal(page);
     await expect(page.getByLabel("وتيرة المشروع")).toContainText(
         "2 خطوة / يوم",
     );
     const beforeTasks = await readStore(page, "tasks");
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(page.locator("h1")).toHaveText("مهامي اليوم");
     const sections = page.locator("main > section");
     await expect(sections.nth(0)).toHaveAttribute("aria-label", "مهامي اليوم");
-    await expect(sections.nth(1)).toHaveAttribute(
+    await expect(sections.nth(1)).toHaveAttribute("aria-label", "عاداتي اليوم");
+    await expect(sections.nth(2)).toHaveAttribute(
         "aria-label",
         "خطوات مشاريعك القادمة",
     );
-    await expect(sections.nth(2)).toHaveAttribute(
+    await expect(sections.nth(3)).toHaveAttribute(
         "aria-label",
         "التوصية الأبرز",
     );
@@ -198,7 +200,7 @@ test("تسريع افتراضي: معاينة دون تعديل ثم اعتما�
     fixture.projectPlans![0].workOrder = 0;
     fixture.stepWork = [];
     await importData(page, fixture);
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await goal(page, "duration", "40");
     await page.getByRole("button", { name: "معاينة مستويات التسريع" }).click();
     const d = page.getByRole("dialog", { name: "مستويات التسريع" });
@@ -227,7 +229,7 @@ test("توصية شخصية: الرئيسية تعرض واحدة والرفض �
     page,
 }) => {
     await importData(page, observedFixture());
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     const main = page.getByLabel("التوصية الأبرز", { exact: true });
     await expect(main.locator(".recommendation-card")).toHaveCount(1);
     const before = await readStore(page, "projectPlans");
@@ -241,7 +243,7 @@ test("توصية شخصية: الرئيسية تعرض واحدة والرفض �
     await page.clock.setSystemTime(new Date("2026-10-09T00:00:00Z"));
     await page.evaluate(() => window.dispatchEvent(new Event("focus")));
     await expect(main.locator(".recommendation-card")).toHaveCount(0);
-    await page.goto("/#progress/recommendations");
+    await page.goto(appUrl("/#progress/recommendations"));
     await page
         .getByRole("button", { name: "عرض سجل القرارات", exact: true })
         .click();
@@ -251,9 +253,9 @@ test("اعتماد توصية شخصية وتحديث مؤشرات المشرو�
     page,
 }) => {
     await importData(page, observedFixture());
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await expect(page.getByLabel("وتيرة المشروع")).toContainText("2026-10-20");
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await page.getByRole("button", { name: "معاينة الاقتراح" }).click();
     await page
         .getByRole("button", { name: "تأكيد اعتماد التغييرات", exact: true })
@@ -262,7 +264,7 @@ test("اعتماد توصية شخصية وتحديث مؤشرات المشرو�
     expect((await readStore(page, "projectPlans"))[0].goal).toMatchObject({
         targetDate: "2026-10-20",
     });
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await goal(page, "none");
     const plan = (await readStore(page, "projectPlans"))[0];
     expect(plan.goal).toBeUndefined();
@@ -273,7 +275,7 @@ test("الإيقاف والاستئناف يجمدان20يومًا والموع�
     page,
 }) => {
     await importData(page, observedFixture());
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await goal(page, "duration", "20");
     await page.getByRole("button", { name: "إيقاف مؤقت", exact: true }).click();
     await page
@@ -284,9 +286,9 @@ test("الإيقاف والاستئناف يجمدان20يومًا والموع�
     await page.evaluate(() => window.dispatchEvent(new Event("focus")));
     await page.reload();
     await expect(page.getByLabel("وتيرة المشروع")).toContainText("2026-11-01");
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(page.locator(".home-project")).toHaveCount(0);
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await page
         .getByRole("button", { name: "استئناف المشروع", exact: true })
         .click();
@@ -327,7 +329,7 @@ test("الإيقاف والاستئناف يجمدان20يومًا والموع�
 test("الحد النشط: الرابع يحتاج قرارًا صريحًا مع حفظ مسودة الإنشاء", async ({
     page,
 }) => {
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     for (let i = 1; i <= 3; i++) {
         await openCreate(page, "project");
         const d = page.getByRole("dialog");
@@ -368,7 +370,7 @@ test("الدمج عبر الواجهة يحفظ الأصل ويمنع تكرار
 }) => {
     const fixture = observedFixture();
     await importData(page, fixture);
-    await page.goto("/#backup");
+    await page.goto(appUrl("/#backup"));
     const merge = async () => {
         await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
             name: "pace.json",
@@ -405,7 +407,7 @@ for (const width of [320, 390, 768, 1366])
                     },
                     { identity, mode },
                 );
-                await page.goto("/#project/p");
+                await page.goto(appUrl("/#project/p"));
                 await page.reload();
                 await expect(page.locator("html")).toHaveAttribute(
                     "dir",
@@ -451,7 +453,7 @@ for (const width of [320, 390, 768, 1366])
                     });
                 }
             }
-        await page.goto("/#home");
+        await page.goto(appUrl("/#home"));
         await expect(page.locator(".home-today")).toBeVisible();
         await page.screenshot({
             path: `docs/project-pace/home-${width}.png`,
@@ -473,7 +475,7 @@ test("إلغاء تجاوز الحد لا ينشئ شيئًا، وإيقاف م�
         { ...f.projects[0], id: "third", title: "ثالث" },
     );
     await importData(page, f);
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     const begin = async () => {
         await openCreate(page, "project");
         const d = page.getByRole("dialog");
@@ -513,7 +515,7 @@ test("استيراد masar.project1 عند الحد يحفظ المعاينة ث
         { ...f.projects[0], id: "third", title: "ثالث" },
     );
     await importData(page, f);
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await page
         .getByLabel("استيراد مشروع", { exact: true })
         .setInputFiles("examples/project-import.json");
@@ -546,7 +548,7 @@ test("إتمام آخر خطوة من الرئيسية ثم التراجع يع�
 }) => {
     await importData(page, sizedFixture(1));
     const tasks = await readStore(page, "tasks");
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await page
         .getByRole("button", { name: "إتمام الخطوة «خطوة 0»", exact: true })
         .click();
@@ -570,7 +572,7 @@ test("الداشبورد والرؤى لا يعدّان الإيقاف تعثر�
     page,
 }) => {
     await importData(page, observedFixture());
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await page.getByRole("button", { name: "إيقاف مؤقت", exact: true }).click();
     await page
         .getByRole("button", { name: "تأكيد الإيقاف", exact: true })
@@ -578,7 +580,7 @@ test("الداشبورد والرؤى لا يعدّان الإيقاف تعثر�
     await expect(page.getByRole("dialog")).toHaveCount(0);
     await page.clock.setSystemTime(new Date("2026-10-28T00:00:00Z"));
     await page.evaluate(() => window.dispatchEvent(new Event("focus")));
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await page.getByText("تفاصيل المواعيد والمشاريع", { exact: true }).click();
     const active = page
             .locator(".period-metric")
@@ -592,7 +594,7 @@ test("الداشبورد والرؤى لا يعدّان الإيقاف تعثر�
     await expect(
         page.getByRole("region", { name: "رؤى مسار", exact: true }),
     ).toContainText("فترات الإيقاف لا تُعد تباطؤًا");
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await page
         .getByRole("button", { name: "استئناف المشروع", exact: true })
         .click();
@@ -600,7 +602,7 @@ test("الداشبورد والرؤى لا يعدّان الإيقاف تعثر�
         .getByRole("button", { name: "تأكيد الاستئناف", exact: true })
         .click();
     await expect(page.getByRole("dialog")).toHaveCount(0);
-    await page.goto("/#progress");
+    await page.goto(appUrl("/#progress"));
     await page.getByRole("tab", { name: "نظرة عامة", exact: true }).click();
     const details = page.locator(".period-details");
     if ((await details.getAttribute("open")) === null)
@@ -634,7 +636,7 @@ test("النافذة فوق مشروع كبير: حصر التركيز وARIA و
         };
     });
     await importData(page, sizedFixture(250));
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     expect(
         await page.evaluate(() => document.getElementsByTagName("*").length),
     ).toBeGreaterThan(3000);
@@ -705,7 +707,7 @@ test("المتصفح بلا CloseWatcher يحتفظ بالنافذة الأصل�
         Reflect.set(window, "CloseWatcher", undefined);
     });
     await importData(page, sizedFixture(150));
-    await page.goto("/#project/p");
+    await page.goto(appUrl("/#project/p"));
     await page
         .getByRole("button", { name: "إعداد الهدف الزمني", exact: true })
         .click();

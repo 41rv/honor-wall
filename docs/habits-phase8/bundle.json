@@ -1,0 +1,57 @@
+[
+  {
+    "name": "calendar-Dneqhncv.js",
+    "bytes": 159089,
+    "gzip": 45119
+  },
+  {
+    "name": "index-D2qx-eDy.js",
+    "bytes": 645850,
+    "gzip": 192116
+  },
+  {
+    "name": "index-De-bvpUr.css",
+    "bytes": 82612,
+    "gzip": 16367
+  },
+  {
+    "name": "rolldown-runtime-CbXtAM7H.js",
+    "bytes": 589,
+    "gzip": 368
+  },
+  {
+    "name": "tajawal-arabic-400-normal-CyCXRvzh.woff2",
+    "bytes": 8932,
+    "gzip": 8944
+  },
+  {
+    "name": "tajawal-arabic-400-normal-DCQxawbB.woff",
+    "bytes": 12012,
+    "gzip": 11958
+  },
+  {
+    "name": "tajawal-arabic-500-normal-BZ8ojJNu.woff2",
+    "bytes": 8940,
+    "gzip": 8963
+  },
+  {
+    "name": "tajawal-arabic-500-normal-CbVEaYEW.woff",
+    "bytes": 11880,
+    "gzip": 11826
+  },
+  {
+    "name": "tajawal-arabic-700-normal-9L7Zusdl.woff",
+    "bytes": 12160,
+    "gzip": 12101
+  },
+  {
+    "name": "tajawal-arabic-700-normal-D2-eand5.woff2",
+    "bytes": 9024,
+    "gzip": 9047
+  },
+  {
+    "name": "workbox-window.prod.es5-Bd17z0YL.js",
+    "bytes": 5653,
+    "gzip": 2214
+  }
+]

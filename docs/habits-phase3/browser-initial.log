@@ -1,0 +1,81 @@
+[WebServer] (node:642597) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:642610) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 19 tests using 1 worker
+
+(node:642634) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/19] tests/browser/habits-phase3.spec.ts:93:1 › حساب جديد:لا بياناتافتراضية،إنشاءمساروعادةمستقلةوأسبوعيةوتعديلها
+  1) tests/browser/habits-phase3.spec.ts:93:1 › حساب جديد:لا بياناتافتراضية،إنشاءمساروعادةمستقلةوأسبوعيةوتعديلها 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByRole('dialog').getByLabel('المسار', { exact: true })
+    Expected: ""
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByRole('dialog').getByLabel('المسار', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByLabel('المسار', { exact: true })
+
+
+      115 |     d = page.getByRole("dialog");
+      116 |     await d.getByLabel("اسم العادة", { exact: true }).fill("ترتيب الطاولة");
+    > 117 |     await expect(d.getByLabel("المسار", { exact: true })).toHaveValue("");
+          |                                                           ^
+      118 |     await d.getByRole("button", { name: "أيام محددة", exact: true }).click();
+      119 |     for (const name of [
+      120 |         "السبت",
+        at /workspace/honor-wall/tests/browser/habits-phase3.spec.ts:117:59
+
+    Error Context: test-results/habits-phase3-حساب-جديد-لا-35f5e-وعادةمستقلةوأسبوعيةوتعديلها/error-context.md
+
+
+(node:642763) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[2/19] tests/browser/habits-phase3.spec.ts:148:1 › الرئيسيةتسجلوترجعفورًاوالتسجيلوالإحصاءاتمنفصلةعنالمهاموالمشاريع
+  2) tests/browser/habits-phase3.spec.ts:148:1 › الرئيسيةتسجلوترجعفورًاوالتسجيلوالإحصاءاتمنفصلةعنالمهاموالمشاريع 
+
+    Test timeout of 45000ms exceeded.
+
+    Error: locator.click: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'تأكيد استبدال البيانات' })
+
+
+       at helpers.ts:116
+
+      114 |         buffer: Buffer.from(JSON.stringify(data)),
+      115 |     });
+    > 116 |     await page.getByRole("button", { name: "تأكيد استبدال البيانات" }).click();
+          |                                                                        ^
+      117 |     await expect(page.getByRole("dialog")).not.toBeVisible();
+      118 | }
+      119 | export async function readStore(page: Page, name: BackupStore) {
+        at importData (/workspace/honor-wall/tests/browser/helpers.ts:116:72)
+        at seed (/workspace/honor-wall/tests/browser/habits-phase3.spec.ts:64:5)
+        at /workspace/honor-wall/tests/browser/habits-phase3.spec.ts:151:5
+
+    Error Context: test-results/habits-phase3-الرئيسيةتسجل-43acc-اءاتمنفصلةعنالمهاموالمشاريع/error-context.md
+
+
+(node:643239) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[3/19] tests/browser/habits-phase3.spec.ts:191:1 › التسجيلالمتزامنمننافذتينلاينشئسجلينيوميين
+Terminated
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

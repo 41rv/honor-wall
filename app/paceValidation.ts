@@ -214,6 +214,11 @@ export function validatePaceData(d: Snapshot, fail: () => never) {
                 !Number.isInteger(s.activeLimit) ||
                 s.activeLimit < 1 ||
                 s.activeLimit > 1000 ||
+                (s.importDigests !== undefined &&
+                    (!Array.isArray(s.importDigests) ||
+                        s.importDigests.some(
+                            (digest) => typeof digest !== "string",
+                        ))) ||
                 (s.restHistory !== undefined &&
                     (!Array.isArray(s.restHistory) ||
                         !s.restHistory.length ||

@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import AxeBuilder from "@axe-core/playwright";
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
@@ -23,7 +24,7 @@ test("معاينة وإلغاء ثم حفظ مرة واحدة بالضغط ال�
             ),
         ),
     );
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await upload(page);
     const dialog = page.getByRole("dialog", { name: "معاينة استيراد المشروع" });
     await expect(dialog).toContainText("5 خطوات نهائية");
@@ -74,7 +75,7 @@ test("معاينة وإلغاء ثم حفظ مرة واحدة بالضغط ال�
             !steps.some((child) => child.parentId === s.id),
     );
     for (let i = 0; i < leaves.length; i++) {
-        await page.goto("/#step/" + leaves[i].id);
+        await page.goto(appUrl("/#step/" + leaves[i].id));
         await page
             .getByRole("button", { name: "إتمام الخطوة", exact: true })
             .click();
@@ -86,7 +87,7 @@ test("معاينة وإلغاء ثم حفظ مرة واحدة بالضغط ال�
                     )?.status,
             )
             .toBe("done");
-        await page.goto("/#project/" + added.id);
+        await page.goto(appUrl("/#project/" + added.id));
         await expect(page.getByRole("progressbar")).toHaveAttribute(
             "aria-valuenow",
             String((i + 1) * 20),
@@ -105,7 +106,7 @@ test("معاينة وإلغاء ثم حفظ مرة واحدة بالضغط ال�
 test("ملفات خاطئة بأخطاء واضحة وإعادة اختيار الملف نفسه دون حفظ", async ({
     page,
 }) => {
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     for (const [text, error] of [
         ["{", "تعذر قراءة JSON"],
         [
@@ -153,7 +154,7 @@ test("ملفات خاطئة بأخطاء واضحة وإعادة اختيار ا
 test("فشل التخزين لا يترك مشروعًا ناقصًا ويتيح تأكيد المعاينة مجددًا", async ({
     page,
 }) => {
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     await upload(page);
     await page.evaluate(() => {
         const original = IDBObjectStore.prototype.add;
@@ -180,7 +181,7 @@ for (const width of [390, 1366]) {
         page,
     }) => {
         await page.setViewportSize({ width, height: 850 });
-        await page.goto("/#projects");
+        await page.goto(appUrl("/#projects"));
         for (const identity of ["green", "mono"])
             for (const mode of ["light", "dark"]) {
                 await page.evaluate(
@@ -241,7 +242,7 @@ for (const width of [390, 1366]) {
 test("معاينة محدودة لمشروع كبير تستورد كل العناصر وترقيم التداخل حتى الحد المعتمد", async ({
     page,
 }) => {
-    await page.goto("/#projects");
+    await page.goto(appUrl("/#projects"));
     let deep: Record<string, unknown> = { title: "المستوى 2" };
     const top = deep;
     for (let i = 3; i <= 20; i++) {

@@ -1,0 +1,28 @@
+[WebServer] (node:729234) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:729247) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 9 tests using 1 worker
+
+(node:729281) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/9] tests/browser/habits-phase8.spec.ts:8:1 › الاستعادة الجارية لا توهم بالإلغاء عند Escape أو النقر خارج النافذة
+[2/9] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 320 light
+[3/9] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 320 dark
+[4/9] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 390 light
+[5/9] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 390 dark
+[6/9] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 768 light
+[7/9] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 768 dark
+[8/9] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 1366 light
+[9/9] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 1366 dark
+  9 passed (20.5s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

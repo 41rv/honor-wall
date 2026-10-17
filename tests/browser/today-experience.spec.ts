@@ -1,3 +1,4 @@
+import { appUrl } from "./url";
 import { test, expect, type Page } from "@playwright/test";
 import {
     importData,
@@ -60,7 +61,7 @@ async function setup(page: Page, tasks: Task[]) {
             : task,
     );
     await importData(page, data);
-    await page.goto("/#today");
+    await page.goto(appUrl("/#today"));
 }
 async function jump(page: Page, time: string) {
     await page.clock.setSystemTime(new Date(time));
@@ -78,7 +79,7 @@ test("القائمة الأصلية للإجراءات تعرض الإضافة �
         schedule: schedule("none"),
     };
     await setup(page, [ordinary, scheduled]);
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     const before = await readStore(page, "tasks");
     await page
         .getByRole("button", { name: "إجراءات المهمة «عادية»", exact: true })
@@ -99,12 +100,12 @@ test("القائمة الأصلية للإجراءات تعرض الإضافة �
         ...before.find((t) => t.id === "عادية"),
         today: { date: day, timeZone: zone },
     });
-    await page.goto("/#today");
+    await page.goto(appUrl("/#today"));
     await expect(names(page)).toHaveText(["عادية", "مجدولة"]);
     await expect(page.locator(".daily-picker,.daily-remove")).toHaveCount(0);
     await chooseTaskToday(page, "عادية", false);
     await expect(names(page)).toHaveText(["مجدولة"]);
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     await page
         .getByRole("button", { name: "إجراءات المهمة «مجدولة»", exact: true })
         .click();
@@ -186,7 +187,7 @@ test("المختصر لا يزاحم المفتوح بالمكتمل والعر�
         task("د", "low"),
         task("هـ"),
     ]);
-    await page.goto("/#home");
+    await page.goto(appUrl("/#home"));
     await expect(names(page)).toHaveText(["أ", "ب", "ج"]);
     await page.getByRole("button", { name: "إكمال أ", exact: true }).click();
     await expect(names(page)).toHaveText(["ب", "ج", "د"]);
@@ -290,13 +291,13 @@ test("فترة السماح والمتأخرة وإنجاز اليوم المح�
     await jump(page, "2026-10-18T21:00:00Z");
     await expect(names(page)).toHaveText(["متأخرة"]);
     expect((await readStore(page, "taskCycles"))[0].status).toBe("completed");
-    await page.goto("/#tasks");
+    await page.goto(appUrl("/#tasks"));
     if ((await page.locator(".completed-list").getAttribute("open")) === null)
         await page.locator(".completed-list summary").click();
     await page
         .getByRole("button", { name: "إعادة فتح السبت", exact: true })
         .click();
-    await page.goto("/#today");
+    await page.goto(appUrl("/#today"));
     await expect(names(page)).toHaveText(["متأخرة", "السبت"]);
 });
 test("الحفظ وإعادة فتح المتصفح والعمل دون اتصال يحتفظان بإنجاز اليوم", async ({
@@ -333,7 +334,7 @@ test("الحفظ وإعادة فتح المتصفح والعمل دون اتصا
     ).toHaveAttribute("aria-busy", "false");
     const reopened = await context.newPage();
     await reopened.clock.install({ time: new Date(now) });
-    await reopened.goto("/#today");
+    await reopened.goto(appUrl("/#today"));
     await expect(
         reopened.getByRole("button", { name: "إكمال محلية", exact: true }),
     ).toBeVisible();

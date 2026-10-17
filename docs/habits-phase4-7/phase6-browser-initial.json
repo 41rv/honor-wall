@@ -1,0 +1,245 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/habits-phase4-7.spec.ts",
+      "-g",
+      "phase6",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "habits-phase4-7.spec.ts",
+      "file": "habits-phase4-7.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "phase6 reminders CRUD and ideas regression 320 dark",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5643,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.idea-card').first()\nExpected substring: \u001b[32m\"فكرة أصلية\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.idea-card').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.idea-card').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.idea-card').first()\nExpected substring: \u001b[32m\"فكرة أصلية\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.idea-card').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.idea-card').first()\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:250:58",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                      "column": 58,
+                      "line": 250
+                    },
+                    "snippet": "  248 |         await capture.getByRole(\"textbox\").first().fill(\"فكرة أصلية\");\n  249 |         await capture.getByRole(\"button\").last().click();\n> 250 |         await expect(page.locator(\".idea-card\").first()).toContainText(\n      |                                                          ^\n  251 |             \"فكرة أصلية\",\n  252 |         );\n  253 |         const ideasBefore = await readStore(page, \"ideas\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                        "column": 58,
+                        "line": 250
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.idea-card').first()\nExpected substring: \u001b[32m\"فكرة أصلية\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.idea-card').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.idea-card').first()\u001b[22m\n\n\n  248 |         await capture.getByRole(\"textbox\").first().fill(\"فكرة أصلية\");\n  249 |         await capture.getByRole(\"button\").last().click();\n> 250 |         await expect(page.locator(\".idea-card\").first()).toContainText(\n      |                                                          ^\n  251 |             \"فكرة أصلية\",\n  252 |         );\n  253 |         const ideasBefore = await readStore(page, \"ideas\");\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:250:58"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:28:25.361Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/habits-phase4-7-phase6-rem-3da2d-d-ideas-regression-320-dark/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                    "column": 58,
+                    "line": 250
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-24e4c6a925af4202567d",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 236,
+          "column": 5
+        },
+        {
+          "title": "phase6 reminders CRUD and ideas regression 390 light",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6055,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.idea-card').first()\nExpected substring: \u001b[32m\"فكرة أصلية\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.idea-card').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.idea-card').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.idea-card').first()\nExpected substring: \u001b[32m\"فكرة أصلية\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.idea-card').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.idea-card').first()\u001b[22m\n\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:250:58",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                      "column": 58,
+                      "line": 250
+                    },
+                    "snippet": "  248 |         await capture.getByRole(\"textbox\").first().fill(\"فكرة أصلية\");\n  249 |         await capture.getByRole(\"button\").last().click();\n> 250 |         await expect(page.locator(\".idea-card\").first()).toContainText(\n      |                                                          ^\n  251 |             \"فكرة أصلية\",\n  252 |         );\n  253 |         const ideasBefore = await readStore(page, \"ideas\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                        "column": 58,
+                        "line": 250
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.idea-card').first()\nExpected substring: \u001b[32m\"فكرة أصلية\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.idea-card').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.idea-card').first()\u001b[22m\n\n\n  248 |         await capture.getByRole(\"textbox\").first().fill(\"فكرة أصلية\");\n  249 |         await capture.getByRole(\"button\").last().click();\n> 250 |         await expect(page.locator(\".idea-card\").first()).toContainText(\n      |                                                          ^\n  251 |             \"فكرة أصلية\",\n  252 |         );\n  253 |         const ideasBefore = await readStore(page, \"ideas\");\n    at /workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts:250:58"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:28:31.638Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/habits-phase4-7-phase6-rem-0d29a--ideas-regression-390-light/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/habits-phase4-7.spec.ts",
+                    "column": 58,
+                    "line": 250
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "05e6e0e9b056a602ad82-e67172df908cab82c731",
+          "file": "habits-phase4-7.spec.ts",
+          "line": 236,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T01:28:24.009Z",
+    "duration": 14020.769,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

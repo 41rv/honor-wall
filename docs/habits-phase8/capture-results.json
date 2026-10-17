@@ -1,0 +1,400 @@
+{
+  "captures": [
+    {
+      "route": "home",
+      "theme": "light",
+      "width": 320,
+      "file": "home-light-320.png",
+      "position": "top"
+    },
+    {
+      "route": "habits",
+      "theme": "light",
+      "width": 320,
+      "file": "habits-light-320.png",
+      "position": "top"
+    },
+    {
+      "route": "habit-path/culture",
+      "theme": "light",
+      "width": 320,
+      "file": "habit-path-culture-light-320.png",
+      "position": "top"
+    },
+    {
+      "route": "habit/reading",
+      "theme": "light",
+      "width": 320,
+      "file": "habit-reading-light-320.png",
+      "position": "top"
+    },
+    {
+      "route": "habit/reading",
+      "theme": "light",
+      "width": 320,
+      "file": "habit-reading-light-320-bottom.png",
+      "position": "bottom"
+    },
+    {
+      "route": "projects",
+      "theme": "light",
+      "width": 320,
+      "file": "projects-light-320.png",
+      "position": "top"
+    },
+    {
+      "route": "project/4f46a012-fa53-43c6-9e31-71dbfaddf4c4",
+      "theme": "light",
+      "width": 320,
+      "file": "project-detail-light-320.png",
+      "position": "top"
+    },
+    {
+      "route": "project/4f46a012-fa53-43c6-9e31-71dbfaddf4c4",
+      "theme": "light",
+      "width": 320,
+      "file": "project-detail-light-320-bottom.png",
+      "position": "bottom"
+    },
+    {
+      "route": "tasks",
+      "theme": "light",
+      "width": 320,
+      "file": "tasks-light-320.png",
+      "position": "top"
+    },
+    {
+      "route": "ideas",
+      "theme": "light",
+      "width": 320,
+      "file": "ideas-light-320.png",
+      "position": "top"
+    },
+    {
+      "route": "ideas/reminders",
+      "theme": "light",
+      "width": 320,
+      "file": "ideas-reminders-light-320.png",
+      "position": "top"
+    },
+    {
+      "route": "progress",
+      "theme": "light",
+      "width": 320,
+      "file": "progress-light-320.png",
+      "position": "top"
+    },
+    {
+      "route": "backup",
+      "theme": "light",
+      "width": 320,
+      "file": "backup-light-320.png",
+      "position": "top"
+    },
+    {
+      "route": "backup",
+      "theme": "light",
+      "width": 320,
+      "file": "backup-light-320-bottom.png",
+      "position": "bottom"
+    },
+    {
+      "route": "home",
+      "theme": "dark",
+      "width": 320,
+      "file": "home-dark-320.png",
+      "position": "top"
+    },
+    {
+      "route": "habits",
+      "theme": "dark",
+      "width": 320,
+      "file": "habits-dark-320.png",
+      "position": "top"
+    },
+    {
+      "route": "habit-path/culture",
+      "theme": "dark",
+      "width": 320,
+      "file": "habit-path-culture-dark-320.png",
+      "position": "top"
+    },
+    {
+      "route": "habit/reading",
+      "theme": "dark",
+      "width": 320,
+      "file": "habit-reading-dark-320.png",
+      "position": "top"
+    },
+    {
+      "route": "habit/reading",
+      "theme": "dark",
+      "width": 320,
+      "file": "habit-reading-dark-320-bottom.png",
+      "position": "bottom"
+    },
+    {
+      "route": "projects",
+      "theme": "dark",
+      "width": 320,
+      "file": "projects-dark-320.png",
+      "position": "top"
+    },
+    {
+      "route": "project/4f46a012-fa53-43c6-9e31-71dbfaddf4c4",
+      "theme": "dark",
+      "width": 320,
+      "file": "project-detail-dark-320.png",
+      "position": "top"
+    },
+    {
+      "route": "project/4f46a012-fa53-43c6-9e31-71dbfaddf4c4",
+      "theme": "dark",
+      "width": 320,
+      "file": "project-detail-dark-320-bottom.png",
+      "position": "bottom"
+    },
+    {
+      "route": "tasks",
+      "theme": "dark",
+      "width": 320,
+      "file": "tasks-dark-320.png",
+      "position": "top"
+    },
+    {
+      "route": "ideas",
+      "theme": "dark",
+      "width": 320,
+      "file": "ideas-dark-320.png",
+      "position": "top"
+    },
+    {
+      "route": "ideas/reminders",
+      "theme": "dark",
+      "width": 320,
+      "file": "ideas-reminders-dark-320.png",
+      "position": "top"
+    },
+    {
+      "route": "progress",
+      "theme": "dark",
+      "width": 320,
+      "file": "progress-dark-320.png",
+      "position": "top"
+    },
+    {
+      "route": "backup",
+      "theme": "dark",
+      "width": 320,
+      "file": "backup-dark-320.png",
+      "position": "top"
+    },
+    {
+      "route": "backup",
+      "theme": "dark",
+      "width": 320,
+      "file": "backup-dark-320-bottom.png",
+      "position": "bottom"
+    },
+    {
+      "route": "home",
+      "theme": "light",
+      "width": 390,
+      "file": "home-light-390.png",
+      "position": "top"
+    },
+    {
+      "route": "habits",
+      "theme": "light",
+      "width": 390,
+      "file": "habits-light-390.png",
+      "position": "top"
+    },
+    {
+      "route": "habit-path/culture",
+      "theme": "light",
+      "width": 390,
+      "file": "habit-path-culture-light-390.png",
+      "position": "top"
+    },
+    {
+      "route": "habit/reading",
+      "theme": "light",
+      "width": 390,
+      "file": "habit-reading-light-390.png",
+      "position": "top"
+    },
+    {
+      "route": "habit/reading",
+      "theme": "light",
+      "width": 390,
+      "file": "habit-reading-light-390-bottom.png",
+      "position": "bottom"
+    },
+    {
+      "route": "projects",
+      "theme": "light",
+      "width": 390,
+      "file": "projects-light-390.png",
+      "position": "top"
+    },
+    {
+      "route": "project/4f46a012-fa53-43c6-9e31-71dbfaddf4c4",
+      "theme": "light",
+      "width": 390,
+      "file": "project-detail-light-390.png",
+      "position": "top"
+    },
+    {
+      "route": "project/4f46a012-fa53-43c6-9e31-71dbfaddf4c4",
+      "theme": "light",
+      "width": 390,
+      "file": "project-detail-light-390-bottom.png",
+      "position": "bottom"
+    },
+    {
+      "route": "tasks",
+      "theme": "light",
+      "width": 390,
+      "file": "tasks-light-390.png",
+      "position": "top"
+    },
+    {
+      "route": "ideas",
+      "theme": "light",
+      "width": 390,
+      "file": "ideas-light-390.png",
+      "position": "top"
+    },
+    {
+      "route": "ideas/reminders",
+      "theme": "light",
+      "width": 390,
+      "file": "ideas-reminders-light-390.png",
+      "position": "top"
+    },
+    {
+      "route": "progress",
+      "theme": "light",
+      "width": 390,
+      "file": "progress-light-390.png",
+      "position": "top"
+    },
+    {
+      "route": "backup",
+      "theme": "light",
+      "width": 390,
+      "file": "backup-light-390.png",
+      "position": "top"
+    },
+    {
+      "route": "backup",
+      "theme": "light",
+      "width": 390,
+      "file": "backup-light-390-bottom.png",
+      "position": "bottom"
+    },
+    {
+      "route": "home",
+      "theme": "dark",
+      "width": 390,
+      "file": "home-dark-390.png",
+      "position": "top"
+    },
+    {
+      "route": "habits",
+      "theme": "dark",
+      "width": 390,
+      "file": "habits-dark-390.png",
+      "position": "top"
+    },
+    {
+      "route": "habit-path/culture",
+      "theme": "dark",
+      "width": 390,
+      "file": "habit-path-culture-dark-390.png",
+      "position": "top"
+    },
+    {
+      "route": "habit/reading",
+      "theme": "dark",
+      "width": 390,
+      "file": "habit-reading-dark-390.png",
+      "position": "top"
+    },
+    {
+      "route": "habit/reading",
+      "theme": "dark",
+      "width": 390,
+      "file": "habit-reading-dark-390-bottom.png",
+      "position": "bottom"
+    },
+    {
+      "route": "projects",
+      "theme": "dark",
+      "width": 390,
+      "file": "projects-dark-390.png",
+      "position": "top"
+    },
+    {
+      "route": "project/4f46a012-fa53-43c6-9e31-71dbfaddf4c4",
+      "theme": "dark",
+      "width": 390,
+      "file": "project-detail-dark-390.png",
+      "position": "top"
+    },
+    {
+      "route": "project/4f46a012-fa53-43c6-9e31-71dbfaddf4c4",
+      "theme": "dark",
+      "width": 390,
+      "file": "project-detail-dark-390-bottom.png",
+      "position": "bottom"
+    },
+    {
+      "route": "tasks",
+      "theme": "dark",
+      "width": 390,
+      "file": "tasks-dark-390.png",
+      "position": "top"
+    },
+    {
+      "route": "ideas",
+      "theme": "dark",
+      "width": 390,
+      "file": "ideas-dark-390.png",
+      "position": "top"
+    },
+    {
+      "route": "ideas/reminders",
+      "theme": "dark",
+      "width": 390,
+      "file": "ideas-reminders-dark-390.png",
+      "position": "top"
+    },
+    {
+      "route": "progress",
+      "theme": "dark",
+      "width": 390,
+      "file": "progress-dark-390.png",
+      "position": "top"
+    },
+    {
+      "route": "backup",
+      "theme": "dark",
+      "width": 390,
+      "file": "backup-dark-390.png",
+      "position": "top"
+    },
+    {
+      "route": "backup",
+      "theme": "dark",
+      "width": 390,
+      "file": "backup-dark-390-bottom.png",
+      "position": "bottom"
+    }
+  ],
+  "errors": [],
+  "generatedImages": false,
+  "actualChromiumScreenshots": true,
+  "physicalAndroid": false
+}

@@ -1,3 +1,12 @@
+import { useHabitSearch } from "./useHabitSearch";
+import { Reminders, ReminderEditor } from "./Reminders";
+import { MAX_BACKUP_BYTES } from "./backupTables";
+import { flushBackupWrites } from "./backupWrites";
+import { BackupRestore } from "./BackupRestore";
+import { HabitsPage, HabitEditor } from "./Habits";
+import { latestRecovery } from "./backupRecovery";
+import { primarySections, primarySection, workspacePage } from "./navigation";
+import { ProjectGateway, WorkspaceBack } from "./WorkspaceNavigation";
 import { GlassChoices } from "./GlassChoices";
 import { LivingSky } from "./LivingSky";
 import { useRouteMotion } from "./useRouteMotion";
@@ -60,10 +69,10 @@ import { startCompletionRecovery } from "./completionRecovery";
 import { registerSW } from "virtual:pwa-register";
 import {
     Home,
+    Sprout,
     FolderKanban,
     CheckCheck,
     Lightbulb,
-    ChartNoAxesCombined,
     Plus,
     Search,
     ArrowUpLeft,
@@ -130,11 +139,9 @@ import {
     type Base,
 } from "./model";
 const nav = [
-    { id: "home", label: "الرئيسية", icon: Home },
-    { id: "projects", label: "المشاريع", icon: FolderKanban },
-    { id: "tasks", label: "المهام", icon: CheckCheck },
-    { id: "ideas", label: "الأفكار", icon: Lightbulb },
-    { id: "progress", label: "التقدم", icon: ChartNoAxesCombined },
+    { id: primarySections[0], label: "العادات", icon: Sprout },
+    { id: primarySections[1], label: "الرئيسية", icon: Home },
+    { id: primarySections[2], label: "المشاريع", icon: FolderKanban },
 ];
 const kindNames = {
     project: "مشروع",
@@ -158,9 +165,44 @@ function useRoute() {
         Record<string, { y: number; anchor?: { id: string; top: number } }>
     >({});
     const previous = useRef(route);
+    const navigation = useRef<{
+        scope: string;
+        index: number;
+        route: string;
+    } | null>(null);
+    const returning = useRef(false);
+    if (!navigation.current) {
+        const saved = history.state?.masarNavigation;
+        navigation.current =
+            saved &&
+            typeof saved.scope === "string" &&
+            Number.isSafeInteger(saved.index) &&
+            saved.index >= 0 &&
+            saved.route === route
+                ? saved
+                : { scope: crypto.randomUUID(), index: 0, route };
+    }
+    const back = useCallback((fallback: string) => {
+        if (returning.current) return;
+        if (navigation.current!.index > 0 && history.length > 1) {
+            returning.current = true;
+            history.back();
+        } else go(fallback);
+    }, []);
     useEffect(() => {
         const restoration = history.scrollRestoration;
         history.scrollRestoration = "manual";
+        const mark = () =>
+            history.replaceState(
+                {
+                    ...(history.state && typeof history.state === "object"
+                        ? history.state
+                        : {}),
+                    masarNavigation: navigation.current,
+                },
+                "",
+            );
+        mark();
         const change = () => {
             const main = document
                 .querySelector("main")!
@@ -184,6 +226,23 @@ function useRoute() {
             }
             positions.current[previous.current] = { y: window.scrollY, anchor };
             const next = location.hash.slice(1) || "home";
+            const saved = history.state?.masarNavigation;
+            if (
+                saved?.scope === navigation.current!.scope &&
+                saved.route === next &&
+                Number.isSafeInteger(saved.index) &&
+                saved.index >= 0
+            )
+                navigation.current = saved;
+            else {
+                navigation.current = {
+                    scope: navigation.current!.scope,
+                    index: navigation.current!.index + 1,
+                    route: next,
+                };
+                mark();
+            }
+            returning.current = false;
             previous.current = next;
             setRoute(next);
         };
@@ -216,7 +275,7 @@ function useRoute() {
         });
         return () => cancelAnimationFrame(frame);
     }, [route]);
-    return route;
+    return { route, back };
 }
 const go = (route: string) => {
     const separator = route.indexOf("/");
@@ -796,7 +855,7 @@ interface CreateOptions {
     stage?: boolean;
 }
 function App() {
-    const [route] = [useRoute()];
+    const { route, back } = useRoute();
     const [routePage, ...parts] = route.split("/");
     const page = routePage === "today" ? "home" : routePage;
     const mainMotion = useRouteMotion(page);
@@ -813,6 +872,7 @@ function App() {
     const [taskFilter, setTaskFilter] = useState("all");
     const [completedOpen, setCompletedOpen] = useState(false);
     const [query, setQuery] = useState("");
+    const habitSearch = useHabitSearch(query);
     const [searchOpen, setSearchOpen] = useState(false);
     const [progressTab, setProgressTab] = useState<
         "overview" | "insights" | "history"
@@ -824,6 +884,8 @@ function App() {
     const [folded, setFolded] = useState<Set<string>>(new Set());
     const [form, setForm] = useState<CreateOptions | null>(null);
     const [quick, setQuick] = useState(false);
+    const [reminderForm, setReminderForm] = useState(false);
+    const [habitForm, setHabitForm] = useState<"habit" | "path" | null>(null);
     const [confirm, setConfirm] = useState<{
         text: string;
         run: () => Promise<unknown>;
@@ -902,6 +964,8 @@ function App() {
         setContext(null);
         setAppearanceOpen(false);
         setQuick(false);
+        setHabitForm(null);
+        setReminderForm(false);
     }, [route]);
     useEffect(() => {
         if (
@@ -1146,16 +1210,15 @@ function App() {
               : page === "task"
                 ? currentTask
                 : currentIdea;
-    const section =
-        page === "project" || page === "step"
-            ? "projects"
-            : page === "task"
-              ? "tasks"
-              : page === "idea"
-                ? "ideas"
-                : ["today", "calendar"].includes(page)
-                  ? "tasks"
-                  : page;
+    const detailParent =
+        page === "step" && currentStep
+            ? `project/${currentStep.projectId}`
+            : page === "project"
+              ? "projects"
+              : page === "task"
+                ? "tasks"
+                : "ideas";
+    const section = primarySection(route);
     const dashboardProjects = active;
     const latestProject = useMemo(
         () =>
@@ -1409,6 +1472,7 @@ function App() {
                     aria-label="التنقل الرئيسي"
                     style={
                         {
+                            "--nav-count": nav.length,
                             "--nav-index": Math.max(
                                 0,
                                 nav.findIndex((n) => n.id === section),
@@ -1430,9 +1494,6 @@ function App() {
                         >
                             <n.icon size={21} />
                             <span>{n.label}</span>
-                            {n.id === "tasks" && remaining.length > 0 && (
-                                <b>{remaining.length}</b>
-                            )}
                         </a>
                     ))}
                 </nav>
@@ -1501,9 +1562,27 @@ function App() {
                         >
                             <Palette size={19} />
                         </button>
-                        <span className="avatar" aria-label="مساحتك الشخصية">
-                            م
-                        </span>
+                        <a
+                            className="icon-btn task-shortcut"
+                            href="#tasks"
+                            aria-label="المهام"
+                            title="المهام"
+                            aria-current={
+                                page === "tasks" || page === "task"
+                                    ? "page"
+                                    : undefined
+                            }
+                        >
+                            <CheckCheck size={20} aria-hidden="true" />
+                            {remaining.length > 0 && (
+                                <span
+                                    className="task-shortcut-count"
+                                    aria-hidden="true"
+                                >
+                                    {remaining.length}
+                                </span>
+                            )}
+                        </a>
                     </div>
                 </header>
                 {refresh && (
@@ -1515,6 +1594,7 @@ function App() {
                                 void run(async () => {
                                     await flushAllSaves();
                                     await flushCompletions();
+                                    await flushBackupWrites();
                                     await refresh();
                                 })
                             }
@@ -1528,6 +1608,9 @@ function App() {
                         <p role="alert" className="warning">
                             {data.taskHistoryError}
                         </p>
+                    )}
+                    {workspacePage(route) && (
+                        <WorkspaceBack onBack={() => back("projects")} />
                     )}
                     <div className="page-heading">
                         <div>
@@ -1543,22 +1626,28 @@ function App() {
                             <h1>
                                 {page === "today"
                                     ? "مهامي اليوم"
-                                    : page === "calendar"
-                                      ? "التقويم الأسبوعي"
-                                      : page === "home"
-                                        ? "مهامي اليوم"
-                                        : page === "projects"
-                                          ? "مشاريعك"
-                                          : page === "tasks"
-                                            ? "مهامك"
-                                            : page === "ideas"
-                                              ? "مساحة الأفكار"
-                                              : page === "progress"
-                                                ? "كل خطوة تصنع فرقًا"
-                                                : page === "backup"
-                                                  ? "بياناتك في أمان"
-                                                  : (detail?.title ??
-                                                    "العنصر غير موجود")}
+                                    : [
+                                            "habits",
+                                            "habit",
+                                            "habit-path",
+                                        ].includes(page)
+                                      ? "مسار العادات"
+                                      : page === "calendar"
+                                        ? "التقويم الأسبوعي"
+                                        : page === "home"
+                                          ? "مهامي اليوم"
+                                          : page === "projects"
+                                            ? "مشاريعك"
+                                            : page === "tasks"
+                                              ? "مهامك"
+                                              : page === "ideas"
+                                                ? "مساحة الأفكار"
+                                                : page === "progress"
+                                                  ? "كل خطوة تصنع فرقًا"
+                                                  : page === "backup"
+                                                    ? "بياناتك في أمان"
+                                                    : (detail?.title ??
+                                                      "العنصر غير موجود")}
                             </h1>
                             <p>
                                 {page === "home"
@@ -1697,7 +1786,8 @@ function App() {
                             <h2>
                                 نتائج البحث{" "}
                                 <span className="count">
-                                    {search(data, query).length}
+                                    {search(data, query).length +
+                                        habitSearch.length}
                                 </span>
                             </h2>
                             {search(data, query).length ? (
@@ -1717,16 +1807,40 @@ function App() {
                                         <ArrowUpLeft size={17} />
                                     </button>
                                 ))
-                            ) : (
+                            ) : habitSearch.length ? null : (
                                 <Empty
                                     icon={Search}
                                     title="لم نجد نتيجة"
                                     body="جرّب كلمة أخرى من الاسم أو الملاحظات."
                                 />
                             )}
+                            {habitSearch.map((r) => (
+                                <a
+                                    className="search-result"
+                                    key={r.id}
+                                    href={`#${r.route}`}
+                                    onClick={() => setQuery("")}
+                                >
+                                    <span className="small muted">
+                                        {r.type}
+                                    </span>
+                                    <strong>{r.title}</strong>
+                                    <ArrowUpLeft size={17} />
+                                </a>
+                            ))}
                         </section>
                     ) : (
                         <>
+                            {["habits", "habit", "habit-path"].includes(
+                                page,
+                            ) && (
+                                <HabitsPage
+                                    key={page + "/" + id}
+                                    page={page}
+                                    id={id}
+                                    onBack={back}
+                                />
+                            )}
                             {page === "calendar" && (
                                 <WeekCalendar
                                     tasks={data.tasks}
@@ -1735,6 +1849,7 @@ function App() {
                             )}
                             {page === "projects" && (
                                 <>
+                                    <ProjectGateway />
                                     <ProjectImport
                                         onImported={(projectId) => {
                                             setToast("تم استيراد مشروع جديد.");
@@ -2007,64 +2122,115 @@ function App() {
                             )}
                             {page === "ideas" && (
                                 <>
-                                    <GlassChoices className="tabs" aria-label="عرض الأفكار">
+                                    <GlassChoices
+                                        className="tabs"
+                                        aria-label="الأفكار والتذكيرات"
+                                    >
                                         <button
                                             className={
-                                                !ideaArchive ? "selected" : ""
+                                                id !== "reminders"
+                                                    ? "selected"
+                                                    : ""
                                             }
-                                            onClick={() =>
-                                                setIdeaArchive(false)
-                                            }
+                                            onClick={() => go("ideas")}
                                         >
-                                            الأفكار المفتوحة
+                                            الأفكار
                                         </button>
                                         <button
                                             className={
-                                                ideaArchive ? "selected" : ""
+                                                id === "reminders"
+                                                    ? "selected"
+                                                    : ""
                                             }
-                                            onClick={() => setIdeaArchive(true)}
+                                            onClick={() =>
+                                                go("ideas/reminders")
+                                            }
                                         >
-                                            الأرشيف
+                                            تذكيرات
                                         </button>
                                     </GlassChoices>
-                                    <details className="idea-capture-details">
-                                        <summary>التقاط فكرة بسرعة</summary>
-                                        <QuickIdeaCapture
-                                            save={saveQuickIdea}
-                                        />
-                                    </details>
-                                    <div className="idea-grid">
-                                        {sortedIdeas
-                                            .slice(0, ideaLimit)
-                                            .map((idea) => (
-                                                <IdeaCard
-                                                    key={idea.id}
-                                                    idea={idea}
-                                                    onActions={openActions}
+                                    {id === "reminders" ? (
+                                        <Reminders />
+                                    ) : (
+                                        <>
+                                            <GlassChoices
+                                                className="tabs"
+                                                aria-label="عرض الأفكار"
+                                            >
+                                                <button
+                                                    className={
+                                                        !ideaArchive
+                                                            ? "selected"
+                                                            : ""
+                                                    }
+                                                    onClick={() =>
+                                                        setIdeaArchive(false)
+                                                    }
+                                                >
+                                                    الأفكار المفتوحة
+                                                </button>
+                                                <button
+                                                    className={
+                                                        ideaArchive
+                                                            ? "selected"
+                                                            : ""
+                                                    }
+                                                    onClick={() =>
+                                                        setIdeaArchive(true)
+                                                    }
+                                                >
+                                                    الأرشيف
+                                                </button>
+                                            </GlassChoices>
+                                            <details className="idea-capture-details">
+                                                <summary>
+                                                    التقاط فكرة بسرعة
+                                                </summary>
+                                                <QuickIdeaCapture
+                                                    save={saveQuickIdea}
                                                 />
-                                            ))}
-                                    </div>
-                                    {sortedIdeas.length > ideaLimit && (
-                                        <button
-                                            className="btn secondary load-more"
-                                            onClick={() =>
-                                                setIdeaLimit((n) => n + 30)
-                                            }
-                                        >
-                                            عرض المزيد من الأفكار (
-                                            {sortedIdeas.length - ideaLimit})
-                                        </button>
-                                    )}
-                                    {!data.ideas.some(
-                                        (i) => i.archived === ideaArchive,
-                                    ) && (
-                                        <div className="surface">
-                                            <Empty
-                                                icon={Lightbulb}
-                                                title="امنح أفكارك مكانًا"
-                                                body="عنوان واحد يكفي. التفاصيل تأتي لاحقًا، حين ترغب."
-                                            />
-                                        </div>
+                                            </details>
+                                            <div className="idea-grid">
+                                                {sortedIdeas
+                                                    .slice(0, ideaLimit)
+                                                    .map((idea) => (
+                                                        <IdeaCard
+                                                            key={idea.id}
+                                                            idea={idea}
+                                                            onActions={
+                                                                openActions
+                                                            }
+                                                        />
+                                                    ))}
+                                            </div>
+                                            {sortedIdeas.length > ideaLimit && (
+                                                <button
+                                                    className="btn secondary load-more"
+                                                    onClick={() =>
+                                                        setIdeaLimit(
+                                                            (n) => n + 30,
+                                                        )
+                                                    }
+                                                >
+                                                    عرض المزيد من الأفكار (
+                                                    {sortedIdeas.length -
+                                                        ideaLimit}
+                                                    )
+                                                </button>
+                                            )}
+                                            {!data.ideas.some(
+                                                (i) =>
+                                                    i.archived === ideaArchive,
+                                            ) && (
+                                                <div className="surface">
+                                                    <Empty
+                                                        icon={Lightbulb}
+                                                        title="امنح أفكارك مكانًا"
+                                                        body="عنوان واحد يكفي. التفاصيل تأتي لاحقًا، حين ترغب."
+                                                    />
+                                                </div>
+                                            )}
+                                        </>
                                     )}
                                 </>
                             )}
@@ -2075,25 +2241,28 @@ function App() {
                                 detail && (
                                     <>
                                         <div className="detail-breadcrumb">
-                                            <button
-                                                className="text-btn"
-                                                onClick={() =>
-                                                    go(
-                                                        page === "step"
-                                                            ? `project/${currentStep!.projectId}`
-                                                            : page === "project"
-                                                              ? "projects"
-                                                              : page === "task"
-                                                                ? "tasks"
-                                                                : "ideas",
-                                                    )
-                                                }
-                                            >
-                                                <ArrowRight size={16} />{" "}
-                                                {page === "step"
-                                                    ? "العودة للمشروع"
-                                                    : "العودة للقائمة"}
-                                            </button>
+                                            <div className="detail-return-links">
+                                                <button
+                                                    className="icon-btn"
+                                                    aria-label="الرجوع"
+                                                    title="الرجوع"
+                                                    onClick={() =>
+                                                        back(detailParent)
+                                                    }
+                                                >
+                                                    <ArrowRight size={18} />
+                                                </button>
+                                                <button
+                                                    className="text-btn"
+                                                    onClick={() =>
+                                                        go(detailParent)
+                                                    }
+                                                >
+                                                    {page === "step"
+                                                        ? "العودة للمشروع"
+                                                        : "العودة للقائمة"}
+                                                </button>
+                                            </div>
                                             <span>
                                                 {page === "step"
                                                     ? pathFor(
@@ -2327,7 +2496,10 @@ function App() {
                                                                 النهائية.
                                                             </p>
                                                         ) : (
-                                                            <GlassChoices className="tabs" aria-label="حالة الخطوة">
+                                                            <GlassChoices
+                                                                className="tabs"
+                                                                aria-label="حالة الخطوة"
+                                                            >
                                                                 {(
                                                                     [
                                                                         "todo",
@@ -2786,7 +2958,7 @@ function App() {
                                                         void run(async () => {
                                                             if (
                                                                 file.size >
-                                                                20 * 1024 * 1024
+                                                                MAX_BACKUP_BYTES
                                                             )
                                                                 throw new Error(
                                                                     "الملف أكبر من ٢٠ ميجابايت.",
@@ -2801,9 +2973,54 @@ function App() {
                                                 }}
                                             />
                                         </label>
+                                        <button
+                                            className="btn secondary"
+                                            onClick={() =>
+                                                void run(async () => {
+                                                    const copy =
+                                                        await latestRecovery();
+                                                    if (!copy)
+                                                        throw new Error(
+                                                            "لا توجد نسخة أمان محفوظة بعد؛ تُنشأ تلقائيًا قبل الاستعادة.",
+                                                        );
+                                                    const url =
+                                                        URL.createObjectURL(
+                                                            new Blob(
+                                                                [
+                                                                    JSON.stringify(
+                                                                        copy,
+                                                                        null,
+                                                                        2,
+                                                                    ),
+                                                                ],
+                                                                {
+                                                                    type: "application/json",
+                                                                },
+                                                            ),
+                                                        );
+                                                    const link =
+                                                        document.createElement(
+                                                            "a",
+                                                        );
+                                                    link.href = url;
+                                                    link.download = `masar-safety-${copy.exportedAt.slice(0, 10)}.json`;
+                                                    link.click();
+                                                    setTimeout(
+                                                        () =>
+                                                            URL.revokeObjectURL(
+                                                                url,
+                                                            ),
+                                                        1000,
+                                                    );
+                                                }, "تم تنزيل نسخة الأمان السابقة للاستعادة.")
+                                            }
+                                        >
+                                            تنزيل نسخة الأمان الأخيرة
+                                        </button>
                                     </div>
                                     <p className="muted small">
-                                        النسخة تشمل جميع المشاريع والعلاقات
+                                        النسخة تشمل العادات والتذكيرات وخططها
+                                        وسجلاتها، وجميع المشاريع والعلاقات
                                         والملاحظات والمهام والأفكار وسجل
                                         الأحداث. تعامل مع ملف النسخة كملف شخصي
                                         خاص.
@@ -2843,6 +3060,7 @@ function App() {
                                                 run(async () => {
                                                     await flushAllSaves();
                                                     await flushCompletions();
+                                                    await flushBackupWrites();
                                                     await refresh();
                                                 })
                                             }
@@ -2891,6 +3109,60 @@ function App() {
                     onClose={() => setQuick(false)}
                 >
                     <div className="quick-options">
+                        <button
+                            onClick={() => {
+                                setQuick(false);
+                                setReminderForm(true);
+                            }}
+                            style={
+                                page === "ideas" && id === "reminders"
+                                    ? { order: -4 }
+                                    : page === "home"
+                                      ? { order: -1 }
+                                      : undefined
+                            }
+                        >
+                            <Lightbulb size={25} />
+                            <div>
+                                <strong>تذكير جديد</strong>
+                            </div>
+                            <ChevronLeft size={19} />
+                        </button>
+                        {(section === "habits" || page === "home") && (
+                            <>
+                                <button
+                                    style={
+                                        page === "home"
+                                            ? { order: -2 }
+                                            : undefined
+                                    }
+                                    onClick={() => {
+                                        setQuick(false);
+                                        setHabitForm("habit");
+                                    }}
+                                >
+                                    <Sprout size={25} />
+                                    <div>
+                                        <strong>عادة جديدة</strong>
+                                    </div>
+                                    <ChevronLeft size={19} />
+                                </button>
+                                {section === "habits" && (
+                                    <button
+                                        onClick={() => {
+                                            setQuick(false);
+                                            setHabitForm("path");
+                                        }}
+                                    >
+                                        <Sprout size={25} />
+                                        <div>
+                                            <strong>مسار جديد</strong>
+                                        </div>
+                                        <ChevronLeft size={19} />
+                                    </button>
+                                )}
+                            </>
+                        )}
                         {(
                             [
                                 {
@@ -2912,6 +3184,11 @@ function App() {
                         ).map((x) => (
                             <button
                                 key={x.kind}
+                                style={
+                                    page === "home" && x.kind === "task"
+                                        ? { order: -3 }
+                                        : undefined
+                                }
                                 onClick={() => {
                                     setQuick(false);
                                     setForm({ kind: x.kind });
@@ -2931,6 +3208,21 @@ function App() {
                         ))}
                     </div>
                 </Dialog>
+            )}
+            {reminderForm && (
+                <ReminderEditor onClose={() => setReminderForm(false)} />
+            )}
+            {habitForm && (
+                <HabitEditor
+                    kind={habitForm}
+                    defaultPath={page === "habit-path" ? id : undefined}
+                    onClose={() => setHabitForm(null)}
+                    onSaved={(newId) =>
+                        go(
+                            `${habitForm === "habit" ? "habit" : "habit-path"}/${encodeURIComponent(newId)}`,
+                        )
+                    }
+                />
             )}
             {form && (
                 <CreateForm
@@ -2994,96 +3286,63 @@ function App() {
                 </Dialog>
             )}
             {backup && (
-                <Dialog
-                    title="معاينة النسخة الاحتياطية"
+                <BackupRestore
+                    data={backup}
                     onClose={() => setBackup(null)}
-                >
-                    <p className="dialog-text">
-                        النسخة بتاريخ {date(backup.exportedAt)}، تحتوي على{" "}
-                        {backup.projects.length} مشاريع و{backup.steps.length}{" "}
-                        مراحل وخطوات و{backup.tasks.length} مهام و
-                        {backup.ideas.length} أفكار و
-                        {backup.taskCycles?.length ?? 0} دورات و
-                        {backup.events.length} أحداث.
-                    </p>
-                    <p className="warning">
-                        زر الاستبدال يحل النسخة محل جميع البيانات؛ زر الدمج
-                        يضيفها بمعرفات مستقلة ويمنع تكرار الملف نفسه. صدّر نسخة
-                        من بياناتك أولًا. يُطبّق الاستيراد كاملًا داخل معاملة
-                        واحدة أو لا يُطبّق.
-                    </p>
-                    <p className="muted small">
-                        الاستعادة والدمج يحفظان حالات المشاريع من الملف، حتى لو
-                        تجاوزت الحد النشط؛ لا يُوقف أي مشروع تلقائيًا. النسخ
-                        الجديدة تتضمن الأهداف وفترات الإيقاف وأحداث الخطوات
-                        وقرارات التوصيات.
-                    </p>
-                    <div className="dialog-buttons">
-                        <button
-                            className="btn secondary"
-                            onClick={() => setBackup(null)}
-                        >
-                            إلغاء
-                        </button>
-                        <button
-                            className="btn primary"
-                            onClick={() =>
-                                void run(async () => {
-                                    if (importLock.current) return;
-                                    importLock.current = true;
-                                    try {
-                                        await flushAllSaves();
-                                        await flushCompletions();
-                                        await importBackup(backup);
-                                        for (const key of Object.keys(
-                                            localStorage,
-                                        ).filter(
-                                            (k) =>
-                                                k.startsWith("masar-draft-") ||
-                                                k.startsWith(
-                                                    "masar-pending-completion/",
-                                                ),
-                                        ))
-                                            localStorage.removeItem(key);
-                                        setBackup(null);
-                                        setDeleted(null);
-                                        setToast("تم استيراد النسخة بالكامل.");
-                                    } finally {
-                                        importLock.current = false;
-                                    }
-                                })
+                    onRestore={async (mode, counts) => {
+                        await run(async () => {
+                            if (importLock.current) return;
+                            importLock.current = true;
+                            try {
+                                await flushAllSaves();
+                                await flushCompletions();
+                                await importBackup(backup, {
+                                    mode,
+                                    confirmFull: mode === "full",
+                                    expectedCounts: counts,
+                                });
+                                for (const key of Object.keys(
+                                    localStorage,
+                                ).filter(
+                                    (k) =>
+                                        k.startsWith("masar-draft-") ||
+                                        k.startsWith(
+                                            "masar-pending-completion/",
+                                        ) ||
+                                        k.startsWith("masar-pending-today/"),
+                                ))
+                                    localStorage.removeItem(key);
+                                setBackup(null);
+                                setDeleted(null);
+                                setToast(
+                                    "تمت الاستعادة وحُفظت نسخة الأمان. بقيت الأقسام غير الموجودة وفق الخيار الذي أكدته.",
+                                );
+                            } finally {
+                                importLock.current = false;
                             }
-                        >
-                            تأكيد استبدال البيانات
-                        </button>
-                        <button
-                            className="btn secondary"
-                            onClick={() =>
-                                void run(async () => {
-                                    if (importLock.current) return;
-                                    importLock.current = true;
-                                    try {
-                                        await flushAllSaves();
-                                        await flushCompletions();
-                                        const merged =
-                                            await mergeBackup(backup);
-                                        setBackup(null);
-                                        setDeleted(null);
-                                        setToast(
-                                            merged
-                                                ? "دُمجت النسخة بمعرفات مستقلة دون استبدال بياناتك. المشاريع القديمة فوق الحد تبقى كما هي."
-                                                : "هذه النسخة دُمجت سابقًا؛ لم تُكرر البيانات.",
-                                        );
-                                    } finally {
-                                        importLock.current = false;
-                                    }
-                                })
+                        });
+                    }}
+                    onMerge={async () => {
+                        await run(async () => {
+                            if (importLock.current) return;
+                            importLock.current = true;
+                            try {
+                                await flushAllSaves();
+                                await flushCompletions();
+                                const merged = await mergeBackup(backup);
+                                setBackup(null);
+                                setDeleted(null);
+                                setToast(
+                                    merged
+                                        ? "دُمجت النسخة بمعرفات مستقلة دون استبدال بياناتك. المشاريع القديمة فوق الحد تبقى كما هي."
+                                        : "هذه النسخة دُمجت سابقًا؛ لم تُكرر البيانات.",
+                                );
+                            } finally {
+                                importLock.current = false;
                             }
-                        >
-                            دمج دون استبدال
-                        </button>
-                    </div>
-                </Dialog>
+                        });
+                    }}
+                />
             )}
             {appearanceOpen && (
                 <Dialog

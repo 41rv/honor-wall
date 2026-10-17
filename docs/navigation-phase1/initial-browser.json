@@ -1,0 +1,371 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/honor-wall/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/navigation-phase1.spec.ts",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/honor-wall/playwright.config.ts",
+    "rootDir": "/workspace/honor-wall/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/honor-wall/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/honor-wall/tests/browser",
+        "snapshotDir": "/workspace/honor-wall/tests/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173",
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "navigation-phase1.spec.ts",
+      "file": "navigation-phase1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "navigation screenshots 320 light",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3044,
+                  "error": {
+                    "message": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.",
+                    "stack": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.\n    at /workspace/honor-wall/tests/browser/navigation-phase1.spec.ts:70:17",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                      "column": 17,
+                      "line": 70
+                    },
+                    "snippet": "  68 |\n  69 |             for (const width of [320, 390, 768, 1366])\n> 70 |                 test(`three primary sections and reachable gateway ${width}`, async ({\n     |                 ^\n  71 |                     page,\n  72 |                 }) => {\n  73 |                     await page.setViewportSize({ width, height: 900 });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                        "column": 17,
+                        "line": 70
+                      },
+                      "message": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.\n\n  68 |\n  69 |             for (const width of [320, 390, 768, 1366])\n> 70 |                 test(`three primary sections and reachable gateway ${width}`, async ({\n     |                 ^\n  71 |                     page,\n  72 |                 }) => {\n  73 |                     await page.setViewportSize({ width, height: 900 });\n    at /workspace/honor-wall/tests/browser/navigation-phase1.spec.ts:70:17"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:10:01.820Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/navigation-phase1-navigation-screenshots-320-light/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                    "column": 17,
+                    "line": 70
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ed7279ef776062541642-ef5fc923f9c322e01a6a",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        },
+        {
+          "title": "navigation screenshots 320 dark",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2908,
+                  "error": {
+                    "message": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.",
+                    "stack": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.\n    at /workspace/honor-wall/tests/browser/navigation-phase1.spec.ts:70:17",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                      "column": 17,
+                      "line": 70
+                    },
+                    "snippet": "  68 |\n  69 |             for (const width of [320, 390, 768, 1366])\n> 70 |                 test(`three primary sections and reachable gateway ${width}`, async ({\n     |                 ^\n  71 |                     page,\n  72 |                 }) => {\n  73 |                     await page.setViewportSize({ width, height: 900 });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                        "column": 17,
+                        "line": 70
+                      },
+                      "message": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.\n\n  68 |\n  69 |             for (const width of [320, 390, 768, 1366])\n> 70 |                 test(`three primary sections and reachable gateway ${width}`, async ({\n     |                 ^\n  71 |                     page,\n  72 |                 }) => {\n  73 |                     await page.setViewportSize({ width, height: 900 });\n    at /workspace/honor-wall/tests/browser/navigation-phase1.spec.ts:70:17"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:10:05.558Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/navigation-phase1-navigation-screenshots-320-dark/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                    "column": 17,
+                    "line": 70
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ed7279ef776062541642-1cf258578f5c95e88c9b",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        },
+        {
+          "title": "navigation screenshots 390 light",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2929,
+                  "error": {
+                    "message": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.",
+                    "stack": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.\n    at /workspace/honor-wall/tests/browser/navigation-phase1.spec.ts:70:17",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                      "column": 17,
+                      "line": 70
+                    },
+                    "snippet": "  68 |\n  69 |             for (const width of [320, 390, 768, 1366])\n> 70 |                 test(`three primary sections and reachable gateway ${width}`, async ({\n     |                 ^\n  71 |                     page,\n  72 |                 }) => {\n  73 |                     await page.setViewportSize({ width, height: 900 });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                        "column": 17,
+                        "line": 70
+                      },
+                      "message": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.\n\n  68 |\n  69 |             for (const width of [320, 390, 768, 1366])\n> 70 |                 test(`three primary sections and reachable gateway ${width}`, async ({\n     |                 ^\n  71 |                     page,\n  72 |                 }) => {\n  73 |                     await page.setViewportSize({ width, height: 900 });\n    at /workspace/honor-wall/tests/browser/navigation-phase1.spec.ts:70:17"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:10:09.139Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/navigation-phase1-navigation-screenshots-390-light/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                    "column": 17,
+                    "line": 70
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ed7279ef776062541642-60fb72e4b88eaa74deca",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        },
+        {
+          "title": "navigation screenshots 390 dark",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2956,
+                  "error": {
+                    "message": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.",
+                    "stack": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.\n    at /workspace/honor-wall/tests/browser/navigation-phase1.spec.ts:70:17",
+                    "location": {
+                      "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                      "column": 17,
+                      "line": 70
+                    },
+                    "snippet": "  68 |\n  69 |             for (const width of [320, 390, 768, 1366])\n> 70 |                 test(`three primary sections and reachable gateway ${width}`, async ({\n     |                 ^\n  71 |                     page,\n  72 |                 }) => {\n  73 |                     await page.setViewportSize({ width, height: 900 });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                        "column": 17,
+                        "line": 70
+                      },
+                      "message": "Error: Playwright Test did not expect test() to be called here.\nMost common reasons include:\n- You are calling test() in a configuration file.\n- You are calling test() in a file that is imported by the configuration file.\n- You have two different versions of @playwright/test. This usually happens\n  when one of the dependencies in your package.json depends on @playwright/test.\n- You are calling test() from an async test.describe() block. Only sync ones are supported.\n\n  68 |\n  69 |             for (const width of [320, 390, 768, 1366])\n> 70 |                 test(`three primary sections and reachable gateway ${width}`, async ({\n     |                 ^\n  71 |                     page,\n  72 |                 }) => {\n  73 |                     await page.setViewportSize({ width, height: 900 });\n    at /workspace/honor-wall/tests/browser/navigation-phase1.spec.ts:70:17"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T23:10:12.753Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/honor-wall/test-results/navigation-phase1-navigation-screenshots-390-dark/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/honor-wall/tests/browser/navigation-phase1.spec.ts",
+                    "column": 17,
+                    "line": 70
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ed7279ef776062541642-cff38f0d2928915cbb85",
+          "file": "navigation-phase1.spec.ts",
+          "line": 43,
+          "column": 9
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T23:10:00.341Z",
+    "duration": 15647.46,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

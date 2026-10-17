@@ -1,0 +1,11 @@
+{
+  "tasks": 500,
+  "cpu_throttle": 4,
+  "frames": 149,
+  "median_frame_ms": 16.699999999999818,
+  "p95_frame_ms": 33.30000000000018,
+  "frames_over_50ms": 1,
+  "dialog_open_ms": 79.40000003576279,
+  "automation_lookup_and_click_ms": 212,
+  "physical_android": false
+}
