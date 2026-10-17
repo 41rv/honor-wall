@@ -98,6 +98,7 @@ try {
  for(const width of [320,390])for(const theme of ['light','dark']){
    await page.setViewportSize({width,height:844});
    await page.evaluate(t=>localStorage.setItem('masar-theme',t),theme);
+   await page.reload();
    for(const route of ['home','habits','projects','tasks','ideas/reminders','progress']){
     await go('#'+route);await expect(page.locator('html')).toHaveAttribute('data-theme',theme);
     await expect(page.locator('.living-sky')).toHaveCount(1);

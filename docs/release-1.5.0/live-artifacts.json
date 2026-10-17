@@ -1,0 +1,106 @@
+{
+  "version": "1.5.0",
+  "url": "https://41rv.github.io/honor-wall/",
+  "at": "2026-10-17T02:59:23.300806+00:00",
+  "tlsVerified": true,
+  "allArtifactsMatch": true,
+  "rootIndexMatches": true,
+  "artifactCount": 19,
+  "files": [
+    {
+      "path": "assets/calendar-Dneqhncv.js",
+      "sha256": "0c06ca30dfcb03b9f3721ca60fe0d25dd2ee43a31d7002438bcb74c3358d171b",
+      "matches": true
+    },
+    {
+      "path": "assets/index-D2qx-eDy.js",
+      "sha256": "ff15db109f172a3e9b999fdc76d71dd6283f0deb4bf7f1d6af8b06f7d218e73b",
+      "matches": true
+    },
+    {
+      "path": "assets/index-De-bvpUr.css",
+      "sha256": "94afa65ab754e5f1a1aed75be055e52e543460ed705fecb83e0cf432e8867e02",
+      "matches": true
+    },
+    {
+      "path": "assets/rolldown-runtime-CbXtAM7H.js",
+      "sha256": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a",
+      "matches": true
+    },
+    {
+      "path": "assets/tajawal-arabic-400-normal-CyCXRvzh.woff2",
+      "sha256": "6c9081fd00db08800850fa7d214593aa94992be5159e97557aa60197252cb95a",
+      "matches": true
+    },
+    {
+      "path": "assets/tajawal-arabic-400-normal-DCQxawbB.woff",
+      "sha256": "011a34e9bce80078231d12f8603721d0f99963b7104df560970fb754306ac359",
+      "matches": true
+    },
+    {
+      "path": "assets/tajawal-arabic-500-normal-BZ8ojJNu.woff2",
+      "sha256": "4255019c1cd986f7cda7869df69baf72730d61304ae14baba4acfeb13085da54",
+      "matches": true
+    },
+    {
+      "path": "assets/tajawal-arabic-500-normal-CbVEaYEW.woff",
+      "sha256": "9f0beece3bd5a2bda53edfdb5f8c27f80bd9e2d65fb53eb2c7f8ca4b481d6f18",
+      "matches": true
+    },
+    {
+      "path": "assets/tajawal-arabic-700-normal-9L7Zusdl.woff",
+      "sha256": "cd644505aa492ff2d5664dfa384ab52e0df757b7b927a7ab59b836c1713c077f",
+      "matches": true
+    },
+    {
+      "path": "assets/tajawal-arabic-700-normal-D2-eand5.woff2",
+      "sha256": "fa5e72326681abee3a4952be582e1c2c2abb27932ef262610c078ce89541f919",
+      "matches": true
+    },
+    {
+      "path": "assets/workbox-window.prod.es5-Bd17z0YL.js",
+      "sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
+      "matches": true
+    },
+    {
+      "path": "fonts/Tajawal-LICENSE.txt",
+      "sha256": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3",
+      "matches": true
+    },
+    {
+      "path": "icon-192.png",
+      "sha256": "3dad4c5dd200f0ac2d94145c9a53029e8b69a82147390283ebf45ef42ea3f9e7",
+      "matches": true
+    },
+    {
+      "path": "icon-512.png",
+      "sha256": "bb74d2bddcac6d0d98d1320838ce808fe08133c8dafd529f9f541fec883b601e",
+      "matches": true
+    },
+    {
+      "path": "icon.svg",
+      "sha256": "968960d56407eeda494fc0475e7864682da3f37500226a4e7ad7f969c2b9292c",
+      "matches": true
+    },
+    {
+      "path": "index.html",
+      "sha256": "646f148e90ab98858767f4632ee93ec9d1a9f733bd78e4d6ba97596d2b6f89dc",
+      "matches": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "sha256": "aea3006c3f486ea0bbc5074c318b4d1f6eaa86cad71c6c01f175de9ff7b7db85",
+      "matches": true
+    },
+    {
+      "path": "sw.js",
+      "sha256": "39b3bca10959c53cf471679aef7169d354f91bcfade7ca628eacc8771f6d8fcf",
+      "matches": true
+    },
+    {
+      "path": "workbox-9c191d2f.js",
+      "sha256": "04b086f1b2f4215ee4b659a7bc9c76162894abdb43fa876247bc7c0bd6fd1c37",
+      "matches": true
+    }
+  ]
+}

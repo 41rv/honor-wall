@@ -1,0 +1,24 @@
+{
+  "version": "1.5.0",
+  "at": "2026-10-17T02:59:58.295Z",
+  "url": "https://41rv.github.io/honor-wall/",
+  "checks": [
+    "three_primary_sections_and_rtl",
+    "schema7_19_stores_no_seeded_habits_or_reminders",
+    "simple_habit_create_home_record_persistence_undo_single_entry",
+    "habit_path_graded_json_preview_and_commit",
+    "graded_home_actual_quantity_record_and_undo",
+    "existing_task_shortcut_fab_and_create",
+    "gateway_reminder_create_review_and_reload",
+    "legacy_calendar_dashboard_insights_routes",
+    "six_screens_320_390_light_dark_rtl_single_sky_no_overflow_24_screenshots"
+  ],
+  "passed": 9,
+  "errors": [],
+  "verifiedPublicRequests": 106,
+  "actualBrowser": true,
+  "isolatedTestData": true,
+  "transport": "Public production bytes downloaded using verified HTTPS, hashed against tested build, then fulfilled at actual public origin because of browser proxy certificate limitation.",
+  "serviceWorker": "Blocked for this public smoke test; native update/offline verified separately in phase8 on identical bytes.",
+  "physicalAndroidTested": false
+}

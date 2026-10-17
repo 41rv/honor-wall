@@ -1,0 +1,54 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(locator).toHaveAttribute(expected) failed
+
+Locator:  locator('html')
+Expected: "dark"
+Received: "light"
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveAttribute" locator('html') with timeout 5000ms
+  - waiting for locator('html')
+    14 × locator resolved to <html lang="ar" dir="rtl" data-theme="light" data-identity="green">…</html>
+       - unexpected value "light"
+
+    at captureRawStack (/workspace/honor-wall/node_modules/playwright-core/lib/coreBundle.js:9282:17)
+    at callMatcherAsStep (/workspace/honor-wall/node_modules/playwright/lib/matchers/expect.js:13316:57)
+    at Object.toHaveAttribute (/workspace/honor-wall/node_modules/playwright/lib/matchers/expect.js:13308:23)
+    at /workspace/honor-wall/docs/release-1.5.0/live-smoke.mjs:102:60 {
+  matcherResult: {
+    name: 'toHaveAttribute',
+    expected: 'dark',
+    message: 'expect(locator).toHaveAttribute(expected) failed\n' +
+      '\n' +
+      "Locator:  locator('html')\n" +
+      'Expected: "dark"\n' +
+      'Received: "light"\n' +
+      'Timeout:  5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      `  - Expect "toHaveAttribute" locator('html') with timeout 5000ms\n` +
+      "  - waiting for locator('html')\n" +
+      '    14 × locator resolved to <html lang="ar" dir="rtl" data-theme="light" data-identity="green">…</html>\n' +
+      '       - unexpected value "light"\n',
+    pass: false,
+    actual: 'light',
+    log: [
+      `  - Expect "toHaveAttribute" locator('html') with timeout 5000ms`,
+      "  - waiting for locator('html')",
+      '    14 × locator resolved to <html lang="ar" dir="rtl" data-theme="light" data-identity="green">…</html>',
+      '       - unexpected value "light"'
+    ],
+    timeout: 5000,
+    ariaSnapshot: '- document:\n' +
+      '  - complementary\n' +
+      '  - banner\n' +
+      '  - main\n' +
+      '  - button "إضافة سريعة"'
+  }
+}
+
+Node.js v24.19.0
