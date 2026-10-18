@@ -3,7 +3,7 @@ import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import fs from "node:fs";
 import { habitFixture } from "../habitFixtures";
-import { importData, readStore } from "./helpers";
+import { importData, readStore, setHabitQuantity } from "./helpers";
 const out = "docs/habits-phase4-7";
 test.use({ timezoneId: "Asia/Riyadh", hasTouch: true });
 test.beforeEach(async ({ page }) => {
@@ -54,13 +54,9 @@ test("graded historical editing, tomorrow goal and optional difficulty phase rem
     });
     await history.getByLabel("يوم التسجيل", { exact: true }).fill("2026-10-05");
     await expect(
-        history.getByRole("spinbutton", { name: "كمية «قراءة»", exact: true }),
+        history.getByRole("slider", { name: "شريط كمية «قراءة»", exact: true }),
     ).toHaveValue("1");
-    await history
-        .getByRole("spinbutton", { name: "كمية «قراءة»", exact: true })
-        .fill("5");
-    await history.locator(".graded-record summary").click();
-    await history.getByRole("combobox").selectOption("hard");
+    await setHabitQuantity(history, "قراءة", "5");
     await history
         .getByRole("button", { name: "تعديل التسجيل", exact: true })
         .click();
@@ -74,26 +70,44 @@ test("graded historical editing, tomorrow goal and optional difficulty phase rem
                 )?.amount,
         )
         .toBe(5);
-    let entries = await readStore(page, "habitEntries");
-    expect(entries.find((e) => e.id === "read1")).toMatchObject({
-        planId: "hp1",
-        recordedAt: "2026-10-05T18:00:00.000Z",
-        result: { threshold: 1, unit: "صفحات" },
-        difficulty: "hard",
-    });
-    await history.locator(".graded-record summary").click();
-    await history.getByRole("combobox").selectOption("");
+    await history.locator(".habit-feedback summary").click();
+    await history.getByLabel("صعوبة الأداء", { exact: true }).selectOption("5");
     await history
-        .getByRole("button", { name: "تعديل التسجيل", exact: true })
+        .getByRole("button", { name: "حفظ التقييم والمدة", exact: true })
         .click();
     await expect
         .poll(
             async () =>
                 (await readStore(page, "habitEntries")).find(
                     (e) => e.id === "read1",
-                )?.difficulty,
+                )?.effortRating,
+        )
+        .toBe(5);
+    let entries = await readStore(page, "habitEntries");
+    expect(entries.find((e) => e.id === "read1")).toMatchObject({
+        planId: "hp1",
+        recordedAt: "2026-10-05T18:00:00.000Z",
+        result: { threshold: 1, unit: "صفحات" },
+        difficulty: "easy",
+        effortRating: 5,
+    });
+    await history.locator(".habit-feedback summary").click();
+    await history.getByLabel("صعوبة الأداء", { exact: true }).selectOption("");
+    await history
+        .getByRole("button", { name: "حفظ التقييم والمدة", exact: true })
+        .click();
+    await expect
+        .poll(
+            async () =>
+                (await readStore(page, "habitEntries")).find(
+                    (e) => e.id === "read1",
+                )?.effortRating,
         )
         .toBeUndefined();
+    expect(
+        (await readStore(page, "habitEntries")).find((e) => e.id === "read1")
+            ?.difficulty,
+    ).toBeUndefined();
     await page
         .getByRole("button", { name: "خيارات العادة أو المسار", exact: true })
         .click();
@@ -199,8 +213,13 @@ test("local search locates habits paths and reminders without legacy entity muta
         await expect(page).toHaveURL(new RegExp(href + "$"));
         // The hash updates before React commits the destination and clears the
         // previous search. Start the next search only when that UI is ready.
-        await expect(page.locator("main")).toHaveAttribute("data-route", href.slice(1).split("/")[0]);
-        await expect(page.getByRole("textbox", { name: "بحث شامل", exact: true })).toHaveValue("");
+        await expect(page.locator("main")).toHaveAttribute(
+            "data-route",
+            href.slice(1).split("/")[0],
+        );
+        await expect(
+            page.getByRole("textbox", { name: "بحث شامل", exact: true }),
+        ).toHaveValue("");
     }
 });
 test("habit form and long lists remain bounded and responsive under4x CPU", async ({
@@ -258,6 +277,11 @@ test("home idle query boundaries stay stable instead of reopening IndexedDB quer
 }) => {
     await seed(page);
     await page.goto(appUrl("/#home"));
+    await page
+        .locator(".home-summaries .home-secondary")
+        .last()
+        .locator(":scope > summary")
+        .click();
     await expect(
         page.getByRole("region", { name: "ملخص التقدم العام", exact: true }),
     ).toContainText("مهام منجزة هذا الأسبوع");
@@ -300,9 +324,7 @@ test("simultaneous timestamp recording from a second tab updates the first quant
     await page.clock.setFixedTime(new Date("2026-10-21T10:00:00Z"));
     await seed(page);
     const first = page.locator(".habit-detail > .habit-row");
-    await first
-        .getByRole("spinbutton", { name: "كمية «قراءة»", exact: true })
-        .fill("2");
+    await setHabitQuantity(first, "قراءة", "2");
     await first.getByRole("button", { name: "سجّل", exact: true }).click();
     await expect(
         first.getByRole("button", { name: "تراجع", exact: true }),
@@ -312,11 +334,9 @@ test("simultaneous timestamp recording from a second tab updates the first quant
     await second.goto(appUrl("/#habit/reading"));
     const other = second.locator(".habit-detail > .habit-row");
     await expect(
-        other.getByRole("spinbutton", { name: "كمية «قراءة»", exact: true }),
+        other.getByRole("slider", { name: "شريط كمية «قراءة»", exact: true }),
     ).toHaveValue("2");
-    await other
-        .getByRole("spinbutton", { name: "كمية «قراءة»", exact: true })
-        .fill("7");
+    await setHabitQuantity(other, "قراءة", "7");
     await other
         .getByRole("button", { name: "تعديل التسجيل", exact: true })
         .click();
@@ -333,7 +353,7 @@ test("simultaneous timestamp recording from a second tab updates the first quant
         )
         .toBe(7);
     await expect(
-        first.getByRole("spinbutton", { name: "كمية «قراءة»", exact: true }),
+        first.getByRole("slider", { name: "شريط كمية «قراءة»", exact: true }),
     ).toHaveValue("7");
     expect(
         (await readStore(page, "habitEntries")).filter(

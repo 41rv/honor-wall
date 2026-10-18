@@ -254,7 +254,7 @@ it("ترحيل5→7 يحفظ الجداول11 والإعدادات ويضيف ا
     const next = new Database(name);
     try {
         await next.open();
-        expect(next.verno).toBe(7);
+        expect(next.verno).toBe(8);
         for (const t of next.tables)
             if (t.name !== "paceSettings")
                 expect(await t.toArray()).toEqual(b[t.name as keyof typeof b]);

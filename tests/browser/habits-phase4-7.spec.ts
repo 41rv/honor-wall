@@ -1,7 +1,7 @@
 import { appUrl } from "./url";
 import { test, expect, type Page } from "@playwright/test";
 import fs from "node:fs";
-import { readStore } from "./helpers";
+import { readStore, setHabitQuantity } from "./helpers";
 const out = "docs/habits-phase4-7";
 fs.mkdirSync(out, { recursive: true });
 test.use({ timezoneId: "Asia/Riyadh", hasTouch: true });
@@ -41,12 +41,7 @@ for (const width of [320, 390])
             const id = (await readStore(page, "habits"))[0].id;
             await page.goto(appUrl(`/#habit/${id}`));
             const row = page.locator(".habit-detail > .habit-row");
-            await row
-                .getByRole("spinbutton", {
-                    name: "كمية «قراءة كمية»",
-                    exact: true,
-                })
-                .fill("5");
+            await setHabitQuantity(row, "قراءة كمية", "5");
             await row
                 .getByRole("button", { name: "سجّل", exact: true })
                 .click();
@@ -72,12 +67,7 @@ for (const width of [320, 390])
                 .getByRole("button", { name: "تراجع", exact: true })
                 .click();
             await expect(home.locator(".count")).toHaveText("0/1");
-            await home
-                .getByRole("spinbutton", {
-                    name: "كمية «قراءة كمية»",
-                    exact: true,
-                })
-                .fill("3");
+            await setHabitQuantity(home, "قراءة كمية", "3");
             await home
                 .getByRole("button", { name: "سجّل", exact: true })
                 .click();
@@ -444,6 +434,10 @@ for (const [width, theme] of [
             panel.getByRole("button", { name: "معاينة الأثر", exact: true }),
         ).toHaveCount(0);
         await page.goto(appUrl("/#home"));
+        for (const details of await page
+            .locator(".home-summaries .home-secondary")
+            .all())
+            await details.locator(":scope > summary").click();
         await expect(
             page.getByRole("region", {
                 name: "ملخص المسارات النشطة",
@@ -505,9 +499,7 @@ test("phase7 accepts only confirmed current recommendation, keeps today threshol
         name: "عاداتي اليوم",
         exact: true,
     });
-    await home
-        .getByRole("spinbutton", { name: "كمية «قراءة»", exact: true })
-        .fill("1");
+    await setHabitQuantity(home, "قراءة", "1");
     await home.getByRole("button", { name: "سجّل", exact: true }).click();
     await expect(home.locator(".count")).toHaveText("1/1");
     expect(
@@ -523,9 +515,7 @@ test("phase7 accepts only confirmed current recommendation, keeps today threshol
         ).toEqual(rows);
     await page.clock.setSystemTime(new Date("2026-10-22T10:00:00Z"));
     await page.reload();
-    await home
-        .getByRole("spinbutton", { name: "كمية «قراءة»", exact: true })
-        .fill("2");
+    await setHabitQuantity(home, "قراءة", "2");
     await home.getByRole("button", { name: "سجّل", exact: true }).click();
     await expect(home.locator(".count")).toHaveText("1/1");
     expect(

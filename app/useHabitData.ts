@@ -1,53 +1,65 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./db";
 import { addHabitDays } from "./habitCalendar";
+import { assessedHabitEntries } from "./habitAssessments";
 
-/** Only a bounded date range of entries is observed; no history scan on home. */
+/** One bounded entry window; canonical assessments use primary-key lookups. */
 export function useHabitData(from: string, to: string) {
     const today = new Date().toISOString().slice(0, 10);
     return useLiveQuery(async () => {
         try {
             return await db.transaction(
                 "r",
-                [db.habits, db.habitPaths, db.habitPlans, db.habitEntries],
-                async () => ({
-                    habits: await db.habits.toArray(),
-                    paths: await db.habitPaths.toArray(),
-                    plans: await db.habitPlans.toArray(),
-                    entries: [
+                [
+                    db.habits,
+                    db.habitPaths,
+                    db.habitPlans,
+                    db.habitEntries,
+                    db.habitAssessments,
+                ],
+                async () => {
+                    const [habits, paths, plans, ranges] = await Promise.all([
+                        db.habits.toArray(),
+                        db.habitPaths.toArray(),
+                        db.habitPlans.toArray(),
+                        Promise.all([
+                            db.habitEntries
+                                .where("localDate")
+                                .between(
+                                    addHabitDays(from, -2),
+                                    addHabitDays(to, 2),
+                                    true,
+                                    true,
+                                )
+                                .toArray(),
+                            ...(today < from || today > to
+                                ? [
+                                      db.habitEntries
+                                          .where("localDate")
+                                          .between(
+                                              addHabitDays(today, -2),
+                                              addHabitDays(today, 2),
+                                              true,
+                                              true,
+                                          )
+                                          .toArray(),
+                                  ]
+                                : []),
+                        ]),
+                    ]);
+                    const entries = [
                         ...new Map(
-                            (
-                                await Promise.all([
-                                    db.habitEntries
-                                        .where("localDate")
-                                        .between(
-                                            addHabitDays(from, -2),
-                                            addHabitDays(to, 2),
-                                            true,
-                                            true,
-                                        )
-                                        .toArray(),
-                                    ...(today < from || today > to
-                                        ? [
-                                              db.habitEntries
-                                                  .where("localDate")
-                                                  .between(
-                                                      addHabitDays(today, -2),
-                                                      addHabitDays(today, 2),
-                                                      true,
-                                                      true,
-                                                  )
-                                                  .toArray(),
-                                          ]
-                                        : []),
-                                ])
-                            )
-                                .flat()
-                                .map((e) => [e.id, e]),
+                            ranges.flat().map((e) => [e.id, e]),
                         ).values(),
-                    ],
-                    error: "",
-                }),
+                    ];
+                    return {
+                        habits,
+                        paths,
+                        plans,
+                        entries: await assessedHabitEntries(db, entries),
+                        error: "",
+                    };
+                },
             );
         } catch {
             return {

@@ -95,7 +95,8 @@ export function habitDay(
             ));
     const neutral =
         intersects(habit.pauses, start, end) ||
-        intersects(path?.pauses ?? [], start, end);
+        intersects(path?.pauses ?? [], start, end) ||
+        intersects(plan?.detachedPath?.pauses ?? [], start, end);
     let state: HabitDayState;
     if (!plan || end <= Date.parse(habit.createdAt)) state = "before";
     else if (start > at.getTime()) state = "future";

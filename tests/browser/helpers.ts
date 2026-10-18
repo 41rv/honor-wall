@@ -1,6 +1,6 @@
 import { appUrl } from "./url.ts";
 import type { BackupStore } from "../../app/backupTables";
-import { expect, type Page } from "@playwright/test";
+import { expect, type Page, type Locator } from "@playwright/test";
 /** Exercise visible navigation after the three-section reorganization.
  * This also supports the original five-tab build for baseline captures. */
 export async function navigateView(page: Page, route: string, touch = false) {
@@ -200,4 +200,18 @@ export async function chooseTaskToday(
         })
         .click();
     await expect(dialog).not.toBeVisible();
+}
+
+/** Open the explicit manual alternative; quantity drafts still need Save. */
+export async function setHabitQuantity(
+    scope: Locator,
+    title: string,
+    value: string,
+) {
+    const details = scope.locator(".quantity-manual");
+    if ((await details.getAttribute("open")) === null)
+        await details.locator("summary").click();
+    await scope
+        .getByRole("spinbutton", { name: `كمية «${title}»`, exact: true })
+        .fill(value);
 }

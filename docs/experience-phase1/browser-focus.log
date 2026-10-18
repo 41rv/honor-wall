@@ -1,0 +1,35 @@
+[WebServer] (node:10039) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:10052) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 16 tests using 1 worker
+
+(node:10076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/16] tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 320 light
+[2/16] tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 320 dark
+[3/16] tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 390 light
+[4/16] tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 390 dark
+[5/16] tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 768 light
+[6/16] tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 768 dark
+[7/16] tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 1366 light
+[8/16] tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 1366 dark
+[9/16] tests/browser/experience-phase1.spec.ts:53:1 › quantity units, large manual alternative, cancellation and precise below-target recording
+[10/16] tests/browser/experience-phase1.spec.ts:63:1 › previous-day feedback edits stay on that entry, skip and close do not write
+[11/16] tests/browser/experience-phase1.spec.ts:72:1 › permanent habit deletion cancellation, archived item, cleanup and unaffected legacy data
+[12/16] tests/browser/experience-phase1.spec.ts:81:58 › path deletion keep, safety and retained histories
+[13/16] tests/browser/experience-phase1.spec.ts:81:58 › path deletion cascade, safety and retained histories
+[14/16] tests/browser/experience-phase1.spec.ts:81:58 › path deletion archived, safety and retained histories
+[15/16] tests/browser/experience-phase1.spec.ts:92:1 › backup actual download validates new feedback, restore preview and conservative old restore
+[16/16] tests/browser/experience-phase1.spec.ts:100:1 › accessibility and reduced motion cover slider, feedback and destructive confirmation
+  16 passed (1.1m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

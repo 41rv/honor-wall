@@ -1,7 +1,8 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db, reconcileTaskCycles } from "./db";
 import { currentCycle, projectTask } from "./taskSchedule";
+import { retainTaskViewIdentity, type TaskViewCache } from "./taskViewIdentity";
 import { useWallClock } from "./useWallClock";
 import type { Snapshot } from "./model";
 export function useAppData(
@@ -77,10 +78,17 @@ export function useAppData(
             .map((task) => `${task.id}:${task.scheduleRevision}`)
             .join("|"),
     ]);
+    const previousViews = useRef<TaskViewCache | undefined>(undefined);
     const views = useMemo(() => {
         const byId = new Map(currentCycles.map((c) => [c.id, c]));
         const at = new Date(Math.max(clock, Date.now()));
-        return tasks.map((task) => projectTask(task, byId, at));
+        const next = tasks.map((task) => projectTask(task, byId, at));
+        previousViews.current = retainTaskViewIdentity(
+            previousViews.current,
+            next,
+            clock,
+        );
+        return previousViews.current.rows;
     }, [tasks, currentCycles, clock]);
     const ideas = useLiveQuery(() => db.ideas.toArray(), [], []);
     const eventScope =

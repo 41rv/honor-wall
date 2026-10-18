@@ -1,5 +1,6 @@
 import { Temporal } from "@js-temporal/polyfill";
-import { habitStores, receiptStores } from "./backupTables";
+import { habitStores, schema7HabitStores, receiptStores } from "./backupTables";
+import { validFeedback } from "./habitFeedback";
 import type { Snapshot } from "./model";
 import type {
     HabitLevel,
@@ -90,19 +91,25 @@ export function validateHabitData(d: Snapshot, fail: () => never) {
         habitStores.some(
             (name) => d[name] !== undefined && !Array.isArray(d[name]),
         ) ||
-        (d.version === 5 &&
-            habitStores.some((name) => !Array.isArray(d[name]))) ||
+        (d.version >= 5 &&
+            (d.version >= 6 ? habitStores : schema7HabitStores).some(
+                (name) => !Array.isArray(d[name]),
+            )) ||
+        (d.version === 5 && !!d.habitAssessments?.length) ||
         (d.version < 5 && habitStores.some((name) => !!d[name]?.length))
     )
         return fail();
     if (d.version < 5) return;
     for (const name of habitStores) {
         const ids = new Set<string>();
-        for (const row of d[name]!) {
+        for (const row of d[name] ?? []) {
             if (!object(row) || !text(row.id) || ids.has(row.id)) return fail();
             ids.add(row.id);
         }
     }
+    const assessmentIndex = new Map(
+        (d.habitAssessments ?? []).map((a) => [a.id, a]),
+    );
     const paths = new Map((d.habitPaths ?? []).map((p) => [p.id, p]));
     const habits = new Map((d.habits ?? []).map((h) => [h.id, h]));
     const plans = new Map((d.habitPlans ?? []).map((p) => [p.id, p]));
@@ -174,6 +181,7 @@ export function validateHabitData(d: Snapshot, fail: () => never) {
                 "phases",
                 "baseline",
                 "current",
+                "detachedPath",
             ]) ||
             !habit ||
             !integer(p.revision, 1) ||
@@ -192,6 +200,14 @@ export function validateHabitData(d: Snapshot, fail: () => never) {
         )
             return fail();
         revisions.add(revision);
+        if (
+            p.detachedPath !== undefined &&
+            (!keys(p.detachedPath, ["title", "pauses"]) ||
+                !text(p.detachedPath.title) ||
+                !pauses(p.detachedPath.pauses, "0000-01-01T00:00:00.000Z") ||
+                p.detachedPath.pauses.some((pause) => pause.end === undefined))
+        )
+            return fail();
         if (p.schedule.repeat === "weekly") {
             const days = p.schedule.weekdays;
             if (
@@ -290,6 +306,8 @@ export function validateHabitData(d: Snapshot, fail: () => never) {
                 "updatedAt",
                 "result",
                 "difficulty",
+                "effortRating",
+                "durationMinutes",
             ]) ||
             !h ||
             !p ||
@@ -305,6 +323,9 @@ export function validateHabitData(d: Snapshot, fail: () => never) {
             e.updatedAt < e.recordedAt ||
             e.recordedAt < h.createdAt ||
             e.recordedAt < p.createdAt ||
+            !validFeedback(e) ||
+            (e.effortRating !== undefined && e.effortRating === null) ||
+            (e.durationMinutes !== undefined && e.durationMinutes === null) ||
             (e.difficulty !== undefined &&
                 !["easy", "okay", "hard"].includes(e.difficulty))
         )
@@ -354,6 +375,43 @@ export function validateHabitData(d: Snapshot, fail: () => never) {
                 return fail();
         }
     }
+    const entryIndex = new Map((d.habitEntries ?? []).map((e) => [e.id, e]));
+    for (const a of d.habitAssessments ?? []) {
+        const e = entryIndex.get(a.id);
+        if (
+            !keys(a, [
+                "id",
+                "habitId",
+                "planId",
+                "localDate",
+                "updatedAt",
+                "effortRating",
+                "durationMinutes",
+            ]) ||
+            !e ||
+            a.habitId !== e.habitId ||
+            a.planId !== e.planId ||
+            a.localDate !== e.localDate ||
+            !iso(a.updatedAt) ||
+            a.updatedAt < e.recordedAt ||
+            !validFeedback(a) ||
+            (a.effortRating === undefined && a.durationMinutes === undefined) ||
+            (a.effortRating !== undefined && a.effortRating === null) ||
+            (a.durationMinutes !== undefined && a.durationMinutes === null)
+        )
+            return fail();
+    }
+    if (d.version >= 6)
+        for (const e of d.habitEntries ?? []) {
+            const a = assessmentIndex.get(e.id);
+            if (
+                (e.effortRating !== undefined &&
+                    e.effortRating !== a?.effortRating) ||
+                (e.durationMinutes !== undefined &&
+                    e.durationMinutes !== a?.durationMinutes)
+            )
+                return fail();
+        }
     for (const s of d.habitSuggestions ?? []) {
         const p = plans.get(s.planId),
             applied = s.appliedPlanId ? plans.get(s.appliedPlanId) : undefined;
@@ -425,7 +483,15 @@ export function validateHabitData(d: Snapshot, fail: () => never) {
     }
     for (const r of d.habitImportReceipts ?? []) {
         if (
-            !keys(r, ["id", "digest", "kind", "createdAt", "outputs"]) ||
+            !keys(r, [
+                "id",
+                "digest",
+                "kind",
+                "createdAt",
+                "outputs",
+                "partial",
+            ]) ||
+            (r.partial !== undefined && r.partial !== true) ||
             !digest(r.digest) ||
             !["path", "habit", "backup"].includes(r.kind) ||
             !iso(r.createdAt) ||

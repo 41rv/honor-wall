@@ -14,6 +14,8 @@ import type {
     HabitPlan,
 } from "./habitTypes";
 import { userError } from "./userError";
+import { HabitFeedback } from "./HabitFeedback";
+import { habitQuantityRange, quantityChange } from "./habitQuantity";
 
 export function GradedFields({
     phases,
@@ -166,22 +168,29 @@ export function GradedRecord({
     plan,
     date,
     entry,
+    onRecorded,
 }: {
     habit: Habit;
     plan: HabitPlan;
     date: string;
     entry?: HabitEntry;
+    onRecorded?: (id: string) => void;
 }) {
-    const [amount, setAmount] = useState(
-        entry?.result.kind === "graded" ? String(entry.result.amount) : "",
-    );
-    const [difficulty, setDifficulty] = useState<
-        HabitEntry["difficulty"] | null
-    >(entry?.difficulty);
+    const initial =
+        entry?.result.kind === "graded"
+            ? entry.result.amount
+            : plan.current!.target;
+    const [amount, setAmount] = useState(String(initial));
     const [busy, setBusy] = useState(false),
         [error, setError] = useState("");
     const lock = useRef(false);
     const phase = plan.phases.find((p) => p.key === plan.current?.phaseKey)!;
+    const numeric = amount.trim() ? Number(amount) : NaN;
+    const range = habitQuantityRange(
+        phase.unit,
+        plan.current!.target,
+        Number.isFinite(numeric) ? numeric : initial,
+    );
     const save = async (undo = false) => {
         if (lock.current) return;
         lock.current = true;
@@ -190,13 +199,13 @@ export function GradedRecord({
         try {
             if (!undo && !amount.trim())
                 throw new Error("أدخل الكمية الفعلية أولًا.");
-            await recordGradedHabit(
+            const entryId = await recordGradedHabit(
                 habit.id,
                 date,
                 undo ? null : Number(amount),
-                difficulty,
             );
-            if (undo) setAmount("");
+            if (!undo && entryId) onRecorded?.(entryId);
+            if (undo) setAmount(String(plan.current!.target));
         } catch (e) {
             setError(userError(e));
         } finally {
@@ -209,61 +218,124 @@ export function GradedRecord({
             className="graded-record"
             aria-label={`تسجيل كمية «${habit.title}»`}
         >
-            <label className="field">
-                الكمية الفعلية ({phase.unit})
-                <input
-                    aria-label={`كمية «${habit.title}»`}
-                    type="number"
-                    min="0"
-                    max="1000000000"
-                    step="0.001"
-                    inputMode="decimal"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                            e.preventDefault();
-                            void save();
-                        }
-                    }}
-                />
-            </label>
-            <button
-                className="btn secondary"
-                disabled={busy}
-                onClick={() => save()}
-            >
-                {entry ? "تعديل التسجيل" : "سجّل"}
-            </button>
-            {entry && (
+            <div className="quantity-heading">
+                <output aria-live="off">
+                    <strong>{Number.isFinite(numeric) ? numeric : "—"}</strong>{" "}
+                    {phase.unit}
+                </output>
+                <span className="small muted">
+                    الهدف اليومي {plan.current!.target} {phase.unit}
+                </span>
+            </div>
+            <div className="quantity-slider-row">
                 <button
-                    className="text-btn"
-                    disabled={busy}
-                    onClick={() => save(true)}
+                    type="button"
+                    className="icon-btn"
+                    disabled={busy || numeric <= 0}
+                    aria-label={`تقليل كمية «${habit.title}»`}
+                    onClick={() =>
+                        setAmount(
+                            String(
+                                quantityChange(
+                                    Number.isFinite(numeric) ? numeric : 0,
+                                    -range.step,
+                                ),
+                            ),
+                        )
+                    }
                 >
-                    تراجع
+                    −
+                </button>
+                <input
+                    type="range"
+                    dir="ltr"
+                    aria-label={`شريط كمية «${habit.title}»`}
+                    aria-valuetext={`${Number.isFinite(numeric) ? numeric : 0} ${phase.unit}، الهدف ${plan.current!.target}`}
+                    min={range.min}
+                    max={range.max}
+                    step={range.step}
+                    value={Number.isFinite(numeric) ? numeric : 0}
+                    disabled={busy}
+                    onChange={(e) => setAmount(e.target.value)}
+                />
+                <button
+                    type="button"
+                    className="icon-btn"
+                    disabled={busy || numeric >= 1e9}
+                    aria-label={`زيادة كمية «${habit.title}»`}
+                    onClick={() =>
+                        setAmount(
+                            String(
+                                quantityChange(
+                                    Number.isFinite(numeric) ? numeric : 0,
+                                    range.step,
+                                ),
+                            ),
+                        )
+                    }
+                >
+                    +
+                </button>
+                <button
+                    type="button"
+                    className="btn secondary"
+                    disabled={busy}
+                    onClick={() => save()}
+                >
+                    {entry ? "تعديل التسجيل" : "سجّل"}
+                </button>
+                {entry && (
+                    <button
+                        type="button"
+                        className="text-btn"
+                        disabled={busy}
+                        onClick={() => save(true)}
+                    >
+                        تراجع
+                    </button>
+                )}
+            </div>
+            <details className="quantity-manual">
+                <summary>إدخال رقمي دقيق</summary>
+                <label className="field">
+                    الكمية الفعلية ({phase.unit})
+                    <input
+                        aria-label={`كمية «${habit.title}»`}
+                        type="number"
+                        min="0"
+                        max="1000000000"
+                        step="0.001"
+                        inputMode="decimal"
+                        value={amount}
+                        disabled={busy}
+                        onChange={(e) => setAmount(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                e.preventDefault();
+                                void save();
+                            }
+                        }}
+                    />
+                </label>
+                <p className="small muted">
+                    يمكن تجاوز الهدف اليومي. لا يُحفظ السحب أو الإدخال إلا عند
+                    الضغط على زر التسجيل.
+                </p>
+            </details>
+            {amount !== String(initial) && (
+                <button
+                    type="button"
+                    className="text-btn quantity-cancel"
+                    disabled={busy}
+                    onClick={() => {
+                        setAmount(String(initial));
+                        setError("");
+                    }}
+                >
+                    إلغاء التعديل
                 </button>
             )}
-            <details>
-                <summary>كيف كان المستوى؟ (اختياري)</summary>
-                <label className="field">
-                    الصعوبة
-                    <select
-                        value={difficulty ?? ""}
-                        onChange={(e) =>
-                            setDifficulty(
-                                (e.target.value || null) as
-                                    HabitEntry["difficulty"] | null,
-                            )
-                        }
-                    >
-                        <option value="">دون تقييم</option>
-                        <option value="easy">سهل</option>
-                        <option value="okay">مناسب</option>
-                        <option value="hard">مرهق</option>
-                    </select>
-                </label>
-            </details>
+            <HabitFeedback key={JSON.stringify(entry ?? null)} entry={entry} />
             {error && (
                 <p className="warning" role="alert">
                     {error}
@@ -272,6 +344,7 @@ export function GradedRecord({
         </div>
     );
 }
+
 export function HabitEvolutionPanel({
     habit,
     plans,

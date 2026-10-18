@@ -359,3 +359,321 @@
 .home-today-count {
     margin-block: 0 12px;
 }
+
+/* Daily workspace: compact content, shared materials, no extra backdrop layers. */
+.daily-overview {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding: 0;
+    margin-block: 0 12px;
+}
+.daily-overview a {
+    display: grid;
+    gap: 2px;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    min-height: 44px;
+    align-content: center;
+    border-inline-start: 1px solid var(--line);
+}
+.daily-overview a:first-child {
+    border-inline-start: 0;
+}
+.daily-overview strong {
+    font-size: 22px;
+    color: var(--primary);
+}
+.daily-overview span {
+    font-size: 12px;
+}
+.home-today .task-row {
+    min-height: 64px;
+    padding-block: 8px;
+}
+.home-today .task-main {
+    padding-block: 8px;
+}
+.home-habits {
+    margin-block: 20px;
+}
+.home-habits .habit-row {
+    padding-block: 10px;
+    gap: 8px;
+}
+.home-habits .habit-row-copy {
+    gap: 3px;
+}
+.home-habits .habit-row-copy small {
+    font-size: 12px;
+}
+.home-habits .habit-row-copy strong {
+    font-size: 15px;
+}
+.home-project.project-card {
+    padding: 16px;
+    gap: 10px;
+}
+.home-project .project-card-top {
+    margin-block-end: 8px;
+}
+.home-project .project-icon {
+    display: none;
+}
+.home-project .project-name {
+    font-size: 17px;
+}
+.home-project .pace-summary p,
+.home-project .daily-project-steps p {
+    margin-block: 6px;
+    font-size: 12px;
+}
+.home-project .card-foot {
+    margin-block-start: 8px;
+    padding-block-start: 8px;
+}
+.home-execution .resume-shortcut {
+    padding: 14px;
+    margin-block-end: 12px;
+}
+.home-execution .resume-shortcut h2 {
+    font-size: 17px;
+    margin-block: 4px;
+}
+.home-execution .resume-shortcut p {
+    margin-block: 3px;
+}
+.home-summaries > section,
+.home-summaries > details {
+    margin-block: 16px;
+}
+.home-secondary {
+    padding: 14px 16px;
+    margin-block: 16px;
+}
+.home-secondary > summary {
+    min-height: 44px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 500;
+}
+.home-secondary > summary::after {
+    content: "+";
+    font-size: 20px;
+    margin-inline-start: auto;
+    color: var(--primary);
+}
+.home-secondary[open] > summary::after {
+    content: "−";
+}
+.home-secondary > summary .small {
+    font-weight: 400;
+    font-size: 12px;
+}
+.home-secondary .surface {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    backdrop-filter: none;
+}
+.home-secondary .surface::before,
+.home-secondary .surface::after {
+    display: none;
+}
+.home-secondary .section-heading h2 {
+    font-size: 16px;
+}
+.home-secondary section {
+    padding-block-start: 8px;
+}
+.home-recommendations .pace-recommendations {
+    margin: 0;
+}
+.graded-record {
+    display: grid;
+    gap: 8px;
+    align-items: normal;
+    min-width: 0;
+}
+.quantity-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.quantity-heading output {
+    font-size: 14px;
+}
+.quantity-heading output strong {
+    font-size: 20px;
+    color: var(--primary);
+}
+.quantity-slider-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+.quantity-slider-row input[type="range"] {
+    flex: 1 1 80px;
+    min-width: 60px;
+    width: auto;
+    min-height: 44px;
+    accent-color: var(--primary);
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+}
+.quantity-slider-row .icon-btn {
+    flex: 0 0 44px;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 20px;
+}
+.quantity-slider-row .btn,
+.quantity-slider-row .text-btn {
+    min-height: 44px;
+    padding-inline: 12px;
+}
+.graded-record .quantity-manual {
+    flex-basis: auto;
+}
+.quantity-manual summary,
+.habit-feedback summary {
+    cursor: pointer;
+    min-height: 44px;
+    align-content: center;
+    font-size: 12px;
+}
+.graded-record .quantity-manual .field {
+    width: 100%;
+    max-width: 240px;
+    margin-block: 8px;
+}
+.quantity-cancel {
+    min-height: 44px;
+    justify-self: start;
+}
+.habit-feedback {
+    flex-basis: 100%;
+    min-width: 0;
+    max-width: 100%;
+    font-size: 12px;
+}
+.habit-row:has(> .habit-feedback) {
+    flex-wrap: wrap;
+}
+.habit-row > .habit-feedback {
+    order: 4;
+    flex-basis: 100%;
+}
+.habit-feedback .feedback-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: 10px;
+}
+.habit-feedback .field {
+    width: 100%;
+    margin: 6px 0;
+}
+.habit-feedback .habit-actions {
+    margin-block: 8px;
+}
+.habit-history-feedback {
+    flex-basis: 100%;
+}
+.habit-history-edit:has(.graded-record),
+.habit-history-edit:has(.habit-feedback) {
+    flex-wrap: wrap;
+}
+.habit-history-edit > .graded-record {
+    flex: 1 0 100%;
+}
+.habit-delete-options {
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+}
+.habit-delete-options label,
+.delete-consent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.habit-delete-options input,
+.delete-consent input {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    accent-color: var(--primary);
+}
+.habit-delete-impact {
+    padding-inline-start: 24px;
+    font-size: 14px;
+    line-height: 1.9;
+}
+@media (max-width: 360px) {
+    .daily-overview {
+        gap: 4px;
+        padding: 10px 6px;
+    }
+    .daily-overview span {
+        font-size: 11px;
+    }
+    .quantity-slider-row .text-btn {
+        margin-inline-start: auto;
+    }
+    .home-secondary > summary {
+        flex-wrap: wrap;
+    }
+}
+
+.home-habits .habit-row:has(.graded-record) > .habit-row-copy {
+    flex-basis: calc(100% - 60px);
+}
+.home-habits .quantity-slider-row {
+    gap: 4px;
+}
+.home-habits .quantity-slider-row input[type="range"] {
+    flex-basis: 44px;
+    min-width: 44px;
+}
+.home-habits .quantity-slider-row .btn {
+    padding-inline: 10px;
+}
+.home-today .home-today-count {
+    margin-block: -4px 8px;
+    font-size: 12px;
+}
+.quantity-slider-row {
+    direction: ltr;
+}
+
+.home-today .task-row.compact-task {
+    min-height: 64px;
+    padding-block: 8px;
+}
+.living-app .home-project.project-card {
+    padding: 16px;
+}
+.home-record-feedback {
+    padding-inline: 12px;
+    margin-block: 6px;
+}
+.home-record-feedback summary {
+    color: var(--primary);
+}
+.habit-delete-name,
+.habit-feedback summary {
+    overflow-wrap: anywhere;
+}

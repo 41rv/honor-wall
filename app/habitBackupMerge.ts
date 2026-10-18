@@ -3,11 +3,13 @@ import type { Snapshot } from "./model";
 import { uid, now } from "./model";
 import { habitStores, receiptStores, type ReceiptStore } from "./backupTables";
 import type { HabitImportReceipt, HabitLevel } from "./habitTypes";
+import { assessmentFromEntry } from "./habitAssessments";
 
 export async function receiptPresent(
     database: Database,
     receipt: HabitImportReceipt,
 ) {
+    if (receipt.partial) return false;
     const groups = Object.entries(receipt.outputs);
     if (!groups.length) return false;
     for (const [name, ids] of groups) {
@@ -30,6 +32,7 @@ export async function mergeHabitGraph(
 ) {
     const mappings = new Map<string, Map<string, string>>();
     const map = (store: string, id: string) => {
+        if (store === "habitAssessments") return map("habitEntries", id);
         if (!(habitStores as readonly string[]).includes(store))
             return legacy(store as ReceiptStore, id);
         let group = mappings.get(store);
@@ -79,6 +82,18 @@ export async function mergeHabitGraph(
                           ...e.result,
                           phaseKey: phase(e.habitId, e.result.phaseKey),
                       },
+        })),
+        habitAssessments: (data.version >= 6
+            ? (data.habitAssessments ?? [])
+            : (data.habitEntries ?? []).flatMap((e) => {
+                  const a = assessmentFromEntry(e);
+                  return a ? [a] : [];
+              })
+        ).map((a) => ({
+            ...a,
+            id: map("habitEntries", a.id),
+            habitId: map("habits", a.habitId),
+            planId: map("habitPlans", a.planId),
         })),
         habitSuggestions: (data.habitSuggestions ?? []).map((s) => ({
             ...s,

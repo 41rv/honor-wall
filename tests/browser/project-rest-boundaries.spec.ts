@@ -78,6 +78,8 @@ test("توصية موجودة تختفي بهدوء عند منتصف ليل ا�
     await page.clock.install({ time: new Date("2026-10-15T09:00:00Z") });
     await importData(page, observed());
     await page.goto(appUrl("/#home"));
+    // Suggestions are a deliberate secondary disclosure on the polished home.
+    await page.locator(".home-recommendations > summary").click();
     await expect(
         page.getByRole("button", { name: "معاينة الاقتراح", exact: true }),
     ).toBeVisible();
@@ -103,7 +105,7 @@ test("توصية موجودة تختفي بهدوء عند منتصف ليل ا�
     await page.goto(appUrl("/#home"));
     await expect(page.locator(".project-rest-notice")).toHaveCount(0);
     await expect(page.locator(".daily-project-steps")).toContainText(
-        "اقتراح مرن لليوم: 1 خطوة",
+        "اليوم: 1 خطوة مقترحة بمرونة.",
     );
     const next = page.getByRole("button", {
         name: "إتمام الخطوة «خطوة 28»",

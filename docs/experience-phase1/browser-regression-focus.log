@@ -1,0 +1,81 @@
+[WebServer] (node:13483) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:13581) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 62 tests using 1 worker
+
+(node:13769) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/62] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 320 light
+[2/62] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 320 dark
+[3/62] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 390 light
+[4/62] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 390 dark
+[5/62] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 768 light
+[6/62] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 768 dark
+[7/62] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 1366 light
+[8/62] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 1366 dark
+[9/62] tests/browser/experience-phase1.spec.ts:244:1 › quantity units, large manual alternative, cancellation and precise below-target recording
+[10/62] tests/browser/experience-phase1.spec.ts:292:1 › previous-day feedback edits stay on that entry, skip and close do not write
+[11/62] tests/browser/experience-phase1.spec.ts:332:1 › permanent habit deletion cancellation, archived item, cleanup and unaffected legacy data
+[12/62] tests/browser/experience-phase1.spec.ts:374:5 › path deletion keep, safety and retained histories
+[13/62] tests/browser/experience-phase1.spec.ts:374:5 › path deletion cascade, safety and retained histories
+[14/62] tests/browser/experience-phase1.spec.ts:374:5 › path deletion archived, safety and retained histories
+[15/62] tests/browser/experience-phase1.spec.ts:435:1 › backup actual download validates new feedback, restore preview and conservative old restore
+[16/62] tests/browser/experience-phase1.spec.ts:495:1 › accessibility and reduced motion cover slider, feedback and destructive confirmation
+[17/62] tests/browser/habits-phase4-7.spec.ts:29:9 › phase4 graded CRUD and home 320 light
+[18/62] tests/browser/habits-phase4-7.spec.ts:29:9 › phase4 graded CRUD and home 320 dark
+[19/62] tests/browser/habits-phase4-7.spec.ts:29:9 › phase4 graded CRUD and home 390 light
+[20/62] tests/browser/habits-phase4-7.spec.ts:29:9 › phase4 graded CRUD and home 390 dark
+[21/62] tests/browser/habits-phase4-7.spec.ts:136:5 › phase5 import preview duplicate and validation 320 light
+[22/62] tests/browser/habits-phase4-7.spec.ts:136:5 › phase5 import preview duplicate and validation 390 dark
+[23/62] tests/browser/habits-phase4-7.spec.ts:229:5 › phase6 reminders CRUD and ideas regression 320 dark
+[24/62] tests/browser/habits-phase4-7.spec.ts:229:5 › phase6 reminders CRUD and ideas regression 390 light
+[25/62] tests/browser/habits-phase4-7.spec.ts:387:5 › phase7 advice explicit preview accept undo and summaries 320 light
+[26/62] tests/browser/habits-phase4-7.spec.ts:387:5 › phase7 advice explicit preview accept undo and summaries 390 dark
+[27/62] tests/browser/habits-phase4-7.spec.ts:471:1 › phase7 accepts only confirmed current recommendation, keeps today threshold and history
+[28/62] tests/browser/habits-phase47-edge.spec.ts:18:1 › graded historical editing, tomorrow goal and optional difficulty phase remain separate
+[29/62] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 320 light
+[30/62] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 320 dark
+[31/62] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 390 light
+[32/62] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 390 dark
+[33/62] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 768 light
+[34/62] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 768 dark
+[35/62] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 1366 light
+[36/62] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 1366 dark
+[37/62] tests/browser/habits-phase47-edge.spec.ts:195:1 › local search locates habits paths and reminders without legacy entity mutations
+[38/62] tests/browser/habits-phase47-edge.spec.ts:225:1 › habit form and long lists remain bounded and responsive under4x CPU
+[39/62] tests/browser/habits-phase47-edge.spec.ts:275:1 › home idle query boundaries stay stable instead of reopening IndexedDB queries on each render
+[40/62] tests/browser/habits-phase47-edge.spec.ts:320:1 › simultaneous timestamp recording from a second tab updates the first quantity without duplicate rows
+[41/62] tests/browser/living-glass.spec.ts:84:1 › مقارنة ست لقطات جوال بنفس البيانات والوقت والقياسات
+[42/62] tests/browser/living-glass.spec.ts:225:1 › قياس تمرير البطاقات واستجابة الزر على نفس Chromium عند خفض CPU أربع مرات
+[43/62] tests/browser/living-glass.spec.ts:306:1 › الخامة لا تغير التفاعل ولا تضيف مرشحات إلى النصوص والأزرار
+[44/62] tests/browser/living-glass.spec.ts:366:5 › الانكسار يغير بكسلات الإطار فقط، ووسط النص يبقى مطابقًا
+[45/62] tests/browser/living-glass.spec.ts:431:5 › البديل البسيط والألوان القسرية وتقليل الحركة لا يعطلان البطاقات
+[46/62] tests/browser/project-pace.spec.ts:138:1 › 40/20 من الواجهة: هدف ووتيرة وإنجاز من الرئيسية وتراجع دون خلط المهام
+[47/62] tests/browser/project-pace.spec.ts:200:1 › تسريع افتراضي: معاينة دون تعديل ثم اعتماد مؤكد وسجل قرار
+[48/62] tests/browser/project-pace.spec.ts:233:1 › توصية شخصية: الرئيسية تعرض واحدة والرفض لا يغير الخطة ولا يعود غدًا
+[49/62] tests/browser/project-pace.spec.ts:258:1 › اعتماد توصية شخصية وتحديث مؤشرات المشروع والتراجع عن الخطة من إعداد الهدف
+[50/62] tests/browser/project-pace.spec.ts:281:1 › الإيقاف والاستئناف يجمدان20يومًا والموعد الإلزامي لا يتحرك
+[51/62] tests/browser/project-pace.spec.ts:336:1 › الحد النشط: الرابع يحتاج قرارًا صريحًا مع حفظ مسودة الإنشاء
+[52/62] tests/browser/project-pace.spec.ts:375:1 › الدمج عبر الواجهة يحفظ الأصل ويمنع تكرار الملف ويستعيد الحقول الجديدة
+[53/62] tests/browser/project-pace.spec.ts:401:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 320
+[54/62] tests/browser/project-pace.spec.ts:401:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 390
+[55/62] tests/browser/project-pace.spec.ts:401:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 768
+[56/62] tests/browser/project-pace.spec.ts:401:5 › واجهات الوتيرة والجوال والثيمات وRTL وإمكانية الوصول 1366
+[57/62] tests/browser/project-pace.spec.ts:476:1 › إلغاء تجاوز الحد لا ينشئ شيئًا، وإيقاف مشروع بديل قرار منفصل عن الإضافة
+[58/62] tests/browser/project-pace.spec.ts:516:1 › استيراد masar.project1 عند الحد يحفظ المعاينة ثم يستورد مرة واحدة بعد القرار
+[59/62] tests/browser/project-pace.spec.ts:553:1 › إتمام آخر خطوة من الرئيسية ثم التراجع يعيد المشروع والخطوة والمؤشرات ذريًا
+[60/62] tests/browser/project-pace.spec.ts:578:1 › الداشبورد والرؤى لا يعدّان الإيقاف تعثرًا ويستعيدان العدد بعد الاستئناف
+[61/62] tests/browser/project-pace.spec.ts:621:1 › النافذة فوق مشروع كبير: حصر التركيز وARIA وEscape والرجوع والنقر الخارجي والتنظيف
+[62/62] tests/browser/project-pace.spec.ts:710:1 › المتصفح بلا CloseWatcher يحتفظ بالنافذة الأصلية وسلوك Escape
+  62 passed (4.8m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

@@ -1,0 +1,245 @@
+{
+  "version": 4,
+  "exportedAt": "2026-10-21T10:00:00.000Z",
+  "projects": [
+    {
+      "id": "e4217b6f-0c44-4f31-90dd-715d5ae40bd0",
+      "title": "مشروع مستخدم قديم — اختبار معزول",
+      "notes": "ملاحظات أصلية",
+      "createdAt": "2026-10-21T08:00:00.000Z",
+      "updatedAt": "2026-10-21T10:00:00.000Z",
+      "status": "active",
+      "archived": false
+    }
+  ],
+  "steps": [
+    {
+      "id": "a2c02e63-f926-4e5c-bc8b-6441ee812e7b",
+      "title": "خطوة باقية",
+      "notes": "",
+      "createdAt": "2026-10-21T08:00:00.000Z",
+      "updatedAt": "2026-10-21T08:00:00.000Z",
+      "projectId": "e4217b6f-0c44-4f31-90dd-715d5ae40bd0",
+      "parentId": null,
+      "kind": "step",
+      "order": 1,
+      "status": "todo"
+    },
+    {
+      "id": "a48d6e1f-5a63-4e89-8e39-2e25c47c1ff6",
+      "title": "خطوة مكتملة قديمة",
+      "notes": "تفاصيل محفوظة",
+      "createdAt": "2026-10-21T08:00:00.000Z",
+      "updatedAt": "2026-10-21T08:00:00.000Z",
+      "projectId": "e4217b6f-0c44-4f31-90dd-715d5ae40bd0",
+      "parentId": null,
+      "kind": "step",
+      "order": 0,
+      "status": "done",
+      "completedAt": "2026-10-21T08:00:00.000Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "ced25068-5e15-433c-92f6-f3c4d4e00c3d",
+      "title": "مهمة يومية قديمة",
+      "notes": "ملاحظات مهمة",
+      "createdAt": "2026-10-21T08:00:00.000Z",
+      "updatedAt": "2026-10-21T08:00:00.000Z",
+      "priority": "important-urgent",
+      "schedule": {
+        "date": "2026-10-21",
+        "repeat": "daily",
+        "timeZone": "Asia/Riyadh",
+        "leadDays": 3
+      },
+      "status": "todo",
+      "scheduleRevision": 1,
+      "scheduleSince": "2026-10-21T08:00:00.000Z",
+      "scheduleCursor": "2026-10-21T21:00:00.000Z"
+    }
+  ],
+  "ideas": [
+    {
+      "id": "0554521f-2cae-4d05-b1ff-d99a4b5bdd7e",
+      "title": "فكرة قديمة محفوظة",
+      "notes": "نص طويل محفوظ",
+      "createdAt": "2026-10-21T08:00:00.000Z",
+      "updatedAt": "2026-10-21T08:00:00.000Z",
+      "archived": false
+    }
+  ],
+  "events": [
+    {
+      "id": "0aae9c25-77f5-4930-986c-1f30b7f62a00",
+      "entityId": "0554521f-2cae-4d05-b1ff-d99a4b5bdd7e",
+      "entityKind": "idea",
+      "title": "فكرة قديمة محفوظة",
+      "action": "created",
+      "at": "2026-10-21T08:00:00.000Z"
+    },
+    {
+      "id": "1f760223-1ff2-4fb8-9eab-e28e2fb012b3",
+      "entityId": "e4217b6f-0c44-4f31-90dd-715d5ae40bd0",
+      "entityKind": "project",
+      "title": "مشروع مستخدم قديم — اختبار معزول",
+      "action": "created",
+      "at": "2026-10-21T08:00:00.000Z"
+    },
+    {
+      "id": "2ee44008-9118-40d6-8411-43e9f1c614df",
+      "entityId": "ced25068-5e15-433c-92f6-f3c4d4e00c3d",
+      "entityKind": "task",
+      "title": "مهمة يومية قديمة",
+      "action": "completed",
+      "at": "2026-10-21T08:00:00.000Z"
+    },
+    {
+      "id": "57242031-6ed6-4801-816a-fc3a798eda28",
+      "entityId": "a48d6e1f-5a63-4e89-8e39-2e25c47c1ff6",
+      "entityKind": "step",
+      "title": "خطوة مكتملة قديمة",
+      "action": "created",
+      "at": "2026-10-21T08:00:00.000Z"
+    },
+    {
+      "id": "5aebd3e8-2d04-4941-9e38-1b8ef9517427",
+      "entityId": "a2c02e63-f926-4e5c-bc8b-6441ee812e7b",
+      "entityKind": "step",
+      "title": "خطوة باقية",
+      "action": "created",
+      "at": "2026-10-21T08:00:00.000Z"
+    },
+    {
+      "id": "76894335-987a-4fdd-bf86-c0fc40f208ab",
+      "entityId": "ced25068-5e15-433c-92f6-f3c4d4e00c3d",
+      "entityKind": "task",
+      "title": "مهمة يومية قديمة",
+      "action": "created",
+      "at": "2026-10-21T08:00:00.000Z"
+    },
+    {
+      "id": "88c2242c-7ab7-4746-85d0-17c41458d8fb",
+      "entityId": "a48d6e1f-5a63-4e89-8e39-2e25c47c1ff6",
+      "entityKind": "step",
+      "title": "خطوة مكتملة قديمة",
+      "action": "completed",
+      "at": "2026-10-21T08:00:00.000Z"
+    }
+  ],
+  "taskCycles": [
+    {
+      "id": "[\"ced25068-5e15-433c-92f6-f3c4d4e00c3d\",1,\"2026-10-21T08:00:00.000Z\"]",
+      "taskId": "ced25068-5e15-433c-92f6-f3c4d4e00c3d",
+      "revision": 1,
+      "start": "2026-10-21T08:00:00.000Z",
+      "end": "2026-10-21T21:00:00.000Z",
+      "scheduledAt": "2026-10-20T21:00:00.000Z",
+      "timeZone": "Asia/Riyadh",
+      "status": "completed",
+      "completedAt": "2026-10-21T08:00:00.000Z",
+      "workStatus": "todo"
+    }
+  ],
+  "projectProgress": [
+    {
+      "id": "[\"e4217b6f-0c44-4f31-90dd-715d5ae40bd0\",1]",
+      "projectId": "e4217b6f-0c44-4f31-90dd-715d5ae40bd0",
+      "order": 1,
+      "at": "2026-10-21T08:00:00.000Z",
+      "before": null,
+      "after": 0,
+      "reason": "step_added"
+    },
+    {
+      "id": "[\"e4217b6f-0c44-4f31-90dd-715d5ae40bd0\",2]",
+      "projectId": "e4217b6f-0c44-4f31-90dd-715d5ae40bd0",
+      "order": 2,
+      "at": "2026-10-21T08:00:00.000Z",
+      "before": 0,
+      "after": 50,
+      "reason": "completion"
+    }
+  ],
+  "projectTracking": [
+    {
+      "projectId": "e4217b6f-0c44-4f31-90dd-715d5ae40bd0",
+      "since": "2026-10-21T08:00:00.000Z",
+      "initialPercent": null,
+      "origin": "new",
+      "lastOrder": 2,
+      "lastProgressAt": "2026-10-21T08:00:00.000Z"
+    }
+  ],
+  "projectPlans": [
+    {
+      "projectId": "e4217b6f-0c44-4f31-90dd-715d5ae40bd0",
+      "since": "2026-10-21T08:00:00.000Z",
+      "revision": 3,
+      "workOrder": 1,
+      "pauses": [
+        {
+          "start": "2026-10-21T08:00:00.000Z",
+          "end": "2026-10-21T10:00:00.000Z"
+        }
+      ],
+      "goal": {
+        "kind": "duration",
+        "days": 20,
+        "anchor": "2026-10-21",
+        "targetDate": "2026-11-09",
+        "deadline": "flexible",
+        "timeZone": "UTC"
+      }
+    }
+  ],
+  "stepWork": [
+    {
+      "id": "[\"e4217b6f-0c44-4f31-90dd-715d5ae40bd0\",1]",
+      "projectId": "e4217b6f-0c44-4f31-90dd-715d5ae40bd0",
+      "stepId": "a48d6e1f-5a63-4e89-8e39-2e25c47c1ff6",
+      "order": 1,
+      "at": "2026-10-21T08:00:00.000Z",
+      "complete": true
+    }
+  ],
+  "recommendations": [
+    {
+      "id": "phase8-old-decision",
+      "key": "phase8-old-decision",
+      "type": "focus",
+      "projectIds": [
+        "e4217b6f-0c44-4f31-90dd-715d5ae40bd0"
+      ],
+      "reason": "قرار قديم محفوظ",
+      "effect": "لم يطبق",
+      "createdAt": "2026-10-21T10:00:00.000Z",
+      "status": "rejected",
+      "decidedAt": "2026-10-21T10:00:00.000Z",
+      "changes": [
+        {
+          "type": "pause",
+          "projectId": "e4217b6f-0c44-4f31-90dd-715d5ae40bd0"
+        }
+      ],
+      "basis": "phase8-isolated"
+    }
+  ],
+  "paceSettings": [
+    {
+      "id": "pace",
+      "activeLimit": 3,
+      "restHistory": [
+        {
+          "since": "2026-10-21T08:00:00.000Z",
+          "days": [
+            5,
+            6
+          ],
+          "timeZone": "UTC"
+        }
+      ]
+    }
+  ],
+  "habitAssessments": []
+}

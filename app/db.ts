@@ -4,7 +4,18 @@ import {
     receiptPresent,
     backupReceipt,
 } from "./habitBackupMerge";
-import { legacyStores, backupStores, type BackupStore } from "./backupTables";
+import {
+    legacyStores,
+    schema7HabitStores,
+    backupStores,
+    type BackupStore,
+} from "./backupTables";
+import {
+    assessmentFromEntry,
+    assessmentMatches,
+    withHabitAssessments,
+    reconcileHabitAssessments,
+} from "./habitAssessments";
 import { saveRecovery, backupDigest, sha256 } from "./backupRecovery";
 import type {
     HabitPath,
@@ -14,6 +25,7 @@ import type {
     HabitSuggestion,
     Reminder,
     HabitImportReceipt,
+    HabitAssessment,
 } from "./habitTypes";
 import Dexie, { type Table } from "dexie";
 import {
@@ -65,6 +77,7 @@ export class Database extends Dexie {
     habitSuggestions!: Table<HabitSuggestion, string>;
     reminders!: Table<Reminder, string>;
     habitImportReceipts!: Table<HabitImportReceipt, string>;
+    habitAssessments!: Table<HabitAssessment, string>;
     projectPlans!: Table<ProjectPlan, string>;
     stepWork!: Table<StepWork, string>;
     recommendations!: Table<PaceRecommendation, string>;
@@ -164,6 +177,30 @@ export class Database extends Dexie {
             reminders: "id,createdAt,reviewedAt",
             habitImportReceipts: "id,digest",
         });
+        // Independent canonical feedback survives old v7 entry writers. Dexie
+        // can reopen a newer compatible schema, so a version bump is NOT a fence.
+        // Existing19 tables/indexes/rows remain untouched; only real, already
+        // present inline feedback is copied, never synthesized from old ratings.
+        this.version(8)
+            .stores({ habitAssessments: "id,habitId,planId,localDate" })
+            .upgrade(async (tx) => {
+                const entries: HabitEntry[] = await tx
+                    .table("habitEntries")
+                    .toArray();
+                const rows = entries.flatMap((e) => {
+                    const a = assessmentFromEntry(e);
+                    return a ? [a] : [];
+                });
+                if (rows.length)
+                    await tx.table("habitAssessments").bulkAdd(rows);
+            });
+        this.on("ready", () =>
+            this.transaction(
+                "rw",
+                [this.habitEntries, this.habitAssessments],
+                () => reconcileHabitAssessments(this),
+            ),
+        );
     }
 }
 export const db = new Database();
@@ -408,23 +445,34 @@ export async function snapshot(): Promise<Snapshot> {
 }
 /** Exact read for the safety copy: no reconciliation or generated history. */
 async function readSnapshot(): Promise<Snapshot> {
-    return db.transaction(
-        "r",
-        db.tables,
-        async () =>
-            ({
-                version: 5,
-                exportedAt: now(),
-                ...Object.fromEntries(
-                    await Promise.all(
-                        backupStores.map(async (name) => [
-                            name,
-                            await db.table(name).toArray(),
-                        ]),
-                    ),
+    return db.transaction("r", db.tables, async () => {
+        const data = {
+            version: 6,
+            exportedAt: now(),
+            ...Object.fromEntries(
+                await Promise.all(
+                    backupStores.map(async (name) => [
+                        name,
+                        await db.table(name).toArray(),
+                    ]),
                 ),
-            }) as Snapshot,
-    );
+            ),
+        } as Snapshot;
+        const index = new Map((data.habitEntries ?? []).map((e) => [e.id, e]));
+        data.habitAssessments = (data.habitAssessments ?? []).filter((a) =>
+            assessmentMatches(index.get(a.id), a),
+        );
+        const known = new Set(data.habitAssessments.map((a) => a.id));
+        for (const entry of data.habitEntries ?? []) {
+            const a = assessmentFromEntry(entry);
+            if (a && !known.has(a.id)) data.habitAssessments.push(a);
+        }
+        data.habitEntries = withHabitAssessments(
+            data.habitEntries ?? [],
+            data.habitAssessments,
+        );
+        return data;
+    });
 }
 
 export async function create(
@@ -1033,11 +1081,23 @@ async function restoreBackupData(
         }
         await Dexie.waitFor(saveRecovery(await readSnapshot()));
         const names =
-            mode === "full" || data.version === 5 ? backupStores : legacyStores;
+            mode === "full" || data.version === 6
+                ? backupStores
+                : data.version === 5
+                  ? [...legacyStores, ...schema7HabitStores]
+                  : legacyStores;
         for (const name of names) {
             await db.table(name).clear();
             await db.table(name).bulkAdd(data[name] ?? []);
         }
+        if (data.version === 5) {
+            const rows = (data.habitEntries ?? []).flatMap((e) => {
+                const a = assessmentFromEntry(e);
+                return a ? [a] : [];
+            });
+            if (rows.length) await db.habitAssessments.bulkPut(rows);
+        }
+        await reconcileHabitAssessments(db);
         await ensurePacePlans();
         await ensureProjectTracking();
         await completeFinishedProjects();

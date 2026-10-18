@@ -455,6 +455,7 @@ const ProjectCard = memo(function ProjectCard({
             {home && paceWork && paceClock !== undefined ? (
                 <>
                     <PaceSummary
+                        compact
                         project={project}
                         plan={plan}
                         hierarchy={hierarchy}
@@ -471,11 +472,19 @@ const ProjectCard = memo(function ProjectCard({
                             new Date(Math.max(paceClock, Date.now())),
                             paceSettings,
                         );
-                        const steps = dailySteps(
-                            project.id,
-                            hierarchy,
-                            Math.min(3, pace.today),
-                        ).filter((s) => s.id !== omitCurrentId);
+                        // One next action per project, including a remembered
+                        // step elsewhere in its hierarchy, not only its first.
+                        const resumeOwnsProject =
+                            omitCurrentId &&
+                            hierarchy.byId.get(omitCurrentId)?.projectId ===
+                                project.id;
+                        const steps = resumeOwnsProject
+                            ? []
+                            : dailySteps(
+                                  project.id,
+                                  hierarchy,
+                                  Math.min(1, pace.today),
+                              );
                         return (
                             <div
                                 className="daily-project-steps"
@@ -485,7 +494,7 @@ const ProjectCard = memo(function ProjectCard({
                                     {pace.restDay
                                         ? "الإنجاز اختياري اليوم؛ افتح المشروع للوصول إلى خطواته."
                                         : pace.today
-                                          ? `اقتراح مرن لليوم: ${pace.today} خطوة؛ دون تراكم أو تأخير.`
+                                          ? `اليوم: ${pace.today} خطوة مقترحة بمرونة.`
                                           : pace.remaining
                                             ? "لا توجد خطوات إضافية مقترحة اليوم. تبقى خطوات المشروع متاحة."
                                             : pace.total
@@ -539,7 +548,7 @@ const ProjectCard = memo(function ProjectCard({
                 </>
             )}
             <div className="card-foot">
-                <span>آخر تعديل {date(project.updatedAt)}</span>
+                {!home && <span>آخر تعديل {date(project.updatedAt)}</span>}
                 <button
                     className="text-btn"
                     onClick={() => go(`project/${project.id}`)}

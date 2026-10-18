@@ -498,7 +498,7 @@ test("النسخوالاستعادةتحفظالإنجازوالإيقافاتا
     await page.getByRole("button", { name: "تصدير JSON", exact: true }).click();
     const download = await waiting;
     const saved = JSON.parse(await readFile((await download.path())!, "utf8"));
-    expect(saved.version).toBe(5);
+    expect(saved.version).toBe(6);
     expect(saved.habitEntries).toHaveLength(2);
     expect(
         saved.habits.find((h: { id: string }) => h.id === "bed").pauses,

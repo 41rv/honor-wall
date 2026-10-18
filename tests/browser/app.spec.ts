@@ -127,7 +127,15 @@ test("واجهة المشروع: الإنشاء، الترتيب، الملاح�
     await page.goto(appUrl("/#step/s0-0"));
     await page.getByLabel("ملاحظات العنصر").fill("تفصيل مهم محفوظ للعودة");
     await page.getByRole("button", { name: "العودة للمشروع" }).click();
+    // This search input is shared by both screens. Wait for the destination
+    // commit before typing, so navigation's intentional query reset cannot
+    // erase text entered into the previous screen by the automation.
+    await expect(page.locator("main")).toHaveAttribute("data-route", "project");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+        "دليل الهوية البصرية",
+    );
     await page.getByLabel("بحث شامل").fill("تفصيل مهم");
+    await expect(page.getByLabel("بحث شامل")).toHaveValue("تفصيل مهم");
     await page.locator(".search-result").click();
     await expect(page.getByLabel("ملاحظات العنصر")).toHaveValue(
         "تفصيل مهم محفوظ للعودة",
@@ -360,7 +368,9 @@ test("PWA: الأصول والبيانات متاحة دون إنترنت بعد
     const manifest = await page.request.get(appUrl("/manifest.webmanifest"));
     expect(manifest.ok()).toBe(true);
     for (const size of [192, 512])
-        expect((await page.request.get(appUrl(`/icon-${size}.png`))).ok()).toBe(true);
+        expect((await page.request.get(appUrl(`/icon-${size}.png`))).ok()).toBe(
+            true,
+        );
     await context.setOffline(true);
     await page.reload();
     await expect(

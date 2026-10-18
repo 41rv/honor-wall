@@ -1,0 +1,7 @@
+[
+  { wallMs: 302, eventToPaintMs: 248 },
+  { wallMs: 193, eventToPaintMs: 202 },
+  { wallMs: 299, eventToPaintMs: 282 },
+  { wallMs: 223, eventToPaintMs: 230 },
+  { wallMs: 133, eventToPaintMs: 134 }
+]

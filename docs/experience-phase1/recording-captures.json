@@ -1,0 +1,55 @@
+{
+  "captures": [
+    {
+      "file": "record-feedback-light-320.png",
+      "width": 320,
+      "theme": "light",
+      "state": "saved assessment and actual duration reopened"
+    },
+    {
+      "file": "record-followup-light-320.png",
+      "width": 320,
+      "theme": "light",
+      "state": "completed habit outside first3, optional followup"
+    },
+    {
+      "file": "record-feedback-dark-320.png",
+      "width": 320,
+      "theme": "dark",
+      "state": "saved assessment and actual duration reopened"
+    },
+    {
+      "file": "record-followup-dark-320.png",
+      "width": 320,
+      "theme": "dark",
+      "state": "completed habit outside first3, optional followup"
+    },
+    {
+      "file": "record-feedback-light-390.png",
+      "width": 390,
+      "theme": "light",
+      "state": "saved assessment and actual duration reopened"
+    },
+    {
+      "file": "record-followup-light-390.png",
+      "width": 390,
+      "theme": "light",
+      "state": "completed habit outside first3, optional followup"
+    },
+    {
+      "file": "record-feedback-dark-390.png",
+      "width": 390,
+      "theme": "dark",
+      "state": "saved assessment and actual duration reopened"
+    },
+    {
+      "file": "record-followup-dark-390.png",
+      "width": 390,
+      "theme": "dark",
+      "state": "completed habit outside first3, optional followup"
+    }
+  ],
+  "errors": [],
+  "actualBrowserScreenshots": true,
+  "generatedImages": false
+}

@@ -3,7 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { Dialog } from "./Dialog";
 import { date, type Snapshot } from "./model";
 import { restoreImpact, type RestoreMode } from "./db";
-import { habitStores, legacyStores, type BackupStore } from "./backupTables";
+import {
+    habitStores,
+    schema7HabitStores,
+    legacyStores,
+    type BackupStore,
+} from "./backupTables";
 
 export function BackupRestore({
     data,
@@ -84,7 +89,7 @@ export function BackupRestore({
                 أفكار و{data.taskCycles?.length ?? 0} دورات و
                 {data.events.length} أحداث.
             </p>
-            {data.version === 5 && (
+            {data.version >= 5 && (
                 <p className="dialog-text">
                     وتحتوي على {data.habitPaths?.length ?? 0} مسارات عادات و
                     {data.habits?.length ?? 0} عادات و
@@ -111,13 +116,21 @@ export function BackupRestore({
                                 غير موجودة في النسخة القديمة.
                             </strong>
                         </>
+                    ) : data.version === 5 ? (
+                        <>
+                            ستُستبدل أقسام النسخة5 التسعة عشر (
+                            {sum(legacyStores) + sum(schema7HabitStores)}{" "}
+                            سجلًا). تبقى التقييمات المستقلة غير الموجودة في
+                            الملف للسجلات المطابقة ({counts.habitAssessments}{" "}
+                            سجلًا)، وتُنظف مراجع ما حُذف أو استُبدل. المصفوفة
+                            الفارغة في الأقسام الموجودة تعني إفراغ قسمها.
+                        </>
                     ) : (
                         <>
-                            ستُستبدل محتويات الأقسام التسعة عشر، بما فيها
-                            العادات والتذكيرات:{" "}
-                            {sum(legacyStores) + sum(habitStores)} سجلًا حاليًا،
-                            منها {sum(habitStores)} في الأقسام الجديدة. المصفوفة
-                            الفارغة في نسخة5 تعني إفراغ قسمها.
+                            ستُستبدل محتويات الأقسام العشرين، بما فيها العادات
+                            والتذكيرات: {sum(legacyStores) + sum(habitStores)}{" "}
+                            سجلًا حاليًا، منها {sum(habitStores)} في الأقسام
+                            الجديدة. المصفوفة الفارغة في نسخة6 تعني إفراغ قسمها.
                         </>
                     )}
                 </p>
@@ -153,14 +166,20 @@ export function BackupRestore({
                     دمج دون استبدال
                 </button>
             </div>
-            {data.version < 5 && (
+            {data.version < 6 && (
                 <details className="period-details">
                     <summary>الاستبدال الكامل — خيارات متقدمة</summary>
                     <p className="warning">
-                        هذا الخيار يمسح أيضًا العادات والمسارات والتسجيلات
-                        والتذكيرات والخطط والقرارات وإيصالاتها غير الموجودة في
-                        الملف: {sum(habitStores)} سجلًا إضافيًا. تُحفظ نسخة
-                        الأمان قبل التنفيذ ويمكن استعادتها بملفSnapshot5.
+                        هذا الخيار يمسح أيضًا الأقسام غير الموجودة في الملف:
+                        {data.version === 5
+                            ? (counts?.habitAssessments ?? 0)
+                            : sum(habitStores)}{" "}
+                        سجلًا إضافيًا من التقييمات
+                        {data.version < 5
+                            ? " والعادات والمسارات والتذكيرات والخطط والقرارات وإيصالاتها"
+                            : ""}
+                        . تُحفظ نسخة الأمان قبل التنفيذ ويمكن استعادتها
+                        بملفSnapshot6.
                     </p>
                     <label className="backup-restore-confirm">
                         <input

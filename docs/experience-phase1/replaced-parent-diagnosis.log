@@ -1,0 +1,34 @@
+
+ RUN  v5.0.4 /workspace/honor-wall
+
+ ❯ tests/habitExperience.test.ts (57 tests | 1 failed) 2330ms
+   × restoring an old backup with a replaced recording timestamp cannot attach an older assessment to that replacement 46ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/habitExperience.test.ts > restoring an old backup with a replaced recording timestamp cannot attach an older assessment to that replacement
+Error: النسخة غير صالحة: تحقق من الإصدار والحقول والعلاقات والتواريخ.
+ ❯ fail app/model.ts:288:15
+    286| export function validateBackup(input: unknown): Snapshot {
+    287|     const fail = () => {
+    288|         throw new Error(
+       |               ^
+    289|             "النسخة غير صالحة: تحقق من الإصدار والحقول والعلاقات والتو…
+    290|         );
+ ❯ validateHabitData app/habitValidation.ts:402:20
+ ❯ validateBackup app/model.ts:657:5
+ ❯ tests/habitExperience.test.ts:593:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 56 passed (57)
+   Start at  15:13:18
+   Duration  3.15s (tests 82%, import 9%, transform 9%)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

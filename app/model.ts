@@ -60,7 +60,7 @@ export interface Event {
 import type { PaceData } from "./paceTypes";
 import { validatePaceData } from "./paceValidation";
 export interface Snapshot extends PaceData, HabitData {
-    version: 1 | 2 | 3 | 4 | 5;
+    version: 1 | 2 | 3 | 4 | 5 | 6;
     exportedAt: string;
     projects: Project[];
     steps: Step[];
@@ -305,7 +305,7 @@ export function validateBackup(input: unknown): Snapshot {
         );
     };
     if (
-        ![1, 2, 3, 4, 5].includes(d.version) ||
+        ![1, 2, 3, 4, 5, 6].includes(d.version) ||
         (d.version >= 2 && !Array.isArray(d.taskCycles)) ||
         (d.version >= 3 &&
             (!Array.isArray(d.projectProgress) ||

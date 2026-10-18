@@ -47,9 +47,9 @@ async function data(id: string) {
         e: await db.habitEntries.where("habitId").equals(id).toArray(),
     };
 }
-it("creates graded without changing schema7 or legacy stores", async () => {
+it("creates graded without changing schema8 tables or legacy stores", async () => {
     await saveGradedHabit(input);
-    expect(db.verno).toBe(7);
+    expect(db.verno).toBe(8);
     validateBackup(await snapshot());
     expect(await db.tasks.count()).toBe(0);
     expect(await db.events.count()).toBe(0);

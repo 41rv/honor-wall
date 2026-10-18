@@ -311,7 +311,7 @@ it("النسخة4 تستعيد الخطط والإيقاف والعمل والت
     await rejectRecommendation((await db.recommendations.toArray())[0].id);
     await setProjectPaused(id, true);
     const old = await snapshot();
-    expect(old.version).toBe(5);
+    expect(old.version).toBe(6);
     validateBackup(old);
     for (let i = 0; i < 2; i++) await importBackup(old);
     const next = await snapshot();
@@ -438,7 +438,7 @@ it("ترحيل Dexie4→7 إضافي يحافظ على كل صف قديم حرف
     const next = new Database(name);
     try {
         await next.open();
-        expect(next.verno).toBe(7);
+        expect(next.verno).toBe(8);
         for (const store of [
             "projects",
             "steps",

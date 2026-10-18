@@ -55,6 +55,10 @@ import { uid } from "./model";
 import { HabitSuggestionPanel } from "./HabitSuggestions";
 import { HabitImportDialog } from "./HabitImportDialog";
 import { userError } from "./userError";
+import { HabitFeedback } from "./HabitFeedback";
+import { feedbackText } from "./habitFeedback";
+import { assessedHabitEntries } from "./habitAssessments";
+import { HabitDeletionDialog } from "./HabitDeletionDialog";
 import "./habits.css";
 
 type HabitData = NonNullable<ReturnType<typeof useHabitData>>;
@@ -82,10 +86,12 @@ function HabitCheck({
     habit,
     date,
     entry,
+    onRecorded,
 }: {
     habit: Habit;
     date: string;
     entry?: HabitEntry;
+    onRecorded?: (id: string) => void;
 }) {
     const saved = entry?.result.kind === "simple" && entry.result.done;
     const [pending, setPending] = useState<boolean | null>(null);
@@ -110,7 +116,12 @@ function HabitCheck({
                     setPending(!value);
                     setError("");
                     try {
-                        await recordSimpleHabit(habit.id, date, !value);
+                        const entryId = await recordSimpleHabit(
+                            habit.id,
+                            date,
+                            !value,
+                        );
+                        if (!value) onRecorded?.(entryId);
                     } catch (e) {
                         setPending(null);
                         setError(userError(e));
@@ -135,10 +146,14 @@ function HabitRow({
     habit,
     data,
     at,
+    compact = false,
+    onRecorded,
 }: {
     habit: Habit;
     data: HabitData;
     at: Date;
+    compact?: boolean;
+    onRecorded?: (id: string) => void;
 }) {
     const date = habitDate(at, habit.timeZone);
     const plans = data.plans.filter((p) => p.habitId === habit.id);
@@ -158,16 +173,18 @@ function HabitRow({
                 <a href={`#habit/${encodeURIComponent(habit.id)}`}>
                     <strong>{habit.title}</strong>
                 </a>
-                <small className="muted">
-                    {stopped
-                        ? "موقوفة مؤقتًا"
-                        : day.neutral
-                          ? "يوم محايد · التسجيل اختياري"
-                          : !day.scheduled
-                            ? "غير مستهدفة اليوم"
-                            : scheduleText(day.plan?.schedule)}
-                </small>
-                {habit.kind === "graded" && (
+                {!compact && (
+                    <small className="muted">
+                        {stopped
+                            ? "موقوفة مؤقتًا"
+                            : day.neutral
+                              ? "يوم محايد · التسجيل اختياري"
+                              : !day.scheduled
+                                ? "غير مستهدفة اليوم"
+                                : scheduleText(day.plan?.schedule)}
+                    </small>
+                )}
+                {!compact && habit.kind === "graded" && (
                     <small>{habitLevelText(day.plan)}</small>
                 )}
             </div>
@@ -175,7 +192,12 @@ function HabitRow({
                 day.plan &&
                 !habit.archived &&
                 day.start <= at.getTime() && (
-                    <HabitCheck habit={habit} date={date} entry={day.entry} />
+                    <HabitCheck
+                        habit={habit}
+                        date={date}
+                        entry={day.entry}
+                        onRecorded={onRecorded}
+                    />
                 )}
             {habit.kind === "graded" &&
                 day.plan &&
@@ -187,6 +209,7 @@ function HabitRow({
                         plan={day.plan}
                         date={date}
                         entry={day.entry}
+                        onRecorded={onRecorded}
                     />
                 )}
             <a
@@ -196,14 +219,25 @@ function HabitRow({
             >
                 <ChevronLeft size={18} />
             </a>
+            {habit.kind === "simple" && (
+                <HabitFeedback
+                    key={JSON.stringify(day.entry ?? null)}
+                    entry={day.entry}
+                />
+            )}
         </div>
     );
 }
-export function TodayHabitsCard() {
-    const clock = useWallClock(),
-        at = new Date(Math.max(clock, Date.now())),
-        date = habitDate(at, localZone());
-    const data = useHabitData(date, date);
+export function TodayHabitsCard({
+    data,
+    rows,
+    at,
+}: {
+    data?: HabitData;
+    rows: ReturnType<typeof habitToday>;
+    at: Date;
+}) {
+    const [lastRecordedId, setLastRecordedId] = useState<string | null>(null);
     if (!data)
         return (
             <section className="home-habits" aria-label="عاداتي اليوم">
@@ -212,12 +246,11 @@ export function TodayHabitsCard() {
                 </p>
             </section>
         );
-    const rows = habitToday(
-        data.habits,
-        data.plans,
-        data.paths,
-        data.entries,
-        at,
+
+    const hiddenRecord = rows.find(
+        (r) =>
+            r.entry?.id === lastRecordedId &&
+            !rows.slice(0, 3).some((v) => v.habit.id === r.habit.id),
     );
     return (
         <section className="home-habits" aria-label="عاداتي اليوم">
@@ -241,9 +274,11 @@ export function TodayHabitsCard() {
                     {rows.slice(0, 3).map((row) => (
                         <HabitRow
                             key={row.habit.id}
+                            compact
                             habit={row.habit}
                             data={data}
                             at={at}
+                            onRecorded={setLastRecordedId}
                         />
                     ))}
                 </div>
@@ -254,6 +289,19 @@ export function TodayHabitsCard() {
                         مساراتي وعاداتي
                     </a>
                 </p>
+            )}
+            {hiddenRecord && (
+                <div
+                    className="home-record-feedback"
+                    role="region"
+                    aria-label="تقييم آخر تسجيل"
+                >
+                    <HabitFeedback
+                        key={JSON.stringify(hiddenRecord.entry ?? null)}
+                        entry={hiddenRecord.entry}
+                        title={`تم تسجيل «${hiddenRecord.habit.title}» · التقييم والمدة`}
+                    />
+                </div>
             )}
         </section>
     );
@@ -620,6 +668,7 @@ export function HabitsPage({
     }, [screenKey]);
     const [form, setForm] = useState<"habit" | "path" | null>(null);
     const [importing, setImporting] = useState(false);
+    const [deleting, setDeleting] = useState(false);
     const [menu, setMenu] = useState(false),
         [confirm, setConfirm] = useState(false),
         [busy, setBusy] = useState(false),
@@ -1241,6 +1290,18 @@ export function HabitsPage({
                                     : "أرشفة المسار"}
                             </button>
                         )}
+                        {(habit || path) && (
+                            <button
+                                className="btn danger"
+                                disabled={busy}
+                                onClick={() => {
+                                    setMenu(false);
+                                    setDeleting(true);
+                                }}
+                            >
+                                حذف نهائي
+                            </button>
+                        )}
                         {error && (
                             <p className="warning" role="alert">
                                 {error}
@@ -1289,6 +1350,17 @@ export function HabitsPage({
                     </div>
                 </Dialog>
             )}
+            {deleting && (
+                <HabitDeletionDialog
+                    id={id}
+                    kind={habit ? "habit" : "path"}
+                    onClose={() => setDeleting(false)}
+                    onDeleted={() => {
+                        setDeleting(false);
+                        location.hash = "habits";
+                    }}
+                />
+            )}
         </div>
     );
 }
@@ -1313,10 +1385,15 @@ function HistoryEditor({
     const selectedEntry = useLiveQuery(
         async () => ({
             date,
-            entry: await db.habitEntries
-                .where("[habitId+localDate]")
-                .equals([habit.id, date])
-                .first(),
+            entry: (
+                await assessedHabitEntries(
+                    db,
+                    await db.habitEntries
+                        .where("[habitId+localDate]")
+                        .equals([habit.id, date])
+                        .toArray(),
+                )
+            )[0],
         }),
         [habit.id, date],
     );
@@ -1374,12 +1451,18 @@ function HistoryEditor({
                             entry={day.entry}
                         />
                     ) : (
-                        <HabitCheck
-                            key={date}
-                            habit={habit}
-                            date={date}
-                            entry={day.entry}
-                        />
+                        <>
+                            <HabitCheck
+                                key={date}
+                                habit={habit}
+                                date={date}
+                                entry={day.entry}
+                            />
+                            <HabitFeedback
+                                key={JSON.stringify(day.entry ?? null)}
+                                entry={day.entry}
+                            />
+                        </>
                     ))}
             </div>
             <p className="muted small">
@@ -1398,6 +1481,11 @@ function HistoryEditor({
                                       ? "تم"
                                       : "لم يتم / تراجع"}
                             </span>
+                            {feedbackText(e) && (
+                                <span className="small muted habit-history-feedback">
+                                    {feedbackText(e)}
+                                </span>
+                            )}
                             <button
                                 className="text-btn"
                                 onClick={() => setSelected(e.localDate)}

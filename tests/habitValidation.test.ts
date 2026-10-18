@@ -3,7 +3,7 @@ import { Temporal } from "@js-temporal/polyfill";
 import { validateBackup, parseBackup, type Snapshot } from "../app/model";
 import { scaledQuantity } from "../app/habitValidation";
 import { habitFixture } from "./habitFixtures";
-import { habitStores } from "../app/backupTables";
+import { habitStores, schema7HabitStores } from "../app/backupTables";
 
 describe("عقد Snapshot5 دون تنفيذ منطق العادات", () => {
     it("يحفظ الخطط والمستويات والعضوية والتسجيلات والقرارات كما هي", () => {
@@ -23,10 +23,21 @@ describe("عقد Snapshot5 دون تنفيذ منطق العادات", () => {
             expect(validateBackup(data).version).toBe(version);
         },
     );
-    it.each(habitStores)(
+    it.each(schema7HabitStores)(
         "يشترط مصفوفة %s في الإصدار5 حتى إن كانت فارغة",
         (name) => {
             const data = habitFixture();
+            delete data[name];
+            expect(() => validateBackup(data)).toThrow("غير صالحة");
+        },
+    );
+    it.each(habitStores)(
+        "Snapshot6 requires explicit section %s including empty assessments",
+        (name) => {
+            const data = habitFixture();
+            data.version = 6;
+            data.habitAssessments = [];
+            expect(() => validateBackup(data)).not.toThrow();
             delete data[name];
             expect(() => validateBackup(data)).toThrow("غير صالحة");
         },

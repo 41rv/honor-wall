@@ -122,7 +122,7 @@ it("النسخة الجديدة تحفظ السجل وتمنع السلسلة ا
     const { steps } = await fixture();
     await setBranchCompletion(steps[0], true);
     const old = await snapshot();
-    expect(old.version).toBe(5);
+    expect(old.version).toBe(6);
     await importBackup(JSON.parse(JSON.stringify(old)));
     expect((await snapshot()).projectProgress).toEqual(old.projectProgress);
     for (const mutate of [
@@ -194,7 +194,7 @@ it("ترحيل Dexie2 إلى7 يحافظ على الحقول والدورات و
             initialPercent: 0,
             lastOrder: 0,
         });
-        expect(next.verno).toBe(7);
+        expect(next.verno).toBe(8);
     } finally {
         await next.delete();
     }

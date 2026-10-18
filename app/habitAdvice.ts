@@ -12,6 +12,8 @@ import {
 } from "./habitCalendar";
 import { calibration } from "./habitProgression";
 import { scaledQuantity } from "./habitValidation";
+import { hardEffort } from "./habitFeedback";
+import { assessedHabitEntries } from "./habitAssessments";
 import type {
     Habit,
     HabitEntry,
@@ -71,15 +73,16 @@ export function habitAdvice(
     }
     const days = compatible.slice(-7);
     const recorded = compatible.filter((d) => d.entry).slice(-5);
-    const hard = recorded.filter(
+    const hard = recorded.filter((d) => d.entry && hardEffort(d.entry));
+    const hardBelow = hard.filter(
         (d) =>
-            d.entry?.difficulty === "hard" &&
+            d.entry &&
             d.entry.result.kind === "graded" &&
             d.entry.result.amount < d.entry.result.threshold,
     );
     const canEase =
         recorded.length === 5 &&
-        hard.length >= 3 &&
+        hardBelow.length >= 3 &&
         plan.current.target >
             plan.phases.find((p) => p.key === plan.current!.phaseKey)!.start;
     if (days.length < 7 && !canEase) return null;
@@ -96,6 +99,44 @@ export function habitAdvice(
             )
             .map((d) => d.date),
     );
+    // Optional duration is a supporting signal, on six separate closed days
+    // at the same scale/level. Compare time per actual unit, not raw duration
+    // when the user performed different quantities. Missing data is neutral.
+    const timed = compatible
+        .filter(
+            (d) =>
+                d.entry?.durationMinutes !== undefined &&
+                d.entry.result.kind === "graded" &&
+                d.entry.result.amount > 0 &&
+                habitDate(new Date(d.entry.recordedAt), habit.timeZone) ===
+                    d.date,
+        )
+        .slice(-6);
+    const median = (values: number[]) =>
+        [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)];
+    let durationStrain = false,
+        durationNote = "";
+    if (timed.length === 6) {
+        const values = timed.map(
+            (d) =>
+                d.entry!.durationMinutes! /
+                (d.entry!.result.kind === "graded"
+                    ? d.entry!.result.amount
+                    : 1),
+        );
+        const older = values.slice(0, 3),
+            recent = values.slice(3),
+            a = median(older),
+            b = median(recent);
+        const scatter = Math.max(
+            median(older.map((v) => Math.abs(v - a))),
+            median(recent.map((v) => Math.abs(v - b))),
+        );
+        durationStrain = b > a + scatter && hard.length >= 2;
+        durationNote = durationStrain
+            ? " زاد وسيط الدقائق الفعلية لكل وحدة في آخر3 جلسات مقارنة بالثلاث السابقة، مع تقييمَي صعوبة مرتفعين على الأقل؛ هذا عامل مساعد للاستمرار، وليس قياسًا لجهدك أو سببًا لخفض تلقائي."
+            : " تتوفر مدد فعلية لست جلسات مؤهلة؛ تبقى عاملًا مساعدًا ولا تثبت وحدها جاهزية التطوير.";
+    }
     let type: HabitSuggestion["type"] = "maintain",
         change: HabitLevel | undefined,
         reason: string,
@@ -116,7 +157,8 @@ export function habitAdvice(
         days.length === 7 &&
         completed.length >= required &&
         actualDays.size >= 3 &&
-        hard.length < 3
+        hard.length < 3 &&
+        !durationStrain
     ) {
         if (value < goal) {
             type = "increase";
@@ -131,7 +173,11 @@ export function habitAdvice(
         }
         reason = `حققت حدك في${completed.length} من آخر7 أيام مؤهلة مغلقة، ومنها3 أيام أداء منفصلة على الأقل. عتبة هذه المعاينة ${required}/7.`;
     } else
-        reason = `الاستمرار مناسب حاليًا: ${completed.length}/7 أيام تحقيق. يلزم الأداء المسجل في يومه على3 أيام منفصلة، ولا تكفي تعبئة أيام قديمة دفعة واحدة لاقتراح تطوير.`;
+        reason =
+            hard.length >= 3
+                ? "الاستمرار مناسب: تكررت تقييمات الصعوبة المرتفعة في3 من آخر5 جلسات مؤهلة، حتى لو تحقق الهدف. لا نقترح زيادة الآن ولا نخفض المستوى تلقائيًا."
+                : `الاستمرار مناسب حاليًا: ${completed.length}/7 أيام تحقيق. يلزم الأداء المسجل في يومه على3 أيام منفصلة، ولا تكفي تعبئة أيام قديمة دفعة واحدة لاقتراح تطوير.`;
+    reason += durationNote;
     if (change) {
         const targetPhase = plan.phases.find(
             (p) => p.key === change!.phaseKey,
@@ -174,6 +220,7 @@ const stores = [
     db.habitPaths,
     db.habitEntries,
     db.habitSuggestions,
+    db.habitAssessments,
 ];
 async function evidence(id: string, at: Date, required: number) {
     const habit = await db.habits.get(id);
@@ -187,12 +234,13 @@ async function evidence(id: string, at: Date, required: number) {
             .between([id, addHabitDays(today, -28)], [id, today], true, true)
             .toArray(),
     ]);
+    const assessed = await assessedHabitEntries(db, entries);
     return {
         habit,
         plans,
         paths,
-        entries,
-        advice: habitAdvice(habit, plans, paths, entries, at, required),
+        entries: assessed,
+        advice: habitAdvice(habit, plans, paths, assessed, at, required),
     };
 }
 function materiallyChanged(
@@ -230,8 +278,15 @@ function materiallyChanged(
     );
     return (
         newMedian > oldMedian ||
-        (prior.filter((r) => r.difficulty === "hard").length >= 3 &&
-            after.every((d) => d.done && d.entry?.difficulty !== "hard") &&
+        (prior.filter(hardEffort).length >= 3 &&
+            after.every(
+                (d) =>
+                    d.done &&
+                    d.entry &&
+                    (d.entry.effortRating !== undefined ||
+                        d.entry.difficulty !== undefined) &&
+                    !hardEffort(d.entry),
+            ) &&
             at.toISOString() > (rejected.decidedAt ?? rejected.createdAt))
     );
 }

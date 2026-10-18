@@ -225,7 +225,22 @@ test("الجمعة: المهمة والمتكررة تعملان والإنجا�
     await jump(page, "2026-10-04T09:00:00.000Z");
     await page.goto(appUrl("/#home"));
     await expect(page.locator(".project-rest-notice")).toHaveCount(0);
-    await expect(page.locator(".daily-project-step").first()).toBeVisible();
+    // The compact home owns one action per project. Its resume shortcut
+    // replaces the duplicate card action, including after a rest day.
+    const next = page.getByRole("button", {
+        name: "إتمام الخطوة «خطوة 1»",
+        exact: true,
+    });
+    await expect(next).toBeVisible();
+    await expect(next).toHaveCount(1);
+    await next.click();
+    await expect
+        .poll(async () => (await readStore(page, "stepWork")).length)
+        .toBe(2);
+    expect(
+        (await readStore(page, "steps")).find((step) => step.title === "خطوة 1")
+            ?.status,
+    ).toBe("done");
 });
 test("النسخ الجديدة والقديمة: تنزيل واستعادة الجدول والدمج دون تبديل إعداد الجهاز", async ({
     page,
@@ -237,7 +252,7 @@ test("النسخ الجديدة والقديمة: تنزيل واستعادة ا
     const backup = JSON.parse(
         fs.readFileSync((await (await download).path())!, "utf8"),
     );
-    expect(backup.version).toBe(5);
+    expect(backup.version).toBe(6);
     expect(backup.paceSettings[0].restHistory.at(-1).days).toEqual([0]);
     await selectDays(page, []);
     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({

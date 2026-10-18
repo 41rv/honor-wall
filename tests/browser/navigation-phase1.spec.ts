@@ -181,11 +181,11 @@ test("task shortcut is one click from every current page and habits is storage-n
         db.close();
         return result;
     });
-    expect(database.version).toBe(70);
-    expect(database.stores.length).toBe(19);
+    expect(database.version).toBe(80);
+    expect(database.stores.length).toBe(20);
     expect(
         database.stores.filter((s) => /habit|reminder/i.test(s)),
-    ).toHaveLength(7);
+    ).toHaveLength(8);
     for (const name of database.stores.filter((s) => /habit|reminder/i.test(s)))
         expect(
             await readStore(page, name as Parameters<typeof readStore>[1]),

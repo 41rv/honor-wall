@@ -57,13 +57,13 @@ const legacy = (version: 1 | 2 | 3 | 4) => {
     for (const name of habitStores) delete d[name];
     return d;
 };
-it("قاعدة جديدة:19 مخزنًا،70 أصليًا،بلا عادات أو تذكيرات أو إعدادات افتراضية مصطنعة", async () => {
+it("قاعدة جديدة:20 مخزنًا،80 أصليًا،بلا عادات أو تذكيرات أو إعدادات افتراضية مصطنعة", async () => {
     const database = new Database("habit-empty-" + crypto.randomUUID());
     try {
         await database.open();
-        expect(database.verno).toBe(7);
-        expect(database.backendDB().version).toBe(70);
-        expect(database.tables).toHaveLength(19);
+        expect(database.verno).toBe(8);
+        expect(database.backendDB().version).toBe(80);
+        expect(database.tables).toHaveLength(20);
         for (const name of habitStores)
             expect(await database.table(name).count()).toBe(0);
     } finally {
@@ -85,7 +85,7 @@ const schema6 = {
     recommendations: "id,key,status,createdAt,*projectIds",
     paceSettings: "id",
 };
-it("ترحيل6→7 يحفظ كل صف وفهرس من الجداول12 حرفيًا ثم يفتح مرة ثانية دون توليد تاريخ", async () => {
+it("ترحيل6→8 عبر7 يحفظ كل صف وفهرس من الجداول12 حرفيًا ثم يفتح مرة ثانية دون توليد تاريخ", async () => {
     const p = await create("project", "مشروع قديم", "ملاحظة أصلية");
     const step = await create("step", "خطوة قديمة", "تفاصيل", p);
     await create("step", "خطوة ثانية", "", p);
@@ -154,7 +154,7 @@ it("ترحيل6→7 يحفظ كل صف وفهرس من الجداول12 حرفي
     const upgraded = new Database(name);
     try {
         await upgraded.open();
-        expect(upgraded.backendDB().version).toBe(70);
+        expect(upgraded.backendDB().version).toBe(80);
         for (const n of legacyStores) {
             expect(await upgraded.table(n).toArray()).toEqual(before[n]);
             expect(JSON.stringify(upgraded.table(n).schema)).toBe(indexes[n]);
@@ -183,7 +183,7 @@ it("اتصال قديم يستقبلversionchange ويغلق قبل الترقي
     try {
         await next.open();
         expect(changed).toBe(true);
-        expect(next.backendDB().version).toBe(70);
+        expect(next.backendDB().version).toBe(80);
     } finally {
         old.close();
         await next.delete();
@@ -205,17 +205,17 @@ it("الترقية المحجوبة تنتظر إغلاق الاتصال الآ�
     try {
         await next.open();
         expect(blocked).toBe(true);
-        expect(next.backendDB().version).toBe(70);
+        expect(next.backendDB().version).toBe(80);
     } finally {
         old.close();
         await next.delete();
         warn.mockRestore();
     }
 });
-it("Snapshot5 يصدر ويستعيد جميع الجداول19 ويحفظ اللقطات القديمة والمراجعات", async () => {
+it("Snapshot6 يصدر ويستعيد جميع الجداول20 ويحفظ اللقطات القديمة والمراجعات", async () => {
     await seed();
     const before = await snapshot();
-    expect(before.version).toBe(5);
+    expect(before.version).toBe(6);
     validateBackup(before);
     await importBackup(JSON.parse(JSON.stringify(before)));
     expect(await raw()).toEqual(
@@ -232,7 +232,7 @@ it.each([1, 2, 3, 4] as const)(
         const after = await raw();
         for (const n of habitStores) expect(after[n]).toEqual(before[n]);
         const copy = await latestRecovery();
-        expect(copy!.version).toBe(5);
+        expect(copy!.version).toBe(6);
         expect(copy!.habitEntries).toEqual(before.habitEntries);
     },
 );

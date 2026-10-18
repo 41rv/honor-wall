@@ -1,0 +1,64 @@
+[WebServer] (node:43306) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:43327) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 45 tests using 1 worker
+
+(node:43359) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/45] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 320 light
+[2/45] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 320 dark
+[3/45] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 390 light
+[4/45] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 390 dark
+[5/45] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 768 light
+[6/45] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 768 dark
+[7/45] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 1366 light
+[8/45] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 1366 dark
+[9/45] tests/browser/experience-phase1.spec.ts:244:1 › quantity units, large manual alternative, cancellation and precise below-target recording
+[10/45] tests/browser/experience-phase1.spec.ts:292:1 › previous-day feedback edits stay on that entry, skip and close do not write
+[11/45] tests/browser/experience-phase1.spec.ts:332:1 › permanent habit deletion cancellation, archived item, cleanup and unaffected legacy data
+[12/45] tests/browser/experience-phase1.spec.ts:381:5 › path deletion keep, safety and retained histories
+[13/45] tests/browser/experience-phase1.spec.ts:381:5 › path deletion cascade, safety and retained histories
+[14/45] tests/browser/experience-phase1.spec.ts:381:5 › path deletion archived, safety and retained histories
+[15/45] tests/browser/experience-phase1.spec.ts:442:1 › backup actual download validates new feedback, restore preview and conservative old restore
+[16/45] tests/browser/experience-phase1.spec.ts:500:1 › accessibility and reduced motion cover slider, feedback and destructive confirmation
+[17/45] tests/browser/experience-phase1.spec.ts:531:1 › rating stays reachable when a completed habit leaves the first three rows
+[18/45] tests/browser/habits-phase2.spec.ts:83:1 › قاعدة جديدة ومداخل المرحلة الأولى:20 مخزنًا دون بيانات عادات افتراضية
+[19/45] tests/browser/habits-phase2.spec.ts:103:1 › Snapshot5→6:معاينة وحفظ وتصدير مطابق وإعادة فتح دون سجلات إضافية
+[20/45] tests/browser/habits-phase2.spec.ts:123:5 › نسخة1:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[21/45] tests/browser/habits-phase2.spec.ts:123:5 › نسخة2:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[22/45] tests/browser/habits-phase2.spec.ts:123:5 › نسخة3:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[23/45] tests/browser/habits-phase2.spec.ts:123:5 › نسخة4:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[24/45] tests/browser/habits-phase2.spec.ts:145:1 › الاستبدال الكامل منفصل ويحتاج اختيارًا صريحًا،ونسخة الأمان تستعيد كل المحذوف
+[25/45] tests/browser/habits-phase2.spec.ts:172:1 › الدمج السريع وإعادة اختيار الملف لا يكرران،والمستويات والقرارات ترتبط بالمعرفات الجديدة
+[26/45] tests/browser/habits-phase2.spec.ts:216:1 › التحقق يمنع الملفات المكسورة قبل الكتابة ولا توجد واجهة استيراد عادات مبكرة
+[27/45] tests/browser/habits-phase2.spec.ts:239:1 › Quota في نسخة الأمان يمنع المسح عبر الواجهة ويتيح المحاولة مجددًا
+[28/45] tests/browser/habits-phase2.spec.ts:275:1 › فشل IndexedDB أثناء إدراج التذكيرات يتراجع عن كامل الاستعادة
+[29/45] tests/browser/habits-phase2.spec.ts:303:9 › معاينة الاستعادة وRTL والثيم 320 light
+[30/45] tests/browser/habits-phase2.spec.ts:303:9 › معاينة الاستعادة وRTL والثيم 320 dark
+[31/45] tests/browser/habits-phase2.spec.ts:303:9 › معاينة الاستعادة وRTL والثيم 390 light
+[32/45] tests/browser/habits-phase2.spec.ts:303:9 › معاينة الاستعادة وRTL والثيم 390 dark
+[33/45] tests/browser/habits-phase2.spec.ts:362:1 › الاستعادة لا تعيد تطبيق اختيار قديم معلّق لمهامي اليوم عند إعادة الفتح
+[34/45] tests/browser/navigation-phase1.spec.ts:44:9 › navigation screenshots 320 light
+[35/45] tests/browser/navigation-phase1.spec.ts:44:9 › navigation screenshots 320 dark
+[36/45] tests/browser/navigation-phase1.spec.ts:44:9 › navigation screenshots 390 light
+[37/45] tests/browser/navigation-phase1.spec.ts:44:9 › navigation screenshots 390 dark
+[38/45] tests/browser/navigation-phase1.spec.ts:73:5 › three primary sections and reachable gateway 320
+[39/45] tests/browser/navigation-phase1.spec.ts:73:5 › three primary sections and reachable gateway 390
+[40/45] tests/browser/navigation-phase1.spec.ts:73:5 › three primary sections and reachable gateway 768
+[41/45] tests/browser/navigation-phase1.spec.ts:73:5 › three primary sections and reachable gateway 1366
+[42/45] tests/browser/navigation-phase1.spec.ts:144:1 › task shortcut is one click from every current page and habits is storage-neutral
+[43/45] tests/browser/navigation-phase1.spec.ts:195:1 › back and forward preserve gateway origin, reload and safe direct-link fallbacks
+[44/45] tests/browser/navigation-phase1.spec.ts:229:1 › task-list and project-tree scroll positions survive section navigation
+[45/45] tests/browser/navigation-phase1.spec.ts:265:1 › legacy creation, completion and accessible light/dark shell remain available
+  45 passed (3.0m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

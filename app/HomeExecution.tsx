@@ -10,6 +10,8 @@ import { useWallClock } from "./useWallClock";
 import { TodayTasks } from "./TodayTasks";
 import { HomeSummaries } from "./HomeSummaries";
 import { TodayHabitsCard } from "./Habits";
+import { useHabitData } from "./useHabitData";
+import { addHabitDays, habitDate, habitToday } from "./habitCalendar";
 export function HomeExecution({
     data,
     active,
@@ -42,10 +44,22 @@ export function HomeExecution({
     openHistory: () => void;
 }) {
     const clock = useWallClock();
-    const today = orderedToday(
-        data.tasks,
-        new Date(Math.max(clock, Date.now())),
+    const at = new Date(Math.max(clock, Date.now()));
+    const date = habitDate(
+        at,
+        Intl.DateTimeFormat().resolvedOptions().timeZone,
     );
+    const habits = useHabitData(addHabitDays(date, -28), date);
+    const todayHabits = habits
+        ? habitToday(
+              habits.habits,
+              habits.plans,
+              habits.paths,
+              habits.entries,
+              at,
+          )
+        : [];
+    const today = orderedToday(data.tasks, at);
     const [limit, setLimit] = useState(2);
     const [all, setAll] = useState(expanded);
     useEffect(() => {
@@ -56,6 +70,32 @@ export function HomeExecution({
     return (
         <>
             <section className="home-today" aria-label="مهامي اليوم">
+                {!expanded && (
+                    <nav className="daily-overview" aria-label="ملخص يومك">
+                        <a href="#today">
+                            <strong>
+                                {
+                                    today.filter(
+                                        (r) => r.task.status !== "done",
+                                    ).length
+                                }
+                            </strong>
+                            <span>مهام متبقية</span>
+                        </a>
+                        <a href="#habits/today">
+                            <strong>
+                                {habits
+                                    ? todayHabits.filter((r) => !r.done).length
+                                    : "…"}
+                            </strong>
+                            <span>عادات متبقية</span>
+                        </a>
+                        <a href="#projects">
+                            <strong>{active.length}</strong>
+                            <span>مشاريع نشطة</span>
+                        </a>
+                    </nav>
+                )}
                 <div className="section-heading">
                     <h2>
                         مهامي اليوم{" "}
@@ -78,7 +118,7 @@ export function HomeExecution({
                 </div>
                 <p className="small muted home-today-count">
                     {today.filter((r) => r.task.status === "done").length} منجزة
-                    من {today.length} في قائمة اليوم
+                    من {today.length}
                 </p>
                 {all ? (
                     <TodayTasks tasks={data.tasks} renderTask={renderTask} />
@@ -99,7 +139,7 @@ export function HomeExecution({
                     </p>
                 )}
             </section>
-            <TodayHabitsCard />
+            <TodayHabitsCard data={habits} rows={todayHabits} at={at} />
             <section
                 className="home-execution"
                 aria-label="خطوات مشاريعك القادمة"
@@ -122,53 +162,52 @@ export function HomeExecution({
                         خطوات مطلوبة اليوم.
                     </p>
                 )}
-                <section
-                    className="surface resume-shortcut sky-glass"
-                    aria-label="اختصار الاستكمال"
-                >
-                    <div>
-                        <span className="small muted">
-                            {projectRest
-                                ? "خطوة متاحة اختياريًا"
-                                : "أكمل من حيث توقفت"}
-                        </span>
-                        <h2 title={resume?.title}>
-                            {resume?.title ?? "خطوتك التالية تبدأ هنا"}
-                        </h2>
-                        <p className="muted small" title={project?.title}>
-                            {resume
-                                ? `${project?.title} / ${stage ? `المرحلة ${hierarchy.numbers.get(stage.id)}` : "خطوات المشروع"}`
-                                : "افتح مشروعًا واختر خطوة لتعود إليها هنا."}
-                        </p>
-                    </div>
-                    {resume && (
-                        <>
-                            <CompletionButton
-                                entityKey={`step/${resume.id}`}
-                                checked={false}
-                                label={`الخطوة «${resume.title}»`}
-                                onToggle={(value) => complete(resume.id, value)}
-                            />
-                            <button
-                                className="icon-btn"
-                                aria-label="أكمل من حيث توقفت"
-                                onClick={() => open(`step/${resume.id}`)}
-                            >
-                                <ArrowUpLeft size={20} />
-                            </button>
-                        </>
-                    )}
-                </section>
+                {(resume || !active.length) && (
+                    <section
+                        className="surface resume-shortcut sky-glass"
+                        aria-label="اختصار الاستكمال"
+                    >
+                        <div>
+                            <span className="small muted">
+                                {projectRest
+                                    ? "خطوة متاحة اختياريًا"
+                                    : "أكمل من حيث توقفت"}
+                            </span>
+                            <h2 title={resume?.title}>
+                                {resume?.title ?? "خطوتك التالية تبدأ هنا"}
+                            </h2>
+                            <p className="muted small" title={project?.title}>
+                                {resume
+                                    ? `${project?.title} / ${stage ? `المرحلة ${hierarchy.numbers.get(stage.id)}` : "خطوات المشروع"}`
+                                    : "لا توجد مشاريع نشطة. أضف مشروعًا من زر الإضافة."}
+                            </p>
+                        </div>
+                        {resume && (
+                            <>
+                                <CompletionButton
+                                    entityKey={`step/${resume.id}`}
+                                    checked={false}
+                                    label={`الخطوة «${resume.title}»`}
+                                    onToggle={(value) =>
+                                        complete(resume.id, value)
+                                    }
+                                />
+                                <button
+                                    className="icon-btn"
+                                    aria-label="أكمل من حيث توقفت"
+                                    onClick={() => open(`step/${resume.id}`)}
+                                >
+                                    <ArrowUpLeft size={20} />
+                                </button>
+                            </>
+                        )}
+                    </section>
+                )}
                 <div className="project-grid">
                     {active
                         .slice(0, limit)
                         .map((p, i) => renderProject(p, i, resume?.id))}
                 </div>
-                {!active.length && (
-                    <p className="compact-empty muted sky-glass">
-                        لا توجد مشاريع نشطة. يمكنك إضافة مشروع من زر الإضافة.
-                    </p>
-                )}
                 {active.length > limit && (
                     <button
                         className="text-btn load-more"
@@ -178,8 +217,22 @@ export function HomeExecution({
                     </button>
                 )}
             </section>
-            <HomeSummaries data={data} />
-            {recommendation}
+            <HomeSummaries
+                data={data}
+                habits={habits}
+                at={at}
+                today={todayHabits}
+            />
+            <details className="surface sky-glass home-secondary home-recommendations">
+                <summary>
+                    اقتراحات اختيارية{" "}
+                    <span className="small muted">القرار لك</span>
+                </summary>
+                {recommendation}
+                <a className="text-btn" href="#progress/recommendations">
+                    كل التوصيات وسجل القرارات
+                </a>
+            </details>
             <button
                 className="text-btn home-progress-link"
                 onClick={openHistory}

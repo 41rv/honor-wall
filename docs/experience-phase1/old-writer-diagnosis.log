@@ -1,0 +1,1 @@
+REPRODUCED: an already-open1.5.0 writer drops numeric rating and duration when schema version is unchanged.

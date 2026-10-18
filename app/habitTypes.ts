@@ -51,6 +51,9 @@ export interface HabitPlan {
     phases: HabitPhase[];
     baseline?: HabitLevel;
     current?: HabitLevel;
+    // A deleted path's pause intervals remain a historical fact, without a
+    // dangling path ID. Open pauses are capped when the path is removed.
+    detachedPath?: { title: string; pauses: HabitPause[] };
 }
 export interface HabitEntry {
     id: string;
@@ -72,6 +75,9 @@ export interface HabitEntry {
               amount: number;
           };
     difficulty?: "easy" | "okay" | "hard";
+    // Keep the original three-value assessment untouched for old recordings.
+    effortRating?: 1 | 2 | 3 | 4 | 5;
+    durationMinutes?: number;
 }
 export interface HabitSuggestion {
     id: string;
@@ -86,6 +92,17 @@ export interface HabitSuggestion {
     decidedAt?: string;
     change?: HabitLevel;
     appliedPlanId?: string;
+}
+/** Canonical feedback is stored separately: v7 clients reconstruct entry rows
+ * and can drop unknown inline fields. The id is the original entry's id. */
+export interface HabitAssessment {
+    id: string;
+    habitId: string;
+    planId: string;
+    localDate: string;
+    updatedAt: string;
+    effortRating?: HabitEntry["effortRating"];
+    durationMinutes?: number;
 }
 export interface Reminder {
     id: string;
@@ -103,6 +120,9 @@ export interface HabitImportReceipt {
     // References may become stale after deliberate deletion. Never treat digest
     // alone as proof that the imported items still exist, or rebind stale IDs.
     outputs: Partial<Record<ReceiptStore, string[]>>;
+    // Some outputs were intentionally deleted. Remaining outputs still require
+    // explicit consent before importing another copy of the full definition.
+    partial?: true;
 }
 export interface HabitData {
     habitPaths?: HabitPath[];
@@ -112,4 +132,5 @@ export interface HabitData {
     habitSuggestions?: HabitSuggestion[];
     reminders?: Reminder[];
     habitImportReceipts?: HabitImportReceipt[];
+    habitAssessments?: HabitAssessment[];
 }

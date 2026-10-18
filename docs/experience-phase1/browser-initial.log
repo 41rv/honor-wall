@@ -1,0 +1,40 @@
+[WebServer] (node:7993) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:8006) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 16 tests using 1 worker
+
+(node:8030) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/16] tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 320 light
+  1) tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 320 light 
+
+    Test timeout of 45000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for getByRole('region', { name: 'عاداتي اليوم', exact: true }).locator('[data-habit-id="reading"]').locator('.habit-feedback').getByLabel('صعوبة الأداء', { exact: true })
+
+
+      27 |  let entries=await readStore(page,'habitEntries');const record=entries.find(e=>e.habitId==='reading'&&e.localDate==='2026-10-21')!;expect(record.result).toMatchObject({amount:3,threshold:2});expect(record.effortRating).toBeUndefined();expect(record.durationMinutes).toBeUndefined();
+      28 |  const feedback=row.locator('.habit-feedback');await feedback.locator('summary').click();
+    > 29 |  await feedback.getByLabel('صعوبة الأداء',{exact:true}).selectOption('4');await feedback.getByLabel('المدة الفعلية بالدقائق',{exact:true}).fill('6.5');
+         |                                                         ^
+      30 |  expect((await readStore(page,'habitEntries')).find(e=>e.id===record.id)?.effortRating).toBeUndefined();
+      31 |  await feedback.getByRole('button',{name:'حفظ التقييم والمدة',exact:true}).click();
+      32 |  await expect.poll(async()=>(await readStore(page,'habitEntries')).find(e=>e.id===record.id)?.effortRating).toBe(4);
+        at /workspace/honor-wall/tests/browser/experience-phase1.spec.ts:29:57
+
+    Error Context: test-results/experience-phase1-daily-po-b2ebc-ack-and-shortcuts-320-light/error-context.md
+
+
+(node:8229) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[2/16] tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 320 dark

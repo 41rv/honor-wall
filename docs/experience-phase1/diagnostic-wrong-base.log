@@ -1,0 +1,67 @@
+[WebServer] (node:42010) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:42038) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 45 tests using 1 worker
+
+(node:42062) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/45] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 320 light
+  1) tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 320 light 
+
+    Test timeout of 45000ms exceeded.
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 7
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    +   "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    +   "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    +   "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    +   "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    + ]
+
+      19 |     await page.clock.setFixedTime(new Date("2026-10-21T10:00:00Z"));
+      20 | });
+    > 21 | test.afterEach(async ({ page }) => expect(errors.get(page)).toEqual([]));
+         |                                                             ^
+      22 | function fixture(): Snapshot {
+      23 |     const d: Snapshot = Object.assign(
+      24 |         habitFixture(),
+        at /workspace/honor-wall/tests/browser/experience-phase1.spec.ts:21:61
+
+    Error: locator.setInputFiles: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for getByLabel('استيراد نسخة', { exact: true })
+
+
+       at helpers.ts:112
+
+      110 | export async function importData(page: Page, data: Snapshot) {
+      111 |     await page.goto(appUrl("/#backup"));
+    > 112 |     await page.getByLabel("استيراد نسخة", { exact: true }).setInputFiles({
+          |     ^
+      113 |         name: "stress.json",
+      114 |         mimeType: "application/json",
+      115 |         buffer: Buffer.from(JSON.stringify(data)),
+        at importData (/workspace/honor-wall/tests/browser/helpers.ts:112:5)
+        at seed (/workspace/honor-wall/tests/browser/experience-phase1.spec.ts:34:5)
+        at /workspace/honor-wall/tests/browser/experience-phase1.spec.ts:66:13
+
+    Error Context: test-results/experience-phase1-daily-po-b2ebc-ack-and-shortcuts-320-light/error-context.md
+
+
+(node:42761) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[2/45] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 320 dark

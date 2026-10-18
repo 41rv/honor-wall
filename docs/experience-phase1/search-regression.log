@@ -1,0 +1,30 @@
+[WebServer] (node:96999) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:97012) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 3 tests using 1 worker
+
+(node:97036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/3] tests/browser/app.spec.ts:99:1 › واجهة المشروع: الإنشاء، الترتيب، الملاحظات، النسب والإغلاق
+(node:97170) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[2/3] tests/browser/app.spec.ts:99:1 › واجهة المشروع: الإنشاء، الترتيب، الملاحظات، النسب والإغلاق
+(node:97300) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[3/3] tests/browser/app.spec.ts:99:1 › واجهة المشروع: الإنشاء، الترتيب، الملاحظات، النسب والإغلاق
+  3 passed (19.1s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

@@ -1,0 +1,218 @@
+[WebServer] (node:23098) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:23111) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 332 tests using 1 worker
+
+(node:23135) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/332] tests/browser/app.spec.ts:99:1 › واجهة المشروع: الإنشاء، الترتيب، الملاحظات، النسب والإغلاق
+[2/332] tests/browser/app.spec.ts:176:1 › المهام والأفكار: إنشاء وبدء وإنجاز وإعادة فتح وتحويل وتراجع
+[3/332] tests/browser/app.spec.ts:256:1 › إنشاء مشروع ومرحلة وخطوة فرعية وتعديل وأرشفة
+[4/332] tests/browser/app.spec.ts:284:1 › تصدير واستيراد كامل، رفض نسخة مكسورة دون فقد البيانات
+[5/332] tests/browser/app.spec.ts:314:1 › شاشة 320 بكسل، الوضعان وغياب التمرير الأفقي
+[6/332] tests/browser/app.spec.ts:348:1 › PWA: الأصول والبيانات متاحة دون إنترنت بعد إعادة التشغيل
+[7/332] tests/browser/app.spec.ts:385:1 › مشروع طويل: استكمال آخر خطوة، حفظ موضع العودة، والتفرع العميق
+[8/332] tests/browser/app.spec.ts:449:1 › فشل حفظ الملاحظات يستعيد المسودة بعد إعادة التحميل ويمكن إعادة حفظها
+[9/332] tests/browser/buttons.spec.ts:32:1 › أزرار الإضافة والإلغاء والإغلاق والبحث والتنقل والضغط المتكرر
+[10/332] tests/browser/buttons.spec.ts:105:1 › كل أزرار المراحل والخطوات: إضافة وتفاصيل وترتيب وطي وحالات وحذف وتراجع
+[11/332] tests/browser/buttons.spec.ts:215:5 › محاكاة هاتف ولمس › الصح باللمس وإعادة الفتح وتفاصيل المهمة وحالاتها والإلغاء والتراجع
+[12/332] tests/browser/buttons.spec.ts:283:5 › محاكاة هاتف ولمس › الأفكار: إضافة سريعة وتعديل وبحث وأرشفة واستعادة وتحويل وإلغاء التحويل
+[13/332] tests/browser/buttons.spec.ts:334:1 › تصدير الملاحظات فور الكتابة والتحقق وإلغاء الاستيراد والتثبيت المتاح
+[14/332] tests/browser/buttons.spec.ts:392:1 › فشل إتمام المهمة يعيد علامتها لحالتها السابقة ولا يسجل إنجازًا زائفًا
+[15/332] tests/browser/buttons.spec.ts:419:1 › الكتابة السريعة تدمج الحفظ وتبقى الملاحظات بعد رجوع فوري
+[16/332] tests/browser/buttons.spec.ts:456:1 › روابط الرئيسية والإنجازات تفتح المشروع والمهمة والخطوة في مكانها
+[17/332] tests/browser/buttons.spec.ts:509:1 › رسالة فشل فتح التخزين وزر إعادة المحاولة يستعيدان التطبيق دون حذف البيانات
+[18/332] tests/browser/completion-capture.spec.ts:31:1 › التقاط الفكرة في صفحة الأفكار يحفظ باللمس والإدخال والتفاصيل دون فقد
+[19/332] tests/browser/completion-capture.spec.ts:68:1 › إتمام الخطوة والمرحلة من الشجرة وتحديث الأرقام والسجل ثم إعادة فتحهما
+[20/332] tests/browser/completion-capture.spec.ts:132:1 › المشروع له زر إتمام في البطاقة والتفاصيل وإتمامه لا يغيّر خطواته
+[21/332] tests/browser/completion-capture.spec.ts:174:1 › آخر مرحلة تُتمّ المشروع تلقائيًا عند ١٠٠٪ ويبقى الإتمام اليدوي متاحًا عند ٥٠٪
+[22/332] tests/browser/completion-capture.spec.ts:239:1 › فشل الإتمام الجماعي لا يترك علامة صح أو حالات جزئية
+[23/332] tests/browser/completion-capture.spec.ts:275:1 › فشل حفظ الفكرة يبقي مسودتها ولا ينشئ نسخًا مكررة
+[24/332] tests/browser/dark-audit-extended.spec.ts:42:5 › بداية تتبع النظام دون React والتخزين فارغ
+[25/332] tests/browser/dark-audit-extended.spec.ts:42:5 › بداية تتبع النظام دون React والتخزين محجوب
+[26/332] tests/browser/dark-audit-extended.spec.ts:80:5 › ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 320
+[27/332] tests/browser/dark-audit-extended.spec.ts:80:5 › ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 390
+[28/332] tests/browser/dark-audit-extended.spec.ts:80:5 › ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 768
+[29/332] tests/browser/dark-audit-extended.spec.ts:80:5 › ألوان النظام والخلفيات والثيمات الأربع دون إعادة تشغيل بعرض 1366
+[30/332] tests/browser/dark-audit-extended.spec.ts:214:1 › PWA: لون بدء ثابت غير أبيض وهوية ومسار التثبيت محفوظان
+[31/332] tests/browser/dark-audit-extended.spec.ts:226:1 › المساحة الآمنة السفلية ذات ٢٤ بكسل مغطاة بخلفية داكنة والزر لا يحجب التنقل
+[32/332] tests/browser/dark-audit-extended.spec.ts:262:1 › تكرار التنقل والثيم لا يسرب المستمعين والتبويبات المستقرة لا تعيد قراءات التخزين
+[33/332] tests/browser/dark-audit-extended.spec.ts:357:1 › الرئيسية تتحدث بعد تعديل الموعد والأولوية وتحفظ العدد والمعرف والملاحظات
+[34/332] tests/browser/dark-audit-extended.spec.ts:424:1 › منتصف الليل والسنة: الأسبوع السبت-الجمعة والاختيارات والتكرار دون دورة خاطئة
+[35/332] tests/browser/dark-audit-extended.spec.ts:527:1 › بيانات استخدام مختلطة وسجل طويل: تصفية وترقيم صفحات ونسخ واستعادة مرتان بلا ازدواج
+[36/332] tests/browser/dark-audit.spec.ts:14:9 › قبل React وCSS: الثيم المحفوظ green/light يحدد خلفية البداية وألوان النظام
+[37/332] tests/browser/dark-audit.spec.ts:14:9 › قبل React وCSS: الثيم المحفوظ green/dark يحدد خلفية البداية وألوان النظام
+[38/332] tests/browser/dark-audit.spec.ts:14:9 › قبل React وCSS: الثيم المحفوظ mono/light يحدد خلفية البداية وألوان النظام
+[39/332] tests/browser/dark-audit.spec.ts:14:9 › قبل React وCSS: الثيم المحفوظ mono/dark يحدد خلفية البداية وألوان النظام
+[40/332] tests/browser/dark-audit.spec.ts:71:1 › التنقل بالرجوع يغلق قائمة الإضافة ولا يترك نافذة على صفحة أخرى
+[41/332] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 320 light
+[42/332] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 320 dark
+[43/332] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 390 light
+[44/332] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 390 dark
+[45/332] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 768 light
+[46/332] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 768 dark
+[47/332] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 1366 light
+[48/332] tests/browser/experience-phase1.spec.ts:58:9 › daily polish slider draft feedback and shortcuts 1366 dark
+[49/332] tests/browser/experience-phase1.spec.ts:244:1 › quantity units, large manual alternative, cancellation and precise below-target recording
+[50/332] tests/browser/experience-phase1.spec.ts:292:1 › previous-day feedback edits stay on that entry, skip and close do not write
+[51/332] tests/browser/experience-phase1.spec.ts:332:1 › permanent habit deletion cancellation, archived item, cleanup and unaffected legacy data
+[52/332] tests/browser/experience-phase1.spec.ts:381:5 › path deletion keep, safety and retained histories
+[53/332] tests/browser/experience-phase1.spec.ts:381:5 › path deletion cascade, safety and retained histories
+[54/332] tests/browser/experience-phase1.spec.ts:381:5 › path deletion archived, safety and retained histories
+[55/332] tests/browser/experience-phase1.spec.ts:442:1 › backup actual download validates new feedback, restore preview and conservative old restore
+[56/332] tests/browser/experience-phase1.spec.ts:500:1 › accessibility and reduced motion cover slider, feedback and destructive confirmation
+[57/332] tests/browser/experience-phase1.spec.ts:531:1 › rating stays reachable when a completed habit leaves the first three rows
+[58/332] tests/browser/habits-phase2.spec.ts:83:1 › قاعدة جديدة ومداخل المرحلة الأولى:19 مخزنًا دون بيانات عادات افتراضية
+[59/332] tests/browser/habits-phase2.spec.ts:101:1 › Snapshot5:معاينة وحفظ وتصدير مطابق وإعادة فتح دون سجلات إضافية
+[60/332] tests/browser/habits-phase2.spec.ts:121:5 › نسخة1:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[61/332] tests/browser/habits-phase2.spec.ts:121:5 › نسخة2:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[62/332] tests/browser/habits-phase2.spec.ts:121:5 › نسخة3:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[63/332] tests/browser/habits-phase2.spec.ts:121:5 › نسخة4:الاستعادة الافتراضية تبقي العادات والتذكيرات وتتيح نسخة الأمان
+[64/332] tests/browser/habits-phase2.spec.ts:143:1 › الاستبدال الكامل منفصل ويحتاج اختيارًا صريحًا،ونسخة الأمان تستعيد كل المحذوف
+[65/332] tests/browser/habits-phase2.spec.ts:170:1 › الدمج السريع وإعادة اختيار الملف لا يكرران،والمستويات والقرارات ترتبط بالمعرفات الجديدة
+[66/332] tests/browser/habits-phase2.spec.ts:214:1 › التحقق يمنع الملفات المكسورة قبل الكتابة ولا توجد واجهة استيراد عادات مبكرة
+[67/332] tests/browser/habits-phase2.spec.ts:237:1 › Quota في نسخة الأمان يمنع المسح عبر الواجهة ويتيح المحاولة مجددًا
+[68/332] tests/browser/habits-phase2.spec.ts:273:1 › فشل IndexedDB أثناء إدراج التذكيرات يتراجع عن كامل الاستعادة
+[69/332] tests/browser/habits-phase2.spec.ts:301:9 › معاينة الاستعادة وRTL والثيم 320 light
+[70/332] tests/browser/habits-phase2.spec.ts:301:9 › معاينة الاستعادة وRTL والثيم 320 dark
+[71/332] tests/browser/habits-phase2.spec.ts:301:9 › معاينة الاستعادة وRTL والثيم 390 light
+[72/332] tests/browser/habits-phase2.spec.ts:301:9 › معاينة الاستعادة وRTL والثيم 390 dark
+[73/332] tests/browser/habits-phase2.spec.ts:360:1 › الاستعادة لا تعيد تطبيق اختيار قديم معلّق لمهامي اليوم عند إعادة الفتح
+[74/332] tests/browser/habits-phase3.spec.ts:128:1 › حساب جديد:لا بياناتافتراضية،إنشاءمساروعادةمستقلةوأسبوعيةوتعديلها
+[75/332] tests/browser/habits-phase3.spec.ts:185:1 › الرئيسيةتسجلوترجعفورًاوالتسجيلوالإحصاءاتمنفصلةعنالمهاموالمشاريع
+[76/332] tests/browser/habits-phase3.spec.ts:228:1 › التسجيلالمتزامنمننافذتينلاينشئسجلينيوميين
+[77/332] tests/browser/habits-phase3.spec.ts:300:1 › تصحيحتسجيلقديموخارجالشهرالظاهرلاينسخالسجلويحفظوقتإدخاله
+[78/332] tests/browser/habits-phase3.spec.ts:345:1 › نقلالعادةبينالمساراتوفصلهايحفظالسجلويظهرالسريانغدًا
+[79/332] tests/browser/habits-phase3.spec.ts:369:1 › الإيقافالمتداخلوالاستئنافلايغيرالسجلولايلغيتوقفالعادة
+[80/332] tests/browser/habits-phase3.spec.ts:396:1 › أرشفةواستعادةالمساروالعادةمحافظتانوتتطلبالأرشفةتأكيدًا
+[81/332] tests/browser/habits-phase3.spec.ts:432:1 › منتصفالليلودورةاليومالجديدوالأسبوعلايرحلانالتسجيل
+[82/332] tests/browser/habits-phase3.spec.ts:458:1 › الروابطالمباشرةوالرجوعوالتمريروEscapeوالإضافةالعائمةتبقىسليمة
+[83/332] tests/browser/habits-phase3.spec.ts:489:1 › النسخوالاستعادةتحفظالإنجازوالإيقافاتالجديدةمعالجداولالقديمة
+[84/332] tests/browser/habits-phase3.spec.ts:512:9 › العرضوالصورRTL 320 light
+[85/332] tests/browser/habits-phase3.spec.ts:512:9 › العرضوالصورRTL 320 dark
+[86/332] tests/browser/habits-phase3.spec.ts:512:9 › العرضوالصورRTL 390 light
+[87/332] tests/browser/habits-phase3.spec.ts:512:9 › العرضوالصورRTL 390 dark
+[88/332] tests/browser/habits-phase3.spec.ts:512:9 › العرضوالصورRTL 768 light
+[89/332] tests/browser/habits-phase3.spec.ts:512:9 › العرضوالصورRTL 768 dark
+[90/332] tests/browser/habits-phase3.spec.ts:512:9 › العرضوالصورRTL 1366 light
+[91/332] tests/browser/habits-phase3.spec.ts:512:9 › العرضوالصورRTL 1366 dark
+[92/332] tests/browser/habits-phase3.spec.ts:575:1 › فتحوتسجيلسريعانمعقائمةطويلةوإبطاءCPUدونحسابالتاريخكله
+[93/332] tests/browser/habits-phase3.spec.ts:625:1 › النقرالمتكرروالأرشيفمنعرضاليوموالرابطالمباشر
+[94/332] tests/browser/habits-phase3.spec.ts:660:1 › حدودالشهوروالسنةتحدثالتقويموالمطالبةفورعودةالتطبيق
+[95/332] tests/browser/habits-phase3.spec.ts:685:1 › الرجوعمنالتفاصيلومنالرئيسيةيعيدالصفوفالموسعةوموضعالتمرير
+[96/332] tests/browser/habits-phase3.spec.ts:724:1 › تباينرسالةتحميلالسجلأثناءقراءةمعلقةفعليًافيالصباحالداكن
+[97/332] tests/browser/habits-phase4-7.spec.ts:29:9 › phase4 graded CRUD and home 320 light
+[98/332] tests/browser/habits-phase4-7.spec.ts:29:9 › phase4 graded CRUD and home 320 dark
+[99/332] tests/browser/habits-phase4-7.spec.ts:29:9 › phase4 graded CRUD and home 390 light
+[100/332] tests/browser/habits-phase4-7.spec.ts:29:9 › phase4 graded CRUD and home 390 dark
+[101/332] tests/browser/habits-phase4-7.spec.ts:136:5 › phase5 import preview duplicate and validation 320 light
+[102/332] tests/browser/habits-phase4-7.spec.ts:136:5 › phase5 import preview duplicate and validation 390 dark
+[103/332] tests/browser/habits-phase4-7.spec.ts:229:5 › phase6 reminders CRUD and ideas regression 320 dark
+[104/332] tests/browser/habits-phase4-7.spec.ts:229:5 › phase6 reminders CRUD and ideas regression 390 light
+[105/332] tests/browser/habits-phase4-7.spec.ts:387:5 › phase7 advice explicit preview accept undo and summaries 320 light
+[106/332] tests/browser/habits-phase4-7.spec.ts:387:5 › phase7 advice explicit preview accept undo and summaries 390 dark
+[107/332] tests/browser/habits-phase4-7.spec.ts:471:1 › phase7 accepts only confirmed current recommendation, keeps today threshold and history
+[108/332] tests/browser/habits-phase47-edge.spec.ts:18:1 › graded historical editing, tomorrow goal and optional difficulty phase remain separate
+[109/332] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 320 light
+[110/332] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 320 dark
+[111/332] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 390 light
+[112/332] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 390 dark
+[113/332] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 768 light
+[114/332] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 768 dark
+[115/332] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 1366 light
+[116/332] tests/browser/habits-phase47-edge.spec.ts:158:9 › new controls accessibility RTL 1366 dark
+[117/332] tests/browser/habits-phase47-edge.spec.ts:195:1 › local search locates habits paths and reminders without legacy entity mutations
+[118/332] tests/browser/habits-phase47-edge.spec.ts:225:1 › habit form and long lists remain bounded and responsive under4x CPU
+[119/332] tests/browser/habits-phase47-edge.spec.ts:275:1 › home idle query boundaries stay stable instead of reopening IndexedDB queries on each render
+[120/332] tests/browser/habits-phase47-edge.spec.ts:320:1 › simultaneous timestamp recording from a second tab updates the first quantity without duplicate rows
+[121/332] tests/browser/habits-phase8.spec.ts:8:1 › الاستعادة الجارية لا توهم بالإلغاء عند Escape أو النقر خارج النافذة
+[122/332] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 320 light
+[123/332] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 320 dark
+[124/332] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 390 light
+[125/332] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 390 dark
+[126/332] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 768 light
+[127/332] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 768 dark
+[128/332] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 1366 light
+[129/332] tests/browser/habits-phase8.spec.ts:63:9 › النسخة المرشحة — الصفحات القديمة والجديدة وRTL 1366 dark
+[130/332] tests/browser/ideas-speed.spec.ts:5:1 › قياس حفظ فكرة مع ألفي فكرة موجودة ومعالج أبطأ
+tests/browser/ideas-speed.spec.ts:5:1 › قياس حفظ فكرة مع ألفي فكرة موجودة ومعالج أبطأ
+IDEA_SAVE_MS 871
+
+[131/332] tests/browser/interactions.spec.ts:5:1 › علامة الإتمام تعمل حتى إذا حدث تحديث للواجهة أثناء الضغط
+[132/332] tests/browser/interactions.spec.ts:42:1 › قياس سرعة الإضافة والتعديل والإتمام بقاعدة كبيرة ومعالج أبطأ
+tests/browser/interactions.spec.ts:42:1 › قياس سرعة الإضافة والتعديل والإتمام بقاعدة كبيرة ومعالج أبطأ
+PERFORMANCE_MS {"project":826,"stage":534,"notes":2395,"complete":1662}
+
+  1) tests/browser/interactions.spec.ts:42:1 › قياس سرعة الإضافة والتعديل والإتمام بقاعدة كبيرة ومعالج أبطأ 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 1500
+    Received:   1662
+
+      102 |     expect(times.project).toBeLessThan(1500);
+      103 |     expect(times.stage).toBeLessThan(1500);
+    > 104 |     expect(times.complete).toBeLessThan(1500);
+          |                            ^
+      105 |     await test.info().attach("latency.json", {
+      106 |         body: JSON.stringify(times),
+      107 |         contentType: "application/json",
+        at /workspace/honor-wall/tests/browser/interactions.spec.ts:104:28
+
+    Error Context: test-results/interactions-قياس-سرعة-الإ-5fb08-ام-بقاعدة-كبيرة-ومعالج-أبطأ/error-context.md
+
+
+(node:29649) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[133/332] tests/browser/interface-organization.spec.ts:9:1 › الرئيسية: أول ثلاث مهام بالترتيب نفسه دون تغيير الأولويات وإنجاز وتراجع
+[134/332] tests/browser/interface-organization.spec.ts:70:1 › الرئيسية الفارغة مختصرة والاستكمال لا يكرر خطوته في بطاقات المشاريع
+[135/332] tests/browser/interface-organization.spec.ts:105:1 › زر إضافة واحد في الصفحات الخمس: النماذج الأصلية ولوحة المفاتيح والإغلاق
+[136/332] tests/browser/interface-organization.spec.ts:149:1 › بطاقة المشروع تحتفظ بالمعلومات ورقم المرحلة والنصوص الأصلية
+[137/332] tests/browser/interface-organization.spec.ts:241:1 › تبويبات التقدم تحفظ الفترة والسجل الصحيح والتراجع والرؤى دون ازدواج
+[138/332] tests/browser/interface-organization.spec.ts:346:5 › التصميم بعرض 320: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول
+[139/332] tests/browser/interface-organization.spec.ts:346:5 › التصميم بعرض 390: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول
+[140/332] tests/browser/interface-organization.spec.ts:346:5 › التصميم بعرض 768: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول
+[141/332] tests/browser/interface-organization.spec.ts:346:5 › التصميم بعرض 1366: الثيمات الأربع وRTL والأزرار والفلاتر وإمكانية الوصول
+[142/332] tests/browser/interface-organization.spec.ts:480:1 › التبويبات تحفظ المشروع وفلاتر السجل ولا تعدل الجداول الثمانية
+[143/332] tests/browser/internal-controls.spec.ts:87:9 › visual inventory 320 light
+[144/332] tests/browser/internal-controls.spec.ts:87:9 › visual inventory 320 dark
+  2) tests/browser/internal-controls.spec.ts:87:9 › visual inventory 320 dark ──────────────────────
+
+    Test was interrupted.
+
+    Error: frame.evaluate: Test ended.
+
+      110 |                     ].includes(name)
+      111 |                 ) {
+    > 112 |                     const audit = await new AxeBuilder({ page })
+          |                                   ^
+      113 |                         .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+      114 |                         .analyze();
+      115 |                     expect(audit.violations, `${name} accessibility`).toEqual(
+        at AxeBuilder.runPartialRecursive (/workspace/honor-wall/node_modules/@axe-core/playwright/dist/index.mjs:283:34)
+        at AxeBuilder.analyze (/workspace/honor-wall/node_modules/@axe-core/playwright/dist/index.mjs:210:28)
+        at capture (/workspace/honor-wall/tests/browser/internal-controls.spec.ts:112:35)
+        at /workspace/honor-wall/tests/browser/internal-controls.spec.ts:121:13
+
+    Error Context: test-results/internal-controls-visual-inventory-320-dark/error-context.md
+
+
+  1 failed
+    tests/browser/interactions.spec.ts:42:1 › قياس سرعة الإضافة والتعديل والإتمام بقاعدة كبيرة ومعالج أبطأ 
+  1 interrupted
+    tests/browser/internal-controls.spec.ts:87:9 › visual inventory 320 dark ───────────────────────
+  188 did not run
+  142 passed (11.3m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

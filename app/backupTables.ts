@@ -14,7 +14,7 @@ export const legacyStores = [
     "recommendations",
     "paceSettings",
 ] as const;
-export const habitStores = [
+export const schema7HabitStores = [
     "habitPaths",
     "habits",
     "habitPlans",
@@ -23,6 +23,7 @@ export const habitStores = [
     "reminders",
     "habitImportReceipts",
 ] as const;
+export const habitStores = [...schema7HabitStores, "habitAssessments"] as const;
 export const backupStores = [...legacyStores, ...habitStores] as const;
 export type BackupStore = (typeof backupStores)[number];
 export type ReceiptStore = Exclude<

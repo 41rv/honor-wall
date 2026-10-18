@@ -1,0 +1,23 @@
+app/habitAssessments.ts 114ms
+app/backupTables.ts 13ms (unchanged)
+app/db.ts 290ms
+app/habitTypes.ts 13ms (unchanged)
+app/model.ts 107ms (unchanged)
+app/habitValidation.ts 58ms
+app/habitStore.ts 58ms
+app/habitAdvice.ts 52ms
+app/habitBackupMerge.ts 25ms
+app/useHabitData.ts 6ms
+app/HabitSuggestions.tsx 28ms
+app/Habits.tsx 227ms
+app/habitDeletion.ts 85ms
+app/HabitDeletionDialog.tsx 56ms
+app/BackupRestore.tsx 17ms
+tests/habitExperience.test.ts 70ms
+tests/habitDeletion.test.ts 34ms
+tests/habitStorage.test.ts 63ms (unchanged)
+tests/projectProgress.test.ts 22ms (unchanged)
+tests/projectPaceStore.test.ts 64ms (unchanged)
+tests/taskSchedule.test.ts 69ms (unchanged)
+tests/browser/habits-phase2.spec.ts 40ms
+tests/browser/navigation-phase1.spec.ts 33ms (unchanged)

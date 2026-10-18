@@ -1,0 +1,46 @@
+[WebServer] (node:8495) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:8508) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 16 tests using 1 worker
+
+(node:8532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/16] tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 320 light
+  1) tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 320 light 
+
+    Test timeout of 45000ms exceeded.
+
+    Error: locator.click: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'إكمال مهمة يومية قديمة', exact: true })
+
+
+      40 |  await home.getByRole('button',{name:'التراجع عن عادة «ترتيب السرير»',exact:true}).click();await expect(home.locator('.count')).toHaveText('1/2');
+      41 |  for(const d of ['.home-secondary'])expect(await page.locator(d+'[open]').count()).toBe(0);
+    > 42 |  await page.getByRole('button',{name:'إكمال مهمة يومية قديمة',exact:true}).click();
+         |                                                                            ^
+      43 |  await expect(page.getByRole('button',{name:'إعادة فتح مهمة يومية قديمة',exact:true})).toBeVisible();
+      44 |  await page.getByRole('button',{name:'إعادة فتح مهمة يومية قديمة',exact:true}).click();
+      45 |  await page.locator('.home-summaries .home-secondary').first().locator(':scope > summary').click();
+        at /workspace/honor-wall/tests/browser/experience-phase1.spec.ts:42:76
+
+    Error Context: test-results/experience-phase1-daily-po-b2ebc-ack-and-shortcuts-320-light/error-context.md
+
+
+Testing stopped early after 1 maximum allowed failures.
+
+  1 failed
+    tests/browser/experience-phase1.spec.ts:17:75 › daily polish slider draft feedback and shortcuts 320 light 
+  15 did not run
+  1 error was not a part of any test, see above for details
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

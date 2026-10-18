@@ -1,0 +1,101 @@
+{
+  "synthetic": true,
+  "cpuThrottle": 4,
+  "samples": [
+    {
+      "ms": 1861,
+      "commits": [
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 0
+        },
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 0
+        },
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 0
+        },
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 1
+        },
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 0
+        },
+        {
+          "rows": 200,
+          "rendered": 0,
+          "changedTaskIdentities": 0
+        }
+      ]
+    },
+    {
+      "ms": 538,
+      "commits": [
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 0
+        },
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 0
+        },
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 1
+        },
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 0
+        },
+        {
+          "rows": 200,
+          "rendered": 0,
+          "changedTaskIdentities": 0
+        }
+      ]
+    },
+    {
+      "ms": 677,
+      "commits": [
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 0
+        },
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 0
+        },
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 1
+        },
+        {
+          "rows": 200,
+          "rendered": 1,
+          "changedTaskIdentities": 0
+        },
+        {
+          "rows": 200,
+          "rendered": 0,
+          "changedTaskIdentities": 0
+        }
+      ]
+    }
+  ]
+}

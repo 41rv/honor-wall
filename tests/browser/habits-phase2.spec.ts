@@ -80,7 +80,7 @@ function old(version: 1 | 2 | 3 | 4): Snapshot {
     }
     return d;
 }
-test("قاعدة جديدة ومداخل المرحلة الأولى:19 مخزنًا دون بيانات عادات افتراضية", async ({
+test("قاعدة جديدة ومداخل المرحلة الأولى:20 مخزنًا دون بيانات عادات افتراضية", async ({
     page,
 }) => {
     await page.goto(appUrl("/"));
@@ -89,16 +89,18 @@ test("قاعدة جديدة ومداخل المرحلة الأولى:19 مخزن
     const native = (await page.evaluate(() => indexedDB.databases())).find(
         (d) => d.name === "masar-v1",
     );
-    expect(native!.version).toBe(70);
+    expect(native!.version).toBe(80);
     await navigateView(page, "habits");
-    await expect(page.getByRole("heading", {name:"مساراتي",exact:true})).toBeVisible();
+    await expect(
+        page.getByRole("heading", { name: "مساراتي", exact: true }),
+    ).toBeVisible();
     await navigateView(page, "projects");
     for (const route of ["tasks", "ideas", "progress"]) {
         await navigateView(page, route);
         await expect(page.locator(".workspace-back")).toBeVisible();
     }
 });
-test("Snapshot5:معاينة وحفظ وتصدير مطابق وإعادة فتح دون سجلات إضافية", async ({
+test("Snapshot5→6:معاينة وحفظ وتصدير مطابق وإعادة فتح دون سجلات إضافية", async ({
     page,
 }) => {
     const source = habitFixture();
@@ -111,7 +113,7 @@ test("Snapshot5:معاينة وحفظ وتصدير مطابق وإعادة فت�
     await expect(dialog).not.toBeVisible();
     const before = await all(page),
         exported = await download(page);
-    expect(exported.version).toBe(5);
+    expect(exported.version).toBe(6);
     for (const n of habitStores) expect(exported[n]).toEqual(before[n]);
     await page.reload();
     for (const n of habitStores)
@@ -137,7 +139,7 @@ for (const version of [1, 2, 3, 4] as const)
         for (const n of habitStores)
             expect(await readStore(page, n)).toEqual(before[n]);
         const safety = await download(page, "تنزيل نسخة الأمان الأخيرة");
-        expect(safety.version).toBe(5);
+        expect(safety.version).toBe(6);
         for (const n of habitStores) expect(safety[n]).toEqual(before[n]);
     });
 test("الاستبدال الكامل منفصل ويحتاج اختيارًا صريحًا،ونسخة الأمان تستعيد كل المحذوف", async ({

@@ -25,6 +25,7 @@ export function PaceSummary({
     work,
     clock,
     settings,
+    compact = false,
 }: {
     project: Project;
     plan?: ProjectPlan;
@@ -32,6 +33,7 @@ export function PaceSummary({
     work: StepWork[];
     clock: number;
     settings?: PaceSettings;
+    compact?: boolean;
 }) {
     const pace = useMemo(
         () =>
@@ -59,13 +61,13 @@ export function PaceSummary({
                             : "أضف هدفًا زمنيًا"
                       : `${pace.required.toLocaleString("ar", { maximumFractionDigits: 1 })} خطوة / يوم عمل`}
             </p>
-            {plan?.goal && (
+            {!compact && plan?.goal && (
                 <p className="small muted">
                     الموعد المستهدف {pace.target} ·{" "}
                     {plan.goal.deadline === "fixed" ? "إلزامي لا يتأجل" : "مرن"}
                 </p>
             )}
-            {pace.workingDays !== undefined && (
+            {!compact && pace.workingDays !== undefined && (
                 <p className="small muted">
                     {pace.workingDays} أيام عمل متبقية ضمن {pace.days} يومًا
                     تقويميًا؛ الراحة لا تؤجل الهدف.

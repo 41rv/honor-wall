@@ -1,0 +1,34 @@
+{
+  "method": "Original large-fixture project/stage/notes workflow on actual old1.5.0 and candidate, CPU4x. Separate asynchronous hash-route/readiness from task-completion timing. No product delays, no assertion thresholds changed.",
+  "reports": [
+    {
+      "stage": "before",
+      "cpuThrottle": 4,
+      "tasks": 200,
+      "projects": 20,
+      "steps": 2200,
+      "events": 10000,
+      "hashGotoReturnedMs": 15,
+      "viewAndTransitionReadinessAfterGotoMs": 1405,
+      "clickToCompletedListMs": 560,
+      "combinedIntervalFromGotoReturnMs": 1967,
+      "routeAnimationsAwaited": 0,
+      "completionMainThreadSeconds": 0.5401530000000001
+    },
+    {
+      "stage": "after",
+      "cpuThrottle": 4,
+      "tasks": 200,
+      "projects": 20,
+      "steps": 2200,
+      "events": 10000,
+      "hashGotoReturnedMs": 42,
+      "viewAndTransitionReadinessAfterGotoMs": 1237,
+      "clickToCompletedListMs": 505,
+      "combinedIntervalFromGotoReturnMs": 1745,
+      "routeAnimationsAwaited": 0,
+      "completionMainThreadSeconds": 0.482634
+    }
+  ],
+  "countsDescribe": "Base fixture before adding the measured project and stage; both stages execute the same original workflow."
+}

@@ -1,0 +1,49 @@
+{
+  "method": "Identical 120-habit data, Chromium mobile 390px, CPU4x, before frozen published1.5.0 bytes and current candidate; navigation click to rendered count and next frame, recording click to updated count; synthetic local data only.",
+  "reports": [
+    {
+      "stage": "before",
+      "cpuThrottle": 4,
+      "habits": 120,
+      "visibleHomeRows": 3,
+      "navigationMs": [
+        917,
+        763,
+        661,
+        973,
+        858
+      ],
+      "navigationMedianMs": 858,
+      "recordingMs": [
+        380,
+        343,
+        289
+      ],
+      "recordingMedianMs": 343,
+      "idleAdditionalGetAllReads": 0,
+      "physicalAndroid": false
+    },
+    {
+      "stage": "after",
+      "cpuThrottle": 4,
+      "habits": 120,
+      "visibleHomeRows": 3,
+      "navigationMs": [
+        908,
+        1232,
+        1019,
+        1284,
+        985
+      ],
+      "navigationMedianMs": 1019,
+      "recordingMs": [
+        504,
+        572,
+        568
+      ],
+      "recordingMedianMs": 568,
+      "idleAdditionalGetAllReads": 0,
+      "physicalAndroid": false
+    }
+  ]
+}

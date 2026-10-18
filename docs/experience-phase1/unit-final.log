@@ -1,0 +1,61 @@
+
+> masar-personal@1.5.0 test
+> vitest run --reporter=default --reporter=json --outputFile=docs/experience-phase1/unit-final.json
+
+
+ RUN  v5.0.4 /workspace/honor-wall
+
+ ✓ tests/model.test.ts (26 tests) 993ms
+ ✓ tests/habitExperience.test.ts (57 tests) 1791ms
+ ✓ tests/projectRestStore.test.ts (21 tests) 909ms
+stderr | tests/habitStorage.test.ts > اتصال قديم يستقبلversionchange ويغلق قبل الترقية دون فقد بيانات
+Another connection wants to upgrade database 'habit-two-tabs-7b8afb8f-ac29-4b22-b83b-2db30caa3fd0'. Closing db now to resume the upgrade.
+
+ ✓ tests/habitAdvice.test.ts (21 tests) 787ms
+ ✓ tests/habitStorage.test.ts (29 tests) 1352ms
+ ✓ tests/habitDeletion.test.ts (15 tests) 428ms
+ ✓ tests/taskSchedule.test.ts (48 tests) 743ms
+ ✓ tests/habitRecording.test.ts (31 tests) 310ms
+ ✓ tests/completionQueue.test.ts (8 tests) 472ms
+ ✓ tests/projectPaceStore.test.ts (34 tests) 5502ms
+   ✓ توصية التركيز تشرح مشروعين ولا توقف أحدهما قبل التأكيد 961ms
+ ✓ tests/habitGraded.test.ts (22 tests) 355ms
+ ✓ tests/todayCompletion.test.ts (14 tests) 250ms
+ ✓ tests/livingSky.test.ts (68 tests) 520ms
+   ✓ جميع دقائق اليوم حتمية وبحدود صالحة 501ms
+ ✓ tests/dailyPlanning.test.ts (8 tests) 233ms
+ ✓ tests/projectProgress.test.ts (9 tests) 437ms
+ ✓ tests/projectImport.test.ts (14 tests) 220ms
+ ✓ tests/projectPace.test.ts (23 tests) 181ms
+ ✓ tests/habitImport.test.ts (21 tests) 284ms
+ ✓ tests/habitValidation.test.ts (77 tests) 120ms
+ ✓ tests/projectRest.test.ts (23 tests) 193ms
+ ✓ tests/reminders.test.ts (9 tests) 425ms
+ ✓ tests/habitsPhase8.test.ts (1 test) 113ms
+ ✓ tests/completionRecovery.test.ts (7 tests) 70ms
+ ✓ tests/weekCalendar.test.ts (6 tests) 154ms
+ ✓ tests/analytics.test.ts (16 tests) 45ms
+ ✓ tests/habitCalendar.test.ts (25 tests) 83ms
+ ✓ tests/saveQueue.test.ts (8 tests) 44ms
+ ✓ tests/todayOrder.test.ts (4 tests) 34ms
+ ✓ tests/projectInsights.test.ts (8 tests) 55ms
+ ✓ tests/taskViewIdentity.test.ts (6 tests) 41ms
+ ✓ tests/execution.test.ts (10 tests) 12ms
+ ✓ tests/navigation.test.ts (22 tests) 15ms
+ ✓ tests/routeMotion.test.ts (4 tests) 5ms
+ ✓ tests/achievementRecords.test.ts (5 tests) 7ms
+
+ Test Files  34 passed (34)
+      Tests  700 passed (700)
+   Start at  16:19:46
+   Duration  9.41s (tests 80%, import 17%, transform 3%, worker 1%)
+
+    Isolate  34 workers spawned · ~175ms startup each (spawn + environment, per file)
+             at least ~1.81s faster with isolate: false — reuses workers across files instead of one per file
+
+JSON report written to /workspace/honor-wall/docs/experience-phase1/unit-final.json
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

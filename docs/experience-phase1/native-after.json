@@ -1,0 +1,882 @@
+{
+  "rows": {
+    "events": [
+      {
+        "id": "09fcacd2-ed7a-4623-8e92-fc8a98e99afa",
+        "entityId": "be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d",
+        "entityKind": "project",
+        "title": "مشروع مستخدم قديم — اختبار معزول",
+        "action": "created",
+        "at": "2026-10-21T08:00:00.000Z"
+      },
+      {
+        "id": "1c33aa65-5ca9-428a-8c1a-2cdf93591775",
+        "entityId": "955629e0-2fbb-46c0-bb27-96674e66f42b",
+        "entityKind": "step",
+        "title": "خطوة باقية",
+        "action": "created",
+        "at": "2026-10-21T08:00:00.000Z"
+      },
+      {
+        "id": "2d214326-a19f-41a5-ab99-120f80016e4b",
+        "entityId": "c79f44c5-b025-477b-a060-eb19d03cb175",
+        "entityKind": "task",
+        "title": "مهمة يومية قديمة",
+        "action": "completed",
+        "at": "2026-10-21T08:00:00.000Z"
+      },
+      {
+        "id": "9937b8cd-d562-4640-a383-1582b0f9ef7e",
+        "entityId": "2c32aa72-4b9b-4cc0-b2c3-6f0a056a40bf",
+        "entityKind": "step",
+        "title": "خطوة مكتملة قديمة",
+        "action": "completed",
+        "at": "2026-10-21T08:00:00.000Z"
+      },
+      {
+        "id": "993bf530-47a0-4d38-8bd6-5cbeb5c4434d",
+        "entityId": "2c32aa72-4b9b-4cc0-b2c3-6f0a056a40bf",
+        "entityKind": "step",
+        "title": "خطوة مكتملة قديمة",
+        "action": "created",
+        "at": "2026-10-21T08:00:00.000Z"
+      },
+      {
+        "id": "9c8afb2e-3d24-4059-871e-0249f3fbb413",
+        "entityId": "4e14b77b-5446-4a13-acca-a63973fae59f",
+        "entityKind": "idea",
+        "title": "فكرة قديمة محفوظة",
+        "action": "created",
+        "at": "2026-10-21T08:00:00.000Z"
+      },
+      {
+        "id": "a3e00ab4-e00f-4d7e-b173-b8962b9abef5",
+        "entityId": "c79f44c5-b025-477b-a060-eb19d03cb175",
+        "entityKind": "task",
+        "title": "مهمة يومية قديمة",
+        "action": "created",
+        "at": "2026-10-21T08:00:00.000Z"
+      }
+    ],
+    "habitAssessments": [],
+    "habitEntries": [
+      {
+        "id": "bed1",
+        "habitId": "bed",
+        "planId": "bp1",
+        "localDate": "2026-10-05",
+        "dayStart": "2026-10-04T21:00:00.000Z",
+        "dayEnd": "2026-10-05T21:00:00.000Z",
+        "timeZone": "Asia/Riyadh",
+        "recordedAt": "2026-10-05T18:00:00.000Z",
+        "updatedAt": "2026-10-05T18:00:00.000Z",
+        "result": {
+          "kind": "simple",
+          "done": true
+        }
+      },
+      {
+        "id": "read1",
+        "habitId": "reading",
+        "planId": "hp1",
+        "localDate": "2026-10-05",
+        "dayStart": "2026-10-04T21:00:00.000Z",
+        "dayEnd": "2026-10-05T21:00:00.000Z",
+        "timeZone": "Asia/Riyadh",
+        "recordedAt": "2026-10-05T18:00:00.000Z",
+        "updatedAt": "2026-10-06T18:00:00.000Z",
+        "result": {
+          "kind": "graded",
+          "phaseKey": "pages",
+          "unit": "صفحات",
+          "threshold": 1,
+          "amount": 1
+        },
+        "difficulty": "easy"
+      },
+      {
+        "id": "read2",
+        "habitId": "reading",
+        "planId": "hp2",
+        "localDate": "2026-10-11",
+        "dayStart": "2026-10-10T21:00:00.000Z",
+        "dayEnd": "2026-10-11T21:00:00.000Z",
+        "timeZone": "Asia/Riyadh",
+        "recordedAt": "2026-10-11T18:00:00.000Z",
+        "updatedAt": "2026-10-11T18:00:00.000Z",
+        "result": {
+          "kind": "graded",
+          "phaseKey": "pages",
+          "unit": "صفحات",
+          "threshold": 2,
+          "amount": 3
+        }
+      }
+    ],
+    "habitImportReceipts": [
+      {
+        "id": "receipt",
+        "kind": "path",
+        "digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "createdAt": "2026-10-01T00:00:00.000Z",
+        "outputs": {
+          "habitPaths": [
+            "culture"
+          ],
+          "habits": [
+            "reading"
+          ],
+          "habitPlans": [
+            "hp1"
+          ]
+        }
+      }
+    ],
+    "habitPaths": [
+      {
+        "id": "culture",
+        "title": "المسار الثقافي",
+        "order": 0,
+        "createdAt": "2026-10-01T00:00:00.000Z",
+        "updatedAt": "2026-10-01T00:00:00.000Z",
+        "pauses": []
+      }
+    ],
+    "habitPlans": [
+      {
+        "id": "bp1",
+        "habitId": "bed",
+        "revision": 1,
+        "createdAt": "2026-10-01T00:00:00.000Z",
+        "effectiveDate": "2026-10-01",
+        "timeZone": "Asia/Riyadh",
+        "pathId": null,
+        "schedule": {
+          "repeat": "weekly",
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "phases": []
+      },
+      {
+        "id": "hp1",
+        "habitId": "reading",
+        "revision": 1,
+        "createdAt": "2026-10-01T00:00:00.000Z",
+        "effectiveDate": "2026-10-01",
+        "timeZone": "Asia/Riyadh",
+        "pathId": "culture",
+        "schedule": {
+          "repeat": "daily"
+        },
+        "phases": [
+          {
+            "key": "pages",
+            "label": "قراءة يومية",
+            "unit": "صفحات",
+            "start": 1,
+            "target": 20,
+            "step": 1
+          }
+        ],
+        "baseline": {
+          "phaseKey": "pages",
+          "target": 1
+        },
+        "current": {
+          "phaseKey": "pages",
+          "target": 1
+        }
+      },
+      {
+        "id": "hp2",
+        "habitId": "reading",
+        "revision": 2,
+        "createdAt": "2026-10-09T10:00:00.000Z",
+        "effectiveDate": "2026-10-10",
+        "timeZone": "Asia/Riyadh",
+        "pathId": "culture",
+        "schedule": {
+          "repeat": "daily"
+        },
+        "phases": [
+          {
+            "key": "pages",
+            "label": "قراءة يومية",
+            "unit": "صفحات",
+            "start": 1,
+            "target": 20,
+            "step": 1
+          }
+        ],
+        "baseline": {
+          "phaseKey": "pages",
+          "target": 1
+        },
+        "current": {
+          "phaseKey": "pages",
+          "target": 2
+        }
+      }
+    ],
+    "habitSuggestions": [
+      {
+        "id": "accepted",
+        "habitId": "reading",
+        "planId": "hp1",
+        "type": "increase",
+        "reason": "ستة أيام تحقيق من سبعة",
+        "effect": "زيادتك إلى صفحتين",
+        "basisHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "createdAt": "2026-10-08T10:00:00.000Z",
+        "status": "accepted",
+        "decidedAt": "2026-10-09T10:00:00.000Z",
+        "change": {
+          "phaseKey": "pages",
+          "target": 2
+        },
+        "appliedPlanId": "hp2"
+      },
+      {
+        "id": "rejected",
+        "habitId": "reading",
+        "planId": "hp2",
+        "type": "ease",
+        "reason": "إرهاق اختياري مسجل",
+        "effect": "صفحة واحدة",
+        "basisHash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "createdAt": "2026-10-13T10:00:00.000Z",
+        "status": "rejected",
+        "decidedAt": "2026-10-14T10:00:00.000Z",
+        "change": {
+          "phaseKey": "pages",
+          "target": 1
+        }
+      }
+    ],
+    "habits": [
+      {
+        "id": "bed",
+        "title": "ترتيب السرير",
+        "kind": "simple",
+        "pathId": null,
+        "timeZone": "Asia/Riyadh",
+        "createdAt": "2026-10-01T00:00:00.000Z",
+        "updatedAt": "2026-10-01T00:00:00.000Z",
+        "archived": false,
+        "pauses": []
+      },
+      {
+        "id": "reading",
+        "title": "قراءة",
+        "kind": "graded",
+        "pathId": "culture",
+        "timeZone": "Asia/Riyadh",
+        "createdAt": "2026-10-01T00:00:00.000Z",
+        "updatedAt": "2026-10-01T00:00:00.000Z",
+        "archived": false,
+        "pauses": []
+      }
+    ],
+    "ideas": [
+      {
+        "id": "4e14b77b-5446-4a13-acca-a63973fae59f",
+        "title": "فكرة قديمة محفوظة",
+        "notes": "نص طويل محفوظ",
+        "createdAt": "2026-10-21T08:00:00.000Z",
+        "updatedAt": "2026-10-21T08:00:00.000Z",
+        "archived": false
+      }
+    ],
+    "paceSettings": [
+      {
+        "id": "pace",
+        "activeLimit": 3,
+        "restHistory": [
+          {
+            "since": "2026-10-21T08:00:00.000Z",
+            "days": [
+              5,
+              6
+            ],
+            "timeZone": "UTC"
+          }
+        ]
+      }
+    ],
+    "projectPlans": [
+      {
+        "projectId": "be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d",
+        "since": "2026-10-21T08:00:00.000Z",
+        "revision": 3,
+        "workOrder": 1,
+        "pauses": [
+          {
+            "start": "2026-10-21T08:00:00.000Z",
+            "end": "2026-10-21T10:00:00.000Z"
+          }
+        ],
+        "goal": {
+          "kind": "duration",
+          "days": 20,
+          "anchor": "2026-10-21",
+          "targetDate": "2026-11-09",
+          "deadline": "flexible",
+          "timeZone": "UTC"
+        }
+      }
+    ],
+    "projectProgress": [
+      {
+        "id": "[\"be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d\",1]",
+        "projectId": "be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d",
+        "order": 1,
+        "at": "2026-10-21T08:00:00.000Z",
+        "before": null,
+        "after": 0,
+        "reason": "step_added"
+      },
+      {
+        "id": "[\"be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d\",2]",
+        "projectId": "be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d",
+        "order": 2,
+        "at": "2026-10-21T08:00:00.000Z",
+        "before": 0,
+        "after": 50,
+        "reason": "completion"
+      }
+    ],
+    "projectTracking": [
+      {
+        "projectId": "be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d",
+        "since": "2026-10-21T08:00:00.000Z",
+        "initialPercent": null,
+        "origin": "new",
+        "lastOrder": 2,
+        "lastProgressAt": "2026-10-21T08:00:00.000Z"
+      }
+    ],
+    "projects": [
+      {
+        "id": "be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d",
+        "title": "مشروع مستخدم قديم — اختبار معزول",
+        "notes": "ملاحظات أصلية",
+        "createdAt": "2026-10-21T08:00:00.000Z",
+        "updatedAt": "2026-10-21T10:00:00.000Z",
+        "status": "active",
+        "archived": false
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "phase8-old-decision",
+        "key": "phase8-old-decision",
+        "type": "focus",
+        "projectIds": [
+          "be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d"
+        ],
+        "reason": "قرار قديم محفوظ",
+        "effect": "لم يطبق",
+        "createdAt": "2026-10-21T10:00:00.000Z",
+        "status": "rejected",
+        "decidedAt": "2026-10-21T10:00:00.000Z",
+        "changes": [
+          {
+            "type": "pause",
+            "projectId": "be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d"
+          }
+        ],
+        "basis": "phase8-isolated"
+      }
+    ],
+    "reminders": [
+      {
+        "id": "book",
+        "title": "كتاب للمراجعة",
+        "category": "book",
+        "createdAt": "2026-10-01T00:00:00.000Z",
+        "updatedAt": "2026-10-01T00:00:00.000Z"
+      }
+    ],
+    "stepWork": [
+      {
+        "id": "[\"be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d\",1]",
+        "projectId": "be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d",
+        "stepId": "2c32aa72-4b9b-4cc0-b2c3-6f0a056a40bf",
+        "order": 1,
+        "at": "2026-10-21T08:00:00.000Z",
+        "complete": true
+      }
+    ],
+    "steps": [
+      {
+        "id": "2c32aa72-4b9b-4cc0-b2c3-6f0a056a40bf",
+        "title": "خطوة مكتملة قديمة",
+        "notes": "تفاصيل محفوظة",
+        "createdAt": "2026-10-21T08:00:00.000Z",
+        "updatedAt": "2026-10-21T08:00:00.000Z",
+        "projectId": "be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d",
+        "parentId": null,
+        "kind": "step",
+        "order": 0,
+        "status": "done",
+        "completedAt": "2026-10-21T08:00:00.000Z"
+      },
+      {
+        "id": "955629e0-2fbb-46c0-bb27-96674e66f42b",
+        "title": "خطوة باقية",
+        "notes": "",
+        "createdAt": "2026-10-21T08:00:00.000Z",
+        "updatedAt": "2026-10-21T08:00:00.000Z",
+        "projectId": "be2f8a5e-2f0e-4d54-9ee9-5ef488aaf06d",
+        "parentId": null,
+        "kind": "step",
+        "order": 1,
+        "status": "todo"
+      }
+    ],
+    "taskCycles": [
+      {
+        "id": "[\"c79f44c5-b025-477b-a060-eb19d03cb175\",1,\"2026-10-21T08:00:00.000Z\"]",
+        "taskId": "c79f44c5-b025-477b-a060-eb19d03cb175",
+        "revision": 1,
+        "start": "2026-10-21T08:00:00.000Z",
+        "end": "2026-10-21T21:00:00.000Z",
+        "scheduledAt": "2026-10-20T21:00:00.000Z",
+        "timeZone": "Asia/Riyadh",
+        "status": "completed",
+        "completedAt": "2026-10-21T08:00:00.000Z",
+        "workStatus": "todo"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "c79f44c5-b025-477b-a060-eb19d03cb175",
+        "title": "مهمة يومية قديمة",
+        "notes": "ملاحظات مهمة",
+        "createdAt": "2026-10-21T08:00:00.000Z",
+        "updatedAt": "2026-10-21T08:00:00.000Z",
+        "priority": "important-urgent",
+        "schedule": {
+          "date": "2026-10-21",
+          "repeat": "daily",
+          "timeZone": "Asia/Riyadh",
+          "leadDays": 3
+        },
+        "status": "todo",
+        "scheduleRevision": 1,
+        "scheduleSince": "2026-10-21T08:00:00.000Z",
+        "scheduleCursor": "2026-10-21T21:00:00.000Z"
+      }
+    ]
+  },
+  "schema": {
+    "version": 80,
+    "indexes": {
+      "events": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "action",
+            "key": "action",
+            "unique": false
+          },
+          {
+            "name": "at",
+            "key": "at",
+            "unique": false
+          },
+          {
+            "name": "entityId",
+            "key": "entityId",
+            "unique": false
+          }
+        ]
+      },
+      "habitAssessments": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "habitId",
+            "key": "habitId",
+            "unique": false
+          },
+          {
+            "name": "localDate",
+            "key": "localDate",
+            "unique": false
+          },
+          {
+            "name": "planId",
+            "key": "planId",
+            "unique": false
+          }
+        ]
+      },
+      "habitEntries": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "[habitId+localDate]",
+            "key": [
+              "habitId",
+              "localDate"
+            ],
+            "unique": true
+          },
+          {
+            "name": "habitId",
+            "key": "habitId",
+            "unique": false
+          },
+          {
+            "name": "localDate",
+            "key": "localDate",
+            "unique": false
+          },
+          {
+            "name": "planId",
+            "key": "planId",
+            "unique": false
+          }
+        ]
+      },
+      "habitImportReceipts": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "digest",
+            "key": "digest",
+            "unique": false
+          }
+        ]
+      },
+      "habitPaths": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "updatedAt",
+            "key": "updatedAt",
+            "unique": false
+          }
+        ]
+      },
+      "habitPlans": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "[habitId+effectiveDate]",
+            "key": [
+              "habitId",
+              "effectiveDate"
+            ],
+            "unique": false
+          },
+          {
+            "name": "[habitId+revision]",
+            "key": [
+              "habitId",
+              "revision"
+            ],
+            "unique": true
+          },
+          {
+            "name": "habitId",
+            "key": "habitId",
+            "unique": false
+          }
+        ]
+      },
+      "habitSuggestions": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "[habitId+status]",
+            "key": [
+              "habitId",
+              "status"
+            ],
+            "unique": false
+          },
+          {
+            "name": "basisHash",
+            "key": "basisHash",
+            "unique": false
+          },
+          {
+            "name": "habitId",
+            "key": "habitId",
+            "unique": false
+          }
+        ]
+      },
+      "habits": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "pathId",
+            "key": "pathId",
+            "unique": false
+          },
+          {
+            "name": "updatedAt",
+            "key": "updatedAt",
+            "unique": false
+          }
+        ]
+      },
+      "ideas": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "archived",
+            "key": "archived",
+            "unique": false
+          },
+          {
+            "name": "updatedAt",
+            "key": "updatedAt",
+            "unique": false
+          }
+        ]
+      },
+      "paceSettings": {
+        "key": "id",
+        "indexes": []
+      },
+      "projectPlans": {
+        "key": "projectId",
+        "indexes": [
+          {
+            "name": "since",
+            "key": "since",
+            "unique": false
+          }
+        ]
+      },
+      "projectProgress": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "[projectId+order]",
+            "key": [
+              "projectId",
+              "order"
+            ],
+            "unique": false
+          },
+          {
+            "name": "at",
+            "key": "at",
+            "unique": false
+          },
+          {
+            "name": "projectId",
+            "key": "projectId",
+            "unique": false
+          },
+          {
+            "name": "reason",
+            "key": "reason",
+            "unique": false
+          }
+        ]
+      },
+      "projectTracking": {
+        "key": "projectId",
+        "indexes": [
+          {
+            "name": "since",
+            "key": "since",
+            "unique": false
+          }
+        ]
+      },
+      "projects": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "archived",
+            "key": "archived",
+            "unique": false
+          },
+          {
+            "name": "status",
+            "key": "status",
+            "unique": false
+          },
+          {
+            "name": "updatedAt",
+            "key": "updatedAt",
+            "unique": false
+          }
+        ]
+      },
+      "recommendations": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "createdAt",
+            "key": "createdAt",
+            "unique": false
+          },
+          {
+            "name": "key",
+            "key": "key",
+            "unique": false
+          },
+          {
+            "name": "projectIds",
+            "key": "projectIds",
+            "unique": false
+          },
+          {
+            "name": "status",
+            "key": "status",
+            "unique": false
+          }
+        ]
+      },
+      "reminders": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "createdAt",
+            "key": "createdAt",
+            "unique": false
+          },
+          {
+            "name": "reviewedAt",
+            "key": "reviewedAt",
+            "unique": false
+          }
+        ]
+      },
+      "stepWork": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "[projectId+at]",
+            "key": [
+              "projectId",
+              "at"
+            ],
+            "unique": false
+          },
+          {
+            "name": "at",
+            "key": "at",
+            "unique": false
+          },
+          {
+            "name": "projectId",
+            "key": "projectId",
+            "unique": false
+          },
+          {
+            "name": "stepId",
+            "key": "stepId",
+            "unique": false
+          }
+        ]
+      },
+      "steps": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "order",
+            "key": "order",
+            "unique": false
+          },
+          {
+            "name": "parentId",
+            "key": "parentId",
+            "unique": false
+          },
+          {
+            "name": "projectId",
+            "key": "projectId",
+            "unique": false
+          },
+          {
+            "name": "status",
+            "key": "status",
+            "unique": false
+          }
+        ]
+      },
+      "taskCycles": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "[status+end]",
+            "key": [
+              "status",
+              "end"
+            ],
+            "unique": false
+          },
+          {
+            "name": "[taskId+revision+start]",
+            "key": [
+              "taskId",
+              "revision",
+              "start"
+            ],
+            "unique": false
+          },
+          {
+            "name": "completedAt",
+            "key": "completedAt",
+            "unique": false
+          },
+          {
+            "name": "end",
+            "key": "end",
+            "unique": false
+          },
+          {
+            "name": "scheduledAt",
+            "key": "scheduledAt",
+            "unique": false
+          },
+          {
+            "name": "status",
+            "key": "status",
+            "unique": false
+          },
+          {
+            "name": "taskId",
+            "key": "taskId",
+            "unique": false
+          }
+        ]
+      },
+      "tasks": {
+        "key": "id",
+        "indexes": [
+          {
+            "name": "completedAt",
+            "key": "completedAt",
+            "unique": false
+          },
+          {
+            "name": "schedule.repeat",
+            "key": "schedule.repeat",
+            "unique": false
+          },
+          {
+            "name": "status",
+            "key": "status",
+            "unique": false
+          }
+        ]
+      }
+    }
+  }
+}

@@ -165,10 +165,15 @@ test("40/20 من الواجهة: هدف ووتيرة وإنجاز من الرئ�
         "aria-label",
         "خطوات مشاريعك القادمة",
     );
-    await expect(sections.nth(3)).toHaveAttribute(
-        "aria-label",
-        "التوصية الأبرز",
+    await expect(page.locator(".home-recommendations")).not.toHaveAttribute(
+        "open",
+        "",
     );
+    await page.locator(".home-recommendations > summary").click();
+    await expect(
+        page.getByRole("region", { name: "التوصية الأبرز", exact: true }),
+    ).toBeVisible();
+    await page.locator(".home-recommendations > summary").click();
     await page
         .getByRole("button", { name: "إتمام الخطوة «خطوة 0»", exact: true })
         .click();
@@ -230,6 +235,7 @@ test("توصية شخصية: الرئيسية تعرض واحدة والرفض �
 }) => {
     await importData(page, observedFixture());
     await page.goto(appUrl("/#home"));
+    await page.locator(".home-recommendations > summary").click();
     const main = page.getByLabel("التوصية الأبرز", { exact: true });
     await expect(main.locator(".recommendation-card")).toHaveCount(1);
     const before = await readStore(page, "projectPlans");
@@ -256,6 +262,7 @@ test("اعتماد توصية شخصية وتحديث مؤشرات المشرو�
     await page.goto(appUrl("/#project/p"));
     await expect(page.getByLabel("وتيرة المشروع")).toContainText("2026-10-20");
     await page.goto(appUrl("/#home"));
+    await page.locator(".home-recommendations > summary").click();
     await page.getByRole("button", { name: "معاينة الاقتراح" }).click();
     await page
         .getByRole("button", { name: "تأكيد اعتماد التغييرات", exact: true })

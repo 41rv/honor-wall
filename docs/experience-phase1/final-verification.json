@@ -1,0 +1,25 @@
+{
+  "sourceAndBuildUnchangedSinceFinalFreeze": true,
+  "unitPassed": 700,
+  "browserPassed": 333,
+  "nativePwaChecksPassed": 12,
+  "failed": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "newUnitTests": 86,
+  "newBrowserTests": 18,
+  "schemaChanged": true,
+  "schemaFrom": 7,
+  "schemaTo": 8,
+  "tablesAdded": [
+    "habitAssessments"
+  ],
+  "original19TablesAndIndexesUnchanged": true,
+  "snapshotVersion": 6,
+  "taskRowsRenderedBefore": 200,
+  "taskRowsRenderedAfter": 1,
+  "physicalAndroidTested": false,
+  "published": false,
+  "pushed": false,
+  "candidateSha256": "f7c00ed224e06a182931ff3fb004530c083a9de3cda7cbce42366d65eec8a95b"
+}

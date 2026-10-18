@@ -16,6 +16,7 @@ import type {
 } from "./habitTypes";
 import { habitDate } from "./habitCalendar";
 import { userError } from "./userError";
+import { assessedHabitEntries } from "./habitAssessments";
 const adviceLabels = {
     increase: "زيادة بسيطة",
     advance: "مرحلة أصعب",
@@ -47,10 +48,18 @@ export function HabitSuggestionPanel({
     const date = habitDate(at, habit.timeZone);
     const data = useLiveQuery(
         async () => ({
-            entries: await db.habitEntries
-                .where("[habitId+localDate]")
-                .between([habit.id, "0000-01-01"], [habit.id, date], true, true)
-                .toArray(),
+            entries: await assessedHabitEntries(
+                db,
+                await db.habitEntries
+                    .where("[habitId+localDate]")
+                    .between(
+                        [habit.id, "0000-01-01"],
+                        [habit.id, date],
+                        true,
+                        true,
+                    )
+                    .toArray(),
+            ),
             suggestions: await db.habitSuggestions
                 .where("habitId")
                 .equals(habit.id)
@@ -64,7 +73,14 @@ export function HabitSuggestionPanel({
               plans,
               paths.map((p) => [p.id, p.pauses]),
               habit,
-              entries.map((e) => [e.id, e.updatedAt, e.result, e.difficulty]),
+              entries.map((e) => [
+                  e.id,
+                  e.updatedAt,
+                  e.result,
+                  e.difficulty,
+                  e.effortRating,
+                  e.durationMinutes,
+              ]),
               date,
               required,
           ])

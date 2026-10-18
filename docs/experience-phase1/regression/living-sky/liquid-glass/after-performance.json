@@ -1,0 +1,26 @@
+{
+  "cpu_throttle": 4,
+  "frames": 149,
+  "median_frame_ms": 16.699999999999818,
+  "p95_frame_ms": 16.799999999999955,
+  "frames_over_50ms": 0,
+  "main_thread_task_seconds": 0.224682,
+  "layout_seconds": 0,
+  "recalc_style_seconds": 0.015856,
+  "dialog_response_ms": [
+    197,
+    137,
+    141,
+    108,
+    126
+  ],
+  "browser_input_to_paint_ms": [
+    154.20000000298023,
+    129.70000000298023,
+    115.29999999701977,
+    115.30000000447035,
+    122
+  ],
+  "fresh_browser_process": true,
+  "hardware_android": false
+}

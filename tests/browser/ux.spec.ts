@@ -279,6 +279,14 @@ for (const mobile of [false, true]) {
                 });
                 await expect(resume).toContainText("خطوة 3");
                 await expect(resume).toContainText("المرحلة 2");
+                await expect(
+                    page
+                        .getByRole("region", {
+                            name: "خطوات مشاريعك القادمة",
+                            exact: true,
+                        })
+                        .locator('[data-completion-key^="step/"]'),
+                ).toHaveCount(1);
                 await page.reload();
                 await resume
                     .getByRole("button", { name: "أكمل من حيث توقفت" })

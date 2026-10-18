@@ -21,8 +21,20 @@ import type {
 
 import { validateHabitLevels } from "./habitProgression";
 import { scaledQuantity } from "./habitValidation";
+import { assessedHabitEntries, assessmentFromEntry } from "./habitAssessments";
+import {
+    recordedPerformance,
+    validFeedback,
+    type HabitFeedbackInput,
+} from "./habitFeedback";
 
-const stores = [db.habits, db.habitPaths, db.habitPlans, db.habitEntries];
+const stores = [
+    db.habits,
+    db.habitPaths,
+    db.habitPlans,
+    db.habitEntries,
+    db.habitAssessments,
+];
 function write<T>(operation: () => Promise<T>) {
     return trackBackupWrite(() => db.transaction("rw", stores, operation));
 }
@@ -312,10 +324,13 @@ export function recordSimpleHabit(
             bounds.end <= Date.parse(habit.createdAt)
         )
             throw new Error("تاريخ التسجيل غير صالح.");
-        const old = await db.habitEntries
+        const raw = await db.habitEntries
             .where("[habitId+localDate]")
             .equals([id, date])
             .first();
+        const old = raw
+            ? (await assessedHabitEntries(db, [raw]))[0]
+            : undefined;
         if (old?.result.kind === "simple" && old.result.done === done)
             return old.id;
         const stamp = at.toISOString();
@@ -333,6 +348,12 @@ export function recordSimpleHabit(
             updatedAt: stamp,
             result: { kind: "simple", done },
             ...(old?.difficulty ? { difficulty: old.difficulty } : {}),
+            ...(old?.effortRating !== undefined
+                ? { effortRating: old.effortRating }
+                : {}),
+            ...(old?.durationMinutes !== undefined
+                ? { durationMinutes: old.durationMinutes }
+                : {}),
         };
         await db.habitEntries.put(entry);
         return entry.id;
@@ -463,15 +484,21 @@ export function recordGradedHabit(
         const bounds = habitDayBounds(date, habit.timeZone);
         if (bounds.end <= Date.parse(habit.createdAt))
             throw new Error("تاريخ التسجيل غير صالح.");
-        const old = await db.habitEntries
+        const raw = await db.habitEntries
             .where("[habitId+localDate]")
             .equals([id, date])
             .first();
+        const old = raw
+            ? (await assessedHabitEntries(db, [raw]))[0]
+            : undefined;
         const stamp = at.toISOString();
         if (stamp < (old?.updatedAt ?? plan.createdAt))
             throw new Error("وقت الجهاز يسبق آخر تسجيل محفوظ.");
         if (amount === null) {
-            if (old) await db.habitEntries.delete(old.id);
+            if (old) {
+                await db.habitEntries.delete(old.id);
+                await db.habitAssessments.delete(old.id);
+            }
             return old?.id;
         }
         const phase = plan.phases.find(
@@ -504,8 +531,61 @@ export function recordGradedHabit(
             updatedAt: stamp,
             result,
             ...(nextDifficulty ? { difficulty: nextDifficulty } : {}),
+            ...(old?.effortRating !== undefined
+                ? { effortRating: old.effortRating }
+                : {}),
+            ...(old?.durationMinutes !== undefined
+                ? { durationMinutes: old.durationMinutes }
+                : {}),
         };
         await db.habitEntries.put(entry);
         return entry.id;
+    });
+}
+
+/** Patch one existing recording, never upsert or recreate a deleted entry. */
+export function saveHabitFeedback(
+    entryId: string,
+    input: HabitFeedbackInput,
+    at = new Date(),
+) {
+    return write(async () => {
+        if (!validFeedback(input))
+            throw new Error(
+                "اختر تقييمًا من1 إلى5، ومدة موجبة لا تتجاوز1440 دقيقة بدقة حتى3 منازل عشرية.",
+            );
+        const raw = await db.habitEntries.get(entryId);
+        const old = raw
+            ? (await assessedHabitEntries(db, [raw]))[0]
+            : undefined;
+        if (
+            !old ||
+            !(await db.habits.get(old.habitId)) ||
+            !recordedPerformance(old)
+        )
+            throw new Error(
+                "التسجيل غير متاح. أعد فتح اليوم قبل تعديل تقييمه.",
+            );
+        assertTime(old, at);
+        const next = { ...old };
+        if (input.effortRating === null) delete next.effortRating;
+        else if (input.effortRating !== undefined)
+            next.effortRating = input.effortRating;
+        if (input.durationMinutes === null) delete next.durationMinutes;
+        else if (input.durationMinutes !== undefined)
+            next.durationMinutes = input.durationMinutes;
+        if (input.clearLegacyDifficulty) delete next.difficulty;
+        if (
+            old.effortRating === next.effortRating &&
+            old.durationMinutes === next.durationMinutes &&
+            old.difficulty === next.difficulty
+        )
+            return old.id;
+        const updated = { ...next, updatedAt: at.toISOString() };
+        await db.habitEntries.put(updated);
+        const assessment = assessmentFromEntry(updated);
+        if (assessment) await db.habitAssessments.put(assessment);
+        else await db.habitAssessments.delete(entryId);
+        return old.id;
     });
 }

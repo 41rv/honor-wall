@@ -187,9 +187,14 @@ export async function habitImportDigest(doc: HabitsImport) {
         .join("");
 }
 export class DuplicateHabitImport extends Error {
-    constructor(public route: string) {
+    constructor(
+        public route: string,
+        partial = false,
+    ) {
         super(
-            "هذا الملف مستورد بالفعل. افتح العناصر الموجودة، أو اختر صراحةً إنشاء نسخة إضافية.",
+            partial
+                ? "بعض عناصر هذا الملف موجودة وبعضها حُذف. افتح العناصر الباقية، أو وافق صراحةً على استيراد نسخة كاملة إضافية."
+                : "هذا الملف مستورد بالفعل. افتح العناصر الموجودة، أو اختر صراحةً إنشاء نسخة إضافية.",
         );
     }
 }
@@ -224,12 +229,26 @@ export async function importHabits(
                         .toArray())
                         if (
                             r.kind !== "backup" &&
-                            (await receiptPresent(db, r))
+                            ((await receiptPresent(db, r)) ||
+                                (r.partial &&
+                                    ((r.outputs.habitPaths?.length &&
+                                        (
+                                            await db.habitPaths.bulkGet(
+                                                r.outputs.habitPaths,
+                                            )
+                                        ).some(Boolean)) ||
+                                        (r.outputs.habits?.length &&
+                                            (
+                                                await db.habits.bulkGet(
+                                                    r.outputs.habits,
+                                                )
+                                            ).some(Boolean)))))
                         ) {
                             throw new DuplicateHabitImport(
-                                r.kind === "path"
-                                    ? `habit-path/${r.outputs.habitPaths![0]}`
+                                r.outputs.habitPaths?.length
+                                    ? `habit-path/${r.outputs.habitPaths[0]}`
                                     : `habit/${r.outputs.habits![0]}`,
+                                !!r.partial,
                             );
                         }
                 const stamp = at.toISOString(),

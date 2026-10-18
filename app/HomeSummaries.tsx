@@ -9,20 +9,26 @@ import {
     habitPaused,
     habitToday,
 } from "./habitCalendar";
-import { useWallClock } from "./useWallClock";
 import { periodWindows, taskMetrics } from "./analytics";
 import { refreshHabitAdvice } from "./habitAdvice";
 import type { Snapshot } from "./model";
 import { userError } from "./userError";
 import { useState } from "react";
-export function HomeSummaries({ data }: { data: Snapshot }) {
-    const clock = useWallClock(),
-        at = new Date(Math.max(clock, Date.now())),
-        zone = Intl.DateTimeFormat().resolvedOptions().timeZone,
+export function HomeSummaries({
+    data,
+    habits,
+    at,
+    today,
+}: {
+    data: Snapshot;
+    habits?: NonNullable<ReturnType<typeof useHabitData>>;
+    at: Date;
+    today: ReturnType<typeof habitToday>;
+}) {
+    const zone = Intl.DateTimeFormat().resolvedOptions().timeZone,
         date = habitDate(at, zone),
         from = addHabitDays(date, -28);
-    const habits = useHabitData(from, date),
-        [error, setError] = useState("");
+    const [error, setError] = useState("");
     const windows = periodWindows("week", at, zone),
         lower = new Date(windows.current.start).toISOString(),
         upper = new Date(windows.current.end).toISOString();
@@ -49,7 +55,13 @@ export function HomeSummaries({ data }: { data: Snapshot }) {
               habits.habits.map((h) => [h.id, h.updatedAt]),
               habits.paths.map((p) => [p.id, p.updatedAt]),
               habits.plans.map((p) => p.id),
-              habits.entries.map((e) => [e.id, e.updatedAt]),
+              habits.entries.map((e) => [
+                  e.id,
+                  e.updatedAt,
+                  e.result,
+                  e.effortRating,
+                  e.durationMinutes,
+              ]),
               date,
           ])
         : "";
@@ -89,15 +101,6 @@ export function HomeSummaries({ data }: { data: Snapshot }) {
                   .first()
             : undefined;
     }, [adviceKey]);
-    const today = habits
-        ? habitToday(
-              habits.habits,
-              habits.plans,
-              habits.paths,
-              habits.entries,
-              at,
-          )
-        : [];
     const paths = (habits?.paths ?? [])
         .filter((p) => !p.deletedAt && !habitPaused(p.pauses, at))
         .sort((a, b) => a.order - b.order || a.id.localeCompare(b.id));
@@ -200,59 +203,75 @@ export function HomeSummaries({ data }: { data: Snapshot }) {
                     )}
                 </div>
             </section>
-            <section aria-label="ملخص الأفكار والتذكيرات">
-                <div className="section-heading">
-                    <h2>الأفكار والتذكيرات</h2>
-                    <div className="habit-actions">
-                        <a className="text-btn" href="#ideas">
-                            الأفكار
-                        </a>
-                        <a className="text-btn" href="#ideas/reminders">
-                            التذكيرات
+            <details className="surface sky-glass home-secondary">
+                <summary>
+                    أفكارك وتذكيراتك{" "}
+                    <span className="small muted">آخر العناصر</span>
+                </summary>
+                <section aria-label="ملخص الأفكار والتذكيرات">
+                    <div className="section-heading">
+                        <h2>الأفكار والتذكيرات</h2>
+                        <div className="habit-actions">
+                            <a className="text-btn" href="#ideas">
+                                الأفكار
+                            </a>
+                            <a className="text-btn" href="#ideas/reminders">
+                                التذكيرات
+                            </a>
+                        </div>
+                    </div>
+                    <div className="home-secondary-body">
+                        {latest.length ? (
+                            latest.map((r) => (
+                                <div key={r.type + r.id} className="habit-row">
+                                    <a className="habit-row-copy" href={r.href}>
+                                        <strong>{r.title}</strong>
+                                        <small className="muted">
+                                            {r.type}
+                                        </small>
+                                    </a>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="muted small">
+                                مساحة لأفكارك والأشياء التي تود الرجوع إليها.
+                            </p>
+                        )}
+                    </div>
+                </section>
+            </details>
+            <details className="surface sky-glass home-secondary">
+                <summary>
+                    تقدمك هذا الأسبوع{" "}
+                    <span className="small muted">
+                        {completed?.completed ?? "…"} مهام منجزة
+                    </span>
+                </summary>
+                <section aria-label="ملخص التقدم العام">
+                    <div className="section-heading">
+                        <h2>التقدم العام</h2>
+                        <a className="text-btn" href="#progress">
+                            تفاصيل التقدم
                         </a>
                     </div>
-                </div>
-                <div className="surface sky-glass">
-                    {latest.length ? (
-                        latest.map((r) => (
-                            <div key={r.type + r.id} className="habit-row">
-                                <a className="habit-row-copy" href={r.href}>
-                                    <strong>{r.title}</strong>
-                                    <small className="muted">{r.type}</small>
-                                </a>
-                            </div>
-                        ))
-                    ) : (
-                        <p className="muted small">
-                            مساحة لأفكارك والأشياء التي تود الرجوع إليها.
+                    <div className="home-secondary-body">
+                        <p>
+                            {completed
+                                ? `${completed.completed} مهام منجزة هذا الأسبوع · ${completed.activeDays} أيام نشاط`
+                                : "جارٍ قراءة إنجازات الأسبوع…"}
                         </p>
-                    )}
-                </div>
-            </section>
-            <section aria-label="ملخص التقدم العام">
-                <div className="section-heading">
-                    <h2>التقدم العام</h2>
-                    <a className="text-btn" href="#progress">
-                        تفاصيل التقدم
-                    </a>
-                </div>
-                <div className="surface sky-glass">
-                    <p>
-                        {completed
-                            ? `${completed.completed} مهام منجزة هذا الأسبوع · ${completed.activeDays} أيام نشاط`
-                            : "جارٍ قراءة إنجازات الأسبوع…"}
-                    </p>
-                    <p className="small muted">
-                        {
-                            data.projects.filter(
-                                (p) => p.status === "closed" && !p.archived,
-                            ).length
-                        }{" "}
-                        مشاريع مغلقة · مؤشرات العادات وخطوات المشاريع مستقلة عن
-                        عدد المهام. الأسبوع الحالي جزئي.
-                    </p>
-                </div>
-            </section>
+                        <p className="small muted">
+                            {
+                                data.projects.filter(
+                                    (p) => p.status === "closed" && !p.archived,
+                                ).length
+                            }{" "}
+                            مشاريع مغلقة · مؤشرات العادات وخطوات المشاريع مستقلة
+                            عن عدد المهام. الأسبوع الحالي جزئي.
+                        </p>
+                    </div>
+                </section>
+            </details>
             {(error || extra?.error) && (
                 <p className="warning small" role="alert">
                     {error || extra?.error}

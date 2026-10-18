@@ -1,0 +1,44 @@
+{
+  "oldRuntime": "actual frozen1.5.0",
+  "isolatedSyntheticData": true,
+  "oldClientDropsUnknownOptionalFeedbackOnQuantityEdit": true,
+  "before": {
+    "id": "f0c30deb-ba91-4488-baa3-5419d8787259",
+    "habitId": "reading",
+    "planId": "hp2",
+    "localDate": "2026-10-21",
+    "dayStart": "2026-10-20T21:00:00.000Z",
+    "dayEnd": "2026-10-21T21:00:00.000Z",
+    "timeZone": "Asia/Riyadh",
+    "recordedAt": "2026-10-21T10:00:00.000Z",
+    "updatedAt": "2026-10-21T10:00:00.000Z",
+    "result": {
+      "kind": "graded",
+      "phaseKey": "pages",
+      "unit": "صفحات",
+      "threshold": 2,
+      "amount": 3
+    },
+    "effortRating": 5,
+    "durationMinutes": 2
+  },
+  "after": {
+    "id": "f0c30deb-ba91-4488-baa3-5419d8787259",
+    "habitId": "reading",
+    "planId": "hp2",
+    "localDate": "2026-10-21",
+    "dayStart": "2026-10-20T21:00:00.000Z",
+    "dayEnd": "2026-10-21T21:00:00.000Z",
+    "timeZone": "Asia/Riyadh",
+    "recordedAt": "2026-10-21T10:00:00.000Z",
+    "updatedAt": "2026-10-21T10:00:00.000Z",
+    "result": {
+      "kind": "graded",
+      "phaseKey": "pages",
+      "unit": "صفحات",
+      "threshold": 2,
+      "amount": 4
+    }
+  },
+  "physicalAndroid": false
+}

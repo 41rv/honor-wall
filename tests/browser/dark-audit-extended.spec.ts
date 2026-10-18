@@ -626,7 +626,7 @@ test("بيانات استخدام مختلطة وسجل طويل: تصفية و�
             return Buffer.concat(parts).toString();
         }),
     );
-    expect(backup.version).toBe(5);
+    expect(backup.version).toBe(6);
     const stores = [
         "projects",
         "steps",
